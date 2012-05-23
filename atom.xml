@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-05-23T15:55:40+09:00</updated>
+  <updated>2012-05-23T22:17:39+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[yag_ays]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -18,7 +18,9 @@
     <link href="http://yagays.github.com/blog/2012/05/23/new-post/"/>
     <updated>2012-05-23T15:52:00+09:00</updated>
     <id>http://yagays.github.com/blog/2012/05/23/new-post</id>
-    <content type="html"><![CDATA[<p>テスト〜</p>
+    <content type="html"><![CDATA[<p>お久しぶりです，yag_aysです．
+さくらVPSの解約に伴い，Wordpressで立てていたblogをGithub Pagesで立て直すことにしました．
+ということで，また懲りずに技術系記事をひっそりと書いていく予定です．よろしくお願いします．</p>
 ]]></content>
   </entry>
   
