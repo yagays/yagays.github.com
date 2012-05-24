@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-05-23T23:16:45+09:00</updated>
+  <updated>2012-05-24T10:42:14+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -25,6 +25,20 @@
 <p>ということで，また懲りずに技術系記事をひっそりと書いていく予定です．よろしくお願いします．</p>
 
 <h2>以下メモ</h2>
+
+<ul>
+<li>Githubのレポジトリを作成する</li>
+</ul>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/github_accountsetting.png" alt="アカウント登録" /></p>
+
+<ul>
+<li>ページを作成してindex.htmlを作成すると，以下のようにNotificationが来る．</li>
+</ul>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/github_notify.png" alt="Notification" /></p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
