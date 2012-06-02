@@ -127,11 +127,11 @@
 <ul>
 <li>Fragment Library (Short Library)</li>
 <li>Jumping Library (long Library)</li>
-<li>Long Jumping Library (Longer Library)</li>
+<li>Long Jumping Library</li>
 </ul>
 
 
-<p>このうち，アセンブルに必要となるライブラリはFragment LibraryとJumping Libraryである．ここで重要なのは，<strong>どちらも必ず最低1つ</strong>は必要になるということである．たとえFragment Libraryがいくつあっても，Jumping LibraryがなければALLPATHS-LGは動かない．これが非常に重要で，後述のライブラリの条件で詳しく述べるが，Jumping LibraryのInsert sizeには制限があるため，これをクリアするデータを持っていない場合はそもそもALLPATHS-LGを動かす事ができない!!</p>
+<p>このうち，アセンブルに必要となるライブラリはFragment LibraryとJumping Libraryである．ここで重要なのは，<strong>どちらも必ず最低1つ</strong>は必要になるということである．たとえFragment Libraryがいくつあっても，Jumping LibraryがなければALLPATHS-LGは動かない．これが非常に重要で，後述のライブラリの条件で詳しく述べるが，Jumping LibraryのInsert sizeには制限があるため，これをクリアするデータを持っていない場合はそもそもALLPATHS-LGを動かす事ができない．</p>
 
 <h2>Fragment Library</h2>
 
@@ -145,8 +145,11 @@
 
 <p>最後にLong Jumping Libraryだが，マニュアルによるとインサートサイズが20kbpsのライブラリを想定しているらしい．前述のJumping Libraryにおいてペアエンドリード間の長さの上限が10kbpなので，それ以上はLong Jumping Libraryとしても良さそうである．</p>
 
-<p><img src="http://dl.dropbox.com/u/142306/b/allpaths-lg-dataset.png" alt="Fragment LibraryとJumping Libraryの模式図" />
-といった感じでALLPATHS-LGを動かすために必要なライブラリの種類を見てきた．結論としては兎に角動かすためのデータセットの制限がシビアということで，データのライブラリサイズなどの情報をきちんと把握しておく必要がある．まあデータが揃っていたとしてもALLPATHS-LGを動かすのも一苦労なのだが，この話はまた別の機会に書ければ書くことにする．というか自分も理解していないところが多いので手探り感が強いが&#8230;．</p>
+<p><img src="http://dl.dropbox.com/u/142306/b/allpaths-lg-dataset.png" alt="Fragment LibraryとJumping Libraryの模式図" /></p>
+
+<p>といった感じでALLPATHS-LGを動かすために必要なライブラリの種類を見てきた．結論としては兎に角動かすためのデータセットの制限がシビアということで，データのライブラリサイズなどの情報をきちんと把握しておく必要がある．まあデータが揃っていたとしてもALLPATHS-LGを動かすのも一苦労なのだが，この話はまた別の機会に書ければ書くことにする．というか自分も理解していないところが多いので手探り感が強いが&#8230;．</p>
+
+<hr />
 </div>
 
 
