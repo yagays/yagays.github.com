@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-06-02T18:05:26+09:00</updated>
+  <updated>2012-06-02T18:06:04+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[allpaths-lgで使用できるライブラリサイズの制限]]></title>
+    <title type="html"><![CDATA[ALLPATHS-LGで使用できるライブラリサイズの制限]]></title>
     <link href="http://yagays.github.com/blog/2012/06/02/allpaths-lg-dataset/"/>
     <updated>2012-06-02T15:52:00+09:00</updated>
     <id>http://yagays.github.com/blog/2012/06/02/allpaths-lg-dataset</id>
