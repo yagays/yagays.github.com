@@ -4,7 +4,7 @@
   <title><![CDATA[Category: allpaths-lg | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/allpaths-lg/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-06-03T02:46:35+09:00</updated>
+  <updated>2012-06-03T03:20:05+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -18,11 +18,15 @@
     <link href="http://yagays.github.com/blog/2012/06/02/allpaths-lg-dataset/"/>
     <updated>2012-06-02T15:52:00+09:00</updated>
     <id>http://yagays.github.com/blog/2012/06/02/allpaths-lg-dataset</id>
-    <content type="html"><![CDATA[<p>ALLPATHS-LGは複数のライブラリで読まれたショートリードを組み合わせてゲノムアセンブルをするソフトウェア(パイプライン)である．比較的新しいゲノムアセンブラで性能もかなり良いらしく，公式blogのアセンブル履歴を見ると非モデル生物を中心にかなり使われている印象がある．ただ，その反面かなり癖のあるソフトウェアで，インストールが鬼門・動かすのが難しい・インターネットに資料が少ないという三重苦で，初心者にはかなりハードルの高いソフトウェアと言わざるを得ない．その中でも個人的に一番やっかいだと思うポイントはパイプライン入力に使うデータセットの準備で，折角苦労してALLPATHS-LGが使える環境を整えたとしても，使えるデータが無いとそもそも動かないということになりかねない．
-ということで，今回はALLPATHS-LGを動かすために必要なライブラリについて見ていく．私自身も厳密に調べたわけではないので間違い等あるかもしれないが，もし詳しい方がいらっしゃればご指摘頂ければ幸い．</p>
+    <content type="html"><![CDATA[<p>ALLPATHS-LGは複数のライブラリで読まれたショートリードを組み合わせてゲノムアセンブルをするソフトウェア（パイプライン）である．比較的新しいゲノムアセンブラで性能もかなり良いらしく，<a href="http://www.broadinstitute.org/software/allpaths-lg/blog/">公式ブログ</a>のアセンブル履歴を見ると非モデル生物を中心にかなり使われている印象がある．ただ，その反面かなり癖のあるソフトウェアで，インストールが鬼門・動かすのが難しい・インターネットに資料が少ないという三重苦で，初心者にはかなりハードルの高いソフトウェアと言わざるを得ない．その中でも個人的に一番やっかいだと思うポイントはパイプライン入力に使うデータセットの準備で，折角苦労してALLPATHS-LGが使える環境を整えたとしても，使えるデータが無いとそもそも動かないということになりかねない．</p>
 
-<p>まず，ALLPATHS-LGが想定してるNGSショートリードは，長さ~100bp程度のペアエンドである．454のロングリードなどには対応していないようだが，最近のバージョンアップでillumina+PacBioのハイブリッドアセンブルが出来るようになっているらしい(<a href="http://www.broadinstitute.org/software/allpaths-lg/blog/?p=463">url</a>)．
-ここまでは問題無いのだが，次のペアエンドのライブラリの種類に関する条件が非常にややこしい．まずALLPATHS-LGでは，ショートリードのライブラリは以下の3つに区分される</p>
+<p>ということで，今回はALLPATHS-LGを動かすために必要なライブラリについて見ていく．私自身も厳密に調べたわけではないので間違い等あるかもしれないが，もし詳しい方がいらっしゃればご指摘頂ければ幸い．</p>
+
+<p> <!-- more --></p>
+
+<p>まず，ALLPATHS-LGが想定してるNGSショートリードは，長さ~100bp程度のペアエンドである．454のロングリードなどには対応していないようだが，最近のバージョンアップでillumina+PacBioのハイブリッドアセンブルが出来るようになっているらしい（<a href="http://www.broadinstitute.org/software/allpaths-lg/blog/?p=463">url</a>）．</p>
+
+<p>ここまでは問題無いのだが，次のペアエンドのライブラリの種類に関する条件が非常に複雑である．まずALLPATHS-LGでは，ショートリードのライブラリは以下の3つに区分される．</p>
 
 <ul>
 <li>Fragment Library (Short Library)</li>
