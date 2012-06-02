@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
-  <link href="http://yagays.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: assembly, | Wolfeyes Bioinformatics beta]]></title>
+  <link href="http://yagays.github.com/blog/categories/assembly-/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
   <updated>2012-06-03T02:46:35+09:00</updated>
   <id>http://yagays.github.com/</id>
@@ -47,59 +47,9 @@
 
 <p><img src="http://dl.dropbox.com/u/142306/b/allpaths-lg-dataset.png" alt="Fragment LibraryとJumping Libraryの模式図" /></p>
 
-<p>といった感じでALLPATHS-LGを動かすために必要なライブラリの種類を見てきた．結論としては兎に角動かすためのデータセットの制限がシビアということで，データのライブラリサイズなどの情報をきちんと把握しておく必要がある．まあデータが揃っていたとしてもALLPATHS-LGを動かすのも一苦労なのだが，この話はまた別の機会に書ければ書くことにする．というか自分も理解していないところが多いので手探り感が強いが&#8230;．</p>
+<p>といった感じでALLPATHS-LGを動かすために必要なライブラリの種類を見てきた．結論としては兎に角動かすためのデータセットの制限がシビアということで，データのライブラリサイズなどの情報をきちんと把握しておく必要がある．まあデータが揃っていたとしてもALLPATHS-LGを動かすのも一苦労なのだが，この話はまた別の機会に書ければ書くことにする．というか自分も理解していないところが多いので手探り感が強いが...．</p>
 
 <hr />
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[github pages + Octopressでブログを作ってみた]]></title>
-    <link href="http://yagays.github.com/blog/2012/05/23/new-post/"/>
-    <updated>2012-05-23T15:52:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/05/23/new-post</id>
-    <content type="html"><![CDATA[<p>お久しぶりです，yag_aysです．</p>
-
-<p>さくらVPSの解約に伴い，Wordpressで立てていたblogをGithub Pagesで立て直すことにしました．</p>
-
-<p>ということで，また懲りずに技術系記事をひっそりと書いていく予定です．よろしくお願いします．</p>
-
-<h2>以下メモ</h2>
-
-<ul>
-<li>Githubのレポジトリを作成する</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/github_accountsetting.png" alt="アカウント登録" /></p>
-
-<ul>
-<li>ページを作成してindex.htmlを作成すると，以下のようにNotificationが来る．</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/github_notify.png" alt="Notification" /></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'> git clone git://github.com/imathis/octopress.git octopress
-</span><span class='line'> cd octopress
-</span><span class='line'> gem install bundler
-</span><span class='line'> bundle install
-</span><span class='line'>
-</span><span class='line'> rake setup_github_pages
-</span><span class='line'> rake generate
-</span><span class='line'> rake deploy
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>まだMarkdownがよくわかってない&#8230;</p>
 ]]></content>
   </entry>
   
