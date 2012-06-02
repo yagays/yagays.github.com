@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Wolfeyes Bioinformatics beta</title>
+    <title>allpaths-lgで使用できるライブラリサイズの制限 - Wolfeyes Bioinformatics beta</title>
     <meta name="author" content="yag_ays">
 
     
@@ -48,13 +48,9 @@
 
 </header>
 	
-	<div id="content" class="inner">
-
-
-    <article class="post">
-    <h1 class="title"><a href="/blog/2012/06/02/allpaths-lg-dataset/">Allpaths-lgで使用できるライブラリサイズの制限</a></h1>
-    <div class="entry">
-        <p>ALLPATHS-LGは複数のライブラリで読まれたショートリードを組み合わせてゲノムアセンブルをするソフトウェア(パイプライン)である．比較的新しいゲノムアセンブラで性能もかなり良いらしく，公式blogのアセンブル履歴を見ると非モデル生物を中心にかなり使われている印象がある．ただ，その反面かなり癖のあるソフトウェアで，インストールが鬼門・動かすのが難しい・インターネットに資料が少ないという三重苦で，初心者にはかなりハードルの高いソフトウェアと言わざるを得ない．その中でも個人的に一番やっかいだと思うポイントはパイプライン入力に使うデータセットの準備で，折角苦労してALLPATHS-LGが使える環境を整えたとしても，使えるデータが無いとそもそも動かないということになりかねない．
+	<div id="content" class="inner"><article class="post">
+    <h1 class="title">Allpaths-lgで使用できるライブラリサイズの制限</h1>
+    <div class="entry"><p>ALLPATHS-LGは複数のライブラリで読まれたショートリードを組み合わせてゲノムアセンブルをするソフトウェア(パイプライン)である．比較的新しいゲノムアセンブラで性能もかなり良いらしく，公式blogのアセンブル履歴を見ると非モデル生物を中心にかなり使われている印象がある．ただ，その反面かなり癖のあるソフトウェアで，インストールが鬼門・動かすのが難しい・インターネットに資料が少ないという三重苦で，初心者にはかなりハードルの高いソフトウェアと言わざるを得ない．その中でも個人的に一番やっかいだと思うポイントはパイプライン入力に使うデータセットの準備で，折角苦労してALLPATHS-LGが使える環境を整えたとしても，使えるデータが無いとそもそも動かないということになりかねない．
 ということで，今回はALLPATHS-LGを動かすために必要なライブラリについて見ていく．私自身も厳密に調べたわけではないので間違い等あるかもしれないが，もし詳しい方がいらっしゃればご指摘頂ければ幸い．</p>
 
 <p>まず，ALLPATHS-LGが想定してるNGSショートリードは，長さ~100bp程度のペアエンドである．454のロングリードなどには対応していないようだが，最近のバージョンアップでillumina+PacBioのハイブリッドアセンブルが出来るようになっているらしい(<a href="http://www.broadinstitute.org/software/allpaths-lg/blog/?p=463">url</a>)．
@@ -83,10 +79,7 @@
 
 <p><img src="http://dl.dropbox.com/u/142306/b/allpaths-lg-dataset.png" alt="Fragment LibraryとJumping Libraryの模式図" />
 といった感じでALLPATHS-LGを動かすために必要なライブラリの種類を見てきた．結論としては兎に角動かすためのデータセットの制限がシビアということで，データのライブラリサイズなどの情報をきちんと把握しておく必要がある．まあデータが揃っていたとしてもALLPATHS-LGを動かすのも一苦労なのだが，この話はまた別の機会に書ければ書くことにする．というか自分も理解していないところが多いので手探り感が強いが&#8230;．</p>
-
-        
-        
-    </div>
+</div>
     <div class="meta">
         <div class="date">
 
@@ -107,83 +100,19 @@
         
     </div>
 </article>
-
-
-    <article class="post">
-    <h1 class="title"><a href="/blog/2012/05/23/new-post/">Github Pages + Octopressでブログを作ってみた</a></h1>
-    <div class="entry">
-        <p>お久しぶりです，yag_aysです．</p>
-
-<p>さくらVPSの解約に伴い，Wordpressで立てていたblogをGithub Pagesで立て直すことにしました．</p>
-
-<p>ということで，また懲りずに技術系記事をひっそりと書いていく予定です．よろしくお願いします．</p>
-
-<h2>以下メモ</h2>
-
-<ul>
-<li>Githubのレポジトリを作成する</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/github_accountsetting.png" alt="アカウント登録" /></p>
-
-<ul>
-<li>ページを作成してindex.htmlを作成すると，以下のようにNotificationが来る．</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/github_notify.png" alt="Notification" /></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'> git clone git://github.com/imathis/octopress.git octopress
-</span><span class='line'> cd octopress
-</span><span class='line'> gem install bundler
-</span><span class='line'> bundle install
-</span><span class='line'>
-</span><span class='line'> rake setup_github_pages
-</span><span class='line'> rake generate
-</span><span class='line'> rake deploy
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>まだMarkdownがよくわかってない&#8230;</p>
-
-        
-        
-    </div>
-    <div class="meta">
-        <div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-23T15:52:00+09:00" pubdate data-updated="true">May 23<span>rd</span>, 2012</time></div>
-        <div class="tags">
+<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
 
 </div>
-        
-    </div>
-</article>
-
-<nav id="pagenavi">
-    
-    
-    <a href="/blog/archives" class="center">Blog Archives</a>
-</nav></div>
 	<footer class="inner">Copyright &copy; 2012
 
     yag_ays
