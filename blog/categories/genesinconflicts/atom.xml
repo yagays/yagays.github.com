@@ -4,7 +4,7 @@
   <title><![CDATA[Category: GenesInConflicts | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/genesinconflicts/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-06-03T15:47:44+09:00</updated>
+  <updated>2012-06-03T16:54:45+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -26,6 +26,8 @@
 <p>そんなこんなで，無いも同然な生物学の知識を総動員して読み進めているわだが，読み進めるにあたり<a href="http://d.hatena.ne.jp/shorebird/20060424">原書を読まれた方の読書記録</a>が大いに理解の手助けになり参考にさせてもらっている．ということで，自分も実際に書きだして理解を深めようと思い，自分の理解の範囲内で纏めを作って見ることにした．間違ったことを書いていたり理解が浅い部分は多々あると思うので，そのあたり「生物学初学者が書いている」ことを念頭に置いてもらえればと思う．</p>
 
 <h3>1章</h3>
+
+<p>1章はガイダンス的な内容で，この本のメインテーマである利己的な遺伝因子の定義や，その戦略，研究の歴史が紹介されている．そして最後に，利己的な遺伝因子がいかに広範囲に及ぶ分野をまたぐテーマであり，本書はそれらを包括的に扱い体系化させようとしていることが述べられている．</p>
 
 <!-- more -->
 
@@ -107,6 +109,7 @@
 <ul>
 <li>血縁関係が近いと，同じ遺伝子を持っている確率が高い</li>
 <li>母親由来/父親由来 (maternal/paternal)</li>
+<li>ゲノムインプリンティング</li>
 </ul>
 </li>
 </ul>
