@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: reading, | Wolfeyes Bioinformatics beta]]></title>
+  <link href="http://yagays.github.com/blog/categories/reading-/atom.xml" rel="self"/>
+  <link href="http://yagays.github.com/"/>
+  <updated>2012-06-03T15:47:44+09:00</updated>
+  <id>http://yagays.github.com/</id>
+  <author>
+    <name><![CDATA[yag_ays]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[「せめぎ合う遺伝子」読書ノート 1章]]></title>
+    <link href="http://yagays.github.com/blog/2012/06/03/genesinconflict-1/"/>
+    <updated>2012-06-03T14:31:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/06/03/genesinconflict-1</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as1&m=amazon&f=ifr&ref=qf_sp_asin_til&asins=432005699X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>「せめぎ合う遺伝子」(Genes in Conflicts)を先週あたりから少しずつ読み進めている．元々の動機としては，生物学を勉強するにあたり「○○学」なんて大層な名前の分厚い「辞書」を読み進めるのに飽きたのがきっかけで，実例を学びながら時々辞書を引きつつ勉強しようと思ってこの本を選んだのが始まりだった．当初の目的通りこの本をさらっと読み進めながら辞書の方の読解を並行して進められるかと思いきや，これが思いの外キツい本で今は必死になって読み進めている．ある意味計画通りな反面，辞書が示す範疇を超えるのではないかと思うような濃厚さで，半ば辞書を放り出して本に齧り付いている感じがある．</p>
+
+<p>そんなこんなで，無いも同然な生物学の知識を総動員して読み進めているわだが，読み進めるにあたり<a href="http://d.hatena.ne.jp/shorebird/20060424">原書を読まれた方の読書記録</a>が大いに理解の手助けになり参考にさせてもらっている．ということで，自分も実際に書きだして理解を深めようと思い，自分の理解の範囲内で纏めを作って見ることにした．間違ったことを書いていたり理解が浅い部分は多々あると思うので，そのあたり「生物学初学者が書いている」ことを念頭に置いてもらえればと思う．</p>
+
+<h3>1章</h3>
+
+<!-- more -->
+
+
+<ul>
+<li>遺伝子にはせめぎ合い(コンフリクト)がある
+
+<ul>
+<li>利己的な遺伝因子と抑制因子の対立</li>
+<li>利益：<strong>出現頻度</strong> (<strong>分布</strong>)</li>
+</ul>
+</li>
+</ul>
+
+
+<br />
+
+
+<ul>
+<li>遺伝的協調性を持たない利己的な遺伝因子
+
+<ul>
+<li>生物の適応性と密接に関連する遺伝子が，自然選択Natural Selectionの結果，自身の頻度(分布)を広げる</li>
+<li>このような遺伝的協調性は遺伝子が公平に伝達されることによりもたらされる</li>
+<li>このとき世代間の遺伝頻度は変化しない(いわゆるハーディー・ワインバーグの法則)</li>
+<li>しかし，利己的な遺伝因子は個体の適応度に寄与しないにもかかわらず分布を広げる</li>
+</ul>
+</li>
+</ul>
+
+
+<br />
+
+
+<ul>
+<li>利己的な遺伝因子に関わる用語定義
+
+<ul>
+<li>ドライヴdrive
+
+<ul>
+<li>伝達率が50%を上回ること (超メンデル的Super-Mendelian)</li>
+</ul>
+</li>
+<li>ドラッグdrug
+
+<ul>
+<li>伝達率が50%を下回ること(下メンデル的sub-Mendelian)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<br />
+
+
+<ul>
+<li>利己的な遺伝因子の代表的な3つの戦略
+
+<ul>
+<li>干渉interference</li>
+<li>過複製overreplication</li>
+<li>ゴノタキシスgonotaxis (生殖系列走性)</li>
+<li>ーー</li>
+<li>あくまでこれらの戦略は個体の適応度（ここでは「生物としての質」）を変化させない</li>
+</ul>
+</li>
+</ul>
+
+
+<br />
+
+
+<ul>
+<li>ゲノムの血縁コンフリクトにより利己性を発揮する場合がある
+
+<ul>
+<li>血縁関係が近いと，同じ遺伝子を持っている確率が高い</li>
+<li>母親由来/父親由来 (maternal/paternal)</li>
+</ul>
+</li>
+</ul>
+
+
+<br />
+
+
+<ul>
+<li>ショウジョウバエ<em>D.melanogaster</em>で観測されたP因子は劇的な分布拡大を見せた
+
+<ul>
+<li>系統間交雑における不妊や突然変異率の高さ，オスの組み換え発生などの異常はP因子によるものだった</li>
+<li>P因子は20世紀半ばに<em>D.willistoni</em>から<em>D.melanogaster</em>の遺伝子プールに持ち込まれ，世界中に広まった</li>
+</ul>
+</li>
+</ul>
+
+
+<br />
+
+
+<ul>
+<li>利己的な遺伝因子が必ずしも遺伝子のホストである個体の適応度に影響しないわけではない
+
+<ul>
+<li>ドライヴ性性染色体</li>
+<li>雄性不稔ミトコンドリア</li>
+</ul>
+</li>
+</ul>
+
+
+<br />
+
+
+<ul>
+<li>利己的な遺伝因子の別称
+
+<ul>
+<li>アウトロー遺伝子 outlaw gene</li>
+<li>超利己的遺伝子 ultraselfish gene</li>
+<li>自己普及推進遺伝因子 self-promoting genetic element</li>
+</ul>
+</li>
+</ul>
+
+
+<br />
+
+
+<ul>
+<li>ドライヴの別称
+
+<ul>
+<li>伝達比の歪曲 transmission ratio distortion</li>
+<li>分離の歪曲 segregation distortion</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
