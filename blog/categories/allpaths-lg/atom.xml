@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ALLPATHS-LG | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/allpaths-lg/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-06-04T09:57:30+09:00</updated>
+  <updated>2012-06-04T13:26:19+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,98 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ALLPATHS-LGを最小構成で実行する]]></title>
+    <link href="http://yagays.github.com/blog/2012/06/04/allpaths-lg-introduction/"/>
+    <updated>2012-06-04T13:08:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/06/04/allpaths-lg-introduction</id>
+    <content type="html"><![CDATA[<p><a href="http://yagays.github.com/blog/2012/06/02/allpaths-lg-dataset/">前回</a>は，ALLPATHS-LGの入力データの制約についてFragment LibraryとJumping Libraryの2つが最低でも必要ということを書いたが，今回は実際にALLPATHS-LGを動かすところを見ていく．ただし，複雑で込み入った細かい部分は分からないので，最小構成でとにかくアセンブル結果を得るということだけを解説していこうと思う．</p>
+
+<!-- more -->
+
+
+<p>今回はALLPATHS-LGのexampleを使って解説していく．このexampleにはprepare.shとassemble.shという2つのシェル・スクリプトが付属しており，これらを動かせばアセンブルは実行できるのだが，今回は最小構成で実行するということで，これらの用意されたスクリプトを使わず直にコマンドを叩いて動かしていこうと思う．ALLPATHS-LGパイプラインの特徴である美しいディレクトリ構成などは一切無視して進むので，もし上手に実験を組んでディレクトリ構成を管理したい場合はマニュアルを熟読していただきたい．</p>
+
+<h3>概要</h3>
+
+<p>まず，ALLPATHS-LGを動かすために必要なステップが3つある．</p>
+
+<ol>
+<li><strong>in_groups.csvとin_libs.csvを作る</strong></li>
+<li><strong>PrepareAllPathsInputs.plを実行する</strong></li>
+<li><strong>RunAllPathsLGを実行する</strong></li>
+</ol>
+
+
+<p>最低限この3つを実行すれば，アセンブル結果が出てくる．では個別に見てこう．</p>
+
+<h3>in_groups.csvとin_libs.csvを作る</h3>
+
+<p>ALLPATHS-LGでは，入力となるNGSデータの情報をin_groups.csvとin_libs.csvの2つに記述する必要がある．</p>
+
+<p>in_groups.csvでは，アセンブルの元データとなるNGS入力データの場所と種類，そしてライブラリの名前をコンマ区切りのテキストとして保存する．exampleのin_groups.csvは以下のようになっている．</p>
+
+<p>```
+$ cat in_groups.csv</p>
+
+<pre><code>    file_name, library_name, group_name
+</code></pre>
+
+<p>seq/frags.?.fastq, Solexa-25396,      frags
+seq/jumps.?.fastq, Solexa-11542,      jumps
+```</p>
+
+<p>file_nameは入力データのパスを指定する．相対パスでも絶対パスでも問題ない．入力ファイルがペアエンドなどで対になっている場合は<strong><code>?</code></strong>や<strong><code>*</code></strong>のワイルドカードを使う必要があり，例えばR1.fastqとR2.fastqなら"R?.fastq"とすれば2つのファイルをひとまとまりとして認識できる．次にlibrary_nameとgroup_nameだが，これらは入力データを区別するためにユーザが指定する項目で，自由に名前を付けることができる．library_nameは後述のin_libs.csvでも共通して使われるので，そちらの配列情報の項目と名前を合わせる必要がある．また，group_nameはそれぞれの配列データにユニークな名前を付ける必要がある．上の例ではfragsとjumpsとなっているが，これはライブラリの種類を指定しているわけではなく，ただ名前を付けているだけなので勘違いしないように注意が必要である．</p>
+
+<p>次に，in_libs.csvでは，アセンブルの元データとなるNGS入力データのライブラリの種類とインサートサイズなどの各情報をコンマ区切りのテキストとして保存する．exampleのin_libs.csvは以下のようになっている．</p>
+
+<p><code>
+$ cat in_libs.csv
+library_name, project_name, organism_name,     type, paired, frag_size, frag_stddev, insert_size, insert_stddev, read_orientation, genomic_start, genomic_end
+Solexa-25396,         test,   test.genome, fragment,      1,       180,          10,            ,              ,           inward,             0,           0
+Solexa-11542,         test,   test.genome,  jumping,      1,          ,            ,        3000,           500,          outward,             0,           0
+</code>
+まず一番左のカラムには，先ほどのin_groups.csvで指定したlibrary_nameと同じものを入力する．そして，それ以降の行で詳しいライブラリの情報を指定していく．project_nameやorganism_nameなどはユーザが自由に名前を付ける事ができる．それ以降のtypeやpaired，frag_sizeではライブラリの情報を入力していくが，関係ない項目は空白にしておいて良い．このあたりの入力情報の詳細はマニュアルに詳しく記載されているので，そちらを参照されたい．</p>
+
+<p>さて，in_groups.とin_libs.csvが揃ったところで，次からいよいよALLPATHS-LGを動かしていく．</p>
+
+<h3>PrepareAllPathsInputs.plを実行する</h3>
+
+<p>さて，ここから実際にALLPATHS-LGを動かしていくわけだが，まずはPrepareAllPathsInputs.plというスクリプトを動かして，パイプラインのディレクトリ作成や入力データの変換などを行う．</p>
+
+<p>それでは実際にPrepareAllPathsInputs.plを動かしてみよう．先ほどのin_groups.csvとin_libs.csvがあるディレクトリで，以下のコマンドを実行する．</p>
+
+<p><code>
+PrepareAllPathsInputs.pl DATA_DIR=$PWD PLOIDY=2  
+</code></p>
+
+<p>最低限必要なのはDATA_DIRとPLOIDYの2つだけである．DATA_DIRはアセンブル結果を保存するディレクトリを指定するオプションで，今回は最小構成ということで，このスクリプトを動かしたディレクトリ以下に結果を置くようにする．PLOIDYではゲノムアセンブリの対象種における倍数を指定する．1倍体なら1，2倍体なら2という具合だが，現在のところALLPATHS-LGは2倍体以上の倍数体には対応していないようだ．なお，マニュアルには他にもオプションが指定されているが，<strong>PICARD_TOOLS_DIRは入力ファイルがbamファイルでなければ必要ない</strong>．</p>
+
+<h3>RunAllPathsLGを実行する</h3>
+
+<p>入念な下準備が終わったところで，いよいよALLPATHS-LGの本体を動かす．まずは実行コマンドを見てみよう．</p>
+
+<p><code>
+RunAllPathsLG PRE=. REFERENCE_NAME=. DATA_SUBDIR=. RUN=allpaths SUBDIR=run  
+</code></p>
+
+<p>色々とオプションが指定されているが，これらは全てディレクトリに関するものである．PREやREFERENCE_NAME，DATA_SUBDIRで指定されているドットは「現在のディレクトリ」を表している．RUNやSUBDIRは出力結果のが置かれるディレクトリの名前になり，上のコマンドの場合には，final.assembly.fastaなどのアセンブル結果はallpaths/ASSEMBLIES/runのディレクトリ以下に置かれることになる．マニュアルではTARGETSというオプションがあるが，これは既にゲノムが読まれていたりする場合に，それをリファレンスとして使うことでALLPATHS-LGのアセンブル結果と比較してまとめて評価してくれるというものである．今回は使用していないので関係無いが，exampleではリファレンスゲノムもきちんと用意されているので，試すことはできる．</p>
+
+<h3>まとめ</h3>
+
+<p>ということで，足早にALLPATHS-LGの使い方を最小構成で見てきた．こうやって並べてみると，実際にアセンブルに必要な項目というのは非常に少なく，in_groups.csvとin_libs.csv，そしてPLOIDYさえ指定すればアセンブルすることはできる事がわかる．まあ実際に動かすとアセンブルが上手くいかない部分は多々出てくると思うが，最小構成で一度実行できてさえいれば次からはパラメータチューニングをしていくだけなので，アセンブル結果の評価と並行して進めることができる．ALLPATHS-LGでは他にも様々な種やデータに対応できるよう様々なオプションが用意されているので，色々試してみると面白かもしれない．</p>
+
+<h3>参考サイト</h3>
+
+<ul>
+<li><a href="http://www.broadinstitute.org/software/allpaths-lg/blog/">http://www.broadinstitute.org/software/allpaths-lg/blog/</a></li>
+<li><a href="http://gage.cbcb.umd.edu/recipes/allpaths.html">http://gage.cbcb.umd.edu/recipes/allpaths.html</a></li>
+<li><a href="http://evomics.org/learning/assembly-and-alignment/allpaths-lg/">http://evomics.org/learning/assembly-and-alignment/allpaths-lg/</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ALLPATHS-LGで使用できるライブラリサイズの制限]]></title>
