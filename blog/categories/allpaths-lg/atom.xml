@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ALLPATHS-LG | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/allpaths-lg/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-06-04T14:45:05+09:00</updated>
+  <updated>2012-06-05T12:17:22+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -64,9 +64,9 @@ library_name, project_name, organism_name,     type, paired, frag_size, frag_std
 Solexa-25396,         test,   test.genome, fragment,      1,       180,          10,            ,              ,           inward,             0,           0
 Solexa-11542,         test,   test.genome,  jumping,      1,          ,            ,        3000,           500,          outward,             0,           0
 </code>
-まず一番左のカラムには，先ほどのin_groups.csvで指定したlibrary_nameと同じものを入力する．そして，それ以降の行で詳しいライブラリの情報を指定していく．project_nameやorganism_nameなどはユーザが自由に名前を付ける事ができる．それ以降のtypeやpaired，frag_sizeではライブラリの情報を入力していくが，関係ない項目は空白にしておいて良い．このあたりの入力情報の詳細はマニュアルに詳しく記載されているので，そちらを参照されたい．</p>
+まず一番左のカラムには，先ほどのin_groups.csvで指定したlibrary_nameと同じものを入力する．そして，それ以降の行で詳しいライブラリの情報を指定していく．project_nameやorganism_nameなどはユーザが自由に名前を付ける事ができる．それ以降のtypeやpaired，frag_sizeなどではライブラリの情報を入力していくが，関係ない項目は空白にしておいて良い．このあたりの入力情報の詳細はマニュアルに詳しく記載されているので，そちらを参照されたい．</p>
 
-<p>さて，in_groups.とin_libs.csvが揃ったところで，次からいよいよALLPATHS-LGを動かしていく．</p>
+<p>さて，in_groups.csvとin_libs.csvが揃ったところで，次からいよいよALLPATHS-LGを動かしていく．</p>
 
 <h3>PrepareAllPathsInputs.plを実行する</h3>
 
@@ -78,7 +78,7 @@ Solexa-11542,         test,   test.genome,  jumping,      1,          ,         
 PrepareAllPathsInputs.pl DATA_DIR=$PWD PLOIDY=2  
 </code></p>
 
-<p>最低限必要なのはDATA_DIRとPLOIDYの2つだけである．DATA_DIRはアセンブル結果を保存するディレクトリを指定するオプションで，今回は最小構成ということで，このスクリプトを動かしたディレクトリ以下に結果を置くようにする．PLOIDYではゲノムアセンブリの対象種における倍数を指定する．1倍体なら1，2倍体なら2という具合だが，現在のところALLPATHS-LGは2倍体以上の倍数体には対応していないようだ．なお，マニュアルには他にもオプションが指定されているが，<strong>PICARD_TOOLS_DIRは入力ファイルがbamファイルでなければ必要ない</strong>．</p>
+<p>最低限必要なのはDATA_DIRとPLOIDYの2つだけである．DATA_DIRはアセンブル結果を保存するディレクトリを指定するオプションで，今回は最小構成ということで，このスクリプトを動かしたディレクトリ以下に結果を置くようにする．PLOIDYではゲノムアセンブリの対象種における倍数を指定する．1倍体なら1，2倍体なら2という具合だが，現在のところALLPATHS-LGは2倍体以上の倍数体には対応していないようだ．なお，マニュアルには他にもオプションが指定されているが，PICARD_TOOLS_DIRは入力ファイルがbamファイルでなければ必要ない．</p>
 
 <h3>RunAllPathsLGを実行する</h3>
 
