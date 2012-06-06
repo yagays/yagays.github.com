@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-06-05T21:46:50+09:00</updated>
+  <updated>2012-06-06T18:57:16+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,178 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[VelvetKを使ってVelvetを用いたアセンブルに最適なk-merサイズを推定する]]></title>
+    <link href="http://yagays.github.com/blog/2012/06/06/velvetk/"/>
+    <updated>2012-06-06T17:12:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/06/06/velvetk</id>
+    <content type="html"><![CDATA[<p>VelvetKというスクリプトが公開されたらしい．これはVelvetのアセンブルの際にユーザが指定する必要のあるk-merのkの値を，ゲノムサイズとショートリードのサイズから自動推定するスクリプトのようだ．普通ならばkの値を細かく変えてVelvetを大量に走らせてアセンブル結果を評価するというのが定石だと思うが，もしkの値が自動推定できるなら，そのkの値付近だけを重点的に調べるといったことが出来るので大幅に労力を削減できる．私自身あまりVelvet/Oasesを使った経験が無いのだが，取り敢えず一通り使ってみた．</p>
+
+<!-- more -->
+
+
+<h2>インストール</h2>
+
+<p>インストールは簡単で，Perlスクリプトを落としてくるだけで実行出来る．外部ライブラリの依存が無いので簡単．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ wget http://bioinformatics.net.au/velvetk.pl </span></code></pre></td></tr></table></div></figure>
+
+
+<h2>使い方</h2>
+
+<p>VelvetKの入力には</p>
+
+<ul>
+<li><strong>ゲノム配列</strong> または <strong>ゲノムサイズ</strong></li>
+<li><strong>アセンブルの元になるショートリード</strong></li>
+</ul>
+
+
+<p>の2つの入力が必要になる．ゲノム配列が既知の場合には<code>--genome</code>オプションを使って，fasta形式のゲノム配列のファイルを指定する．ショートリードはfastq形式などのファイルを指定することになるが，gzやbz2などの圧縮形式にも対応している．ゲノム配列を指定してVelvetKを実行するには，以下のようにコマンドを実行する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ perl velvetk.pl --genome chr.fasta R1.fastq R2.fastq</span></code></pre></td></tr></table></div></figure>
+
+
+<p>一方でde novoでゲノム配列が無い場合には，対象種のおおまかなゲノムサイズを入力することになる．ゲノムサイズの指定の場合には，k/M/Gといった接頭辞を使う事ができる．ゲノムサイズを数値で指定してVelvetKを実行するには，以下のようにコマンドを実行する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ perl velvetk.pl --size=1M chr.fasta R1.fastq R2.fastq</span></code></pre></td></tr></table></div></figure>
+
+
+<p>とする．</p>
+
+<h2>擬似データで試してみる</h2>
+
+<p>今回はお手製の擬似データで試してみることにする．</p>
+
+<p>擬似データの作り方は簡単で，乱数を使って擬似的に作ったゲノム配列からこれまた乱数を使って擬似的にショートリードを作成するというもの．ゲノムの長さを1Mbとして，100bpのペアエンドの配列を500,000本用意して，カバレッジ100xくらいのゲノムシーケンスを想定した．</p>
+
+<p>その擬似データセットで実行してみると以下のような出力が得られた．実際にはショートリードの長さや本数も不均一になるので，以下のように各値が綺麗な感じにはならないと思う．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ perl velvetk.pl --genome chr.fasta R1.fastq R2.fastq
+</span><span class='line'>Estimating target genome size from 'chr.fasta'
+</span><span class='line'>Target genome size is 1000000 bp
+</span><span class='line'>Desire k-mer coverage of 25
+</span><span class='line'>Using cat for R1.fastq
+</span><span class='line'>Read 500000 sequences from c100_r0.001_j1500_R1.fastq
+</span><span class='line'>Using cat for R2.fastq
+</span><span class='line'>Read 500000 sequences from c100_r0.001_j1500_R2.fastq
+</span><span class='line'>Considered 1000000 reads with lengths 100..100 bp
+</span><span class='line'>K       #Kmers  Kmer-Cov
+</span><span class='line'>1       100000000       100.0
+</span><span class='line'>3       98000000        98.0
+</span><span class='line'>5       96000000        96.0
+</span><span class='line'>7       94000000        94.0
+</span><span class='line'>9       92000000        92.0
+</span><span class='line'>〜〜〜中略〜〜〜
+</span><span class='line'>71      30000000        30.0
+</span><span class='line'>73      28000000        28.0
+</span><span class='line'>75      26000000        26.0
+</span><span class='line'>77      24000000        24.0
+</span><span class='line'>79      22000000        22.0
+</span><span class='line'>81      20000000        20.0
+</span><span class='line'>83      18000000        18.0
+</span><span class='line'>85      16000000        16.0
+</span><span class='line'>87      14000000        14.0
+</span><span class='line'>89      12000000        12.0
+</span><span class='line'>91      10000000        10.0
+</span><span class='line'>93      8000000 8.0
+</span><span class='line'>95      6000000 6.0
+</span><span class='line'>97      4000000 4.0
+</span><span class='line'>99      2000000 2.0</span></code></pre></td></tr></table></div></figure>
+
+
+<p>入力ファイルをそれぞれ読み込んだ後，それぞれのkの値に対して#kmersとKmer-Covが表示される．#kmersはショートリードのデータからカウントできるk-merの本数で，例えばK=99の場合では100bpから抜き出せる99merは2つあるので，今回の場合リード数500,000*2の合計2,000,000という感じだろう．次のKmer-Covは，いわゆるK-mer Coverageと呼ばれるもので，実際のカバレッジとk-merで見た時のカバレッジの割合，もしくは変換するときの係数に当たる．</p>
+
+<p>ではどうやってこのリストからVelvetに最適なkの値を推定するかというと，出力の始めの方に書かれている</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Desire k-mer coverage of 25</span></code></pre></td></tr></table></div></figure>
+
+
+<p>のところを見て，Kmer-Covが25を下回った時のkの値が最適なkの値とする．今回の場合だとk=77でKmer-Covが24.0になるので，k=77が最適なk-merのサイズとなる．</p>
+
+<p>それではなぜ25なのかというと，このスクリプトの場合だとデフォルトだからということになってしまうのだが，どうやらk-mer Coverageにはだいたい10~20あれば十分という知見(多分経験則)があるらしい．一般的にはkの値が小さいとコンティグが繋がりにくく，kの値が大きいと細かな違いをコンティグに反映出来無いといったsensitivityとspecificityのトレードオフがある．それらのいい具合の中間点ということで，k-mer Coverageを見て判断しようということらしい．</p>
+
+<p>また，このスクリプトでは閾値となるk-mer Coverageを変更するオプション<code>-cov</code>や，リストの出力を抜きにして最適なKの値だけを出力するオプション<code>--best</code>なども用意されている．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ perl velvetk.pl --best --cov=20 --size=1M R1.fastq R2.fastq
+</span><span class='line'>Target genome size is 1000000 bp
+</span><span class='line'>Desire k-mer coverage of 20
+</span><span class='line'>Using cat for R1.fastq
+</span><span class='line'>Read 500000 sequences from R1.fastq
+</span><span class='line'>Using cat for R2.fastq
+</span><span class='line'>Read 500000 sequences from R2.fastq
+</span><span class='line'>Considered 1000000 reads with lengths 100..100 bp
+</span><span class='line'>81
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p> 上の場合では，k=81が最適とおもわれるkの推定結果となる．</p>
+
+<h2>実はWeb版もある</h2>
+
+<p>ちなみに，ここまで書いておいて難だが，実はVelvetKと同作者が作った簡易版「Velvet Advisor」がWebアプリケーションとして既に存在している．ただ，この簡易版は複数の入力ファイルに対応していないので，使えるケースが制限されている．普通は複数のライブラリを読んでアセンブルするとと思うので，まあ今回のVelvetKで使いやすくなったという感じだろうか．</p>
+
+<p><a href="http://dna.med.monash.edu.au/~torsten/velvet_advisor/">http://dna.med.monash.edu.au/~torsten/velvet_advisor/</a></p>
+
+<h2>まとめ</h2>
+
+<p>今回は擬似データを使ってVelvetKを動かしてみたが，これからアセンブルをするという人にとってはパラメータの大雑把な目安となって良いと思う．どれだけの精度で当たるのか不安なところもあるので，実際にVelvetを使ったアセンブルのプロジェクトでVelvetKの推定値がどれだけ当たっているかが知りたいところだけれども，結局目安としてしか使わないのだから，まあ適当でいいんだろう．</p>
+
+<h2>参考資料</h2>
+
+<ul>
+<li><a href="http://bioinformatics.net.au/software.velvetk.shtml">http://bioinformatics.net.au/software.velvetk.shtml</a></li>
+<li><a href="http://kevin-gattaca.blogspot.jp/2012/06/fwd-velvet-users-velvetkpl-choose-good.html">http://kevin-gattaca.blogspot.jp/2012/06/fwd-velvet-users-velvetkpl-choose-good.html</a></li>
+<li><a href="http://dna.med.monash.edu.au/~torsten/velvet_advisor/">http://dna.med.monash.edu.au/~torsten/velvet_advisor/</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「せめぎ合う遺伝子」読書ノート 2章その1]]></title>
@@ -37,7 +209,7 @@ height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" a
 
 <ul>
 <li>セントロメア近辺の逆位のすぐそばに生じた分離歪曲対立遺伝子(キラー因子)</li>
-<li>逆位による組み換えの妨害により，分離歪曲対立遺伝子と応答-不感性対立遺伝子を連鎖を強め安定化させる</li>
+<li>逆位による組み換えの妨害により，分離歪曲対立遺伝子と応答-不感性対立遺伝子の連鎖を強め安定化させる</li>
 </ul>
 </li>
 <li><strong>どれくらい昔に出現したのだろう？</strong>
