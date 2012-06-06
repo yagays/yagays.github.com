@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Assembly | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/assembly/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-06-06T19:29:31+09:00</updated>
+  <updated>2012-06-06T20:22:55+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -25,7 +25,7 @@
 
 <h2>インストール</h2>
 
-<p>インストールは簡単で，Perlスクリプトを落としてくるだけで実行出来る．外部ライブラリの依存が無いので簡単．</p>
+<p>インストールは簡単で，Perlスクリプトを落としてくるだけで実行出来る．外部ライブラリの依存が無いのでお手軽．</p>
 
 <p><code>
 $ wget http://bioinformatics.net.au/velvetk.pl
@@ -108,7 +108,7 @@ Desire k-mer coverage of 25
 
 <p>それではなぜ25なのかというと，このスクリプトの場合だとデフォルトだからということになってしまうのだが，どうやらk-mer Coverageにはだいたい10~20あれば十分という知見(多分経験則)があるらしい．一般的にはkの値が小さいとコンティグが繋がりにくく，kの値が大きいと細かな違いをコンティグに反映出来無いといったsensitivityとspecificityのトレードオフがある．それらのいい具合の中間点ということで，k-mer Coverageを見て判断しようということらしい．</p>
 
-<p>また，このスクリプトでは閾値となるk-mer Coverageを変更するオプション<code>-cov</code>や，リストの出力を抜きにして最適なKの値だけを出力するオプション<code>--best</code>なども用意されている．</p>
+<p>また，このスクリプトでは閾値となるk-mer Coverageを変更するオプション<code>--cov</code>や，リストの出力を抜きにして最適なKの値だけを出力するオプション<code>--best</code>なども用意されている．</p>
 
 <p>```
 $ perl velvetk.pl --best --cov=20 --size=1M R1.fastq R2.fastq
