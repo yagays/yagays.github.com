@@ -133,7 +133,7 @@
 
 <h2>使い方</h2>
 
-<p>VelvetKの入力には</p>
+<p>VelvetKでkの推定値を算出するには，</p>
 
 <ul>
 <li><strong>ゲノム配列</strong> または <strong>ゲノムサイズ</strong></li>
@@ -147,7 +147,7 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ perl velvetk.pl --genome chr.fasta R1.fastq R2.fastq</span></code></pre></td></tr></table></div></figure>
 
 
-<p>一方でde novoでゲノム配列が無い場合には，対象種のおおまかなゲノムサイズを入力することになる．ゲノムサイズの指定の場合には，k/M/Gといった接頭辞を使う事ができる．ゲノムサイズを数値で指定してVelvetKを実行するには，以下のようにコマンドを実行する．</p>
+<p>一方でde novoのようなゲノム配列が無い場合には，対象種のおおまかなゲノムサイズを入力することになる．ゲノムサイズの指定の場合には，k/M/Gといった接頭辞を使う事ができる．ゲノムサイズを数値で指定してVelvetKを実行するには，以下のようにコマンドを実行する．</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ perl velvetk.pl --size=1M chr.fasta R1.fastq R2.fastq</span></code></pre></td></tr></table></div></figure>
@@ -199,9 +199,9 @@
 </span><span class='line'>Target genome size is 1000000 bp
 </span><span class='line'>Desire k-mer coverage of 25
 </span><span class='line'>Using cat for R1.fastq
-</span><span class='line'>Read 500000 sequences from c100_r0.001_j1500_R1.fastq
+</span><span class='line'>Read 500000 sequences from R1.fastq
 </span><span class='line'>Using cat for R2.fastq
-</span><span class='line'>Read 500000 sequences from c100_r0.001_j1500_R2.fastq
+</span><span class='line'>Read 500000 sequences from R2.fastq
 </span><span class='line'>Considered 1000000 reads with lengths 100..100 bp
 </span><span class='line'>K       #Kmers  Kmer-Cov
 </span><span class='line'>1       100000000       100.0

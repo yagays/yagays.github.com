@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Assembly | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/assembly/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-06-06T18:57:16+09:00</updated>
+  <updated>2012-06-06T19:29:31+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -33,7 +33,7 @@ $ wget http://bioinformatics.net.au/velvetk.pl
 
 <h2>使い方</h2>
 
-<p>VelvetKの入力には</p>
+<p>VelvetKでkの推定値を算出するには，</p>
 
 <ul>
 <li><strong>ゲノム配列</strong> または <strong>ゲノムサイズ</strong></li>
@@ -47,7 +47,7 @@ $ wget http://bioinformatics.net.au/velvetk.pl
 $ perl velvetk.pl --genome chr.fasta R1.fastq R2.fastq
 </code></p>
 
-<p>一方でde novoでゲノム配列が無い場合には，対象種のおおまかなゲノムサイズを入力することになる．ゲノムサイズの指定の場合には，k/M/Gといった接頭辞を使う事ができる．ゲノムサイズを数値で指定してVelvetKを実行するには，以下のようにコマンドを実行する．</p>
+<p>一方でde novoのようなゲノム配列が無い場合には，対象種のおおまかなゲノムサイズを入力することになる．ゲノムサイズの指定の場合には，k/M/Gといった接頭辞を使う事ができる．ゲノムサイズを数値で指定してVelvetKを実行するには，以下のようにコマンドを実行する．</p>
 
 <p><code>
 $ perl velvetk.pl --size=1M chr.fasta R1.fastq R2.fastq
@@ -68,9 +68,9 @@ Estimating target genome size from 'chr.fasta'
 Target genome size is 1000000 bp
 Desire k-mer coverage of 25
 Using cat for R1.fastq
-Read 500000 sequences from c100_r0.001_j1500_R1.fastq
+Read 500000 sequences from R1.fastq
 Using cat for R2.fastq
-Read 500000 sequences from c100_r0.001_j1500_R2.fastq
+Read 500000 sequences from R2.fastq
 Considered 1000000 reads with lengths 100..100 bp
 K       #Kmers  Kmer-Cov
 1       100000000       100.0
