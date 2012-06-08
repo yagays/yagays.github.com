@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>github pages + Octopressでブログを作ってみた - Wolfeyes Bioinformatics beta</title>
+  <title>fastaからfastbに変換する - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="お久しぶりです，yag_aysです． さくらVPSの解約に伴い，Wordpressで立てていたblogをGithub Pagesで立て直すことにしました． ということで，また懲りずに技術系記事をひっそりと書いていく予定です．よろしくお願いします． 以下メモ Githubのレポジトリを作成する &hellip;">
+  <meta name="description" content="fastaやfastqは馴染みがあっても，fastbというフォーマットは知らない人が多いと思う．これははfastaファイルをバイナリ形式に変換したフォーマットのことで，SAMとBAMの関係と同じようなものである． ALLPATHS-LGにおいて， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.com/blog/2012/05/23/new-post">
+  <link rel="canonical" href="http://yagays.github.com/blog/2012/06/08/fastb">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -107,7 +107,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">Github Pages + Octopressでブログを作ってみた</h1>
+      <h1 class="entry-title">Fastaからfastbに変換する</h1>
     
     
       <p class="meta">
@@ -123,55 +123,64 @@
   
 
 
-<time datetime="2012-05-23T15:52:00+09:00" pubdate data-updated="true">May 23<span>rd</span>, 2012</time>
+<time datetime="2012-06-08T19:12:00+09:00" pubdate data-updated="true">Jun 8<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>お久しぶりです，yag_aysです．</p>
+<div class="entry-content"><p>fastaやfastqは馴染みがあっても，fastbというフォーマットは知らない人が多いと思う．これははfastaファイルをバイナリ形式に変換したフォーマットのことで，SAMとBAMの関係と同じようなものである．</p>
 
-<p>さくらVPSの解約に伴い，Wordpressで立てていたblogをGithub Pagesで立て直すことにしました．</p>
+<p>ALLPATHS-LGにおいて，アセンブリの評価のためにリファレンスゲノムを入力として与える際には，REFERENCE_DIRにgenome.fastaとgenome.fastbという2つのファイルが必要になる．genome.fastaに関しては，データベースなり自前で用意した配列を使えばいいのだが，genome.fastbに関しては手作業で変換をしなければならない．ということで，今回はfastaとfastbの変換の方法について，メモ程度ではあるが書いてみることにする．</p>
 
-<p>ということで，また懲りずに技術系記事をひっそりと書いていく予定です．よろしくお願いします．</p>
-
-<h2>以下メモ</h2>
-
-<ul>
-<li>Githubのレポジトリを作成する</li>
-</ul>
+<!-- more -->
 
 
-<p><img src="http://dl.dropbox.com/u/142306/b/github_accountsetting.png" alt="アカウント登録" /></p>
+<h2>fastaからfastbへの変換</h2>
 
-<ul>
-<li>ページを作成してindex.htmlを作成すると，以下のようにNotificationが来る．</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/github_notify.png" alt="Notification" /></p>
+<p>fastaとfastbの変換には，ALLPATHS-LGをインストールした時に付属してくるFasta2Fastbを使う．使い方は簡単で，以下のように，IN=にfastaファイル名を，OUT=にfastbファイル名を指定すればよい．OUTのオプションは必須ではなく，同じファイル名のfastbファイルが生成される．</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'> git clone git://github.com/imathis/octopress.git octopress
-</span><span class='line'> cd octopress
-</span><span class='line'> gem install bundler
-</span><span class='line'> bundle install
-</span><span class='line'>
-</span><span class='line'> rake setup_github_pages
-</span><span class='line'> rake generate
-</span><span class='line'> rake deploy
-</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Fasta2Fastb IN=genome.fasta OUT=genome.fastb</span></code></pre></td></tr></table></div></figure>
 
 
-<p>まだMarkdownがよくわかってない&#8230;</p>
+<p>このコマンドで生成されるファイルは2つあり，</p>
+
+<ul>
+<li>genome.fastb</li>
+<li>genome.fastb.names</li>
+</ul>
+
+
+<p>が作られる．</p>
+
+<p>genome.fastb.namesファイルの中にはfastaファイルの中に書かれていた各配列の名前(<code>&gt;</code>で始まる行)が書かれているが，このファイルはALLPATHS-LGでは使用せず，特に意味は無さそう．</p>
+
+<h2>fastbからfastaへの変換</h2>
+
+<p>逆にfastbからfastaに戻す場合には，Fastb2Fastaというコマンドがある．使い方はFasta2Fastbと同様である．</p>
+
+<h2>fastbフォーマットの圧縮効率</h2>
+
+<p>試しにシミュレーションとして，1本の配列の長さが1Mbのfastaファイルを作成して，fastbフォーマットに変換してファイルサイズを比較してみた．結果は</p>
+
+<ul>
+<li>1Mb ： 993K -> 245K</li>
+</ul>
+
+
+<p>となり，<strong>約25%</strong>と四分の一ほどのサイズになった．他にも，配列の本数などを変えて幾つか実験してみたが大体同じ圧縮率になった．</p>
+
+<h2>他にも…</h2>
+
+<p>ALLPATHS-LGに付属しているFastb関連コマンドには，変換コマンド以外にもFastbMergeやFastbQualbToFastq，FastbQualbTrimReverse，FastbStatsなどが用意されている．どのコマンドも<code>--help</code>を付けることで使い方が表示されるので，使う時には参考になる．</p>
+
+<p>普段から圧縮が必要になるほど大規模なfastaファイルを扱うことはそうそうないとは思うが，こういう形式のファイルがあるということを覚えておいて損はないと思う．</p>
+
+<h3>参考</h3>
+
+<p><a href="http://www.broadinstitute.org/crd/wiki/index.php/Fastb">http://www.broadinstitute.org/crd/wiki/index.php/Fastb</a></p>
 </div>
 
 
@@ -194,16 +203,22 @@
   
 
 
-<time datetime="2012-05-23T15:52:00+09:00" pubdate data-updated="true">May 23<span>rd</span>, 2012</time>
+<time datetime="2012-06-08T19:12:00+09:00" pubdate data-updated="true">Jun 8<span>th</span>, 2012</time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/allpaths-lg/'>ALLPATHS-LG</a>
+  
+</span>
 
 
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/05/23/new-post/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/06/08/fastb/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/05/23/new-post/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/05/23/new-post/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/06/08/fastb/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/06/08/fastb/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -223,11 +238,11 @@
     
     <ul class="pager">
       
-      <li><a href="/blog/archives">Blog Archives</a></li>
+      <li class="previous"><a class="basic-alignment left"
+        href="/blog/2012/06/06/velvetk/" title="Previous Post:
+        VelvetKを使ってVelvetを用いたアセンブルに最適なk-merサイズを推定する">&laquo; VelvetKを使ってVelvetを用いたアセンブルに最適なk-merサイズを推定する</a></li>
       
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/06/02/allpaths-lg-dataset/"
-        title="Next Post: ALLPATHS-LGで使用できるライブラリサイズの制限">ALLPATHS-LGで使用できるライブラリサイズの制限
-        &raquo;</a></li>
+      <li><a href="/blog/archives">Blog Archives</a></li>
       
     </ul>
   </footer>
@@ -329,8 +344,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.com/blog/2012/05/23/new-post/';
-        var disqus_url = 'http://yagays.github.com/blog/2012/05/23/new-post/';
+        var disqus_identifier = 'http://yagays.github.com/blog/2012/06/08/fastb/';
+        var disqus_url = 'http://yagays.github.com/blog/2012/06/08/fastb/';
         var disqus_script = 'embed.js';
       
     (function () {

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ALLPATHS-LG | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/allpaths-lg/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-06-07T23:54:57+09:00</updated>
+  <updated>2012-06-08T19:27:09+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[fastaからfastbに変換する]]></title>
+    <link href="http://yagays.github.com/blog/2012/06/08/fastb/"/>
+    <updated>2012-06-08T19:12:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/06/08/fastb</id>
+    <content type="html"><![CDATA[<p>fastaやfastqは馴染みがあっても，fastbというフォーマットは知らない人が多いと思う．これははfastaファイルをバイナリ形式に変換したフォーマットのことで，SAMとBAMの関係と同じようなものである．</p>
+
+<p>ALLPATHS-LGにおいて，アセンブリの評価のためにリファレンスゲノムを入力として与える際には，REFERENCE_DIRにgenome.fastaとgenome.fastbという2つのファイルが必要になる．genome.fastaに関しては，データベースなり自前で用意した配列を使えばいいのだが，genome.fastbに関しては手作業で変換をしなければならない．ということで，今回はfastaとfastbの変換の方法について，メモ程度ではあるが書いてみることにする．</p>
+
+<!-- more -->
+
+
+<h2>fastaからfastbへの変換</h2>
+
+<p>fastaとfastbの変換には，ALLPATHS-LGをインストールした時に付属してくるFasta2Fastbを使う．使い方は簡単で，以下のように，IN=にfastaファイル名を，OUT=にfastbファイル名を指定すればよい．OUTのオプションは必須ではなく，同じファイル名のfastbファイルが生成される．</p>
+
+<p><code>
+Fasta2Fastb IN=genome.fasta OUT=genome.fastb
+</code></p>
+
+<p>このコマンドで生成されるファイルは2つあり，</p>
+
+<ul>
+<li>genome.fastb</li>
+<li>genome.fastb.names</li>
+</ul>
+
+
+<p>が作られる．</p>
+
+<p>genome.fastb.namesファイルの中にはfastaファイルの中に書かれていた各配列の名前(<code>&gt;</code>で始まる行)が書かれているが，このファイルはALLPATHS-LGでは使用せず，特に意味は無さそう．</p>
+
+<h2>fastbからfastaへの変換</h2>
+
+<p>逆にfastbからfastaに戻す場合には，Fastb2Fastaというコマンドがある．使い方はFasta2Fastbと同様である．</p>
+
+<h2>fastbフォーマットの圧縮効率</h2>
+
+<p>試しにシミュレーションとして，1本の配列の長さが1Mbのfastaファイルを作成して，fastbフォーマットに変換してファイルサイズを比較してみた．結果は</p>
+
+<ul>
+<li>1Mb ： 993K -> 245K</li>
+</ul>
+
+
+<p>となり，<strong>約25%</strong>と四分の一ほどのサイズになった．他にも，配列の本数などを変えて幾つか実験してみたが大体同じ圧縮率になった．</p>
+
+<h2>他にも…</h2>
+
+<p>ALLPATHS-LGに付属しているFastb関連コマンドには，変換コマンド以外にもFastbMergeやFastbQualbToFastq，FastbQualbTrimReverse，FastbStatsなどが用意されている．どのコマンドも<code>--help</code>を付けることで使い方が表示されるので，使う時には参考になる．</p>
+
+<p>普段から圧縮が必要になるほど大規模なfastaファイルを扱うことはそうそうないとは思うが，こういう形式のファイルがあるということを覚えておいて損はないと思う．</p>
+
+<h3>参考</h3>
+
+<p><a href="http://www.broadinstitute.org/crd/wiki/index.php/Fastb">http://www.broadinstitute.org/crd/wiki/index.php/Fastb</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ALLPATHS-LGを最小構成で実行する]]></title>
