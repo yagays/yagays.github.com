@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>fastaからfastbに変換する - Wolfeyes Bioinformatics beta</title>
+  <title>「エピジェネティクス 操られる遺伝子」読了 - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="fastaやfastqは馴染みがあっても，fastbというフォーマットは知らない人が多いと思う．これははfastaファイルをバイナリ形式に変換したフォーマットのことで，SAMとBAMの関係と同じようなものである． ALLPATHS-LGにおいて， &hellip;">
+  <meta name="description" content="エピジェネティクスに関する一般向け書籍．ゲノミクスの次の潮流として期待されているエピジェネティクスに関して，豊富な具体例を用いて非常にわかりやすく書かれている．まず初めに母親の栄養不足が子供の肥満に影響しているということが述べられ， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.com/blog/2012/06/08/fastb">
+  <link rel="canonical" href="http://yagays.github.com/blog/2012/06/09/review-epigenetics">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -107,7 +107,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">Fastaからfastbに変換する</h1>
+      <h1 class="entry-title">「エピジェネティクス 操られる遺伝子」読了</h1>
     
     
       <p class="meta">
@@ -123,64 +123,24 @@
   
 
 
-<time datetime="2012-06-08T19:12:00+09:00" pubdate data-updated="true">Jun 8<span>th</span>, 2012</time>
+<time datetime="2012-06-09T01:08:00+09:00" pubdate data-updated="true">Jun 9<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>fastaやfastqは馴染みがあっても，fastbというフォーマットは知らない人が多いと思う．これははfastaファイルをバイナリ形式に変換したフォーマットのことで，SAMとBAMの関係と同じようなものである．</p>
-
-<p>ALLPATHS-LGにおいて，アセンブリの評価のためにリファレンスゲノムを入力として与える際には，REFERENCE_DIRにgenome.fastaとgenome.fastbという2つのファイルが必要になる．genome.fastaに関しては，データベースなり自前で用意した配列を使えばいいのだが，genome.fastbに関しては手作業で変換をしなければならない．ということで，今回はfastaとfastbの変換の方法について，メモ程度ではあるが書いてみることにする．</p>
-
-<!-- more -->
+<div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yagays-22&o=9&p=8&l=as1&asins=4478015465&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
-<h2>fastaからfastbへの変換</h2>
+<p>エピジェネティクスに関する一般向け書籍．ゲノミクスの次の潮流として期待されているエピジェネティクスに関して，豊富な具体例を用いて非常にわかりやすく書かれている．まず初めに母親の栄養不足が子供の肥満に影響しているということが述べられ，そこから遺伝子に依らない遺伝的影響であるエピジェネティックの話に発展する．その後は，ヒトの遺伝疾患やモルモットの毛色の違いといった表現型などの具体例から，エピジェネティックが遺伝子のどの部分にどのような形で影響してくるのかが述べられ，話はゲノムインプリンティングや幹細胞などのホットな話題にまで広がる．どれもトップダウンな解説ですんなり理解できるように組まれており，個々の話題には深入りしないものの，それぞれの話題のつながりは明確できちんと順序立てて説明されている．
+個人的にはエピジェネティクス自身の歴史に関して「前成説」と「後成説」の対立を絡めて纏められていた部分で，以下の文章が非常に印象に残った．</p>
 
-<p>fastaとfastbの変換には，ALLPATHS-LGをインストールした時に付属してくるFasta2Fastbを使う．使い方は簡単で，以下のように，IN=にfastaファイル名を，OUT=にfastbファイル名を指定すればよい．OUTのオプションは必須ではなく，同じファイル名のfastbファイルが生成される．</p>
+<blockquote><p>細胞を構成する他の要素と同じく，遺伝子もハードウェアの一つであり，指示を出しつつ指示を受け，監督しながら監督され，原因であると同時に結果でもあるのだ． (P.160)</p></blockquote>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Fasta2Fastb IN=genome.fasta OUT=genome.fastb</span></code></pre></td></tr></table></div></figure>
+<p>遺伝子は意志をもって細胞を支配しているわけではなく，あくまで細胞の一部として機能するものだ，という著者の主張が表れていて非常に良かった．</p>
 
-
-<p>このコマンドで生成されるファイルは2つあり，</p>
-
-<ul>
-<li>genome.fastb</li>
-<li>genome.fastb.names</li>
-</ul>
-
-
-<p>が作られる．</p>
-
-<p>genome.fastb.namesファイルの中にはfastaファイルの中に書かれていた各配列の名前(<code>&gt;</code>で始まる行)が書かれているが，このファイルはALLPATHS-LGでは使用せず，特に意味は無さそう．</p>
-
-<h2>fastbからfastaへの変換</h2>
-
-<p>逆にfastbからfastaに戻す場合には，Fastb2Fastaというコマンドがある．使い方はFasta2Fastbと同様である．</p>
-
-<h2>fastbフォーマットの圧縮効率</h2>
-
-<p>試しにシミュレーションとして，1本の配列の長さが1Mbのfastaファイルを作成して，fastbフォーマットに変換してファイルサイズを比較してみた．結果は</p>
-
-<ul>
-<li>1Mb ： 993K -> 245K</li>
-</ul>
-
-
-<p>となり，<strong>約25%</strong>と四分の一ほどのサイズになった．他にも，配列の本数などを変えて幾つか実験してみたが大体同じ圧縮率になった．</p>
-
-<h2>他にも…</h2>
-
-<p>ALLPATHS-LGに付属しているFastb関連コマンドには，変換コマンド以外にもFastbMergeやFastbQualbToFastq，FastbQualbTrimReverse，FastbStatsなどが用意されている．どのコマンドも<code>--help</code>を付けることで使い方が表示されるので，使う時には参考になる．</p>
-
-<p>普段から圧縮が必要になるほど大規模なfastaファイルを扱うことはそうそうないとは思うが，こういう形式のファイルがあるということを覚えておいて損はないと思う．</p>
-
-<h3>参考</h3>
-
-<p><a href="http://www.broadinstitute.org/crd/wiki/index.php/Fastb">http://www.broadinstitute.org/crd/wiki/index.php/Fastb</a></p>
+<p>ちなみに，ハードカバーで250ページくらいあるがそのうち50ページくらいは訳注と参考文献なので，見た目ほど分量は無く気軽に読める．</p>
 </div>
 
 
@@ -203,12 +163,12 @@
   
 
 
-<time datetime="2012-06-08T19:12:00+09:00" pubdate data-updated="true">Jun 8<span>th</span>, 2012</time>
+<time datetime="2012-06-09T01:08:00+09:00" pubdate data-updated="true">Jun 9<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/allpaths-lg/'>ALLPATHS-LG</a>
+    <a class='category' href='/blog/categories/book/'>Book</a>
   
 </span>
 
@@ -216,9 +176,9 @@
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/06/08/fastb/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/06/09/review-epigenetics/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/06/08/fastb/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/06/08/fastb/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/06/09/review-epigenetics/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/06/09/review-epigenetics/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -239,14 +199,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/06/06/velvetk/" title="Previous Post:
-        VelvetKを使ってVelvetを用いたアセンブルに最適なk-merサイズを推定する">&laquo; VelvetKを使ってVelvetを用いたアセンブルに最適なk-merサイズを推定する</a></li>
+        href="/blog/2012/06/08/fastb/" title="Previous Post:
+        fastaからfastbに変換する">&laquo; fastaからfastbに変換する</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/06/09/review-epigenetics/"
-        title="Next Post: 「エピジェネティクス 操られる遺伝子」読了">「エピジェネティクス 操られる遺伝子」読了
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -348,8 +304,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.com/blog/2012/06/08/fastb/';
-        var disqus_url = 'http://yagays.github.com/blog/2012/06/08/fastb/';
+        var disqus_identifier = 'http://yagays.github.com/blog/2012/06/09/review-epigenetics/';
+        var disqus_url = 'http://yagays.github.com/blog/2012/06/09/review-epigenetics/';
         var disqus_script = 'embed.js';
       
     (function () {
