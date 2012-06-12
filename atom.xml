@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-06-10T12:45:12+09:00</updated>
+  <updated>2012-06-13T07:36:06+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,69 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「せめぎ合う遺伝子」読書ノート 2章その3]]></title>
+    <link href="http://yagays.github.com/blog/2012/06/13/genesinconflict-2-3/"/>
+    <updated>2012-06-13T07:24:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/06/13/genesinconflict-2-3</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yagays-22&o=9&p=8&l=as1&asins=432005699X&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px; height:240px;" scrolling="no" marginwidth="0" marginheight="0" fram
+eborder="0" align="right"></iframe>
+
+
+<p>これまでは配偶子キラー因子を見てきたが，次に母性効果キラー因子を見ていく．これは，ヘテロ接合体メスに作用するキラー因子である．また，植物の花粉に作用する配偶体因子についても少し触れる．</p>
+
+<h3>2.3</h3>
+
+<ul>
+<li><p>コクヌストモドキ</p>
+
+<ul>
+<li><em>M</em>, <em>Medae</em>, 母性効果優勢胚発育停止因子</li>
+<li>ヘテロ接合メスM/+において，+/+の野生型を殺す</li>
+<li>野生型ホモ接合メス+/+から生まれる+/+は生存可能</li>
+<li>4つの<em>Medea</em>因子が関与，地理的に広範囲にパッチ状に分布</li>
+</ul>
+</li>
+<li><p>ハツカネズミ</p>
+
+<ul>
+<li><em>HSR</em>領域(第1染色体上の細胞学的手法で検出可能な均一に染色される部分)
+
+<ul>
+<li>オスに由来する<em>HSR</em>も同様の効果を示すため，<em>HSR</em>/+ヘテロ接合メスと+/+野生型オスにおいてのみドライヴ性を示す(70%)</li>
+<li><em>Sp100-rs</em>と<em>Csprs</em>が融合した100kbの反復配列の900~2000コピーからなる(野生型は60コピー程度)</li>
+</ul>
+</li>
+<li><em>scat</em><sup>+</sup></li>
+<li><em>Om</em><sup>DDK</sup></li>
+</ul>
+</li>
+<li><p>子供に投資をすることによってドライヴ性を示す遺伝子</p>
+
+<ul>
+<li>これまでのケースは因子を持たない子孫を殺す遺伝子だったが，因子を持つ子孫に投資をしてドライヴ性を示す場合もある(妊娠ドライヴ)</li>
+<li>青髭効果(または緑髭効果 green beard effect)</li>
+<li>細胞接着分子</li>
+<li>シグナル検知(リガンドと受容体，酵素と基質のような関係)</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>2.4</h3>
+
+<ul>
+<li>植物の配偶体因子 gametophyte factor
+
+<ul>
+<li>トウモロコシの第4染色体上の<em>ga1</em>遺伝子</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「せめぎ合う遺伝子」読書ノート 2章その2]]></title>
@@ -160,7 +223,7 @@
 <h3>2.2.2</h3>
 
 <ul>
-<li>菌類のNeurospora intermediaも2つキラー因子複合体を持つ
+<li>菌類の<em>Neurospora intermedia</em>も2つキラー因子複合体を持つ
 
 <ul>
 <li>前述のtやSDと同じく胞子を殺す配偶子キラー因子(胞子キラー因子)</li>
