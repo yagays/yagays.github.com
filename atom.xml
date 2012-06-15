@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-06-14T15:41:07+09:00</updated>
+  <updated>2012-06-15T20:49:20+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,68 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[pigzを使ったgzip並列圧縮]]></title>
+    <link href="http://yagays.github.com/blog/2012/06/15/pigz/"/>
+    <updated>2012-06-15T19:39:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/06/15/pigz</id>
+    <content type="html"><![CDATA[<!-- more -->
+
+
+<h2>インストール</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ wget http://zlib.net/pigz/pigz-2.2.4.tar.gz
+</span><span class='line'>$ tar zxvf pigz-2.2.4.tar.gz
+</span><span class='line'>$ cd pigz-2.2.4
+</span><span class='line'>$ make</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://zlib.net/pigz/">公式サイト</a>からソースを落としてきてコンパイルする．これでpigzとunpigzが生成される．</p>
+
+<h2>使い方</h2>
+
+<p>圧縮する対象が単一ファイルかディレクトリかで使い方を分ける必要がある．今回の例ではスレッド数を4とし，圧縮するファイル/ディレクトリをFILE/DIRという名前にしている．</p>
+
+<h3>単一ファイルの場合</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ pigz -p 4  FILE</span></code></pre></td></tr></table></div></figure>
+
+
+<p>とするとpigzで圧縮することができる．この場合にはFILEがそのままFILE.gzとなる．圧縮するファイル自体を残しておきたい場合には，-kのオプションを付けることで別途圧縮ファイルを作成することができる．</p>
+
+<h3>ディレクトリの場合</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ tar c DIR | pigz -p 4 &gt; DIR.tar.gz</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ディレクトリをそのまま圧縮する場合は，<strong>tarで一度ディレクトリを固めてからpigzに渡して圧縮する</strong>．なお，tarで固めずにpigz -r DIRなどとしてしまうと，ディレクトリ内の全部のファイルがそれぞれ個別に圧縮されるので注意が必要．</p>
+
+<h2>動いている様子</h2>
+
+<p>スレッド数を16にしてpigzを動かしているところをhtopで見ている．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/pigz.png" alt="" /></p>
+
+<p>ここでは，上で紹介した基本機能以外に圧縮時のブロックサイズを-bで指定している．圧縮効率/速度に影響してくるパラメータに関しては色々と試してみたのだが，あまりハッキリとした結果が得られなかったので調整を諦めた部分がある．実際に圧縮しているところを監視していると，全コア使って圧縮処理をしている場合や，待機(S)が長く続く場合など，一概にスレッド数を重ねるほど圧縮効率が良くなるわけでもなさそうな印象を受ける．この辺りに関しては，HDDのI/Oや圧縮するファイルのサイズに大きく依存するところなので，あまり厳密に調べたりしても意味がないとは思うが&#8230;．まあ，gzipよりかは確実に早くなるとは思うので，圧縮の際にはデフォルトでpigzを使うというくらいの感じで良いと思う．</p>
+
+<h2>参考資料</h2>
+
+<ul>
+<li>(pdf) <a href="http://zlib.net/pigz/pigz.pdf">http://zlib.net/pigz/pigz.pdf</a></li>
+<li><a href="http://serverfault.com/questions/321273/why-does-tar-c-dir-pigz-mnt-nfs-dir-tgz-use-network-then-cpu-in-cycles-in">http://serverfault.com/questions/321273/why-does-tar-c-dir-pigz-mnt-nfs-dir-tgz-use-network-then-cpu-in-cycles-in</a></li>
+<li><a href="http://arcoleo.org/dsawiki/Wiki.jsp?page=Compressing%20and%20Extracting%20Files">http://arcoleo.org/dsawiki/Wiki.jsp?page=Compressing%20and%20Extracting%20Files</a></li>
+<li><a href="http://codeascraft.etsy.com/2012/01/23/solr-bittorrent-index-replication/">http://codeascraft.etsy.com/2012/01/23/solr-bittorrent-index-replication/</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「フィンチの嘴―ガラパゴスで起きている種の変貌」読了]]></title>
