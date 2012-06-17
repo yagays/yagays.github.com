@@ -9,14 +9,14 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="インストール 1
+  <meta name="description" content="pigzという並列でgzip圧縮を行うプログラムがあったので試してみた． インストール 1
 2
 3
 4
 $ wget http://zlib.net/pigz/pigz-2.2.4.tar.gz
 $ tar zxvf pigz-2.2.4.tar.gz
 $ cd pigz-2.2.4
-$ make 公式サイトからソースを落としてきてコンパイルする． &hellip;">
+$ make &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -137,7 +137,9 @@ $ make 公式サイトからソースを落としてきてコンパイルする�
   </header>
 
 
-<div class="entry-content"><!-- more -->
+<div class="entry-content"><p>pigzという並列でgzip圧縮を行うプログラムがあったので試してみた．</p>
+
+<!-- more -->
 
 
 <h2>インストール</h2>
@@ -181,6 +183,12 @@ $ make 公式サイトからソースを落としてきてコンパイルする�
 <p><img src="http://dl.dropbox.com/u/142306/b/pigz.png" alt="" /></p>
 
 <p>ここでは，上で紹介した基本機能以外に圧縮時のブロックサイズを-bで指定している．圧縮効率/速度に影響してくるパラメータに関しては色々と試してみたのだが，あまりハッキリとした結果が得られなかったので調整を諦めた部分がある．実際に圧縮しているところを監視していると，全コア使って圧縮処理をしている場合や，待機(S)が長く続く場合など，一概にスレッド数を重ねるほど圧縮効率が良くなるわけでもなさそうな印象を受ける．この辺りに関しては，HDDのI/Oや圧縮するファイルのサイズに大きく依存するところなので，あまり厳密に調べたりしても意味がないとは思うが&#8230;．まあ，gzipよりかは確実に早くなるとは思うので，圧縮の際にはデフォルトでpigzを使うというくらいの感じで良いと思う．</p>
+
+<h3>Muninを使ったCPU使用率の可視化</h3>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/pigz_munin.png" alt="" />
+Muninを使って300GBくらいのディレクトリを圧縮している．
+スレッド数を6程度で様子見していたら終わらない</p>
 
 <h2>参考資料</h2>
 
