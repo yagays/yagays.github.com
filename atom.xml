@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-06-18T02:31:13+09:00</updated>
+  <updated>2012-06-21T20:37:28+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,175 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「せめぎ合う遺伝子」読書ノート 3章その1]]></title>
+    <link href="http://yagays.github.com/blog/2012/06/21/genesinconflict-3-1/"/>
+    <updated>2012-06-21T20:34:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/06/21/genesinconflict-3-1</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yagays-22&o=9&p=8&l=as1&asins=432005699X&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px; height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h1>3章 キラーX染色体</h1>
+
+<ul>
+<li>その因子は，どのようにして利己的な優位性を獲得したのだろうか？
+
+<ul>
+<li>精子形成時の減数第2分裂においてY染色分体の不分離</li>
+</ul>
+</li>
+<li>いかにして，その因子は出現したのだろう？
+
+<ul>
+<li>???</li>
+</ul>
+</li>
+<li>どれくらい昔に出現したのだろう？
+
+<ul>
+<li>???</li>
+</ul>
+</li>
+<li>大型生物に対する影響はどのようなものだろうか？
+
+<ul>
+<li>???</li>
+</ul>
+</li>
+<li>どのくらいの速度で，その因子は分布を拡大すると期待されるだろうか？
+
+<ul>
+<li>頻度は高くならない</li>
+</ul>
+</li>
+<li>種内における頻度はどれくらいか？
+
+<ul>
+<li>種によってばらつきがある</li>
+</ul>
+</li>
+<li>頻度を決定づけているものは何か？
+
+<ul>
+<li>オスの側の精子の補充の不十分さ</li>
+<li>メスにおける有害なホモ接合効果</li>
+</ul>
+</li>
+<li>いくつかの種にその因子が見いだされるのに，他の種には見いだされないのはなぜか？
+
+<ul>
+<li>???</li>
+</ul>
+</li>
+<li>ゲノムの他の因子は，利己的な因子に対抗してどのような適応を強いられてきたか？
+
+<ul>
+<li>キラーX染色体に対し，Y染色体に連鎖した抑制因子または常染色体上の抑制因子が，X染色体のドライヴを抑制</li>
+<li>キラーX染色体がドラッグするほど強く抑制するものもある</li>
+</ul>
+</li>
+<li>ホストの系統に対しておよぼしてきた効果以外に，どのような影響をもたらすだろうか？
+
+<ul>
+<li>???</li>
+</ul>
+</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>3.1</h2>
+
+<ul>
+<li><p>用語定義</p>
+
+<ul>
+<li>キラーX染色体を X<sup>K</sup> とする</li>
+</ul>
+</li>
+<li><p>作用機序と遺伝的構造</p>
+
+<ul>
+<li><em>Drosophila</em>属 ショウジョウバエのキラーX染色体</li>
+<li>オスがXY，メスがXX (オスが異型性)</li>
+<li>精子形成時のY染色分体の不分離によりドライヴを示す (精子が形成されないことが重要)</li>
+</ul>
+</li>
+<li><p>X<sup>K</sup> の配列</p>
+
+<ul>
+<li>種によって異なるが，基本的に正常な染色体よりも逆位が多い</li>
+<li>内部に含まれる複数の遺伝子座が関与</li>
+<li>オスは元々精子形成時組み換えが起きない，メスではX<sup>K</sup> の逆位により正常なX染色体との組み換えの確率が減る</li>
+</ul>
+</li>
+<li><p>抑制因子と多型現象</p>
+
+<ul>
+<li>D. simulansで詳しく調べられている(以降その種について述べる)</li>
+<li>X染色体に標準型と性比型がある(つまり正常とX<sup>K</sup> の2つ)(図3.1)</li>
+<li>(X<sup>K</sup> まれ, 抑制まれ)，(X<sup>K</sup> まれ, 抑制有)，(X<sup>K</sup> 有, 抑制有)の3集団にわけられて，X<sup>K</sup> が高レベルで発現している集団はなかった(図3.2)</li>
+<li>種によってX<sup>K</sup> のドライヴの程度や集団間の違い，X<sup>K</sup> の頻度が違っていて状況は複雑</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>キラーX染色体のダイナミクス</h4>
+
+<ul>
+<li><p>集団生物学および抑制因子を伴わない絶滅</p>
+
+<ul>
+<li><strong>単純なモデルで考えてみよう</strong>(抑制因子が無く，X<sup>K</sup> 頻度も低い＝X<sup>K</sup> 出現初期)</li>
+<li>キラー因子が個体の適応度に影響を及ぼさないなら，普通に考えて絶滅する</li>
+<li>絶滅した種についてはわからないけれども，現在確認出来る種を見てみるとそう単純では無いっぽい (D.pseudoobscuraやD.neotestaceaの実例)</li>
+</ul>
+</li>
+<li><p>理解する上で重要な要素</p>
+
+<ul>
+<li>オスの側の精子の補充の不十分さ (精子が少ない，精子不足)</li>
+<li>メスにおける有害なホモ接合効果 (メスの適応度への影響)</li>
+</ul>
+</li>
+<li><p>オスの側の精子の補充の不十分さ</p>
+
+<ul>
+<li>X<sup>K</sup> はY染色分体不分離によって精子を殺すので，単純に考えて精子が作られる数が少なくなる</li>
+<li>それでも十分受精できるだけの量はありそうだけど，足りなくなるケースがある</li>
+<li>それが交配頻度．頻度が高くなると補充される精子の量が少ないため受精に必要な精子が足りなくなる</li>
+<li>X<sup>K</sup> が広まる -> メスが多くなる(オスが少なくなるハーレム状態) -> オスの交配頻度が高くなる -> 精子足りなくなる -> X<sup>K</sup> のドライヴが効かなくなる</li>
+<li>X<sup>K</sup> の頻度と集団密度，受精成功率などはよく調べられている</li>
+</ul>
+</li>
+<li><p>メスにおける有害なホモ接合効果</p>
+
+<ul>
+<li>X<sup>K</sup> の逆位によってXとYで組み換えが起こりにくい</li>
+<li>X<sup>K</sup> があることによりXとYの組み換えが起こらないと，突然変異などの有害な配列の変化に対応出来ず，結果として長続きしない(「自然選択の有効性の低下」)</li>
+<li>すなわち正常なX染色体有利</li>
+<li>結局性染色体にキラー因子持ってると絶滅するの -> わからない</li>
+</ul>
+</li>
+<li><p>抑制因子がある場合の集団生物学</p>
+
+<ul>
+<li><strong>今度は抑制因子有りで考えてみよう．</strong>重要な点は単純なモデルと同じ</li>
+<li>精子不足が影響するなら，X<sup>K</sup> の頻度はある程度のところまでいってバランスが取れるだろう(BOX 3.1)</li>
+<li><p>メスの適応度が影響するなら，X<sup>K</sup> の頻度は下がるだろう (D.simulansはそのパターンっぽい(X<sup>K</sup> まれ，抑制因子有り))</p></li>
+<li><p>X<sup>K</sup> と抑制因子がある場合には，X<sup>K</sup> は集団間や種間雑種で効果を発揮する</p></li>
+<li>集団間や異種間の交配において，子供の性比が極端に傾く</li>
+<li>Haldaneの法則の原因かもしれない(種間雑種で性染色体が異型性XYの方が子供が生まれにくい現象)けど，実際よくわかっていない</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「超訳 種の起源」読了]]></title>
