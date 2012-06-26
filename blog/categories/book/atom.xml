@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Book | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/book/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-06-25T05:19:41+09:00</updated>
+  <updated>2012-06-26T20:19:33+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「分類思考の世界」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/06/26/review-species/"/>
+    <updated>2012-06-26T19:12:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/06/26/review-species</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4062880148" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>だいぶ前に書店をうろついていた時に散財欲求を抑えることができず，タガが外れて高い本から少しでも気になった本まで纏めて科学書を購入したときの1冊．三中信宏氏の本を読むのは初めてだが，著者に関しては統計学やRの資料で度々目にすることがあり，プロフィールから研究内容，キャラを含めて前々から断片的には知っていた．かなりアクの強いことは承知の上で，言ってもこの本は新書なので少しは安易な形で一般向けな内容かと思ったのだが，本書も相変わらず著者の思想が濃く入り混じった感じだった．</p>
+
+<p>大まかな内容としては生物を分類に関する話なのだが，具体的な生物の話は殆ど紹介されず，専ら分類方法の考え方と歴史，そして哲学に関して，西洋文学や西洋音楽などの文化的な背景と絡めて非常に濃密に解説されている．生物の分類を考えることは「種」という概念を明確にする必要があるのだが，リンネの系統分類の時代から進化学や遺伝学が進歩した現代においても，その定義は定まっていない．当然ながら本書においても「種」や「分類」の決定的な概念を提唱するものではなく，その思考の歴史から紐解いていこうという形となっている．</p>
+
+<p>本書は元を辿ると「系統樹思考の世界」という同出版社から3年前に出された新書の姉妹本として，水平思考と垂直思考という対比の元に書かれた本らしい．そっちはまだ手を付けていないので，この分野の興味と読みきる気力があるうちに手を付けたいところ...．</p>
+
+<h3>ちなみに...</h3>
+
+<p><a href="http://cse.niaes.affrc.go.jp/minaka/files/SpeciesRIP.html">http://cse.niaes.affrc.go.jp/minaka/files/SpeciesRIP.html</a></p>
+
+<p>正誤表を確認するために著者自身がホストするサイトを訪れたのだが，ここのhtmlファイル名が<strong>「SpeciesRIP」</strong>になっていることに気付いた．これは最終章で語られる種の議論において，ある植物学者がリンネ体系を捨てて新しい命名体系に移行すべきと主張した時の締めくくりの言葉だ．本文では「種よ，安らかに眠りたまえ」となっている．本文では明確には書かれていない(と思う)が，つまるところ種とは愛であり，そして神であるということなのだろう．そういえば菊地成孔がどこかで「西洋人は教会から科学に神を移しただけだ」といったようなことを語っていたが，西洋人が崇める神は意外とこういうところに隠れているのかもしれない．といった訳の分からないようなこじつけで，まとまりの悪いシメとする．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「プロのための Linuxシステム・10年効く技術」など，Linuxやプログラミング周りの読書をいくつか]]></title>
