@@ -9,7 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="VelvetKというスクリプトが公開されたらしい．これはVelvetのアセンブルの際にユーザが指定する必要のあるk-merのkの値を，ゲノムサイズとショートリードのサイズから自動推定するスクリプトのようだ． &hellip;">
+  <meta name="description" content="fastaやfastqは馴染みがあっても，fastbというフォーマットは知らない人が多いと思う．これははfastaファイルをバイナリ形式に変換したフォーマットのことで，SAMとBAMの関係と同じようなものである． ALLPATHS-LGにおいて， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -103,6 +103,49 @@
     <div class="row-fluid">
       <div class="span9">
   
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/08/fastb/">Fastaからfastbに変換する</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-08T19:12:00+09:00" pubdate data-updated="true">Jun 8<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>fastaやfastqは馴染みがあっても，fastbというフォーマットは知らない人が多いと思う．これははfastaファイルをバイナリ形式に変換したフォーマットのことで，SAMとBAMの関係と同じようなものである．</p>
+
+<p>ALLPATHS-LGにおいて，アセンブリの評価のためにリファレンスゲノムを入力として与える際には，REFERENCE_DIRにgenome.fastaとgenome.fastbという2つのファイルが必要になる．genome.fastaに関しては，データベースなり自前で用意した配列を使えばいいのだが，genome.fastbに関しては手作業で変換をしなければならない．ということで，今回はfastaとfastbの変換の方法について，メモ程度ではあるが書いてみることにする．</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/06/08/fastb/">続きを読む &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -506,6 +549,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/06/30/review-maidrobot/">「メイドロボットはどこから生物となるか」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/06/26/review-species/">「分類思考の世界」読了</a>
       </li>
     
@@ -519,10 +566,6 @@
     
       <li class="post">
         <a href="/blog/2012/06/18/review-origin-of-species/">「超訳 種の起源」読了</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/06/15/pigz/">pigzを使ったgzip並列圧縮</a>
       </li>
     
   </ul>
