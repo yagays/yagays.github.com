@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>github pages + Octopressでブログを作ってみた - Wolfeyes Bioinformatics beta</title>
+  <title>「生物学のすすめ」読了 - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="お久しぶりです，yag_aysです． さくらVPSの解約に伴い，Wordpressで立てていたblogをGithub Pagesで立て直すことにしました． ということで，また懲りずに技術系記事をひっそりと書いていく予定です．よろしくお願いします． 以下メモ Githubのレポジトリを作成する &hellip;">
+  <meta name="description" content="ジョン・メイナード=スミスの生物学啓蒙書．生命の定義から始まり，進化学，遺伝学，神経科学，生態学，発生学まで，生物学を広く浅く取り扱った本で，非常に基本的な概念を話の流れに沿って丁寧に解説している．原書のタイトルは&#8221;THE PROBLEM OF BIOLOGY&#8221;とあり， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.com/blog/2012/05/23/new-post">
+  <link rel="canonical" href="http://yagays.github.com/blog/2012/07/10/review-problems-of-biology">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -107,7 +107,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">Github Pages + Octopressでブログを作ってみた</h1>
+      <h1 class="entry-title">「生物学のすすめ」読了</h1>
     
     
       <p class="meta">
@@ -123,55 +123,19 @@
   
 
 
-<time datetime="2012-05-23T15:52:00+09:00" pubdate data-updated="true">May 23<span>rd</span>, 2012</time>
+<time datetime="2012-07-10T13:11:00+09:00" pubdate data-updated="true">Jul 10<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>お久しぶりです，yag_aysです．</p>
-
-<p>さくらVPSの解約に伴い，Wordpressで立てていたblogをGithub Pagesで立て直すことにしました．</p>
-
-<p>ということで，また懲りずに技術系記事をひっそりと書いていく予定です．よろしくお願いします．</p>
-
-<h2>以下メモ</h2>
-
-<ul>
-<li>Githubのレポジトリを作成する</li>
-</ul>
+<div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=431400536X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
-<p><img src="http://dl.dropbox.com/u/142306/b/github_accountsetting.png" alt="アカウント登録" /></p>
+<p>ジョン・メイナード=スミスの生物学啓蒙書．生命の定義から始まり，進化学，遺伝学，神経科学，生態学，発生学まで，生物学を広く浅く取り扱った本で，非常に基本的な概念を話の流れに沿って丁寧に解説している．原書のタイトルは&#8221;THE PROBLEM OF BIOLOGY&#8221;とあり，まえがきでジョン・メイナード=スミスがハッキリと書いているとおり，生物に対する問題提起というのは，何を以ってして生物の理解と捉えるかといった全体論と還元論的な部分で非常に難しい部分だ．本書では中立的な立場を取っており，その両方から攻めることで最終的に中央にある生物の真の理解に辿り着けるということが述べられた上で，本の中で何を話して何を話さないかということが慎重に述べられている．統一的に生物を扱うことの難しさは非常によく分かるし，ましてや一般書として生物の基礎の基礎から解説しようというものだから，まえがきで各方面に異常なほど配慮しているのは仕方がないのだろう．</p>
 
-<ul>
-<li>ページを作成してindex.htmlを作成すると，以下のようにNotificationが来る．</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/github_notify.png" alt="Notification" /></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'> git clone git://github.com/imathis/octopress.git octopress
-</span><span class='line'> cd octopress
-</span><span class='line'> gem install bundler
-</span><span class='line'> bundle install
-</span><span class='line'>
-</span><span class='line'> rake setup_github_pages
-</span><span class='line'> rake generate
-</span><span class='line'> rake deploy
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>まだMarkdownがよくわかってない&#8230;</p>
+<p>内容としては簡潔に纏められている印象はあるが，じゃあ今敢えてジョン・メイナード=スミスの本書を読む意味があるかと考えると，正直なところお薦め出来ないだろう．生物学を俯瞰する意味ではどの点を取っても現在ならもっと良い本が出ているだろうし，ジョン・メイナード=スミスの哲学はもっと研究よりの本を読まなければ垣間見ることが出来ないだろうし，本書が出版されて20年経った今となっては，宙に浮いた感じの対象の定まらない本だと言える．それこそ上に書いたような問題と同じように，各論ばかりに目が行き過ぎていて総論として纏めることの重要性や意義などを過小評価しているのかもしれず，非常に判断に困る感じがする．</p>
 </div>
 
 
@@ -194,16 +158,22 @@
   
 
 
-<time datetime="2012-05-23T15:52:00+09:00" pubdate data-updated="true">May 23<span>rd</span>, 2012</time>
+<time datetime="2012-07-10T13:11:00+09:00" pubdate data-updated="true">Jul 10<span>th</span>, 2012</time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/book/'>Book</a>
+  
+</span>
 
 
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/05/23/new-post/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/07/10/review-problems-of-biology/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/05/23/new-post/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/05/23/new-post/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/07/10/review-problems-of-biology/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/07/10/review-problems-of-biology/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -223,11 +193,11 @@
     
     <ul class="pager">
       
-      <li><a href="/blog/archives">Blog Archives</a></li>
+      <li class="previous"><a class="basic-alignment left"
+        href="/blog/2012/07/07/review-prml-learning/" title="Previous Post:
+        「パターン認識と機械学習の学習」購入">&laquo; 「パターン認識と機械学習の学習」購入</a></li>
       
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/06/02/allpaths-lg-dataset/"
-        title="Next Post: ALLPATHS-LGで使用できるライブラリサイズの制限">ALLPATHS-LGで使用できるライブラリサイズの制限
-        &raquo;</a></li>
+      <li><a href="/blog/archives">Blog Archives</a></li>
       
     </ul>
   </footer>
@@ -329,8 +299,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.com/blog/2012/05/23/new-post/';
-        var disqus_url = 'http://yagays.github.com/blog/2012/05/23/new-post/';
+        var disqus_identifier = 'http://yagays.github.com/blog/2012/07/10/review-problems-of-biology/';
+        var disqus_url = 'http://yagays.github.com/blog/2012/07/10/review-problems-of-biology/';
         var disqus_script = 'embed.js';
       
     (function () {
