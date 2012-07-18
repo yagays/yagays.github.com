@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: PRML | Wolfeyes Bioinformatics beta]]></title>
+  <link href="http://yagays.github.com/blog/categories/prml/atom.xml" rel="self"/>
+  <link href="http://yagays.github.com/"/>
+  <updated>2012-07-18T10:42:14+09:00</updated>
+  <id>http://yagays.github.com/</id>
+  <author>
+    <name><![CDATA[yag_ays]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[PRML復々習レーン#3で発表しました]]></title>
+    <link href="http://yagays.github.com/blog/2012/07/18/re-revenge-prml-3/"/>
+    <updated>2012-07-18T10:12:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/07/18/re-revenge-prml-3</id>
+    <content type="html"><![CDATA[<p>「パターン認識と機械学習」勉強会の復々習レーン#3で，3章の頭を担当しました．資料はslideshareにアップロードしています．</p>
+
+<div style="width:427px" id="__ss_13661580"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/yag_ays/re-revenge-chap031" title="Re revenge chap03-1" target="_blank">Re revenge chap03-1</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/13661580" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0" allowfullscreen></iframe> <div style="padding:5px 0 12px"> View more presentations from <a href="http://www.slideshare.net/yag_ays" target="_blank">yag ays</a> </div> </div>
+
+
+<p>3章の頭は行ってしまえば導入部分でPRMLの中では簡単な部類のところなのですが，きちんと説明しようとすればするほど自分の理解がいかに曖昧なものだったか思い知らされるばかりで，非常に勉強になりました．特に「§3.1.最小二乗法の幾何学」に関しては参加者の皆様に頼りっきりという何とも情けない感じになってしまったのですが，懇切丁寧に教えていただいたおかげで何とか図の直感的理解くらいはできるようになりました．これに関しては，その場で指摘していただいたことと自分の解釈をこねくり回しつつある程度纏めたものを，スライドの最後に補足として付け加えてあります．とは言っても，本文に書かれている数式は全くといっていいほど追いきれていないので，「学習の学習」とにらめっこしつつ，もう少し理解を深めたいと思います．</p>
+
+<p>次回もよろしくお願いします．</p>
+
+<ul>
+<li><a href="http://atnd.org/events/30181">http://atnd.org/events/30181</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[「パターン認識と機械学習の学習」購入]]></title>
+    <link href="http://yagays.github.com/blog/2012/07/07/review-prml-learning/"/>
+    <updated>2012-07-07T08:43:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/07/07/review-prml-learning</id>
+    <content type="html"><![CDATA[<p><img src="http://dl.dropbox.com/u/142306/b/prml_learning.png" alt="" /></p>
+
+<ul>
+<li><a href="http://prml.in/">http://prml.in/</a></li>
+<li><a href="https://github.com/herumi/prml">https://github.com/herumi/prml</a></li>
+</ul>
+
+
+<p>「<a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22">パターン認識と機械学習 上</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」や「<a href="http://www.amazon.co.jp/gp/product/4621061240/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061240&linkCode=as2&tag=yagays-22">パターン認識と機械学習 下 (ベイズ理論による統計的予測)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061240" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+」などで知られるPRMLの副読本を入手．中身は殆ど公開されているものと同じということだが，書きおろしが少しあるということと，あとは記念ということで購入した．既に公開されているpdfについては印刷して至る所にメモを書きまくっているのだが，この本は大事に取っておこうと思う．</p>
+]]></content>
+  </entry>
+  
+</feed>
