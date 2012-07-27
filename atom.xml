@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-07-18T11:22:01+09:00</updated>
+  <updated>2012-07-27T14:54:13+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「要するに」「新教養主義宣言」「訳者解説」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/07/27/review-yamagata-hiroo/"/>
+    <updated>2012-07-27T14:53:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/07/27/review-yamagata-hiroo</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4309408834" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4309408443" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4862381502" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<p><a href="http://yagays.github.com/blog/2012/07/03/review-numbers/">「数学で犯罪を解決する」</a>のあとがきで「やっぱりこのおっさん面白いな」ということを再認識したのだが，そういえば山形浩生の文章って断片的にしか読んでこなかったと思って取り敢えずコラムやら短文の類を纏めて読んでみた次第．まあコラム集なんかは当たり外れはあるんだけれどもとにかく面白くて，あとがきを読むだけでも非常に興味深く元の本を読みたくなるものばかりだった．</p>
+
+<p>個人的には非常に満足なんだけど，山形浩生自身が書いた文章ってまあこの本以外に後数冊くらいあって，あとはネットの散文を集めればそれで大体はカバーできる(と思う)．そう考えると山形浩生自体のことをもっと知るにはあとは訳書をひたすら追いかけるしかなくて，もっと雑多なものを色々と出してくれると面白いんだけど&#8230;まあこれに関しては「訳者解説」のあとがきで，山形浩生自身が翻訳は早いのに文章書きは遅筆なことを旅での海外旅行と仕事での海外赴任になぞらえて書いていて，これがまた良い文章なんだけど，その中で「訳書は自分が行きたいと思ってなかったところに行ける」といったことを書いていて，まあまずは彼の訳書を道標にして色々乱読してみるか，という感じ．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://cruel.org/books/books.html">http://cruel.org/books/books.html</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[PRML復々習レーン#3で発表しました]]></title>
@@ -1534,50 +1561,6 @@ Muninを使って300GBくらいのディレクトリを圧縮している．ス�
 </li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ALLPATHS-LGで使用できるライブラリサイズの制限]]></title>
-    <link href="http://yagays.github.com/blog/2012/06/02/allpaths-lg-dataset/"/>
-    <updated>2012-06-02T15:52:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/06/02/allpaths-lg-dataset</id>
-    <content type="html"><![CDATA[<p>ALLPATHS-LGは複数のライブラリで読まれたショートリードを組み合わせてゲノムアセンブルをするソフトウェア（パイプライン）である．比較的新しいゲノムアセンブラで性能もかなり良いらしく，<a href="http://www.broadinstitute.org/software/allpaths-lg/blog/">公式ブログ</a>のアセンブル履歴を見ると非モデル生物を中心にかなり使われている印象がある．ただ，その反面かなり癖のあるソフトウェアで，インストールが鬼門・動かすのが難しい・インターネットに資料が少ないという三重苦で，初心者にはかなりハードルの高いソフトウェアと言わざるを得ない．その中でも個人的に一番やっかいだと思うポイントはパイプライン入力に使うデータセットの準備で，折角苦労してALLPATHS-LGが使える環境を整えたとしても，使えるデータが無いとそもそも動かないということになりかねない．</p>
-
-<p>ということで，今回はALLPATHS-LGを動かすために必要なライブラリについて見ていく．私自身も厳密に調べたわけではないので間違い等あるかもしれないが，もし詳しい方がいらっしゃればご指摘頂ければ幸い．</p>
-
-<p> <!-- more --></p>
-
-<p>まず，ALLPATHS-LGが想定してるNGSショートリードは，長さ~100bp程度のペアエンドである．454のロングリードなどには対応していないようだが，最近のバージョンアップでillumina+PacBioのハイブリッドアセンブルが出来るようになっているらしい（<a href="http://www.broadinstitute.org/software/allpaths-lg/blog/?p=463">url</a>）．</p>
-
-<p>ここまでは問題無いのだが，次のペアエンドのライブラリの種類に関する条件が非常に複雑である．まずALLPATHS-LGでは，ショートリードのライブラリは以下の3つに区分される．</p>
-
-<ul>
-<li>Fragment Library (Short Library)</li>
-<li>Jumping Library (long Library)</li>
-<li>Long Jumping Library</li>
-</ul>
-
-
-<p>このうち，アセンブルに必要となるライブラリはFragment LibraryとJumping Libraryである．ここで重要なのは，<strong>どちらも必ず最低1つ</strong>は必要になるということである．たとえFragment Libraryがいくつあっても，Jumping LibraryがなければALLPATHS-LGは動かない．これが非常に重要で，後述のライブラリの条件で詳しく述べるが，Jumping LibraryのInsert sizeには制限があるため，これをクリアするデータを持っていない場合はそもそもALLPATHS-LGを動かす事ができない．</p>
-
-<h2>Fragment Library</h2>
-
-<p>ではそれぞれのライブラリの条件を順に見ていこう．まずFragment Libraryだが，これはインサートサイズの短い配列のことを指す．ただこれには制約があり，ペアエンドの読まれたリードが重なっている必要がある．これだけでは何のことか分からないと思うので例を使って説明すると，例えば100bpのペアエンドの場合では両端から100bpずつ読まれるので，それらが重なるようなインサートサイズを考えると，200bp以下である必要がある．もしインサートサイズが300bpの場合では両端のリードの間に隙間が出来てしまうので，このライブラリはFragment Libraryにはならない．実際にはインサートサイズは少しばらつきがあり，ALLPATHS-LGでもインサートサイズの値に加えて標準偏差stddevも指定できるようになっているが，基本的にペアエンドリードが重なるような長さのものを使う必要がある．</p>
-
-<h2>Jumping Library</h2>
-
-<p>次にJumping Libraryである．ALLPATHS-LGではインサートサイズが3,000bp〜10,000bp程度のライブラリを想定している．ただしこれにも制約があり，ペアエンドリード間の長さ(separation size)が最低1,000bp以上ないとJumping Libraryと見なされない．ということは，100bpのペアエンドの場合，Jumping Libraryとして認識されるには最低1,200bp程度のインサートサイズが必要となる．これが非常にややこしいところで，Fragment Libraryより長いインサートはJumping Libraryになるかというと，そうでもないのである．じゃあ100bpペアエンドリードでインサートサイズが200bp〜1000bpの間のライブラリはどれに分類されるかというと，これが非常に謎な部分で私自身もあまり良くわかっていない．これらのインサートサイズのライブラリはFragment LibraryとしてALLPATHs-LGの入力ファイルに登録することは出来る(Validationに通る)ので，使われないことは無いと思う．ただし，このFragment Libraryモドキ単体だけではFragment Libraryが不足しているとしてALLPATHS-LGを動かすことが出来無いので，最低でも200bp以下のオーバーラップしているライブラリと組み合わせて使う必要がある．謎い．</p>
-
-<h2>Long Jumping Library</h2>
-
-<p>最後にLong Jumping Libraryだが，マニュアルによるとインサートサイズが20kbpsのライブラリを想定しているらしい．前述のJumping Libraryにおいてペアエンドリード間の長さの上限が10kbpなので，それ以上はLong Jumping Libraryとしても良さそうである．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/allpaths-lg-dataset.png" alt="Fragment LibraryとJumping Libraryの模式図" /></p>
-
-<p>といった感じでALLPATHS-LGを動かすために必要なライブラリの種類を見てきた．結論としては兎に角動かすためのデータセットの制限がシビアということで，データのライブラリサイズなどの情報をきちんと把握しておく必要がある．まあデータが揃っていたとしてもALLPATHS-LGを動かすのも一苦労なのだが，この話はまた別の機会に書ければ書くことにする．というか自分も理解していないところが多いので手探り感が強いが&#8230;．</p>
-
-<hr />
 ]]></content>
   </entry>
   
