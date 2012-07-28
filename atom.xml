@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-07-27T14:54:13+09:00</updated>
+  <updated>2012-07-28T18:43:35+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「遺伝統計学の基礎」の個人的感想]]></title>
+    <link href="http://yagays.github.com/blog/2012/07/28/review-genestat/"/>
+    <updated>2012-07-28T17:17:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/07/28/review-genestat</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4274068226" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>「遺伝統計学の基礎」をひと通り読んだのだけれども，はっきり言ってわかりにくい本だった．内容はあっちこっちに飛んで統一感が無いし，シミュレーションがある割には天下り的な理論導入で具体性に欠けるし，結局何がやりたくてどういう手法を使ってどんな結果が出たら嬉しいのかが終始読み取るのに苦労した．そりゃお前が不勉強で物知らずだからだろと言われればそれまでなんだけど，この本の売りであるRのコードとシミュレーションに関して個人的に思うところがあったので，ちょっと書き留めておこうと思う．簡単に言ってしまえば，理論を身につけてシミュレーションを理解する流れが非常にダルい．</p>
+
+<p>この本の中に出てくるシミュレーションをきちんと理解するのは，何も知らない読者にとっては恐ろしく大変だ．書いてある内容が難解すぎて大変というわけではない．本文は平易に書かれているし，数式だってそれほど苦労するほどではない．シミュレーションも「こういう原理があってこういう解析をすると知りたいことが計算できるよね？じゃあRで適当にそれっぽいデータ作ってシミュレーションしてみよう．ほら，結果はきちんと出ましたね」という感じで淡々と進んでいく．頭から読み進めると「確かにそうだ，確かにそうだ」と解った気になるのだが，ひと通り読んだあとに振り返ってみて，この章は何を書いてあったかなと考えると，頭に残っているのは説明された事実とシミュレーションの結果だけ．じゃあこれが何処でどんな風に使えるのか，そして何がしたかったのかと首を傾げることになる．</p>
+
+<p>シミュレーションを理解するのに一番重要な点は，何よりまず前提条件を理解することだ．どんな結果を期待してるか？データセットはどういう値や集合を用いるか？初期値は何か？可変なパラメータは何だ？解析の肝となる数式はどれだ？といった具合に，とにかくコードの上で用意されたシミュレートの舞台の裏側を理解する必要がある．時には結果から遡って解釈する必要がある．しかし，言ってしまえば逆に細部なんて理解しなくてもシミュレーションは雰囲気さえ掴めれば細部を理解してなくてもおおよそ予測が付く．解析の流れがわかっていれば，それを一般化するだけで済むのだ．そして，それに必要なのは具体例だ．この本で一番問題だと思うのは，<strong>その前提条件の理解において，具体例となるような理論とコードを橋渡しする部分が非常に乏しいことだ</strong>．具体的に観測される値をpやqなどで表すことは数式の上で書かれていても，それがどういう値を取るかといった具体例などの数字はコードの部分まで出てこない．用いるデータセットは時に何らかの手を加えた関数からランダムに作られるが，それが結果を導くのに都合のいい事は感覚で分かるものの意図が説明されず分からないことが多い．また，長いコードや関数定義が入れ子になっているコードほど，理論のところで説明された数式がコードのどの部分に該当するかが分かりにくい．理論とコードを行ったり来たり見比べて，ようやく「理論の制約条件はここのコードに効いてくるのか」とか「コードで作ってるデータセットはこういう結果を導いたいからなのか」といったことが見えてくる．</p>
+
+<p>シミュレーションは予定調和で進んでいくだけで，その裏の意図を理解するのに非常に苦労する．このように，理論的な解釈からいきなり具体的な値と解析コードに落としこむ部分が難解なのだ．理論を理解する難しさとコードを理解する難しさが重なって，どっちつかずに曖昧なまま読み進めていかざるを得ない．まあ，そうやって理解する過程にこそ意義があるというなら，それはまあそうなんだろう．現に自分も躍起になって他の資料を当たったりコード書きなおしたりして勉強した．ただ，この本は何にしてもはっきりしなくて不親切というのが率直な感想だ．なんで小さな値で実際に解析をやってみせて，それを大きな値でシミュレートするという方向に持って行かないんだろう．なんでRのコードでシミュレートしたり作図した結果を提示して終わるんじゃなくて，ここの値がこうだからこういう意味を持つんですよ，これが見たいからこんな条件でシミュレーションを作ったんですよといった具体的な解釈をしないんだろう．</p>
+
+<p>結局のところ，現場を知ってる専門家に向けた難易度とも思えず，遺伝統計学を一から学ぶ学生にとっては具体例に乏しく，リファレンスとして使うにも纏まりに欠け，どんな読者を対象としているのかよく分からない本だった．</p>
+
+<h4>最後に…</h4>
+
+<p>余計な補足かもしれないが，この教科書は誤植が多い．公式の訂正以外にも有志が独自に訂正情報を出しているので，これから読む人は参考にするべきだろう．個人的に確認した範囲では，有志の訂正情報は大体正しかったと思う．</p>
+
+<ul>
+<li><a href="http://www.genome.med.kyoto-u.ac.jp/wiki_tokyo/index.php/%E8%A8%82%E6%AD%A3%E6%83%85%E5%A0%B1">http://www.genome.med.kyoto-u.ac.jp/wiki_tokyo/index.php/%E8%A8%82%E6%AD%A3%E6%83%85%E5%A0%B1</a></li>
+<li><a href="http://d.hatena.ne.jp/foo22222/20100907/1305901272">http://d.hatena.ne.jp/foo22222/20100907/1305901272</a></li>
+<li><a href="https://www.evernote.com/pub/m_narahara/ryamadabook#b=598b4c2d-2ec7-4935-b6cb-22820782657d&amp;n=0dafabf8-d694-4892-bc30-ffaa8a016865">https://www.evernote.com/pub/m_narahara/ryamadabook#b=598b4c2d-2ec7-4935-b6cb-22820782657d&amp;n=0dafabf8-d694-4892-bc30-ffaa8a016865</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「要するに」「新教養主義宣言」「訳者解説」読了]]></title>
@@ -1398,167 +1429,6 @@ Muninを使って300GBくらいのディレクトリを圧縮している．ス�
 <li><a href="http://evomics.org/wp-content/uploads/2012/01/Allpaths_exercises.pdf">http://evomics.org/wp-content/uploads/2012/01/Allpaths_exercises.pdf</a></li>
 <li><a href="http://evomics.org/learning/assembly-and-alignment/allpaths-lg/">http://evomics.org/learning/assembly-and-alignment/allpaths-lg/</a></li>
 <li>(pdf) <a href="http://evomics.org/wp-content/uploads/2012/01/Allpaths_exercises.pdf">http://evomics.org/wp-content/uploads/2012/01/Allpaths_exercises.pdf</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「せめぎ合う遺伝子」読書ノート 1章]]></title>
-    <link href="http://yagays.github.com/blog/2012/06/03/genesinconflict-1/"/>
-    <updated>2012-06-03T14:31:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/06/03/genesinconflict-1</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as1&m=amazon&f=ifr&ref=qf_sp_asin_til&asins=432005699X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>「せめぎ合う遺伝子」(Genes in Conflicts)を先週あたりから少しずつ読み進めている．元々の動機としては，生物学を勉強するにあたり「○○学」なんて大層な名前の分厚い「辞書」を読み進めるのに飽きたのがきっかけで，実例を学びながら時々辞書を引きつつ勉強しようと思ってこの本を選んだのが始まりだった．当初の目的通りこの本をさらっと読み進めながら辞書の方の読解を並行して進められるかと思いきや，これが思いの外キツい本で今は必死になって読み進めている．ある意味計画通りな反面，辞書が示す範疇を超えるのではないかと思うような濃厚さで，半ば辞書を放り出して本に齧り付いている感じがある．</p>
-
-<p>そんなこんなで，無いも同然な生物学の知識を総動員して読み進めているわだが，読み進めるにあたり<a href="http://d.hatena.ne.jp/shorebird/20060424">原書を読まれた方の読書記録</a>が大いに理解の手助けになり参考にさせてもらっている．ということで，自分も実際に書きだして理解を深めようと思い，自分の理解の範囲内で纏めを作って見ることにした．間違ったことを書いていたり理解が浅い部分は多々あると思うので，そのあたり「生物学初学者が書いている」ことを念頭に置いてもらえればと思う．</p>
-
-<h3>1章</h3>
-
-<p>1章はガイダンス的な内容で，この本のメインテーマである利己的な遺伝因子の定義や，その戦略，研究の歴史が紹介されている．そして最後に，利己的な遺伝因子がいかに広範囲に及ぶ分野をまたぐテーマであり，本書はそれらを包括的に扱い体系化させようとしていることが述べられている．</p>
-
-<!-- more -->
-
-
-<ul>
-<li>遺伝子にはせめぎ合い(コンフリクト)がある
-
-<ul>
-<li>利己的な遺伝因子と抑制因子の対立</li>
-<li>利益：<strong>出現頻度</strong> (<strong>分布</strong>)</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>遺伝的協調性を持たない利己的な遺伝因子
-
-<ul>
-<li>生物の適応性と密接に関連する遺伝子が，自然選択Natural Selectionの結果，自身の頻度(分布)を広げる</li>
-<li>このような遺伝的協調性は遺伝子が公平に伝達されることによりもたらされる</li>
-<li>このとき世代間の遺伝頻度は変化しない(いわゆるハーディー・ワインバーグの法則)</li>
-<li>しかし，利己的な遺伝因子は個体の適応度に寄与しないにもかかわらず分布を広げる</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>利己的な遺伝因子に関わる用語定義
-
-<ul>
-<li>ドライヴdrive
-
-<ul>
-<li>伝達率が50%を上回ること (超メンデル的Super-Mendelian)</li>
-</ul>
-</li>
-<li>ドラッグdrug
-
-<ul>
-<li>伝達率が50%を下回ること(下メンデル的sub-Mendelian)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>利己的な遺伝因子の代表的な3つの戦略
-
-<ul>
-<li>干渉interference</li>
-<li>過複製overreplication</li>
-<li>ゴノタキシスgonotaxis (生殖系列走性)</li>
-<li>ーー</li>
-<li>あくまでこれらの戦略は個体の適応度（ここでは「生物としての質」）を変化させない</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>ゲノムの血縁コンフリクトにより利己性を発揮する場合がある
-
-<ul>
-<li>血縁関係が近いと，同じ遺伝子を持っている確率が高い</li>
-<li>母親由来/父親由来 (maternal/paternal)</li>
-<li>ゲノムインプリンティング</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>ショウジョウバエ<em>D.melanogaster</em>で観測された<em>P</em>因子は劇的な分布拡大を見せた
-
-<ul>
-<li>系統間交雑における不妊や突然変異率の高さ，オスの組み換え発生などの異常は<em>P</em>因子によるものだった</li>
-<li><em>P</em>因子は20世紀半ばに<em>D.willistoni</em>から<em>D.melanogaster</em>の遺伝子プールに持ち込まれ，世界中に広まった</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>利己的な遺伝因子が必ずしも遺伝子のホストである個体の適応度に影響しないわけではない
-
-<ul>
-<li>ドライヴ性性染色体</li>
-<li>雄性不稔ミトコンドリア</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>利己的な遺伝因子の別称
-
-<ul>
-<li>アウトロー遺伝子 outlaw gene</li>
-<li>超利己的遺伝子 ultraselfish gene</li>
-<li>自己普及推進遺伝因子 self-promoting genetic element</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>ドライヴの別称
-
-<ul>
-<li>伝達比の歪曲 transmission ratio distortion</li>
-<li>分離の歪曲 segregation distortion</li>
-</ul>
-</li>
 </ul>
 
 ]]></content>
