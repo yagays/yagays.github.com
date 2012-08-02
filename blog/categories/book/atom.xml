@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Book | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/book/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-07-30T01:55:25+09:00</updated>
+  <updated>2012-08-03T07:55:34+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「考える脳 考えるコンピューター」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/08/03/review-on-intelligence/"/>
+    <updated>2012-08-03T07:08:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/08/03/review-on-intelligence</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4270000600" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>「結局のところ人工知能は簡単に作れなかった．実現するのはまだまだ先だろう」というのが殆どの科学者の大まかな見解だろう．20世紀半ばに計算機科学が勃興して以来，情報処理の応用分野は数知れず，チェスで人間を負かしたりはしたけれども，結局人間の知能を模倣するのは想像以上に難しかったということだ．脳の機能を真似たニューラルネットワークは機械学習の分野を拓いてきたし実際にアルゴリズムは動き問題を解決してきたけれども，それは明らかに人間の脳の働きとは全く違ったものだった．</p>
+
+<p>この本で作者のジェフ・ホーキンスは，もう一度人間の脳に真剣に向き合い，構造やニューロンの反応，情報を認識するシステムや脳科学の実験結果を元に，脳と知能の本質的な理解を深めようとしている．そこで彼は，感覚器官から伝えられる信号を大脳新皮質で認識してパターンを解析することが，脳の高度な情報処理において重要であると結論づけている．この新皮質における6層からなるニューロン群は各感覚器官から神経を伝って送られた電気信号を受け取るのだが，場所によって視覚や嗅覚といった機能を分けているわけではない．全ての情報は全て新皮質全体で一つのパターンとして認識され，入力の時空間的な変化によって処理される．空間的な変化は新皮質の2次元的な広がりに，時間的な変化は流れこむタイミングと対応している．ここで重要なのは，全ての情報は新皮質の空間的な変化としてパターン化されるため，眼や耳，鼻がそれぞれ視覚や聴覚，嗅覚と対応しなくても良いということだ．当然それぞれの感覚器官はそれぞれの感覚に特化されているが，それらは対応しなくても良い．例えば，舌に電気信号を送ることで，視覚の代用をすることが出来ることがわかっている．各感覚器官が独自に処理をして最後に脳が統合するという流れではなく，感覚器官の生の情報を脳が最初から統合して処理しパターンとして認識しているのだ．</p>
+
+<p>当然ながら，これだけで脳の知能をすべて説明できるわけでもないし，人工知能を作ることができるわけでもない．ただ，数学的な応用や使えるアルゴリズムでその場凌ぎ的な満足を得るのではなく，脳科学の知見を取り入れて人工知能についてもっと広い視点から包括的に考えていこうという著者の強い意志が印象深く，脳科学的な解釈や主張も非常に面白い本だった．ただ，この本の提言を改めて読んで，昨今の機械学習の盛り上がりに同調する様に現在の技術の手応えを感じるか，IBMのワトソンがクイズの答えを導くアルゴリズムを見て脳科学との乖離と見るか，本文で書かれた問題提起を踏まえて現状をどう見るべきなのかは少々判断が難しいところだろう．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「遺伝統計学の基礎」の個人的感想]]></title>
@@ -100,22 +116,6 @@
 
 <p>「<a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22">パターン認識と機械学習 上</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」や「<a href="http://www.amazon.co.jp/gp/product/4621061240/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061240&linkCode=as2&tag=yagays-22">パターン認識と機械学習 下 (ベイズ理論による統計的予測)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061240" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 」などで知られるPRMLの副読本を入手．中身は殆ど公開されているものと同じということだが，書きおろしが少しあるということと，あとは記念ということで購入した．既に公開されているpdfについては印刷して至る所にメモを書きまくっているのだが，この本は大事に取っておこうと思う．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「数学で犯罪を解決する」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/07/03/review-numbers/"/>
-    <updated>2012-07-03T18:34:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/07/03/review-numbers</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=447800420X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>本書はタイトルでハッキリとわかるように「数学で犯罪を解決する話！」の一言で表されて身も蓋もないのだが，中で紹介されているトピックは非常に豊富で多岐にわたる．統計の基礎から始まり，ニューラルネットや画像処理，データマイニング，ベイズ統計や暗号など，数学といっても理論をこねる退屈な感じではなく，犯罪捜査でいかに数学が実用的に使われてるかが分かりやすく書かれている．犯罪捜査の花形といえば敏腕刑事や名探偵などを思い浮かべるが，本書では登場するのは地味な数式や確率などの数学理論だ．町中で犯人を追いかけたり名推理で犯人を追い詰めたりといったことはなく，数学で手がかりや問題の兆候など解決の糸口を提示するだけだ．だが，複雑な現象から技巧的な数学テクニックを使ってパターンを見つけ出したり犯人像をあぶり出す様は，刑事モノや推理小説に引けをとらない爽快感や喜びがある．</p>
-
-<p>この本は元々海外ドラマ「NUMB3RS」(ナンバーズ)の解説として書かれているが，ドラマを見ていなくても読めるような作りになっている．ドラマの解説として紹介されている事例はどれも面白いものばかりだったが，個人的に思うに，この本で見所となるのは「訳者あとがき」だろう．訳者の山形浩生がFurther Readingの趣旨の文章を25ページほど書いており，原著者の経歴や各トピックに関して深く理解するための参考書などが紹介されていたり，本文で詳しく述べられなかった部分についての補足がされている．さすが山形浩生といったところで，それぞれの分野について私見を交えつつ特徴をうまく捉えた解説がされている．本に出てくるトピックについて多少知見があれば，ここを眺めるだけでもなかなか面白い．</p>
-
-<p>早くドラマNUMB3RSの方も見なくては…．</p>
 ]]></content>
   </entry>
   
