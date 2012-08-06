@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-08-04T23:42:49+09:00</updated>
+  <updated>2012-08-06T22:09:31+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「進化が語る 現在・過去・未来　(別冊日経サイエンス185)」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/08/06/review-sciencemagazine-evol/"/>
+    <updated>2012-08-06T22:08:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/08/06/review-sciencemagazine-evol</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4532511852" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>日経サイエンス別冊で進化特集で，過去に日経サイエンスに掲載された記事を中心に纏められている．驚くべきはそのカバーされている分野の広さで，進化学の教養的な話題から，分子生物学と進化学の関係，深海生物から人類の起源まで，分野を横断して専門的なコラムが読めるのは非常に楽しい．一般紙だけあって綺麗な絵や写真が豊富で眺めているだけで楽しいし，記事にはそれぞれ要約(まとめ)や補足コラム，参考資料などが付いていて丁寧な作りになっている．</p>
+
+<p>日経サイエンスは殆ど読んだことがなかったのだが，こんなにちゃんとしてて読みやすいとは思わなかった．本誌もちょくちょく覗いてみようかと思う．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「進化学辞典 第28章」が読物として面白い]]></title>
@@ -865,65 +879,6 @@ Muninを使って300GBくらいのディレクトリを圧縮している．ス�
 <p>遺伝子は意志をもって細胞を支配しているわけではなく，あくまで細胞の一部として機能するものだ，という著者の主張が表れていて非常に良かった．</p>
 
 <p>ちなみに，ハードカバーで250ページくらいあるがそのうち50ページくらいは訳注と参考文献なので，見た目ほど分量は無く気軽に読める．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[fastaからfastbに変換する]]></title>
-    <link href="http://yagays.github.com/blog/2012/06/08/fastb/"/>
-    <updated>2012-06-08T19:12:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/06/08/fastb</id>
-    <content type="html"><![CDATA[<p>fastaやfastqは馴染みがあっても，fastbというフォーマットは知らない人が多いと思う．これははfastaファイルをバイナリ形式に変換したフォーマットのことで，SAMとBAMの関係と同じようなものである．</p>
-
-<p>ALLPATHS-LGにおいて，アセンブリの評価のためにリファレンスゲノムを入力として与える際には，REFERENCE_DIRにgenome.fastaとgenome.fastbという2つのファイルが必要になる．genome.fastaに関しては，データベースなり自前で用意した配列を使えばいいのだが，genome.fastbに関しては手作業で変換をしなければならない．ということで，今回はfastaとfastbの変換の方法について，メモ程度ではあるが書いてみることにする．</p>
-
-<!-- more -->
-
-
-<h2>fastaからfastbへの変換</h2>
-
-<p>fastaとfastbの変換には，ALLPATHS-LGをインストールした時に付属してくるFasta2Fastbを使う．使い方は簡単で，以下のように，IN=にfastaファイル名を，OUT=にfastbファイル名を指定すればよい．OUTのオプションは必須ではなく，同じファイル名のfastbファイルが生成される．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Fasta2Fastb IN=genome.fasta OUT=genome.fastb</span></code></pre></td></tr></table></div></figure>
-
-
-<p>このコマンドで生成されるファイルは2つあり，</p>
-
-<ul>
-<li>genome.fastb</li>
-<li>genome.fastb.names</li>
-</ul>
-
-
-<p>が作られる．</p>
-
-<p>genome.fastb.namesファイルの中にはfastaファイルの中に書かれていた各配列の名前(<code>&gt;</code>で始まる行)が書かれているが，このファイルはALLPATHS-LGでは使用せず，特に意味は無さそう．</p>
-
-<h2>fastbからfastaへの変換</h2>
-
-<p>逆にfastbからfastaに戻す場合には，Fastb2Fastaというコマンドがある．使い方はFasta2Fastbと同様である．</p>
-
-<h2>fastbフォーマットの圧縮効率</h2>
-
-<p>試しにシミュレーションとして，1本の配列の長さが1Mbのfastaファイルを作成して，fastbフォーマットに変換してファイルサイズを比較してみた．結果は</p>
-
-<ul>
-<li>1Mb ： 993K -> 245K</li>
-</ul>
-
-
-<p>となり，<strong>約25%</strong>と四分の一ほどのサイズになった．他にも，配列の本数などを変えて幾つか実験してみたが大体同じ圧縮率になった．</p>
-
-<h2>他にも…</h2>
-
-<p>ALLPATHS-LGに付属しているFastb関連コマンドには，変換コマンド以外にもFastbMergeやFastbQualbToFastq，FastbQualbTrimReverse，FastbStatsなどが用意されている．どのコマンドも<code>--help</code>を付けることで使い方が表示されるので，使う時には参考になる．</p>
-
-<p>普段から圧縮が必要になるほど大規模なfastaファイルを扱うことはそうそうないとは思うが，こういう形式のファイルがあるということを覚えておいて損はないと思う．</p>
-
-<h3>参考</h3>
-
-<p><a href="http://www.broadinstitute.org/crd/wiki/index.php/Fastb">http://www.broadinstitute.org/crd/wiki/index.php/Fastb</a></p>
 ]]></content>
   </entry>
   
