@@ -112,7 +112,11 @@
     </url>
     <url>
         <loc>http://yagays.github.com/blog/2012/08/07/review-bursts/</loc>
-        <lastmod>2012-08-07T07:49:17+09:00</lastmod>
+        <lastmod>2012-08-07T08:09:13+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yagays.github.com/blog/2012/08/25/review-prob-and-stats-for-cs/</loc>
+        <lastmod>2012-08-25T13:25:13+09:00</lastmod>
     </url>
     <url>
         <loc>http://yagays.github.com/404.html</loc>
@@ -120,10 +124,10 @@
     </url>
     <url>
         <loc>http://yagays.github.com/blog/archives/</loc>
-        <lastmod>2012-08-07T07:49:17+09:00</lastmod>
+        <lastmod>2012-08-25T13:25:13+09:00</lastmod>
     </url>
     <url>
         <loc>http://yagays.github.com/</loc>
-        <lastmod>2012-08-07T07:49:17+09:00</lastmod>
+        <lastmod>2012-08-25T13:25:13+09:00</lastmod>
     </url>
 </urlset>

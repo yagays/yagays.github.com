@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-08-07T07:49:29+09:00</updated>
+  <updated>2012-08-25T13:25:33+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「プログラミングのための確率統計」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/08/25/review-prob-and-stats-for-cs/"/>
+    <updated>2012-08-25T13:17:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/08/25/review-prob-and-stats-for-cs</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4274067750" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>確率統計の非常に分かりやすい入門書．タイトルには「プログラミングのための」とあるが，むしろ一般的な統計学の入門者や学生向けだろう．あと，これは自分の場合なのだが，機械学習を勉強したいけど確率とかよくわからなくて出鼻をくじかれて無理って人，具体的にはPRML2章で読むのを断念した人にも，とても参考になる本だと思う．中身はとにかく具体例や図表が豊富で，数式や定義などを視覚的に理解できるよう非常に創意工夫が凝らされている．細かい部分への配慮も抜かりなく，ざっくばらんな質問や重箱の隅をつつくような疑問にも著者が全力で自問自答(?)するコラムがあったりと，本筋以外のバックアップも充実している．ちなみに，本書は「プログラミングのための線形代数」の姉妹本で，そちらの方も非常に視覚的に分かりやすい説明がされているのでお薦めできる．そっちの自問自答っぷりはこの本の比ではない．</p>
+
+<p>本書が視覚的で分かりやすいのは大きな特徴なのだが，個人的に嬉しかったのは5章の「共分散行列と多次元正規分布と楕円」の項だった．というのも，統計学や確率統計の入門書で2次元以上の分布に関して詳しく書いてある参考書が殆ど無く，あっても数ページで軽く纏められている程度なのだ．複数の確率変数や分布，独立性にまつわる話は，ヤコビアンなどと絡めて書かれていることが多いが，正規分布に関して丁寧に書いてあるものは少ない印象だ．試しに，手元にある参考書を幾つか開いてみたが，記述があったのは以下の2冊で，</p>
+
+<ul>
+<li><a href="http://www.amazon.co.jp/gp/product/4130420658/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4130420658&linkCode=as2&tag=yagays-22">統計学入門 (基礎統計学)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4130420658" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
+<li><a href="http://www.amazon.co.jp/gp/product/4489006985/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4489006985&linkCode=as2&tag=yagays-22">統計学入門</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4489006985" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
+</ul>
+
+
+<p>両者ともに数ページの説明と2変量正規分布の式や簡単な導出程度にとどまり，共分散行列について触れられていなかった．他にも自然科学系の入門書にもあたったが，検定や最小二乗法，最尤法，分散分析方面に重きが置かれているようで，多次元にまで拡張した分布の説明は無かった．</p>
+
+<p>とまあそんな感じで，多次元正規分布周りの話は入門書にはあまり書かれない内容なので，この章だけでも拾い読みする価値が十分にある本だと思う．勿論その他の章も分かりやすく読み応え有りなので気になる人は是非通読してみるといいと思う．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「バースト! 人間行動を支配するパターン」読了]]></title>
@@ -726,225 +750,6 @@ Muninを使って300GBくらいのディレクトリを圧縮している．ス�
 
 <ul>
 <li>トウモロコシの第4染色体上の<em>ga1</em>遺伝子</li>
-</ul>
-</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「せめぎ合う遺伝子」読書ノート 2章その2]]></title>
-    <link href="http://yagays.github.com/blog/2012/06/10/genesinconflict-2-2/"/>
-    <updated>2012-06-10T12:25:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/06/10/genesinconflict-2-2</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yagays-22&o=9&p=8&l=as1&asins=432005699X&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px; height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>ハツカネズミのtハプロタイプに続き，<em>Drosophila</em>の<em>SD</em>分離歪曲因子と菌類の胞子キラー因子について見ていく．これらはどちらもヘテロ接合体オスが野生型を殺すことによりドライヴ性を示す．</p>
-
-<ul>
-<li><strong>その因子は，どのようにして利己的な優位性を獲得したのだろうか？</strong>
-
-<ul>
-<li>+/<em>SD</em>ヘテロ接合体オスにおける野生型の染色体を持つ精子の成長阻害</li>
-</ul>
-</li>
-<li><strong>いかにして，その因子は出現したのだろう？</strong>
-
-<ul>
-<li><em>Xba1</em>反復配列が増幅したのち<em>Sd</em>が生じた</li>
-</ul>
-</li>
-<li><strong>どれくらい昔に出現したのだろう？</strong>
-
-<ul>
-<li>平均合着年代よりずっと最近</li>
-</ul>
-</li>
-<li><strong>大型生物に対する影響はどのようなものだろうか？</strong>
-
-<ul>
-<li>あまりない(抵抗性対立遺伝子の維持コストもそれほど顕著ではなく，<em>SD</em>ホモ接合型も生きられないわけではない)</li>
-</ul>
-</li>
-<li><strong>どのくらいの速度で，その因子は分布を拡大すると期待されるだろうか？</strong>
-
-<ul>
-<li>???</li>
-</ul>
-</li>
-<li><strong>種内における頻度はどれくらいか？</strong>
-
-<ul>
-<li>1~5%</li>
-</ul>
-</li>
-<li><strong>頻度を決定づけているものは何か？</strong>
-
-<ul>
-<li>抵抗性対立遺伝子といかに連鎖して分布を広げられるか(初期)</li>
-</ul>
-</li>
-<li><strong>いくつかの種にその因子が見いだされるのに，他の種には見いだされないのはなぜか？</strong>
-
-<ul>
-<li>??? (なぜかは置いておいて，<em>SD</em>とtはキラー因子と抵抗性対立遺伝子の働き方が逆(タンパク質コードと欠失)の作用を示す．)</li>
-</ul>
-</li>
-<li><strong>ゲノムの他の因子は，利己的な因子に対抗してどのような適応を強いられてきたか？</strong>
-
-<ul>
-<li><em>Xba1</em>反復配列のコピー数を少なくした</li>
-</ul>
-</li>
-<li><strong>ホストの系統に対しておよぼしてきた効果以外に，どのような影響をもたらすだろうか？</strong>
-
-<ul>
-<li>???</li>
-</ul>
-</li>
-</ul>
-
-
-<!-- more -->
-
-
-<h3>2.2.1</h3>
-
-<ul>
-<li>第2染色体上のセントロメア付近で強く連鎖している3つの因子
-
-<ul>
-<li><em>Sd</em> 分離歪曲因子 segregation distorter
-
-<ul>
-<li>ドライヴ因子，ドライヴ遺伝子座</li>
-</ul>
-</li>
-<li><em>Rsp</em><sup>s</sup> 応答-感受性対立遺伝子 responder-sinsitive allele
-
-<ul>
-<li>応答因子遺伝子座</li>
-</ul>
-</li>
-<li><em>Rsp</em><sup>i</sup> 応答-不感性対立遺伝子 responder-insensitive allele
-
-<ul>
-<li>応答因子遺伝子座</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li><em>Sd</em>が <em>Rsp</em><sup>s</sup> に作用して精子を殺し，一方で<em>Rsp</em><sup>i</sup> により保護されている
-
-<ul>
-<li><em>Rsp</em>はタンデム反復配列<em>Xba1</em>が複数連なって形成されている
-
-<ul>
-<li>殺戮に対する感受性はコピー数に関連している</li>
-</ul>
-</li>
-<li><em>Sd</em>はタンパク質をコードし，タンデム型重複による不完全なRanGAP遺伝子がドライヴに影響する</li>
-<li><em>SD</em>と同染色体上に，<em>SD</em>のドライヴ率を高めるエンハンサー因子がある</li>
-<li><em>Xba1</em>を伴う抵抗性対立遺伝子が存在するが，維持するためのコストはそれほど多くない</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li><em>D.melanogaster</em>の<em>SD</em>は比較的近年になって出現したもの
-
-<ul>
-<li>近縁種に<em>dRanGAP</em>や<em>Xba1</em>反復配列がない</li>
-<li>SD染色体と野生型染色体の間に殆ど相違がない</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<h3>2.2.2</h3>
-
-<ul>
-<li>菌類の<em>Neurospora intermedia</em>も2つキラー因子複合体を持つ
-
-<ul>
-<li>前述のtやSDと同じく胞子を殺す配偶子キラー因子(胞子キラー因子)</li>
-<li>第Ⅲ染色体のセントロメア付近に存在する<em>Sk-2</em><sup>k</sup> と<em>Sk-3</em><sup>k</sup></li>
-<li>2つの胞子キラー因子は非常に珍しく分布がまばらで限られているのに対し，抵抗性因子はより普遍的に存在する</li>
-<li>人間活動の関与(隔離集団との接触)</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<h3>配偶子キラー因子まとめ</h3>
-
-<ul>
-<li>tやSDは動物における配偶子キラー因子である
-
-<ul>
-<li>ハツカネズミとショウジョウバエの2種でしか観測されておらず，もっと普遍的に有るはず(精査バイアス ascertainment bias)</li>
-<li>表現型に関する遺伝子と連鎖している遺伝子座が非メンデル遺伝をするというケースは他の種でもよく見られるが，これが利己的な遺伝子のせいなのかは不明</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li><em>Sk</em>は植物における配偶子キラー因子である
-
-<ul>
-<li>動物の配偶子キラー因子よりも多く見つかっている</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>残る疑問点
-
-<ul>
-<li>殺戮効果の低い配偶子キラー因子はあるのか？(tやSDは殺戮効果が高い 90%~)</li>
-<li>配偶子キラー因子が固定されても表現型に現れないのか？</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>配偶子キラー因子まとめ
-
-<ul>
-<li>配偶子キラー因子は頻繁に生じる</li>
-<li>しばし留まってそのまま消滅するか，固定後に消滅するかのどちらか</li>
-<li>キラー因子と減数分裂との間には対立する形で進化してきた</li>
 </ul>
 </li>
 </ul>
