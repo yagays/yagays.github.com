@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-08-31T20:48:25+09:00</updated>
+  <updated>2012-09-05T13:28:36+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「外国語で発想するための日本語レッスン」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/09/05/review-critical-reading/"/>
+    <updated>2012-09-05T13:28:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/09/05/review-critical-reading</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4560027870" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>「<a href="http://d.hatena.ne.jp/next49/20070724/p1">外国語で発想するための日本語レッスン - 発声練習</a>」の書評で興味が湧いて読んだのだが，まさにスゴ本，久しぶりに目から鱗が落ちるような体験をした．何気ないことへの明確な理論的解釈を与えられ頭の論理回路を再構築するような感覚で，知的興奮とは違った別の高揚感を感じた．</p>
+
+<p>本書は，最近良く言われるようになった「外国語を身につけるために日本語をしっかり勉強する」ための本なのだが，最大の特徴は外国で教えられている読書技術を日本語で実践して，その思考能力や技術力を学ぼうというものだ．日本語の技術を教科するからといって，日本語の文法をおさらいしたり，闇雲に近代文学や有名な随筆を読むわけではない．むしろ，本書ではまず「絵画」を分析して解釈するところから始めて，そこから次第に複雑な文章へと進んでいく．その中で，個人が物事を観て考えるということはどういうことなのか，そして何をすべきなのかといった普遍的な論理的思考を身につけていこうといった内容となっている．なお，ここでいう「外国」とは主にドイツ・フランス・イタリアなどの北欧とアメリカなどの欧米諸国のことを指す．</p>
+
+<p>では，外国で教えられている読書技術とは何か？それは終始この本の中で述べられれる「テクストの分析と解釈・批判」である．これはCritical Readingと呼ばれるもので，何に対しても批判的精神を育てるための技術といえる．これにはまず，論評文や小説にかぎらず，絵画，音楽など全ての創作物には．必ず意味があるという前提から始まる．詳しく言えば，創作物を構成する要素には必ず意味があり，創作物を象徴する役割が与えられているということだ．無意味に出てくるキャラクターや設定などは無く，すべて創作者が何らかの意図で配置していると仮定している．それを基礎として，私達は題材を読んだり観たり聴いたりすることで，それらの要素を分析し，意味や象徴性を解釈し，そして得られた情報をもとに批判的に検討して意見をまとめあげる．このような一連の流れを，ここでは「テクストの分析と解釈・批判」と呼んでいる．この工程には，自分の好き嫌いを語ったり主観的に鑑賞することは一切入ってこない．とにかく与えられた題材をもとに，ひたすら創作物の中にある根拠を重ねることによって主観性を排除し，そこから解釈をして最終的に意図を汲み取るようなスタイルとなっている．</p>
+
+<p>実際にどうやって実践するかは本書を読んでいただくとして，その読み解き方は本当に驚くほど徹底したもので，普段どれだけ雰囲気でなんとなく解釈していたかを酷く思い知らされたと同時に，厳密に根拠から論理を組み立てていくことの難しさを再認識させられるばかりだった．ただ，こればかりは理解すれば一朝一夕に出来るようになるものでもないので，ひたすら訓練を繰り返すしかないだろう．</p>
+
+<p>学校の国語の授業が嫌いだった人，美術館に行って絵画を観ても何をすればいいか分からず手持ち無沙汰になる人，論文を読んで書いてあることはわかったけどそこから新規性や問題点などが読み取れない人などに是非薦めたい1冊．自分が教える立場になったら参考にしたい1冊でもある．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「なかのとおるの生命科学者の伝記を読む」読了]]></title>
@@ -633,75 +653,6 @@
 <p>「<a href="http://yagays.github.com/blog/2012/06/14/review-finch/">フィンチの嘴</a>」に続き，進化に関する本を幾つか読んでいる．まずは王道の「種の起源」なのだが，今回読んだのは「超訳」である．本書における超訳とは，原文を逐一正確に翻訳するのではなく，大まかな流れは変えずに適宜分かりやすいように修正を加えて調整した翻訳となっている．しかし，ただ安易な平文に置き換えられただけではなく，「種の起源」を理解するために必要な情報が盛り込まれているところが本書の最大の特徴である．ダーウィンが元々地質学のバックグラウンドを持ち古生物学にも関わっていたという経歴や，種の起源で仮説のまま残された部分について現代科学の知見を訳注に織り交ぜて紹介するなど，読み進める上で引っかかる部分がきちんと整理されている．原書の雰囲気を残しつつ上手い具合に解説を取り入れた，非常にバランスの良い本だと言える．</p>
 
 <p>本書は中高生向けに書かれたようだが，当然大人が読んでも十分楽しめるような内容だ．進化論に関する下手な新書や解説書を読むよりかは，こういう本できちんと学んだほうがよっぽど良い．原書のハトで挫折した人にとっても読んでみたいという意志さえあれば確実に全部読み切れる分量なので，初めの1冊として最適な本だと思う．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[pigzを使ったgzip並列圧縮]]></title>
-    <link href="http://yagays.github.com/blog/2012/06/15/pigz/"/>
-    <updated>2012-06-15T19:39:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/06/15/pigz</id>
-    <content type="html"><![CDATA[<p>pigzという並列でgzip圧縮を行うプログラムがあったので試してみた．</p>
-
-<!-- more -->
-
-
-<h2>インストール</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ wget http://zlib.net/pigz/pigz-2.2.4.tar.gz
-</span><span class='line'>$ tar zxvf pigz-2.2.4.tar.gz
-</span><span class='line'>$ cd pigz-2.2.4
-</span><span class='line'>$ make</span></code></pre></td></tr></table></div></figure>
-
-
-<p><a href="http://zlib.net/pigz/">公式サイト</a>からソースを落としてきてコンパイルする．これでpigzとunpigzが生成される．</p>
-
-<h2>使い方</h2>
-
-<p>圧縮する対象が単一ファイルかディレクトリかで使い方を分ける必要がある．今回の例ではスレッド数を4とし，圧縮するファイル/ディレクトリをFILE/DIRという名前にしている．</p>
-
-<h3>単一ファイルの場合</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ pigz -p 4  FILE</span></code></pre></td></tr></table></div></figure>
-
-
-<p>とするとpigzで圧縮することができる．この場合にはFILEがそのままFILE.gzとなる．圧縮するファイル自体を残しておきたい場合には，-kのオプションを付けることで別途圧縮ファイルを作成することができる．</p>
-
-<h3>ディレクトリの場合</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ tar c DIR | pigz -p 4 &gt; DIR.tar.gz</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ディレクトリをそのまま圧縮する場合は，<strong>tarで一度ディレクトリを固めてからpigzに渡して圧縮する</strong>．なお，tarで固めずにpigz -r DIRなどとしてしまうと，ディレクトリ内の全部のファイルがそれぞれ個別に圧縮されるので注意が必要．</p>
-
-<h2>動いている様子</h2>
-
-<p>スレッド数を16にしてpigzを動かしているところをhtopで見ている．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/pigz.png" alt="" /></p>
-
-<p>ここでは，上で紹介した基本機能以外に圧縮時のブロックサイズを-bで指定している．圧縮効率/速度に影響してくるパラメータに関しては色々と試してみたのだが，あまりハッキリとした結果が得られなかったので調整を諦めた部分がある．実際に圧縮しているところを監視していると，全コア使って圧縮処理をしている場合や，待機(S)が長く続く場合など，一概にスレッド数を重ねるほど圧縮効率が良くなるわけでもなさそうな印象を受ける．この辺りに関しては，HDDのI/Oや圧縮するファイルのサイズに大きく依存するところなので，あまり厳密に調べたりしても意味がないとは思うが&#8230;．まあ，gzipよりかは確実に早くなるとは思うので，圧縮の際にはデフォルトでpigzを使うというくらいの感じで良いと思う．</p>
-
-<h3>Muninを使ったCPU使用率の可視化</h3>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/pigz_munin.png" alt="" />
-Muninを使って300GBくらいのディレクトリを圧縮している．スレッド数を6程度で様子見していたのだが，終わらない&#8230;．</p>
-
-<h2>参考資料</h2>
-
-<ul>
-<li>(pdf) <a href="http://zlib.net/pigz/pigz.pdf">http://zlib.net/pigz/pigz.pdf</a></li>
-<li><a href="http://serverfault.com/questions/321273/why-does-tar-c-dir-pigz-mnt-nfs-dir-tgz-use-network-then-cpu-in-cycles-in">http://serverfault.com/questions/321273/why-does-tar-c-dir-pigz-mnt-nfs-dir-tgz-use-network-then-cpu-in-cycles-in</a></li>
-<li><a href="http://arcoleo.org/dsawiki/Wiki.jsp?page=Compressing%20and%20Extracting%20Files">http://arcoleo.org/dsawiki/Wiki.jsp?page=Compressing%20and%20Extracting%20Files</a></li>
-<li><a href="http://codeascraft.etsy.com/2012/01/23/solr-bittorrent-index-replication/">http://codeascraft.etsy.com/2012/01/23/solr-bittorrent-index-replication/</a></li>
-</ul>
-
 ]]></content>
   </entry>
   
