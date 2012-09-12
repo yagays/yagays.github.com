@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-09-09T11:25:48+09:00</updated>
+  <updated>2012-09-12T13:09:15+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「小さく賭けろ！―世界を変えた人と組織の成功の秘密」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/09/12/review-little-bets/"/>
+    <updated>2012-09-12T12:51:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/09/12/review-little-bets</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4822248968" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>主張は恐ろしく簡潔だ．成功者は小さな試行錯誤を繰り返す．様々な試行は殆ど失敗に終わるが，それを経験と見なして学習する．そして多数の失敗の中から小さな成功を見つけて，それを積み重ねていく．そういった一連のプロセスを「小さな賭け」と呼び，近年大きな活躍を見せている起業家や会社，コメディアンから軍隊までが，どういった方法で小さな賭けを実行しているかを，社会心理学や人類学などの最新知見とともに詳しく解説したのが本書「小さく賭けろ！」である．</p>
+
+<p>こんな分かりきったことを言うだけなら，これほど簡単なことは無い．しかし，本書の前半では成功者に共通する方法からさらに踏み込んで，どういった態度で試行錯誤から失敗を学び成功を導き出せばよいのか，その基本的な思考パターンというものを心理学的な側面から解析している．本書ではそれをマインドセットと呼び，社会心理学者のCarol Dweckが研究しているモチベーションの研究を引き合いに出して，人が学習する態度には「固定的マインドセット」と「成長思考のマインドセット」の2つがあるとしている．この対比は本書の図によくまとまっているが，そこから言葉を少し拝借すれば，固定的マインドセットの人間は「知性は静的」であると思い込み「頭が良いと見られたい」がために，自分の中で言い訳を作り「自由意志の力を信じず，決定論的に世界を見るようになりやすい」としている．一方，成長思考のマインドセットの人間は「知性は成長できる」と考え「学ぶ意欲が強い」がために，「自らの意志の力を信じる傾向が強まる」という性質がある．この2つのマインドセットは完全に人によって区別できるものではなく，両者のバランスの上に成り立っているとしながらも，それぞれが学習や失敗，批判や人の成功に対して取る態度は恐ろしいほど異なっている．そして，本書の主題である小さな賭けを繰り返すアプローチは，上で示した成長思考のマインドセットと親和性が高く，その思考を鍛えることに繋がると結論づけている．つまり，ただひたすらに試行錯誤を繰り返せば良いアイデアが自ずと出てくるというわけではなく，一連のプロセスから得られる結果を自分がどう捉えるかによって，その価値を認め活かすことができるかどうかが決まってくるというのだ．この分析は，具体的な事例から成功者の成功者たる所以を知るための背景知識として，非常に重要な意味合いを持ってくる．</p>
+
+<p>本書後半では，どういう人間が試行錯誤の中から成功の予兆を感じ取りやすいかといった問題や，試行錯誤を実践するための具体的な方法，偉大な成功者たちの事例などが多数示されている．本書はハウツー本では無いので，何をすれば成功できるといったマニュアルのようなものは書かれていない．しかし，個人がどのように独創的なアイデアを生み出し不確実性に対処できるようなクリエイティブな活動ができるか，その方法と実例がたっぷり詰まった1冊だと言える．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「世界でもっとも強力な9のアルゴリズム」読了]]></title>
@@ -49,7 +65,7 @@
 
 <p><a href="http://d.hatena.ne.jp/nyanp/20110411/p1">人工衛星を作るときに気を付けること - Lagrangian point L2</a></p>
 
-<p>人工衛星は一度飛ばしたらハードウェアに関して全く手がつけられないという点で究極のロバストさが必要とされるものだと思うのだが，そのアプローチがなかなか面白い．当然色々な工夫をして故障や事故に備えるのだが，単純に基盤を多く載せたり回路を多様化すればいいというわけではなく，</p>
+<p>人工衛星は一度飛ばしたらハードウェアに関して全く手がつけられないという点で究極のロバストさが必要とされるものだと私は思うのだが，そのアプローチがなかなか面白い．当然色々な工夫をして故障や事故に備えるのだが，単純に基盤を多く載せたり回路を多様化すればいいというわけではなく，</p>
 
 <blockquote><p>「人の手」という最終兵器が使えない以上，弱点の無い衛星システムは作れず，乱暴に言えば「どの弱点を曝すのが一番マシか」という考え方になる</p>
 
@@ -496,31 +512,6 @@
 <p><a href="http://cse.niaes.affrc.go.jp/minaka/files/SpeciesRIP.html">http://cse.niaes.affrc.go.jp/minaka/files/SpeciesRIP.html</a></p>
 
 <p>正誤表を確認するために著者自身がホストするサイトを訪れたのだが，ここのhtmlファイル名が<strong>「SpeciesRIP」</strong>になっていることに気付いた．これは最終章で語られる種の議論において，ある植物学者がリンネ体系を捨てて新しい命名体系に移行すべきと主張した時の締めくくりの言葉だ．本文では「種よ，安らかに眠りたまえ」という訳となっている．本文では明確には書かれていない(と思う)が，つまるところ種とは愛であり，そして神であるということなのだろう．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「プロのための Linuxシステム・10年効く技術」など，Linuxやプログラミング周りの読書をいくつか]]></title>
-    <link href="http://yagays.github.com/blog/2012/06/23/review-shell/"/>
-    <updated>2012-06-23T15:12:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/06/23/review-shell</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774151432" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4904807049" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0086W5MI4" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774151041" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<p><strong>「プロのための Linuxシステム・10年効く技術」</strong>はまだ読んでいる最中だが，Linux中級・上級者向けの解説書として非常に良さそうな印象を受ける．普段自分が扱う範囲のシェルコマンドやLinuxの基本的な知識は問題無いけれども，そこから次に行けないといった人，コマンドの詳細な動作を理解していない人，システムの込み入った問題になると手が出せないような人向けのような感じだ．本書の内容としては，Linuxの内部構造から始まり，仮想化，シェルスクリプトの書き方，最後にはカーネルのソースまで読み解くところまで突き進むが，ざっと見た限りでは他の技術書などと比べてかなりわかりやすく丁寧に書かれているようだ．読み通す気力は無くとも，トピックをかいつまむだけでもだいぶ基礎力が付くだろうと思う．</p>
-
-<p><strong>「覚えて便利 いますぐ使える!シェルスクリプトシンプルレシピ54」</strong>も上の本と同様に，シェルスクリプトは書けるけれども少し複雑なことをしようとすると途端に手が止まってしまうような人向けのレシピ本になっている．内容は非常によく纏まっており，ざっと見ても知らないコマンドやすぐ使えそうなコマンドがいくつかあった．まあ個人的には，がっつりシェルスクリプトを書くというのはスパコンでSGE(UGE)アレイジョブを流す時くらいなのだが&#8230;．といっても，もっとスマートに簡潔に書きたいと常々思いつつ結局泥臭い感じでその場しのぎを繰り返していたので，今度からはレシピ本を見つつ少しずつ書き方を変えていきたいところ．</p>
-
-<p><strong>「Software Design」</strong>と<strong>「WEB+DB PRESS」</strong>はいつも通り気になるところをざっと読み流し．やっぱり雑誌という紙媒体で様々な情報を纏まった形として俯瞰できるというのは，知りたい情報だけを見るようなネットの記事と比べて，思いがけず得られる情報というものが多くて良い．全く知識の無い分野の内容でも不思議と読んでみるかという気になるのは，やっぱり紙の雑誌だからだろうか．</p>
 ]]></content>
   </entry>
   

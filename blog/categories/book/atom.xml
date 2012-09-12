@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Book | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/book/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-09-09T11:25:48+09:00</updated>
+  <updated>2012-09-12T13:09:15+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -49,7 +49,7 @@
 
 <p><a href="http://d.hatena.ne.jp/nyanp/20110411/p1">人工衛星を作るときに気を付けること - Lagrangian point L2</a></p>
 
-<p>人工衛星は一度飛ばしたらハードウェアに関して全く手がつけられないという点で究極のロバストさが必要とされるものだと思うのだが，そのアプローチがなかなか面白い．当然色々な工夫をして故障や事故に備えるのだが，単純に基盤を多く載せたり回路を多様化すればいいというわけではなく，</p>
+<p>人工衛星は一度飛ばしたらハードウェアに関して全く手がつけられないという点で究極のロバストさが必要とされるものだと私は思うのだが，そのアプローチがなかなか面白い．当然色々な工夫をして故障や事故に備えるのだが，単純に基盤を多く載せたり回路を多様化すればいいというわけではなく，</p>
 
 <blockquote><p>「人の手」という最終兵器が使えない以上，弱点の無い衛星システムは作れず，乱暴に言えば「どの弱点を曝すのが一番マシか」という考え方になる</p>
 
