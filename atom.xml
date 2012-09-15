@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-09-14T06:23:44+09:00</updated>
+  <updated>2012-09-15T23:55:25+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「H5N1―強毒性新型インフルエンザウイルス日本上陸のシナリオ」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/09/15/review-h5n1/"/>
+    <updated>2012-09-15T23:54:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/09/15/review-h5n1</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4478002401" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>本書はフィクションでありながら，同時にノンフィクション，想定されうる未来でもある．本文の言葉を借りるならば</p>
+
+<blockquote><p>新型インフルエンザの出現は&#8221;if&#8221;ではなく&#8221;when&#8221;の問題である
+(p.19)</p></blockquote>
+
+<p>なのである．</p>
+
+<p>本書は，東南アジアのある国で起きた鳥インフルエンザの人への感染と強毒化を起点し，そのインフルエンザウィルスがどのようにして感染を拡大し日本に上陸してパンデミックを起こすかを，歴史的・科学的知見を元に克明に記したシミュレーションである．インフルエンザウィルスといっても，毎年のように冬になると家族や職場の同僚が罹るようなインフルエンザウィルスではない．最も重要なのは，それが新型でありワクチンがまだ世に存在しないこと，そして強毒性のため感染者に重大な多臓器不全を起こすということである．そのようなウィルスは，有病者から空気を媒介して他人に感染する．ウィルスは数日の潜伏期間があるため，感染者は必ずしも病気の症状が出ているわけではない．そのような人知れずウィスルを保持する感染者が，科学という検疫の目すらもかいくぐって，空港，鉄道，バス，職場，そして家庭へとウィルスをばらまき，新たな感染者を生み出し，そして大規模な感染拡大へとつながっていく．</p>
+
+<p>本書で描かれるのは主に感染症研究所の研究員や病院の医者，保健所職員，空港の検疫官など，職業としてインフルエンザウィルスと対峙していく人間だ．彼ら/彼女らの奮闘も虚しく無慈悲にも感染は拡大していくのだが，そこから見えてくるのは，市民の感染症への無知と政府地方自治体の準備不足，そして刻々と死者が増えていく無残な現実だ．インフルエンザウィルスに対して何も対処出来ない感染者，市民，医療従事者，病院，そして政府．様々な不条理に対する苛立ちと無力感，もどかしさなど，本書が読書に訴えかけるものは様々だ．</p>
+
+<p>2011年公開の映画「<a href="http://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%86%E3%82%A4%E3%82%B8%E3%83%A7%E3%83%B3">コンテイジョン</a>」も，強毒性新型ウィルスがアメリカ全土に感染拡大していく中で起こる様々な人間模様を描いた映画であり，本書と非常によく似た作品で共通点も多い．この映画はアメリカ疾病予防管理センター（CDC）や専門家などの協力を得て作成されており，また本書の著者は国立感染症研究所研究員と，どちらも医科学的なリアリティを持ちながらも，同時に小説としての緻密さや現実感を伴って見事に描き切っている．私は映画を見てから本書の存在を知り，今更ながら読んだわけだが，どちらも綿密に練られたストーリーと科学的な裏付けがされた，とても良い作品だった．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「『言語技術』が日本のサッカーを変える」読了]]></title>
@@ -500,22 +523,6 @@
 
 <p>「<a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22">パターン認識と機械学習 上</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」や「<a href="http://www.amazon.co.jp/gp/product/4621061240/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061240&linkCode=as2&tag=yagays-22">パターン認識と機械学習 下 (ベイズ理論による統計的予測)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061240" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 」などで知られるPRMLの副読本を入手．中身は殆ど公開されているものと同じということだが，書きおろしが少しあるということと，あとは記念ということで購入した．既に公開されているpdfについては印刷して至る所にメモを書きまくっているのだが，この本は大事に取っておこうと思う．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「数学で犯罪を解決する」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/07/03/review-numbers/"/>
-    <updated>2012-07-03T18:34:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/07/03/review-numbers</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=447800420X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>本書はタイトルでハッキリとわかるように「数学で犯罪を解決する話！」の一言で表されて身も蓋もないのだが，中で紹介されているトピックは非常に豊富で多岐にわたる．統計の基礎から始まり，ニューラルネットや画像処理，データマイニング，ベイズ統計や暗号など，数学といっても理論をこねる退屈な感じではなく，犯罪捜査でいかに数学が実用的に使われてるかが分かりやすく書かれている．犯罪捜査の花形といえば敏腕刑事や名探偵などを思い浮かべるが，本書では登場するのは地味な数式や確率などの数学理論だ．町中で犯人を追いかけたり名推理で犯人を追い詰めたりといったことはなく，数学で手がかりや問題の兆候など解決の糸口を提示するだけだ．だが，複雑な現象から技巧的な数学テクニックを使ってパターンを見つけ出したり犯人像をあぶり出す様は，刑事モノや推理小説に引けをとらない爽快感や喜びがある．</p>
-
-<p>この本は元々海外ドラマ「NUMB3RS」(ナンバーズ)の解説として書かれているが，ドラマを見ていなくても読めるような作りになっている．ドラマの解説として紹介されている事例はどれも面白いものばかりだったが，個人的に思うに，この本で見所となるのは「訳者あとがき」だろう．訳者の山形浩生がFurther Readingの趣旨の文章を25ページほど書いており，原著者の経歴や各トピックに関して深く理解するための参考書などが紹介されていたり，本文で詳しく述べられなかった部分についての補足がされている．さすが山形浩生といったところで，それぞれの分野について私見を交えつつ特徴をうまく捉えた解説がされている．本に出てくるトピックについて多少知見があれば，ここを眺めるだけでもなかなか面白い．</p>
-
-<p>早くドラマNUMB3RSの方も見なくては…．</p>
 ]]></content>
   </entry>
   
