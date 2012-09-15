@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-09-16T00:07:41+09:00</updated>
+  <updated>2012-09-16T02:32:00+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「スーパーコンピューターを20万円で創る」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/09/16/review-supercomputer/"/>
+    <updated>2012-09-16T02:24:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/09/16/review-supercomputer</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4087203956" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>以前「情熱大陸」という番組で理論天文学者である小久保英一郎がTVで語った言葉が，今でも強く印象に残っている．その言葉が番組のページに残っているので少し眺めに引用させてもらうと，</p>
+
+<blockquote><p>「探検は知的情熱の肉体的表現である」
+（チェリー・ガラード：スコット南極探検隊）
+僕はこれ、だいッ好きな言葉で。
+もう何ていうか、
+このように生きていきたいと思っているわけです。</p>
+
+<p>「シミュレーションは知的情熱の計算機的表現である」と。</p>
+
+<p>ほんとは僕、探検家になりたかったんですけど。
+まあなかなかそういう世の中でもないので、
+知的な探検をする、と。
+で、道具はスーパーコンピュータということでやっています。</p>
+
+<p><a href="http://www.mbs.jp/jounetsu/2008/01_20.shtml">http://www.mbs.jp/jounetsu/2008/01_20.shtml</a></p></blockquote>
+
+<p>と，計算機シミュレーションを端的に素晴らしい言葉で言い表している．本書「スーパーコンピューターを20万円で創る」は，小久保英一郎がスーパーコンピューターGRAPEの開発に参加する少し前，まだスーパーコンピューターというものが企業主導の大資本で大規模開発されていた頃に，重力多体問題のシミュレーションを行うために自力でスーパーコンピューターを組み上げた研究者たちの実話の物語となっている．</p>
+
+<p>内容はかなり大雑把に物語を追いかける形となっており細かい部分に少し物足りなさは感じるものの，それでも当時の研究者の熱意や苦悩がひしひしと伝わってくる．私自身も今現在彼らと同じような立場にあるのだが，自分の境遇と似た部分も多く，非常に勇気づけられると同時に研究への情熱を奮い立たせられるような作品だった．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「H5N1―強毒性新型インフルエンザウイルス日本上陸のシナリオ」読了]]></title>
@@ -505,24 +536,6 @@
 <p>ジョン・メイナード=スミスの生物学啓蒙書．生命の定義から始まり，進化学，遺伝学，神経科学，生態学，発生学まで，生物学全般を広く浅く取り扱った本で，非常に基本的な概念を話の流れに沿って丁寧に解説している．原書のタイトルは&#8221;THE PROBLEMS OF BIOLOGY&#8221;とあり，まえがきでジョン・メイナード=スミスがハッキリと書いている通り，生物に対する問題提起というのは何を以ってして生物の理解と捉えるかといった全体論と還元論的な意味で非常に難しい部分だ．本書では中立的な立場を取っており，その両方から攻めることで最終的に中央にある真の理解に辿り着けるという理念のもとで，本の中で何を話して何を話さないかということが慎重に述べられている．統一的に生物を扱うことの難しさは非常によく分かるし，ましてや一般書として生物の基礎の基礎から解説しようというものだから，まえがきで各方面に異常なほど配慮しているのは仕方がないのだろう．</p>
 
 <p>内容としては簡潔に纏められている印象はあるが，じゃあ今敢えてジョン・メイナード=スミスのこの本書を読む意味があるかと考えると，正直なところ考えこんでしまう．生物学を俯瞰する意味ではどの点を取っても現在ならもっと良い本が出ているだろうし，ジョン・メイナード=スミスの哲学はもっと研究よりの本を読まなければ垣間見ることが出来ないだろう．本書が出版されて20年経った今となっては，宙に浮いた感じの対象の定まらない本だと言える．とは言っても，それこそ上に書いたような問題と同じように，各論ばかりに目が行き過ぎていて総論として纏めることの重要性や意義などを過小評価しているのかもしれず，読んでいて非常に判断に困る感じがした．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「パターン認識と機械学習の学習」購入]]></title>
-    <link href="http://yagays.github.com/blog/2012/07/07/review-prml-learning/"/>
-    <updated>2012-07-07T08:43:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/07/07/review-prml-learning</id>
-    <content type="html"><![CDATA[<p><img src="http://dl.dropbox.com/u/142306/b/prml_learning.png" alt="" /></p>
-
-<ul>
-<li><a href="http://prml.in/">http://prml.in/</a></li>
-<li><a href="https://github.com/herumi/prml">https://github.com/herumi/prml</a></li>
-</ul>
-
-
-<p>「<a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22">パターン認識と機械学習 上</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」や「<a href="http://www.amazon.co.jp/gp/product/4621061240/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061240&linkCode=as2&tag=yagays-22">パターン認識と機械学習 下 (ベイズ理論による統計的予測)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061240" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-」などで知られるPRMLの副読本を入手．中身は殆ど公開されているものと同じということだが，書きおろしが少しあるということと，あとは記念ということで購入した．既に公開されているpdfについては印刷して至る所にメモを書きまくっているのだが，この本は大事に取っておこうと思う．</p>
 ]]></content>
   </entry>
   
