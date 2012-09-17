@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-09-16T03:17:26+09:00</updated>
+  <updated>2012-09-17T09:53:34+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「さっさと不況を終わらせろ」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/09/17/review-enddepression/"/>
+    <updated>2012-09-17T09:31:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/09/17/review-enddepression</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4152093129" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>うーん，やっぱり経済学は難しい．僕の知識はスティグリッツの入門経済学くらいで止まってて，大学での興味は経済学よりマーケティングの方に傾いちゃったから，そもそも基礎の辺りで分かってないんだろうなと思うことが多い．本書なんかはその点かなり分かりやすく書かれているんだろうとは思うんだけど，ベビーシッター協同組合の上手い喩えから抜けだしたあたりの，じゃあFRBや政府や投資銀行やらの具体的な政策の話に入ると，どうしても要点がつかみにくくて難しいと感じてしまう．やっぱり経済学という囲いの中での定番の話について知っておかないと，クルーグマンが如何に大胆な提言をしているのかといった部分についても見えてこないんじゃないかという心配もある．</p>
+
+<p>まあそれでも経済学は面白い．ヒトの物々交換が何でこんな複雑怪奇で実感とかけ離れたところまで来てしまったんだという歴史的なところから，その裏に隠れた経済活動を加速するための巧妙な仕組み，そして現実世界で今起こっている現象に対して頭のいい人たちがよってたかって集まって殴り合っている様はどれも非常に面白い．あとは「<a href="http://www.amazon.co.jp/gp/product/4492313788/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4492313788&linkCode=as2&tag=yagays-22">ヤバい経済学</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4492313788" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のような日常に落とし込んだ経済学も，それはそれで実感レベルでの驚きがあって良い．経済学という人間の経済活動を研究すること自体，ドライバーが自分のポンコツ車を高速で走らせたまま修理するようなもので（これ何の喩えだっけ），それにしても本当に難しい学問だとも感じる．</p>
+
+<p>本書は，リーマン・ショック以降の現在のアメリカおよびユーロ圏の経済停滞において「これからどうするのか？」という問題を，過去の大恐慌やその時代のジョン・メイナード・ケインズの研究を軸に考えていこうという内容となっている．もちろん政府やFRBのバーナンキなどはどうにかして停滞を脱しようとしているわけだが，その政策はまだまだ甘い，効果が稀薄だとクルーグマンは主張する．</p>
+
+<p>さて，本書に関してはまあざっと読んで付箋をペタペタ貼りまくって一応は通読したわけだけど，取り敢えず外堀を埋めるという意味でも，もうちょっと経済学の基礎の部分を勉強していきたいところ．いくつか既に本は買ってあるし，スティグリッツの教科書もまだ残っているので，どういう感じで攻めていこうか考え中．</p>
+
+<p>あと，先日のニコニコ生放送の宮崎哲弥x山形浩生x田中秀臣は本書を読む上で参考になった．
+- <a href="http://live.nicovideo.jp/watch/lv107129123">http://live.nicovideo.jp/watch/lv107129123</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「スーパーコンピューターを20万円で創る」読了]]></title>
@@ -60,7 +81,7 @@
 
 <p>本書はフィクションでありながら，同時にノンフィクション，想定されうる未来でもある．本文の言葉を借りるならば</p>
 
-<blockquote><p>新型インフルエンザの出現は&#8221;if&#8221;ではなく&#8221;when&#8221;の問題である
+<blockquote><p>新型インフルエンザの出現は&#8221;if&#8221;ではなく&#8221;when&#8221;の問題
 (p.19)</p></blockquote>
 
 <p>なのである．</p>
@@ -528,20 +549,6 @@
 <li><a href="http://atnd.org/events/30181">http://atnd.org/events/30181</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「生物学のすすめ」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/07/10/review-problems-of-biology/"/>
-    <updated>2012-07-10T13:11:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/07/10/review-problems-of-biology</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=431400536X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>ジョン・メイナード=スミスの生物学啓蒙書．生命の定義から始まり，進化学，遺伝学，神経科学，生態学，発生学まで，生物学全般を広く浅く取り扱った本で，非常に基本的な概念を話の流れに沿って丁寧に解説している．原書のタイトルは&#8221;THE PROBLEMS OF BIOLOGY&#8221;とあり，まえがきでジョン・メイナード=スミスがハッキリと書いている通り，生物に対する問題提起というのは何を以ってして生物の理解と捉えるかといった全体論と還元論的な意味で非常に難しい部分だ．本書では中立的な立場を取っており，その両方から攻めることで最終的に中央にある真の理解に辿り着けるという理念のもとで，本の中で何を話して何を話さないかということが慎重に述べられている．統一的に生物を扱うことの難しさは非常によく分かるし，ましてや一般書として生物の基礎の基礎から解説しようというものだから，まえがきで各方面に異常なほど配慮しているのは仕方がないのだろう．</p>
-
-<p>内容としては簡潔に纏められている印象はあるが，じゃあ今敢えてジョン・メイナード=スミスのこの本書を読む意味があるかと考えると，正直なところ考えこんでしまう．生物学を俯瞰する意味ではどの点を取っても現在ならもっと良い本が出ているだろうし，ジョン・メイナード=スミスの哲学はもっと研究よりの本を読まなければ垣間見ることが出来ないだろう．本書が出版されて20年経った今となっては，宙に浮いた感じの対象の定まらない本だと言える．とは言っても，それこそ上に書いたような問題と同じように，各論ばかりに目が行き過ぎていて総論として纏めることの重要性や意義などを過小評価しているのかもしれず，読んでいて非常に判断に困る感じがした．</p>
 ]]></content>
   </entry>
   

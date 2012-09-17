@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Book | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/book/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-09-16T03:17:26+09:00</updated>
+  <updated>2012-09-17T09:53:34+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「さっさと不況を終わらせろ」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/09/17/review-enddepression/"/>
+    <updated>2012-09-17T09:31:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/09/17/review-enddepression</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4152093129" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>うーん，やっぱり経済学は難しい．僕の知識はスティグリッツの入門経済学くらいで止まってて，大学での興味は経済学よりマーケティングの方に傾いちゃったから，そもそも基礎の辺りで分かってないんだろうなと思うことが多い．本書なんかはその点かなり分かりやすく書かれているんだろうとは思うんだけど，ベビーシッター協同組合の上手い喩えから抜けだしたあたりの，じゃあFRBや政府や投資銀行やらの具体的な政策の話に入ると，どうしても要点がつかみにくくて難しいと感じてしまう．やっぱり経済学という囲いの中での定番の話について知っておかないと，クルーグマンが如何に大胆な提言をしているのかといった部分についても見えてこないんじゃないかという心配もある．</p>
+
+<p>まあそれでも経済学は面白い．ヒトの物々交換が何でこんな複雑怪奇で実感とかけ離れたところまで来てしまったんだという歴史的なところから，その裏に隠れた経済活動を加速するための巧妙な仕組み，そして現実世界で今起こっている現象に対して頭のいい人たちがよってたかって集まって殴り合っている様はどれも非常に面白い．あとは「<a href="http://www.amazon.co.jp/gp/product/4492313788/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4492313788&linkCode=as2&tag=yagays-22">ヤバい経済学</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4492313788" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のような日常に落とし込んだ経済学も，それはそれで実感レベルでの驚きがあって良い．経済学という人間の経済活動を研究すること自体，ドライバーが自分のポンコツ車を高速で走らせたまま修理するようなもので（これ何の喩えだっけ），それにしても本当に難しい学問だとも感じる．</p>
+
+<p>本書は，リーマン・ショック以降の現在のアメリカおよびユーロ圏の経済停滞において「これからどうするのか？」という問題を，過去の大恐慌やその時代のジョン・メイナード・ケインズの研究を軸に考えていこうという内容となっている．もちろん政府やFRBのバーナンキなどはどうにかして停滞を脱しようとしているわけだが，その政策はまだまだ甘い，効果が稀薄だとクルーグマンは主張する．</p>
+
+<p>さて，本書に関してはまあざっと読んで付箋をペタペタ貼りまくって一応は通読したわけだけど，取り敢えず外堀を埋めるという意味でも，もうちょっと経済学の基礎の部分を勉強していきたいところ．いくつか既に本は買ってあるし，スティグリッツの教科書もまだ残っているので，どういう感じで攻めていこうか考え中．</p>
+
+<p>あと，先日のニコニコ生放送の宮崎哲弥x山形浩生x田中秀臣は本書を読む上で参考になった．
+- <a href="http://live.nicovideo.jp/watch/lv107129123">http://live.nicovideo.jp/watch/lv107129123</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「H5N1―強毒性新型インフルエンザウイルス日本上陸のシナリオ」読了]]></title>
@@ -23,7 +44,7 @@
 
 <p>本書はフィクションでありながら，同時にノンフィクション，想定されうる未来でもある．本文の言葉を借りるならば</p>
 
-<blockquote><p>新型インフルエンザの出現は"if"ではなく"when"の問題である
+<blockquote><p>新型インフルエンザの出現は"if"ではなく"when"の問題
 (p.19)</p></blockquote>
 
 <p>なのである．</p>
@@ -92,22 +113,6 @@
 <p>こことは別の個人的な雑文置き場のblogに，この本の逸話にまつわる話を少し書いた．上の文章よりも意外によく纏まってしまったので差し替えようかとも思ったが，取り敢えず別の話なのでそのままにしておく．</p>
 
 <p><a href="http://yag-ays.hatenablog.com/entry/2012/09/12/142735">http://yag-ays.hatenablog.com/entry/2012/09/12/142735</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「世界でもっとも強力な9のアルゴリズム」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/09/09/review-nine-algorithms/"/>
-    <updated>2012-09-09T01:14:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/09/09/review-nine-algorithms</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=482228493X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>題名は少し語弊があるし，あまりにも意訳しすぎている．原題"Nine Algorithms that Changed the Future: The Ingenious Ideas that Drive Today's Computers"を見てもらえればわかるとおり，本書で取り上げられているアルゴリズムはどれも，1930年以降の計算機科学の勃興において中心的な役割を果たしたものから，近年のビッグデータなどに伴う大規模情報処理の手法に至るまで，現在の情報社会に強く影響を与え続けているものばかりだ．それらを9つの分類に分けて，それぞれ具体例を用いて分かりやすく解説したのが本書である．対象としているアルゴリズムは主に，Webの検索エンジンやページランクに始まり，セキュリティにまつわる公開鍵暗号やデジタル署名，データの取り扱いにまつわるデータベースやデータ圧縮，さらには機械学習に代表されるパターン認識まで，アルゴリズムというトピックに縛られることなく情報理論や計算機科学などを広くまたぐような形で選ばれている．また，10章「決定不可能性とはなにか」では停止性問題に関わる話題も組み込まれており，ただのアルゴリズムの事例紹介だけに留まらないことがわかる．</p>
-
-<p>上に書いた通り，本書には様々な話題が詰め込まれているが，それを300ページ足らずの本で理論から応用まで網羅することなど不可能なことは明らかだろう．アルゴリズムの根本的な仕組みは丁寧に解説されるが，実際にどういう形で使われているかといった詳細な部分に関しては省かれている場合が多い．このような内容に関して，何を書いて何を書いていないかといったことはイントロダクションで詳しく述べられており，普段何気なくコンピューターや携帯を使っている人に，その裏で使われているアルゴリズムを少しでも意識してもらいたいという趣旨で書かれているようだ．そういった点で，アルゴリズムがどこで使われているか，何を目的としているか，どのような仕組みで実現しているのかといった要点は非常に上手くまとまっている．その反面，ある程度情報理論やプログラミングに明るい人が読むと，少し物足りなさを感じるだろうと思う．アルゴリズムの歴史などは面白いかもしれないが，それ以外の部分はかなり初歩的な内容の復習になってしまう．知っているところは読み飛ばしたり，アルゴリズムの説明の仕方や具体例を学ぶといった割り切りが必要になってくる．個人的にはmodを時計に喩えて説明している箇所がなるほどといった感じだったが，人に説明するときは使えても自分で読む文には逆に辛いものがある．</p>
-
-<p>題名だけ見ると安いまとめサイトみたいな印象だが，内容は確かだ．非インターネット世代向けの啓蒙書，またはインターネット世代がこれから勉強するキッカケとなるような入門書だと言える．</p>
 ]]></content>
   </entry>
   
