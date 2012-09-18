@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-09-18T13:20:53+09:00</updated>
+  <updated>2012-09-18T21:46:57+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「ヤバい経済学」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/09/18/review-freakonomics/"/>
+    <updated>2012-09-18T21:21:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/09/18/review-freakonomics</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4492313788" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>映画「ヤバい経済学」は，結論から言って良くも悪くもない普通の映画だった．ネタはだいたい原書から持ってきているので当然面白くないわけがないんだけれども，どうも映像でコンパクトに見せられるとイマイチ面白みが伝わってこないのが残念で仕方がなかった．その原因はおそらく議論の過程が示されないからで，ああでもないこうでもないと反論の応酬や論理の組み上げ方が見えにくいのが問題だと思うのだが，かといって学者が円卓に座って延々人の話もろくに聞かずに議論しあうのを見ても全然面白く無いし…．Steven D. Levittが喋ってる映像を見られたのは良かったけど，具体的な事例は本読んだほうがいいよねという印象．</p>
+
+<p>というわけで映画はあまり冴えない感じだったけど，本書「ヤバい経済学」は出版されてから5年立った現在でもその驚きは色褪せていない．経済学と統計資料を武器に社会通念を次々と覆していく様はまさに爽快そのものだ．不動産屋の売り言葉は本当なのかどうかといった話題から，学校の先生のインチキ，ドラッグの売人が儲かるかどうかに至るまで，ある意味下世話な，ある意味で人々が気づきもしなかった現象について解き明かしてくれる．しかし同時に，読者にとって不都合な真実も突きつけられることになる．日本の相撲界の八百長話や中絶の是非と犯罪率の相関，そして子供の名前と子供の将来など，薄々気付いてはいても認めたくないような結論も含まれる．ただ，じゃあ本書で述べられている議論はみんな正しいからその通りに観たり感じたり接したりしなければいけないのか，と言われれば，そういうわけでは無いというのが本書の最終的な主張だ．最終章のまとめで触られれているように，</p>
+
+<blockquote><p>道徳が私達の望む世界のあり方を映しているのだとすると，経済学が映しているのは世の中の実際のあり方だ．</p>
+
+<p>(p.268)</p></blockquote>
+
+<p>とすると，私達が考えるべきことは世の中の実際のあり方から私達の望む世界へと適切にフィードバックしていくことだ．それに，個別の例で見ていけば必ずしも統計的な結論とはそぐわないことが出てくることも，念を押すかのように最後に書かれている．ある種の希望のような終わり方であり，また改めて現実を突きつけられているようでもある．</p>
+
+<br/>
+
+
+<p>そういえば，上の文章を書き終えた後に，ちょういいタイミングで山形浩生が本書について言及していたので，それについてもちょっと書き加えておこう．</p>
+
+<p>どうやら中絶の合憲判定とアメリカの犯罪低下については最終的に間違いだったらしいことが分かっているとのこと．この話題は本書の核のような話題だけに，もしそうだとすると少し残念だ．じゃあ何が原因で犯罪の低下につながったのかが気になるところだが，リンク先の論文のAbstを見る限りだと間違いの指摘しか書いてなさそうなので，その辺は追えていない．これを受けてのLevittの新しい見解がきになるところだが，また本でも書いてその中で言及して欲しいところ．</p>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/wlj-Friday/20120918/1347949754">http://d.hatena.ne.jp/wlj-Friday/20120918/1347949754</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「さっさと不況を終わらせろ」読了]]></title>
@@ -530,27 +562,6 @@
 
 <ul>
 <li><a href="http://cruel.org/books/books.html">http://cruel.org/books/books.html</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[PRML復々習レーン#3で発表しました]]></title>
-    <link href="http://yagays.github.com/blog/2012/07/18/re-revenge-prml-3/"/>
-    <updated>2012-07-18T10:12:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/07/18/re-revenge-prml-3</id>
-    <content type="html"><![CDATA[<p>「パターン認識と機械学習」勉強会の復々習レーン#3で，3章の頭を担当しました．資料はslideshareにアップロードしています．</p>
-
-<div style="width:427px" id="__ss_13661580"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/yag_ays/re-revenge-chap031" title="Re revenge chap03-1" target="_blank">Re revenge chap03-1</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/13661580" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0" allowfullscreen></iframe> <div style="padding:5px 0 12px"> View more presentations from <a href="http://www.slideshare.net/yag_ays" target="_blank">yag ays</a> </div> </div>
-
-
-<p>3章の頭は線形回帰モデルの導入部分でPRMLの中では簡単な部類のところなのですが，きちんと説明しようとすればするほど自分の理解がいかに曖昧なものだったか思い知らされるばかりで，非常に勉強になりました．特に「§3.1.最小二乗法の幾何学」に関しては参加者の皆様に頼りっきりという何とも情けない感じになってしまったのですが，懇切丁寧に教えていただいたおかげで何とか図の直感的理解くらいはできるようになりました．これに関しては，その場で指摘していただいたことと自分の解釈をこねくり回しつつある程度纏めたものを，スライドの最後に補足として付け加えてあります．とは言っても，本文に書かれている数式は全くといっていいほど追いきれていないので，「学習の学習」とにらめっこしつつ，もう少し理解を深めたいと思います．</p>
-
-<p>次回もよろしくお願いします．</p>
-
-<ul>
-<li><a href="http://atnd.org/events/30181">http://atnd.org/events/30181</a></li>
 </ul>
 
 ]]></content>
