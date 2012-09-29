@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-09-29T16:22:44+09:00</updated>
+  <updated>2012-09-30T04:23:47+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -106,6 +106,14 @@
 
 
 <p>とすると，/path/to/pdf_dir/にあるpdfファイルがすべて幅100pxのjpgファイルとなって/path/to/out_dirに保存される．今回始めてsipsを使ってみたのだが，フォーマット変換やリサイズに関してはImageMagickと同様の便利さでなかなか良かった．まあ今回は速度とかは特に気にしていないので手軽に出来ればそれで良い．</p>
+
+<p>そして，最終的なSphinxのビルドはmake htmlで出力する先をDropboxのPublicフォルダに設定する．Makefileの中にあるBUILDDIRを</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>BUILDDIR = /Users/yag_ays/Dropbox/Public/path/to/dir/</span></code></pre></td></tr></table></div></figure>
+
+
+<p>とすると，静的な画像ファイルなども含めてPublicの指定ディレクトリ以下に展開される．</p>
 
 <h3>問題点</h3>
 
