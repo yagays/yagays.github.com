@@ -137,9 +137,9 @@
 
 <p>本を裁断してpdfにする自炊というものをやり始めて1年以上が経ち，自炊したpdfも350冊・35GBを超えてしまった．手持ちのiPadには全部の書籍が入りきらなくなってしまい，終いには自炊した本のことを忘れて中古で買い直す始末．そんなこんなで，自炊した書籍のpdfをまとめる本棚みたいなものが欲しくなってきた．手の込んだものはいらないので，表紙をざっと眺めたり，タイトルと著者を検索できる程度のもので簡単に済ませたい．</p>
 
-<p>というわけで，Sphinxで静的htmlを吐き出してDropBoxのPublicフォルダで限定公開するようなシステムを簡単に組んでみた．SphinxはPythonで書かれたドキュメンテーションツールで，rst形式のテキストから静的なhtmlを出力できるほか，jsで簡易な検索もできる．バックグラウンドでスクリプトを動かしたりデータベースを置いておく必要がないので，DropBoxのPublicフォルダみたいな場所でも公開できる便利さがある．今回はそれをメインにして，付加情報として書籍ファイルのISBNを使ってAmazonのProduct Advertising APIを叩いて情報を入手し，書籍カバーの画像と一緒に表示させるようなSphinxのrstファイルを作成するという目論見．</p>
+<p>というわけで，<strong>Sphinxで静的htmlを吐き出してDropBoxのPublicフォルダで公開するようなシステム</strong>を簡単に組んでみた．SphinxはPythonで書かれたドキュメンテーションツールで，rst形式のテキストから静的なhtmlを出力できるほか，jsで簡易な検索もできる．バックグラウンドでスクリプトを動かしたりデータベースを置いておく必要がないので，DropBoxのPublicフォルダみたいな場所でも公開できる便利さがある．今回はそれをメインにして，付加情報として書籍ファイルのISBNを使ってAmazonのProduct Advertising APIを叩いて情報を入手し，書籍カバーの画像と一緒に表示させるようなSphinxのrstファイルを作成するという目論見．今回やってみた限りだとDropBox+Sphinxは連携が案外簡単だったので，この他にも個人的なメモなどの用途にも最適だと思う．</p>
 
-<p>書籍の電子化に関しては色々難しいところがあるのでスクリプトの公開などは控えるようにするが，今回やってみた限りだとDropBox+Sphinxは連携が案外簡単だったので，この他にも個人的なメモなどの用途にも最適だと思う．</p>
+<p>なお，今回のウェブページはリンクを一般に公開しておらず，また書籍pdfはダウンロードできる状態にはしていない．書籍の電子化に関しては色々難しいところがあるのでスクリプトの公開などは控えるようにする．</p>
 
 <!-- more -->
 
@@ -149,8 +149,6 @@
 <p>トップページには直近50件の書籍カバーの画像と，その下には書籍タイトル一覧を表示してある．タイトルで検索するだけならこのページでテキスト検索するだけで済む．</p>
 
 <p>iPhoneとの連携も良好だ．ちなみに今回始めて知ったのだが，iOSのSafariでもテキスト検索ができるらしい．ウェブページを表示した状態で右上の検索ボックスに単語を入力し，出てくる候補の一番下にある&#8221;On This Page&#8221;の候補をクリックすると，Mac OS XのSafariと同様に検索できる．</p>
-
-<p>参考：<a href="http://www.lifehacker.jp/2011/05/110521iphonesafarisearch.html">http://www.lifehacker.jp/2011/05/110521iphonesafarisearch.html</a></p>
 
 <h3>作り方</h3>
 
@@ -229,12 +227,34 @@
 
 <h3>参考</h3>
 
-<p>Sphinxの検索まわりの日本語対応と強化．
-- <a href="http://d.hatena.ne.jp/koyudoon/20120126/1327529750">http://d.hatena.ne.jp/koyudoon/20120126/1327529750</a>
-- <a href="http://note.sicafe.net/sphinx_memo/JapaneaseSearch.html">http://note.sicafe.net/sphinx_memo/JapaneaseSearch.html</a></p>
+<p>Sphinxの検索まわりの日本語対応と強化．</p>
 
-<p>Product Advertising APIはRubyのamazon-ecsを使った．
-- <a href="https://github.com/jugend/amazon-ecs">https://github.com/jugend/amazon-ecs</a></p>
+<ul>
+<li><a href="http://d.hatena.ne.jp/koyudoon/20120126/1327529750">http://d.hatena.ne.jp/koyudoon/20120126/1327529750</a></li>
+<li><a href="http://note.sicafe.net/sphinx_memo/JapaneaseSearch.html">http://note.sicafe.net/sphinx_memo/JapaneaseSearch.html</a></li>
+</ul>
+
+
+<p>Product Advertising APIはRubyのamazon-ecsを使った．</p>
+
+<ul>
+<li><a href="https://github.com/jugend/amazon-ecs">https://github.com/jugend/amazon-ecs</a></li>
+</ul>
+
+
+<p>sipsの詳細</p>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/toolkit/20060726/p1">http://d.hatena.ne.jp/toolkit/20060726/p1</a></li>
+</ul>
+
+
+<p>iPhoneのSafariでページ内検索する方法</p>
+
+<ul>
+<li><a href="http://www.lifehacker.jp/2011/05/110521iphonesafarisearch.html">http://www.lifehacker.jp/2011/05/110521iphonesafarisearch.html</a></li>
+</ul>
+
 </div>
 
 
