@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-09-25T00:21:11+09:00</updated>
+  <updated>2012-09-29T16:04:49+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,118 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[DropBox+Sphinxで電子書籍用の本棚を作ってみた]]></title>
+    <link href="http://yagays.github.com/blog/2012/09/29/sphinx-dropbox-bookshelf/"/>
+    <updated>2012-09-29T14:05:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/09/29/sphinx-dropbox-bookshelf</id>
+    <content type="html"><![CDATA[<p><img src="http://dl.dropbox.com/u/142306/b/bookshelf.png" align="right" hspace="10px"></p>
+
+<h3>きっかけ</h3>
+
+<p>本を裁断してpdfにする自炊というものをやり始めて1年以上が経ち，自炊したpdfも350冊・35GBを超えてしまった．手持ちのiPadには全部の書籍が入りきらなくなってしまい，終いには自炊した本のことを忘れて中古で買い直す始末．そんなこんなで，自炊した書籍のpdfをまとめる本棚みたいなものが欲しくなってきた．手の込んだものはいらないので，表紙をざっと眺めたり，タイトルと著者を検索できる程度のもので簡単に済ませたい．</p>
+
+<p>というわけで，Sphinxで静的htmlを吐き出してDropBoxのPublicフォルダで限定公開するようなシステムを簡単に組んでみた．SphinxはPythonで書かれたドキュメンテーションツールで，rst形式のテキストから静的なhtmlを出力できるほか，jsで簡易な検索もできる．バックグラウンドでスクリプトを動かしたりデータベースを置いておく必要がないので，DropBoxのPublicフォルダみたいな場所でも公開できる便利さがある．今回はそれをメインにして，付加情報として書籍ファイルのISBNを使ってAmazonのProduct Advertising APIを叩いて情報を入手し，書籍カバーの画像と一緒に表示させるようなSphinxのrstファイルを作成するという目論見．</p>
+
+<p>書籍の電子化に関しては色々難しいところがあるのでスクリプトの公開などは控えるようにするが，今回やってみた限りだとDropBox+Sphinxは連携が案外簡単だったので，この他にも個人的なメモなどの用途にも最適だと思う．</p>
+
+<!-- more -->
+
+
+<h3>できたページ</h3>
+
+<p>トップページには直近50件の書籍カバーの画像と，その下には書籍タイトル一覧を表示してある．タイトルで検索するだけならこのページでテキスト検索するだけで済む．</p>
+
+<p>iPhoneとの連携も良好だ．ちなみに今回始めて知ったのだが，iOSのSafariでもテキスト検索ができるらしい．ウェブページを表示した状態で右上の検索ボックスに単語を入力し，出てくる候補の一番下にある&#8221;On This Page&#8221;の候補をクリックすると，Mac OS XのSafariと同様に検索できる．</p>
+
+<p>参考：<a href="http://www.lifehacker.jp/2011/05/110521iphonesafarisearch.html">http://www.lifehacker.jp/2011/05/110521iphonesafarisearch.html</a></p>
+
+<h3>作り方</h3>
+
+<p>基本的に書籍pdfに付けているタイトル「#{data}#{title}.pdf」をそのまま使用している．rstを作る部分はRubyで書いており，ファイル名を抜き出してそれぞれのrstファイルを自動生成している．</p>
+
+<p>メインのindex.rstには，画像を並べる部分と</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>.. image:: _book_thumb/20120927自炊本1.jpg
+</span><span class='line'>   :target: _book_rst/20120927自炊本1.html
+</span><span class='line'>   :width: 100px
+</span><span class='line'>
+</span><span class='line'>.. image:: _book_thumb/20120927自炊本2.jpg
+</span><span class='line'>   :target: _book_rst/20120927自炊本2.html
+</span><span class='line'>   :width: 100px
+</span><span class='line'>
+</span><span class='line'>.. image:: _book_thumb/20120927自炊本3.jpg
+</span><span class='line'>   :target: _book_rst/20120927自炊本3.html
+</span><span class='line'>   :width: 100px
+</span><span class='line'>
+</span><span class='line'>〜〜〜続く〜〜〜</span></code></pre></td></tr></table></div></figure>
+
+
+<p>と，toctreeの部分</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>.. toctree::
+</span><span class='line'>   :maxdepth: 2
+</span><span class='line'>
+</span><span class='line'>   _book_rst/20120927自炊本1
+</span><span class='line'>   _book_rst/20120927自炊本2
+</span><span class='line'>   _book_rst/20120927自炊本3
+</span><span class='line'>   _book_rst/20120927自炊本4
+</span><span class='line'>   _book_rst/20120927自炊本5
+</span><span class='line'>   _book_rst/20120927自炊本6
+</span><span class='line'>
+</span><span class='line'>〜〜〜続く〜〜〜</span></code></pre></td></tr></table></div></figure>
+
+
+<p>を上のように並べているだけ．</p>
+
+<p>また，書籍カバーのサムネイル用の画像はMac OS Xのコマンドラインツールであるsipcを使って生成している．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sips -s format jpeg --resampleWidth 100 --out /path/to/out_dir /path/to/pdf_dir/*.pdf</span></code></pre></td></tr></table></div></figure>
+
+
+<p>とすると，/path/to/pdf_dir/にあるpdfファイルがすべて幅100pxのjpgファイルとなって/path/to/out_dirに保存される．今回始めてsipsを使ってみたのだが，フォーマット変換やリサイズに関してはImageMagickと同様の便利さでなかなか良かった．まあ今回は速度とかは特に気にしていないので手軽に出来ればそれで良い．</p>
+
+<h3>問題点</h3>
+
+<p>最低限の機能さえあれば十分といいつつも，1つだけ気になる点がある．
+それはSphinxの検索があまりよろしくないことだ．どうやら予めテキストをn-gramに分割したものからパターンマッチで検索しているらしく，クエリとして投げる単語によっては検索できたりできなかったりする．このあたりが改良できると，曖昧な記憶の中から本を探すときに便利になるのだが…．</p>
+
+<h3>参考</h3>
+
+<p>Sphinxの検索まわりの日本語対応と強化．
+- <a href="http://d.hatena.ne.jp/koyudoon/20120126/1327529750">http://d.hatena.ne.jp/koyudoon/20120126/1327529750</a>
+- <a href="http://note.sicafe.net/sphinx_memo/JapaneaseSearch.html">http://note.sicafe.net/sphinx_memo/JapaneaseSearch.html</a></p>
+
+<p>Product Advertising APIはRubyのamazon-ecsを使った．
+- <a href="https://github.com/jugend/amazon-ecs">https://github.com/jugend/amazon-ecs</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「外国語を身につけるための日本語レッスン」読了]]></title>
@@ -549,20 +661,6 @@
 
 <script src="http://yagays.github.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「進化が語る 現在・過去・未来　(別冊日経サイエンス185)」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/08/06/review-sciencemagazine-evol/"/>
-    <updated>2012-08-06T22:08:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/08/06/review-sciencemagazine-evol</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4532511852" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>日経サイエンス別冊で進化特集で，過去に日経サイエンスに掲載された記事を中心に纏められている．驚くべきはそのカバーされている分野の広さで，進化学の教養的な話題から，分子生物学と進化学の関係，深海生物から人類の起源まで，分野を横断して専門的なコラムが読めるのは非常に楽しい．一般紙だけあって綺麗な絵や写真が豊富で眺めているだけで楽しいし，記事にはそれぞれ要約(まとめ)や補足コラム，参考資料などが付いていて丁寧な作りになっている．</p>
-
-<p>日経サイエンスは殆ど読んだことがなかったのだが，こんなにちゃんとしてて読みやすいとは思わなかった．本誌もちょくちょく覗いてみようかと思う．</p>
 ]]></content>
   </entry>
   

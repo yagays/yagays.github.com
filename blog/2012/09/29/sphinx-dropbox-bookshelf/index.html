@@ -5,18 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>pigzを使ったgzip並列圧縮 - Wolfeyes Bioinformatics beta</title>
+  <title>DropBox+Sphinxで電子書籍用の本棚を作ってみた - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="pigzという並列でgzip圧縮を行うプログラムがあったので試してみた． インストール 1
-2
-3
-4
-$ wget http://zlib.net/pigz/pigz-2.2.4.tar.gz
-$ tar zxvf pigz-2.2.4.tar.gz
-$ cd pigz-2.2.4
-$ make &hellip;">
+  <meta name="description" content="きっかけ 本を裁断してpdfにする自炊というものをやり始めて1年以上が経ち，自炊したpdfも350冊・35GBを超えてしまった．手持ちのiPadには全部の書籍が入りきらなくなってしまい，終いには自炊した本のことを忘れて中古で買い直す始末．そんなこんなで， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -25,7 +18,7 @@ $ make &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.com/blog/2012/06/15/pigz">
+  <link rel="canonical" href="http://yagays.github.com/blog/2012/09/29/sphinx-dropbox-bookshelf">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -115,7 +108,7 @@ $ make &hellip;">
   
   <header class="page-header">
     
-      <h1 class="entry-title">Pigzを使ったgzip並列圧縮</h1>
+      <h1 class="entry-title">DropBox+Sphinxで電子書籍用の本棚を作ってみた</h1>
     
     
       <p class="meta">
@@ -131,74 +124,117 @@ $ make &hellip;">
   
 
 
-<time datetime="2012-06-15T19:39:00+09:00" pubdate data-updated="true">Jun 15<span>th</span>, 2012</time>
+<time datetime="2012-09-29T14:05:00+09:00" pubdate data-updated="true">Sep 29<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>pigzという並列でgzip圧縮を行うプログラムがあったので試してみた．</p>
+<div class="entry-content"><p><img src="http://dl.dropbox.com/u/142306/b/bookshelf.png" align="right" hspace="10px"></p>
+
+<h3>きっかけ</h3>
+
+<p>本を裁断してpdfにする自炊というものをやり始めて1年以上が経ち，自炊したpdfも350冊・35GBを超えてしまった．手持ちのiPadには全部の書籍が入りきらなくなってしまい，終いには自炊した本のことを忘れて中古で買い直す始末．そんなこんなで，自炊した書籍のpdfをまとめる本棚みたいなものが欲しくなってきた．手の込んだものはいらないので，表紙をざっと眺めたり，タイトルと著者を検索できる程度のもので簡単に済ませたい．</p>
+
+<p>というわけで，Sphinxで静的htmlを吐き出してDropBoxのPublicフォルダで限定公開するようなシステムを簡単に組んでみた．SphinxはPythonで書かれたドキュメンテーションツールで，rst形式のテキストから静的なhtmlを出力できるほか，jsで簡易な検索もできる．バックグラウンドでスクリプトを動かしたりデータベースを置いておく必要がないので，DropBoxのPublicフォルダみたいな場所でも公開できる便利さがある．今回はそれをメインにして，付加情報として書籍ファイルのISBNを使ってAmazonのProduct Advertising APIを叩いて情報を入手し，書籍カバーの画像と一緒に表示させるようなSphinxのrstファイルを作成するという目論見．</p>
+
+<p>書籍の電子化に関しては色々難しいところがあるのでスクリプトの公開などは控えるようにするが，今回やってみた限りだとDropBox+Sphinxは連携が案外簡単だったので，この他にも個人的なメモなどの用途にも最適だと思う．</p>
 
 <!-- more -->
 
 
-<h2>インストール</h2>
+<h3>できたページ</h3>
+
+<p>トップページには直近50件の書籍カバーの画像と，その下には書籍タイトル一覧を表示してある．タイトルで検索するだけならこのページでテキスト検索するだけで済む．</p>
+
+<p>iPhoneとの連携も良好だ．ちなみに今回始めて知ったのだが，iOSのSafariでもテキスト検索ができるらしい．ウェブページを表示した状態で右上の検索ボックスに単語を入力し，出てくる候補の一番下にある&#8221;On This Page&#8221;の候補をクリックすると，Mac OS XのSafariと同様に検索できる．</p>
+
+<p>参考：<a href="http://www.lifehacker.jp/2011/05/110521iphonesafarisearch.html">http://www.lifehacker.jp/2011/05/110521iphonesafarisearch.html</a></p>
+
+<h3>作り方</h3>
+
+<p>基本的に書籍pdfに付けているタイトル「#{data}#{title}.pdf」をそのまま使用している．rstを作る部分はRubyで書いており，ファイル名を抜き出してそれぞれのrstファイルを自動生成している．</p>
+
+<p>メインのindex.rstには，画像を並べる部分と</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ wget http://zlib.net/pigz/pigz-2.2.4.tar.gz
-</span><span class='line'>$ tar zxvf pigz-2.2.4.tar.gz
-</span><span class='line'>$ cd pigz-2.2.4
-</span><span class='line'>$ make</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>.. image:: _book_thumb/20120927自炊本1.jpg
+</span><span class='line'>   :target: _book_rst/20120927自炊本1.html
+</span><span class='line'>   :width: 100px
+</span><span class='line'>
+</span><span class='line'>.. image:: _book_thumb/20120927自炊本2.jpg
+</span><span class='line'>   :target: _book_rst/20120927自炊本2.html
+</span><span class='line'>   :width: 100px
+</span><span class='line'>
+</span><span class='line'>.. image:: _book_thumb/20120927自炊本3.jpg
+</span><span class='line'>   :target: _book_rst/20120927自炊本3.html
+</span><span class='line'>   :width: 100px
+</span><span class='line'>
+</span><span class='line'>〜〜〜続く〜〜〜</span></code></pre></td></tr></table></div></figure>
 
 
-<p><a href="http://zlib.net/pigz/">公式サイト</a>からソースを落としてきてコンパイルする．これでpigzとunpigzが生成される．</p>
-
-<h2>使い方</h2>
-
-<p>圧縮する対象が単一ファイルかディレクトリかで使い方を分ける必要がある．今回の例ではスレッド数を4とし，圧縮するファイル/ディレクトリをFILE/DIRという名前にしている．</p>
-
-<h3>単一ファイルの場合</h3>
+<p>と，toctreeの部分</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ pigz -p 4  FILE</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>.. toctree::
+</span><span class='line'>   :maxdepth: 2
+</span><span class='line'>
+</span><span class='line'>   _book_rst/20120927自炊本1
+</span><span class='line'>   _book_rst/20120927自炊本2
+</span><span class='line'>   _book_rst/20120927自炊本3
+</span><span class='line'>   _book_rst/20120927自炊本4
+</span><span class='line'>   _book_rst/20120927自炊本5
+</span><span class='line'>   _book_rst/20120927自炊本6
+</span><span class='line'>
+</span><span class='line'>〜〜〜続く〜〜〜</span></code></pre></td></tr></table></div></figure>
 
 
-<p>とするとpigzで圧縮することができる．この場合にはFILEがそのままFILE.gzとなる．圧縮するファイル自体を残しておきたい場合には，-kのオプションを付けることで別途圧縮ファイルを作成することができる．</p>
+<p>を上のように並べているだけ．</p>
 
-<h3>ディレクトリの場合</h3>
+<p>また，書籍カバーのサムネイル用の画像はMac OS Xのコマンドラインツールであるsipcを使って生成している．</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ tar c DIR | pigz -p 4 &gt; DIR.tar.gz</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sips -s format jpeg --resampleWidth 100 --out /path/to/out_dir /path/to/pdf_dir/*.pdf</span></code></pre></td></tr></table></div></figure>
 
 
-<p>ディレクトリをそのまま圧縮する場合は，<strong>tarで一度ディレクトリを固めてからpigzに渡して圧縮する</strong>．なお，tarで固めずにpigz -r DIRなどとしてしまうと，ディレクトリ内の全部のファイルがそれぞれ個別に圧縮されるので注意が必要．</p>
+<p>とすると，/path/to/pdf_dir/にあるpdfファイルがすべて幅100pxのjpgファイルとなって/path/to/out_dirに保存される．今回始めてsipsを使ってみたのだが，フォーマット変換やリサイズに関してはImageMagickと同様の便利さでなかなか良かった．まあ今回は速度とかは特に気にしていないので手軽に出来ればそれで良い．</p>
 
-<h2>動いている様子</h2>
+<h3>問題点</h3>
 
-<p>スレッド数を16にしてpigzを動かしているところをhtopで見ている．</p>
+<p>最低限の機能さえあれば十分といいつつも，1つだけ気になる点がある．
+それはSphinxの検索があまりよろしくないことだ．どうやら予めテキストをn-gramに分割したものからパターンマッチで検索しているらしく，クエリとして投げる単語によっては検索できたりできなかったりする．このあたりが改良できると，曖昧な記憶の中から本を探すときに便利になるのだが…．</p>
 
-<p><img src="http://dl.dropbox.com/u/142306/b/pigz.png" alt="" /></p>
+<h3>参考</h3>
 
-<p>ここでは，上で紹介した基本機能以外に圧縮時のブロックサイズを-bで指定している．圧縮効率/速度に影響してくるパラメータに関しては色々と試してみたのだが，あまりハッキリとした結果が得られなかったので調整を諦めた部分がある．実際に圧縮しているところを監視していると，全コア使って圧縮処理をしている場合や，待機(S)が長く続く場合など，一概にスレッド数を重ねるほど圧縮効率が良くなるわけでもなさそうな印象を受ける．この辺りに関しては，HDDのI/Oや圧縮するファイルのサイズに大きく依存するところなので，あまり厳密に調べたりしても意味がないとは思うが&#8230;．まあ，gzipよりかは確実に早くなるとは思うので，圧縮の際にはデフォルトでpigzを使うというくらいの感じで良いと思う．</p>
+<p>Sphinxの検索まわりの日本語対応と強化．
+- <a href="http://d.hatena.ne.jp/koyudoon/20120126/1327529750">http://d.hatena.ne.jp/koyudoon/20120126/1327529750</a>
+- <a href="http://note.sicafe.net/sphinx_memo/JapaneaseSearch.html">http://note.sicafe.net/sphinx_memo/JapaneaseSearch.html</a></p>
 
-<h3>Muninを使ったCPU使用率の可視化</h3>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/pigz_munin.png" alt="" />
-Muninを使って300GBくらいのディレクトリを圧縮している．スレッド数を6程度で様子見していたのだが，終わらない&#8230;．</p>
-
-<h2>参考資料</h2>
-
-<ul>
-<li>(pdf) <a href="http://zlib.net/pigz/pigz.pdf">http://zlib.net/pigz/pigz.pdf</a></li>
-<li><a href="http://serverfault.com/questions/321273/why-does-tar-c-dir-pigz-mnt-nfs-dir-tgz-use-network-then-cpu-in-cycles-in">http://serverfault.com/questions/321273/why-does-tar-c-dir-pigz-mnt-nfs-dir-tgz-use-network-then-cpu-in-cycles-in</a></li>
-<li><a href="http://arcoleo.org/dsawiki/Wiki.jsp?page=Compressing%20and%20Extracting%20Files">http://arcoleo.org/dsawiki/Wiki.jsp?page=Compressing%20and%20Extracting%20Files</a></li>
-<li><a href="http://codeascraft.etsy.com/2012/01/23/solr-bittorrent-index-replication/">http://codeascraft.etsy.com/2012/01/23/solr-bittorrent-index-replication/</a></li>
-</ul>
-
+<p>Product Advertising APIはRubyのamazon-ecsを使った．
+- <a href="https://github.com/jugend/amazon-ecs">https://github.com/jugend/amazon-ecs</a></p>
 </div>
 
 
@@ -221,16 +257,16 @@ Muninを使って300GBくらいのディレクトリを圧縮している．ス�
   
 
 
-<time datetime="2012-06-15T19:39:00+09:00" pubdate data-updated="true">Jun 15<span>th</span>, 2012</time>
+<time datetime="2012-09-29T14:05:00+09:00" pubdate data-updated="true">Sep 29<span>th</span>, 2012</time>
       
 
 
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/06/15/pigz/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/09/29/sphinx-dropbox-bookshelf/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/06/15/pigz/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/06/15/pigz/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/09/29/sphinx-dropbox-bookshelf/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/09/29/sphinx-dropbox-bookshelf/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -251,14 +287,10 @@ Muninを使って300GBくらいのディレクトリを圧縮している．ス�
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/06/14/review-finch/" title="Previous Post:
-        「フィンチの嘴―ガラパゴスで起きている種の変貌」読了">&laquo; 「フィンチの嘴―ガラパゴスで起きている種の変貌」読了</a></li>
+        href="/blog/2012/09/25/review-critical-speaking/" title="Previous Post:
+        「外国語を身につけるための日本語レッスン」読了">&laquo; 「外国語を身につけるための日本語レッスン」読了</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/06/18/review-origin-of-species/"
-        title="Next Post: 「超訳 種の起源」読了">「超訳 種の起源」読了
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -361,8 +393,8 @@ Muninを使って300GBくらいのディレクトリを圧縮している．ス�
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.com/blog/2012/06/15/pigz/';
-        var disqus_url = 'http://yagays.github.com/blog/2012/06/15/pigz/';
+        var disqus_identifier = 'http://yagays.github.com/blog/2012/09/29/sphinx-dropbox-bookshelf/';
+        var disqus_url = 'http://yagays.github.com/blog/2012/09/29/sphinx-dropbox-bookshelf/';
         var disqus_script = 'embed.js';
       
     (function () {
