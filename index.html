@@ -9,7 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="対象は文学・思想・哲学・歴史に偏っているが，読書法としては簡潔で的確 本書は佐藤優が実践している読書法や勉強法，そして大量の情報をどうやって効率良く捌くかについて論じた本だ．本書前半では，佐藤氏のこれまでの人生における読書遍歴が語られるほか， &hellip;">
+  <meta name="description" content="pdf中毒者のためのwget入門 大学の先生方が用意する講義資料やプレゼンテーションのスライドの類なんかは，得てして個人のウェブページにまとまりなくリストアップされているだけの場合が多い． &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,6 +104,103 @@
     <div class="row-fluid">
       <div class="span9">
   
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/10/shut-the-fuck-up-and-download-all-pdf-files/">ウェブページにリストアップされているpdfファイルをwgetでまとめてダウンロードする方法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-10T00:03:00+09:00" pubdate data-updated="true">Oct 10<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>pdf中毒者のためのwget入門</h3>
+
+<p>大学の先生方が用意する講義資料やプレゼンテーションのスライドの類なんかは，得てして個人のウェブページにまとまりなくリストアップされているだけの場合が多い．必要なときにダウンロードするようにすると既に持っているファイルを再度ダウンロードしてしまって重複することがあるし，まとめてダウンロードするためにブラウザ上でいちいちクリックするのも面倒くさい．そのため，ウェブページにリストアップされているpdfファイルをコマンド一発でまとめてダウンロードしたい！というときには，wgetコマンドが非常に便利だ．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>wget -r -l 1 -A pdf -w 5 -nd http://example.com/hoge/
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これだけでいいのだ．このコマンドを使えば，ウェブページにリスアップされているpdfファイルを一括してダウンロードすることができる．指定したオプションを少し解説しよう．</p>
+
+<h4><code>-r -l 1</code></h4>
+
+<p><strong>-r</strong>と<strong>-l</strong>オプションによって，再帰的に1階層分だけリンクをたどるように指定している．つまり，指定したウェブページに貼ってあるリンクの中から，目的となるファイルだけをダウンロードすることができる．</p>
+
+<h4><code>- A pdf</code></h4>
+
+<p><strong>-A</strong>オプションによって，拡張子がpdfのファイルのみをダウンロードするように指定している．これをpptに変えればパワーポイントのファイルだけダウンロードできるし，pdf,pptのようにコンマ区切りで複数列挙することもできる．</p>
+
+<h4><code>- w 5</code></h4>
+
+<p><strong>-w</strong>オプションによって，ダウンロード処理の間隔を5秒開けている．wgetはダウンロード処理が終わり次第次のダウンロードを実行し始めるため，短時間に大量にダウンロードすると向こうのサーバに負荷をかける可能性がある．そのため，ダウンロード間隔を少し開けることで，集中してアクセスしないようにしている．間隔の秒数には特に意味があるわけではないが，最低でも数秒は開けたほうが良いだろう．「<a href="http://www.amazon.co.jp/gp/product/4873111870/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4873111870&linkCode=as2&tag=yagays-22">Spidering hacks―ウェブ情報ラクラク取得テクニック101選</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4873111870" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」なんかを見ると，スクリプトによって3秒または5秒開けてる場合が多い．</p>
+
+<h4><code>-nd</code></h4>
+
+<p><strong>-nd</strong>オプションによって，ダウンロードしたファイルを同一ディレクトリ（標準ではカレントディレクトリ）に保存している．これを指定しないと，ウェブページのURL階層通りに/hoge/fuga/piyo/といったディレクトリ構造が作成されてしまう．なお，<code>-P hoge</code>というオプションを追加すると，hogeというディレクトリ以下にダウンロードしたファイルが保存される．</p>
+
+<h3>なお，Mac OS Xの場合にはwgetのインストールが必要</h3>
+
+<p>そういえば，wgetはMacには標準で入っていないので，MacPortsかHomebrewなどを使ってインストールする必要がある．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo port install wget
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>または</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install wget
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>もちろんソースコードをコンパイルして入れることもできる(<a href="http://osxdaily.com/2012/05/22/install-wget-mac-os-x/">http://osxdaily.com/2012/05/22/install-wget-mac-os-x/</a>)</p>
+
+<h3>!注意!</h3>
+
+<p>ウェブページによっては，スクリプトを使った一括ダウンロードなどを禁止している場合がある．上記コマンドを使ったダウンロードを行う際は，サイトの規約を守り相手のサーバに負荷がかからないよう注意しなければいけない．また，万が一の場合には相手に迷惑を掛けてドメイン/IPアドレス単位でアクセスが禁止される可能性もある．そのため，会社や大学で実行する際には細心の注意を払い，同じIPアドレスを使う同僚や組織に迷惑をかけないよう注意しなければならない．</p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://www.itsenka.com/contents/development/unix-linux/wget.html">http://www.itsenka.com/contents/development/unix-linux/wget.html</a></li>
+<li><a href="http://taichino.com/engineer-life/linux/288">http://taichino.com/engineer-life/linux/288</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873111870" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774138169" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -546,65 +643,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/09/18/review-freakonomics/">「ヤバい経済学」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-18T21:21:00+09:00" pubdate data-updated="true">Sep 18<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4492313788" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>2010に制作，2011年には日本で公開された映画「ヤバい経済学」は，結論から言って良くも悪くもない普通の映画だった．ネタはだいたい原書から持ってきているので当然面白くないわけがないんだけれども，どうも映像でコンパクトに見せられるとイマイチ面白みが伝わってこないのが残念で仕方がなかった．その原因はおそらく議論の過程が示されないからで，ああでもないこうでもないと反論の応酬や論理の組み上げ方が見えにくいのが問題だと思うのだが，かといって学者が円卓に座って延々人の話もろくに聞かずに議論しあうのを見ても全然面白く無いし…．Steven D. Levittが喋ってる映像を見られたのは良かったけど，具体的な事例は本読んだほうがいいよねという印象．</p>
-
-<p>というわけで映画はあまり冴えない感じだったけど，本書「ヤバい経済学」は出版されてから5年立った現在でもその驚きは色褪せていない．経済学と統計資料を武器に社会通念を次々と覆していく様はまさに爽快そのものだ．不動産屋の売り言葉は本当なのかどうかといった話題から，学校の先生のインチキ，ドラッグの売人が儲かるかどうかに至るまで，ある意味下世話な，ある意味で人々が気付きもしなかった現象について解き明かしてくれる．しかし同時に，読者にとって不都合な真実も突きつけられることになる．日本の相撲界の八百長話や中絶の是非と犯罪率の相関，そして子供の名前と子供の将来など，薄々気付いてはいても認めたくないような結論も含まれる．ただ，じゃあ本書で述べられている議論はみんな正しいからその通りに観たり感じたり接したりしなければいけないのか，と言われれば，そういうわけでは無いというのが本書の最終的な主張だ．最終章のまとめで触られれているように，</p>
-
-<blockquote><p>道徳が私達の望む世界のあり方を映しているのだとすると，経済学が映しているのは世の中の実際のあり方だ．</p>
-
-<p>(p.268)</p></blockquote>
-
-<p>とすると，私達が考えるべきことは世の中の実際のあり方から私達の望む世界へと適切にフィードバックしていくことだ．それに，個別の例で見ていけば必ずしも統計的な結論とはそぐわないことが出てくることも，念を押すかのように最後に書かれている．ある種の希望のような終わり方であり，また改めて現実を突きつけられているようでもある．</p>
-
-<br/>
-
-
-<p>そういえば，上の文章を書き終えた後に，ちょういいタイミングで山形浩生が本書について言及していたので，それについてもちょっと書き加えておこう．</p>
-
-<p>どうやら中絶の合憲判定とアメリカの犯罪低下については最終的に間違いだったらしいことが分かっているとのこと．この話題は本書の核のような話題だけに，もしそうだとすると少し残念だ．じゃあ何が原因で犯罪の低下につながったのかが気になるところだが，リンク先の論文のAbstを見る限りだと間違いの指摘しか書いてなさそうなので，その辺は追えていない．これを受けてのLevittの新しい見解が気になるところだが，また新しく本でも書いてその中で言及して欲しいところ．</p>
-
-<ul>
-<li><a href="http://d.hatena.ne.jp/wlj-Friday/20120918/1347949754">http://d.hatena.ne.jp/wlj-Friday/20120918/1347949754</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/2/">&larr; Older</a></li>
@@ -642,6 +680,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/10/10/shut-the-fuck-up-and-download-all-pdf-files/">ウェブページにリストアップされているpdfファイルをwgetでまとめてダウンロードする方法</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/09/review-art-of-reading/">「読書の技法 誰でも本物の知識が身につく熟読術・速読術「超」入門」読了</a>
       </li>
     
@@ -657,15 +699,11 @@
         <a href="/blog/2012/09/29/sphinx-dropbox-bookshelf/">Dropbox+Sphinxで自分専用の電子書籍リストを作ってみた</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/09/25/review-critical-speaking/">「外国語を身につけるための日本語レッスン」読了</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (3)</a></li><li><a href='/blog/categories/book'>Book (35)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (2)</a></li><li><a href='/blog/categories/reading'>Reading (4)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (3)</a></li><li><a href='/blog/categories/book'>Book (36)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (2)</a></li><li><a href='/blog/categories/reading'>Reading (4)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
 </section>
 
 
