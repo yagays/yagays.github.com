@@ -146,11 +146,11 @@
 
 <p><strong>-r</strong>と<strong>-l</strong>オプションによって，再帰的に1階層分だけリンクをたどるように指定している．つまり，指定したウェブページに貼ってあるリンクの中から，目的となるファイルだけをダウンロードすることができる．</p>
 
-<h4><code>- A pdf</code></h4>
+<h4><code>-A pdf</code></h4>
 
 <p><strong>-A</strong>オプションによって，拡張子がpdfのファイルのみをダウンロードするように指定している．これをpptに変えればパワーポイントのファイルだけダウンロードできるし，pdf,pptのようにコンマ区切りで複数列挙することもできる．</p>
 
-<h4><code>- w 5</code></h4>
+<h4><code>-w 5</code></h4>
 
 <p><strong>-w</strong>オプションによって，ダウンロード処理の間隔を5秒開けている．wgetはダウンロード処理が終わり次第次のダウンロードを実行し始めるため，短時間に大量にダウンロードすると向こうのサーバに負荷をかける可能性がある．そのため，ダウンロード間隔を少し開けることで，集中してアクセスしないようにしている．間隔の秒数には特に意味があるわけではないが，最低でも数秒は開けたほうが良いだろう．「<a href="http://www.amazon.co.jp/gp/product/4873111870/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4873111870&linkCode=as2&tag=yagays-22">Spidering hacks―ウェブ情報ラクラク取得テクニック101選</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4873111870" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」なんかを見ると，スクリプトによって3秒または5秒開けてる場合が多い．</p>
 
