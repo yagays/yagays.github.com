@@ -4,7 +4,7 @@
   <title><![CDATA[Category: SOAPdenovo2 | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/soapdenovo2/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-11T17:44:33+09:00</updated>
+  <updated>2012-10-11T22:20:40+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -68,7 +68,7 @@ Size_includeN   Size_withoutN   Contig_Num      Mean_Size       Median_Size     
 
 <h3>ワイルドカードを使って入力ファイルを複数指定する</h3>
 
-<p>Zshなどのシェルコマンドと同様に，入力ファイルの指定には<strong><code>*</code></strong>や<em>*<code>?</code></em>:などのワイルドカードなどが使用できる．</p>
+<p>Zshなどのシェルコマンドと同様に，入力ファイルの指定には<strong><code>*</code></strong>や<strong><code>?</code></strong>などのワイルドカードなどが使用できる．</p>
 
 <p><code>bash
 $ ruby soapdenovo2_stats.rb  path/to/*.scafStatistics
