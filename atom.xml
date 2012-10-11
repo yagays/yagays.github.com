@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-11T17:21:12+09:00</updated>
+  <updated>2012-10-11T17:44:33+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -20,7 +20,7 @@
     <id>http://yagays.github.com/blog/2012/10/11/soapdenovo2-stats</id>
     <content type="html"><![CDATA[<p>SOAPdenovo2になって，アセンブリで得られた配列の統計情報がscafStatisticsというファイルに出力されるようになった．そのため，自分でアセンブリ結果を解析しなくとも，コンティグ数やN50などの基本情報をチェックすることができる……のだが，scafStatisticsは項目を並べただけのテキストファイルなので，複数のアセンブリ結果を比較しようと思った場合，いちいちファイルを開いて統計情報を集計するのが非常に面倒になる．</p>
 
-<p>ということで，SOAPdenovo2のアセンブルで出力される情報を一つにまとめるスクリプトを書いてみた．タブ区切りテキストで出力されるので，Excelなどでも見やすいようにしてある．</p>
+<p>ということで，SOAPdenovo2のアセンブルで出力される情報を一つにまとめるスクリプトを簡単に書いてみた．タブ区切りテキストで出力されるので，Excelなどでも見やすいようにしてある．</p>
 
 <br />
 
@@ -39,7 +39,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>動作確認はRuby 1.8.7および1.9.3で行っている．</p>
+<p>動作確認はRuby 1.8.7および1.9.3で行っているが，まあ変なことはしてないのでどんな環境でもだいたい動くと思う．RubyのバージョンよりかはSOAPdenovo2の未知の部分や仕様変更などが怖いわけで，そもそも以下のデータセットで出てきたscafStatisticsを参考にしているため，SOAPdenovo2のパラメータなどによっては期待通りの動きをしないかもしれない．あと，例外処理などをあまり真面目に書いていないので，入力ファイルが見つからない場合にエラーを吐かなかったりするが，そこらへんは後々修正するかも．</p>
 
 <br />
 
@@ -76,7 +76,7 @@
 
 <h3>ワイルドカードを使って入力ファイルを複数指定する</h3>
 
-<p>Zshなどのシェルコマンドと同様に，入力ファイルの指定にはワイルドカードなどが使用できる．</p>
+<p>Zshなどのシェルコマンドと同様に，入力ファイルの指定には<strong><code>*</code></strong>や<em>*<code>?</code></em>:などのワイルドカードなどが使用できる．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -101,7 +101,7 @@
 
 <h3>特定のカラムでソートする</h3>
 
-<p><strong><code>-s</code></strong>オプションを使うことで，特定のカラムで値をソートした結果を出力することができる．ここではN50を降順で並び替えており，N50が一番大きいものはk=27であったことがわかる．</p>
+<p><strong><code>-s</code></strong>オプションを使うことで，特定のカラムで値をソートした結果を出力することができる．ここではN50を降順で並び替えており，一番右端の列を見るとN50が一番大きいものはk=27であったことがわかる．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
