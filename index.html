@@ -9,7 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="昨日に池袋ジュンク堂で開催されたPRML同人誌トークセッションに参加してました．講演者の皆様お疲れ様でした＆貴重なお話をありがとうございました． http://www.junkudo.co.jp/tenpo/evtalk.html#20121011_talk ということで， &hellip;">
+  <meta name="description" content="前回SOAPdenovo2の話を書いたが，そういえばSOAPdenovo2といえばインストールまわりが不親切だったので，ちょっと解説みたいなものを書いてみる． ダウンロード まずここで注意しなければいけないのは，緑のアイコンででかでかと表示されている「Download」 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,6 +104,143 @@
     <div class="row-fluid">
       <div class="span9">
   
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/13/soapdenovo2-install/">SOAPdenovo2のインストール方法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-13T07:30:00+09:00" pubdate data-updated="true">Oct 13<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>前回<a href="bhttp://yagays.github.com/blog/2012/10/11/soapdenovo2-stats/">SOAPdenovo2の話</a>を書いたが，そういえばSOAPdenovo2といえばインストールまわりが不親切だったので，ちょっと解説みたいなものを書いてみる．</p>
+
+<h3>ダウンロード</h3>
+
+<p>まずここで注意しなければいけないのは，緑のアイコンででかでかと表示されている「Download」をクリックしてはいけないということだ．よくよく見ると「GapCloser」と書いてあり，これは本体とは別のプログラムファイルである．欲しいのはSOAPdenovo2の実行ファイルなので，「Browse All File」をクリックしてアップロードされているファイルの中から欲しいものを探す．なお，上部の「File」をクリックしても同じ．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/soapdenovo2_1.jpg" alt="" /></p>
+
+<p>「bin」をクリックする．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/soapdenovo2_2.jpg" alt="" /></p>
+
+<p>これでSOAPdenovo2の一連のファイルが表示される．この中で必要なのは「SOAPdenovo2_revision210.tgz」というファイル．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/soapdenovo2_3.jpg" alt="" /></p>
+
+<p>そして「SOAPdenovo2_revision210.tgz」クリックすると，ページが遷移したあと自動でダウンロードが開始される．もしサーバなどにダウンロードしたい場合は，画面上部にある「Direct link」のリンクURLを使って以下のようにwgetなどでダウンロードする．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>wget http://downloads.sourceforge.net/project/soapdenovo2/bin/SOAPdenovo2_revision210.tgz
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>解凍およびインストール</h3>
+
+<p>あとは，ダウンロードしたSOAPdenovo2_revision210.tgzを解凍するだけでSOAPdenovo2のバイナリが得られる．SOAPdenovo2はまだソースコードの公開をしておらず，プログラムはすべて実行可能なバイナリ形式で配布されている．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>tar zxvf SOAPdenovo2_revision210.tgz
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>なお，上記のコマンドでは，カレントディレクトリに全てのファイルが展開されるので，もし特定のディレクトリに展開したい場合には，以下のように<strong><code>-C</code></strong>オプションを付ける．展開先のディレクトリが無いとエラーになるので，実行前に<strong><code>mkdir</code></strong>などで作っておく．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>tar zxvf SOAPdenovo2_revision210.tgz -C /home/yag_ays/local/src/SOAPdenovo2_revision210
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>展開すると，以下のようになる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls -l
+</span><span class='line'>total 7040
+</span><span class='line'>-rw-r--r-- 1 yag_ays users   16199 Sep 13 15:54 MANUAL
+</span><span class='line'>-rwxr-xr-x 1 yag_ays users 1958292 Sep 13 13:50 pregraph_sparse_127mer.v1.0.3*
+</span><span class='line'>-rwxr-xr-x 1 yag_ays users 1941908 Sep 13 13:50 pregraph_sparse_63mer.v1.0.3*
+</span><span class='line'>-rwxr-xr-x 1 yag_ays users 1718828 Sep 13 13:49 SOAPdenovo-127mer*
+</span><span class='line'>-rwxr-xr-x 1 yag_ays users 1562546 Sep 13 13:49 SOAPdenovo-63mer*
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>SOAPdenovo-63mer</strong>と<strong>SOAPdenovo-127mer</strong>がSOAPdenovo2の本体になる．ここで少し注意が必要なのだが，SOAPdenovo2なのに実行ファイル名がSOAPdenovoとなっていてややこしいのに加えて，SOAPdenovoは「SOAPdenovo63mer」なのに対し，今回はK-merの値の前にハイフンが入っていて余計混乱を招きそうな名前になっている．パイプラインで処理させている人は，名前の変更に注意しよう．</p>
+
+<p>また，SOAPdenovo2では新たに<strong>pregraph_sparce</strong>というモジュールが追加されている．これは，SOAPdenovo2のアセンブル第1段階で行われるpregraphというコマンドの改良版で，コンティグとしてグラフをつなげていく前段階で候補を減らしておき，後々の処理の無駄を省くというもののようだ．基本的にSOAPdenovo2を実行するだけならpregraph_sparseは必要ないが，高速化をしたいといった場合には試してみてもいいと思われる．pregraph_sparseの詳しい使い方はMANUALに書かれているので，そちらを参考していただきたい．ちなみに，MANUALでは&#8221;consumption&#8221;の綴りが間違っている．</p>
+
+<h3>実行の確認</h3>
+
+<p>ファイルを展開したディレクトリでSOAPdenovo2を実行して，以下のようにバージョンとヘルプが表示されれば，インストールは成功している．なお，いまのところLinuxにしか対応してないようで，Mac OS Xでは実行できないので注意．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>./SOAPdenovo-63mer
+</span><span class='line'>
+</span><span class='line'>Version 2.04: released on July 13th, 2012
+</span><span class='line'>Compile Sep 13 2012     12:48:54
+</span><span class='line'>
+</span><span class='line'>Usage: SOAPdenovo &lt;<span class="nb">command</span>&gt; <span class="o">[</span>option<span class="o">]</span>
+</span><span class='line'>    pregraph     construct kmer-graph
+</span><span class='line'>    contig       eliminate errors and output contigs
+</span><span class='line'>    map          map reads to contigs
+</span><span class='line'>    scaff        construct scaffolds
+</span><span class='line'>    all          <span class="k">do </span>all the above in turn
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>最後に愚痴</h3>
+
+<p>そもそも，SourceForgeは様々なプログラムが配布場所として使用しているが，そもそも色々と不便で分かりにくい．広告が多い上に画面がごちゃごちゃしていて構造を把握しづらいし，ファイルを自動ダウンロードにしてるのもいい迷惑だし，慣れていないとなかなかに辛いものがある．元のプロジェクトの概要を機械翻訳で日本語にしただけの有りもしない日本語版のページなど，Google検索などでのノイズも非常に多い．まあ結論としては，今回はこれが言いたかっただけです，はい．</p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://sourceforge.net/projects/soapdenovo2/">http://sourceforge.net/projects/soapdenovo2/</a></li>
+<li><a href="http://cell-innovation.nig.ac.jp/wiki/tiki-index.php?page=SOAPdenovo%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%AD%E3%82%B0">http://cell-innovation.nig.ac.jp/wiki/tiki-index.php?page=SOAPdenovo%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%AD%E3%82%B0</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -774,49 +911,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/09/23/review-what-is-life/">「生命とは何か―物理的にみた生細胞」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-23T02:09:00+09:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4003394615" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p><a href="http://yagays.github.com/blog/2012/09/19/review-chance-and-necessity/">前回の記事</a>で久しぶりに本書を思い出して改めて読み返したのだが，やはりこの本は名著だ．内容自体も，そしてこの本が纏められた時代性を考えても，著者の異才さ非凡さを窺い知ることができる．</p>
-
-<p>本書は理論物理学者，とりわけ量子力学や波動力学の発展に大きく寄与したSchrödingerが，物理学と生物学の分野を統合するような形で生命の真理を追い求めたものである．それは至極簡単な疑問から始まる．なぜ原子は生物に比べてこれほど小さいのか．逆に言えば，万物の最小単位である原子から見て，なぜ生物はこれほどまでに大きく複雑な構造を持っているのかということだ．この疑問の背景には，量子力学における原子レベルでのミクロの不確定性さやマクロでの決定的な振る舞いがある．原子や分子などは，我々が感じる世界と違って，ランダムが支配する世界だ．人間はそのミクロの世界の振る舞いを完全に観測したり予測することができず，また熱や放射線などによる状態変異も起きやすい．生物も当然ながら他の無生物と同じく原子から成り立っているのに，なぜ生物はミクロでの不確実さに影響されることなく安定した構造と機能を保ち続けているのかという問題に，Schrödingerは果敢にも分野を乗り越えて立ち向かっている．</p>
-
-<p>数年前に読んだときにはただ単純に物理学と生物学の融合というところだけを見て面白がっていたのだが，統計力学や確率論をある程度学んだ現在改めてその言説に触れてみると，Schrödingerの言いたかったことをより深く理解できた気がする．読み返しながら幾度と無く「ああ，そういうことだったんだ」とひたすら納得するばかりだった．</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/2/">&larr; Older</a></li>
@@ -854,6 +948,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/10/13/soapdenovo2-install/">SOAPdenovo2のインストール方法</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/12/prml-talksession/">「今度こそわかる!? PRMLの学習の学習」に参加しました</a>
       </li>
     
@@ -869,15 +967,11 @@
         <a href="/blog/2012/10/09/review-art-of-reading/">「読書の技法 誰でも本物の知識が身につく熟読術・速読術「超」入門」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/10/02/review-nhk-virus/">「NHKスペシャル 最強ウイルス―新型インフルエンザの恐怖」読了</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (36)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (4)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (1)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (36)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (4)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
 </section>
 
 

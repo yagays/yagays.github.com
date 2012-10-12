@@ -4,7 +4,7 @@
   <title><![CDATA[Category: SOAPdenovo2 | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/soapdenovo2/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-12T10:46:32+09:00</updated>
+  <updated>2012-10-13T07:36:36+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,98 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[SOAPdenovo2のインストール方法]]></title>
+    <link href="http://yagays.github.com/blog/2012/10/13/soapdenovo2-install/"/>
+    <updated>2012-10-13T07:30:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/10/13/soapdenovo2-install</id>
+    <content type="html"><![CDATA[<p>前回<a href="bhttp://yagays.github.com/blog/2012/10/11/soapdenovo2-stats/">SOAPdenovo2の話</a>を書いたが，そういえばSOAPdenovo2といえばインストールまわりが不親切だったので，ちょっと解説みたいなものを書いてみる．</p>
+
+<h3>ダウンロード</h3>
+
+<p>まずここで注意しなければいけないのは，緑のアイコンででかでかと表示されている「Download」をクリックしてはいけないということだ．よくよく見ると「GapCloser」と書いてあり，これは本体とは別のプログラムファイルである．欲しいのはSOAPdenovo2の実行ファイルなので，「Browse All File」をクリックしてアップロードされているファイルの中から欲しいものを探す．なお，上部の「File」をクリックしても同じ．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/soapdenovo2_1.jpg" alt="" /></p>
+
+<p>「bin」をクリックする．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/soapdenovo2_2.jpg" alt="" /></p>
+
+<p>これでSOAPdenovo2の一連のファイルが表示される．この中で必要なのは「SOAPdenovo2_revision210.tgz」というファイル．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/soapdenovo2_3.jpg" alt="" /></p>
+
+<p>そして「SOAPdenovo2_revision210.tgz」クリックすると，ページが遷移したあと自動でダウンロードが開始される．もしサーバなどにダウンロードしたい場合は，画面上部にある「Direct link」のリンクURLを使って以下のようにwgetなどでダウンロードする．</p>
+
+<p><code>bash
+$ wget http://downloads.sourceforge.net/project/soapdenovo2/bin/SOAPdenovo2_revision210.tgz
+</code></p>
+
+<h3>解凍およびインストール</h3>
+
+<p>あとは，ダウンロードしたSOAPdenovo2_revision210.tgzを解凍するだけでSOAPdenovo2のバイナリが得られる．SOAPdenovo2はまだソースコードの公開をしておらず，プログラムはすべて実行可能なバイナリ形式で配布されている．</p>
+
+<p><code>
+$ tar zxvf SOAPdenovo2_revision210.tgz
+</code></p>
+
+<p>なお，上記のコマンドでは，カレントディレクトリに全てのファイルが展開されるので，もし特定のディレクトリに展開したい場合には，以下のように<strong><code>-C</code></strong>オプションを付ける．展開先のディレクトリが無いとエラーになるので，実行前に<strong><code>mkdir</code></strong>などで作っておく．</p>
+
+<p><code>
+$ tar zxvf SOAPdenovo2_revision210.tgz -C /home/yag_ays/local/src/SOAPdenovo2_revision210
+</code></p>
+
+<p>展開すると，以下のようになる．</p>
+
+<p><code>bash
+$ ls -l
+total 7040
+-rw-r--r-- 1 yag_ays users   16199 Sep 13 15:54 MANUAL
+-rwxr-xr-x 1 yag_ays users 1958292 Sep 13 13:50 pregraph_sparse_127mer.v1.0.3*
+-rwxr-xr-x 1 yag_ays users 1941908 Sep 13 13:50 pregraph_sparse_63mer.v1.0.3*
+-rwxr-xr-x 1 yag_ays users 1718828 Sep 13 13:49 SOAPdenovo-127mer*
+-rwxr-xr-x 1 yag_ays users 1562546 Sep 13 13:49 SOAPdenovo-63mer*
+</code></p>
+
+<p><strong>SOAPdenovo-63mer</strong>と<strong>SOAPdenovo-127mer</strong>がSOAPdenovo2の本体になる．ここで少し注意が必要なのだが，SOAPdenovo2なのに実行ファイル名がSOAPdenovoとなっていてややこしいのに加えて，SOAPdenovoは「SOAPdenovo63mer」なのに対し，今回はK-merの値の前にハイフンが入っていて余計混乱を招きそうな名前になっている．パイプラインで処理させている人は，名前の変更に注意しよう．</p>
+
+<p>また，SOAPdenovo2では新たに<strong>pregraph_sparce</strong>というモジュールが追加されている．これは，SOAPdenovo2のアセンブル第1段階で行われるpregraphというコマンドの改良版で，コンティグとしてグラフをつなげていく前段階で候補を減らしておき，後々の処理の無駄を省くというもののようだ．基本的にSOAPdenovo2を実行するだけならpregraph_sparseは必要ないが，高速化をしたいといった場合には試してみてもいいと思われる．pregraph_sparseの詳しい使い方はMANUALに書かれているので，そちらを参考していただきたい．ちなみに，MANUALでは"consumption"の綴りが間違っている．</p>
+
+<h3>実行の確認</h3>
+
+<p>ファイルを展開したディレクトリでSOAPdenovo2を実行して，以下のようにバージョンとヘルプが表示されれば，インストールは成功している．なお，いまのところLinuxにしか対応してないようで，Mac OS Xでは実行できないので注意．</p>
+
+<p>```
+$ ./SOAPdenovo-63mer</p>
+
+<p>Version 2.04: released on July 13th, 2012
+Compile Sep 13 2012     12:48:54</p>
+
+<p>Usage: SOAPdenovo <command> [option]</p>
+
+<pre><code>pregraph     construct kmer-graph
+contig       eliminate errors and output contigs
+map          map reads to contigs
+scaff        construct scaffolds
+all          do all the above in turn
+</code></pre>
+
+<p>```</p>
+
+<h3>最後に愚痴</h3>
+
+<p>そもそも，SourceForgeは様々なプログラムが配布場所として使用しているが，そもそも色々と不便で分かりにくい．広告が多い上に画面がごちゃごちゃしていて構造を把握しづらいし，ファイルを自動ダウンロードにしてるのもいい迷惑だし，慣れていないとなかなかに辛いものがある．元のプロジェクトの概要を機械翻訳で日本語にしただけの有りもしない日本語版のページなど，Google検索などでのノイズも非常に多い．まあ結論としては，今回はこれが言いたかっただけです，はい．</p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://sourceforge.net/projects/soapdenovo2/">http://sourceforge.net/projects/soapdenovo2/</a></li>
+<li><a href="http://cell-innovation.nig.ac.jp/wiki/tiki-index.php?page=SOAPdenovo%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%AD%E3%82%B0">http://cell-innovation.nig.ac.jp/wiki/tiki-index.php?page=SOAPdenovo%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%AD%E3%82%B0</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[SOAPdenovo2のアセンブル情報を集計するスクリプト]]></title>
