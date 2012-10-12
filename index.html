@@ -9,7 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="SOAPdenovo2になって，アセンブリで得られた配列の統計情報がscafStatisticsというファイルに出力されるようになった．そのため，自分でアセンブリ結果を解析しなくとも，コンティグ数やN50などの基本情報をチェックすることができる……のだが， &hellip;">
+  <meta name="description" content="池袋ジュンク堂PRML同人誌トークセッションに参加してました．講演者の皆様お疲れ様でした&amp;貴重なお話をありがとうございました． http://www.junkudo.co.jp/tenpo/evtalk.html#20121011_talk ということで， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,6 +104,89 @@
     <div class="row-fluid">
       <div class="span9">
   
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/12/prml-talksession/">「今度こそわかる!? PRMLの学習の学習」に参加してきた</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-12T10:03:00+09:00" pubdate data-updated="true">Oct 12<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>池袋ジュンク堂PRML同人誌トークセッションに参加してました．講演者の皆様お疲れ様でした&amp;貴重なお話をありがとうございました．</p>
+
+<p><a href="http://www.junkudo.co.jp/tenpo/evtalk.html#20121011_talk">http://www.junkudo.co.jp/tenpo/evtalk.html#20121011_talk</a></p>
+
+<p>ということで，トークセッションの中で話題に上がった話を私見を交えつつ幾つか．全部をの話題を網羅しているわけではないのでご了承下さい．</p>
+
+<br />
+
+
+<h3>「PRMLの学習」の2版が出た</h3>
+
+<p>なんと「PRMLの学習」が2版ということで，どこかで見覚えのある黄色い表紙．私はもう既に1版を買っているので2版を買おうかどうか悩んでいたら，トークセッションの受付で2版で新たに加わった内容が印刷された小冊子を頂いた．</p>
+
+<h3>PRML翻訳は@shima__shimaさん自らが同僚や出版社に話を持ちかけて実現した</h3>
+
+<p>翻訳に関しては，本の中では分担されているということしか分からなかったので，ちょっとした裏話．あとは，Wikiを立てて訳語の統一をされたということで，fittingやjoint distributionなどで議論が紛糾したという話も．</p>
+
+<h3>モデルというのはモノの見方である</h3>
+
+<p>機械学習全般の話でもよく出てくるが，今回のトークセッションでもやはり話題になったのはモデルに関する問題だった．機械学習では何らかの関数に近似したり分類したりと，未来を予測するためにはモデルを立ててパラメータをチューニングして…ということが必要になるのだが，じゃあどうやってモデルを組み上げていけばいいのか．何が良いモデルで何が悪いモデルなのか．適当にモデルを組んだら機械学習の結果が現実のデータに上手い具合に当てはまった/予想に反して全然当てはまらなかった場合には，どう解釈すればいいのか．モデルを選ぶ以前に特徴量を選ぶところにおいても，どんな工夫をすればいいのか．．．などなど，手法にかぎらず色々な部分で正当性や性能を評価する必要があり，理論が固まった現在でも人が介入する部分というのは多いという話．それを克服(?)したのが今話題のDeep Learningで，膨大なデータ量を元にして，特徴量の選択自体も機械学習の中に含めてしまおうという話とも繋がった．</p>
+
+<h3>贋作を愛でる</h3>
+
+<p>モデルの話に関連して，ノーフリーランチ定理やボックス氏の言葉などが話の中に出てきたが，そういった流れの中で統数研の樋口知之先生が仰られている「贋作」という単語が出てきたが，個人的にはそのニュアンスが非常に腑に落ちる感じで印象に残った．最終的には現実問題を解決したいということが根本にあると思うのだが，機械学習なんかは理論などは置いておいて単純に動けばいいやという考えもあり，逆に何でも適用しようとすると論文を量産する機械になってしまったり，SOMみたいな万能性に溺れてしまうという話もあり，なかなか難しい部分ではある．</p>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/what_a_dude/20110902/p1">http://d.hatena.ne.jp/what_a_dude/20110902/p1</a></li>
+<li><a href="http://www.ai-gakkai.or.jp/jsai/sig/dmsm/007/discussion.html">http://www.ai-gakkai.or.jp/jsai/sig/dmsm/007/discussion.html</a></li>
+<li><a href="http://www.ai-gakkai.or.jp/jsai/activity/241_p162_165.pdf">http://www.ai-gakkai.or.jp/jsai/activity/241_p162_165.pdf</a> (pdf)</li>
+</ul>
+
+
+<h3>余談：PRMLの学習と実装に関する疑問について．</h3>
+
+<p>実装の話はトークセッションではあまり出て来なかったのだが，帰り際の電車の中で実装に関する疑問をふと思いついて「さっき訊いときゃよかった」と思ったので，折角なので書いてみる．</p>
+
+<p>プログラマーなどは，アルゴリズムを自分で実装しないと本当に理解したことにならない，なんてことがよく言われるけれども，そういう環境で育った技術系の人がPRMLを読み始めると「書いてあることをひと通りまんべんなく実装しないといけない」みたいな感じになって，取っ掛かりとしては非常に辛いんじゃないかなーという個人的な印象がある．</p>
+
+<p>例えば，尤度関数でlogを取って対数尤度にするのは小さな確率の値を掛け算していくと非常に小さい値になって計算機で扱うには困るからlogを取って足し算にしているんだよ，という実装上の工夫は非常によくされる説明だけれども，じゃあ他の機械学習の理論においても，実装のことを考慮した勉強をしないといけないんじゃないかという感覚は今でもある．</p>
+
+<p>そのあたり，トークセッションの中で話があったように，理論レベルの難しさと実装レベルの難しさは別物だし，今は良質の機械学習パッケージが充実しているから機械学習を使うだけなら自分で実装する必要性は必ずしも無いけれども，「加減」の問題として，どの程度やったらいいのかという疑問．</p>
+
+<p>そういえば@Shuyoさんが「数式をnumpyに落としこむコツ」という解説を書かれており，非常に分かりやすくていつも参考にしているのだが，そのあたり「プログラマのためのPRML」同人誌があるといいんじゃないかと思う．</p>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/n_shuyo/20111016/numpy">http://d.hatena.ne.jp/n_shuyo/20111016/numpy</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -725,75 +808,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/09/22/data-validity/">「そのデータ，本当？」―思い込みによる曲解と前提条件を信用することの難しさ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-22T08:09:00+09:00" pubdate data-updated="true">Sep 22<span>nd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4846108031" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>「<a href="http://www.foocom.net/fs/takou_old/1013/">ヤマザキパンはなぜカビないか</a>」という有名な話がある．保存料無添加を謳っているヤマザキパンと家庭で作った手作りのパン，どちらが先にカビるだろうかという問題だ．正解は家庭で作った手作りのパンの方．なぜなら手作りでパンを作った場合では，どうしてもカビがパンの表面に付着したり中に入り込んだりして増殖しやすいからだ．その点ヤマザキパンのパン工場では，非常に清潔な環境でパンが作られているため，カビが入り込む余地がない．これは実験でも確かめられている事実だ．だが，その問題の本の著者を含め，健康に人一倍敏感な人は解答こそ正しくとも「いや，それはヤマザキパンに保存料が添加されているからだ」と見当違いな主張をしがちである．なぜそのような間違いをするかというと，カビないのはパンに含まれてる何かが原因だとして理論展開していくからだ．上の逸話を書いた方は，これらの議論に欠けているのは量の問題だとし，食品の安全について的確な意見を述べている．</p>
-
-<p>しかし，この話には量の問題以上に，より根本的で難しい問題を抱えている．それは<strong>前提条件・データを信じていないこと</strong>だ．保存料の有無はここでは前提条件として提示されており，同時に科学的なデータでもある．まず冒頭でヤマザキパンには保存料が入っていないと言っているのに，間違えた考え方をする人はヤマザキパンに保存料が添加されているはずだと決めつけてしまう．これは客観的に見れば明らかに言いがかりだ．ヤマザキパンに対して，いいやそれはパンじゃなくてご飯だ，と言っているのと何ら変わらない．ここでは保存料の入っていないパンと言っているのだから，そのパンにレーズンが入っていようとジャムが入っていようと，保存料は入っていないことには間違いない．そこをきちんと抑えておかないと，間違った考え方に走って前提を無視した論調になるのだ．ただ，こういう考えに至るプロセスは分からないわけではない．昔は保存料が入っていたかもしれないし，実は嘘をついてこっそり保存料を入れているかもしれないと疑うのは人間の性だ．ただ，この場合においては素直に前提を受け入れるべきだし，自分の導きたい結果から類推して前提をねじ曲げるのは論理的・批判的な姿勢ではない．</p>
-
-<p>教訓としては，<strong>前提条件を自分で勝手に解釈してはいけない，与えられたデータはその通りに受け取るべきだ</strong>，ということだ．</p>
-
-<br />
-
-
-<p>今回の例では少し思考実験みたいな形を取ったので，上のように分かりやすい形で問題点が顕になったが，実際の科学的な議論ではこの問題が複雑になりやすい．それは前提条件やデータがはっきりと正しいとは言い切れなかったり他人の意見を元にしている場合だ．データを示してきちんと論理を組み立てたとしても，データ自体を攻撃されることは防ぎようがない．それが再取得可能であったり再現実験できるようなものであれば攻撃に対処できるのだが，大抵はそれが難しい．</p>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4862381502" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>山形浩生の「訳者解説」に収められている訳者あとがきの中で，これに関連した話がある．山形浩生が訳した地球温暖化に関する本の中で，ホッキョクグマの個体数の経年変化において一般的な想定とは違った傾向を示しているデータがあるのだが，その本の著者はそのデータを元に話を進めている．山形浩生はそれを変だと思い，自分ならデータの中で一部明らかに怪しい部分は信用しないと言っている．その疑問に対する著者自身の解答は，以下に引用したとおりだ．なお，ロンボルグとは原書の著者のことである．</p>
-
-<blockquote><p>しかしながら、それはあくまで考え方のちがいだ。この点をロンボルグに尋ねると、かれとしてはそうした恣意的なデータの取捨選択はすべきでないとの回答だった。ぼくたちはホッキョクグマの専門家じゃない。データを集めて発表しているところは、一応それなりに一貫性を持ってデータを出している。それについて見る側が自分の勝手な解釈にしたがって、元データをいじるべきではない、という。それをやるのはデータの改ざんだ、と。確かに、それは一理ある。そこから導く結論はもう少し慎重であってもいいとは思うけれど。</p>
-
-<p>「<a href="http://www.amazon.co.jp/gp/product/4862381502/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4862381502&linkCode=as2&tag=yagays-22">訳者解説 -新教養主義宣言リターンズ- (木星叢書)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4862381502" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」(p.213)</p></blockquote>
-
-<p>つまりこの本の著者としては，取り敢えずはデータを信じようよ，素人の解釈でデータをいじるのは改ざんに他ならないんだと言っている．データは確かに怪しいかもしれないけれども，そこは恣意的なデータの取捨選択をしてはいけないというスタンスであり，これこそまさに最初の逸話であった保存料無添加の前提を信じる信じないの話と根っこの部分は同じなのだ．</p>
-
-<br />
-
-
-<p>だからと言って，この方法を徹底するのはやはり難しい．全てのデータを並べて公平に議論できるわけでもないし，明らかな外れ値などは補正しないとどうしようもない場合もある．単純な思考実験だと容易に論破できるものでも，実際の議論では通用しないことがある．ただ，原則としてこの方法を守ることは非常に重要だ．まずはこの規範を元にして，そこから許容できる範囲内でどれだけ規範を超えられるかが問題だろう．その点，許容できる程度やそのやり方は非常にシビアであり，意見の別れるところだ．僕としては，基本的にデータを信じるべきだしデータの不備は違うデータによって補うべきだと考えているが，うーん，難しい．</p>
-
-<br />
-
-
-<p>（なお，この文章では冒頭の逸話に則って清潔な製品としてのパンをヤマザキパンと言っており，山崎製パンの実際の商品とは何ら関係がないことを付け加えておく．）</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/2/">&larr; Older</a></li>
@@ -831,6 +845,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/10/12/prml-talksession/">「今度こそわかる!? PRMLの学習の学習」に参加してきた</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/11/soapdenovo2-stats/">SOAPdenovo2のアセンブル情報を集計するスクリプト</a>
       </li>
     
@@ -846,15 +864,11 @@
         <a href="/blog/2012/10/02/review-nhk-virus/">「NHKスペシャル 最強ウイルス―新型インフルエンザの恐怖」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/10/01/review-reading-skill/">「読書力」読了</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (36)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (2)</a></li><li><a href='/blog/categories/reading'>Reading (4)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (1)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (36)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (4)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (1)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
 </section>
 
 
