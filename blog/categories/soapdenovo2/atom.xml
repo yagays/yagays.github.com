@@ -4,7 +4,7 @@
   <title><![CDATA[Category: SOAPdenovo2 | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/soapdenovo2/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-13T07:38:14+09:00</updated>
+  <updated>2012-10-13T10:26:39+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -51,7 +51,7 @@ $ tar zxvf SOAPdenovo2_revision210.tgz
 <p>なお，上記のコマンドでは，カレントディレクトリに全てのファイルが展開されるので，もし特定のディレクトリに展開したい場合には，以下のように<strong><code>-C</code></strong>オプションを付ける．展開先のディレクトリが無いとエラーになるので，実行前に<strong><code>mkdir</code></strong>などで作っておく．</p>
 
 <p><code>
-$ tar zxvf SOAPdenovo2_revision210.tgz -C /home/yag_ays/local/src/SOAPdenovo2_revision210
+$ tar zxvf SOAPdenovo2_revision210.tgz -C path/to/SOAPdenovo2_revision210
 </code></p>
 
 <p>展開すると，以下のようになる．</p>
