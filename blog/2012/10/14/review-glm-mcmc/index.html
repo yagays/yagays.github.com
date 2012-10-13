@@ -9,7 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="「データ解析のための統計モデリング入門」をひと通り読んだ．本書はGLMからMCMCによる分布推定までの一連の統計モデリングの流れを，生態学における研究の問題に即したテストデータやRを使った解析例とともに解説した本である．本書を書かれた久保氏の講義資料は前々から拝見していたのだが， &hellip;">
+  <meta name="description" content="「データ解析のための統計モデリング入門」をひと通り読んだ．本書はGLMからMCMCによる分布推定までの一連の統計モデリングの流れを，生態学における研究の問題に即したテストデータやRを使った解析例とともに解説した本である．本書を書かれた久保さんの講義資料は前々から拝見していたのだが， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -138,7 +138,7 @@
 <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=400006973X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
-<p>「データ解析のための統計モデリング入門」をひと通り読んだ．本書はGLMからMCMCによる分布推定までの一連の統計モデリングの流れを，生態学における研究の問題に即したテストデータやRを使った解析例とともに解説した本である．本書を書かれた久保氏の講義資料は前々から拝見していたのだが，今回はそれが全体を通して非常によくまとまっている印象を受けた．やはり実例に沿った例題があって，それを解決するためのストーリーが組まれていると，何が問題で何をすべきなのか，そしてその評価方法を含めてハッキリとしていて読みやすい．Rのコードに関しても，コマンドの実行方法からその解釈の仕方まで丁寧に解説が組まれており，数式とのつながりもわかりやすい．個人的には，後半のMCMCの実験に関しては大部分をWinBUGSにお任せで，シミュレーションの過程が少し不明瞭だった感じもするのだが，限られた紙面でMCMCの細かい実装方法を説明するよりかは既存のツールを使ったほうが全体の流れとしても良かったのだろう．</p>
+<p>「データ解析のための統計モデリング入門」をひと通り読んだ．本書はGLMからMCMCによる分布推定までの一連の統計モデリングの流れを，生態学における研究の問題に即したテストデータやRを使った解析例とともに解説した本である．本書を書かれた久保さんの講義資料は前々から拝見していたのだが，今回はそれが全体を通して非常によくまとまっている印象を受けた．やはり実例に沿った例題があって，それを解決するためのストーリーが組まれていると，何が問題で何をすべきなのか，そしてその評価方法を含めてハッキリとしていて読みやすい．Rのコードに関しても，コマンドの実行方法からその解釈の仕方まで丁寧に解説が組まれており，数式とのつながりもわかりやすい．個人的には，後半のMCMCの実験に関しては大部分をWinBUGSにお任せで，シミュレーションの過程が少し不明瞭だった感じもするのだが，限られた紙面でMCMCの細かい実装方法を説明するよりかは既存のツールを使ったほうが全体の流れとしても良かったのだろう．</p>
 
 <p>さて，本書を読み始める前に必ず目に通すべきなのが，<a href="http://hosho.ees.hokudai.ac.jp/~kubo/ce/IwanamiBook.html">公式ページ</a>にも貼られている各章のつながりや線形モデルの発展の図だ．実際に中を読みながら今ある問題と図とを照らし合わせると，自分が今どういった位置づけの中で何を解いているのかということを把握することができる．</p>
 
@@ -290,7 +290,25 @@
 
 <h3>11章</h3>
 
-<h2>参考</h2>
+<h3>参考</h3>
+
+<p>「<a href="http://www.amazon.co.jp/gp/product/4320056787/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4320056787&linkCode=as2&tag=yagays-22">生態学のためのベイズ法</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4320056787" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」は実際の生態学の解析事例が豊富．しょっぱなからベイジアンなので，少し抵抗があるかもしれない．久保さんのところ(<a href="http://hosho.ees.hokudai.ac.jp/~kubo/ce/BayesianFrog.html">URL</a>)にも色々と情報あり．</p>
+
+<p>「<a href="http://www.amazon.co.jp/gp/product/4621065270/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621065270&linkCode=as2&tag=yagays-22">Rによるモンテカルロ法入門</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621065270" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」は，乱数を発生させて数値計算を行うモンテカルロ法自体について書かれているので，扱っている内容はMCMCに限らずモンテカルロ積分なども含まれている．こちらはWinBUGSを使わず全編Rでコードが書かれているので，RでMCMC実装の参考になる．</p>
+
+<p>本書であまり触れられていなかった理論方面では，「<a href="http://www.amazon.co.jp/gp/product/4000068520/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4000068520&linkCode=as2&tag=yagays-22">計算統計 2 マルコフ連鎖モンテカルロ法とその周辺 (統計科学のフロンティア 12)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4000068520" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」「<a href="http://www.amazon.co.jp/gp/product/4254126972/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4254126972&linkCode=as2&tag=yagays-22">マルコフ連鎖モンテカルロ法 (統計ライブラリー)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4254126972" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」の2冊あたりが良さそう．前者の計算統計の方は，本書の編集にも携われた伊庭氏が書かれたMCMCの解説．後者の方は理論寄りながらも後半では社会学方面の研究の実例が色々と載っており，ポアソン回帰やロジスティック回帰など各事例の数式を追ったり実例を見るのに適している．こちらはRとWinBUGSが混じっている．</p>
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4320056787" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4000068520" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4254126972" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
 
 <h3>ランダム効果について</h3>
 
