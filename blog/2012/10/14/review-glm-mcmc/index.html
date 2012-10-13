@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>PRML復々習レーン#3で発表しました - Wolfeyes Bioinformatics beta</title>
+  <title>「データ解析のための統計モデリング入門」読書ノート - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="「パターン認識と機械学習」勉強会の復々習レーン#3で，3章の頭を担当しました．資料はslideshareにアップロードしています． Re revenge chap03-1 View more presentations from yag ays &hellip;">
+  <meta name="description" content="「データ解析のための統計モデリング入門」をひと通り読んだ．本書はGLMからMCMCによる分布推定までの一連の統計モデリングの流れを，生態学における研究の問題に即したテストデータやRを使った解析例とともに解説した本である．本書を書かれた久保氏の講義資料は前々から拝見していたのだが， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.com/blog/2012/07/18/re-revenge-prml-3">
+  <link rel="canonical" href="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -112,7 +112,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">PRML復々習レーン#3で発表しました</h1>
+      <h1 class="entry-title">「データ解析のための統計モデリング入門」読書ノート</h1>
     
     
       <p class="meta">
@@ -128,24 +128,159 @@
   
 
 
-<time datetime="2012-07-18T10:12:00+09:00" pubdate data-updated="true">Jul 18<span>th</span>, 2012</time>
+<time datetime="2012-10-14T04:40:00+09:00" pubdate data-updated="true">Oct 14<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>「パターン認識と機械学習」勉強会の復々習レーン#3で，3章の頭を担当しました．資料はslideshareにアップロードしています．</p>
-
-<div style="width:427px" id="__ss_13661580"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/yag_ays/re-revenge-chap031" title="Re revenge chap03-1" target="_blank">Re revenge chap03-1</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/13661580" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0" allowfullscreen></iframe> <div style="padding:5px 0 12px"> View more presentations from <a href="http://www.slideshare.net/yag_ays" target="_blank">yag ays</a> </div> </div>
+<div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=400006973X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
-<p>3章の頭は線形回帰モデルの導入部分でPRMLの中では簡単な部類のところなのですが，きちんと説明しようとすればするほど自分の理解がいかに曖昧なものだったか思い知らされるばかりで，非常に勉強になりました．特に「§3.1.最小二乗法の幾何学」に関しては参加者の皆様に頼りっきりという何とも情けない感じになってしまったのですが，懇切丁寧に教えていただいたおかげで何とか図の直感的理解くらいはできるようになりました．これに関しては，その場で指摘していただいたことと自分の解釈をこねくり回しつつある程度纏めたものを，スライドの最後に補足として付け加えてあります．とは言っても，本文に書かれている数式は全くといっていいほど追いきれていないので，「学習の学習」とにらめっこしつつ，もう少し理解を深めたいと思います．</p>
+<p>「データ解析のための統計モデリング入門」をひと通り読んだ．本書はGLMからMCMCによる分布推定までの一連の統計モデリングの流れを，生態学における研究の問題に即したテストデータやRを使った解析例とともに解説した本である．本書を書かれた久保氏の講義資料は前々から拝見していたのだが，今回はそれが全体を通して非常によくまとまっている印象を受けた．やはり実例に沿った例題があって，それを解決するためのストーリーが組まれていると，何が問題で何をすべきなのか，そしてその評価方法を含めてハッキリとしていて読みやすい．Rのコードに関しても，コマンドの実行方法からその解釈の仕方まで丁寧に解説が組まれており，数式とのつながりもわかりやすい．個人的には後半のMCMCの実験に関してはWinBUGSにお任せで，シミュレーションの過程が少し不明瞭だった感じもするのだが，限られた紙面でMCMCの細かい実装方法を説明するよりかは既存のツールを使ったほうが全体の流れとしても良かったのだろう．</p>
 
-<p>次回もよろしくお願いします．</p>
+<p>さて，本書の特徴として，本書を読み始める前に必ず目に通すべきなのが，<a href="http://hosho.ees.hokudai.ac.jp/~kubo/ce/IwanamiBook.html">公式ページ</a>にも貼られている各章のつながりや線形モデルの発展の図だ．実際に中を読みながら図と照らし合わせると，自分が今どの位置にいるのかを把握することができる．</p>
+
+<p>これが非常に参考になったので，自分の読書ノートでも個人的に作成したまとめ図を作ってみた．2つの図を組み合わせ感じで，ストーリーに沿った形で線形モデルの発展をなぞっている．基本的に章の間をつなぐようなクエスチョンドリブンの形を取っており，各章には推定するパラメータと手法を付け加えている．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc.png" alt="" /></p>
+
+<p>以下に簡単な読書ノートを載せておく．Rのコードを使った実験はまだできていないが，MCMCの実装くらいまではやりたいと思う．
+なお，このまとめには多分に間違いが含まれている可能性があるので，もし参考にされる際には注意していただきたい．</p>
+
+<!-- more -->
+
+
+<h3>2章</h3>
 
 <ul>
-<li><a href="http://atnd.org/events/30181">http://atnd.org/events/30181</a></li>
+<li>「ある植物の1個体から得られる種子の数に何か法則はあるか？」</li>
+<li>確率分布の単純なあてはめ</li>
+<li>ポアソン分布を選ぶ理由は，非負の整数で(0,∞]だから</li>
+</ul>
+
+
+<h3>3章</h3>
+
+<ul>
+<li>「植物のサイズや施肥効果と種子の数に何か関係はあるか」</li>
+<li>説明変数を組み込んだ統計モデル</li>
+<li>$$ log(\lambda_i) = \beta_1 + \beta_2 x_i $$</li>
+<li>(リンク関数) = (線形予測子) の関係
+
+<ul>
+<li>PRMLでは，リンク関数は連結関数と訳されている</li>
+</ul>
+</li>
+<li>対数リンク関数では，要素の効果が積で表される
+
+<ul>
+<li>$\exp(\beta_1 + \beta_2 x_i + \beta_3) = \exp(\beta_1) \times \exp(\beta_2) \times \exp(\beta_3) $$</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>4章</h3>
+
+<ul>
+<li>モデル選択</li>
+<li>良いモデル/悪いモデルと考えた時に，何が良いモデルなのか</li>
+<li>当てはまりの良さだけを考えてはいけない
+
+<ul>
+<li>いわゆる過学習</li>
+</ul>
+</li>
+<li>AIC（赤池情報量基準）</li>
+<li>平均対数尤度の推定値 / 最大対数尤度のバイアス補正</li>
+<li>最大対数尤度 &lt;=> 最小逸脱度</li>
+</ul>
+
+
+<h3>5章</h3>
+
+<h3>6章</h3>
+
+<ul>
+<li>「植物のサイズや施肥効果と種子の生存数に何か関係はあるか」</li>
+<li>ロジスティック回帰
+
+<ul>
+<li>二項分布とロジットリンク関数の組み合わせ</li>
+</ul>
+</li>
+<li>相互作用項$$ x_i f_i $$による積の効果を考える</li>
+<li>割り算値の統計モデリングの危険性とオフセット項</li>
+</ul>
+
+
+<h3>7章</h3>
+
+<ul>
+<li>複数の確率分布を部品とする統計モデリング
+
+<ul>
+<li>個体のばらつき(<strong>個体差</strong>)</li>
+</ul>
+</li>
+<li>GLMMは人間が観測できないけど応答変数(種子の生存数)に効いてそうな部分の効果をGLMに組み込んだもの</li>
+<li>固定効果とランダム効果</li>
+<li>サンプル数の分だけ必要なパラメータをまとめて最尤推定できないので積分して分布を混ぜる</li>
+<li>無限個の二項分布をまぜることで平均よりも分散が大きいような確率分布になる</li>
+<li>反復/擬似反復</li>
+</ul>
+
+
+<h3>8章</h3>
+
+<ul>
+<li>MCMCで分布を推定
+
+<ul>
+<li>ランダム効果を複数組み込んだモデルにすると多重積分の数が多くなり最尤推定に時間が掛かる場合</li>
+<li>または最尤推定が解析的に求められない場合</li>
+</ul>
+</li>
+<li>MCMCといっても結局やりたいことはパラメータを知りたいということ
+
+<ul>
+<li>Rのglm()関数で一瞬で求まったものを，MCMCのシミュレーションで求めているだけ</li>
+</ul>
+</li>
+<li>MCMCサンプリングにより定常分布が定まる ＆　定常分布は尤度に比例する</li>
+<li>マルコフ連鎖からサンプリングすることと事後分布からサンプリングすることが同じ</li>
+</ul>
+
+
+<h3>9章</h3>
+
+<ul>
+<li>GLMのベイズモデル化</li>
+<li><strong>求めているものが値なのか分布なのかを意識する</strong></li>
+<li>無情報事前分布をつかたベイズ統計モデル
+
+<ul>
+<li>平べったい分布</li>
+<li>「 [-∞,∞]の範囲で好きな値を取っていい」ことを表現するための分布</li>
+</ul>
+</li>
+<li>gibbsサンプリングによるMCMCアルゴリズム（複数パラメータのサンプリング）</li>
+</ul>
+
+
+<h3>10章</h3>
+
+<ul>
+<li>「調査場所の差」を考慮にいれる
+
+<ul>
+<li>これも結局は個体差</li>
+</ul>
+</li>
+<li>階層事前分布・階層ベイズモデル</li>
+<li>階層に関しては「生態学のためのベイズ法」にある図が分かりやすい</li>
 </ul>
 
 </div>
@@ -170,22 +305,16 @@
   
 
 
-<time datetime="2012-07-18T10:12:00+09:00" pubdate data-updated="true">Jul 18<span>th</span>, 2012</time>
+<time datetime="2012-10-14T04:40:00+09:00" pubdate data-updated="true">Oct 14<span>th</span>, 2012</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/prml/'>PRML</a>, <a class='category' href='/blog/categories/presentation/'>Presentation</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/07/18/re-revenge-prml-3/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/07/18/re-revenge-prml-3/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/07/18/re-revenge-prml-3/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -206,14 +335,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/07/10/review-problems-of-biology/" title="Previous Post:
-        「生物学のすすめ」読了">&laquo; 「生物学のすすめ」読了</a></li>
+        href="/blog/2012/10/13/soapdenovo2-install/" title="Previous Post:
+        SOAPdenovo2のインストール方法">&laquo; SOAPdenovo2のインストール方法</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/07/27/review-yamagata-hiroo/"
-        title="Next Post: 「要するに」「新教養主義宣言」「訳者解説」読了">「要するに」「新教養主義宣言」「訳者解説」読了
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -316,8 +441,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.com/blog/2012/07/18/re-revenge-prml-3/';
-        var disqus_url = 'http://yagays.github.com/blog/2012/07/18/re-revenge-prml-3/';
+        var disqus_identifier = 'http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/';
+        var disqus_url = 'http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/';
         var disqus_script = 'embed.js';
       
     (function () {

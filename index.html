@@ -9,7 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="前回SOAPdenovo2の話を書いたが，そういえばSOAPdenovo2といえばインストールまわりが不親切だったので，ちょっと解説みたいなものを書いてみる． ダウンロード まずここで注意しなければいけないのは，緑のアイコンででかでかと表示されている「Download」 &hellip;">
+  <meta name="description" content="「データ解析のための統計モデリング入門」をひと通り読んだ．本書はGLMからMCMCによる分布推定までの一連の統計モデリングの流れを，生態学における研究の問題に即したテストデータやRを使った解析例とともに解説した本である．本書を書かれた久保氏の講義資料は前々から拝見していたのだが， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -39,6 +39,10 @@
     .page-footer p {
       text-align: center;
     }
+    .MathJax_Display {
+    text-align: left !important;
+    }
+    
   </style>
   <script src="/javascripts/libs/jquery.js"></script>
   <script src="/javascripts/libs/modernizr-2.0.js"></script>
@@ -104,6 +108,59 @@
     <div class="row-fluid">
       <div class="span9">
   
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-14T04:40:00+09:00" pubdate data-updated="true">Oct 14<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=400006973X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>「データ解析のための統計モデリング入門」をひと通り読んだ．本書はGLMからMCMCによる分布推定までの一連の統計モデリングの流れを，生態学における研究の問題に即したテストデータやRを使った解析例とともに解説した本である．本書を書かれた久保氏の講義資料は前々から拝見していたのだが，今回はそれが全体を通して非常によくまとまっている印象を受けた．やはり実例に沿った例題があって，それを解決するためのストーリーが組まれていると，何が問題で何をすべきなのか，そしてその評価方法を含めてハッキリとしていて読みやすい．Rのコードに関しても，コマンドの実行方法からその解釈の仕方まで丁寧に解説が組まれており，数式とのつながりもわかりやすい．個人的には後半のMCMCの実験に関してはWinBUGSにお任せで，シミュレーションの過程が少し不明瞭だった感じもするのだが，限られた紙面でMCMCの細かい実装方法を説明するよりかは既存のツールを使ったほうが全体の流れとしても良かったのだろう．</p>
+
+<p>さて，本書の特徴として，本書を読み始める前に必ず目に通すべきなのが，<a href="http://hosho.ees.hokudai.ac.jp/~kubo/ce/IwanamiBook.html">公式ページ</a>にも貼られている各章のつながりや線形モデルの発展の図だ．実際に中を読みながら図と照らし合わせると，自分が今どの位置にいるのかを把握することができる．</p>
+
+<p>これが非常に参考になったので，自分の読書ノートでも個人的に作成したまとめ図を作ってみた．2つの図を組み合わせ感じで，ストーリーに沿った形で線形モデルの発展をなぞっている．基本的に章の間をつなぐようなクエスチョンドリブンの形を取っており，各章には推定するパラメータと手法を付け加えている．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc.png" alt="" /></p>
+
+<p>以下に簡単な読書ノートを載せておく．Rのコードを使った実験はまだできていないが，MCMCの実装くらいまではやりたいと思う．
+なお，このまとめには多分に間違いが含まれている可能性があるので，もし参考にされる際には注意していただきたい．</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/14/review-glm-mcmc/">続きを読む &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -868,49 +925,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/09/24/review-lifescience-10-classics/">「原典による生命科学入門」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-24T22:41:00+09:00" pubdate data-updated="true">Sep 24<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4480094784" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>生物を相手にした学問というのは，医学という人間自身を対象とした研究を含めれば，数学など他の学問に勝るとも劣らない長い歴史を持っている．そのような生命科学において，後世に多大なる影響を与えパラダイムシフトに重要な役割を果たしたと思われる10の著作を取り上げ，その研究の概要と著作の一部の翻訳を纏めたのが本書の概要だ．とりあげられる著作は，ヒポクラテスやアリストテレスのギリシャ哲学から始まり，ハーヴィやデカルト，ベルナール，ラマルク，ダーウィン，メンデル，モーガン，そしてワトソン・クリックと，近代の生物学の勃興を支えた数多くの研究者の名前とその著作が並ぶ．</p>
-
-<p>「巨人の肩の上に立つ」と言うように，今の学問は当然ながら今までの研究成果の上に築かれるが，だからといって過去の科学史を順に追っていく必要もなければ今となっては古くなった知識を入れる必要も無い．だが，今まで人間が築いてきた知識体系の歴史を知るということは，真理であろうとなかろうと，当時の科学思想の理解，そして脈々と続く科学そのものを理解することができる．そういった意味で本書は，当時の歴史背景を含め要点を抑えた形で過去の名著を現代でも読みやすく示されるので，特に過去の名著を知る良い機会となるだろう．原典全部を読むのは大変でも，本書ならある程度の分量で全体を俯瞰することができる．</p>
-
-<p>ただ一つ苦言を呈するならば，本書はただただ単調だ．10の著作それぞれの解説と著作の一部翻訳が羅列されるだけで，その時代の主流を表面的に攫ったようなだけに感じる．百科事典のようであり，ある意味Wikipediaの記事を読んでいるかのような感覚を覚えた．著作の翻訳も紙面の都合上全部が掲載されているわけではなく，特に時代を象徴する箇所をかいつまんだ形で示されるので，どうしても広く浅くという印象しか残らなかった．ここで扱われている著作の多くはそれぞれ文庫などで翻訳が存在するので，生命科学史を俯瞰する必要がなければ個別の著作を当たったほうがいいだろう．</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/2/">&larr; Older</a></li>
@@ -948,6 +962,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/13/soapdenovo2-install/">SOAPdenovo2のインストール方法</a>
       </li>
     
@@ -961,10 +979,6 @@
     
       <li class="post">
         <a href="/blog/2012/10/10/shut-the-fuck-up-and-download-all-pdf-files/">ウェブページにリストアップされているpdfファイルをwgetでまとめてダウンロードする方法</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/09/review-art-of-reading/">「読書の技法 誰でも本物の知識が身につく熟読術・速読術「超」入門」読了</a>
       </li>
     
   </ul>
