@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-14T08:45:27+09:00</updated>
+  <updated>2012-10-14T09:15:46+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -75,7 +75,7 @@
 <li>対数リンク関数では，要素の効果が積で表される
 
 <ul>
-<li>$$ \exp(\beta_1 + \beta_2 x_i + \beta_3) = \exp(\beta_1) \times \exp(\beta_2) \times \exp(\beta_3) $$</li>
+<li>$$ \exp(\beta_1 + \beta_2 x_i + \beta_3) = \exp(\beta_1) \times \exp(\beta_2 x_i) \times \exp(\beta_3) $$</li>
 </ul>
 </li>
 </ul>
