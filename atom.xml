@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-19T12:45:36+09:00</updated>
+  <updated>2012-10-19T14:44:24+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -20,7 +20,7 @@
     <id>http://yagays.github.com/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex</id>
     <content type="html"><![CDATA[<h3>概要</h3>
 
-<p>Jekell/Octopressで数式を使った記事の作成を簡単にします．</p>
+<p>Jekyll/Octopressで数式を使った記事の作成を簡単にします．</p>
 
 <p><a href="https://developers.google.com/chart/">Google Chart Tools</a>には，Tex形式で書かれた数式をURLに含めて投げると変換した画像を返してくれるAPIがあります．しかし，URLで数式を投げるには特定の文字のエスケープ(変換)をする必要があり，とても面倒です．ということで，Jekyll/Octopress内に書かれた数式を自動でGoogle Chart APIのURL形式に変換するプラグインを作りました．これを使えば，記事の中で数式を書くときに，面倒なHTMLのタグやURLの変換を気にする必要がありません．</p>
 
@@ -29,14 +29,14 @@
 <p>以下のように<strong>gctex</strong>というタグとTex形式の数式を埋め込むと，Google Chart APIの画像のURLに変換されます．</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{% gctex \frac{1}{\sqrt{2\pi}\sigma}\exp(\frac{-(x-\mu)^2}{2\sigma^2}) %}
+</pre></td><td class='code'><pre><code class=''><span class='line'>{% gctex \frac{1}{\sqrt{2\pi}\sigma} \exp(\frac{-(x-\mu)^2}{2\sigma^2}) %}
 </span></code></pre></td></tr></table></div></figure>
 
 
 
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7D%5Cexp%28%5Cfrac%7B-%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%29+></span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7D+%5Cexp%28%5Cfrac%7B-%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%29+></span></code></pre></td></tr></table></div></figure>
 
 
 <p>また，文字の途中に埋め込むことも可能です．</p>
