@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-19T12:32:11+09:00</updated>
+  <updated>2012-10-19T12:41:41+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -22,7 +22,7 @@
 
 <p>Jekell/Octopressで数式を使った記事の作成を簡単にします．</p>
 
-<p><a href="https://developers.google.com/chart/">Google Chart Tools</a>には，Tex形式で書かれた数式をURLに含めて投げると変換した画像を返してくれるAPIがあります．しかし，URLで数式を投げるには特定の文字のエスケープ(変換)をする必要がありとても面倒です．ということで，Jekyll/Octopress内に書かれた数式を自動でGoogle Chart APIのURL形式に変換するプラグインを作りました．これを使えば，記事の中で数式を書くときに，面倒なHTMLのタグやURLの変換を気にする必要がありません．</p>
+<p><a href="https://developers.google.com/chart/">Google Chart Tools</a>には，Tex形式で書かれた数式をURLに含めて投げると変換した画像を返してくれるAPIがあります．しかし，URLで数式を投げるには特定の文字のエスケープ(変換)をする必要があり，とても面倒です．ということで，Jekyll/Octopress内に書かれた数式を自動でGoogle Chart APIのURL形式に変換するプラグインを作りました．これを使えば，記事の中で数式を書くときに，面倒なHTMLのタグやURLの変換を気にする必要がありません．</p>
 
 <h3>使い方</h3>
 
@@ -46,7 +46,7 @@
 
 <h3>インストールとコード</h3>
 
-<p>以下のgooglechart_tex.rbをダウンロードしてプラグインのあるディレクトリに入れるだけです．Jekyllの場合は_pluginsディレクトリ，Octopressの場合はpluginディレクトリです．</p>
+<p>以下のgooglechart_tex.rbをダウンロードして，プラグインのコードがあるディレクトリに入れるだけです（Jekyllの場合は_plugins，Octopressの場合はplugins）．</p>
 
 <div><script src='https://gist.github.com/3915940.js?file='></script>
 <noscript><pre><code># Convert tex formula into google chart API format (Jekyll/Octopress plugin)
