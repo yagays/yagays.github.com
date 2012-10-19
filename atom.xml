@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-18T07:46:05+09:00</updated>
+  <updated>2012-10-19T12:32:11+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,82 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました]]></title>
+    <link href="http://yagays.github.com/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex/"/>
+    <updated>2012-10-19T12:14:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex</id>
+    <content type="html"><![CDATA[<h3>概要</h3>
+
+<p>Jekell/Octopressで数式を使った記事の作成を簡単にします．</p>
+
+<p><a href="https://developers.google.com/chart/">Google Chart Tools</a>には，Tex形式で書かれた数式をURLに含めて投げると変換した画像を返してくれるAPIがあります．しかし，URLで数式を投げるには特定の文字のエスケープ(変換)をする必要がありとても面倒です．ということで，Jekyll/Octopress内に書かれた数式を自動でGoogle Chart APIのURL形式に変換するプラグインを作りました．これを使えば，記事の中で数式を書くときに，面倒なHTMLのタグやURLの変換を気にする必要がありません．</p>
+
+<h3>使い方</h3>
+
+<p>以下のように<strong>gctex</strong>というタグとTex形式の数式を埋め込むと，Google Chart APIの画像のURLに変換されます．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% gctex \frac{1}{\sqrt{2\pi}\sigma}\exp(\frac{-(x-\mu)^2}{2\sigma^2}) %}
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7D%5Cexp%28%5Cfrac%7B-%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%29+></p>
+
+<p>また，文字の途中に埋め込むことも可能です．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>これは{% gctex \mathcal{N}(x|\mu,\sigma) %}です．
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%28x%7C%5Cmu%2C%5Csigma%29+>です．</p>
+
+<h3>インストールとコード</h3>
+
+<p>以下のgooglechart_tex.rbをダウンロードしてプラグインのあるディレクトリに入れるだけです．Jekyllの場合は_pluginsディレクトリ，Octopressの場合はpluginディレクトリです．</p>
+
+<div><script src='https://gist.github.com/3915940.js?file='></script>
+<noscript><pre><code># Convert tex formula into google chart API format (Jekyll/Octopress plugin)
+#
+# Usage: {% gctex tex_formula %}
+#
+# Author: yag_ays (yanagi.ayase [at] gmail.com)
+# blog  http://yagays.github.com/
+#
+# Ref : http://d.hatena.ne.jp/repose/20110506/1304612242
+
+require &quot;cgi&quot;
+
+module Jekyll
+  class GoogleChartTexTag &lt; Liquid::Tag
+
+    def initialize(tag_name, text, tokens)
+      super
+      @text = text
+    end
+
+    def render(context)
+      &quot;&lt;img src=http://chart.apis.google.com/chart?cht=tx&amp;chl=#{CGI.escape(@text)}&gt;&quot;
+    end
+  end
+end
+
+Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
+</code></pre></noscript></div>
+
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/repose/20110506/1304612242">http://d.hatena.ne.jp/repose/20110506/1304612242</a></li>
+<li><a href="https://github.com/mojombo/jekyll/wiki/Plugins">https://github.com/mojombo/jekyll/wiki/Plugins</a></li>
+<li><a href="https://developers.google.com/chart/infographics/docs/formulas">https://developers.google.com/chart/infographics/docs/formulas</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「デザインする技術 -よりよいデザインのための基礎知識」読了]]></title>
@@ -23,7 +99,7 @@
 
 <h3>ウェブデザイン・インフォグラフィクスを含めたデザイン全般に使えるリファレンス的な1冊</h3>
 
-<p>一般の社会人や学生が「デザイン」を意識するのは，プレゼンテーションを作成するときだろう．エンジニアや研究者などはそれに加えて，ポスターやウェブサイトの作成，そして最近よく言われるようになったUX/UIなどの要素が加わる．そういう人に私が問答無用でお薦めするのが「<strong><a href="http://www.amazon.co.jp/gp/product/4839928401/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4839928401&linkCode=as2&tag=yagays-22">ノンデザイナーズ・デザインブック [フルカラー新装増補版]</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4839928401" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></strong>」なのだが，本書「<strong><a href="http://www.amazon.co.jp/gp/product/4844358588/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4844358588&linkCode=as2&tag=yagays-22">デザインする技術 ~よりよいデザインのための基礎知識</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4844358588" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></strong>」もなかなかの良書だったので紹介してみる．</p>
+<p>一般の社会人や学生が「デザイン」を意識するのは，プレゼンテーションのスライドを作成するときだろう．エンジニアや研究者などはそれに加えて，ポスターやウェブサイトの作成，そして最近よく言われるようになったUX/UIなどの要素が加わる．そういう人に私が問答無用でお薦めするのが「<strong><a href="http://www.amazon.co.jp/gp/product/4839928401/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4839928401&linkCode=as2&tag=yagays-22">ノンデザイナーズ・デザインブック [フルカラー新装増補版]</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4839928401" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></strong>」なのだが，本書「<strong><a href="http://www.amazon.co.jp/gp/product/4844358588/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4844358588&linkCode=as2&tag=yagays-22">デザインする技術 ~よりよいデザインのための基礎知識</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4844358588" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></strong>」もなかなかの良書だったので紹介してみる．</p>
 
 <p>本書は，デザイナーの仕事としての企画・発案から制作に至るすべての工程におけるデザインの技法を包括的に取り扱った技術書である．それらデザイナーの技法を，5つの要素「考」「図」「文字」「面」「色」に分けて，各要素が含む細かく技法をそれぞれ体系的に解説している．例えば「考」では，アイデアの出し方から組み立て方，そして最終的なカタチに仕上げていく過程に必要な技法が説明される．個人的な創作活動では境界が曖昧になりがちなプロトタイプ・ラフ・カンプにおいて，それぞれの段階で何をすべきでどのような箇所に気をつけなければいけないかが述べられ，それぞれの役割が明確になる．その他にも多人数で知恵を出しあってモノを作っていく方法にも触れられており，ブレインストーミングにおいては相手の1次的な意見に自分の意見を重ねることが大切だといった実践的なテクニックも入っている．そういった形で，本書をひと通り読めばある程度デザイナーの仕事をなぞることができるレベルの内容が詰まっている．</p>
 
@@ -255,6 +331,13 @@
     <content type="html"><![CDATA[<p>前回<a href="bhttp://yagays.github.com/blog/2012/10/11/soapdenovo2-stats/">SOAPdenovo2の話</a>を書いたが，そういえばSOAPdenovo2といえばインストールまわりが不親切だったので，ちょっと解説みたいなものを書いてみる．</p>
 
 <h3>ダウンロード</h3>
+
+<p>SOAPdenovoのパッケージがおかれているSourceForgeにアクセスする</p>
+
+<ul>
+<li><a href="http://sourceforge.net/projects/soapdenovo2/">http://sourceforge.net/projects/soapdenovo2/</a></li>
+</ul>
+
 
 <p>まずここで注意しなければいけないのは，緑のアイコンででかでかと表示されている「Download」をクリックしてはいけないということだ．よくよく見ると「GapCloser」と書いてあり，これは本体とは別のプログラムファイルである．欲しいのはSOAPdenovo2の実行ファイルなので，「Browse All File」をクリックしてアップロードされているファイルの中から欲しいものを探す．なお，上部の「File」をクリックしても同じ．</p>
 
@@ -1207,22 +1290,6 @@ end
 <p>本書で描かれるのは主に感染症研究所の研究員や病院の医者，保健所職員，空港の検疫官など，職業としてインフルエンザウィルスと対峙していく人間だ．彼ら/彼女らの奮闘も虚しく無慈悲にも感染は拡大していくのだが，そこから見えてくるのは，市民の感染症への無知と政府地方自治体の準備不足，そして刻々と死者が増えていく無残な現実だ．インフルエンザウィルスに対して何も対処出来ない感染者，市民，医療従事者，病院，そして政府．淡々と語られる現実の中で感じるのは，様々な不条理に対する苛立ちと無力感，もどかしさなど，本書が読者に訴えかけるものは様々だ．</p>
 
 <p>2011年公開の映画「<a href="http://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%86%E3%82%A4%E3%82%B8%E3%83%A7%E3%83%B3">コンテイジョン</a>」も，強毒性新型ウィルスがアメリカ全土に感染拡大していく中で起こる様々な人間模様を描いた映画であり，本書と非常によく似た作品で共通点も多い．この映画はアメリカ疾病予防管理センター（CDC）や専門家などの協力を得て作成されており，また本書の著者は国立感染症研究所研究員と，どちらも医科学的なリアリティを持ちながらも，同時にフィクションとしての緻密さや現実感を伴って見事に描き切っている．私は映画を見てから本書の存在を知り，今更ながら読んだわけだが，どちらも綿密に練られたストーリーと科学的な裏付けがされた，とても良い作品だった．あと，読み終わった後には必ず何かしないといけないという衝動にかられるだろう．それだけの危機意識を感じさせるという意味でも，本書は非常に啓蒙的でよく作られていると思う．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「『言語技術』が日本のサッカーを変える」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/09/14/review-tajima-soccer/"/>
-    <updated>2012-09-14T01:03:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/09/14/review-tajima-soccer</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4334034268" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p><a href="http://yagays.github.com/blog/2012/09/05/review-critical-reading/">前回の「外国語で発想するための日本語レッスン」の記事</a>で，三森氏の言語技術に関連した書籍としてnext49さんに教えていただいた新書を読んだ（参考：<a href="http://d.hatena.ne.jp/next49/20120906/p1">next49氏のblog記事</a>）．</p>
-
-<p>本書は，海外のサッカー指導法に影響を受けた田嶋幸三氏が，日本のサッカー選手/指導者の育成に言語技術などを取り入れ実践している現場を紹介したものとなっている．田嶋氏は個人的な指導にとどまらず，指導者のライセンス制度の改革や全寮制のエリート育成学校を立ち上げるなど，精力的に活動されている．その中で教えている内容というのが，本書のキーワードである「言語技術」である．どのようにして選手に考える力を付け自己決定力の能力を育てるか，そういう選手に育てるようなサッカー指導者自体をどう育てるか，そういった選手と指導者の両者にわたる指導法が非常に詳しく具体的に書かれている．それに加え，現在の活躍に至る過程にあった，田嶋氏自身の留学の苦い経験や海外勢の根本的に違う価値観や考え方，そして日本サッカー自体の不振と再興への思いも盛り込まれている．</p>
-
-<p>三森ゆりか氏の著作では言語技術の基礎や背景などの理論的な部分が多かったが，本書ではより応用・実践的な部分について，じゃあどうやって子供に教えればいいのか，どういう段階を踏むべきなのか，目指すところはどこなのかといった疑問をひと通り網羅している．ただ，かなり多岐にわたるトピックが新書1冊に詰め込まれているため，始めにいきなり服装や態度の話から入ったり，論理とは別の話として偉人の言葉のリスペクトといった本題から脇にそれる話が挟まったりと，少し論理的な思考技術から外れる部分もあるが，言語技術に関しては実例とともに分かりやすく整理されている．そして何よりもまず実践に基づいた語り口ほど説得力のあるものは無いと言える．三森氏の「外国語で発想するための日本語レッスン」と合わせてお薦めできる1冊だ．</p>
 ]]></content>
   </entry>
   

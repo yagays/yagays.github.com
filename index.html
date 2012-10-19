@@ -9,7 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="ウェブデザイン・インフォグラフィクスを含めたデザイン全般に使えるリファレンス的な1冊 一般の社会人や学生が「デザイン」を意識するのは，プレゼンテーションを作成するときだろう．エンジニアや研究者などはそれに加えて，ポスターやウェブサイトの作成，そして最近よく言われるようになったUX/ &hellip;">
+  <meta name="description" content="概要 Jekell/Octopressで数式を使った記事の作成を簡単にします． Google Chart Toolsには，Tex形式で書かれた数式をURLに含めて投げると変換した画像を返してくれるAPIがあります．しかし，URLで数式を投げるには特定の文字のエスケープ(変換) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -114,6 +114,109 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex/">TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-19T12:14:00+09:00" pubdate data-updated="true">Oct 19<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>概要</h3>
+
+<p>Jekell/Octopressで数式を使った記事の作成を簡単にします．</p>
+
+<p><a href="https://developers.google.com/chart/">Google Chart Tools</a>には，Tex形式で書かれた数式をURLに含めて投げると変換した画像を返してくれるAPIがあります．しかし，URLで数式を投げるには特定の文字のエスケープ(変換)をする必要がありとても面倒です．ということで，Jekyll/Octopress内に書かれた数式を自動でGoogle Chart APIのURL形式に変換するプラグインを作りました．これを使えば，記事の中で数式を書くときに，面倒なHTMLのタグやURLの変換を気にする必要がありません．</p>
+
+<h3>使い方</h3>
+
+<p>以下のように<strong>gctex</strong>というタグとTex形式の数式を埋め込むと，Google Chart APIの画像のURLに変換されます．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>{% gctex \frac{1}{\sqrt{2\pi}\sigma}\exp(\frac{-(x-\mu)^2}{2\sigma^2}) %}
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7D%5Cexp%28%5Cfrac%7B-%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%29+></p>
+
+<p>また，文字の途中に埋め込むことも可能です．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>これは{% gctex \mathcal{N}(x|\mu,\sigma) %}です．
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%28x%7C%5Cmu%2C%5Csigma%29+>です．</p>
+
+<h3>インストールとコード</h3>
+
+<p>以下のgooglechart_tex.rbをダウンロードしてプラグインのあるディレクトリに入れるだけです．Jekyllの場合は_pluginsディレクトリ，Octopressの場合はpluginディレクトリです．</p>
+
+<div><script src='https://gist.github.com/3915940.js?file='></script>
+<noscript><pre><code># Convert tex formula into google chart API format (Jekyll/Octopress plugin)
+#
+# Usage: {% gctex tex_formula %}
+#
+# Author: yag_ays (yanagi.ayase [at] gmail.com)
+# blog  http://yagays.github.com/
+#
+# Ref : http://d.hatena.ne.jp/repose/20110506/1304612242
+
+require &quot;cgi&quot;
+
+module Jekyll
+  class GoogleChartTexTag &lt; Liquid::Tag
+
+    def initialize(tag_name, text, tokens)
+      super
+      @text = text
+    end
+
+    def render(context)
+      &quot;&lt;img src=http://chart.apis.google.com/chart?cht=tx&amp;chl=#{CGI.escape(@text)}&gt;&quot;
+    end
+  end
+end
+
+Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
+</code></pre></noscript></div>
+
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/repose/20110506/1304612242">http://d.hatena.ne.jp/repose/20110506/1304612242</a></li>
+<li><a href="https://github.com/mojombo/jekyll/wiki/Plugins">https://github.com/mojombo/jekyll/wiki/Plugins</a></li>
+<li><a href="https://developers.google.com/chart/infographics/docs/formulas">https://developers.google.com/chart/infographics/docs/formulas</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/10/18/review-the-art-of-designing/">「デザインする技術 -よりよいデザインのための基礎知識」読了</a></h1>
     
     
@@ -142,7 +245,7 @@
 
 <h3>ウェブデザイン・インフォグラフィクスを含めたデザイン全般に使えるリファレンス的な1冊</h3>
 
-<p>一般の社会人や学生が「デザイン」を意識するのは，プレゼンテーションを作成するときだろう．エンジニアや研究者などはそれに加えて，ポスターやウェブサイトの作成，そして最近よく言われるようになったUX/UIなどの要素が加わる．そういう人に私が問答無用でお薦めするのが「<strong><a href="http://www.amazon.co.jp/gp/product/4839928401/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4839928401&linkCode=as2&tag=yagays-22">ノンデザイナーズ・デザインブック [フルカラー新装増補版]</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4839928401" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></strong>」なのだが，本書「<strong><a href="http://www.amazon.co.jp/gp/product/4844358588/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4844358588&linkCode=as2&tag=yagays-22">デザインする技術 ~よりよいデザインのための基礎知識</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4844358588" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></strong>」もなかなかの良書だったので紹介してみる．</p>
+<p>一般の社会人や学生が「デザイン」を意識するのは，プレゼンテーションのスライドを作成するときだろう．エンジニアや研究者などはそれに加えて，ポスターやウェブサイトの作成，そして最近よく言われるようになったUX/UIなどの要素が加わる．そういう人に私が問答無用でお薦めするのが「<strong><a href="http://www.amazon.co.jp/gp/product/4839928401/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4839928401&linkCode=as2&tag=yagays-22">ノンデザイナーズ・デザインブック [フルカラー新装増補版]</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4839928401" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></strong>」なのだが，本書「<strong><a href="http://www.amazon.co.jp/gp/product/4844358588/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4844358588&linkCode=as2&tag=yagays-22">デザインする技術 ~よりよいデザインのための基礎知識</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4844358588" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></strong>」もなかなかの良書だったので紹介してみる．</p>
 
 <p>本書は，デザイナーの仕事としての企画・発案から制作に至るすべての工程におけるデザインの技法を包括的に取り扱った技術書である．それらデザイナーの技法を，5つの要素「考」「図」「文字」「面」「色」に分けて，各要素が含む細かく技法をそれぞれ体系的に解説している．例えば「考」では，アイデアの出し方から組み立て方，そして最終的なカタチに仕上げていく過程に必要な技法が説明される．個人的な創作活動では境界が曖昧になりがちなプロトタイプ・ラフ・カンプにおいて，それぞれの段階で何をすべきでどのような箇所に気をつけなければいけないかが述べられ，それぞれの役割が明確になる．その他にも多人数で知恵を出しあってモノを作っていく方法にも触れられており，ブレインストーミングにおいては相手の1次的な意見に自分の意見を重ねることが大切だといった実践的なテクニックも入っている．そういった形で，本書をひと通り読めばある程度デザイナーの仕事をなぞることができるレベルの内容が詰まっている．</p>
 
@@ -249,6 +352,13 @@
   <div class="entry-content"><p>前回<a href="bhttp://yagays.github.com/blog/2012/10/11/soapdenovo2-stats/">SOAPdenovo2の話</a>を書いたが，そういえばSOAPdenovo2といえばインストールまわりが不親切だったので，ちょっと解説みたいなものを書いてみる．</p>
 
 <h3>ダウンロード</h3>
+
+<p>SOAPdenovoのパッケージがおかれているSourceForgeにアクセスする</p>
+
+<ul>
+<li><a href="http://sourceforge.net/projects/soapdenovo2/">http://sourceforge.net/projects/soapdenovo2/</a></li>
+</ul>
+
 
 <p>まずここで注意しなければいけないのは，緑のアイコンででかでかと表示されている「Download」をクリックしてはいけないということだ．よくよく見ると「GapCloser」と書いてあり，これは本体とは別のプログラムファイルである．欲しいのはSOAPdenovo2の実行ファイルなので，「Browse All File」をクリックしてアップロードされているファイルの中から欲しいものを探す．なお，上部の「File」をクリックしても同じ．</p>
 
@@ -889,55 +999,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/09/29/sphinx-dropbox-bookshelf/">Dropbox+Sphinxで自分専用の電子書籍リストを作ってみた</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-29T14:05:00+09:00" pubdate data-updated="true">Sep 29<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="http://dl.dropbox.com/u/142306/b/bookshelf.png" align="right" hspace="10px"></p>
-
-<h3>きっかけ</h3>
-
-<p>本を裁断してpdfにする自炊というものをやり始めて1年以上が経ち，自炊したpdfも350冊・35GBを超えてしまった．手持ちのiPadには全部の書籍が入りきらなくなってしまい，終いには自炊した本のことを忘れて中古で買い直す始末．そんなこんなで，自炊した書籍のpdfをまとめる本棚みたいなものが欲しくなってきた．手の込んだものはいらないので，表紙をざっと眺めたり，タイトルと著者を検索できる程度のもので簡単に済ませたい．</p>
-
-<p>というわけで，<strong>Sphinxで静的htmlを吐き出してDropboxのPublicフォルダで公開するようなシステム</strong>を簡単に組んでみた．SphinxはPythonで書かれたドキュメンテーションツールで，rst形式のテキストから静的なhtmlを出力できるほか，jsで簡易な検索もできる．バックグラウンドでスクリプトを動かしたりデータベースを置いておく必要がないので，DropboxのPublicフォルダみたいな場所でも公開できる便利さがある．今回はそれをメインにして，付加情報として書籍ファイルのISBNを使ってAmazonのProduct Advertising APIを叩いてメタ情報を入手し，書籍カバーの画像と一緒に表示させるようなSphinxのrstファイルを作成するという目論見．今回やってみた限りだとDropbox+Sphinxは連携が案外簡単だったので，この他にも個人的なメモなどの用途にも最適だと思う．</p>
-
-<p>なお，今回のウェブページはリンクを一般に公開しておらず，また書籍pdfはダウンロードできる状態にはしていない．書籍の電子化に関しては色々難しいところがあるのでスクリプトの公開などは控えるようにする．</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/09/29/sphinx-dropbox-bookshelf/">続きを読む &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/2/">&larr; Older</a></li>
@@ -975,6 +1036,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex/">TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/18/review-the-art-of-designing/">「デザインする技術 -よりよいデザインのための基礎知識」読了</a>
       </li>
     
@@ -988,10 +1053,6 @@
     
       <li class="post">
         <a href="/blog/2012/10/12/prml-talksession/">「今度こそわかる!? PRMLの学習の学習」に参加しました</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/11/soapdenovo2-stats/">SOAPdenovo2のアセンブル情報を集計するスクリプト</a>
       </li>
     
   </ul>
