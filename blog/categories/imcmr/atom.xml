@@ -4,7 +4,7 @@
   <title><![CDATA[Category: imcmr | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/imcmr/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-21T07:44:25+09:00</updated>
+  <updated>2012-10-21T08:56:08+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -18,17 +18,17 @@
     <link href="http://yagays.github.com/blog/2012/10/21/imcmr-2-1/"/>
     <updated>2012-10-21T06:26:00+09:00</updated>
     <id>http://yagays.github.com/blog/2012/10/21/imcmr-2-1</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<ul>
+    <content type="html"><![CDATA[<ul>
 <li>読書ノート アーカイブ:<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
 </ul>
 
 
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
 <h3>内容：一様分布を元にして様々な確率分布に従う乱数を生成する</h3>
 
-<p>統計解析ソフトであるRには，様々な分布に対応した組み込み関数が容易されている．本章では，そういった組み込みの関数を使わずに，一様分布から生成される乱数を逆関数で変換することで，他の確率分布の乱数を表現する．</p>
+<p>統計解析ソフトであるRには，様々な分布に対応した組み込み関数が用意されている．本章では，そういった組み込み関数を使わずに，一様分布から生成される乱数を逆関数で変換することで，他の確率分布の乱数を表現する．</p>
 
 <p>本書で扱う乱数とは，完全なランダム性を持つ乱数ではなく<strong>擬似乱数</strong>である．擬似乱数はset.seed()関数で設定した値を種として乱数を生成するため，どのような環境においてもset.seed()関数で同じ値を使うことで乱数を再現することができる．</p>
 
