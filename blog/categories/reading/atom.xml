@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Reading | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-19T14:44:24+09:00</updated>
+  <updated>2012-10-20T11:18:29+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,66 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：アーカイブ]]></title>
+    <link href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/"/>
+    <updated>2012-10-20T11:13:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>本書は，モンテカルロ法の実践的な解説書であり，統計解析ソフトのRを用いた豊富な実例と練習問題が組まれている．モンテカルロ法とは乱数を用いて数値計算を行う手法の総称であり，本書で扱う内容は乱数の発生からモンテカルロ積分，そしてマルコフ連鎖モンテカルロ法（MCMC）の各種アルゴリズムに至るまで非常に幅広い．たいていの解説は理論に実践演習が付随した形になっており，数学的な理論を軸にして実際にRを用いたコード例が示される．</p>
+
+<h3>練習問題を解きつつ読書ノートをまとめてみる</h3>
+
+<p><a href="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/">そんなこんな</a>で，<a href="http://www.amazon.co.jp/gp/product/400006973X/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=400006973X&amp;linkCode=as2&amp;tag=yagays-22">久保本</a>と並行する形で「<a href="http://www.amazon.co.jp/gp/product/4621065270/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621065270&linkCode=as2&tag=yagays-22">Rによるモンテカルロ法入門</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621065270" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」を読んでいる．一応MCMCの部分だけひと通り目を通したのだが，最終的にMCMCの実装までひと通りやるにしても一連の流れを簡単にでも追っておかなければと思って，最初の乱数の部分からじっくり読み進めている．これがなかなか難しくて，手も足も出ないところをなんとかRのコードを動かして理解を補っているわけなのだが……取り敢えず練習問題を解ける範囲で解きつつRのコードを書いていこうということ，はセクションごとに小分けてしてじっくり読書ノートを付けて勉強することにしてみた．</p>
+
+<p>以下に，読書ノートのリンクを書き加えていく予定．</p>
+
+<ul>
+<li>&lt;></li>
+<li>&lt;></li>
+<li>&lt;></li>
+</ul>
+
+
+<h3>参考：サンプルコード</h3>
+
+<p>CRANのmcsmパッケージに，本書の一部コードのスクリプトがデモとして入っている．</p>
+
+<p>```r</p>
+
+<blockquote><p>install.packages("mcsm")
+library(mcsm)
+demo(Chapter.1) # Chapter.8まである
+```</p></blockquote>
+
+<h3>参考：基本的な確率分布の略称</h3>
+
+<ul>
+<li>一様分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BU%7D></li>
+<li>指数分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BExp%7D></li>
+<li>カイ二乗分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7B%5Cchi%3Csup%3E2%7D></sup></li>
+<li>ガンマ分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BG%7D></li>
+<li>ベータ分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D></li>
+<li>正規分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D></li>
+<li>二項分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBin%7D></li>
+<li>負の二項分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BNeg%7D></li>
+<li>スチューデントのT分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BT%7D></li>
+</ul>
+
+
+<h3>参考：解答</h3>
+
+<ul>
+<li>(pdf) <a href="http://www.ceremade.dauphine.fr/~xian/shortManual.pdf">http://www.ceremade.dauphine.fr/~xian/shortManual.pdf</a></li>
+</ul>
+
+
+<p>公式ページには，番号が奇数の練習問題だけ解答がある．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「データ解析のための統計モデリング入門」読書ノート]]></title>
@@ -830,167 +890,6 @@
 <li><a href="http://d.hatena.ne.jp/shorebird/20060501">http://d.hatena.ne.jp/shorebird/20060501</a></li>
 <li><a href="http://d.hatena.ne.jp/shorebird/20060502">http://d.hatena.ne.jp/shorebird/20060502</a></li>
 <li><a href="http://www.brc.riken.go.jp/lab/mcd/mcd2/cn7/pg64.html">http://www.brc.riken.go.jp/lab/mcd/mcd2/cn7/pg64.html</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「せめぎ合う遺伝子」読書ノート 1章]]></title>
-    <link href="http://yagays.github.com/blog/2012/06/03/genesinconflict-1/"/>
-    <updated>2012-06-03T14:31:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/06/03/genesinconflict-1</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as1&m=amazon&f=ifr&ref=qf_sp_asin_til&asins=432005699X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>「せめぎ合う遺伝子」(Genes in Conflicts)を先週あたりから少しずつ読み進めている．元々の動機としては，生物学を勉強するにあたり「○○学」なんて大層な名前の分厚い「辞書」を読み進めるのに飽きたのがきっかけで，実例を学びながら時々辞書を引きつつ勉強しようと思ってこの本を選んだのが始まりだった．当初の目的通りこの本をさらっと読み進めながら辞書の方の読解を並行して進められるかと思いきや，これが思いの外キツい本で今は必死になって読み進めている．ある意味計画通りな反面，辞書が示す範疇を超えるのではないかと思うような濃厚さで，半ば辞書を放り出して本に齧り付いている感じがある．</p>
-
-<p>そんなこんなで，無いも同然な生物学の知識を総動員して読み進めているわだが，読み進めるにあたり<a href="http://d.hatena.ne.jp/shorebird/20060424">原書を読まれた方の読書記録</a>が大いに理解の手助けになり参考にさせてもらっている．ということで，自分も実際に書きだして理解を深めようと思い，自分の理解の範囲内で纏めを作って見ることにした．間違ったことを書いていたり理解が浅い部分は多々あると思うので，そのあたり「生物学初学者が書いている」ことを念頭に置いてもらえればと思う．</p>
-
-<h3>1章</h3>
-
-<p>1章はガイダンス的な内容で，この本のメインテーマである利己的な遺伝因子の定義や，その戦略，研究の歴史が紹介されている．そして最後に，利己的な遺伝因子がいかに広範囲に及ぶ分野をまたぐテーマであり，本書はそれらを包括的に扱い体系化させようとしていることが述べられている．</p>
-
-<!-- more -->
-
-
-<ul>
-<li>遺伝子にはせめぎ合い(コンフリクト)がある
-
-<ul>
-<li>利己的な遺伝因子と抑制因子の対立</li>
-<li>利益：<strong>出現頻度</strong> (<strong>分布</strong>)</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>遺伝的協調性を持たない利己的な遺伝因子
-
-<ul>
-<li>生物の適応性と密接に関連する遺伝子が，自然選択Natural Selectionの結果，自身の頻度(分布)を広げる</li>
-<li>このような遺伝的協調性は遺伝子が公平に伝達されることによりもたらされる</li>
-<li>このとき世代間の遺伝頻度は変化しない(いわゆるハーディー・ワインバーグの法則)</li>
-<li>しかし，利己的な遺伝因子は個体の適応度に寄与しないにもかかわらず分布を広げる</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>利己的な遺伝因子に関わる用語定義
-
-<ul>
-<li>ドライヴdrive
-
-<ul>
-<li>伝達率が50%を上回ること (超メンデル的Super-Mendelian)</li>
-</ul>
-</li>
-<li>ドラッグdrug
-
-<ul>
-<li>伝達率が50%を下回ること(下メンデル的sub-Mendelian)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>利己的な遺伝因子の代表的な3つの戦略
-
-<ul>
-<li>干渉interference</li>
-<li>過複製overreplication</li>
-<li>ゴノタキシスgonotaxis (生殖系列走性)</li>
-<li>ーー</li>
-<li>あくまでこれらの戦略は個体の適応度（ここでは「生物としての質」）を変化させない</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>ゲノムの血縁コンフリクトにより利己性を発揮する場合がある
-
-<ul>
-<li>血縁関係が近いと，同じ遺伝子を持っている確率が高い</li>
-<li>母親由来/父親由来 (maternal/paternal)</li>
-<li>ゲノムインプリンティング</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>ショウジョウバエ<em>D.melanogaster</em>で観測された<em>P</em>因子は劇的な分布拡大を見せた
-
-<ul>
-<li>系統間交雑における不妊や突然変異率の高さ，オスの組み換え発生などの異常は<em>P</em>因子によるものだった</li>
-<li><em>P</em>因子は20世紀半ばに<em>D.willistoni</em>から<em>D.melanogaster</em>の遺伝子プールに持ち込まれ，世界中に広まった</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>利己的な遺伝因子が必ずしも遺伝子のホストである個体の適応度に影響しないわけではない
-
-<ul>
-<li>ドライヴ性性染色体</li>
-<li>雄性不稔ミトコンドリア</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>利己的な遺伝因子の別称
-
-<ul>
-<li>アウトロー遺伝子 outlaw gene</li>
-<li>超利己的遺伝子 ultraselfish gene</li>
-<li>自己普及推進遺伝因子 self-promoting genetic element</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>ドライヴの別称
-
-<ul>
-<li>伝達比の歪曲 transmission ratio distortion</li>
-<li>分離の歪曲 segregation distortion</li>
-</ul>
-</li>
 </ul>
 
 ]]></content>

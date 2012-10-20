@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-19T14:44:24+09:00</updated>
+  <updated>2012-10-20T11:18:29+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,68 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：アーカイブ]]></title>
+    <link href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/"/>
+    <updated>2012-10-20T11:13:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>本書は，モンテカルロ法の実践的な解説書であり，統計解析ソフトのRを用いた豊富な実例と練習問題が組まれている．モンテカルロ法とは乱数を用いて数値計算を行う手法の総称であり，本書で扱う内容は乱数の発生からモンテカルロ積分，そしてマルコフ連鎖モンテカルロ法（MCMC）の各種アルゴリズムに至るまで非常に幅広い．たいていの解説は理論に実践演習が付随した形になっており，数学的な理論を軸にして実際にRを用いたコード例が示される．</p>
+
+<h3>練習問題を解きつつ読書ノートをまとめてみる</h3>
+
+<p><a href="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/">そんなこんな</a>で，<a href="http://www.amazon.co.jp/gp/product/400006973X/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=400006973X&amp;linkCode=as2&amp;tag=yagays-22">久保本</a>と並行する形で「<a href="http://www.amazon.co.jp/gp/product/4621065270/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621065270&linkCode=as2&tag=yagays-22">Rによるモンテカルロ法入門</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621065270" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」を読んでいる．一応MCMCの部分だけひと通り目を通したのだが，最終的にMCMCの実装までひと通りやるにしても一連の流れを簡単にでも追っておかなければと思って，最初の乱数の部分からじっくり読み進めている．これがなかなか難しくて，手も足も出ないところをなんとかRのコードを動かして理解を補っているわけなのだが……取り敢えず練習問題を解ける範囲で解きつつRのコードを書いていこうということ，はセクションごとに小分けてしてじっくり読書ノートを付けて勉強することにしてみた．</p>
+
+<p>以下に，読書ノートのリンクを書き加えていく予定．</p>
+
+<ul>
+<li>&lt;></li>
+<li>&lt;></li>
+<li>&lt;></li>
+</ul>
+
+
+<h3>参考：サンプルコード</h3>
+
+<p>CRANのmcsmパッケージに，本書の一部コードのスクリプトがデモとして入っている．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="o">&gt;</span> install.packages<span class="p">(</span><span class="s">&quot;mcsm&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="o">&gt;</span> library<span class="p">(</span>mcsm<span class="p">)</span>
+</span><span class='line'><span class="o">&gt;</span> demo<span class="p">(</span>Chapter.1<span class="p">)</span> <span class="c1"># Chapter.8まである</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>参考：基本的な確率分布の略称</h3>
+
+<ul>
+<li>一様分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BU%7D></li>
+<li>指数分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BExp%7D></li>
+<li>カイ二乗分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7B%5Cchi%5E2%7D></li>
+<li>ガンマ分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BG%7D></li>
+<li>ベータ分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D></li>
+<li>正規分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D></li>
+<li>二項分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBin%7D></li>
+<li>負の二項分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BNeg%7D></li>
+<li>スチューデントのT分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BT%7D></li>
+</ul>
+
+
+<h3>参考：解答</h3>
+
+<ul>
+<li>(pdf) <a href="http://www.ceremade.dauphine.fr/~xian/shortManual.pdf">http://www.ceremade.dauphine.fr/~xian/shortManual.pdf</a></li>
+</ul>
+
+
+<p>公式ページには，番号が奇数の練習問題だけ解答がある．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました]]></title>
@@ -1275,29 +1337,6 @@ end
 <p>と，計算機シミュレーションを端的に素晴らしい言葉で言い表している．本書「スーパーコンピューターを20万円で創る」は，小久保英一郎がスーパーコンピューターGRAPEの開発に参加する少し前，まだスーパーコンピューターというものが企業主導の大資本で大規模開発されていた頃に，重力多体問題のシミュレーションを行うために自力でスーパーコンピューターを組み上げた研究者たちの実話の物語となっている．</p>
 
 <p>内容はかなり大雑把に物語を追いかける形となっており細かい部分に少し物足りなさは感じるものの，それでも当時の研究者の熱意や苦悩がひしひしと伝わってくる．私自身も今現在彼らと同じような立場にあるのだが，自分の境遇と似た部分も多く，非常に勇気づけられると同時に研究への情熱を奮い立たせられるような作品だった．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「H5N1―強毒性新型インフルエンザウイルス日本上陸のシナリオ」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/09/15/review-h5n1/"/>
-    <updated>2012-09-15T23:54:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/09/15/review-h5n1</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4478002401" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>本書はフィクションでありながら，同時にノンフィクション，想定されうる未来でもある．本文の言葉を借りるならば</p>
-
-<blockquote><p>新型インフルエンザの出現は&#8221;if&#8221;ではなく&#8221;when&#8221;の問題
-(p.19)</p></blockquote>
-
-<p>なのである．</p>
-
-<p>本書は，東南アジアのある国で起きた鳥インフルエンザの人への感染と強毒化を起点し，そのインフルエンザウィルスがどのようにして感染を拡大し日本に上陸してパンデミックを起こすかを，歴史的・科学的知見を元に詳細なディテールとともにシミュレーションしたものである．インフルエンザウィルスといっても，毎年のように冬になると家族や職場の同僚が罹るようなインフルエンザウィルスではない．最も重要なのは，それが新型でありワクチンがまだ世に存在しないこと，そして強毒性のため感染者に重大な多臓器不全を起こすということである．そのようなウィルスは，感染の拡大を妨害されることなく有病者から空気を媒介して他人に感染する．ウィルスは数日の潜伏期間があるため，感染者は必ずしも病気の症状が出ているわけではない．そのような人知れずウィスルを保持する感染者が，検疫という科学の目すらもかいくぐって，空港，鉄道，バス，職場，そして家庭へとウィルスをばらまき，新たな感染者を生み出し，そして大規模な感染拡大へとつながっていく．</p>
-
-<p>本書で描かれるのは主に感染症研究所の研究員や病院の医者，保健所職員，空港の検疫官など，職業としてインフルエンザウィルスと対峙していく人間だ．彼ら/彼女らの奮闘も虚しく無慈悲にも感染は拡大していくのだが，そこから見えてくるのは，市民の感染症への無知と政府地方自治体の準備不足，そして刻々と死者が増えていく無残な現実だ．インフルエンザウィルスに対して何も対処出来ない感染者，市民，医療従事者，病院，そして政府．淡々と語られる現実の中で感じるのは，様々な不条理に対する苛立ちと無力感，もどかしさなど，本書が読者に訴えかけるものは様々だ．</p>
-
-<p>2011年公開の映画「<a href="http://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%86%E3%82%A4%E3%82%B8%E3%83%A7%E3%83%B3">コンテイジョン</a>」も，強毒性新型ウィルスがアメリカ全土に感染拡大していく中で起こる様々な人間模様を描いた映画であり，本書と非常によく似た作品で共通点も多い．この映画はアメリカ疾病予防管理センター（CDC）や専門家などの協力を得て作成されており，また本書の著者は国立感染症研究所研究員と，どちらも医科学的なリアリティを持ちながらも，同時にフィクションとしての緻密さや現実感を伴って見事に描き切っている．私は映画を見てから本書の存在を知り，今更ながら読んだわけだが，どちらも綿密に練られたストーリーと科学的な裏付けがされた，とても良い作品だった．あと，読み終わった後には必ず何かしないといけないという衝動にかられるだろう．それだけの危機意識を感じさせるという意味でも，本書は非常に啓蒙的でよく作られていると思う．</p>
 ]]></content>
   </entry>
   

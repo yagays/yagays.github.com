@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: imcmr | Wolfeyes Bioinformatics beta]]></title>
+  <link href="http://yagays.github.com/blog/categories/imcmr/atom.xml" rel="self"/>
+  <link href="http://yagays.github.com/"/>
+  <updated>2012-10-20T11:18:29+09:00</updated>
+  <id>http://yagays.github.com/</id>
+  <author>
+    <name><![CDATA[yag_ays]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：アーカイブ]]></title>
+    <link href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/"/>
+    <updated>2012-10-20T11:13:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>本書は，モンテカルロ法の実践的な解説書であり，統計解析ソフトのRを用いた豊富な実例と練習問題が組まれている．モンテカルロ法とは乱数を用いて数値計算を行う手法の総称であり，本書で扱う内容は乱数の発生からモンテカルロ積分，そしてマルコフ連鎖モンテカルロ法（MCMC）の各種アルゴリズムに至るまで非常に幅広い．たいていの解説は理論に実践演習が付随した形になっており，数学的な理論を軸にして実際にRを用いたコード例が示される．</p>
+
+<h3>練習問題を解きつつ読書ノートをまとめてみる</h3>
+
+<p><a href="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/">そんなこんな</a>で，<a href="http://www.amazon.co.jp/gp/product/400006973X/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=400006973X&amp;linkCode=as2&amp;tag=yagays-22">久保本</a>と並行する形で「<a href="http://www.amazon.co.jp/gp/product/4621065270/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621065270&linkCode=as2&tag=yagays-22">Rによるモンテカルロ法入門</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621065270" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」を読んでいる．一応MCMCの部分だけひと通り目を通したのだが，最終的にMCMCの実装までひと通りやるにしても一連の流れを簡単にでも追っておかなければと思って，最初の乱数の部分からじっくり読み進めている．これがなかなか難しくて，手も足も出ないところをなんとかRのコードを動かして理解を補っているわけなのだが……取り敢えず練習問題を解ける範囲で解きつつRのコードを書いていこうということ，はセクションごとに小分けてしてじっくり読書ノートを付けて勉強することにしてみた．</p>
+
+<p>以下に，読書ノートのリンクを書き加えていく予定．</p>
+
+<ul>
+<li>&lt;></li>
+<li>&lt;></li>
+<li>&lt;></li>
+</ul>
+
+
+<h3>参考：サンプルコード</h3>
+
+<p>CRANのmcsmパッケージに，本書の一部コードのスクリプトがデモとして入っている．</p>
+
+<p>```r</p>
+
+<blockquote><p>install.packages("mcsm")
+library(mcsm)
+demo(Chapter.1) # Chapter.8まである
+```</p></blockquote>
+
+<h3>参考：基本的な確率分布の略称</h3>
+
+<ul>
+<li>一様分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BU%7D></li>
+<li>指数分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BExp%7D></li>
+<li>カイ二乗分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7B%5Cchi%3Csup%3E2%7D></sup></li>
+<li>ガンマ分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BG%7D></li>
+<li>ベータ分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D></li>
+<li>正規分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D></li>
+<li>二項分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBin%7D></li>
+<li>負の二項分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BNeg%7D></li>
+<li>スチューデントのT分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BT%7D></li>
+</ul>
+
+
+<h3>参考：解答</h3>
+
+<ul>
+<li>(pdf) <a href="http://www.ceremade.dauphine.fr/~xian/shortManual.pdf">http://www.ceremade.dauphine.fr/~xian/shortManual.pdf</a></li>
+</ul>
+
+
+<p>公式ページには，番号が奇数の練習問題だけ解答がある．</p>
+]]></content>
+  </entry>
+  
+</feed>

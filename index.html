@@ -9,7 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="概要 Jekyll/Octopressで数式を使った記事の作成を簡単にします． Google Chart Toolsには，Tex形式で書かれた数式をURLに含めて投げると変換した画像を返してくれるAPIがあります．しかし，URLで数式を投げるには特定の文字のエスケープ(変換)をする必要があり， &hellip;">
+  <meta name="description" content="本書は，モンテカルロ法の実践的な解説書であり，統計解析ソフトのRを用いた豊富な実例と練習問題が組まれている．モンテカルロ法とは乱数を用いて数値計算を行う手法の総称であり，本書で扱う内容は乱数の発生からモンテカルロ積分，そしてマルコフ連鎖モンテカルロ法（MCMC） &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -108,6 +108,95 @@
     <div class="row-fluid">
       <div class="span9">
   
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">「Rによるモンテカルロ法入門」読書ノート：アーカイブ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-20T11:13:00+09:00" pubdate data-updated="true">Oct 20<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>本書は，モンテカルロ法の実践的な解説書であり，統計解析ソフトのRを用いた豊富な実例と練習問題が組まれている．モンテカルロ法とは乱数を用いて数値計算を行う手法の総称であり，本書で扱う内容は乱数の発生からモンテカルロ積分，そしてマルコフ連鎖モンテカルロ法（MCMC）の各種アルゴリズムに至るまで非常に幅広い．たいていの解説は理論に実践演習が付随した形になっており，数学的な理論を軸にして実際にRを用いたコード例が示される．</p>
+
+<h3>練習問題を解きつつ読書ノートをまとめてみる</h3>
+
+<p><a href="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/">そんなこんな</a>で，<a href="http://www.amazon.co.jp/gp/product/400006973X/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=400006973X&amp;linkCode=as2&amp;tag=yagays-22">久保本</a>と並行する形で「<a href="http://www.amazon.co.jp/gp/product/4621065270/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621065270&linkCode=as2&tag=yagays-22">Rによるモンテカルロ法入門</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621065270" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」を読んでいる．一応MCMCの部分だけひと通り目を通したのだが，最終的にMCMCの実装までひと通りやるにしても一連の流れを簡単にでも追っておかなければと思って，最初の乱数の部分からじっくり読み進めている．これがなかなか難しくて，手も足も出ないところをなんとかRのコードを動かして理解を補っているわけなのだが……取り敢えず練習問題を解ける範囲で解きつつRのコードを書いていこうということ，はセクションごとに小分けてしてじっくり読書ノートを付けて勉強することにしてみた．</p>
+
+<p>以下に，読書ノートのリンクを書き加えていく予定．</p>
+
+<ul>
+<li>&lt;></li>
+<li>&lt;></li>
+<li>&lt;></li>
+</ul>
+
+
+<h3>参考：サンプルコード</h3>
+
+<p>CRANのmcsmパッケージに，本書の一部コードのスクリプトがデモとして入っている．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="o">&gt;</span> install.packages<span class="p">(</span><span class="s">&quot;mcsm&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="o">&gt;</span> library<span class="p">(</span>mcsm<span class="p">)</span>
+</span><span class='line'><span class="o">&gt;</span> demo<span class="p">(</span>Chapter.1<span class="p">)</span> <span class="c1"># Chapter.8まである</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>参考：基本的な確率分布の略称</h3>
+
+<ul>
+<li>一様分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BU%7D></li>
+<li>指数分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BExp%7D></li>
+<li>カイ二乗分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7B%5Cchi%5E2%7D></li>
+<li>ガンマ分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BG%7D></li>
+<li>ベータ分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D></li>
+<li>正規分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D></li>
+<li>二項分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBin%7D></li>
+<li>負の二項分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BNeg%7D></li>
+<li>スチューデントのT分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BT%7D></li>
+</ul>
+
+
+<h3>参考：解答</h3>
+
+<ul>
+<li>(pdf) <a href="http://www.ceremade.dauphine.fr/~xian/shortManual.pdf">http://www.ceremade.dauphine.fr/~xian/shortManual.pdf</a></li>
+</ul>
+
+
+<p>公式ページには，番号が奇数の練習問題だけ解答がある．</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -962,51 +1051,6 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/01/review-reading-skill/">「読書力」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-01T07:57:00+09:00" pubdate data-updated="true">Oct 1<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4004308011" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>タイトルにあるように，本書は読書をする能力の重要性を唱える本である．著者は，読書は自己形成の手段であり教養を養うために必要な能力であると主張する．特に本書冒頭では，本を読む読まないは自由だという意見を否定し，本は絶対に読むべきものだと断定している．それと同時に，今まで読書によく親しんできた人間が読書を軽んじている発言をすることを強く非難し，本を読むという行為の重要性や意味，効果などが列挙される．また後半では，どういった方法で本を読めばよいかといった技術に関しても語られる．</p>
-
-<p>読書というものは，言ってしまえば文字や文章を読むといったことは，文字の読み方を覚えたばかりの子供から眼が衰えた老人まで，文字を読める人間すべてが行う行為だ．読む対象としての活字の種類も多岐にわたる．しかし本書では，読書と言いながらも，語られるのは子供や若者に対する，よく言われるような活字離れや読解力の低下に対する警鐘と，自分が感じてきた読書の素晴らしさや思い出話ばかりが強調される．言ってしまえば，本書は子供のための読書論であり，それはただの教育という行為にすぎない．それを悪いとは言わないが，それを読書論として展開するのはあまりにも読書という行為とかけ離れている気がする．結局のところ読書を他の単語に変えても若者のだらしない現状を憂いているような文脈で成り立つようでは，読書に関して何も踏み込んだことが言えてないのではないかと思う．巻末のお薦め文庫100選も近代文学などの古典や個人的なお薦め本ばかりで，つまるところ読書ではなく教養についてアレコレ言いたいだけなのだといった感想しか持てない．</p>
-
-<p>結局はよくある読書礼賛本だったが，ただ個別に見れば同意する部分もある．本の読み方には色々と種類があり，軽く要点だけを掴むような読み方から，じっくり時間をかけて文字を追っていくな読み方まで，本の種類や状況に応じて変えるべきだという意見は正にその通りだ．ボールペンで書き込みをしたり音読することの重要性も賛同できる．その他にも読書による思考能力の強化に関しては全面否定出来無いあたり，言ってることは正しくても全体として意味をなしていない感じが否めない．</p>
-
-<p>あと，妙なところに突っかかっても意味がないのだが，どうしても一言言いたい部分がある．「本を引用する会話」に出てくる衒学的な会話にまつわる話だ．著者は，ペダンティック・衒学的という言葉自体が死語になりつつあるのは，知らないことを恥と思う文化がなくなったからだという．知らないことが恥でなくなったから，相手に難しいことを言われても恥だと思わなくなった．教養が尊敬されることだからこそ，意味のないひけらかしを批判する言葉も使われる意味があったのだと言っている．これは本当だろうか．衒学という言葉が死語になったのと知らないことを恥と思わない文化がなくなったことの真偽はまあ脇においておこう．では，教養がなく物事を知らないことを恥と思わなくなれば，意味のないひけらかしをする人間に対して衒学だと思わないのだろうか．僕はそうは思わない．レベルの程度はあれど，本質的に意味のある話をしないことに対する蔑視は，教養の無さを恥と思うか思わないかに依らず存在する．「グローバルなイノベーションをマネージメントする」なんて糞みたいな定型文を聞いてイノベーションという単語の意味をしらないけど恥とは思わないから何も感じませんといったことにはならないだろう．教養や知識は関係なくとも，相手の言葉に意味がないということを感じ取れるからこそ，その発言を空虚だと判断して衒学的だと非難できる．そこに物事を知らないことで感じる恥は関係ないと思うのだが，どうやら著者の眼には若者が何も考えてないとしか写っていないらしい，本書ではこのあと唐突に本の話を若者がしなくなってけしからんという話が始まって余計に辟易するのだが，衒学のところにも非常に疑問が残る．そもそも本書自体が，古典文学や昔の偉い学者を盾にして一方的に時代の変化を憂いているだけの衒学的な雑感にとどまっているんじゃないだろうか．</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/2/">&larr; Older</a></li>
@@ -1044,6 +1088,10 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">「Rによるモンテカルロ法入門」読書ノート：アーカイブ</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex/">TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました</a>
       </li>
     
@@ -1059,15 +1107,11 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
         <a href="/blog/2012/10/13/soapdenovo2-install/">SOAPdenovo2のインストール方法</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/10/12/prml-talksession/">「今度こそわかる!? PRMLの学習の学習」に参加しました</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (37)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (5)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (37)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (1)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (6)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
 </section>
 
 
