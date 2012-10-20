@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Reading | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-21T07:34:22+09:00</updated>
+  <updated>2012-10-21T07:37:34+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -72,8 +72,7 @@ hist(Y, freq=F, main="Logis from R")
 curve(dlogis(x), add=T, col="red", lwd=2)
 </code></p>
 
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp2_2.png" alt="" />
-![](http://dl.dropbox.com/u/142306/b/imcmr/chp2_2.png )</p>
+<p>![](http://dl.dropbox.com/u/142306/b/imcmr/chp2_2.png )</p>
 
 <h4>b.コーシー分布</h4>
 
@@ -176,7 +175,7 @@ curve(dbeta(x,a,b), add=T, col="red", lwd=2)
 <h3>読書ノートまとめ</h3>
 
 <ul>
-<li><a href="">「Rによるモンテカルロ法入門」読書ノート：2章 逆変換・一般変換法</a>
+<li><a href="http://yagays.github.com/blog/2012/10/21/imcmr-2-1/">「Rによるモンテカルロ法入門」読書ノート：2章 逆変換・一般変換法</a>
 
 <ul>
 <li>例 2.1，練習問題 2.2，練習問題 2.12</li>
