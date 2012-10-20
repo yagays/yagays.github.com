@@ -161,7 +161,7 @@
 
 <ul>
 <li><strong>ただ単にパラメータを取る時の確率なのか条件付き確率なのか，文脈に沿ってきちんと把握しておく</strong></li>
-<li>ポアソン分布の文脈におけるp(x|λ)は，λというパラメータ(平均)を取る時のポアソン分布の確率値（他にp(x;λ)とも書くパターン）</li>
+<li>ポアソン分布の文脈における%{ gctex p(x|\lambda) %}は，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+>というパラメータ(平均)を取る時のポアソン分布の確率値（他に<img src=http://chart.apis.google.com/chart?cht=tx&chl=p%28x%3B%5Clambda%29+>とも書くパターン）</li>
 <li>後半のMCMCに入ると条件付き確率が出てくる</li>
 </ul>
 </li>
@@ -173,7 +173,7 @@
 <ul>
 <li>「ある植物の1個体から得られる種子の数に何か法則はあるか？」</li>
 <li>確率分布の単純なあてはめ</li>
-<li>ポアソン分布を選ぶ理由は，非負の整数で(0,∞]だから</li>
+<li>ポアソン分布を選ぶ理由は，非負の整数で<img src=http://chart.apis.google.com/chart?cht=tx&chl=%280%2C%5Cinfty%5D+>だから</li>
 </ul>
 
 
@@ -182,7 +182,7 @@
 <ul>
 <li>「植物のサイズや施肥効果と種子の数に何か関係はあるか」</li>
 <li>説明変数を組み込んだ統計モデル</li>
-<li>$$ log(\lambda_i) = \beta_1 + \beta_2 x_i $$</li>
+<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=log%28%5Clambda_i%29+%3D+%5Cbeta_1+%2B+%5Cbeta_2+x_i+></li>
 <li>(リンク関数) = (線形予測子) の関係
 
 <ul>
@@ -192,7 +192,7 @@
 <li>対数リンク関数では，要素の効果が積で表される
 
 <ul>
-<li>$$ \exp(\beta_1 + \beta_2 x_i + \beta_3) = \exp(\beta_1) \times \exp(\beta_2 x_i) \times \exp(\beta_3) $$</li>
+<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cexp%28%5Cbeta_1+%2B+%5Cbeta_2+x_i+%2B+%5Cbeta_3%29+%3D+%5Cexp%28%5Cbeta_1%29+%5Ctimes+%5Cexp%28%5Cbeta_2+x_i%29+%5Ctimes+%5Cexp%28%5Cbeta_3%29+></li>
 </ul>
 </li>
 </ul>
@@ -227,12 +227,7 @@
 <li>二項分布とロジットリンク関数の組み合わせ</li>
 </ul>
 </li>
-<li>相互作用項による積の効果を考える
-
-<ul>
-<li>$$ x_i f_i $$</li>
-</ul>
-</li>
+<li>相互作用項による積の効果<img src=http://chart.apis.google.com/chart?cht=tx&chl=x_i+f_i+>を考える</li>
 <li>割り算値の統計モデリングの危険性とオフセット項</li>
 </ul>
 
@@ -284,7 +279,7 @@
 
 <ul>
 <li>平べったい分布</li>
-<li>「 [-∞,∞]の範囲で好きな値を取っていい」ことを表現するための分布</li>
+<li>「 <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5B%5Cinfty%2C%5Cinfty%5D+>の範囲で好きな値を取っていい」ことを表現するための分布</li>
 </ul>
 </li>
 <li>gibbsサンプリングによるMCMCアルゴリズム（複数パラメータのサンプリング）</li>
@@ -434,6 +429,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/10/21/imcmr-2-1/">「Rによるモンテカルロ法入門」読書ノート：2章 逆変換・一般変換法</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">「Rによるモンテカルロ法入門」読書ノート：アーカイブ</a>
       </li>
     
@@ -449,15 +448,11 @@
         <a href="/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/10/13/soapdenovo2-install/">SOAPdenovo2のインストール方法</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (37)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (1)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (6)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (37)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (2)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (7)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
 </section>
 
 

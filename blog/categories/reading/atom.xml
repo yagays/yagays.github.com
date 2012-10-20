@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Reading | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-20T19:54:15+09:00</updated>
+  <updated>2012-10-21T07:34:22+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,148 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：2章 逆変換・一般変換法]]></title>
+    <link href="http://yagays.github.com/blog/2012/10/21/imcmr-2-1/"/>
+    <updated>2012-10-21T06:26:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/10/21/imcmr-2-1</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>内容：一様分布を元にして様々な確率分布に従う乱数を生成する</h3>
+
+<p>統計解析ソフトであるRには，様々な分布に対応した組み込み関数が容易されている．本章では，そういった組み込みの関数を使わずに，一様分布から生成される乱数を逆関数で変換することで，他の確率分布の乱数を表現する．</p>
+
+<p>本書で扱う乱数とは，完全なランダム性を持つ乱数ではなく<strong>擬似乱数</strong>である．擬似乱数はset.seed()関数で設定した値を種として乱数を生成するため，どのような環境においてもset.seed()関数で同じ値を使うことで乱数を再現することができる．</p>
+
+<p>今回は，一様乱数を元にして指数乱数を生成し，指数乱数からガンマ分布やベータ分布の乱数へと変換していく．これらの確率分布は全てRの関数で用意されているものなので，一様乱数から生成した乱数とRの関数から生成した乱数を比較することによって，乱数の生成がうまくいっているかどうかを判断する．以下のコードで描写したヒストグラムはずべて，左側が一様分布から生成した乱数，右側がRの関数を用いて生成した乱数(N=10<sup>4</sup> )．赤い曲線はどちらもRの関数を用いて分布を示したもの．</p>
+
+<h3>例 2.1 一様乱数から指数乱数を作成する</h3>
+
+<p>これはテキストにある通りのコードと作図．mcsmパッケージのdemo(Chapter.2)にも同様のコードがある．</p>
+
+<p>以下のコードでは<img src=http://chart.apis.google.com/chart?cht=tx&chl=-%5Clog%7B%281-u%29%7D+>をそのままコードに落とし込んでいる．テキストにもある通り，<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2C1%5D%7D+>ならば0から1の間で一様に等しい確率分布なのだがら，<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+>も<img src=http://chart.apis.google.com/chart?cht=tx&chl=1-U+>も一様分布になる．</p>
+
+<p><code>r
+par(mfrow=c(1,2))
+Nsim &lt;- 10^4
+U &lt;- runif(Nsim)
+X &lt;- -log(1-U)
+Y &lt;- rexp(Nsim)
+par(mfrow=c(1,2))
+hist(X, freq=F, main="Exp from Uniform", nclass=50)
+curve(dexp(x), add=T, col="red", lwd=2)
+hist(Y, freq=F, main="Exp from R", nclass=50)
+curve(dexp(x), add=T, col="red", lwd=2)
+</code></p>
+
+<p>![](http://dl.dropbox.com/u/142306/b/imcmr/chp2_1.png )</p>
+
+<h3>練習問題 2.2 逆変換法を用いてロジスティック分布とコーシー分布の乱数を生成する</h3>
+
+<p>逆変換法を用いてロジスティック分布とコーシー分布の乱数を生成する．変換で求まる関数はいわゆる逆累積分布関数というもの．</p>
+
+<h4>a.ロジスティック分布</h4>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=u+%3D+%5Cfrac%7B1%7D%7B1%2Be%3Csup%3E%7B-%5Cfrac%7Bx-%5Cmu%7D%7B%5Cbeta%7D%7D%7D%3C%2Fsup%3E+>を変形して，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+-%5Cbeta+%5Clog%7B%5Cfrac%7B1-u%7D%7Bu%7D%7D+%2B+%5Cmu+></p>
+
+<p>以下のコードは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu%3D0+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta%3D1+>の場合．</p>
+
+<p><code>r
+Nsim &lt;- 10^4
+U &lt;- runif(Nsim)
+par(mfrow=c(1,2))
+X &lt;- -log((1-U)/U)
+Y &lt;- rlogis(Nsim, 0, 1)
+hist(X,freq=F,main="Logis from Uniform")
+curve(dlogis(x), add=T, col="red", lwd=2)
+hist(Y, freq=F, main="Logis from R")
+curve(dlogis(x), add=T, col="red", lwd=2)
+</code></p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp2_2.png" alt="" />
+![](http://dl.dropbox.com/u/142306/b/imcmr/chp2_2.png )</p>
+
+<h4>b.コーシー分布</h4>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=u+%3D+%5Cfrac%7B1%7D%7B2%7D+%2B+%5Cfrac%7B1%7D%7B%5Cpi%7D+%5Carctan%7B%5Cfrac%7Bx-%5Cmu%7D%7B%5Csigma%7D%7D+>を変形して，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+%5Cmu+%2B+%5Csigma+%5Ctan%7B%5Cpi%28u-%5Cfrac%7B1%7D%7B2%7D%29%7D+></p>
+
+<p>以下のコードは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu%3D0+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Csigma%3D1+>の場合．</p>
+
+<p>```r
+Nsim <- 10^4
+U <- runif(Nsim)
+x <- tan(pi*(U-0.5))
+Y <- rcauchy(Nsim)
+hist(X, freq=F, main="Cauchy from Uniform", xlim=c(-10,10))
+curve(dcauchy(x), add=T, col="red", lwd=2)
+hist(Y[Y>=-10 &amp; Y&lt;=10], freq=F, main="Cauchy from R", xlim=c(-10,10))
+curve(dcauchy(x), add=T, col="red", lwd=2)</p>
+
+<h1>cauchyは値が両端に飛んでヒストグラムが綺麗に書けないので[-10,10]で整えている</h1>
+
+<p>```</p>
+
+<p>![](http://dl.dropbox.com/u/142306/b/imcmr/chp2_3.png )</p>
+
+<h3>練習問題 2.12 指数分布からガンマ分布とベータ分布の乱数を生成する</h3>
+
+<h4>a.ガンマ乱数</h4>
+
+<p>以下の作図では，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta+>の値を固定して<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+>の値を1,2,5,9と変化させたときの分布の変化を見ている．</p>
+
+<p><code>r
+Nsim &lt;- 10^4
+beta &lt;- 2.0
+par(mfrow=c(4,2))
+for(a in c(1,2,5,9)){
+  U &lt;- runif(a*Nsim)
+  m &lt;- matrix(U, nrow=a)
+  X &lt;- beta * apply(-log(m), 2, sum)
+  Y &lt;- rgamma(Nsim, shape=a, scale=beta)
+  hist(X, freq=F, main=paste("Gamma from Uniform:","a=",a," beta=",beta), nclass=50)
+  curve(dgamma(x, shape=a, scale=beta), add=T, col="red", lwd=2)
+  hist(Y, freq=F, main=paste("Gamma from Uniform:","a=",a," beta=",beta), nclass=50)
+  curve(dgamma(x, shape=a, scale=beta), add=T, col="red", lwd=2)
+}
+</code></p>
+
+<p>![](http://dl.dropbox.com/u/142306/b/imcmr/chp2_4.png )</p>
+
+<h4>a.ベータ乱数</h4>
+
+<p>この手法では<img src=http://chart.apis.google.com/chart?cht=tx&chl=%28a+%5Cin+%5Cmathbb%7BN%3Csup%3E%2A%7D%29%3C%2Fsup%3E+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathbb%7BN%3Csup%3E%2A%7D%3C%2Fsup%3E+%3D+1%2C2%2C+%5Cdots+> という制約があるため，<img src=http://chart.apis.google.com/chart?cht=tx&chl=a%3D0.1+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=b%3D0.1+>のようなベータ分布は作ることが出来ない．以下はa=1,b=1，a=2,b=3，a=8,b=4の場合．</p>
+
+<p>```r</p>
+
+<h1>a=1,b=1の場合</h1>
+
+<p>par(mfrow=c(3,2))
+Nsim <- 10^4
+a <- 1
+b <- 1
+U <- runif((a+b)*Nsim)
+m <- matrix(U,nrow=(a+b))
+X <- -log(m[a,]) / apply(-log(m),2,sum) # a>=2の場合はapply(-log(m[1:a,]),2,sum) / apply(-log(m),2,sum)
+Y &lt;- rbeta(Nsim,a,b)
+hist(X, freq=F, main=paste("Beta from Uniform:","a=",a,"b=",b), nclass=50, ylim=c(0,3))
+curve(dbeta(x,a,b), add=T, col="red", lwd=2)
+hist(Y, freq=F, main=paste("Beta from R:","a=",a,"b=",b), nclass=50, ylim=c(0,3))
+curve(dbeta(x,a,b), add=T, col="red", lwd=2)
+```</p>
+
+<p>![](http://dl.dropbox.com/u/142306/b/imcmr/chp2_5.png )</p>
+
+<h4>b. 一様分布から指数乱数を作る(逆変換)</h4>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%3D+e%3Csup%3E%7B-%5Clambda%3C%2Fsup%3E+x%7D+>より <img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+-+%5Cfrac%7B%5Clog%7BU%7D%7D%7B%5Clambda%7D+></p>
+
+<h4>c. 一様分布からロジスティック乱数を作る(逆変換)</h4>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%3D+%5Cfrac%7Be%3Csup%3Ex%7D%7B1%2Be%3Csup%3Ex%7D%3C%2Fsup%3E%3C%2Fsup%3E+>より<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+%5Clog%7B%5Cfrac%7BU%7D%7B1-U%7D%7D+></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：アーカイブ]]></title>
@@ -23,16 +165,23 @@
 
 <h3>「Rによるモンテカルロ法入門」</h3>
 
-<p>本書は，モンテカルロ法の実践的な解説書であり，統計解析ソフトのRを用いた豊富な実例と練習問題が組まれている．モンテカルロ法とは乱数を用いて数値計算を行う手法の総称であり，本書で扱う内容は乱数の発生からモンテカルロ積分，そしてマルコフ連鎖モンテカルロ法（MCMC）の各種アルゴリズムに至るまで非常に幅広い．たいていの解説は理論に実践演習が付随した形になっており，数学的な理論を軸にして実際にRを用いたコード例が示される．</p>
+<p>本書は，モンテカルロ法の実践的な解説書であり，統計解析ソフトのRを用いた豊富な実例と練習問題が組まれている．モンテカルロ法とは乱数を用いて数値計算を行う手法の総称であり，本書で扱う内容は乱数の発生からモンテカルロ積分，そしてマルコフ連鎖モンテカルロ法（MCMC）の各種アルゴリズムに至るまで非常に幅広い．たいていの解説には理論に実践演習が付随した形となっており，数学的な理論を軸にして実際にRを用いたコード例が示される．</p>
 
 <h3>練習問題を解きつつ読書ノートをまとめてみる</h3>
 
 <p><a href="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/">そんなこんな</a>で，<a href="http://www.amazon.co.jp/gp/product/400006973X/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=400006973X&amp;linkCode=as2&amp;tag=yagays-22">久保本</a>と並行する形で「<a href="http://www.amazon.co.jp/gp/product/4621065270/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621065270&linkCode=as2&tag=yagays-22">Rによるモンテカルロ法入門</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621065270" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」を読んでいる．一応MCMCの部分だけひと通り目を通したのだが，最終的にMCMCの実装までひと通りやるにしても一連の流れを簡単にでも追っておかなければと思って，最初の乱数の部分からじっくり読み進めている．これがなかなか難しくて，手も足も出ないところをなんとかRのコードを動かして理解を補っているわけなのだが……取り敢えず練習問題を解ける範囲で解きつつRのコードを書いていこうというこでとはセクションごとに小分けてして，じっくり読書ノートを付けて勉強することにしてみた．</p>
 
-<p>以下に，読書ノートのリンクを書き加えていく予定．</p>
+<p>以下に，読書ノートのリンクを書き加えていく</p>
+
+<h3>読書ノートまとめ</h3>
 
 <ul>
-<li>&lt;></li>
+<li><a href="">「Rによるモンテカルロ法入門」読書ノート：2章 逆変換・一般変換法</a>
+
+<ul>
+<li>例 2.1，練習問題 2.2，練習問題 2.12</li>
+</ul>
+</li>
 <li>&lt;></li>
 <li>&lt;></li>
 </ul>
@@ -123,7 +272,7 @@ demo(Chapter.1) # Chapter.8まである
 
 <ul>
 <li><strong>ただ単にパラメータを取る時の確率なのか条件付き確率なのか，文脈に沿ってきちんと把握しておく</strong></li>
-<li>ポアソン分布の文脈におけるp(x|λ)は，λというパラメータ(平均)を取る時のポアソン分布の確率値（他にp(x;λ)とも書くパターン）</li>
+<li>ポアソン分布の文脈における%{ gctex p(x|\lambda) %}は，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+>というパラメータ(平均)を取る時のポアソン分布の確率値（他に<img src=http://chart.apis.google.com/chart?cht=tx&chl=p%28x%3B%5Clambda%29+>とも書くパターン）</li>
 <li>後半のMCMCに入ると条件付き確率が出てくる</li>
 </ul>
 </li>
@@ -135,7 +284,7 @@ demo(Chapter.1) # Chapter.8まである
 <ul>
 <li>「ある植物の1個体から得られる種子の数に何か法則はあるか？」</li>
 <li>確率分布の単純なあてはめ</li>
-<li>ポアソン分布を選ぶ理由は，非負の整数で(0,∞]だから</li>
+<li>ポアソン分布を選ぶ理由は，非負の整数で<img src=http://chart.apis.google.com/chart?cht=tx&chl=%280%2C%5Cinfty%5D+>だから</li>
 </ul>
 
 
@@ -144,7 +293,7 @@ demo(Chapter.1) # Chapter.8まである
 <ul>
 <li>「植物のサイズや施肥効果と種子の数に何か関係はあるか」</li>
 <li>説明変数を組み込んだ統計モデル</li>
-<li>$$ log(\lambda_i) = \beta_1 + \beta_2 x_i $$</li>
+<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=log%28%5Clambda_i%29+%3D+%5Cbeta_1+%2B+%5Cbeta_2+x_i+></li>
 <li>(リンク関数) = (線形予測子) の関係
 
 <ul>
@@ -154,7 +303,7 @@ demo(Chapter.1) # Chapter.8まである
 <li>対数リンク関数では，要素の効果が積で表される
 
 <ul>
-<li>$$ \exp(\beta_1 + \beta_2 x_i + \beta_3) = \exp(\beta_1) \times \exp(\beta_2 x_i) \times \exp(\beta_3) $$</li>
+<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cexp%28%5Cbeta_1+%2B+%5Cbeta_2+x_i+%2B+%5Cbeta_3%29+%3D+%5Cexp%28%5Cbeta_1%29+%5Ctimes+%5Cexp%28%5Cbeta_2+x_i%29+%5Ctimes+%5Cexp%28%5Cbeta_3%29+></li>
 </ul>
 </li>
 </ul>
@@ -189,12 +338,7 @@ demo(Chapter.1) # Chapter.8まである
 <li>二項分布とロジットリンク関数の組み合わせ</li>
 </ul>
 </li>
-<li>相互作用項による積の効果を考える
-
-<ul>
-<li>$$ x_i f_i $$</li>
-</ul>
-</li>
+<li>相互作用項による積の効果<img src=http://chart.apis.google.com/chart?cht=tx&chl=x_i+f_i+>を考える</li>
 <li>割り算値の統計モデリングの危険性とオフセット項</li>
 </ul>
 
@@ -246,7 +390,7 @@ demo(Chapter.1) # Chapter.8まである
 
 <ul>
 <li>平べったい分布</li>
-<li>「 [-∞,∞]の範囲で好きな値を取っていい」ことを表現するための分布</li>
+<li>「 <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5B%5Cinfty%2C%5Cinfty%5D+>の範囲で好きな値を取っていい」ことを表現するための分布</li>
 </ul>
 </li>
 <li>gibbsサンプリングによるMCMCアルゴリズム（複数パラメータのサンプリング）</li>
@@ -612,303 +756,6 @@ demo(Chapter.1) # Chapter.8まである
 <li>キラー因子と減数分裂との間には対立する形で進化してきた</li>
 </ul>
 </li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「せめぎ合う遺伝子」読書ノート 2章その1]]></title>
-    <link href="http://yagays.github.com/blog/2012/06/05/genesinconflict-2-1/"/>
-    <updated>2012-06-05T17:28:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/06/05/genesinconflict-2-1</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yagays-22&o=9&p=8&l=as1&asins=432005699X&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h2>2章 常染色体キラー</h2>
-
-<p>2章の最初に紹介される利己的な遺伝因子は，ハツカネズミのtハプロタイプである．利己的な遺伝因子の中では発見が早く(1927年)，研究から得られた知見も多い．</p>
-
-<ul>
-<li><strong>その因子は，どのようにして利己的な優位性を獲得したのだろうか？</strong>
-
-<ul>
-<li>ヘテロ接合体オスにおいて，野生型の精子を無力化させる</li>
-</ul>
-</li>
-<li><strong>いかにして，その因子は出現したのだろう？</strong>
-
-<ul>
-<li>セントロメア近辺の逆位のすぐそばに生じた分離歪曲対立遺伝子(キラー因子)</li>
-<li>逆位による組み換えの妨害により，分離歪曲対立遺伝子と応答-不感性対立遺伝子の連鎖を強め安定化させる</li>
-</ul>
-</li>
-<li><strong>どれくらい昔に出現したのだろう？</strong>
-
-<ul>
-<li>約0.3Myr前</li>
-</ul>
-</li>
-<li><strong>大型生物に対する影響はどのようなものだろうか？</strong>
-
-<ul>
-<li>+/tハツカネズミの成獣期におけるメスの体の不均整やオスの攻撃性の違い (これらは直接的に利己的な遺伝因子が関わっているわけではない)</li>
-</ul>
-</li>
-<li><strong>どのくらいの速度で，その因子は分布を拡大すると期待されるだろうか？</strong>
-
-<ul>
-<li>???</li>
-</ul>
-</li>
-<li><strong>種内における頻度はどれくらいか？</strong>
-
-<ul>
-<li>5% (集団により異なる)</li>
-</ul>
-</li>
-<li><strong>頻度を決定づけているものは何か？</strong>
-
-<ul>
-<li>ホモ接合体およびヘテロ接合体の適応度</li>
-<li>集団サイズと相関</li>
-</ul>
-</li>
-<li><strong>いくつかの種にその因子が見いだされるのに，他の種には見いだされないのはなぜか？</strong>
-
-<ul>
-<li><em>Mus musculus</em>亜種の種分化後に種間交雑で広まったから</li>
-</ul>
-</li>
-<li><strong>ゲノムの他の因子は，利己的な因子に対抗してどのような適応を強いられてきたか？</strong>
-
-<ul>
-<li>抑制因子の出現などによるゲノム内コンフリクト</li>
-</ul>
-</li>
-<li><strong>ホストの系統に対しておよぼしてきた効果以外に，どのような影響をもたらすだろうか？</strong>
-
-<ul>
-<li>???</li>
-</ul>
-</li>
-</ul>
-
-
-<p>1章で述べられた利己的因子の基礎に関する問題に，tハプロタイプのケースで解答を作成してみた．個別のケースでは答えにくい問題もあるが，本文の纏めとして特徴が俯瞰できるように，ある程度問題を曲解したり無理やり当てはめた部分もある．</p>
-
-<!-- more -->
-
-
-<h3>2.1</h3>
-
-<ul>
-<li>T突然変異の発見により，tを持つかどうかが表現型から判断することができるようになった
-
-<ul>
-<li>利己的な遺伝因子は普通表現型の変化を伴わないので見つけることが難しい</li>
-<li>T突然変異は尾部形成因子として，ハツカネズミの尾を短くする</li>
-<li>+/tヘテロ接合のハツカネズミは尾がないという表現型を示し，その時tはドライヴする</li>
-<li>T/Tおよびt/tのホモ接合の個体は死亡してしまう</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>tハプロタイプは17番染色体上の1/3を占め，3つドライヴ因子と4つの逆位を持つ
-
-<ul>
-<li>ドライブ因子＝分離歪曲遺伝子</li>
-<li>逆位は野生型染色体との組み換えを妨げる</li>
-<li>組み換えが起こらず連鎖を繰り返すことにより利己的な性質を保ったままその遺伝因子は頻度を高める</li>
-<li>組み換えが起こりにくい状態でtの領域が大きくなることにより，多くの遺伝子が突然変異を蓄積する</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>tコンプレックスは0.1Myr前頃から存在し，既に種分化していた<em>Mus musculus</em>の4亜種に広まった
-
-<ul>
-<li>tコンプレックスの中の逆位のうち最も古いとされるものは3Myr前に生じたとされる</li>
-<li>Mus musculusの亜種は0.5~1.0Myr前に分岐したと考えられている</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>tコンプレックスに含まれる応答-不感性対立遺伝子<em>Tcr</em>によりドライヴ因子の持つ分離歪曲効果から保護する
-
-<ul>
-<li>ドライヴ因子は他の精子を殺戮するが，<em>Tcr</em>を持っている場合は生き残ることができる</li>
-<li><em>Tcr</em>は1倍体特異的に発現する(精子形成後期に発現)</li>
-<li>単純なメカニズムとして，ドライヴ因子が毒素を出して<em>Tcr</em>が解毒剤を出すということが考えられるが，これは他のドライヴ因子の性質によって否定されている</li>
-<li>ドライヴ因子による精子の機能不全の原理は幾つか考えられる
-
-<ul>
-<li>精子の運動上の欠陥</li>
-<li>先体反応の不全</li>
-<li>精子形成中の妨害</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>精子の配偶子競争の重要性は種の生殖様式に依る
-
-<ul>
-<li>一夫一婦制の場合は純粋にキラー因子を持つ精子が受精する (繁殖力は低下しない)</li>
-<li>メスが複数のオスと交配する(多夫多妻制?)場合には，キラー因子を持つ精子と野生型の精子との競争になる
-
-<ul>
-<li>野生型の個体の精子は，キラー因子を持つ個体が野生型の精子を殺すことによりいくぶん有利になる</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>キラー因子と抵抗性対立遺伝子の存在頻度はホストにかける負担のド愛で決まる
-
-<ul>
-<li>tハプロタイプの場合，t/tオスの不妊という形でホストに負担をかける</li>
-<li>キラー因子が存在頻度を高め長期的に安定するには，抵抗性対立遺伝子の抵抗のコストが高いことが重要である (または負担をかけない抵抗性対立遺伝子が存在しないこと)</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>逆位は組み換えを抑制し，キラー因子と抵抗性因子の連鎖を強め，分布拡大を図る
-
-<ul>
-<li>逆位の組み替え抑制はドライヴ性とは無関係な多数の遺伝子を結びつけ，劣勢致死因子を保有することになる</li>
-<li>自然選択の有効性が低くなり劣化する(有害な突然変異の蓄積であったり，適応性の低下など)</li>
-<li>tコンプレックスは大半が致死性死因子を持つ</li>
-<li>致死因子は群選択や血縁選択の効果に乗じて維持されてきた可能性がある</li>
-<li>致死遺伝子の活動する時期も胚期のなかで異なり，母親の生殖に影響してくる</li>
-<li>結論としては，致死因子が積極的に維持されているかどうかは不明</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>殺戮強度を巡るゲノム内コンフリクトがあると考えられている
-
-<ul>
-<li>キラー染色体上のアレルは殺戮を促進する方に，一方では野生型の染色体上のアレルは殺戮を抑制する方に働く
-
-<ul>
-<li>キラー染色体上のアレルはキラー因子との連鎖を強め，キラー複合体は進化の過程で染色体上に広がっていくと考えられる</li>
-<li>野生型の染色体上のアレルは他の染色体上にも抑制因子が生じ，ドライブを低下させてきた</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>tコンプレックス末端の逆位内に主要組織適合遺伝子複合体MHCがある
-
-<ul>
-<li>免疫反応，配偶者選択，血縁認識，自己認識に関わる</li>
-<li>これらの遺伝子は著しく多型的な性質を持ち，野生型では基本的にヘテロ接合的である</li>
-<li>tハプロタイプは，MHCの多様性を減少させ，t特有の限られたMHCハプロタイプを持つ</li>
-</ul>
-</li>
-</ul>
-
-
-<br /> 
-
-
-<ul>
-<li>tハプロタイプのドライヴは雌雄で適応度に違いが生じたとしても，全体的な利益が上回れば維持される
-
-<ul>
-<li>性によって偏ったドライヴによって，新しく性拮抗性遺伝子が生じる</li>
-<li>tハプロタイプの有無により発生初期において性の偏りがあるわけではなく，成獣期において適応度(表現型)の違いを生じる
-
-<ul>
-<li>+/tメスは+/+メスよりも低い適応度を示す(体の非対称性，不均整)</li>
-<li>+/tオスは+/+オスよりも高い適応度を示す</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>tが集団内で頻度を高めるために重要な要素はt/tメスの繁殖成功率である
-
-<ul>
-<li>t/tメスの繁殖成功率が低ければt/tの組み換えは起こりにくい</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>tの頻度は集団によりばらつきがあり平均して5%程度だった
-
-<ul>
-<li>自然集団を対象にsた調査から，分布頻度は0~71%にわたった</li>
-<li>tの平衡頻度に影響するパラメータは幾つか考えられる
-
-<ul>
-<li>ドライヴの程度 (0.9程度)</li>
-<li>tコンプレックスのホモ接合型の適応度効果 (t/tオスは不妊，t/tメスは適応度が低い)</li>
-<li>tコンプレックスのヘテロ接合型の適応度効果 (+/tにおいても適応度の低下がある)</li>
-<li>近交の程度 (近交=ヘテロ接合の頻度低下．tはヘテロ接合にのみドライヴを発揮する)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>集団の大きさとtの頻度には相関がある (集団が大きいとtの頻度が低くなる)</li>
-</ul>
-
-
-<h3>参考資料</h3>
-
-<ul>
-<li><a href="http://d.hatena.ne.jp/shorebird/20060426">http://d.hatena.ne.jp/shorebird/20060426</a></li>
-<li><a href="http://d.hatena.ne.jp/shorebird/20060501">http://d.hatena.ne.jp/shorebird/20060501</a></li>
-<li><a href="http://d.hatena.ne.jp/shorebird/20060502">http://d.hatena.ne.jp/shorebird/20060502</a></li>
-<li><a href="http://www.brc.riken.go.jp/lab/mcd/mcd2/cn7/pg64.html">http://www.brc.riken.go.jp/lab/mcd/mcd2/cn7/pg64.html</a></li>
 </ul>
 
 ]]></content>
