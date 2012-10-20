@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Reading | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-21T07:37:34+09:00</updated>
+  <updated>2012-10-21T07:44:25+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -19,6 +19,11 @@
     <updated>2012-10-21T06:26:00+09:00</updated>
     <id>http://yagays.github.com/blog/2012/10/21/imcmr-2-1</id>
     <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<ul>
+<li>読書ノート アーカイブ:<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
 
 
 <h3>内容：一様分布を元にして様々な確率分布に従う乱数を生成する</h3>
@@ -185,6 +190,10 @@ curve(dbeta(x,a,b), add=T, col="red", lwd=2)
 <li>&lt;></li>
 </ul>
 
+
+<h3>お決まりごと</h3>
+
+<p>この読書ノート（上記リンク先を含む）は個人的なメモであって，解答およびコードの正確さや厳密さを保証するものではありません．間違いが多分に含まれている可能性があるので，参考にされる際には十分ご注意下さい．</p>
 
 <h3>参考：サンプルコード</h3>
 
