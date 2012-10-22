@@ -171,13 +171,14 @@
 <p>受理・棄却の条件</p>
 
 <ul>
-<li>例2.7: <img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%3C+f%28Y%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2CM%5D%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=f+%3A+%5Cmathcal%7BBe%282.7%2C6.3%29%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%3A+1+>
+<li>例2.7: <img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%3C+f%28Y%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2CM%5D%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=f+%5Csim+%5Cmathcal%7BBe%282.7%2C6.3%29%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=g+%3A+1+>
 
 <ul>
-<li>ここでgは何らかの関数ではなく「gは1に等しい」としているので，上式の中にgが含まれていない．この場合，gで生成される乱数は一様乱数．</li>
+<li>ここでgは何らかの分布ではなく「gは1に等しい」としているので，上式の1つ目の式の中にgが含まれていない．この場合，gで生成される乱数は一様乱数．</li>
+<li>一様分布のグラフを考えてみるとわかりやすい．区間[0,1]の間で常に値1を取る関数なので，上では1に等しいと表している．</li>
 </ul>
 </li>
-<li>例2.8: <img src=http://chart.apis.google.com/chart?cht=tx&chl=Ug%28Y%29+%3C+f%28Y%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2CM%5D%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=f+%3A+%5Cmathcal%7BBe%282.7%2C6.3%29%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%3A%5Cmathcal%7BBe%282%2C6%29%7D+></li>
+<li>例2.8: <img src=http://chart.apis.google.com/chart?cht=tx&chl=Ug%28Y%29+%3C+f%28Y%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2CM%5D%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=f+%5Csim+%5Cmathcal%7BBe%282.7%2C6.3%29%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=g+%5Csim+%5Cmathcal%7BBe%282%2C6%29%7D+></li>
 </ul>
 
 
@@ -304,7 +305,7 @@
 
 <p><img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+%5Calpha+>のとき，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28%5Calpha%29%7D%7Bg%28%5Calpha%29%7D+%3D+%5Csqrt%7B%5Cfrac%7B2%7D%7B%5Cpi%7D%7D%5Calpha%5E%7B-1%7D%5Cexp%28-%5Cfrac%7B%5Calpha%5E2%7D%7B2%7D+%2B+%5Calpha%5E2%29+%3D+%5Csqrt%7B%5Cfrac%7B2%7D%7B%5Cpi%7D%7D%5Calpha%5E%7B-1%7De%5E%7B%5Calpha%5E2%2F2%7D+>となり，与式を満たす．</p>
 
-<p>Mの最小値は，上式を微分すると<img src=http://chart.apis.google.com/chart?cht=tx&chl=%28-%5Calpha%5E2%2B1%29%5Cexp%28-%5Cfrac%7Balpha%5E2%7D%7B2%7D%29+>が出てくるので，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+%5Cpm+1+>となる．候補分布に課された制約(P.59)より，fとgどちらか一方だけ負になることは無いので，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+1+>が正解．（二階微分すれば-1のとき最小値，1のとき最大値だとわかる）</p>
+<p>Mの最小値は，上式を微分すると<img src=http://chart.apis.google.com/chart?cht=tx&chl=%28-%5Calpha%5E2%2B1%29%5Cexp%28-%5Cfrac%7B%5Calpha%5E2%7D%7B2%7D%29+>が出てくるので，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+%5Cpm+1+>となる．候補分布に課された制約(P.59)より，fとgどちらか一方だけ負になることは無いので，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+1+>が正解．（二階微分すれば-1のとき最小値，1のとき最大値だとわかる）</p>
 
 <h4>b. 受理確率を求める</h4>
 
