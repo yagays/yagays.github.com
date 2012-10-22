@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Reading | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-22T22:29:36+09:00</updated>
+  <updated>2012-10-22T22:32:55+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -121,7 +121,7 @@ curve(dbeta(x,2,6)*1.67, add=T, col="blue", lwd=2)
 <p><img src=http://chart.apis.google.com/chart?cht=tx&chl=f%28x%29++%3D+%5Cfrac%7B%5CGamma%28%5Calpha%2B%5Cbeta%29%7D%7B%5CGamma%28%5Calpha%29%5CGamma%28%5Cbeta%29%7D+x%3Csup%3E%7B%5Calpha-1%7D%3C%2Fsup%3E+%281-x%29%3Csup%3E%7B%5Cbeta-1%7D%3C%2Fsup%3E+%5Csim+%5Cmathcal%7BBe%7D%28%5Calpha%2C%5Cbeta%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28x%29++%3D+%5Cfrac%7B%5CGamma%28a%2Bb%29%7D%7B%5CGamma%28a%29%5CGamma%28b%29%7D+x%3Csup%3E%7Ba-1%7D%3C%2Fsup%3E+%281-x%29%3Csup%3E%7Bb-1%7D%3C%2Fsup%3E+%5Csim+%5Cmathcal%7BBe%7D%28a%2Cb%29+>
 より</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D++%3D+%5Cfrac%7B%5CGamma%28%5Calpha%2B%3Csup%3Ebeta%29%5CGamma%28a%29%5CGamma%28b%29%7D%7B%5CGamma%28a%2Bb%29%5CGamma%28%5Calpha%29%5CGamma%28%5Cbeta%29%7D%3C%2Fsup%3E+x%3Csup%3E%7B%5Calpha-a%7D%3C%2Fsup%3E+%281-x%29%3Csup%3E%7B%5Cbeta-b%7D%3C%2Fsup%3E+></p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D++%3D+%5Cfrac%7B%5CGamma%28%5Calpha%2B%5Cbeta%29%5CGamma%28a%29%5CGamma%28b%29%7D%7B%5CGamma%28a%2Bb%29%5CGamma%28%5Calpha%29%5CGamma%28%5Cbeta%29%7D+x%3Csup%3E%7B%5Calpha-a%7D%3C%2Fsup%3E+%281-x%29%3Csup%3E%7B%5Cbeta-b%7D%3C%2Fsup%3E+></p>
 
 <p>となり，比<img src=http://chart.apis.google.com/chart?cht=tx&chl=f%2Fg+>が有界になる（どっかのxの値が<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cinf+>になったりしない）には，xや(1-x)のベキ数の部分が0以上でである必要がある．よって<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%5Cleq+%5Calpha%2C+b+%5Cleq+%5Cbeta+>が必要．</p>
 
