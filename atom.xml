@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-22T22:22:42+09:00</updated>
+  <updated>2012-10-22T22:29:36+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -198,7 +198,7 @@
 
 <p>受理・棄却法を使うには，当然候補分布から乱数が生成できなければいけない．今回は二重指数分布から乱数を生成して間接的に正規乱数を求めているので，二重指数分布から乱数を生成するために，2章前半で行った逆変換を行う．</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28x%7C%5Calpha%29+%3D+%5Cbegin%7Bcases%7D+%5Cfrac%7B1%7D%7B2%7De%5E%7B%5Calpha+x%7D+%26+%28x+%3C+0%29+%5C%5C+1+-+%5Cfrac%7B1%7D%7B2%7De%5E%7B%5Calpha+x%7D+%26+%28x+%3E+0%29+%5Cend%7Bcases%7D+></p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=G%28x%29+%3D+%5Cint_%7B-%5Cinfty%7D%5E%7Bx%7D+g%28y%7C%5Calpha%29+dy+%3D+%5Cbegin%7Bcases%7D+%5Cfrac%7B1%7D%7B2%7De%5E%7B%5Calpha+x%7D+%26+%28x+%3C+0%29+%5C%5C+1+-+%5Cfrac%7B1%7D%7B2%7De%5E%7B%5Calpha+x%7D+%26+%28x+%3E+0%29+%5Cend%7Bcases%7D+></p>
 
 <p>より，</p>
 
