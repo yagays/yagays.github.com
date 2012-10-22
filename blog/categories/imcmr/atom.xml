@@ -4,7 +4,7 @@
   <title><![CDATA[Category: imcmr | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/imcmr/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-22T22:13:18+09:00</updated>
+  <updated>2012-10-22T22:17:23+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -40,7 +40,7 @@
 
 <p><img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Cleq+%5Cfrac%7Bf%28Y%29%7D%7BM+%5Ctimes+g%28Y%29%7D+></p>
 
-<p>ここで登場するMは提案分布と候補密度から見積もった定数で，候補密度の制約の中で登場する値．基本的にある値より大きければ何でも良いのだが，シミュレーションの効率に関わってくる．これが小さい値であればあるほど，シミュレーションで棄却される乱数の候補が少なくて済むので，結果として効率が良くなる．最適なMは以下の式で与えられる（<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">UserR!資料pdf</a> p.51）</p>
+<p>ここで登場するMは提案分布と候補密度から見積もった定数で，候補密度の制約の中で登場する値．基本的にある値より大きければ何でも良いのだが，シミュレーションの効率に関わってくる．これが小さい値であればあるほど，シミュレーションで棄却される乱数の候補が少なくて済むので，結果として効率が良くなる．最適なMは以下の式で与えられる（<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">UserR!資料pdf</a> p.51）．</p>
 
 <p><img src=http://chart.apis.google.com/chart?cht=tx&chl=M+%3D+%5Csup_x+%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D+></p>
 
@@ -165,7 +165,7 @@ curve(dbeta(x,8,4),col="red",lwd=2,ylim=c(0,3),main="Be(8,4)")
 
 <h4>b. 受理確率を求める</h4>
 
-<p>受理確率は1/Mで表される．<img src=http://chart.apis.google.com/chart?cht=tx&chl=M+%3D+%5Csup_x+%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D+%3D+%5Csqrt%7B%5Cfrac%7B2%7D%7B%5Cpi%7D%7De%3Csup%3E%7B1%2F2%7D%3C%2Fsup%3E+> より，<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2FM+%3D+%3D+%5Csqrt%7B%5Cpi%2F2e%7D+%3D+1%2F0.76+%5Csimeq+1.3+>となる．</p>
+<p>受理確率は1/Mで表される．最適なMの値は<img src=http://chart.apis.google.com/chart?cht=tx&chl=M+%3D+%5Csqrt%7B%5Cfrac%7B2%7D%7B%5Cpi%7D%7De%3Csup%3E%7B1%2F2%7D%3C%2Fsup%3E+>となるので，<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2FM+%3D+%5Csqrt%7B%5Cpi%2F2e%7D+%3D+1%2F0.76+%5Csimeq+1.3+>となる．</p>
 
 <h4>c. 候補分布から乱数を生成するために逆変換をする</h4>
 
