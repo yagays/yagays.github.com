@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Reading | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-21T08:56:08+09:00</updated>
+  <updated>2012-10-22T22:03:52+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,173 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：2章 受理・棄却法]]></title>
+    <link href="http://yagays.github.com/blog/2012/10/22/imcmr-2-2/"/>
+    <updated>2012-10-22T21:38:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/10/22/imcmr-2-2</id>
+    <content type="html"><![CDATA[<ul>
+<li>読書ノート アーカイブ:<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>内容：逆変換法や一般変換法で生成できない分布から乱数を生成する</h3>
+
+<p>逆変換法や一般変換法では，一様分布から生成される乱数に何らかの関数を通すことで任意の乱数を生成してきた．しかし，このような直接的な方法で乱数を生成できない分布の場合には，間接的な方法によって乱数を生成する必要がある．そのような場合には，本来求めたい乱数の分布とは違った分布から乱数を生成し，それが受理できる値か棄却できる値かを選り分けることで，間接的に求めたい分布から生成された乱数を表現する．</p>
+
+<ul>
+<li>目標密度（target）: <img src=http://chart.apis.google.com/chart?cht=tx&chl=f+></li>
+<li>手段密度・候補密度（candidate）: <img src=http://chart.apis.google.com/chart?cht=tx&chl=g+></li>
+</ul>
+
+
+<p>この受理・棄却法では1つの乱数の値<img src=http://chart.apis.google.com/chart?cht=tx&chl=X+>につき，2つの乱数<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y+%5Csim+g+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2C1%5D%7D+>を考える．前者は候補密度から乱数を生成したもの，後者は受理・棄却に用いる一様乱数．この2つの乱数を，以下の式にあてはめて受理するか棄却するかを判断する．</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Cleq+%5Cfrac%7Bf%28Y%29%7D%7BM+%5Ctimes+g%28Y%29%7D+></p>
+
+<p>ここで登場するMは提案分布と候補密度から見積もった定数で，候補密度の制約の中で登場する値．基本的にある値より大きければ何でも良いのだが，シミュレーションの効率に関わってくる．これが小さい値であればあるほど，シミュレーションで棄却される乱数の候補が少なくて済むので，結果として効率が良くなる．最適なMは以下の式で与えられる（<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">UserR!資料pdf</a> p.51）</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=M+%3D+%5Csup_x+%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D+></p>
+
+<br />
+
+
+<h3>例 2.7, 例2.8 ベータ分布の乱数を生成する(2通り)</h3>
+
+<p>黒の点が一様分布/ベータ分布から生成した乱数，赤の点がアルゴリズムで受理された乱数（今回求めたかった乱数），青の線が極限<img src=http://chart.apis.google.com/chart?cht=tx&chl=M+g%28x%29+>．</p>
+
+<p>受理・棄却の条件</p>
+
+<ul>
+<li>例2.7: <img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%26lt%3B+f%28Y%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2CM%5D%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=f+%3A+%5Cmathcal%7BBe%282.7%2C6.3%29%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%3A+1+>
+
+<ul>
+<li>ここでgは何らかの関数ではなく「gは1に等しい」としているので，上式の中にgが含まれていない．この場合，gで生成される乱数は一様乱数．</li>
+</ul>
+</li>
+<li>例2.8: <img src=http://chart.apis.google.com/chart?cht=tx&chl=Ug%28Y%29+%26lt%3B+f%28Y%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2CM%5D%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=f+%3A+%5Cmathcal%7BBe%282.7%2C6.3%29%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%3A%5Cmathcal%7BBe%282%2C6%29%7D+></li>
+</ul>
+
+
+<p>例2.8における「提案分布」という言葉は，新しく設定した候補分布のこと．</p>
+
+<p>```r</p>
+
+<h1>例2.7</h1>
+
+<p>Nsim &lt;- 2500
+a &lt;- 2.7
+b &lt;- 6.3
+M &lt;- 2.67
+u &lt;- runif(Nsim, max=M)
+y &lt;- runif(Nsim)
+x &lt;- y[u &lt; dbeta(y,a,b)]</p>
+
+<p>y2 &lt;- rbeta(Nsim,2,6)
+u2 &lt;- runif(Nsim, max=1.67) * dbeta(y2,2,6)
+x2 &lt;- y2[u2 &lt; dbeta(y2,2.7,6.3)]</p>
+
+<p>par(mfrow=c(1,2))
+plot(y, u, xlim=c(0,1.0), ylim=c(0,2.8), cex=0.5, xlab="y", ylab="u.g(y)")
+par(new=T)
+plot(x, u[u &lt; dbeta(y,a,b)], col="red", xlim=c(0,1.0), ylim=c(0,2.8), cex=0.5, xlab="y", ylab="u.g(y)")
+curve(dbeta(x,a,b), add=T, col="red", lwd=2)
+abline(h=M, lwd=2, col="blue")</p>
+
+<p>plot(y2, u2, xlim=c(0,1.0), ylim=c(0,5), cex=0.5, xlab="y", ylab="u.g(y)")
+par(new=T)
+plot(x2, u2[u2 &lt; dbeta(y2,2.7,6.3)], col="red", xlim=c(0,1.0), ylim=c(0,5), cex=0.5, xlab="y", ylab="u.g(y)")
+curve(dbeta(x,2.7,6.3), add=T, col="red", lwd=2)
+curve(dbeta(x,2,6)*1.67, add=T, col="blue", lwd=2)
+```</p>
+
+<p>![](http://dl.dropbox.com/u/142306/b/imcmr/chp2_6.png )</p>
+
+<h4>上の図の解釈</h4>
+
+<p>乱数の値が赤の分布の線より中に入れば受理となる．候補として生成される乱数は青の分布の線の中でランダムに生成されるので，赤と青の線の間の部分が棄却された乱数になる．この赤と青の線の間の部分が少なければ少ないほど，この受理・棄却法の効率も良くなる．じゃあ効率を良くするにはどうすればいいかというと，いじることのできるポイントは2つ</p>
+
+<ul>
+<li>提案分布gを良い感じにする（青の線の形を決める）</li>
+<li>定数Mを出来るだけ小さくする（青の線の高さを決める，fとgの間の幅を決める）</li>
+</ul>
+
+
+<p>この受理・棄却法の前提として<strong>目標分布（赤の線）から乱数は生成できない</strong>のだから，100％受理されるようなシミュレーションは理論上不可能．だから，乱数が生成できるような候補分布を使って，定数Mを定めて，間接的に乱数を発生させようということ．</p>
+
+<br />
+
+
+<h3>練習問題 2.7 目標分布fと候補密度gがともにベータ分布だった場合に，どのような制約があるのか</h3>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%5Cleq+%5Calpha%2C+b+%5Cleq+%5Cbeta+>が必要なことの証明</h4>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=f%28x%29++%3D+%5Cfrac%7B%5CGamma%28%5Calpha%2B%5Cbeta%29%7D%7B%5CGamma%28%5Calpha%29%5CGamma%28%5Cbeta%29%7D+x%3Csup%3E%7B%5Calpha-1%7D%3C%2Fsup%3E+%281-x%29%3Csup%3E%7B%5Cbeta-1%7D%3C%2Fsup%3E+%5Csim+%5Cmathcal%7BBe%7D%28%5Calpha%2C%5Cbeta%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28x%29++%3D+%5Cfrac%7B%5CGamma%28a%2Bb%29%7D%7B%5CGamma%28a%29%5CGamma%28b%29%7D+x%3Csup%3E%7Ba-1%7D%3C%2Fsup%3E+%281-x%29%3Csup%3E%7Bb-1%7D%3C%2Fsup%3E+%5Csim+%5Cmathcal%7BBe%7D%28a%2Cb%29+>
+より</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D++%3D+%5Cfrac%7B%5CGamma%28%5Calpha%2B%3Csup%3Ebeta%29%5CGamma%28a%29%5CGamma%28b%29%7D%7B%5CGamma%28a%2Bb%29%5CGamma%28%5Calpha%29%5CGamma%28%5Cbeta%29%7D%3C%2Fsup%3E+x%3Csup%3E%7B%5Calpha-a%7D%3C%2Fsup%3E+%281-x%29%3Csup%3E%7B%5Cbeta-b%7D%3C%2Fsup%3E+%5Csim+%5Cmathcal%7BBe%7D%28ba%2Cb%29+></p>
+
+<p>となり，比<img src=http://chart.apis.google.com/chart?cht=tx&chl=f%2Fg+>が有界になる（どっかのxの値が<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cinf+>になったりしない）には，xや(1-x)のベキ数の部分が0以上でである必要がある．よって<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%5Cleq+%5Calpha%2C+b+%5Cleq+%5Cbeta+>が必要．</p>
+
+<p>上の細かい証明は省略するが，要するにベータ分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7B%5Cbeta%7D%28a%2Cb%29+>において，aとbが1未満の時には0と1の両端で値が跳ね上がる．以下の図は，「<a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22">パターン認識と機械学習 上</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のP.70を参考にベータ分布を作図したもの．これを見ると，aとbが1のときにちょうど一様分布のような形をとり，それより小さいと下に凸，それより大きいと上に凸のような分布の形になることがわかる．なので，ベータ分布が有界であるにはxや(1-x)のベキ数の部分がポイントになってくる．</p>
+
+<p>```r</p>
+
+<h1>練習問題 2.7 ベータ関数の分布を図示してみる</h1>
+
+<p>par(mfrow=c(2,2))
+curve(dbeta(x,0.1,0.1),col="red",lwd=2,ylim=c(0,3),main="Be(0.1,0.1)")
+curve(dbeta(x,1,1),col="red",lwd=2,ylim=c(0,3),main="Be(1,1)")
+curve(dbeta(x,2,3),col="red",lwd=2,ylim=c(0,3),main="Be(2,3)")
+curve(dbeta(x,8,4),col="red",lwd=2,ylim=c(0,3),main="Be(8,4)")
+```</p>
+
+<p>![](http://dl.dropbox.com/u/142306/b/imcmr/chp2_beta.png )</p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%3D+%5Cleft%5Clfloor+%5Calpha+%5Cright%5Crfloor+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=b+%3D+%5Cleft%5Clfloor+%5Cbeta+%5Cright%5Crfloor+>の証明</h4>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=f%28x%29%2Fg%28x%29+>を微分して最大値を取る時のxを求めると，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x_%7Bmax%7D+%3D+%5Cfrac%7B%5Calpha-a%7D%7B%5Calpha-a%2B%5Cbeta-b%7D+>となる．よって，上で証明した<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%5Cleq+%5Calpha%2C+b+%5Cleq+%5Cbeta+>を満たしつつ自然数aとbが最適な値を取るには，<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%3D+%5Cleft%5Clfloor+%5Calpha+%5Cright%5Crfloor+%2C+b+%3D+%5Cleft%5Clfloor+%5Cbeta+%5Cright%5Crfloor+>となる．これもまあ厳密な証明はできなくても直感的に考えれば明らかだろう．</p>
+
+<br />
+
+
+<h3>練習問題 2.8 二重指数分布から正規乱数を生成する</h3>
+
+<ul>
+<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=f%28x%29+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D%5Cexp%28-%5Cfrac%7Bx%3Csup%3E2%7D%7B2%7D%29%3C%2Fsup%3E+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+></li>
+<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28x%7C%5Calpha%29+%3D+%5Cfrac%7B%5Calpha%7D%7B2%7D%7D%5Cexp%28-%5Calpha+%7Cx%7C%29+></li>
+</ul>
+
+
+<h4>a. 定数Mの取りうる範囲と最小値を求める</h4>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%7C%5Calpha%29%7D+%3D+%5Csqrt%7B%5Cfrac%7B2%7D%7B%5Cpi%7D%7D%5Calpha%3Csup%3E%7B-1%7D%5Cexp%28-%5Cfrac%7Bx%3Csup%3E2%7D%7B2%7D%3C%2Fsup%3E%3C%2Fsup%3E+%2B+%5Calpha%7Cx%7C%29+></p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+%5Calpha+>のとき，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28%5Calpha%29%7D%7Bg%28%5Calpha%29%7D+%3D+%5Csqrt%7B%5Cfrac%7B2%7D%7B%5Cpi%7D%7D%5Calpha%3Csup%3E%7B-1%7D%5Cexp%28-%5Cfrac%7B%5Calpha%3Csup%3E2%7D%7B2%7D%3C%2Fsup%3E%3C%2Fsup%3E+%2B+%5Calpha%3Csup%3E2%29%3C%2Fsup%3E+%3D+%5Csqrt%7B%5Cfrac%7B2%7D%7B%5Cpi%7D%7D%5Calpha%3Csup%3E%7B-1%7De%3Csup%3E%7B%5Calpha%3Csup%3E2%2F2%7D%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E+>となり，与式を満たす．</p>
+
+<p>Mの最小値は，上式を微分すると<img src=http://chart.apis.google.com/chart?cht=tx&chl=%28-%5Calpha%3Csup%3E2%2B1%29%5Cexp%28-%5Cfrac%7Balpha%3Csup%3E2%7D%7B2%7D%29%3C%2Fsup%3E%3C%2Fsup%3E+>が出てくるので，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+%5Cpm+1+>となる．候補分布に課された制約(P.59)より，fとgどちらか一方だけ負になることは無いので，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+1+>が正解．（二階微分すれば-1のとき最小値，1のとき最大値だとわかる）</p>
+
+<h4>b. 受理確率を求める</h4>
+
+<p>受理確率は1/Mで表される．<img src=http://chart.apis.google.com/chart?cht=tx&chl=M+%3D+%5Csup_x+%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D+%3D+%5Csqrt%7B%5Cfrac%7B2%7D%7B%5Cpi%7D%7De%3Csup%3E%7B1%2F2%7D%3C%2Fsup%3E+> より，<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2FM+%3D+%3D+%5Csqrt%7B%5Cpi%2F2e%7D+%3D+1%2F0.76+%5Csimeq+1.3+>となる．</p>
+
+<h4>c. 候補分布から乱数を生成するために逆変換をする</h4>
+
+<p>受理・棄却法を使うには，当然候補分布から乱数が生成できなければいけない．今回は二重指数分布から乱数を生成して間接的に正規乱数を求めているので，二重指数分布から乱数を生成するために，2章前半で行った逆変換を行う．</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28x%7C%5Calpha%29+%3D+%5Cbegin%7Bcases%7D+%5Cfrac%7B1%7D%7B2%7De%3Csup%3E%7B%5Calpha%3C%2Fsup%3E+x%7D+%26amp%3B+%28x+%26lt%3B+0%29+%5C+1+-+%5Cfrac%7B1%7D%7B2%7De%3Csup%3E%7B%5Calpha%3C%2Fsup%3E+x%7D+%26amp%3B+%28x+%3E+0%29+%5Cend%7Bcases%7D+></p>
+
+<p>より，</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbegin%7Bcases%7D+x+%3D+%5Cfrac%7B1%7D%7B%5Calpha%7D%5Clog%282u%29+%26amp%3B+%28u+%26lt%3B+%5Cfrac%7B1%7D%7B2%7D%29+%5C+x+%3D+-%5Cfrac%7B1%7D%7B%5Calpha%7D%5Clog%282%281-u%29%29+%26amp%3B+%28%5Cfrac%7B1%7D%7B2%7D+%26lt%3B+u+%26lt%3B+1+%29%5Cend%7Bcases%7D+></p>
+
+<p>となる．あとは<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2C1%5D%7D+>で生成される乱数を上式に当てはめて計算すればよい．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：2章 逆変換・一般変換法]]></title>
@@ -32,7 +199,7 @@
 
 <p>本書で扱う乱数とは，完全なランダム性を持つ乱数ではなく<strong>擬似乱数</strong>である．擬似乱数はset.seed()関数で設定した値を種として乱数を生成するため，どのような環境においてもset.seed()関数で同じ値を使うことで乱数を再現することができる．</p>
 
-<p>今回は，一様乱数を元にして指数乱数を生成し，指数乱数からガンマ分布やベータ分布の乱数へと変換していく．これらの確率分布は全てRの関数で用意されているものなので，一様乱数から生成した乱数とRの関数から生成した乱数を比較することによって，乱数の生成がうまくいっているかどうかを判断する．以下のコードで描写したヒストグラムはずべて，左側が一様分布から生成した乱数，右側がRの関数を用いて生成した乱数(N=10<sup>4</sup> )．赤い曲線はどちらもRの関数を用いて分布を示したもの．</p>
+<p>今回は，一様乱数を元にして指数乱数を生成し，指数乱数からガンマ分布やベータ分布の乱数へと変換していく．これらの確率分布は全てRの関数で用意されているものなので，一様乱数から生成した乱数とRの関数から生成した乱数を比較することによって，乱数の生成がうまくいっているかどうかを判断する．以下のコードで描写したヒストグラムはすべて，左側が一様分布から生成した乱数，右側がRの関数を用いて生成した乱数(N=10<sup>4</sup> )．赤い曲線はどちらもRの関数を用いて分布を示したもの．</p>
 
 <h3>例 2.1 一様乱数から指数乱数を作成する</h3>
 
@@ -186,7 +353,12 @@ curve(dbeta(x,a,b), add=T, col="red", lwd=2)
 <li>例 2.1，練習問題 2.2，練習問題 2.12</li>
 </ul>
 </li>
-<li>&lt;></li>
+<li><a href="http://yagays.github.com/blog/2012/10/22/imcmr-2-2/">「Rによるモンテカルロ法入門」読書ノート：2章 受理・棄却法</a>
+
+<ul>
+<li>例 2.7，例 2.8，練習問題 2.7，練習問題 2.8</li>
+</ul>
+</li>
 <li>&lt;></li>
 </ul>
 
@@ -543,225 +715,6 @@ demo(Chapter.1) # Chapter.8まである
 
 <ul>
 <li>トウモロコシの第4染色体上の<em>ga1</em>遺伝子</li>
-</ul>
-</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「せめぎ合う遺伝子」読書ノート 2章その2]]></title>
-    <link href="http://yagays.github.com/blog/2012/06/10/genesinconflict-2-2/"/>
-    <updated>2012-06-10T12:25:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/06/10/genesinconflict-2-2</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yagays-22&o=9&p=8&l=as1&asins=432005699X&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px; height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>ハツカネズミのtハプロタイプに続き，<em>Drosophila</em>の<em>SD</em>分離歪曲因子と菌類の胞子キラー因子について見ていく．これらはどちらもヘテロ接合体オスが野生型を殺すことによりドライヴ性を示す．</p>
-
-<ul>
-<li><strong>その因子は，どのようにして利己的な優位性を獲得したのだろうか？</strong>
-
-<ul>
-<li>+/<em>SD</em>ヘテロ接合体オスにおける野生型の染色体を持つ精子の成長阻害</li>
-</ul>
-</li>
-<li><strong>いかにして，その因子は出現したのだろう？</strong>
-
-<ul>
-<li><em>Xba1</em>反復配列が増幅したのち<em>Sd</em>が生じた</li>
-</ul>
-</li>
-<li><strong>どれくらい昔に出現したのだろう？</strong>
-
-<ul>
-<li>平均合着年代よりずっと最近</li>
-</ul>
-</li>
-<li><strong>大型生物に対する影響はどのようなものだろうか？</strong>
-
-<ul>
-<li>あまりない(抵抗性対立遺伝子の維持コストもそれほど顕著ではなく，<em>SD</em>ホモ接合型も生きられないわけではない)</li>
-</ul>
-</li>
-<li><strong>どのくらいの速度で，その因子は分布を拡大すると期待されるだろうか？</strong>
-
-<ul>
-<li>???</li>
-</ul>
-</li>
-<li><strong>種内における頻度はどれくらいか？</strong>
-
-<ul>
-<li>1~5%</li>
-</ul>
-</li>
-<li><strong>頻度を決定づけているものは何か？</strong>
-
-<ul>
-<li>抵抗性対立遺伝子といかに連鎖して分布を広げられるか(初期)</li>
-</ul>
-</li>
-<li><strong>いくつかの種にその因子が見いだされるのに，他の種には見いだされないのはなぜか？</strong>
-
-<ul>
-<li>??? (なぜかは置いておいて，<em>SD</em>とtはキラー因子と抵抗性対立遺伝子の働き方が逆(タンパク質コードと欠失)の作用を示す．)</li>
-</ul>
-</li>
-<li><strong>ゲノムの他の因子は，利己的な因子に対抗してどのような適応を強いられてきたか？</strong>
-
-<ul>
-<li><em>Xba1</em>反復配列のコピー数を少なくした</li>
-</ul>
-</li>
-<li><strong>ホストの系統に対しておよぼしてきた効果以外に，どのような影響をもたらすだろうか？</strong>
-
-<ul>
-<li>???</li>
-</ul>
-</li>
-</ul>
-
-
-<!-- more -->
-
-
-<h3>2.2.1</h3>
-
-<ul>
-<li>第2染色体上のセントロメア付近で強く連鎖している3つの因子
-
-<ul>
-<li><em>Sd</em> 分離歪曲因子 segregation distorter
-
-<ul>
-<li>ドライヴ因子，ドライヴ遺伝子座</li>
-</ul>
-</li>
-<li><em>Rsp</em><sup>s</sup> 応答-感受性対立遺伝子 responder-sinsitive allele
-
-<ul>
-<li>応答因子遺伝子座</li>
-</ul>
-</li>
-<li><em>Rsp</em><sup>i</sup> 応答-不感性対立遺伝子 responder-insensitive allele
-
-<ul>
-<li>応答因子遺伝子座</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li><em>Sd</em>が <em>Rsp</em><sup>s</sup> に作用して精子を殺し，一方で<em>Rsp</em><sup>i</sup> により保護されている
-
-<ul>
-<li><em>Rsp</em>はタンデム反復配列<em>Xba1</em>が複数連なって形成されている
-
-<ul>
-<li>殺戮に対する感受性はコピー数に関連している</li>
-</ul>
-</li>
-<li><em>Sd</em>はタンパク質をコードし，タンデム型重複による不完全なRanGAP遺伝子がドライヴに影響する</li>
-<li><em>SD</em>と同染色体上に，<em>SD</em>のドライヴ率を高めるエンハンサー因子がある</li>
-<li><em>Xba1</em>を伴う抵抗性対立遺伝子が存在するが，維持するためのコストはそれほど多くない</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li><em>D.melanogaster</em>の<em>SD</em>は比較的近年になって出現したもの
-
-<ul>
-<li>近縁種に<em>dRanGAP</em>や<em>Xba1</em>反復配列がない</li>
-<li>SD染色体と野生型染色体の間に殆ど相違がない</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<h3>2.2.2</h3>
-
-<ul>
-<li>菌類の<em>Neurospora intermedia</em>も2つキラー因子複合体を持つ
-
-<ul>
-<li>前述のtやSDと同じく胞子を殺す配偶子キラー因子(胞子キラー因子)</li>
-<li>第Ⅲ染色体のセントロメア付近に存在する<em>Sk-2</em><sup>k</sup> と<em>Sk-3</em><sup>k</sup></li>
-<li>2つの胞子キラー因子は非常に珍しく分布がまばらで限られているのに対し，抵抗性因子はより普遍的に存在する</li>
-<li>人間活動の関与(隔離集団との接触)</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<h3>配偶子キラー因子まとめ</h3>
-
-<ul>
-<li>tやSDは動物における配偶子キラー因子である
-
-<ul>
-<li>ハツカネズミとショウジョウバエの2種でしか観測されておらず，もっと普遍的に有るはず(精査バイアス ascertainment bias)</li>
-<li>表現型に関する遺伝子と連鎖している遺伝子座が非メンデル遺伝をするというケースは他の種でもよく見られるが，これが利己的な遺伝子のせいなのかは不明</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li><em>Sk</em>は植物における配偶子キラー因子である
-
-<ul>
-<li>動物の配偶子キラー因子よりも多く見つかっている</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>残る疑問点
-
-<ul>
-<li>殺戮効果の低い配偶子キラー因子はあるのか？(tやSDは殺戮効果が高い 90%~)</li>
-<li>配偶子キラー因子が固定されても表現型に現れないのか？</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>配偶子キラー因子まとめ
-
-<ul>
-<li>配偶子キラー因子は頻繁に生じる</li>
-<li>しばし留まってそのまま消滅するか，固定後に消滅するかのどちらか</li>
-<li>キラー因子と減数分裂との間には対立する形で進化してきた</li>
 </ul>
 </li>
 </ul>
