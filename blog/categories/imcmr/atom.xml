@@ -4,7 +4,7 @@
   <title><![CDATA[Category: imcmr | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/imcmr/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-23T18:46:33+09:00</updated>
+  <updated>2012-10-23T18:51:24+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -142,7 +142,7 @@ z &lt;- rnorm(1, mean=mu, sd=sigma)
 
 <h4>b. シミュレーションので受理する確率を求める</h4>
 
-<p>上で示したアルゴリズムで考える．z &lt; aならアタリ，それ以外ならハズレというようなときにどれだけ数を撃てばz&lt;aに入るかということを考えると，正規分布のz &lt; aの面積を求めればいいことがわかる．なお，ここで出てくる<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CPhi%28x%29+>という関数は定義されていないが，本書P.78に出てくる累積正規分布のことだと思われる．</p>
+<p>上で示したアルゴリズムで考える．z &lt; aならアタリ，それ以外ならハズレというようなときにどれだけ数を撃てばz&lt;aに入るかということを考えると，正規分布のz &lt; aの面積を求めればいいことがわかる．なお，ここで出てくる<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CPhi%28x%29+>という関数は定義されていないが，以下のような累積標準正規分布（本書P.78に出てくる）のことだと思われる．</p>
 
 <p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CPhi%28t%29+%3D+%5Cint_%7B-%5Cinfty%7D%3Csup%3E%7Bt%7D%3C%2Fsup%3E+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%3Csup%3E%7B-y%3Csup%3E2%2F2%7Ddy%3C%2Fsup%3E%3C%2Fsup%3E+></p>
 
@@ -197,6 +197,8 @@ z &lt;- rnorm(1, mean=mu, sd=sigma)
 <p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CBigl%28%5Cfrac%7Bf%28%5Calpha%29%7D%7Bg%28%5Calpha%29%7D%5CBigr%29%27+%3D+-%5Cfrac%7B1%7D%7B%5Calpha%3Csup%3E2%7D%5Cexp%28%5Cfrac%7B%5Calpha%3Csup%3E2%7D%7B2%7D-%5Calpha%3C%2Fsup%3E%3C%2Fsup%3E+a%29%2B%5Cfrac%7B1%7D%7B%5Calpha%7D%28%5Calpha-a%29%5Cexp%28%5Cfrac%7B%5Calpha%3Csup%3E2%7D%7B2%7D-%5Calpha%3C%2Fsup%3E+a%29+><img src=http://chart.apis.google.com/chart?cht=tx&chl=%3D%5Cfrac%7B1%7D%7B%5Calpha%7D%5Cbigl%28-%5Cfrac%7B1%7D%7B%5Calpha%3Csup%3E2%7D%2B%28%5Calpha-a%29%5Cbigr%29%5Cexp%28%5Cfrac%7B%5Calpha%3Csup%3E2%7D%7B2%7D-%5Calpha%3C%2Fsup%3E%3C%2Fsup%3E+a%29></p>
 
 <p>より</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=-%5Cfrac%7B1%7D%7B%5Calpha%3Csup%3E2%7D%2B%28%5Calpha-a%29%3C%2Fsup%3E+%3D+0+></p>
 
 <p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha%3Csup%3E2%3C%2Fsup%3E+-+a+%5Calpha+-+1+%3D+0+></p>
 
