@@ -265,7 +265,7 @@
 
 <p>となり，比<img src=http://chart.apis.google.com/chart?cht=tx&chl=f%2Fg+>が有界になる（どっかのxの値が<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cinf+>になったりしない）には，xや(1-x)のベキ数の部分が0以上でである必要がある．よって<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%5Cleq+%5Calpha%2C+b+%5Cleq+%5Cbeta+>が必要．</p>
 
-<p>上の細かい証明は省略するが，要するにベータ分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7B%5Cbeta%7D%28a%2Cb%29+>において，aとbが1未満の時には0と1の両端で値が跳ね上がる．以下の図は，「<a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22">パターン認識と機械学習 上</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のP.70を参考にベータ分布を作図したもの．これを見ると，aとbが1のときにちょうど一様分布のような形をとり，それより小さいと下に凸，それより大きいと上に凸のような分布の形になることがわかる．なので，ベータ分布が有界であるにはxや(1-x)のベキ数の部分がポイントになってくる．</p>
+<p>上の細かい証明は省略するが，要するにベータ分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D%28a%2Cb%29+>において，aとbが1未満の時には0と1の両端で値が跳ね上がる．以下の図は，「<a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22">パターン認識と機械学習 上</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のP.70を参考にベータ分布を作図したもの．これを見ると，aとbが1のときにちょうど一様分布のような形をとり，それより小さいと下に凸，それより大きいと上に凸のような分布の形になることがわかる．なので，ベータ分布が有界であるにはxや(1-x)のベキ数の部分がポイントになってくる．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -385,6 +385,10 @@
       
       <li><a href="/blog/archives">Blog Archives</a></li>
       
+      <li class="next"><a class="basic-alignment right" href="/blog/2012/10/23/imcmr-2-3/"
+        title="Next Post: 「Rによるモンテカルロ法入門」読書ノート：2章 練習問題">「Rによるモンテカルロ法入門」読書ノート：2章 練習問題
+        &raquo;</a></li>
+      
     </ul>
   </footer>
 </article>
@@ -418,6 +422,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/10/23/imcmr-2-3/">「Rによるモンテカルロ法入門」読書ノート：2章 練習問題</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/22/imcmr-2-2/">「Rによるモンテカルロ法入門」読書ノート：2章 受理・棄却法</a>
       </li>
     
@@ -433,15 +441,11 @@
         <a href="/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex/">TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/10/18/review-the-art-of-designing/">「デザインする技術 -よりよいデザインのための基礎知識」読了</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (37)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (3)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (8)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (37)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (4)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (9)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
 </section>
 
 

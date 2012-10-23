@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>「スーパーコンピューターを20万円で創る」読了 - Wolfeyes Bioinformatics beta</title>
+  <title>Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="以前「情熱大陸」という番組で理論天文学者である小久保英一郎がTVで語った言葉が，今でも強く印象に残っている．その言葉が番組のページに残っているので少し長めに引用させてもらうと， 「探検は知的情熱の肉体的表現である」 （チェリー・ガラード：スコット南極探検隊） 僕はこれ、だいッ好きな言葉で。 &hellip;">
+  <meta name="description" content="お久しぶりです，yag_aysです． さくらVPSの解約に伴い，Wordpressで立てていたblogをGithub Pagesで立て直すことにしました． ということで，また懲りずに技術系記事をひっそりと書いていく予定です．よろしくお願いします． 以下メモ Githubのレポジトリを作成する &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.com/blog/2012/09/16/review-supercomputer">
+  <link rel="canonical" href="http://yagays.github.com/blog/page/7">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -106,13 +106,15 @@
 </nav>
   <div class="container">
     <div class="row-fluid">
-      
-<article class="hentry span9" role="article">
-
+      <div class="span9">
   
+  
+  
+    <article>
+      
   <header class="page-header">
     
-      <h1 class="entry-title">「スーパーコンピューターを20万円で創る」読了</h1>
+      <h1 class="entry-title"><a href="/blog/2012/05/23/new-post/">Github Pages + Octopressでブログを作ってみた</a></h1>
     
     
       <p class="meta">
@@ -128,113 +130,70 @@
   
 
 
-<time datetime="2012-09-16T02:24:00+09:00" pubdate data-updated="true">Sep 16<span>th</span>, 2012</time>
+<time datetime="2012-05-23T15:52:00+09:00" pubdate data-updated="true">May 23<span>rd</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4087203956" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+  <div class="entry-content"><p>お久しぶりです，yag_aysです．</p>
+
+<p>さくらVPSの解約に伴い，Wordpressで立てていたblogをGithub Pagesで立て直すことにしました．</p>
+
+<p>ということで，また懲りずに技術系記事をひっそりと書いていく予定です．よろしくお願いします．</p>
+
+<h2>以下メモ</h2>
+
+<ul>
+<li>Githubのレポジトリを作成する</li>
+</ul>
 
 
-<p>以前「情熱大陸」という番組で理論天文学者である小久保英一郎がTVで語った言葉が，今でも強く印象に残っている．その言葉が番組のページに残っているので少し長めに引用させてもらうと，</p>
+<p><img src="http://dl.dropbox.com/u/142306/b/github_accountsetting.png" alt="アカウント登録" /></p>
 
-<blockquote><p>「探検は知的情熱の肉体的表現である」</p>
+<ul>
+<li>ページを作成してindex.htmlを作成すると，以下のようにNotificationが来る．</li>
+</ul>
 
-<p>（チェリー・ガラード：スコット南極探検隊）</p>
 
-<p>僕はこれ、だいッ好きな言葉で。</p>
+<p><img src="http://dl.dropbox.com/u/142306/b/github_notify.png" alt="Notification" /></p>
 
-<p>もう何ていうか、
-このように生きていきたいと思っているわけです。</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'> cd octopress
+</span><span class='line'> gem install bundler
+</span><span class='line'> bundle install
+</span><span class='line'>
+</span><span class='line'> rake setup_github_pages
+</span><span class='line'> rake generate
+</span><span class='line'> rake deploy
+</span></code></pre></td></tr></table></div></figure>
 
-<p>「シミュレーションは知的情熱の計算機的表現である」と。</p>
 
-<p>ほんとは僕、探検家になりたかったんですけど。</p>
-
-<p>まあなかなかそういう世の中でもないので、</p>
-
-<p>知的な探検をする、と。</p>
-
-<p>で、道具はスーパーコンピュータということでやっています。</p>
-
-<p><a href="http://www.mbs.jp/jounetsu/2008/01_20.shtml">http://www.mbs.jp/jounetsu/2008/01_20.shtml</a></p></blockquote>
-
-<p>と，計算機シミュレーションを端的に素晴らしい言葉で言い表している．本書「スーパーコンピューターを20万円で創る」は，小久保英一郎がスーパーコンピューターGRAPEの開発に参加する少し前，まだスーパーコンピューターというものが企業主導の大資本で大規模開発されていた頃に，重力多体問題のシミュレーションを行うために自力でスーパーコンピューターを組み上げた研究者たちの実話の物語となっている．</p>
-
-<p>内容はかなり大雑把に物語を追いかける形となっており細かい部分に少し物足りなさは感じるものの，それでも当時の研究者の熱意や苦悩がひしひしと伝わってくる．私自身も今現在彼らと同じような立場にあるのだが，自分の境遇と似た部分も多く，非常に勇気づけられると同時に研究への情熱を奮い立たせられるような作品だった．</p>
+<p>まだMarkdownがよくわかってない&#8230;</p>
 </div>
-
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">yag_ays</span></span>
-
-      
-
-
-
-
-
-
-
-
   
 
 
-<time datetime="2012-09-16T02:24:00+09:00" pubdate data-updated="true">Sep 16<span>th</span>, 2012</time>
-      
-
-<span class="categories">
+    </article>
   
-    <a class='category' href='/blog/categories/book/'>Book</a>
-  
-</span>
-
-
-    </p>
+  <ul class="pager">
     
-      <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/09/16/review-supercomputer/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/09/16/review-supercomputer/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/09/16/review-supercomputer/" >Tweet</a>
-  
-  
-  <div class="g-plusone" data-size="medium"></div>
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
+    <li><a href="/blog/archives">Blog Archives</a></li>
+    
+    <li class="next"><a href="/blog/page/6/">Newer &rarr;</a></li>
+    
+  </ul>
 </div>
-
-    
-    
-    <section>
-      <h1>Comments</h1>
-      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-    </section>
-    
-    <ul class="pager">
-      
-      <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/09/15/review-h5n1/" title="Previous Post:
-        「H5N1―強毒性新型インフルエンザウイルス日本上陸のシナリオ」読了">&laquo; 「H5N1―強毒性新型インフルエンザウイルス日本上陸のシナリオ」読了</a></li>
-      
-      <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/09/17/review-enddepression/"
-        title="Next Post: 「さっさと不況を終わらせろ」読了">「さっさと不況を終わらせろ」読了
-        &raquo;</a></li>
-      
-    </ul>
-  </footer>
-</article>
-
 <aside class="sidebar-nav span3">
   
     <section class="well">
@@ -295,7 +254,7 @@
   <h1>Twitter</h1>
   <ul id="tweets" class="nav">
     <li class="nav-header">Latest Tweets</li>
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   <script type="text/javascript">
     $(document).ready(function(){
@@ -315,7 +274,6 @@
   
 </aside>
 
-
     </div>
   </div>
   <footer role="contentinfo" class="page-footer"><hr>
@@ -331,10 +289,7 @@
       var disqus_shortname = 'wolfeyesbioinformaticsbeta';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.com/blog/2012/09/16/review-supercomputer/';
-        var disqus_url = 'http://yagays.github.com/blog/2012/09/16/review-supercomputer/';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -9,7 +9,14 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="読書ノート アーカイブ:http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/ 内容：逆変換法や一般変換法で生成できない分布から乱数を生成する 逆変換法や一般変換法では， &hellip;">
+  <meta name="description" content="練習問題 2.18 a. f(x)とMg(x)をプロットする 定数Mは例2.7のようにoptimize()関数で求めている．以下の図はfとgの分布を図示したもので，黒い曲線fに対して，青い曲線Mg(x)が全体を覆い被さるようになっていることがわかる． 1
+2
+3
+4
+5
+6
+7
+f &lt;- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -108,6 +115,276 @@
     <div class="row-fluid">
       <div class="span9">
   
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/23/imcmr-2-3/">「Rによるモンテカルロ法入門」読書ノート：2章 練習問題</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-23T08:57:00+09:00" pubdate data-updated="true">Oct 23<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>練習問題 2.18</h3>
+
+<h3>a. f(x)とMg(x)をプロットする</h3>
+
+<p>定数Mは例2.7のようにoptimize()関数で求めている．以下の図はfとgの分布を図示したもので，黒い曲線fに対して，青い曲線Mg(x)が全体を覆い被さるようになっていることがわかる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>f <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">){</span>exp<span class="p">(</span><span class="o">-</span>x<span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="m">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span>sin<span class="p">(</span><span class="m">6</span><span class="o">*</span>x<span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="m">3</span><span class="o">*</span>cos<span class="p">(</span>x<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="o">*</span>sin<span class="p">(</span><span class="m">4</span><span class="o">*</span>x<span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="m">1</span><span class="p">)}</span>
+</span><span class='line'>g <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">){</span>exp<span class="p">(</span><span class="o">-</span>x<span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">/</span>sqrt<span class="p">(</span><span class="m">2</span><span class="o">*</span>pi<span class="p">)}</span>
+</span><span class='line'>M <span class="o">&lt;-</span> optimize<span class="p">(</span>f<span class="o">=</span><span class="kr">function</span><span class="p">(</span>x<span class="p">){</span>f<span class="p">(</span>x<span class="p">)</span><span class="o">/</span>g<span class="p">(</span>x<span class="p">)},</span> interval<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span>maximum<span class="o">=</span><span class="k-Variable">T</span><span class="p">)$</span>objective
+</span><span class='line'>
+</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+</span><span class='line'>curve<span class="p">(</span>f<span class="p">(</span>x<span class="p">),</span>from<span class="o">=</span><span class="m">-5</span><span class="p">,</span>to<span class="o">=</span><span class="m">5</span><span class="p">,</span>ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">))</span>
+</span><span class='line'>curve<span class="p">(</span>M<span class="o">*</span>g<span class="p">(</span>x<span class="p">),</span>add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span>col<span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp2_7.png" alt="" /></p>
+
+<h3>b. 受理・棄却アルゴリズムを使ってfから2500個の乱数を生成する</h3>
+
+<p>ここで標準正規分布からの乱数を使うのは，g(x)が標準正規密度だから（P.59の受理・棄却法のアルゴリズムの1.にある<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y+%5Csim+g+>の部分に該当する）．</p>
+
+<p>この問題では2500個の<strong>受理された</strong>乱数が欲しいので，P.61のコードを真似て作成している．ただし，このコードは少々効率が悪く，決められた数の乱数を作ったらループが終わりというものではない（受理確率を元にして多めに作ってる）ので，ヒストグラムとして図示する際には2500個のみを取り出して作図している．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>Nsim <span class="o">&lt;-</span> <span class="m">2500</span>
+</span><span class='line'>x <span class="o">&lt;-</span> <span class="kc">NULL</span>
+</span><span class='line'><span class="kr">while</span><span class="p">(</span>length<span class="p">(</span>x<span class="p">)</span> <span class="o">&lt;</span> Nsim<span class="p">){</span>
+</span><span class='line'>  y <span class="o">&lt;-</span> rnorm<span class="p">(</span>Nsim<span class="o">*</span>M<span class="p">)</span>
+</span><span class='line'>  x <span class="o">&lt;-</span> c<span class="p">(</span>x<span class="p">,</span> y<span class="p">[</span>runif<span class="p">(</span>Nsim<span class="o">*</span>M<span class="p">,</span><span class="m">0</span><span class="p">,</span>M<span class="p">)</span> <span class="o">*</span> g<span class="p">(</span>y<span class="p">)</span> <span class="o">&lt;</span> f<span class="p">(</span>y<span class="p">)</span> <span class="p">])</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>hist<span class="p">(</span>x<span class="p">[</span><span class="m">1</span>:Nsim<span class="p">],</span>freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span>nclass<span class="o">=</span><span class="m">150</span><span class="p">,</span>main<span class="o">=</span><span class="s">&quot;Nsim = 2500&quot;</span><span class="p">)</span>
+</span><span class='line'>curve<span class="p">(</span>f<span class="p">(</span>x<span class="p">)</span><span class="o">/</span>integrate<span class="p">(</span>f<span class="p">,</span><span class="o">-</span>Inf<span class="p">,</span>Inf<span class="p">)$</span>value<span class="p">,</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># curveの中のintegrateに関しては後述(本問のc.)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp2_8.png" alt="" /></p>
+
+<p>概ねfの分布に沿った乱数が生成されているようだ．乱数が2500個だけでは少し不明瞭のため，Nsimの数を10<sup>4</sup> にして再試したのが下の図．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp2_9.png" alt="" /></p>
+
+<h3>c. シミュレーションから得られた受理率から正規化定数を求める</h3>
+
+<p>P.60にあるように，受理確率は基本的に1/Mだけれども，正規化されていない関数に関しては定数CがMに吸収されているので注意が必要となる．今回の場合，シミュレーションから求めた受理確率rを使うことで，以下の式から正規化定数を近似することができる．</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=r+%3D+%5Cfrac%7B1%7D%7BC+%5Ctimes+M%7D+></p>
+
+<p>今回の場合，Mは10.94，rは0.54となったので，Cは0.17程度だと見積もった．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>Nsim <span class="o">&lt;-</span> <span class="m">10</span><span class="o">^</span><span class="m">4</span>
+</span><span class='line'>x <span class="o">&lt;-</span> <span class="kc">NULL</span> <span class="c1"># xは受理した乱数</span>
+</span><span class='line'>z <span class="o">&lt;-</span> <span class="kc">NULL</span> <span class="c1"># zは生成した乱数すべて</span>
+</span><span class='line'><span class="kr">while</span><span class="p">(</span>length<span class="p">(</span>x<span class="p">)</span> <span class="o">&lt;</span> Nsim<span class="p">){</span>
+</span><span class='line'>  y <span class="o">&lt;-</span> rnorm<span class="p">(</span>Nsim<span class="o">*</span>M<span class="p">)</span>
+</span><span class='line'>  x <span class="o">&lt;-</span> c<span class="p">(</span>x<span class="p">,</span> y<span class="p">[</span>runif<span class="p">(</span>Nsim<span class="o">*</span>M<span class="p">,</span><span class="m">0</span><span class="p">,</span>M<span class="p">)</span> <span class="o">*</span> g<span class="p">(</span>y<span class="p">)</span> <span class="o">&lt;</span> f<span class="p">(</span>y<span class="p">)</span> <span class="p">])</span>
+</span><span class='line'>  z <span class="o">&lt;-</span> c<span class="p">(</span>z<span class="p">,</span> y<span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>r <span class="o">&lt;-</span> length<span class="p">(</span>x<span class="p">)</span><span class="o">/</span>length<span class="p">(</span>z<span class="p">)</span>
+</span><span class='line'>C <span class="o">&lt;-</span> <span class="m">1</span><span class="o">/</span><span class="p">(</span>M<span class="o">*</span>r<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="o">&gt;</span> M<span class="p">;</span> r<span class="p">;</span> C
+</span><span class='line'><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">10.94031</span>
+</span><span class='line'><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">0.5369048</span>
+</span><span class='line'><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">0.1702445</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>さて，答え合わせ(?)だが，正規化定数は単純にfの<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5B-%5Cinfty%2C%5Cinfty%5D>の積分を求めることによって計算することができる．これにはRのintegrate()関数を使って-infからinfまでを計算すればよい．確率分布の定義から，これが1になるように正規化定数を定めれば良いということで，以下のように計算した結果，0.1696543となった．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="o">&gt;</span> <span class="m">1</span><span class="o">/</span>integrate<span class="p">(</span>f<span class="p">,</span><span class="o">-</span>Inf<span class="p">,</span>Inf<span class="p">)$</span>value
+</span><span class='line'><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">0.1696543</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>練習問題 2.19</h3>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=f%28x%29+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D+%5Cexp%28-%5Cfrac%7Bx%5E2%7D%7B2%7D%29+%5C%5C+g%28x%29+%3D+%5Cfrac%7B%5Calpha%7D%7B2%7D+%5Cexp%28-%5Calpha+%7Cx%7C%29></p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=f%2Fg+%3D+%5Cfrac%7B%5Csqrt%7B2%2F%5Cpi%7D%7D%7B%5Calpha%7D+%5Cexp%28%5Calpha%7Cx%7C-%5Cfrac%7Bx%5E2%7D%7B2%7D%29+>より，上界Mを取るときのx_maxの値を調べるには，とりあえずxで微分して0になるときの値を求めれば良い．expの部分を微分すると<img src=http://chart.apis.google.com/chart?cht=tx&chl=%28%5Calpha+-+x%29+>みたいな項が出てくるので，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x_%7Bmax%7D+%3D+%5Calpha+>（厳密には<img src=http://chart.apis.google.com/chart?cht=tx&chl=x_%7Bmax%7D+%3D+%5Cpm+%5Calpha+>）．</p>
+
+<p>次に，受理率を最適化するということは1/Mの値を大きくすれば良いので，結局はMの値の最大値を求めれば良い．<img src=http://chart.apis.google.com/chart?cht=tx&chl=x_%7Bmax%7D+%3D+%5Calpha+>のときのMを<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+>に関して微分して0になるときの値ということで計算していくと
+<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B%28%5Calpha%5E2-1%29%5Cexp%28%5Calpha%5E2%2F2%29%7D%7B%5Calpha%5E2%7D+>みたいな項が出てくるので，つまり<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+1+>の時にMが最大値を取り，受理率が最適化される．</p>
+
+<h3>練習問題 2.22 切断正規分布から正規乱数を生成する</h3>
+
+<h4>a. 切断正規分布から乱数を生成する</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>library<span class="p">(</span>msm<span class="p">)</span> <span class="c1"># dtnorm()のため</span>
+</span><span class='line'>mu <span class="o">&lt;-</span> <span class="m">0</span>
+</span><span class='line'>sigma <span class="o">&lt;-</span> <span class="m">1</span>
+</span><span class='line'>
+</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>a in c<span class="p">(</span><span class="m">-2.32</span><span class="p">,</span> <span class="m">-0.84</span><span class="p">,</span> <span class="m">-0.67</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0.67</span><span class="p">,</span> <span class="m">0.84</span><span class="p">,</span> <span class="m">2.32</span><span class="p">)){</span>
+</span><span class='line'>  N <span class="o">&lt;-</span> <span class="m">10</span><span class="o">^</span><span class="m">4</span>
+</span><span class='line'>  X <span class="o">&lt;-</span> rep<span class="p">(</span><span class="m">0</span><span class="p">,</span>N<span class="p">)</span>
+</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>i in <span class="m">1</span>:N<span class="p">){</span>
+</span><span class='line'>    z <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span>mu<span class="p">,</span> sd<span class="o">=</span>sigma<span class="p">)</span>
+</span><span class='line'>    <span class="kr">while</span><span class="p">(</span>z <span class="o">&lt;</span> a<span class="p">){</span>
+</span><span class='line'>    z <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span>mu<span class="p">,</span> sd<span class="o">=</span>sigma<span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  X<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> z
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  hist<span class="p">(</span>X<span class="p">,</span> freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> nclass<span class="o">=</span><span class="m">150</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;Truncated Normal Distribution: a = &quot;</span><span class="p">,</span>a<span class="p">))</span>
+</span><span class='line'>  curve<span class="p">(</span>dtnorm<span class="p">(</span>x<span class="p">,</span> mean<span class="o">=</span>mu<span class="p">,</span> sd<span class="o">=</span>sigma<span class="p">,</span> lower<span class="o">=</span>a<span class="p">,</span> upper<span class="o">=</span>Inf<span class="p">),</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp2_10.png" alt="" /></p>
+
+<h4>b. シミュレーションので受理する確率を求める</h4>
+
+<p>上で示したアルゴリズムで考える．z &lt; aならアタリ，それ以外ならハズレというようなときにどれだけ数を撃てばz&lt;aに入るかということを考えると，正規分布のz &lt; aの面積を求めればいいことがわかる．なお，ここで出てくる<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CPhi%28x%29+>という関数は定義されていないが，本書P.78に出てくる累積正規分布のことだと思われる．</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CPhi%28t%29+%3D+%5Cint_%7B-%5Cinfty%7D%5E%7Bt%7D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-y%5E2%2F2%7Ddy+></p>
+
+<p>この形式になるように，aからの累積正規分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=F%28x%7C%5Cmu%2C+%5Csigma%5E2%2C+a%29+%5Csim++%5Cint_%7Ba%7D%5E%7B%5Cinfty%7D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7De%5E%7B-%5Cfrac%7B%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%7Ddx>を変形していけばよい．</p>
+
+<p>ここで，<img src=http://chart.apis.google.com/chart?cht=tx&chl=v+%3D+-%5Cfrac%7Bx-%5Cmu%7D%7B%5Csigma%7D+>とおくと，<img src=http://chart.apis.google.com/chart?cht=tx&chl=dv+%3D+-%5Cfrac%7Bdx%7D%7B%5Csigma%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x%3Aa+%5Crightarrow+%5Cinfty+> のとき，<img src=http://chart.apis.google.com/chart?cht=tx&chl=v%3A-%5Cinfty+%5Crightarrow+%5Cfrac%7B%5Cmu-a%7D%7B%5Csigma%7D+>をとる．よって，</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=F%28v%7C%5Cmu%2C%5Csigma%5E2%2Ca%29+%3D+%5Cint_%7B%5Cinfty%7D%5E%7B%5Cfrac%7B%5Cmu-a%7D%7B%5Csigma%7D%7D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7Bv%5E2%7D%7B2%7D%7Ddv+%3D+%5CPhi%28%5Cfrac%7B%5Cmu-a%7D%7B%5Csigma%7D%29+>  となる．</p>
+
+<p>また，aの値が裾にある（値が大きくなる）と，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CPhi%28%5Cfrac%7B%5Cmu-a%7D%7B%5Csigma%7D%29+>の値が小さくなるので，シミュレーション回数が多くなる．</p>
+
+<h4>c. 切断正規分布の乱数を正規分布から生成することを考える</h4>
+
+<ul>
+<li>目標分布；<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cexp%28-%28x-%5Cmu%29%2F2%5Csigma%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+></li>
+<li>候補分布：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D%5Cexp%28-%5Cfrac%7B%28x-%5Cbar%7B%5Cmu%7D%29%5E2%7D%7B2%7D%29+></li>
+</ul>
+
+
+<p>より</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D%3D%5Cfrac%7B%5Cexp%28-%28x-%5Cmu%29%2F2%5Csigma%5E2%29%5Cmathbb%7BI%7D_%7Bx%5Cgeq+z%7D%7D%7B%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D%5Cexp%28-%5Cfrac%7B%28x-%5Cbar%7B%5Cmu%7D%29%5E2%7D%7B2%7D%29%7D%5C%5C+><img src=http://chart.apis.google.com/chart?cht=tx&chl=%3D+%5Csqrt%7B2%5Cpi%7D%5Cexp%28-x%5Cbar%7B%5Cmu%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Cbar%7B%5Cmu%7D%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+></p>
+
+<p>となり候補分布の制約を満たすので，正規候補にもとづく受理・棄却アルゴリズムは切断正規分布から乱数を生成するために使える．</p>
+
+<p>次に，このときの最適なMを考える．x=aにおいて<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D+%3D+%5Csqrt%7B2%5Cpi%7D%5Cexp%28-a%5Cbar%7B%5Cmu%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Cbar%7B%5Cmu%7D%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+>より，この式を<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbar%7B%5Cmu%7D+>微分すると</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CBigl%28%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D%5CBigr%29%27+%3D+%5Csqrt%7B2%5Cpi%7D%28-a%2B%5Cbar%7B%5Cmu%7D%29%5Cexp%28-a%5Cbar%7B%5Cmu%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Cbar%7B%5Cmu%7D%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+></p>
+
+<p>となるので，Mは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbar%7B%5Cmu%7D%3Da+>のとき最適値をとる．</p>
+
+<h3>d. 候補分布に指数分布を使うことを考える</h3>
+
+<ul>
+<li>目標分布；<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cexp%28-%28x-%5Cmu%29%2F2%5Csigma%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+></li>
+<li>候補分布：<img src=http://chart.apis.google.com/chart?cht=tx&chl=g_%7B%5Calpha%7D%28z%29%3D%5Calpha+e%5E%7B-%5Calpha%28z-a%29%7D%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+></li>
+</ul>
+
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbegin%7Balign%7D%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D%26%3D%5Cfrac%7B%5Cexp%28-%28x-%5Cmu%29%2F2%5Csigma%5E2%29%5Cmathbb%7BI%7D_%7Bx%5Cgeq+a%7D%7D%7B%5Calpha+e%5E%7B-%5Calpha%28z-a%29%7D%7D%5C%5C%26%3D%5Cfrac%7B1%7D%7B%5Calpha%7D%5Cexp%28-%5Cfrac%7Bx%5E2%7D%7B2%7D%2B%5Calpha%28x-a%29%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D%5Cend%7Balign%7D+></p>
+
+<p>より，</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D+%5Cpropto+e%5E%7B%5Calpha%28x-a%29%7De%5E%7B-z%5E2%2F2%7D+></p>
+
+<p>となる．上式を前と同じように微分すると<img src=http://chart.apis.google.com/chart?cht=tx&chl=%28-x%2B%5Calpha%29+>が出てくるので，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+%5Calpha+>のとき最大値を取り，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cexp%28%5Calpha%5E2%2F2-%5Calpha+a%29+>で極限が与えられる．</p>
+
+<p>次に，<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%3D+%5Calpha+>の場合に正当な候補密度になることを導く．f/gの比が0より大きいことを示せば良いのだが，上式を見ると結局expの外側の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Calpha%7D+>，つまり<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+>を調べないといけない．ということで，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+>で微分して最適値の時の値を求める．</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+%5Calpha>のとき<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28%5Calpha%29%7D%7Bg%28%5Calpha%29%7D+%3D+%5Cfrac%7B1%7D%7B%5Calpha%7D%5Cexp%28%5Cfrac%7B%5Calpha%5E2%7D%7B2%7D-%5Calpha+a%29+>なので，</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CBigl%28%5Cfrac%7Bf%28%5Calpha%29%7D%7Bg%28%5Calpha%29%7D%5CBigr%29%27+%3D+-%5Cfrac%7B1%7D%7B%5Calpha%5E2%7D%5Cexp%28%5Cfrac%7B%5Calpha%5E2%7D%7B2%7D-%5Calpha+a%29%2B%5Cfrac%7B1%7D%7B%5Calpha%7D%28%5Calpha-a%29%5Cexp%28%5Cfrac%7B%5Calpha%5E2%7D%7B2%7D-%5Calpha+a%29+><img src=http://chart.apis.google.com/chart?cht=tx&chl=%3D%5Cfrac%7B1%7D%7B%5Calpha%7D%5Cbigl%28-%5Cfrac%7B1%7D%7B%5Calpha%5E2%7D%2B%28%5Calpha-a%29%5Cbigr%29%5Cexp%28%5Cfrac%7B%5Calpha%5E2%7D%7B2%7D-%5Calpha+a%29></p>
+
+<p>より</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha%5E2+-+a+%5Calpha+-+1+%3D+0+></p>
+
+<p>よって，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+%5Cfrac%7Ba+%5Cpm+%5Csqrt%7Ba%5E2+%2B+4%7D%7D%7B2%7D+>となる．</p>
+
+<p>じゃあプラスかマイナスかどっちなんだという話になるのだが，ここで<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%5Cgeq+a+>という前提条件を使うと，</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+%5Cfrac%7Ba+%5Cpm+%5Csqrt%7Ba%5E2+%2B+4%7D%7D%7B2%7D+%5Cgeq+a+></p>
+
+<p>が成り立つ． <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Csqrt%7Ba%5E2+%2B+4%7D+>というのはaよりちょっとだけ大きい数なので，上式を満たすaは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+%5Cfrac%7Ba+%2B+%5Csqrt%7Ba%5E2+%2B+4%7D%7D%7B2%7D+>となり，この式は常に正である．よって，<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%3D+%5Calpha+>の場合に，正当な候補密度になる．</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -267,7 +544,7 @@
 
 <p>となり，比<img src=http://chart.apis.google.com/chart?cht=tx&chl=f%2Fg+>が有界になる（どっかのxの値が<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cinf+>になったりしない）には，xや(1-x)のベキ数の部分が0以上でである必要がある．よって<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%5Cleq+%5Calpha%2C+b+%5Cleq+%5Cbeta+>が必要．</p>
 
-<p>上の細かい証明は省略するが，要するにベータ分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7B%5Cbeta%7D%28a%2Cb%29+>において，aとbが1未満の時には0と1の両端で値が跳ね上がる．以下の図は，「<a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22">パターン認識と機械学習 上</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のP.70を参考にベータ分布を作図したもの．これを見ると，aとbが1のときにちょうど一様分布のような形をとり，それより小さいと下に凸，それより大きいと上に凸のような分布の形になることがわかる．なので，ベータ分布が有界であるにはxや(1-x)のベキ数の部分がポイントになってくる．</p>
+<p>上の細かい証明は省略するが，要するにベータ分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D%28a%2Cb%29+>において，aとbが1未満の時には0と1の両端で値が跳ね上がる．以下の図は，「<a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22">パターン認識と機械学習 上</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のP.70を参考にベータ分布を作図したもの．これを見ると，aとbが1のときにちょうど一様分布のような形をとり，それより小さいと下に凸，それより大きいと上に凸のような分布の形になることがわかる．なので，ベータ分布が有界であるにはxや(1-x)のベキ数の部分がポイントになってくる．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -1360,103 +1637,6 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/10/shut-the-fuck-up-and-download-all-pdf-files/">ウェブページにリストアップされているpdfファイルをwgetでまとめてダウンロードする方法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-10T00:03:00+09:00" pubdate data-updated="true">Oct 10<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>pdf中毒者のためのwget入門</h3>
-
-<p>大学の先生方が用意する講義資料やプレゼンテーションのスライドの類なんかは，得てして個人のウェブページにまとまりなくリストアップされているだけの場合が多い．必要なときにダウンロードするようにすると既に持っているファイルを再度ダウンロードしてしまって重複することがあるし，まとめてダウンロードするためにブラウザ上でいちいちクリックするのも面倒くさい．そのため，ウェブページにリストアップされているpdfファイルをコマンド一発でまとめてダウンロードしたい！というときには，wgetコマンドが非常に便利だ．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>wget -r -l 1 -A pdf -w 5 -nd http://example.com/hoge/index.html
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これだけでいいのだ．このコマンドを使えば，example.com/hoge/index.htmlというウェブページにリストアップされているpdfファイルを一括してダウンロードすることができる．指定したオプションを少し解説しよう．</p>
-
-<h4><code>-r -l 1</code></h4>
-
-<p><strong>-r</strong>と<strong>-l</strong>オプションによって，再帰的に1階層分だけリンクをたどるように指定している．つまり，指定したウェブページに貼ってあるリンクの中から，目的となるファイルだけをダウンロードすることができる．</p>
-
-<h4><code>-A pdf</code></h4>
-
-<p><strong>-A</strong>オプションによって，拡張子がpdfのファイルのみをダウンロードするように指定している．これをpptに変えればパワーポイントのファイルだけダウンロードできるし，pdf,pptのようにコンマ区切りで複数列挙することもできる．</p>
-
-<h4><code>-w 5</code></h4>
-
-<p><strong>-w</strong>オプションによって，ダウンロード処理の間隔を5秒開けている．wgetはダウンロード処理が終わり次第次のダウンロードを実行し始めるため，短時間に大量にダウンロードすると向こうのサーバに負荷をかける可能性がある．そのため，ダウンロード間隔を少し開けることで，集中してアクセスしないようにしている．間隔の秒数には特に意味があるわけではないが，最低でも数秒は開けたほうが良いだろう．「<a href="http://www.amazon.co.jp/gp/product/4873111870/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4873111870&linkCode=as2&tag=yagays-22">Spidering hacks―ウェブ情報ラクラク取得テクニック101選</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4873111870" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」なんかを見ると，スクリプトによって3秒または5秒開けてる場合が多い．</p>
-
-<h4><code>-nd</code></h4>
-
-<p><strong>-nd</strong>オプションによって，ダウンロードしたファイルを同一ディレクトリ（標準ではカレントディレクトリ）に保存している．これを指定しないと，ウェブページのURL階層通りに/hoge/fuga/piyo/といったディレクトリ構造が作成されてしまう．なお，<code>-P hoge</code>というオプションを追加すると，hogeというディレクトリ以下にダウンロードしたファイルが保存される．</p>
-
-<h3>なお，Mac OS Xの場合にはwgetのインストールが必要</h3>
-
-<p>そういえば，wgetはMacには標準で入っていないので，MacPortsかHomebrewなどを使ってインストールする必要がある．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo port install wget
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>または</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install wget
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>もちろんソースコードをコンパイルして入れることもできる(<a href="http://osxdaily.com/2012/05/22/install-wget-mac-os-x/">http://osxdaily.com/2012/05/22/install-wget-mac-os-x/</a>)</p>
-
-<h3>!注意!</h3>
-
-<p><strong>相手方のサーバ負荷に配慮するのはもちろん，利用規約の有無やダウンロード環境にも注意が必要である．</strong>ウェブページによっては，スクリプトを使った一括ダウンロードなどを制限/禁止している場合がある．上記コマンドを使ったダウンロードを行う際は，そのような利用規約があるかどうかをまず確認し，最大限利用規約を守るよう注意しなければいけない．また，万が一の場合には相手に迷惑を掛けてドメイン/IPアドレス単位でアクセスが禁止される可能性もある．そのため，会社や大学で実行する際には細心の注意を払い，同じIPアドレスを使う同僚や組織に迷惑をかけないよう注意しなければならない．</p>
-
-<h3>参考</h3>
-
-<ul>
-<li><a href="http://www.itsenka.com/contents/development/unix-linux/wget.html">http://www.itsenka.com/contents/development/unix-linux/wget.html</a></li>
-<li><a href="http://taichino.com/engineer-life/linux/288">http://taichino.com/engineer-life/linux/288</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873111870" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774138169" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/2/">&larr; Older</a></li>
@@ -1494,6 +1674,10 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/10/23/imcmr-2-3/">「Rによるモンテカルロ法入門」読書ノート：2章 練習問題</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/22/imcmr-2-2/">「Rによるモンテカルロ法入門」読書ノート：2章 受理・棄却法</a>
       </li>
     
@@ -1509,15 +1693,11 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
         <a href="/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex/">TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/10/18/review-the-art-of-designing/">「デザインする技術 -よりよいデザインのための基礎知識」読了</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (37)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (3)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (8)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (37)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (4)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (9)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
 </section>
 
 

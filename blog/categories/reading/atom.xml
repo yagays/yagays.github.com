@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Reading | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-22T22:32:55+09:00</updated>
+  <updated>2012-10-23T18:37:34+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,203 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：2章 練習問題]]></title>
+    <link href="http://yagays.github.com/blog/2012/10/23/imcmr-2-3/"/>
+    <updated>2012-10-23T08:57:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/10/23/imcmr-2-3</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>練習問題 2.18</h3>
+
+<h3>a. f(x)とMg(x)をプロットする</h3>
+
+<p>定数Mは例2.7のようにoptimize()関数で求めている．以下の図はfとgの分布を図示したもので，黒い曲線fに対して，青い曲線Mg(x)が全体を覆い被さるようになっていることがわかる．</p>
+
+<p>```r
+f &lt;- function(x){exp(-x<sup>2/2)</sup> * (sin(6<em>x)<sup>2</sup> + 3</em>cos(x)<sup>2<em>sin(4</em>x)<sup>2</sup></sup> + 1)}
+g &lt;- function(x){exp(-x<sup>2/2)/sqrt(2*pi)}</sup>
+M &lt;- optimize(f=function(x){f(x)/g(x)}, interval=c(0,1),maximum=T)$objective</p>
+
+<p>par(mfrow=c(1,1))
+curve(f(x),from=-5,to=5,ylim=c(0,5))
+curve(M*g(x),add=T,col="blue")
+```
+<img src="http://dl.dropbox.com/u/142306/b/imcmr/chp2_7.png" alt="" /></p>
+
+<h3>b. 受理・棄却アルゴリズムを使ってfから2500個の乱数を生成する</h3>
+
+<p>ここで標準正規分布からの乱数を使うのは，g(x)が標準正規密度だから（P.59の受理・棄却法のアルゴリズムの1.にある<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y+%5Csim+g+>の部分に該当する）．</p>
+
+<p>この問題では2500個の<strong>受理された</strong>乱数が欲しいので，P.61のコードを真似て作成している．ただし，このコードは少々効率が悪く，決められた数の乱数を作ったらループが終わりというものではない（受理確率を元にして多めに作ってる）ので，ヒストグラムとして図示する際には2500個のみを取り出して作図している．</p>
+
+<p>```r
+Nsim &lt;- 2500
+x &lt;- NULL
+while(length(x) &lt; Nsim){
+  y &lt;- rnorm(Nsim<em>M)
+  x &lt;- c(x, y[runif(Nsim</em>M,0,M) * g(y) &lt; f(y) ])  <br/>
+}
+hist(x[1:Nsim],freq=F,nclass=150,main="Nsim = 2500")
+curve(f(x)/integrate(f,-Inf,Inf)$value, add=T, col="red")</p>
+
+<h1>curveの中のintegrateに関しては後述(本問のc.)</h1>
+
+<p>```</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp2_8.png" alt="" /></p>
+
+<p>概ねfの分布に沿った乱数が生成されているようだ．乱数が2500個だけでは少し不明瞭のため，Nsimの数を10<sup>4</sup> にして再試したのが下の図．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp2_9.png" alt="" /></p>
+
+<h3>c. シミュレーションから得られた受理率から正規化定数を求める</h3>
+
+<p>P.60にあるように，受理確率は基本的に1/Mだけれども，正規化されていない関数に関しては定数CがMに吸収されているので注意が必要となる．今回の場合，シミュレーションから求めた受理確率rを使うことで，以下の式から正規化定数を近似することができる．</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=r+%3D+%5Cfrac%7B1%7D%7BC+%5Ctimes+M%7D+></p>
+
+<p>今回の場合，Mは10.94，rは0.54となったので，Cは0.17程度だと見積もった．</p>
+
+<p><code>r
+Nsim &lt;- 10^4
+x &lt;- NULL # xは受理した乱数
+z &lt;- NULL # zは生成した乱数すべて
+while(length(x) &lt; Nsim){
+  y &lt;- rnorm(Nsim*M)
+  x &lt;- c(x, y[runif(Nsim*M,0,M) * g(y) &lt; f(y) ])
+  z &lt;- c(z, y)
+}
+r &lt;- length(x)/length(z)
+C &lt;- 1/(M*r)
+</code></p>
+
+<p>```r</p>
+
+<blockquote><p>M; r; C
+[1] 10.94031
+[1] 0.5369048
+[1] 0.1702445
+```</p></blockquote>
+
+<p>さて，答え合わせ(?)だが，正規化定数は単純にfの<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5B-%5Cinfty%2C%5Cinfty%5D>の積分を求めることによって計算することができる．これにはRのintegrate()関数を使って-infからinfまでを計算すればよい．確率分布の定義から，これが1になるように正規化定数を定めれば良いということで，以下のように計算した結果，0.1696543となった．</p>
+
+<p>```r</p>
+
+<blockquote><p>1/integrate(f,-Inf,Inf)$value
+[1] 0.1696543
+```</p></blockquote>
+
+<h3>練習問題 2.19</h3>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=f%28x%29+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D+%5Cexp%28-%5Cfrac%7Bx%3Csup%3E2%7D%7B2%7D%29%3C%2Fsup%3E+%5C+g%28x%29+%3D+%5Cfrac%7B%5Calpha%7D%7B2%7D+%5Cexp%28-%5Calpha+%7Cx%7C%29></p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=f%2Fg+%3D+%5Cfrac%7B%5Csqrt%7B2%2F%5Cpi%7D%7D%7B%5Calpha%7D+%5Cexp%28%5Calpha%7Cx%7C-%5Cfrac%7Bx%3Csup%3E2%7D%7B2%7D%29%3C%2Fsup%3E+>より，上界Mを取るときのx_maxの値を調べるには，とりあえずxで微分して0になるときの値を求めれば良い．expの部分を微分すると<img src=http://chart.apis.google.com/chart?cht=tx&chl=%28%5Calpha+-+x%29+>みたいな項が出てくるので，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x%3Cem%3E%7Bmax%7D+%3D+%5Calpha+>（厳密には<img src=http://chart.apis.google.com/chart?cht=tx&chl=x%3C%2Fem%3E%7Bmax%7D+%3D+%5Cpm+%5Calpha+>）．</p>
+
+<p>次に，受理率を最適化するということは1/Mの値を大きくすれば良いので，結局はMの値の最大値を求めれば良い．<img src=http://chart.apis.google.com/chart?cht=tx&chl=x_%7Bmax%7D+%3D+%5Calpha+>のときのMを<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+>に関して微分して0になるときの値ということで計算していくと
+<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B%28%5Calpha%3Csup%3E2-1%29%5Cexp%28%5Calpha%3Csup%3E2%2F2%29%7D%7B%5Calpha%3Csup%3E2%7D%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E+>みたいな項が出てくるので，つまり<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+1+>の時にMが最大値を取り，受理率が最適化される．</p>
+
+<h3>練習問題 2.22 切断正規分布から正規乱数を生成する</h3>
+
+<h4>a. 切断正規分布から乱数を生成する</h4>
+
+<p>```r
+library(msm) # dtnorm()のため
+mu &lt;- 0
+sigma &lt;- 1</p>
+
+<p>par(mfrow=c(4,2))
+for(a in c(-2.32, -0.84, -0.67, 0, 0.67, 0.84, 2.32)){
+  N &lt;- 10<sup>4</sup>
+  X &lt;- rep(0,N)
+  for(i in 1:N){</p>
+
+<pre><code>z &lt;- rnorm(1, mean=mu, sd=sigma)
+while(z &lt; a){
+z &lt;- rnorm(1, mean=mu, sd=sigma)
+}
+</code></pre>
+
+<p>  X[i] &lt;- z
+  }
+  hist(X, freq=F, nclass=150, main=paste("Truncated Normal Distribution: a = ",a))
+  curve(dtnorm(x, mean=mu, sd=sigma, lower=a, upper=Inf), add=T, col="red", lwd=2)
+}
+```</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp2_10.png" alt="" /></p>
+
+<h4>b. シミュレーションので受理する確率を求める</h4>
+
+<p>上で示したアルゴリズムで考える．z &lt; aならアタリ，それ以外ならハズレというようなときにどれだけ数を撃てばz&lt;aに入るかということを考えると，正規分布のz &lt; aの面積を求めればいいことがわかる．なお，ここで出てくる<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CPhi%28x%29+>という関数は定義されていないが，本書P.78に出てくる累積正規分布のことだと思われる．</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CPhi%28t%29+%3D+%5Cint_%7B-%5Cinfty%7D%3Csup%3E%7Bt%7D%3C%2Fsup%3E+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%3Csup%3E%7B-y%3Csup%3E2%2F2%7Ddy%3C%2Fsup%3E%3C%2Fsup%3E+></p>
+
+<p>この形式になるように，aからの累積正規分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=F%28x%7C%5Cmu%2C+%5Csigma%3Csup%3E2%2C%3C%2Fsup%3E+a%29+%5Csim++%5Cint_%7Ba%7D%3Csup%3E%7B%5Cinfty%7D%3C%2Fsup%3E+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7De%3Csup%3E%7B-%5Cfrac%7B%28x-%5Cmu%29%3Csup%3E2%7D%7B2%5Csigma%3Csup%3E2%7D%7Ddx>を変形していけばよい．</sup></sup></sup></p>
+
+<p>ここで，<img src=http://chart.apis.google.com/chart?cht=tx&chl=v+%3D+-%5Cfrac%7Bx-%5Cmu%7D%7B%5Csigma%7D+>とおくと，<img src=http://chart.apis.google.com/chart?cht=tx&chl=dv+%3D+-%5Cfrac%7Bdx%7D%7B%5Csigma%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x%3Aa+%5Crightarrow+%5Cinfty+> のとき，<img src=http://chart.apis.google.com/chart?cht=tx&chl=v%3A-%5Cinfty+%5Crightarrow+%5Cfrac%7B%5Cmu-a%7D%7B%5Csigma%7D+>をとる．よって，</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=F%28v%7C%5Cmu%2C%5Csigma%3Csup%3E2%2Ca%29%3C%2Fsup%3E+%3D+%5Cint_%7B%5Cinfty%7D%3Csup%3E%7B%5Cfrac%7B%5Cmu-a%7D%7B%5Csigma%7D%7D%3C%2Fsup%3E+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%3Csup%3E%7B-%5Cfrac%7Bv%3Csup%3E2%7D%7B2%7D%7Ddv%3C%2Fsup%3E%3C%2Fsup%3E+%3D+%5CPhi%28%5Cfrac%7B%5Cmu-a%7D%7B%5Csigma%7D%29+>  となる．</p>
+
+<p>また，aの値が裾にある（値が大きくなる）と，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CPhi%28%5Cfrac%7B%5Cmu-a%7D%7B%5Csigma%7D%29+>の値が小さくなるので，シミュレーション回数が多くなる．</p>
+
+<h4>c. 切断正規分布の乱数を正規分布から生成することを考える</h4>
+
+<ul>
+<li>目標分布；<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cexp%28-%28x-%5Cmu%29%2F2%5Csigma%3Csup%3E2%29%5Cmathbb%7BI%7D_%7Bx%3C%2Fsup%3E+%5Cgeq+a%7D+></li>
+<li>候補分布：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D%5Cexp%28-%5Cfrac%7B%28x-%5Cbar%7B%5Cmu%7D%29%3Csup%3E2%7D%7B2%7D%29%3C%2Fsup%3E+></li>
+</ul>
+
+
+<p>より</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D%3D%5Cfrac%7B%5Cexp%28-%28x-%5Cmu%29%2F2%5Csigma%3Csup%3E2%29%5Cmathbb%7BI%7D_%7Bx%5Cgeq%3C%2Fsup%3E+z%7D%7D%7B%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D%5Cexp%28-%5Cfrac%7B%28x-%5Cbar%7B%5Cmu%7D%29%3Csup%3E2%7D%7B2%7D%29%7D%5C%3C%2Fsup%3E+><img src=http://chart.apis.google.com/chart?cht=tx&chl=%3D+%5Csqrt%7B2%5Cpi%7D%5Cexp%28-x%5Cbar%7B%5Cmu%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Cbar%7B%5Cmu%7D%3Csup%3E2%29%5Cmathbb%7BI%7D_%7Bx%3C%2Fsup%3E+%5Cgeq+a%7D+></p>
+
+<p>となり候補分布の制約を満たすので，正規候補にもとづく受理・棄却アルゴリズムは切断正規分布から乱数を生成するために使える．</p>
+
+<p>次に，このときの最適なMを考える．x=aにおいて<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D+%3D+%5Csqrt%7B2%5Cpi%7D%5Cexp%28-a%5Cbar%7B%5Cmu%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Cbar%7B%5Cmu%7D%3Csup%3E2%29%5Cmathbb%7BI%7D_%7Bx%3C%2Fsup%3E+%5Cgeq+a%7D+>より，この式を<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbar%7B%5Cmu%7D+>微分すると</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CBigl%28%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D%5CBigr%29%27+%3D+%5Csqrt%7B2%5Cpi%7D%28-a%2B%5Cbar%7B%5Cmu%7D%29%5Cexp%28-a%5Cbar%7B%5Cmu%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Cbar%7B%5Cmu%7D%3Csup%3E2%29%5Cmathbb%7BI%7D_%7Bx%3C%2Fsup%3E+%5Cgeq+a%7D+></p>
+
+<p>となるので，Mは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbar%7B%5Cmu%7D%3Da+>のとき最適値をとる．</p>
+
+<h3>d. 候補分布に指数分布を使うことを考える</h3>
+
+<ul>
+<li>目標分布；<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cexp%28-%28x-%5Cmu%29%2F2%5Csigma%3Csup%3E2%29%5Cmathbb%7BI%7D_%7Bx%3C%2Fsup%3E+%5Cgeq+a%7D+></li>
+<li>候補分布：<img src=http://chart.apis.google.com/chart?cht=tx&chl=g_%7B%5Calpha%7D%28z%29%3D%5Calpha+e%3Csup%3E%7B-%5Calpha%28z-a%29%7D%5Cmathbb%7BI%7D_%7Bx%3C%2Fsup%3E+%5Cgeq+a%7D+></li>
+</ul>
+
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbegin%7Balign%7D%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D%26amp%3B%3D%5Cfrac%7B%5Cexp%28-%28x-%5Cmu%29%2F2%5Csigma%3Csup%3E2%29%5Cmathbb%7BI%7D_%7Bx%5Cgeq%3C%2Fsup%3E+a%7D%7D%7B%5Calpha+e%3Csup%3E%7B-%5Calpha%28z-a%29%7D%7D%5C%26amp%3B%3D%5Cfrac%7B1%7D%7B%5Calpha%7D%5Cexp%28-%5Cfrac%7Bx%3Csup%3E2%7D%7B2%7D%2B%5Calpha%28x-a%29%29%5Cmathbb%7BI%7D_%7Bx%3C%2Fsup%3E%3C%2Fsup%3E+%5Cgeq+a%7D%5Cend%7Balign%7D+></p>
+
+<p>より，</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D+%5Cpropto+e%3Csup%3E%7B%5Calpha%28x-a%29%7De%3Csup%3E%7B-z%3Csup%3E2%2F2%7D%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E+></p>
+
+<p>となる．上式を前と同じように微分すると<img src=http://chart.apis.google.com/chart?cht=tx&chl=%28-x%2B%5Calpha%29+>が出てくるので，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+%5Calpha+>のとき最大値を取り，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cexp%28%5Calpha%3Csup%3E2%2F2-%5Calpha%3C%2Fsup%3E+a%29+>で極限が与えられる．</p>
+
+<p>次に，<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%3D+%5Calpha+>の場合に正当な候補密度になることを導く．f/gの比が0より大きいことを示せば良いのだが，上式を見ると結局expの外側の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Calpha%7D+>，つまり<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+>を調べないといけない．ということで，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+>で微分して最適値の時の値を求める．</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+%5Calpha>のとき<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28%5Calpha%29%7D%7Bg%28%5Calpha%29%7D+%3D+%5Cfrac%7B1%7D%7B%5Calpha%7D%5Cexp%28%5Cfrac%7B%5Calpha%3Csup%3E2%7D%7B2%7D-%5Calpha%3C%2Fsup%3E+a%29+>なので，</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CBigl%28%5Cfrac%7Bf%28%5Calpha%29%7D%7Bg%28%5Calpha%29%7D%5CBigr%29%27+%3D+-%5Cfrac%7B1%7D%7B%5Calpha%3Csup%3E2%7D%5Cexp%28%5Cfrac%7B%5Calpha%3Csup%3E2%7D%7B2%7D-%5Calpha%3C%2Fsup%3E%3C%2Fsup%3E+a%29%2B%5Cfrac%7B1%7D%7B%5Calpha%7D%28%5Calpha-a%29%5Cexp%28%5Cfrac%7B%5Calpha%3Csup%3E2%7D%7B2%7D-%5Calpha%3C%2Fsup%3E+a%29+><img src=http://chart.apis.google.com/chart?cht=tx&chl=%3D%5Cfrac%7B1%7D%7B%5Calpha%7D%5Cbigl%28-%5Cfrac%7B1%7D%7B%5Calpha%3Csup%3E2%7D%2B%28%5Calpha-a%29%5Cbigr%29%5Cexp%28%5Cfrac%7B%5Calpha%3Csup%3E2%7D%7B2%7D-%5Calpha%3C%2Fsup%3E%3C%2Fsup%3E+a%29></p>
+
+<p>より</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha%3Csup%3E2%3C%2Fsup%3E+-+a+%5Calpha+-+1+%3D+0+></p>
+
+<p>よって，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+%5Cfrac%7Ba+%5Cpm+%5Csqrt%7Ba%3Csup%3E2%3C%2Fsup%3E+%2B+4%7D%7D%7B2%7D+>となる．</p>
+
+<p>じゃあプラスかマイナスかどっちなんだという話になるのだが，ここで<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%5Cgeq+a+>という前提条件を使うと，</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+%5Cfrac%7Ba+%5Cpm+%5Csqrt%7Ba%3Csup%3E2%3C%2Fsup%3E+%2B+4%7D%7D%7B2%7D+%5Cgeq+a+></p>
+
+<p>が成り立つ． <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Csqrt%7Ba%3Csup%3E2%3C%2Fsup%3E+%2B+4%7D+>というのはaよりちょっとだけ大きい数なので，上式を満たすaは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+%5Cfrac%7Ba+%2B+%5Csqrt%7Ba%3Csup%3E2%3C%2Fsup%3E+%2B+4%7D%7D%7B2%7D+>となり，この式は常に正である．よって，<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%3D+%5Calpha+>の場合に，正当な候補密度になる．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：2章 受理・棄却法]]></title>
@@ -125,7 +322,7 @@ curve(dbeta(x,2,6)*1.67, add=T, col="blue", lwd=2)
 
 <p>となり，比<img src=http://chart.apis.google.com/chart?cht=tx&chl=f%2Fg+>が有界になる（どっかのxの値が<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cinf+>になったりしない）には，xや(1-x)のベキ数の部分が0以上でである必要がある．よって<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%5Cleq+%5Calpha%2C+b+%5Cleq+%5Cbeta+>が必要．</p>
 
-<p>上の細かい証明は省略するが，要するにベータ分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7B%5Cbeta%7D%28a%2Cb%29+>において，aとbが1未満の時には0と1の両端で値が跳ね上がる．以下の図は，「<a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22">パターン認識と機械学習 上</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のP.70を参考にベータ分布を作図したもの．これを見ると，aとbが1のときにちょうど一様分布のような形をとり，それより小さいと下に凸，それより大きいと上に凸のような分布の形になることがわかる．なので，ベータ分布が有界であるにはxや(1-x)のベキ数の部分がポイントになってくる．</p>
+<p>上の細かい証明は省略するが，要するにベータ分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D%28a%2Cb%29+>において，aとbが1未満の時には0と1の両端で値が跳ね上がる．以下の図は，「<a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22">パターン認識と機械学習 上</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のP.70を参考にベータ分布を作図したもの．これを見ると，aとbが1のときにちょうど一様分布のような形をとり，それより小さいと下に凸，それより大きいと上に凸のような分布の形になることがわかる．なので，ベータ分布が有界であるにはxや(1-x)のベキ数の部分がポイントになってくる．</p>
 
 <p>```r</p>
 
@@ -619,105 +816,6 @@ demo(Chapter.1) # Chapter.8まである
 <ul>
 <li><a href="http://hosho.ees.hokudai.ac.jp/~kubo/ce/RandomEffectsCrawley.html">http://hosho.ees.hokudai.ac.jp/~kubo/ce/RandomEffectsCrawley.html</a></li>
 <li><a href="http://blog.kzfmix.com/entry/1267928535">http://blog.kzfmix.com/entry/1267928535</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「せめぎ合う遺伝子」読書ノート 2章その3]]></title>
-    <link href="http://yagays.github.com/blog/2012/06/13/genesinconflict-2-3/"/>
-    <updated>2012-06-13T07:24:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/06/13/genesinconflict-2-3</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yagays-22&o=9&p=8&l=as1&asins=432005699X&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px; height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>これまでは配偶子キラー因子を見てきたが，次に母性効果キラー因子を見ていく．これは，ヘテロ接合体メスに作用するキラー因子である．また，植物の花粉に作用する配偶体因子についても少し触れる．</p>
-
-<h3>2.3</h3>
-
-<ul>
-<li>配偶子キラー因子
-
-<ul>
-<li>ヘテロ接合体オスに作用して，因子を受け継いでいない精子を殺す (e.g. tや<em>SD</em>)</li>
-<li>対象となるのは1倍体の配偶子</li>
-</ul>
-</li>
-<li>母性効果キラー因子
-
-<ul>
-<li>ヘテロ接合体メスに作用して，因子を受け継いでいない子供を殺す</li>
-<li>対象となるのは2倍体の個体</li>
-<li>このキラー因子は父親由来でも母親由来でも働く場合がある</li>
-</ul>
-</li>
-</ul>
-
-
-<!-- more -->
-
-
-<ul>
-<li>コクヌストモドキ
-
-<ul>
-<li><em>M</em>, <em>Medae</em>, 母性効果優勢胚発育停止因子</li>
-<li>ヘテロ接合メスM/+において，+/+の野生型を殺す</li>
-<li>野生型ホモ接合メス+/+から生まれる+/+は生存可能</li>
-<li><em>M</em>は父親由来でも母親由来でも働く</li>
-<li>4つの<em>Medea</em>因子が関与，地理的に広範囲にパッチ状に分布</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>ハツカネズミ
-
-<ul>
-<li><em>HSR</em>領域(第1染色体上の細胞学的手法で検出可能な均一に染色される部分)
-
-<ul>
-<li>オスに由来する<em>HSR</em>も同様の効果を示すため，<em>HSR</em>/+ヘテロ接合メスと+/+野生型オスにおいてのみドライヴ性を示す(70%)</li>
-<li><em>Sp100-rs</em>と<em>Csprs</em>が融合した100kbの反復配列の900~2000コピーからなる(野生型は60コピー程度)</li>
-</ul>
-</li>
-<li><em>scat</em><sup>+</sup></li>
-<li><em>Om</em><sup>DDK</sup></li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<ul>
-<li>子供に投資をすることによってドライヴ性を示す遺伝子
-
-<ul>
-<li>これまでのケースは因子を持たない子孫を殺す遺伝子だったが，因子を持つ子孫に投資をしてドライヴ性を示す場合もある(妊娠ドライヴ)</li>
-<li>青髭効果(または緑髭効果 green beard effect)</li>
-<li>細胞接着分子</li>
-<li>シグナル検知(リガンドと受容体，酵素と基質のような関係)</li>
-</ul>
-</li>
-</ul>
-
-
-<h3>2.4</h3>
-
-<ul>
-<li>植物の配偶体因子 gametophyte factor
-
-<ul>
-<li>トウモロコシの第4染色体上の<em>ga1</em>遺伝子</li>
-</ul>
-</li>
 </ul>
 
 ]]></content>
