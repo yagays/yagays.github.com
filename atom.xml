@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-23T18:37:34+09:00</updated>
+  <updated>2012-10-23T18:46:33+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -214,9 +214,9 @@
 
 <p>となり候補分布の制約を満たすので，正規候補にもとづく受理・棄却アルゴリズムは切断正規分布から乱数を生成するために使える．</p>
 
-<p>次に，このときの最適なMを考える．x=aにおいて<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D+%3D+%5Csqrt%7B2%5Cpi%7D%5Cexp%28-a%5Cbar%7B%5Cmu%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Cbar%7B%5Cmu%7D%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+>より，この式を<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbar%7B%5Cmu%7D+>微分すると</p>
+<p>次に，このときの最適なMを考える．x=aにおいて<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28a%29%7D%7Bg%28a%29%7D+%3D+%5Csqrt%7B2%5Cpi%7D%5Cexp%28-a%5Cbar%7B%5Cmu%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Cbar%7B%5Cmu%7D%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+>より，この式を<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbar%7B%5Cmu%7D+>で微分すると</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CBigl%28%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D%5CBigr%29%27+%3D+%5Csqrt%7B2%5Cpi%7D%28-a%2B%5Cbar%7B%5Cmu%7D%29%5Cexp%28-a%5Cbar%7B%5Cmu%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Cbar%7B%5Cmu%7D%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+></p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CBigl%28%5Cfrac%7Bf%28a%29%7D%7Bg%28a%29%7D%5CBigr%29%27+%3D+%5Csqrt%7B2%5Cpi%7D%28-a%2B%5Cbar%7B%5Cmu%7D%29%5Cexp%28-a%5Cbar%7B%5Cmu%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Cbar%7B%5Cmu%7D%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+></p>
 
 <p>となるので，Mは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbar%7B%5Cmu%7D%3Da+>のとき最適値をとる．</p>
 
