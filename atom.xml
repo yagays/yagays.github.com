@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-26T01:28:57+09:00</updated>
+  <updated>2012-10-26T01:33:45+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -14,19 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Review One Click]]></title>
+    <title type="html"><![CDATA[「ワンクリック―ジェフ・ベゾス率いるAmazonの隆盛」読了]]></title>
     <link href="http://yagays.github.com/blog/2012/10/26/review-one-click/"/>
-    <updated>2012-10-26T00:00:00+09:00</updated>
+    <updated>2012-10-26T01:12:00+09:00</updated>
     <id>http://yagays.github.com/blog/2012/10/26/review-one-click</id>
-    <content type="html"><![CDATA[<p>1;2c&#8212;
-layout: post
-title: &#8220;「ワンクリック―ジェフ・ベゾス率いるAmazonの隆盛」読了&#8221;
-date: 2012-10-26 01:12
-comments: true</p>
-
-<h2>categories: Book</h2>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4822249158" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4822249158" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
 <h3>Kindleに至るまでの小売時代のアマゾンを総括する1冊</h3>
