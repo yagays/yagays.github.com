@@ -9,7 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="pdf中毒者のためのwget入門 大学の先生方が用意する講義資料やプレゼンテーションのスライドの類なんかは，得てして個人のウェブページにまとまりなくリストアップされているだけの場合が多い． &hellip;">
+  <meta name="description" content="SOAPdenovo2になって，アセンブリで得られた配列の統計情報がscafStatisticsというファイルに出力されるようになった．そのため，自分でアセンブリ結果を解析しなくとも，コンティグ数やN50などの基本情報をチェックすることができる……のだが， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -39,17 +39,12 @@
     .page-footer p {
       text-align: center;
     }
-    .MathJax_Display {
-    text-align: left !important;
-    }
-    
   </style>
   <script src="/javascripts/libs/jquery.js"></script>
   <script src="/javascripts/libs/modernizr-2.0.js"></script>
   <script src="/javascripts/libs/bootstrap.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Wolfeyes Bioinformatics beta" type="application/atom+xml">
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
   
   <script type="text/javascript">
@@ -108,6 +103,206 @@
     <div class="row-fluid">
       <div class="span9">
   
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/11/soapdenovo2-stats/">SOAPdenovo2のアセンブル情報を集計するスクリプト</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-11T16:08:00+09:00" pubdate data-updated="true">Oct 11<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>SOAPdenovo2になって，アセンブリで得られた配列の統計情報がscafStatisticsというファイルに出力されるようになった．そのため，自分でアセンブリ結果を解析しなくとも，コンティグ数やN50などの基本情報をチェックすることができる……のだが，scafStatisticsは項目を並べただけのテキストファイルなので，複数のアセンブリ結果を比較しようと思った場合，いちいちファイルを開いて統計情報を集計するのが非常に面倒になる．</p>
+
+<p>ということで，SOAPdenovo2のアセンブルで出力される情報を一つにまとめるスクリプトを簡単に書いてみた．タブ区切りテキストで出力されるので，Excelなどでも見やすいようにしてある．</p>
+
+<br />
+
+
+<h2>インストール</h2>
+
+<ul>
+<li><a href="https://gist.github.com/3870629">https://gist.github.com/3870629</a></li>
+</ul>
+
+
+<p>上記のgistに置いてあるソースコードをダウンロードするか，wgetでソースコードを落としてくる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>wget --no-check-certificate https://raw.github.com/gist/3870629/6547d69e768e3d87a140d6405fdf19102ff525cb/soapdenovo2_stats.rb
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>動作確認はRuby 1.8.7および1.9.3で行っているが，まあ変なことはしてないのでどんな環境でもだいたい動くと思う．RubyのバージョンよりかはSOAPdenovo2の未知の部分や仕様変更などが怖いわけで，そもそも以下のデータセットで出てきたscafStatisticsを参考にしているため，SOAPdenovo2のパラメータなどによっては期待通りの動きをしないかもしれない．あと，例外処理などをあまり真面目に書いていないので，入力ファイルが見つからない場合にエラーを吐かなかったりするが，そこらへんは後々修正するかも．</p>
+
+<br />
+
+
+<h2>使い方</h2>
+
+<h3>基本的な使い方</h3>
+
+<p><strong><code>ruby soapdenovo2_stats.rb</code></strong>のあとにscafStatisticsのファイルを並べるだけ．標準出力に表示される情報は，scafStatistics内のInformation for assembly Scaffoldのうち，重要な統計量のみとなっている．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ruby soapdenovo2_stats.rb path/to/k23.scafStatistics path/to/k25.scafStatistics
+</span><span class='line'>Filename        Size_includeN   Size_withoutN   Scaffold_Num    Mean_Size       Median_Size     Longest_Seq     Shortest_Seq    Singleton_Num   N50
+</span><span class='line'>k23.scafStatistics      4533843 4533843 845     5365    2919    55290   100     845     11457
+</span><span class='line'>k25.scafStatistics      4536449 4536449 654     6936    3609    71235   100     654     14798
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>その他の詳細な統計量を出力する</h3>
+
+<p><strong><code>-a</code></strong>または<strong><code>--all</code></strong>オプションをつけることでscafStatistics内のすべての統計量を出力するようにしている．また，<strong><code>-c</code></strong>または<strong><code>--contig</code></strong>オプションをつけることによって，ScaffoldではなくContigの情報（scafStatistics内のInformation for assembly Contig より下側の情報）を出力できる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ruby soapdenovo2_stats.rb -a -c path/to/k23.scafStatistics
+</span><span class='line'>Size_includeN   Size_withoutN   Contig_Num      Mean_Size       Median_Size     Longest_Seq     Shortest_Seq    Contig&gt;100      Contig&gt;100 <span class="o">(</span>%<span class="o">)</span>  Contig&gt;500      Contig&gt;500 <span class="o">(</span>%<span class="o">)</span>  Contig&gt;1K       Contig&gt;1K <span class="o">(</span>%<span class="o">)</span>   Contig&gt;10K      Contig&gt;10K <span class="o">(</span>%<span class="o">)</span>  Contig&gt;100K     Contig&gt;100K <span class="o">(</span>%<span class="o">)</span> Contig&gt;1M       Contig&gt;1M <span class="o">(</span>%<span class="o">)</span>   Nucleotide_A    Nucleotide_A <span class="o">(</span>%<span class="o">)</span>        Nucleotide_C    Nucleotide_C <span class="o">(</span>%<span class="o">)</span>    Nucleotide_G    Nucleotide_G <span class="o">(</span>%<span class="o">)</span>        Nucleotide_T    Nucleotide_T <span class="o">(</span>%<span class="o">)</span>        GapContent_N    GapContent_N <span class="o">(</span>%<span class="o">)</span>        Non_ACGTN       Non_ACGTN <span class="o">(</span>%<span class="o">)</span>   GC_Content      N10     Contigs &gt;0 in N10       N20     Contigs &gt;0 in N20       N30     Contigs &gt;0 in N30       N40     Contigs &gt;0 in N40       N50     Contigs &gt;0 in N50       N60     Contigs &gt;0 in N60   N70     Contigs &gt;0 in N70       N80     Contigs &gt;0 in N80       N90     Contigs &gt;0 in N90       NG50    Contigs &gt;0 in NG50      N50_contig-NG50_contig_length_difference        Number_of_contigs_in_scaffolds  Number_of_contigs_not_in_scaffolds<span class="o">(</span>Singleton<span class="o">)</span>   Average_number_of_contigs_per_scaffold
+</span><span class='line'>4533843 4533843 845     5365    2919    55290   100     840     99.41   646     76.45   589     69.7    147     17.4    0       0.0     0       0.0     1122311 24.75   1154274 25.46   1146494 25.29   1110764 24.5    0       0.0     0       0.0     50.75   29554   13      21527   31      17094   55      13748   85      11457   121     9180    165     7136    2225257     296     3315    403     NaN     NaN     NaN     0       845     0
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>ワイルドカードを使って入力ファイルを複数指定する</h3>
+
+<p>Zshなどのシェルコマンドと同様に，入力ファイルの指定には<strong><code>*</code></strong>や<strong><code>?</code></strong>などのワイルドカードなどが使用できる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ruby soapdenovo2_stats.rb  path/to/*.scafStatistics
+</span><span class='line'>Filename        Size_includeN   Size_withoutN   Scaffold_Num    Mean_Size       Median_Size     Longest_Seq     Shortest_Seq    Singleton_Num   N50
+</span><span class='line'>k23.scafStatistics      4533843 4533843 845     5365    2919    55290   100     845     11457
+</span><span class='line'>k25.scafStatistics      4536449 4536449 654     6936    3609    71235   100     654     14798
+</span><span class='line'>k27.scafStatistics      4539473 4539473 578     7853    3781    79498   100     578     18157
+</span><span class='line'>k29.scafStatistics      4544164 4544164 570     7972    3672    103369  100     570     17945
+</span><span class='line'>k31.scafStatistics      4550461 4550461 621     7327    3306    77302   100     621     17052
+</span><span class='line'>k33.scafStatistics      4582773 4582773 1655    2769    1688    22953   100     1655    5435
+</span><span class='line'>k35.scafStatistics      2393501 2393501 16300   146     132     1345    105     16300   142
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>特定のカラムでソートする</h3>
+
+<p><strong><code>-s</code></strong>オプションを使うことで，特定のカラムで値をソートした結果を出力することができる．ここではN50を降順で並び替えており，一番右端の列を見るとN50が一番大きいものはk=27であったことがわかる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ruby soapdenovo2_stats.rb -s N50 path/to/*.scafStatistics
+</span><span class='line'>Filename        Size_includeN   Size_withoutN   Scaffold_Num    Mean_Size       Median_Size     Longest_Seq     Shortest_Seq    Singleton_Num   N50
+</span><span class='line'>k27.scafStatistics      4539473 4539473 578     7853    3781    79498   100     578     18157
+</span><span class='line'>k29.scafStatistics      4544164 4544164 570     7972    3672    103369  100     570     17945
+</span><span class='line'>k31.scafStatistics      4550461 4550461 621     7327    3306    77302   100     621     17052
+</span><span class='line'>k25.scafStatistics      4536449 4536449 654     6936    3609    71235   100     654     14798
+</span><span class='line'>k23.scafStatistics      4533843 4533843 845     5365    2919    55290   100     845     11457
+</span><span class='line'>k33.scafStatistics      4582773 4582773 1655    2769    1688    22953   100     1655    5435
+</span><span class='line'>k35.scafStatistics      2393501 2393501 16300   146     132     1345    105     16300   142
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>今回用いたサンプルデータ</h2>
+
+<p>なお，今回上記で示したデータは，E.coliのSRR001665のデータを用いてSOAPdenovo2_revision210でアセンブルしたものを使用している．アセンブルのコマンドとconfigファイルは以下のとおり．SEQanswersのWikiにあったExampleをそのまま使わせてもらっている（ <a href="http://seqanswers.com/wiki/How-to/de_novo_assembly#SOAP_denovo">http://seqanswers.com/wiki/How-to/de_novo_assembly#SOAP_denovo</a>）．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>SOAPdenovo-63mer all -K 25 -R -s cont.config -o output/k25
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>cont.config</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#maximal read length</span>
+</span><span class='line'><span class="nv">max_rd_len</span><span class="o">=</span>36
+</span><span class='line'><span class="o">[</span>LIB<span class="o">]</span>
+</span><span class='line'><span class="c">#average insert size</span>
+</span><span class='line'><span class="nv">avg_ins</span><span class="o">=</span>200
+</span><span class='line'><span class="c">#if sequence needs to be reversed </span>
+</span><span class='line'><span class="nv">reverse_seq</span><span class="o">=</span>0
+</span><span class='line'><span class="c">#use for contig building only</span>
+</span><span class='line'><span class="nv">asm_flags</span><span class="o">=</span>1
+</span><span class='line'><span class="c">#in which order the reads are used while scaffolding</span>
+</span><span class='line'><span class="nv">rank</span><span class="o">=</span>1
+</span><span class='line'><span class="c">#fastq files</span>
+</span><span class='line'><span class="nv">q1</span><span class="o">=</span>/home/yag_ays/tmp/soapdenovo2_testrun/SRR001665_1.fastq
+</span><span class='line'><span class="nv">q2</span><span class="o">=</span>/home/yag_ays/tmp/soapdenovo2_testrun/SRR001665_2.fastq
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://sourceforge.net/projects/soapdenovo2/">http://sourceforge.net/projects/soapdenovo2/</a></li>
+<li><a href="http://www.homolog.us/blogs/2012/07/10/testing-soapdenovo2-prerelease-v-map-and-scaff/">http://www.homolog.us/blogs/2012/07/10/testing-soapdenovo2-prerelease-v-map-and-scaff/</a></li>
+</ul>
+
+
+<h3>ソースコード</h3>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/11/soapdenovo2-stats/">続きを読む &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -598,55 +793,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/09/19/review-chance-and-necessity/">「偶然と必然―現代生物学の思想的な問いかけ」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-19T21:28:00+09:00" pubdate data-updated="true">Sep 19<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4622004283" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>本書「偶然と必然」は副題にある通り，進化学や遺伝学など19世紀後半から20世紀半ばにかけて発展した現代生物学という新しい考え方を通して，科学の探求における思想・哲学的な問題に対して指針を示すような内容となっている．著者はノーベル生理学医学賞を受賞したJacques Lucien Monodで，1969年の講演をもとに書かれている．翻訳書は1972年に初版が出版されているので，かれこれ40年も前の本になる．</p>
-
-<p>本書ではまず自然物と人工物の違いなどから生物の特性として合目的性・自律的形態発生・複製の不変性が示される．その過程には「客観性」が重要なキーワードとして登場し，自然の持つ客観性，客観性の前提の元での科学批判の重要性，そして科学そのものが客観性を前提としていることが語られ，自然物と人工物(生物)の矛盾が提起される．そして実際に生物の持つ複雑な機能や役割を，生化学や遺伝学，そして進化学的な視点で解釈していく．そして最後には進化や人間の思考を総括し，人間の知識や倫理問題，第二の進化といった思想的な持論へと発展していく．</p>
-
-<p>とまあ解ったような振りをして纏めてみたものの，実際は殆ど理解していないと思う．全体を通して過去の西洋哲学や各種思想などと織り交ぜて語られるため，概要がつかみにくい部分があってなかなか苦労した．まあこれは私の不勉強からくるものだから仕方がない．昔の名著と呼ばれる本を読むときには必ずといっていいほど起こる現象なのだが，語られる内容や表現の古さからくる難解さと自分の理解の無さが交じり合って非常に不明瞭なまま読み進めなければいけない辺り，内容をただ追うことに専念できる普段の読書とは違ってなかなか辛いものがある．</p>
-
-<p>本書の場合，生命観などの思想に関しては今でも色褪せないような内容だと思われるが，生物学に限って言えば，生物の定義や生命機能の理解のような諸問題に関しては今の主流の考え方とさほど変わらない．生物分野の古典の名著といえば「<a href="http://www.amazon.co.jp/gp/product/4003394615/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4003394615&linkCode=as2&tag=yagays-22">生命とは何か―物理的にみた生細胞 (岩波文庫)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4003394615" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」あたりは上手く物理と融合した内容で改めて今読み直しても結構面白いのだが，本書に限ってはやはり生物学より自然哲学の傾向が強いので，そのあたり読む人を選ぶ本かもしれない．</p>
-
-<p>(追記 2012/09/20)</p>
-
-<p>「<a href="http://www.amazon.co.jp/gp/product/4130633333/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4130633333&linkCode=as2&tag=yagays-22">40年後の『偶然と必然』: モノーが描いた生命・進化・人類の未来</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4130633333" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」という本が最近出版されたらしく，書店で立ち読みした限りだとなかなかおもしろそうなので今度読んでみたい．</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/3/">&larr; Older</a></li>
@@ -686,6 +832,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/10/25/imcmr-3-1/">「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/23/imcmr-2-3/">「Rによるモンテカルロ法入門」読書ノート：2章 練習問題</a>
       </li>
     
@@ -701,15 +851,11 @@
         <a href="/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">「Rによるモンテカルロ法入門」読書ノート：アーカイブ</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex/">TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (37)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (4)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (9)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (37)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (5)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (10)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
 </section>
 
 

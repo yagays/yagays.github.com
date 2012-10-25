@@ -9,14 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="練習問題 2.18 a. f(x)とMg(x)をプロットする 定数Mは例2.7のようにoptimize()関数で求めている．以下の図はfとgの分布を図示したもので，黒い曲線fに対して，青い曲線Mg(x)が全体を覆い被さるようになっていることがわかる． 1
-2
-3
-4
-5
-6
-7
-f &lt;- &hellip;">
+  <meta name="description" content="内容：乱数を利用して積分を数値的に求める モンテカルロ積分とは，乱数を利用して単変量や多変数の積分を近似し，解析的に解けない問題を数値的に解くという手法である．これは2章で示したように，任意の分布に従う乱数を理論上無限に生成できるからこそ成り立つ手法であり，本手法はi.i. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -46,17 +39,12 @@ f &lt;- &hellip;">
     .page-footer p {
       text-align: center;
     }
-    .MathJax_Display {
-    text-align: left !important;
-    }
-    
   </style>
   <script src="/javascripts/libs/jquery.js"></script>
   <script src="/javascripts/libs/modernizr-2.0.js"></script>
   <script src="/javascripts/libs/bootstrap.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Wolfeyes Bioinformatics beta" type="application/atom+xml">
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
   
   <script type="text/javascript">
@@ -115,6 +103,125 @@ f &lt;- &hellip;">
     <div class="row-fluid">
       <div class="span9">
   
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/25/imcmr-3-1/">「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-25T20:33:00+09:00" pubdate data-updated="true">Oct 25<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>内容：乱数を利用して積分を数値的に求める</h3>
+
+<p>モンテカルロ積分とは，乱数を利用して単変量や多変数の積分を近似し，解析的に解けない問題を数値的に解くという手法である．これは2章で示したように，任意の分布に従う乱数を理論上無限に生成できるからこそ成り立つ手法であり，本手法はi.i.dでの大数の法則や中心極限定理のような確率論に落としこんで解析している．具体的なモンテカルロ法の利用例としては確率分布を積分といったことが挙げられ，ベイズなどに限らず確率分布を仮定するような統計手法などにおいて必要となる．</p>
+
+<h3>例 3.3 モンテカルロ積分の具体例</h3>
+
+<p>図の上半分は<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%29+%3D+%5B%5Ccos%2850x%29+%2B+%5Csin%2820x%29+%5D%5E2+>を0から1の間で図示したもの．モンテカルロ積分ではこの曲線の下側の面積を求めることになる．
+図の下半分は，実際にモンテカルロ積分のシミュレーションをしたもの．横軸がシミュレーション回数（サンプル数m）で，縦軸が経験平均<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbar%28h%29_m+%3D+%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bj%3D1%7D%5E%7Bm%7Dh%28x_j%29+>を示したもの．黒の線が平均値の推移，上限の黄色の線が推定標準誤差に基づく信頼幅，赤の直線がRのintegrate関数で求めた積分値を示している．この図から，シミュレーション回数を重ねるごとに数値的に求めた値が実際の積分値に収束していく様子がわかる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>h <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">){(</span>cos<span class="p">(</span><span class="m">50</span><span class="o">*</span>x<span class="p">)</span> <span class="o">+</span> sin<span class="p">(</span><span class="m">20</span><span class="o">*</span>x<span class="p">))</span><span class="o">^</span><span class="m">2</span><span class="p">}</span>
+</span><span class='line'>par<span class="p">(</span>mar<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+</span><span class='line'>curve<span class="p">(</span>h<span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Function&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>integrate<span class="p">(</span>h<span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>x <span class="o">&lt;-</span> h<span class="p">(</span>runif<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">))</span>
+</span><span class='line'>estint <span class="o">&lt;-</span> cumsum<span class="p">(</span>x<span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:<span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">)</span>
+</span><span class='line'>esterr <span class="o">&lt;-</span> sqrt<span class="p">(</span>cumsum<span class="p">((</span>x<span class="o">-</span>estint<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:<span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span>estint<span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Mean and error range&quot;</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> ylim<span class="o">=</span>mean<span class="p">(</span>x<span class="p">)</span><span class="o">+</span><span class="m">20</span><span class="o">*</span>c<span class="p">(</span><span class="o">-</span>esterr<span class="p">[</span><span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">],</span> esterr<span class="p">[</span><span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">]))</span>
+</span><span class='line'>lines<span class="p">(</span>estint<span class="o">+</span><span class="m">2</span><span class="o">*</span>esterr<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;gold&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>lines<span class="p">(</span>estint<span class="o">-</span><span class="m">2</span><span class="o">*</span>esterr<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;gold&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>abline<span class="p">(</span>h<span class="o">=</span>integrate<span class="p">(</span>h<span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)$</span>value<span class="p">,</span>lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span>col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_1.png" alt="" /></p>
+
+<h3>例 3.4 正規分布のモンテカルロ積分における値の精度と効率</h3>
+
+<p>「裾」と呼ばれる部分は正規分布において釣鐘型の山の頂点から遠く離れた部分のことを指しており，正規分布の平均から外れるということは起こる確率がきわめて低い部分である．そのため，正規乱数を基にしたモンテカルロ積分においては，山の頂点に近い部分の値は乱数でよく引きあてるので数は十分なのだが，裾の部分の「値が大きい/小さい」値は乱数でなかなか引き当てることができない．精度に大きな影響を与える部分でありながらもシミュレーションを重ねないと十分な数を得ることができないため，古典的なモンテカルロ積分の方法で精度を上げるためには，試行回数を多くしなければならない．</p>
+
+<p>以下の実験では，実際に有効数字4ケタで正確な数値を出すために，10<sup>8</sup> 回ものシミュレーションを行なっている．最終的な表3.1は，行が試行回数，列が<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%5Csim+%5Cmathcal%28N%29%29%280%2C1%29+>のときのxに対応している．一番下の行の値がboundという変数のそれぞれ値と同じになっていることから，10<sup>8</sup> もの試行回数が必要であることがわかる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">8</span><span class="p">)</span>
+</span><span class='line'>bound <span class="o">&lt;-</span> qnorm<span class="p">(</span>c<span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="m">0.75</span><span class="p">,</span> <span class="m">0.8</span><span class="p">,</span> <span class="m">0.9</span><span class="p">,</span> <span class="m">0.95</span><span class="p">,</span> <span class="m">0.99</span><span class="p">,</span> <span class="m">0.999</span><span class="p">,</span> <span class="m">0.9999</span><span class="p">))</span>
+</span><span class='line'>res <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="m">0</span><span class="p">,</span> ncol<span class="o">=</span><span class="m">8</span><span class="p">,</span> nrow<span class="o">=</span><span class="m">7</span><span class="p">)</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in <span class="m">2</span>:<span class="m">8</span><span class="p">)</span>
+</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>j in <span class="m">1</span>:<span class="m">8</span><span class="p">)</span>
+</span><span class='line'>    res<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">,</span> j<span class="p">]</span> <span class="o">&lt;-</span> mean<span class="p">(</span>x<span class="p">[</span><span class="m">1</span>:<span class="m">10</span><span class="o">^</span>i<span class="p">]</span> <span class="o">&lt;</span> bound<span class="p">[</span>j<span class="p">])</span>
+</span><span class='line'>matrix<span class="p">(</span>as.numeric<span class="p">(</span>format<span class="p">(</span>res<span class="p">,</span> digi<span class="o">=</span><span class="m">4</span><span class="p">)),</span> ncol<span class="o">=</span><span class="m">8</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1"># &gt; matrix(as.numeric(format(res, digi=4)), ncol=8)</span>
+</span><span class='line'><span class="c1"># [,1]   [,2]   [,3]   [,4]   [,5]   [,6]   [,7]   [,8]</span>
+</span><span class='line'><span class="c1"># [1,] 0.5200 0.7600 0.8000 0.9300 0.9800 1.0000 1.0000 1.0000</span>
+</span><span class='line'><span class="c1"># [2,] 0.4760 0.7400 0.7880 0.8980 0.9550 0.9950 1.0000 1.0000</span>
+</span><span class='line'><span class="c1"># [3,] 0.4980 0.7477 0.7967 0.8981 0.9480 0.9889 0.9993 0.9999</span>
+</span><span class='line'><span class="c1"># [4,] 0.4994 0.7503 0.7996 0.8992 0.9504 0.9899 0.9989 0.9999</span>
+</span><span class='line'><span class="c1"># [5,] 0.4999 0.7503 0.8002 0.9001 0.9501 0.9899 0.9990 0.9999</span>
+</span><span class='line'><span class="c1"># [6,] 0.4999 0.7500 0.8000 0.9001 0.9500 0.9900 0.9990 0.9999</span>
+</span><span class='line'><span class="c1"># [7,] 0.5000 0.7500 0.8000 0.9000 0.9500 0.9900 0.9990 0.9999</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -889,7 +996,7 @@ f &lt;- &hellip;">
 <li>例 2.7，例 2.8，練習問題 2.7，練習問題 2.8</li>
 </ul>
 </li>
-<li><a href="http://yagays.github.com/blog/2012/10/23/imcmr-2-3/">「「Rによるモンテカルロ法入門」読書ノート：2章 練習問題」</a>
+<li><a href="http://yagays.github.com/blog/2012/10/23/imcmr-2-3/">「Rによるモンテカルロ法入門」読書ノート：2章 練習問題</a>
 
 <ul>
 <li>練習問題 2.18，練習問題 2.19，練習問題 2.22</li>
@@ -1444,206 +1551,6 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/11/soapdenovo2-stats/">SOAPdenovo2のアセンブル情報を集計するスクリプト</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-11T16:08:00+09:00" pubdate data-updated="true">Oct 11<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>SOAPdenovo2になって，アセンブリで得られた配列の統計情報がscafStatisticsというファイルに出力されるようになった．そのため，自分でアセンブリ結果を解析しなくとも，コンティグ数やN50などの基本情報をチェックすることができる……のだが，scafStatisticsは項目を並べただけのテキストファイルなので，複数のアセンブリ結果を比較しようと思った場合，いちいちファイルを開いて統計情報を集計するのが非常に面倒になる．</p>
-
-<p>ということで，SOAPdenovo2のアセンブルで出力される情報を一つにまとめるスクリプトを簡単に書いてみた．タブ区切りテキストで出力されるので，Excelなどでも見やすいようにしてある．</p>
-
-<br />
-
-
-<h2>インストール</h2>
-
-<ul>
-<li><a href="https://gist.github.com/3870629">https://gist.github.com/3870629</a></li>
-</ul>
-
-
-<p>上記のgistに置いてあるソースコードをダウンロードするか，wgetでソースコードを落としてくる．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>wget --no-check-certificate https://raw.github.com/gist/3870629/6547d69e768e3d87a140d6405fdf19102ff525cb/soapdenovo2_stats.rb
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>動作確認はRuby 1.8.7および1.9.3で行っているが，まあ変なことはしてないのでどんな環境でもだいたい動くと思う．RubyのバージョンよりかはSOAPdenovo2の未知の部分や仕様変更などが怖いわけで，そもそも以下のデータセットで出てきたscafStatisticsを参考にしているため，SOAPdenovo2のパラメータなどによっては期待通りの動きをしないかもしれない．あと，例外処理などをあまり真面目に書いていないので，入力ファイルが見つからない場合にエラーを吐かなかったりするが，そこらへんは後々修正するかも．</p>
-
-<br />
-
-
-<h2>使い方</h2>
-
-<h3>基本的な使い方</h3>
-
-<p><strong><code>ruby soapdenovo2_stats.rb</code></strong>のあとにscafStatisticsのファイルを並べるだけ．標準出力に表示される情報は，scafStatistics内のInformation for assembly Scaffoldのうち，重要な統計量のみとなっている．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ruby soapdenovo2_stats.rb path/to/k23.scafStatistics path/to/k25.scafStatistics
-</span><span class='line'>Filename        Size_includeN   Size_withoutN   Scaffold_Num    Mean_Size       Median_Size     Longest_Seq     Shortest_Seq    Singleton_Num   N50
-</span><span class='line'>k23.scafStatistics      4533843 4533843 845     5365    2919    55290   100     845     11457
-</span><span class='line'>k25.scafStatistics      4536449 4536449 654     6936    3609    71235   100     654     14798
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>その他の詳細な統計量を出力する</h3>
-
-<p><strong><code>-a</code></strong>または<strong><code>--all</code></strong>オプションをつけることでscafStatistics内のすべての統計量を出力するようにしている．また，<strong><code>-c</code></strong>または<strong><code>--contig</code></strong>オプションをつけることによって，ScaffoldではなくContigの情報（scafStatistics内のInformation for assembly Contig より下側の情報）を出力できる．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ruby soapdenovo2_stats.rb -a -c path/to/k23.scafStatistics
-</span><span class='line'>Size_includeN   Size_withoutN   Contig_Num      Mean_Size       Median_Size     Longest_Seq     Shortest_Seq    Contig&gt;100      Contig&gt;100 <span class="o">(</span>%<span class="o">)</span>  Contig&gt;500      Contig&gt;500 <span class="o">(</span>%<span class="o">)</span>  Contig&gt;1K       Contig&gt;1K <span class="o">(</span>%<span class="o">)</span>   Contig&gt;10K      Contig&gt;10K <span class="o">(</span>%<span class="o">)</span>  Contig&gt;100K     Contig&gt;100K <span class="o">(</span>%<span class="o">)</span> Contig&gt;1M       Contig&gt;1M <span class="o">(</span>%<span class="o">)</span>   Nucleotide_A    Nucleotide_A <span class="o">(</span>%<span class="o">)</span>        Nucleotide_C    Nucleotide_C <span class="o">(</span>%<span class="o">)</span>    Nucleotide_G    Nucleotide_G <span class="o">(</span>%<span class="o">)</span>        Nucleotide_T    Nucleotide_T <span class="o">(</span>%<span class="o">)</span>        GapContent_N    GapContent_N <span class="o">(</span>%<span class="o">)</span>        Non_ACGTN       Non_ACGTN <span class="o">(</span>%<span class="o">)</span>   GC_Content      N10     Contigs &gt;0 in N10       N20     Contigs &gt;0 in N20       N30     Contigs &gt;0 in N30       N40     Contigs &gt;0 in N40       N50     Contigs &gt;0 in N50       N60     Contigs &gt;0 in N60   N70     Contigs &gt;0 in N70       N80     Contigs &gt;0 in N80       N90     Contigs &gt;0 in N90       NG50    Contigs &gt;0 in NG50      N50_contig-NG50_contig_length_difference        Number_of_contigs_in_scaffolds  Number_of_contigs_not_in_scaffolds<span class="o">(</span>Singleton<span class="o">)</span>   Average_number_of_contigs_per_scaffold
-</span><span class='line'>4533843 4533843 845     5365    2919    55290   100     840     99.41   646     76.45   589     69.7    147     17.4    0       0.0     0       0.0     1122311 24.75   1154274 25.46   1146494 25.29   1110764 24.5    0       0.0     0       0.0     50.75   29554   13      21527   31      17094   55      13748   85      11457   121     9180    165     7136    2225257     296     3315    403     NaN     NaN     NaN     0       845     0
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>ワイルドカードを使って入力ファイルを複数指定する</h3>
-
-<p>Zshなどのシェルコマンドと同様に，入力ファイルの指定には<strong><code>*</code></strong>や<strong><code>?</code></strong>などのワイルドカードなどが使用できる．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ruby soapdenovo2_stats.rb  path/to/*.scafStatistics
-</span><span class='line'>Filename        Size_includeN   Size_withoutN   Scaffold_Num    Mean_Size       Median_Size     Longest_Seq     Shortest_Seq    Singleton_Num   N50
-</span><span class='line'>k23.scafStatistics      4533843 4533843 845     5365    2919    55290   100     845     11457
-</span><span class='line'>k25.scafStatistics      4536449 4536449 654     6936    3609    71235   100     654     14798
-</span><span class='line'>k27.scafStatistics      4539473 4539473 578     7853    3781    79498   100     578     18157
-</span><span class='line'>k29.scafStatistics      4544164 4544164 570     7972    3672    103369  100     570     17945
-</span><span class='line'>k31.scafStatistics      4550461 4550461 621     7327    3306    77302   100     621     17052
-</span><span class='line'>k33.scafStatistics      4582773 4582773 1655    2769    1688    22953   100     1655    5435
-</span><span class='line'>k35.scafStatistics      2393501 2393501 16300   146     132     1345    105     16300   142
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>特定のカラムでソートする</h3>
-
-<p><strong><code>-s</code></strong>オプションを使うことで，特定のカラムで値をソートした結果を出力することができる．ここではN50を降順で並び替えており，一番右端の列を見るとN50が一番大きいものはk=27であったことがわかる．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ruby soapdenovo2_stats.rb -s N50 path/to/*.scafStatistics
-</span><span class='line'>Filename        Size_includeN   Size_withoutN   Scaffold_Num    Mean_Size       Median_Size     Longest_Seq     Shortest_Seq    Singleton_Num   N50
-</span><span class='line'>k27.scafStatistics      4539473 4539473 578     7853    3781    79498   100     578     18157
-</span><span class='line'>k29.scafStatistics      4544164 4544164 570     7972    3672    103369  100     570     17945
-</span><span class='line'>k31.scafStatistics      4550461 4550461 621     7327    3306    77302   100     621     17052
-</span><span class='line'>k25.scafStatistics      4536449 4536449 654     6936    3609    71235   100     654     14798
-</span><span class='line'>k23.scafStatistics      4533843 4533843 845     5365    2919    55290   100     845     11457
-</span><span class='line'>k33.scafStatistics      4582773 4582773 1655    2769    1688    22953   100     1655    5435
-</span><span class='line'>k35.scafStatistics      2393501 2393501 16300   146     132     1345    105     16300   142
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>今回用いたサンプルデータ</h2>
-
-<p>なお，今回上記で示したデータは，E.coliのSRR001665のデータを用いてSOAPdenovo2_revision210でアセンブルしたものを使用している．アセンブルのコマンドとconfigファイルは以下のとおり．SEQanswersのWikiにあったExampleをそのまま使わせてもらっている（ <a href="http://seqanswers.com/wiki/How-to/de_novo_assembly#SOAP_denovo">http://seqanswers.com/wiki/How-to/de_novo_assembly#SOAP_denovo</a>）．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>SOAPdenovo-63mer all -K 25 -R -s cont.config -o output/k25
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>cont.config</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#maximal read length</span>
-</span><span class='line'><span class="nv">max_rd_len</span><span class="o">=</span>36
-</span><span class='line'><span class="o">[</span>LIB<span class="o">]</span>
-</span><span class='line'><span class="c">#average insert size</span>
-</span><span class='line'><span class="nv">avg_ins</span><span class="o">=</span>200
-</span><span class='line'><span class="c">#if sequence needs to be reversed </span>
-</span><span class='line'><span class="nv">reverse_seq</span><span class="o">=</span>0
-</span><span class='line'><span class="c">#use for contig building only</span>
-</span><span class='line'><span class="nv">asm_flags</span><span class="o">=</span>1
-</span><span class='line'><span class="c">#in which order the reads are used while scaffolding</span>
-</span><span class='line'><span class="nv">rank</span><span class="o">=</span>1
-</span><span class='line'><span class="c">#fastq files</span>
-</span><span class='line'><span class="nv">q1</span><span class="o">=</span>/home/yag_ays/tmp/soapdenovo2_testrun/SRR001665_1.fastq
-</span><span class='line'><span class="nv">q2</span><span class="o">=</span>/home/yag_ays/tmp/soapdenovo2_testrun/SRR001665_2.fastq
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>参考</h3>
-
-<ul>
-<li><a href="http://sourceforge.net/projects/soapdenovo2/">http://sourceforge.net/projects/soapdenovo2/</a></li>
-<li><a href="http://www.homolog.us/blogs/2012/07/10/testing-soapdenovo2-prerelease-v-map-and-scaff/">http://www.homolog.us/blogs/2012/07/10/testing-soapdenovo2-prerelease-v-map-and-scaff/</a></li>
-</ul>
-
-
-<h3>ソースコード</h3>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/10/11/soapdenovo2-stats/">続きを読む &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/2/">&larr; Older</a></li>
@@ -1681,6 +1588,10 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/10/25/imcmr-3-1/">「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/23/imcmr-2-3/">「Rによるモンテカルロ法入門」読書ノート：2章 練習問題</a>
       </li>
     
@@ -1696,15 +1607,11 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
         <a href="/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">「Rによるモンテカルロ法入門」読書ノート：アーカイブ</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex/">TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (37)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (4)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (9)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (37)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (5)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (10)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
 </section>
 
 

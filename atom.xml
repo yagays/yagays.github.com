@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-23T19:00:26+09:00</updated>
+  <updated>2012-10-25T20:34:00+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,98 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分]]></title>
+    <link href="http://yagays.github.com/blog/2012/10/25/imcmr-3-1/"/>
+    <updated>2012-10-25T20:33:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/10/25/imcmr-3-1</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>内容：乱数を利用して積分を数値的に求める</h3>
+
+<p>モンテカルロ積分とは，乱数を利用して単変量や多変数の積分を近似し，解析的に解けない問題を数値的に解くという手法である．これは2章で示したように，任意の分布に従う乱数を理論上無限に生成できるからこそ成り立つ手法であり，本手法はi.i.dでの大数の法則や中心極限定理のような確率論に落としこんで解析している．具体的なモンテカルロ法の利用例としては確率分布を積分といったことが挙げられ，ベイズなどに限らず確率分布を仮定するような統計手法などにおいて必要となる．</p>
+
+<h3>例 3.3 モンテカルロ積分の具体例</h3>
+
+<p>図の上半分は<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%29+%3D+%5B%5Ccos%2850x%29+%2B+%5Csin%2820x%29+%5D%5E2+>を0から1の間で図示したもの．モンテカルロ積分ではこの曲線の下側の面積を求めることになる．
+図の下半分は，実際にモンテカルロ積分のシミュレーションをしたもの．横軸がシミュレーション回数（サンプル数m）で，縦軸が経験平均<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbar%28h%29_m+%3D+%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bj%3D1%7D%5E%7Bm%7Dh%28x_j%29+>を示したもの．黒の線が平均値の推移，上限の黄色の線が推定標準誤差に基づく信頼幅，赤の直線がRのintegrate関数で求めた積分値を示している．この図から，シミュレーション回数を重ねるごとに数値的に求めた値が実際の積分値に収束していく様子がわかる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>h <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">){(</span>cos<span class="p">(</span><span class="m">50</span><span class="o">*</span>x<span class="p">)</span> <span class="o">+</span> sin<span class="p">(</span><span class="m">20</span><span class="o">*</span>x<span class="p">))</span><span class="o">^</span><span class="m">2</span><span class="p">}</span>
+</span><span class='line'>par<span class="p">(</span>mar<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+</span><span class='line'>curve<span class="p">(</span>h<span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Function&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>integrate<span class="p">(</span>h<span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>x <span class="o">&lt;-</span> h<span class="p">(</span>runif<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">))</span>
+</span><span class='line'>estint <span class="o">&lt;-</span> cumsum<span class="p">(</span>x<span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:<span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">)</span>
+</span><span class='line'>esterr <span class="o">&lt;-</span> sqrt<span class="p">(</span>cumsum<span class="p">((</span>x<span class="o">-</span>estint<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:<span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span>estint<span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Mean and error range&quot;</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> ylim<span class="o">=</span>mean<span class="p">(</span>x<span class="p">)</span><span class="o">+</span><span class="m">20</span><span class="o">*</span>c<span class="p">(</span><span class="o">-</span>esterr<span class="p">[</span><span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">],</span> esterr<span class="p">[</span><span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">]))</span>
+</span><span class='line'>lines<span class="p">(</span>estint<span class="o">+</span><span class="m">2</span><span class="o">*</span>esterr<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;gold&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>lines<span class="p">(</span>estint<span class="o">-</span><span class="m">2</span><span class="o">*</span>esterr<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;gold&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>abline<span class="p">(</span>h<span class="o">=</span>integrate<span class="p">(</span>h<span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)$</span>value<span class="p">,</span>lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span>col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_1.png" alt="" /></p>
+
+<h3>例 3.4 正規分布のモンテカルロ積分における値の精度と効率</h3>
+
+<p>「裾」と呼ばれる部分は正規分布において釣鐘型の山の頂点から遠く離れた部分のことを指しており，正規分布の平均から外れるということは起こる確率がきわめて低い部分である．そのため，正規乱数を基にしたモンテカルロ積分においては，山の頂点に近い部分の値は乱数でよく引きあてるので数は十分なのだが，裾の部分の「値が大きい/小さい」値は乱数でなかなか引き当てることができない．精度に大きな影響を与える部分でありながらもシミュレーションを重ねないと十分な数を得ることができないため，古典的なモンテカルロ積分の方法で精度を上げるためには，試行回数を多くしなければならない．</p>
+
+<p>以下の実験では，実際に有効数字4ケタで正確な数値を出すために，10<sup>8</sup> 回ものシミュレーションを行なっている．最終的な表3.1は，行が試行回数，列が<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%5Csim+%5Cmathcal%28N%29%29%280%2C1%29+>のときのxに対応している．一番下の行の値がboundという変数のそれぞれ値と同じになっていることから，10<sup>8</sup> もの試行回数が必要であることがわかる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">8</span><span class="p">)</span>
+</span><span class='line'>bound <span class="o">&lt;-</span> qnorm<span class="p">(</span>c<span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="m">0.75</span><span class="p">,</span> <span class="m">0.8</span><span class="p">,</span> <span class="m">0.9</span><span class="p">,</span> <span class="m">0.95</span><span class="p">,</span> <span class="m">0.99</span><span class="p">,</span> <span class="m">0.999</span><span class="p">,</span> <span class="m">0.9999</span><span class="p">))</span>
+</span><span class='line'>res <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="m">0</span><span class="p">,</span> ncol<span class="o">=</span><span class="m">8</span><span class="p">,</span> nrow<span class="o">=</span><span class="m">7</span><span class="p">)</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in <span class="m">2</span>:<span class="m">8</span><span class="p">)</span>
+</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>j in <span class="m">1</span>:<span class="m">8</span><span class="p">)</span>
+</span><span class='line'>    res<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">,</span> j<span class="p">]</span> <span class="o">&lt;-</span> mean<span class="p">(</span>x<span class="p">[</span><span class="m">1</span>:<span class="m">10</span><span class="o">^</span>i<span class="p">]</span> <span class="o">&lt;</span> bound<span class="p">[</span>j<span class="p">])</span>
+</span><span class='line'>matrix<span class="p">(</span>as.numeric<span class="p">(</span>format<span class="p">(</span>res<span class="p">,</span> digi<span class="o">=</span><span class="m">4</span><span class="p">)),</span> ncol<span class="o">=</span><span class="m">8</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1"># &gt; matrix(as.numeric(format(res, digi=4)), ncol=8)</span>
+</span><span class='line'><span class="c1"># [,1]   [,2]   [,3]   [,4]   [,5]   [,6]   [,7]   [,8]</span>
+</span><span class='line'><span class="c1"># [1,] 0.5200 0.7600 0.8000 0.9300 0.9800 1.0000 1.0000 1.0000</span>
+</span><span class='line'><span class="c1"># [2,] 0.4760 0.7400 0.7880 0.8980 0.9550 0.9950 1.0000 1.0000</span>
+</span><span class='line'><span class="c1"># [3,] 0.4980 0.7477 0.7967 0.8981 0.9480 0.9889 0.9993 0.9999</span>
+</span><span class='line'><span class="c1"># [4,] 0.4994 0.7503 0.7996 0.8992 0.9504 0.9899 0.9989 0.9999</span>
+</span><span class='line'><span class="c1"># [5,] 0.4999 0.7503 0.8002 0.9001 0.9501 0.9899 0.9990 0.9999</span>
+</span><span class='line'><span class="c1"># [6,] 0.4999 0.7500 0.8000 0.9001 0.9500 0.9900 0.9990 0.9999</span>
+</span><span class='line'><span class="c1"># [7,] 0.5000 0.7500 0.8000 0.9000 0.9500 0.9900 0.9990 0.9999</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：2章 練習問題]]></title>
@@ -682,7 +774,7 @@
 <li>例 2.7，例 2.8，練習問題 2.7，練習問題 2.8</li>
 </ul>
 </li>
-<li><a href="http://yagays.github.com/blog/2012/10/23/imcmr-2-3/">「「Rによるモンテカルロ法入門」読書ノート：2章 練習問題」</a>
+<li><a href="http://yagays.github.com/blog/2012/10/23/imcmr-2-3/">「Rによるモンテカルロ法入門」読書ノート：2章 練習問題</a>
 
 <ul>
 <li>練習問題 2.18，練習問題 2.19，練習問題 2.22</li>
@@ -1918,28 +2010,6 @@ end
 
 
 <p>（なお，この文章では冒頭の逸話に則って清潔な製品としてのパンをヤマザキパンと言っており，山崎製パンの実際の商品とは何ら関係がないことを付け加えておく．）</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「偶然と必然―現代生物学の思想的な問いかけ」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/09/19/review-chance-and-necessity/"/>
-    <updated>2012-09-19T21:28:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/09/19/review-chance-and-necessity</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4622004283" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>本書「偶然と必然」は副題にある通り，進化学や遺伝学など19世紀後半から20世紀半ばにかけて発展した現代生物学という新しい考え方を通して，科学の探求における思想・哲学的な問題に対して指針を示すような内容となっている．著者はノーベル生理学医学賞を受賞したJacques Lucien Monodで，1969年の講演をもとに書かれている．翻訳書は1972年に初版が出版されているので，かれこれ40年も前の本になる．</p>
-
-<p>本書ではまず自然物と人工物の違いなどから生物の特性として合目的性・自律的形態発生・複製の不変性が示される．その過程には「客観性」が重要なキーワードとして登場し，自然の持つ客観性，客観性の前提の元での科学批判の重要性，そして科学そのものが客観性を前提としていることが語られ，自然物と人工物(生物)の矛盾が提起される．そして実際に生物の持つ複雑な機能や役割を，生化学や遺伝学，そして進化学的な視点で解釈していく．そして最後には進化や人間の思考を総括し，人間の知識や倫理問題，第二の進化といった思想的な持論へと発展していく．</p>
-
-<p>とまあ解ったような振りをして纏めてみたものの，実際は殆ど理解していないと思う．全体を通して過去の西洋哲学や各種思想などと織り交ぜて語られるため，概要がつかみにくい部分があってなかなか苦労した．まあこれは私の不勉強からくるものだから仕方がない．昔の名著と呼ばれる本を読むときには必ずといっていいほど起こる現象なのだが，語られる内容や表現の古さからくる難解さと自分の理解の無さが交じり合って非常に不明瞭なまま読み進めなければいけない辺り，内容をただ追うことに専念できる普段の読書とは違ってなかなか辛いものがある．</p>
-
-<p>本書の場合，生命観などの思想に関しては今でも色褪せないような内容だと思われるが，生物学に限って言えば，生物の定義や生命機能の理解のような諸問題に関しては今の主流の考え方とさほど変わらない．生物分野の古典の名著といえば「<a href="http://www.amazon.co.jp/gp/product/4003394615/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4003394615&linkCode=as2&tag=yagays-22">生命とは何か―物理的にみた生細胞 (岩波文庫)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4003394615" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」あたりは上手く物理と融合した内容で改めて今読み直しても結構面白いのだが，本書に限ってはやはり生物学より自然哲学の傾向が強いので，そのあたり読む人を選ぶ本かもしれない．</p>
-
-<p>(追記 2012/09/20)</p>
-
-<p>「<a href="http://www.amazon.co.jp/gp/product/4130633333/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4130633333&linkCode=as2&tag=yagays-22">40年後の『偶然と必然』: モノーが描いた生命・進化・人類の未来</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4130633333" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」という本が最近出版されたらしく，書店で立ち読みした限りだとなかなかおもしろそうなので今度読んでみたい．</p>
 ]]></content>
   </entry>
   

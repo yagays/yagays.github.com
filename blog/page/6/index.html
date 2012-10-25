@@ -9,7 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="19世紀にダーウィンが「種の起源」で夢見た世界を，20世紀の進化学者が現実に証明してみせた．この「フィンチの嘴」は，ダーウィンが進化論の着想を得たとされるガラパゴス諸島において，ダーウィンフィンチと呼ばれる小さな鳥の生態を調査した研究者達と， &hellip;">
+  <meta name="description" content="pigzという並列でgzip圧縮を行うプログラムがあったので試してみた． ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -39,17 +39,12 @@
     .page-footer p {
       text-align: center;
     }
-    .MathJax_Display {
-    text-align: left !important;
-    }
-    
   </style>
   <script src="/javascripts/libs/jquery.js"></script>
   <script src="/javascripts/libs/modernizr-2.0.js"></script>
   <script src="/javascripts/libs/bootstrap.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Wolfeyes Bioinformatics beta" type="application/atom+xml">
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
   
   <script type="text/javascript">
@@ -108,6 +103,47 @@
     <div class="row-fluid">
       <div class="span9">
   
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/15/pigz/">Pigzを使ったgzip並列圧縮</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-15T19:39:00+09:00" pubdate data-updated="true">Jun 15<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>pigzという並列でgzip圧縮を行うプログラムがあったので試してみた．</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/06/15/pigz/">続きを読む &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -660,49 +696,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/06/02/allpaths-lg-dataset/">ALLPATHS-LGで使用できるライブラリサイズの制限</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-02T15:52:00+09:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>ALLPATHS-LGは複数のライブラリで読まれたショートリードを組み合わせてゲノムアセンブルをするソフトウェア（パイプライン）である．比較的新しいゲノムアセンブラで性能もかなり良いらしく，<a href="http://www.broadinstitute.org/software/allpaths-lg/blog/">公式ブログ</a>のアセンブル履歴を見ると非モデル生物を中心にかなり使われている印象がある．ただ，その反面かなり癖のあるソフトウェアで，インストールが鬼門・動かすのが難しい・インターネットに資料が少ないという三重苦で，初心者にはかなりハードルの高いソフトウェアと言わざるを得ない．その中でも個人的に一番やっかいだと思うポイントはパイプライン入力に使うデータセットの準備で，折角苦労してALLPATHS-LGが使える環境を整えたとしても，使えるデータが無いとそもそも動かないということになりかねない．</p>
-
-<p>ということで，今回はALLPATHS-LGを動かすために必要なライブラリについて見ていく．私自身も厳密に調べたわけではないので間違い等あるかもしれないが，もし詳しい方がいらっしゃればご指摘頂ければ幸い．</p>
-
-<p> </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/06/02/allpaths-lg-dataset/">続きを読む &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/7/">&larr; Older</a></li>
@@ -742,6 +735,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/10/25/imcmr-3-1/">「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/23/imcmr-2-3/">「Rによるモンテカルロ法入門」読書ノート：2章 練習問題</a>
       </li>
     
@@ -757,15 +754,11 @@
         <a href="/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">「Rによるモンテカルロ法入門」読書ノート：アーカイブ</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex/">TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (37)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (4)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (9)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (37)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (5)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (10)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
 </section>
 
 
