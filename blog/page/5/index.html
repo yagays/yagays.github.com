@@ -9,7 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="「遺伝統計学の基礎」をひと通り読んだのだけれども，はっきり言ってわかりにくい本だった．内容はあっちこっちに飛んで統一感が無いし，シミュレーションがある割には天下り的な理論導入で具体性に欠けるし，結局何がやりたくてどういう手法を使ってどんな結果が出たら嬉しいのかが終始読み取るのに苦労した． &hellip;">
+  <meta name="description" content="「ヤマザキパンはなぜカビないか」という有名な話がある．保存料無添加を謳っているヤマザキパンと家庭で作った手作りのパン，どちらが先にカビるだろうかという問題だ．正解は家庭で作った手作りのパンの方．なぜなら手作りでパンを作った場合では， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -109,7 +109,7 @@
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2012/07/28/review-genestat/">「遺伝統計学の基礎」の個人的感想</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/09/22/data-validity/">「そのデータ，本当？」―思い込みによる曲解と前提条件を信用することの難しさ</a></h1>
     
     
       <p class="meta">
@@ -125,34 +125,153 @@
   
 
 
-<time datetime="2012-07-28T17:17:00+09:00" pubdate data-updated="true">Jul 28<span>th</span>, 2012</time>
+<time datetime="2012-09-22T08:09:00+09:00" pubdate data-updated="true">Sep 22<span>nd</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4274068226" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4846108031" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
-<p>「遺伝統計学の基礎」をひと通り読んだのだけれども，はっきり言ってわかりにくい本だった．内容はあっちこっちに飛んで統一感が無いし，シミュレーションがある割には天下り的な理論導入で具体性に欠けるし，結局何がやりたくてどういう手法を使ってどんな結果が出たら嬉しいのかが終始読み取るのに苦労した．そりゃお前が不勉強で物知らずだからだろと言われればそれまでなんだけど，この本の売りであるRのコードとシミュレーションに関して個人的に思うところがあったので，ちょっと書き留めておこうと思う．簡単に言ってしまえば，理論を身につけてシミュレーションを理解する流れが非常にダルい．</p>
+<p>「<a href="http://www.foocom.net/fs/takou_old/1013/">ヤマザキパンはなぜカビないか</a>」という有名な話がある．保存料無添加を謳っているヤマザキパンと家庭で作った手作りのパン，どちらが先にカビるだろうかという問題だ．正解は家庭で作った手作りのパンの方．なぜなら手作りでパンを作った場合では，どうしてもカビがパンの表面に付着したり中に入り込んだりして増殖しやすいからだ．その点ヤマザキパンのパン工場では，非常に清潔な環境でパンが作られているため，カビが入り込む余地がない．これは実験でも確かめられている事実だ．だが，その問題の本の著者を含め，健康に人一倍敏感な人は解答こそ正しくとも「いや，それはヤマザキパンに保存料が添加されているからだ」と見当違いな主張をしがちである．なぜそのような間違いをするかというと，カビないのはパンに含まれてる何かが原因だとして理論展開していくからだ．上の逸話を書いた方は，これらの議論に欠けているのは量の問題だとし，食品の安全について的確な意見を述べている．</p>
 
-<p>この本の中に出てくるシミュレーションをきちんと理解するのは，何も知らない読者にとっては恐ろしく大変だ．書いてある内容が難解すぎて大変というわけではない．本文は平易に書かれているし，数式だってそれほど苦労するほどではない．シミュレーションも「こういう原理があってこういう解析をすると知りたいことが計算できるよね？じゃあRで適当にそれっぽいデータ作ってシミュレーションしてみよう．ほら，結果はきちんと出ましたね」という感じで淡々と進んでいく．頭から読み進めると「確かにそうだ，確かにそうだ」と解った気になるのだが，ひと通り読んだあとに振り返ってみて，この章は何を書いてあったかなと考えると，頭に残っているのは説明された事実とシミュレーションの結果だけ．じゃあこれが何処でどんな風に使えるのか，そして何がしたかったのかと首を傾げることになる．</p>
+<p>しかし，この話には量の問題以上に，より根本的で難しい問題を抱えている．それは<strong>前提条件・データを信じていないこと</strong>だ．保存料の有無はここでは前提条件として提示されており，同時に科学的なデータでもある．まず冒頭でヤマザキパンには保存料が入っていないと言っているのに，間違えた考え方をする人はヤマザキパンに保存料が添加されているはずだと決めつけてしまう．これは客観的に見れば明らかに言いがかりだ．ヤマザキパンに対して，いいやそれはパンじゃなくてご飯だ，と言っているのと何ら変わらない．ここでは保存料の入っていないパンと言っているのだから，そのパンにレーズンが入っていようとジャムが入っていようと，保存料は入っていないことには間違いない．そこをきちんと抑えておかないと，間違った考え方に走って前提を無視した論調になるのだ．ただ，こういう考えに至るプロセスは分からないわけではない．昔は保存料が入っていたかもしれないし，実は嘘をついてこっそり保存料を入れているかもしれないと疑うのは人間の性だ．ただ，この場合においては素直に前提を受け入れるべきだし，自分の導きたい結果から類推して前提をねじ曲げるのは論理的・批判的な姿勢ではない．</p>
 
-<p>シミュレーションを理解するのに一番重要な点は，何よりまず前提条件を理解することだ．どんな結果を期待してるか？データセットはどういう値や集合を用いるか？初期値はどう指定する？可変なパラメータは何だ？解析の肝となる数式はどれだ？といった具合に，とにかくコードの上で用意されたシミュレートの舞台の裏側を理解する必要がある．時には結果から遡って解釈する必要がある．しかし，言ってしまえば逆に細部なんて理解しなくてもシミュレーションは雰囲気さえ掴めれば細部を理解してなくてもおおよそ予測が付く．解析の流れがわかっていれば，それを一般化するだけで済むのだ．そして，それに必要なのは具体例だ．この本で一番問題だと思うのは，<strong>その前提条件の理解において，具体例となるような理論とコードを橋渡しする部分が非常に乏しいことだ</strong>．具体的に観測される値をpやqなどで表すことは数式の上で書かれていても，それがどういう値を取るかといった具体例などの数字はコードの部分まで出てこない．用いるデータセットは時に何らかの手を加えた関数からランダムに作られるが，それが結果を導くのに都合のいい事は感覚で分かるものの意図が説明されず分からないことが多い．また，長いコードや関数定義が入れ子になっているコードほど，理論のところで説明された数式がコードのどの部分に該当するかが分かりにくい．理論とコードを行ったり来たり見比べて，ようやく「理論の制約条件はここのコードに効いてくるのか」とか「コードで作ってるデータセットはこういう結果を導いたいからなのか」といったことが見えてくる．</p>
+<p>教訓としては，<strong>前提条件を自分で勝手に解釈してはいけない，与えられたデータはその通りに受け取るべきだ</strong>，ということだ．</p>
 
-<p>シミュレーションは予定調和で進んでいくだけで，その裏の意図を理解するのに非常に苦労する．このように，理論的な解釈からいきなり具体的な値と解析コードに落としこむ部分が難解なのだ．理論を理解する難しさとコードを理解する難しさが重なって，どっちつかずに曖昧なまま読み進めていかざるを得ない．まあ，そうやって理解する過程にこそ意義があるというなら，それはまあそうなんだろう．現に自分も躍起になって他の資料を当たったりコード書きなおしたりして勉強した．ただ，この本は何にしてもはっきりしなくて不親切というのが率直な感想だ．なんで小さな値で実際に解析をやってみせて，それを大きな値でシミュレートするという方向に持って行かないんだろう．なんでRのコードでシミュレートしたり作図した結果を提示して終わるんじゃなくて，ここの値がこうだからこういう意味を持つんですよ，これが見たいからこんな条件でシミュレーションを作ったんですよといった具体的な解釈をしないんだろう．</p>
+<br />
 
-<p>結局のところ，現場を知ってる専門家に向けた難易度とも思えず，遺伝統計学を一から学ぶ学生にとっては具体例に乏しく，リファレンスとして使うにも纏まりに欠け，どんな読者を対象としているのかよく分からない本だった．</p>
 
-<h4>最後に…</h4>
+<p>今回の例では少し思考実験みたいな形を取ったので，上のように分かりやすい形で問題点が顕になったが，実際の科学的な議論ではこの問題が複雑になりやすい．それは前提条件やデータがはっきりと正しいとは言い切れなかったり他人の意見を元にしている場合だ．データを示してきちんと論理を組み立てたとしても，データ自体を攻撃されることは防ぎようがない．それが再取得可能であったり再現実験できるようなものであれば攻撃に対処できるのだが，大抵はそれが難しい．</p>
 
-<p>余計な補足かもしれないが，この本は誤植が多い．公式の訂正以外にも有志が独自に訂正情報を出しているので，これから読む人は参考にするべきだろう．個人的に確認した範囲では，有志の訂正情報は大体正しかったと思う．</p>
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4862381502" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>山形浩生の「訳者解説」に収められている訳者あとがきの中で，これに関連した話がある．山形浩生が訳した地球温暖化に関する本の中で，ホッキョクグマの個体数の経年変化において一般的な想定とは違った傾向を示しているデータがあるのだが，その本の著者はそのデータを元に話を進めている．山形浩生はそれを変だと思い，自分ならデータの中で一部明らかに怪しい部分は信用しないと言っている．その疑問に対する著者自身の解答は，以下に引用したとおりだ．なお，ロンボルグとは原書の著者のことである．</p>
+
+<blockquote><p>しかしながら、それはあくまで考え方のちがいだ。この点をロンボルグに尋ねると、かれとしてはそうした恣意的なデータの取捨選択はすべきでないとの回答だった。ぼくたちはホッキョクグマの専門家じゃない。データを集めて発表しているところは、一応それなりに一貫性を持ってデータを出している。それについて見る側が自分の勝手な解釈にしたがって、元データをいじるべきではない、という。それをやるのはデータの改ざんだ、と。確かに、それは一理ある。そこから導く結論はもう少し慎重であってもいいとは思うけれど。</p>
+
+<p>「<a href="http://www.amazon.co.jp/gp/product/4862381502/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4862381502&linkCode=as2&tag=yagays-22">訳者解説 -新教養主義宣言リターンズ- (木星叢書)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4862381502" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」(p.213)</p></blockquote>
+
+<p>つまりこの本の著者としては，取り敢えずはデータを信じようよ，素人の解釈でデータをいじるのは改ざんに他ならないんだと言っている．データは確かに怪しいかもしれないけれども，そこは恣意的なデータの取捨選択をしてはいけないというスタンスであり，これこそまさに最初の逸話であった保存料無添加の前提を信じる信じないの話と根っこの部分は同じなのだ．</p>
+
+<br />
+
+
+<p>だからと言って，この方法を徹底するのはやはり難しい．全てのデータを並べて公平に議論できるわけでもないし，明らかな外れ値などは補正しないとどうしようもない場合もある．単純な思考実験だと容易に論破できるものでも，実際の議論では通用しないことがある．ただ，原則としてこの方法を守ることは非常に重要だ．まずはこの規範を元にして，そこから許容できる範囲内でどれだけ規範を超えられるかが問題だろう．その点，許容できる程度やそのやり方は非常にシビアであり，意見の別れるところだ．僕としては，基本的にデータを信じるべきだしデータの不備は違うデータによって補うべきだと考えているが，うーん，難しい．</p>
+
+<br />
+
+
+<p>（なお，この文章では冒頭の逸話に則って清潔な製品としてのパンをヤマザキパンと言っており，山崎製パンの実際の商品とは何ら関係がないことを付け加えておく．）</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/19/review-chance-and-necessity/">「偶然と必然―現代生物学の思想的な問いかけ」読了</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-19T21:28:00+09:00" pubdate data-updated="true">Sep 19<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4622004283" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>本書「偶然と必然」は副題にある通り，進化学や遺伝学など19世紀後半から20世紀半ばにかけて発展した現代生物学という新しい考え方を通して，科学の探求における思想・哲学的な問題に対して指針を示すような内容となっている．著者はノーベル生理学医学賞を受賞したJacques Lucien Monodで，1969年の講演をもとに書かれている．翻訳書は1972年に初版が出版されているので，かれこれ40年も前の本になる．</p>
+
+<p>本書ではまず自然物と人工物の違いなどから生物の特性として合目的性・自律的形態発生・複製の不変性が示される．その過程には「客観性」が重要なキーワードとして登場し，自然の持つ客観性，客観性の前提の元での科学批判の重要性，そして科学そのものが客観性を前提としていることが語られ，自然物と人工物(生物)の矛盾が提起される．そして実際に生物の持つ複雑な機能や役割を，生化学や遺伝学，そして進化学的な視点で解釈していく．そして最後には進化や人間の思考を総括し，人間の知識や倫理問題，第二の進化といった思想的な持論へと発展していく．</p>
+
+<p>とまあ解ったような振りをして纏めてみたものの，実際は殆ど理解していないと思う．全体を通して過去の西洋哲学や各種思想などと織り交ぜて語られるため，概要がつかみにくい部分があってなかなか苦労した．まあこれは私の不勉強からくるものだから仕方がない．昔の名著と呼ばれる本を読むときには必ずといっていいほど起こる現象なのだが，語られる内容や表現の古さからくる難解さと自分の理解の無さが交じり合って非常に不明瞭なまま読み進めなければいけない辺り，内容をただ追うことに専念できる普段の読書とは違ってなかなか辛いものがある．</p>
+
+<p>本書の場合，生命観などの思想に関しては今でも色褪せないような内容だと思われるが，生物学に限って言えば，生物の定義や生命機能の理解のような諸問題に関しては今の主流の考え方とさほど変わらない．生物分野の古典の名著といえば「<a href="http://www.amazon.co.jp/gp/product/4003394615/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4003394615&linkCode=as2&tag=yagays-22">生命とは何か―物理的にみた生細胞 (岩波文庫)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4003394615" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」あたりは上手く物理と融合した内容で改めて今読み直しても結構面白いのだが，本書に限ってはやはり生物学より自然哲学の傾向が強いので，そのあたり読む人を選ぶ本かもしれない．</p>
+
+<p>(追記 2012/09/20)</p>
+
+<p>「<a href="http://www.amazon.co.jp/gp/product/4130633333/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4130633333&linkCode=as2&tag=yagays-22">40年後の『偶然と必然』: モノーが描いた生命・進化・人類の未来</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4130633333" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」という本が最近出版されたらしく，書店で立ち読みした限りだとなかなかおもしろそうなので今度読んでみたい．</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/18/review-freakonomics/">「ヤバい経済学」読了</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-18T21:21:00+09:00" pubdate data-updated="true">Sep 18<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4492313788" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>2010に制作，2011年には日本で公開された映画「ヤバい経済学」は，結論から言って良くも悪くもない普通の映画だった．ネタはだいたい原書から持ってきているので当然面白くないわけがないんだけれども，どうも映像でコンパクトに見せられるとイマイチ面白みが伝わってこないのが残念で仕方がなかった．その原因はおそらく議論の過程が示されないからで，ああでもないこうでもないと反論の応酬や論理の組み上げ方が見えにくいのが問題だと思うのだが，かといって学者が円卓に座って延々人の話もろくに聞かずに議論しあうのを見ても全然面白く無いし…．Steven D. Levittが喋ってる映像を見られたのは良かったけど，具体的な事例は本読んだほうがいいよねという印象．</p>
+
+<p>というわけで映画はあまり冴えない感じだったけど，本書「ヤバい経済学」は出版されてから5年立った現在でもその驚きは色褪せていない．経済学と統計資料を武器に社会通念を次々と覆していく様はまさに爽快そのものだ．不動産屋の売り言葉は本当なのかどうかといった話題から，学校の先生のインチキ，ドラッグの売人が儲かるかどうかに至るまで，ある意味下世話な，ある意味で人々が気付きもしなかった現象について解き明かしてくれる．しかし同時に，読者にとって不都合な真実も突きつけられることになる．日本の相撲界の八百長話や中絶の是非と犯罪率の相関，そして子供の名前と子供の将来など，薄々気付いてはいても認めたくないような結論も含まれる．ただ，じゃあ本書で述べられている議論はみんな正しいからその通りに観たり感じたり接したりしなければいけないのか，と言われれば，そういうわけでは無いというのが本書の最終的な主張だ．最終章のまとめで触られれているように，</p>
+
+<blockquote><p>道徳が私達の望む世界のあり方を映しているのだとすると，経済学が映しているのは世の中の実際のあり方だ．</p>
+
+<p>(p.268)</p></blockquote>
+
+<p>とすると，私達が考えるべきことは世の中の実際のあり方から私達の望む世界へと適切にフィードバックしていくことだ．それに，個別の例で見ていけば必ずしも統計的な結論とはそぐわないことが出てくることも，念を押すかのように最後に書かれている．ある種の希望のような終わり方であり，また改めて現実を突きつけられているようでもある．</p>
+
+<br/>
+
+
+<p>そういえば，上の文章を書き終えた後に，ちょういいタイミングで山形浩生が本書について言及していたので，それについてもちょっと書き加えておこう．</p>
+
+<p>どうやら中絶の合憲判定とアメリカの犯罪低下については最終的に間違いだったらしいことが分かっているとのこと．この話題は本書の核のような話題だけに，もしそうだとすると少し残念だ．じゃあ何が原因で犯罪の低下につながったのかが気になるところだが，リンク先の論文のAbstを見る限りだと間違いの指摘しか書いてなさそうなので，その辺は追えていない．これを受けてのLevittの新しい見解が気になるところだが，また新しく本でも書いてその中で言及して欲しいところ．</p>
 
 <ul>
-<li><a href="http://www.genome.med.kyoto-u.ac.jp/wiki_tokyo/index.php/%E8%A8%82%E6%AD%A3%E6%83%85%E5%A0%B1">http://www.genome.med.kyoto-u.ac.jp/wiki_tokyo/index.php/%E8%A8%82%E6%AD%A3%E6%83%85%E5%A0%B1</a></li>
-<li><a href="http://d.hatena.ne.jp/foo22222/20100907/1305901272">http://d.hatena.ne.jp/foo22222/20100907/1305901272</a></li>
-<li><a href="https://www.evernote.com/pub/m_narahara/ryamadabook#b=598b4c2d-2ec7-4935-b6cb-22820782657d&amp;n=0dafabf8-d694-4892-bc30-ffaa8a016865">https://www.evernote.com/pub/m_narahara/ryamadabook#b=598b4c2d-2ec7-4935-b6cb-22820782657d&amp;n=0dafabf8-d694-4892-bc30-ffaa8a016865</a></li>
+<li><a href="http://d.hatena.ne.jp/wlj-Friday/20120918/1347949754">http://d.hatena.ne.jp/wlj-Friday/20120918/1347949754</a></li>
 </ul>
 
 </div>
@@ -167,7 +286,7 @@
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2012/07/27/review-yamagata-hiroo/">「要するに」「新教養主義宣言」「訳者解説」読了</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/09/17/review-enddepression/">「さっさと不況を終わらせろ」読了</a></h1>
     
     
       <p class="meta">
@@ -183,30 +302,28 @@
   
 
 
-<time datetime="2012-07-27T14:53:00+09:00" pubdate data-updated="true">Jul 27<span>th</span>, 2012</time>
+<time datetime="2012-09-17T09:31:00+09:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4309408834" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4152093129" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4309408443" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+<p>うーん，やっぱり経済学は難しい．僕の知識はスティグリッツの入門経済学くらいで止まってて，大学での興味は経済学よりマーケティングの方に傾いちゃったから，そもそも基礎の辺りで分かってないんだろうなと思うことが多い．本書なんかはその点かなり分かりやすく書かれているんだろうとは思うんだけど，ベビーシッター協同組合の上手い喩えから抜けだしたあたりの，じゃあFRBや政府や投資銀行やらの具体的な政策の話に入ると，どうしても要点がつかみにくくて難しいと感じてしまう．やっぱり経済学という枠の中での定番の話について知っておかないと，クルーグマンが如何に大胆な提言をしているのかといった部分についても見えてこないんじゃないかという心配もある．</p>
 
+<p>まあそれでも経済学は面白い．ヒトの物々交換が何でこんな複雑怪奇で実感とかけ離れたところまで来てしまったんだという歴史的なところから，その裏に隠れた経済活動を加速するための巧妙な仕組み，そして現実世界で今起こっている現象に対して頭のいい人たちがよってたかって集まって殴り合っている様はどれも非常に面白い．あとは「<a href="http://www.amazon.co.jp/gp/product/4492313788/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4492313788&linkCode=as2&tag=yagays-22">ヤバい経済学</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4492313788" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のような日常に落とし込んだ経済学も，それはそれで実感レベルでの驚きがあって良い．経済学という人間の経済活動を研究すること自体，ドライバーが自分のポンコツ車を高速で走らせたまま修理するようなもので（これ何の喩えだっけ），それにしても本当に難しい学問だとも感じる．</p>
 
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4862381502" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+<p>本書は，リーマン・ショック以降の現在のアメリカおよびユーロ圏の経済停滞において「これからどうするのか？」という問題を，過去の大恐慌やその時代のジョン・メイナード・ケインズの研究を軸に考えていこうという内容となっている．もちろん政府やFRBのバーナンキなどはどうにかして停滞を脱しようとしているわけだが，その政策はまだまだ甘い，効果が稀薄だとクルーグマンは主張する．</p>
 
+<p>さて，本書に関してはまあざっと読んで付箋をペタペタ貼りまくって一応は通読したわけだけど，取り敢えず外堀を埋めるという意味でも，もうちょっと経済学の基礎の部分を勉強していきたいところ．いくつか既に本は買ってあるし，スティグリッツの教科書もまだ残っているので，どういう感じで攻めていこうか考え中．</p>
 
-<p><a href="http://yagays.github.com/blog/2012/07/03/review-numbers/">「数学で犯罪を解決する」</a>のあとがきで「やっぱりこのおっさん面白いな」ということを再認識したのだが，そういえば山形浩生の文章って断片的にしか読んでこなかったと思って取り敢えずコラムやら短文の類を纏めて読んでみた次第．まあコラム集なんかは当たり外れはあるんだけれどもとにかく面白くて，あとがきを読むだけでも非常に興味深く元の本を読みたくなるものばかりだった．</p>
-
-<p>個人的には非常に満足なんだけど，山形浩生自身が書いた文章ってまあこの本以外に後数冊くらいあって，あとはネットの散文を集めればそれで大体はカバーできる(と思う)．そう考えると山形浩生自体のことをもっと知るにはあとは訳書をひたすら追いかけるしかなくて，もっと雑多なものを色々と出してくれると面白いんだけど&#8230;まあこれに関しては「訳者解説」のあとがきで，山形浩生自身が翻訳は早いのに文章書きは遅筆なことを旅での海外旅行と仕事での海外赴任になぞらえて書いていて，これがまた良い文章なんだけど，その中で「訳書は自分が行きたいと思ってなかったところに行ける」といったことを書いていて，まあまずは彼の訳書を道標にして色々乱読してみるか，という感じ．</p>
-
-<h4>参考</h4>
+<p>あと，先日のニコニコ生放送の宮崎哲弥x山形浩生x田中秀臣は本書を読む上でとても参考になった．</p>
 
 <ul>
-<li><a href="http://cruel.org/books/books.html">http://cruel.org/books/books.html</a></li>
+<li><a href="http://live.nicovideo.jp/watch/lv107129123">http://live.nicovideo.jp/watch/lv107129123</a></li>
 </ul>
 
 </div>
@@ -221,7 +338,7 @@
       
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2012/07/18/re-revenge-prml-3/">PRML復々習レーン#3で発表しました</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/09/16/review-supercomputer/">「スーパーコンピューターを20万円で創る」読了</a></h1>
     
     
       <p class="meta">
@@ -237,412 +354,44 @@
   
 
 
-<time datetime="2012-07-18T10:12:00+09:00" pubdate data-updated="true">Jul 18<span>th</span>, 2012</time>
+<time datetime="2012-09-16T02:24:00+09:00" pubdate data-updated="true">Sep 16<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>「パターン認識と機械学習」勉強会の復々習レーン#3で，3章の頭を担当しました．資料はslideshareにアップロードしています．</p>
-
-<div style="width:427px" id="__ss_13661580"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/yag_ays/re-revenge-chap031" title="Re revenge chap03-1" target="_blank">Re revenge chap03-1</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/13661580" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0" allowfullscreen></iframe> <div style="padding:5px 0 12px"> View more presentations from <a href="http://www.slideshare.net/yag_ays" target="_blank">yag ays</a> </div> </div>
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4087203956" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
-<p>3章の頭は線形回帰モデルの導入部分でPRMLの中では簡単な部類のところなのですが，きちんと説明しようとすればするほど自分の理解がいかに曖昧なものだったか思い知らされるばかりで，非常に勉強になりました．特に「§3.1.最小二乗法の幾何学」に関しては参加者の皆様に頼りっきりという何とも情けない感じになってしまったのですが，懇切丁寧に教えていただいたおかげで何とか図の直感的理解くらいはできるようになりました．これに関しては，その場で指摘していただいたことと自分の解釈をこねくり回しつつある程度纏めたものを，スライドの最後に補足として付け加えてあります．とは言っても，本文に書かれている数式は全くといっていいほど追いきれていないので，「学習の学習」とにらめっこしつつ，もう少し理解を深めたいと思います．</p>
+<p>以前「情熱大陸」という番組で理論天文学者である小久保英一郎がTVで語った言葉が，今でも強く印象に残っている．その言葉が番組のページに残っているので少し長めに引用させてもらうと，</p>
 
-<p>次回もよろしくお願いします．</p>
+<blockquote><p>「探検は知的情熱の肉体的表現である」</p>
 
-<ul>
-<li><a href="http://atnd.org/events/30181">http://atnd.org/events/30181</a></li>
-</ul>
+<p>（チェリー・ガラード：スコット南極探検隊）</p>
 
+<p>僕はこれ、だいッ好きな言葉で。</p>
+
+<p>もう何ていうか、
+このように生きていきたいと思っているわけです。</p>
+
+<p>「シミュレーションは知的情熱の計算機的表現である」と。</p>
+
+<p>ほんとは僕、探検家になりたかったんですけど。</p>
+
+<p>まあなかなかそういう世の中でもないので、</p>
+
+<p>知的な探検をする、と。</p>
+
+<p>で、道具はスーパーコンピュータということでやっています。</p>
+
+<p><a href="http://www.mbs.jp/jounetsu/2008/01_20.shtml">http://www.mbs.jp/jounetsu/2008/01_20.shtml</a></p></blockquote>
+
+<p>と，計算機シミュレーションを端的に素晴らしい言葉で言い表している．本書「スーパーコンピューターを20万円で創る」は，小久保英一郎がスーパーコンピューターGRAPEの開発に参加する少し前，まだスーパーコンピューターというものが企業主導の大資本で大規模開発されていた頃に，重力多体問題のシミュレーションを行うために自力でスーパーコンピューターを組み上げた研究者たちの実話の物語となっている．</p>
+
+<p>内容はかなり大雑把に物語を追いかける形となっており細かい部分に少し物足りなさは感じるものの，それでも当時の研究者の熱意や苦悩がひしひしと伝わってくる．私自身も今現在彼らと同じような立場にあるのだが，自分の境遇と似た部分も多く，非常に勇気づけられると同時に研究への情熱を奮い立たせられるような作品だった．</p>
 </div>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/07/10/review-problems-of-biology/">「生物学のすすめ」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-10T13:11:00+09:00" pubdate data-updated="true">Jul 10<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=431400536X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>ジョン・メイナード=スミスの生物学啓蒙書．生命の定義から始まり，進化学，遺伝学，神経科学，生態学，発生学まで，生物学全般を広く浅く取り扱った本で，非常に基本的な概念を話の流れに沿って丁寧に解説している．原書のタイトルは&#8221;THE PROBLEMS OF BIOLOGY&#8221;とあり，まえがきでジョン・メイナード=スミスがハッキリと書いている通り，生物に対する問題提起というのは何を以ってして生物の理解と捉えるかといった全体論と還元論的な意味で非常に難しい部分だ．本書では中立的な立場を取っており，その両方から攻めることで最終的に中央にある真の理解に辿り着けるという理念のもとで，本の中で何を話して何を話さないかということが慎重に述べられている．統一的に生物を扱うことの難しさは非常によく分かるし，ましてや一般書として生物の基礎の基礎から解説しようというものだから，まえがきで各方面に異常なほど配慮しているのは仕方がないのだろう．</p>
-
-<p>内容としては簡潔に纏められている印象はあるが，じゃあ今敢えてジョン・メイナード=スミスのこの本書を読む意味があるかと考えると，正直なところ考えこんでしまう．生物学を俯瞰する意味ではどの点を取っても現在ならもっと良い本が出ているだろうし，ジョン・メイナード=スミスの哲学はもっと研究よりの本を読まなければ垣間見ることが出来ないだろう．本書が出版されて20年経った今となっては，宙に浮いた感じの対象の定まらない本だと言える．とは言っても，それこそ上に書いたような問題と同じように，各論ばかりに目が行き過ぎていて総論として纏めることの重要性や意義などを過小評価しているのかもしれず，読んでいて非常に判断に困る感じがした．</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/07/07/review-prml-learning/">「パターン認識と機械学習の学習」購入</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-07T08:43:00+09:00" pubdate data-updated="true">Jul 7<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="http://dl.dropbox.com/u/142306/b/prml_learning.png" alt="" /></p>
-
-<ul>
-<li><a href="http://prml.in/">http://prml.in/</a></li>
-<li><a href="https://github.com/herumi/prml">https://github.com/herumi/prml</a></li>
-</ul>
-
-
-<p>「<a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22">パターン認識と機械学習 上</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」や「<a href="http://www.amazon.co.jp/gp/product/4621061240/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061240&linkCode=as2&tag=yagays-22">パターン認識と機械学習 下 (ベイズ理論による統計的予測)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061240" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-」などで知られるPRMLの副読本を入手．中身は殆ど公開されているものと同じということだが，書きおろしが少しあるということと，あとは記念ということで購入した．既に公開されているpdfについては印刷して至る所にメモを書きまくっているのだが，この本は大事に取っておこうと思う．</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/07/03/review-numbers/">「数学で犯罪を解決する」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-03T18:34:00+09:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=447800420X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>本書はタイトルでハッキリとわかるように「数学で犯罪を解決する話！」の一言で表されて身も蓋もないのだが，中で紹介されているトピックは非常に豊富で多岐にわたる．統計の基礎から始まり，ニューラルネットや画像処理，データマイニング，ベイズ統計や暗号など，数学といっても理論をこねる退屈な感じではなく，犯罪捜査でいかに数学が実用的に使われてるかが分かりやすく書かれている．犯罪捜査の花形といえば敏腕刑事や名探偵などを思い浮かべるが，本書では登場するのは地味な数式や確率などの数学理論だ．町中で犯人を追いかけたり名推理で犯人を追い詰めたりといったことはなく，数学で手がかりや問題の兆候など解決の糸口を提示するだけだ．だが，複雑な現象から技巧的な数学テクニックを使ってパターンを見つけ出したり犯人像をあぶり出す様は，刑事モノや推理小説に引けをとらない爽快感や喜びがある．</p>
-
-<p>この本は元々海外ドラマ「NUMB3RS」(ナンバーズ)の解説として書かれているが，ドラマを見ていなくても読めるような作りになっている．ドラマの解説として紹介されている事例はどれも面白いものばかりだったが，個人的に思うに，この本で見所となるのは「訳者あとがき」だろう．訳者の山形浩生がFurther Readingの趣旨の文章を25ページほど書いており，原著者の経歴や各トピックに関して深く理解するための参考書などが紹介されていたり，本文で詳しく述べられなかった部分についての補足がされている．さすが山形浩生といったところで，それぞれの分野について私見を交えつつ特徴をうまく捉えた解説がされている．本に出てくるトピックについて多少知見があれば，ここを眺めるだけでもなかなか面白い．</p>
-
-<p>早くドラマNUMB3RSの方も見なくては…．</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/06/30/review-maidrobot/">「メイドロボットはどこから生物となるか」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-30T16:32:00+09:00" pubdate data-updated="true">Jun 30<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=427406770X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>いわゆるライトノベルで生物学を勉強しようという本．タイトルと中身があまり一致していない部分もあるが，無生物と人間の生物の境界というものを，無生物であるロボットと比較しつつ現代の生物学と照らし合わせながら考えてみようといった内容となっている．原始地球において生物がどのようにして生まれたかを初めてとして，遺伝学や発生生物学，進化学，微生物学など，「生物」を軸にしてかなり広い部分をカバーしており，身近な疑問などを交えて非常にわかりやすく解説されている．物語自体はストレートでよくありがちな，ちょっと不思議系の恋愛物で非常に分かりやすい．登場人物は，何も知らないが勘だけは冴えていて情熱ある主人公と，生物のことなら何でも知ってる同級生の女の子と，科学の叡智を結集して作られたメイドロボットの3人(2人＋ロボット)で，生物部を舞台にして生物について勉強するといった感じで話は進んでいく．ただ，逆にメイドロボットである無生物の方から生物の条件を考えることは殆ど行われないので，ロボットの話と思って読み進めると肩透かしを食らう可能性がある．あと最終的に生物と無生物の境界に関して結論なんてものは出せないのだけれども，厳密な定義はともかくとして，生命誕生や進化の歴史，多様な生命活動などを通じて，世間一般に生物と呼ばれているものについて纏まった理解をすることは出来ると思う．</p>
-
-<p>私自身高校で生物をまともに勉強してこなかったので実感がないが，レベルとしては高校〜大学初頭くらいの内容だろう．読んで理解するだけなら中学生でも問題ないと思う．ただ，図などが少ないのが少し難点といったところか．あとはホメオボックスやゲノムインプリンティングなど少し難しい話題も出てくるが出てくるが，話の流れの手助けとなるよう深入りしないので，概念程度の理解で問題ない．</p>
-
-<p>猫耳メイドロボット良いですね．なんでロボットがそんな格好なのかというと，完全に人間に似せると両者の区別が付かなくなって犯罪に使われるからという設定らしい．変に納得してしまった反面，現実の科学を見る限り不気味の谷を超えるのは当分先だろうし，まだまだそんな心配する必要な無いのかもしれないと悲しい気分になったり．</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/06/26/review-species/">「分類思考の世界」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-26T19:12:00+09:00" pubdate data-updated="true">Jun 26<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4062880148" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>だいぶ前に書店をうろついていた時に散財欲求を抑えることができず，タガが外れて高い本から少しでも気になった本まで纏めて科学書を購入したときの1冊．三中信宏氏の本を読むのは初めてだが，著者に関しては統計学やRの資料で度々目にすることがあり，プロフィールから研究内容，キャラを含めて前々から断片的には知っていた．かなりアクの強いことは承知の上で，言ってもこの本は新書なので少しは安易な形で一般向けな内容かと思ったのだが，本書も相変わらず著者の思想が濃く入り混じった感じだった．</p>
-
-<p>大まかな内容としては生物を分類に関する話なのだが，具体的な生物の話は殆ど紹介されず，専ら分類方法の考え方と歴史，そして哲学に関して，西洋文学や西洋音楽などの文化的な背景と絡めて非常に濃密に解説されている．生物の分類を考えることは「種」という概念を明確にする必要があるのだが，リンネの系統分類の時代から進化学や遺伝学が進歩した現代においても，その定義は定まっていない．当然ながら本書においても「種」や「分類」の決定的な概念を提唱するものではなく，その思考の歴史から紐解いていこうという形となっている．</p>
-
-<p>本書は元を辿ると「<a href="http://www.amazon.co.jp/gp/product/4061498495/ref=as_li_ss_tl?ie=UTF8&tag=yagays-22&linkCode=as2&camp=247&creative=7399&creativeASIN=4061498495">系統樹思考の世界 (講談社現代新書)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4061498495" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-」という同出版社から3年前に出された新書の姉妹本として，水平思考と垂直思考という対比の元に書かれた本らしい．そっちはまだ手を付けていないので，この分野の興味と読みきる気力があるうちに手を付けたいところ&#8230;．</p>
-
-<h3>ちなみに&#8230;</h3>
-
-<p><a href="http://cse.niaes.affrc.go.jp/minaka/files/SpeciesRIP.html">http://cse.niaes.affrc.go.jp/minaka/files/SpeciesRIP.html</a></p>
-
-<p>正誤表を確認するために著者自身がホストするサイトを訪れたのだが，ここのhtmlファイル名が<strong>「SpeciesRIP」</strong>になっていることに気付いた．これは最終章で語られる種の議論において，ある植物学者がリンネ体系を捨てて新しい命名体系に移行すべきと主張した時の締めくくりの言葉だ．本文では「種よ，安らかに眠りたまえ」という訳となっている．本文では明確には書かれていない(と思う)が，つまるところ種とは愛であり，そして神であるということなのだろう．</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/06/23/review-shell/">「プロのための Linuxシステム・10年効く技術」など，Linuxやプログラミング周りの読書をいくつか</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-23T15:12:00+09:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774151432" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4904807049" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0086W5MI4" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774151041" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<p><strong>「プロのための Linuxシステム・10年効く技術」</strong>はまだ読んでいる最中だが，Linux中級・上級者向けの解説書として非常に良さそうな印象を受ける．普段自分が扱う範囲のシェルコマンドやLinuxの基本的な知識は問題無いけれども，そこから次に行けないといった人，コマンドの詳細な動作を理解していない人，システムの込み入った問題になると手が出せないような人向けのような感じだ．本書の内容としては，Linuxの内部構造から始まり，仮想化，シェルスクリプトの書き方，最後にはカーネルのソースまで読み解くところまで突き進むが，ざっと見た限りでは他の技術書などと比べてかなりわかりやすく丁寧に書かれているようだ．読み通す気力は無くとも，トピックをかいつまむだけでもだいぶ基礎力が付くだろうと思う．</p>
-
-<p><strong>「覚えて便利 いますぐ使える!シェルスクリプトシンプルレシピ54」</strong>も上の本と同様に，シェルスクリプトは書けるけれども少し複雑なことをしようとすると途端に手が止まってしまうような人向けのレシピ本になっている．内容は非常によく纏まっており，ざっと見ても知らないコマンドやすぐ使えそうなコマンドがいくつかあった．まあ個人的には，がっつりシェルスクリプトを書くというのはスパコンでSGE(UGE)アレイジョブを流す時くらいなのだが&#8230;．といっても，もっとスマートに簡潔に書きたいと常々思いつつ結局泥臭い感じでその場しのぎを繰り返していたので，今度からはレシピ本を見つつ少しずつ書き方を変えていきたいところ．</p>
-
-<p><strong>「Software Design」</strong>と<strong>「WEB+DB PRESS」</strong>はいつも通り気になるところをざっと読み流し．やっぱり雑誌という紙媒体で様々な情報を纏まった形として俯瞰できるというのは，知りたい情報だけを見るようなネットの記事と比べて，思いがけず得られる情報というものが多くて良い．全く知識の無い分野の内容でも不思議と読んでみるかという気になるのは，やっぱり紙の雑誌だからだろうか．</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/06/21/genesinconflict-3-1/">「せめぎ合う遺伝子」読書ノート 3章その1</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-21T20:34:00+09:00" pubdate data-updated="true">Jun 21<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yagays-22&o=9&p=8&l=as1&asins=432005699X&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px; height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h1>3章 キラーX染色体</h1>
-
-<ul>
-<li>その因子は，どのようにして利己的な優位性を獲得したのだろうか？
-
-<ul>
-<li>精子形成時の減数第2分裂においてY染色分体の不分離</li>
-</ul>
-</li>
-<li>いかにして，その因子は出現したのだろう？
-
-<ul>
-<li>???</li>
-</ul>
-</li>
-<li>どれくらい昔に出現したのだろう？
-
-<ul>
-<li>???</li>
-</ul>
-</li>
-<li>大型生物に対する影響はどのようなものだろうか？
-
-<ul>
-<li>???</li>
-</ul>
-</li>
-<li>どのくらいの速度で，その因子は分布を拡大すると期待されるだろうか？
-
-<ul>
-<li>頻度は高くならない</li>
-</ul>
-</li>
-<li>種内における頻度はどれくらいか？
-
-<ul>
-<li>種によってばらつきがある</li>
-</ul>
-</li>
-<li>頻度を決定づけているものは何か？
-
-<ul>
-<li>オスの側の精子の補充の不十分さ</li>
-<li>メスにおける有害なホモ接合効果</li>
-</ul>
-</li>
-<li>いくつかの種にその因子が見いだされるのに，他の種には見いだされないのはなぜか？
-
-<ul>
-<li>???</li>
-</ul>
-</li>
-<li>ゲノムの他の因子は，利己的な因子に対抗してどのような適応を強いられてきたか？
-
-<ul>
-<li>キラーX染色体に対し，Y染色体に連鎖した抑制因子または常染色体上の抑制因子が，X染色体のドライヴを抑制</li>
-<li>キラーX染色体がドラッグするほど強く抑制するものもある</li>
-</ul>
-</li>
-<li>ホストの系統に対しておよぼしてきた効果以外に，どのような影響をもたらすだろうか？
-
-<ul>
-<li>???</li>
-</ul>
-</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/06/21/genesinconflict-3-1/">続きを読む &rarr;</a>
-    </footer>
   
 
 
@@ -704,6 +453,26 @@
     
       <li class="post">
         <a href="/blog/2012/10/21/imcmr-2-1/">「Rによるモンテカルロ法入門」読書ノート：2章 逆変換・一般変換法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">「Rによるモンテカルロ法入門」読書ノート：アーカイブ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex/">TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/18/review-the-art-of-designing/">「デザインする技術 -よりよいデザインのための基礎知識」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/13/soapdenovo2-install/">SOAPdenovo2のインストール方法</a>
       </li>
     
   </ul>

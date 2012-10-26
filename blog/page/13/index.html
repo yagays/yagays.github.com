@@ -1,0 +1,447 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Wolfeyes Bioinformatics beta</title>
+  <meta name="author" content="yag_ays">
+
+  
+  <meta name="description" content="「せめぎ合う遺伝子」(Genes in Conflicts)を先週あたりから少しずつ読み進めている．元々の動機としては，生物学を勉強するにあたり「○○学」なんて大層な名前の分厚い「辞書」を読み進めるのに飽きたのがきっかけで， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yagays.github.com/blog/page/13">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <script src="/javascripts/libs/jquery.js"></script>
+  <script src="/javascripts/libs/modernizr-2.0.js"></script>
+  <script src="/javascripts/libs/bootstrap.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Wolfeyes Bioinformatics beta" type="application/atom+xml">
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17620484-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <a class="brand" href="/">Wolfeyes Bioinformatics beta</a>
+
+      <div class="nav-collapse">
+        <ul class="nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+        <ul class="nav pull-right" data-subscription="rss">
+          <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+          
+        </ul>
+
+        
+          <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <fieldset role="search">
+              <input type="hidden" name="q" value="site:yagays.github.com" />
+              <input class="search-query" type="text" name="q" results="0" placeholder="Search"/>
+            </fieldset>
+          </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</nav>
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span9">
+  
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/03/genesinconflict-1/">「せめぎ合う遺伝子」読書ノート 1章</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-03T14:31:00+09:00" pubdate data-updated="true">Jun 3<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as1&m=amazon&f=ifr&ref=qf_sp_asin_til&asins=432005699X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>「せめぎ合う遺伝子」(Genes in Conflicts)を先週あたりから少しずつ読み進めている．元々の動機としては，生物学を勉強するにあたり「○○学」なんて大層な名前の分厚い「辞書」を読み進めるのに飽きたのがきっかけで，実例を学びながら時々辞書を引きつつ勉強しようと思ってこの本を選んだのが始まりだった．当初の目的通りこの本をさらっと読み進めながら辞書の方の読解を並行して進められるかと思いきや，これが思いの外キツい本で今は必死になって読み進めている．ある意味計画通りな反面，辞書が示す範疇を超えるのではないかと思うような濃厚さで，半ば辞書を放り出して本に齧り付いている感じがある．</p>
+
+<p>そんなこんなで，無いも同然な生物学の知識を総動員して読み進めているわだが，読み進めるにあたり<a href="http://d.hatena.ne.jp/shorebird/20060424">原書を読まれた方の読書記録</a>が大いに理解の手助けになり参考にさせてもらっている．ということで，自分も実際に書きだして理解を深めようと思い，自分の理解の範囲内で纏めを作って見ることにした．間違ったことを書いていたり理解が浅い部分は多々あると思うので，そのあたり「生物学初学者が書いている」ことを念頭に置いてもらえればと思う．</p>
+
+<h3>1章</h3>
+
+<p>1章はガイダンス的な内容で，この本のメインテーマである利己的な遺伝因子の定義や，その戦略，研究の歴史が紹介されている．そして最後に，利己的な遺伝因子がいかに広範囲に及ぶ分野をまたぐテーマであり，本書はそれらを包括的に扱い体系化させようとしていることが述べられている．</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/06/03/genesinconflict-1/">続きを読む &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/02/allpaths-lg-dataset/">ALLPATHS-LGで使用できるライブラリサイズの制限</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-02T15:52:00+09:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>ALLPATHS-LGは複数のライブラリで読まれたショートリードを組み合わせてゲノムアセンブルをするソフトウェア（パイプライン）である．比較的新しいゲノムアセンブラで性能もかなり良いらしく，<a href="http://www.broadinstitute.org/software/allpaths-lg/blog/">公式ブログ</a>のアセンブル履歴を見ると非モデル生物を中心にかなり使われている印象がある．ただ，その反面かなり癖のあるソフトウェアで，インストールが鬼門・動かすのが難しい・インターネットに資料が少ないという三重苦で，初心者にはかなりハードルの高いソフトウェアと言わざるを得ない．その中でも個人的に一番やっかいだと思うポイントはパイプライン入力に使うデータセットの準備で，折角苦労してALLPATHS-LGが使える環境を整えたとしても，使えるデータが無いとそもそも動かないということになりかねない．</p>
+
+<p>ということで，今回はALLPATHS-LGを動かすために必要なライブラリについて見ていく．私自身も厳密に調べたわけではないので間違い等あるかもしれないが，もし詳しい方がいらっしゃればご指摘頂ければ幸い．</p>
+
+<p> </div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/06/02/allpaths-lg-dataset/">続きを読む &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/23/new-post/">Github Pages + Octopressでブログを作ってみた</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-23T15:52:00+09:00" pubdate data-updated="true">May 23<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>お久しぶりです，yag_aysです．</p>
+
+<p>さくらVPSの解約に伴い，Wordpressで立てていたblogをGithub Pagesで立て直すことにしました．</p>
+
+<p>ということで，また懲りずに技術系記事をひっそりと書いていく予定です．よろしくお願いします．</p>
+
+<h2>以下メモ</h2>
+
+<ul>
+<li>Githubのレポジトリを作成する</li>
+</ul>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/github_accountsetting.png" alt="アカウント登録" /></p>
+
+<ul>
+<li>ページを作成してindex.htmlを作成すると，以下のようにNotificationが来る．</li>
+</ul>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/github_notify.png" alt="Notification" /></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'> cd octopress
+</span><span class='line'> gem install bundler
+</span><span class='line'> bundle install
+</span><span class='line'>
+</span><span class='line'> rake setup_github_pages
+</span><span class='line'> rake generate
+</span><span class='line'> rake deploy
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>まだMarkdownがよくわかってない&#8230;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <ul class="pager">
+    
+    <li><a href="/blog/archives">Blog Archives</a></li>
+    
+    <li class="next"><a href="/blog/page/12/">Newer &rarr;</a></li>
+    
+  </ul>
+</div>
+<aside class="sidebar-nav span3">
+  
+    <section class="well">
+  <h1>About Me</h1>
+  <p>id : yag_ays</p>
+  <p>E-mail : yanagi.ayase [at] gmail.com</p>
+  <ul>
+    <li><a href="https://twitter.com/#!/yag_ays" target="_blank">Twitter</a></li>
+    <li><a href="https://github.com/yagays" target="_blank">Github</a> </li>
+    <li><a href="https://gist.github.com/yagays" target="_blank">Gist</a></li>
+    <li><a href="http://b.hatena.ne.jp/yag_ays/" target="_blank">Bookmark</a></li>
+    <li><a href="http://slideshare.net/yag_ays/" target="_blank">Slideshare</a></li>
+    <li><a href="http://yan-ase.tumblr.com/" target="_blank">Tumblr</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="http://yag-ays.hateblo.jp/" target="_blank">Hatena Blog (Technical)</a> </li>
+    <li><a href="http://yag-ays.hatenablog.com/" target="_blank">Hatena Blog (Personal)</a></li>
+    <li><a href="http://g86.dbcls.jp/~yag/wordpress/" target="_blank">Wordpress Blog (Technical, <i>old</i>)</a></li>
+    <li><a href="http://d.hatena.ne.jp/yag_ays/" target="_blank">Hatena Diary (<i>old</i>)</a></li>
+  </ul>
+
+</section>
+<section class="well">
+  <h1>Recent Post</h1>
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/26/review-one-click/">「ワンクリック―ジェフ・ベゾス率いるAmazonの隆盛」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/25/imcmr-3-1/">「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/23/imcmr-2-3/">「Rによるモンテカルロ法入門」読書ノート：2章 練習問題</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/22/imcmr-2-2/">「Rによるモンテカルロ法入門」読書ノート：2章 受理・棄却法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/21/imcmr-2-1/">「Rによるモンテカルロ法入門」読書ノート：2章 逆変換・一般変換法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">「Rによるモンテカルロ法入門」読書ノート：アーカイブ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex/">TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/18/review-the-art-of-designing/">「デザインする技術 -よりよいデザインのための基礎知識」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/13/soapdenovo2-install/">SOAPdenovo2のインストール方法</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="well">
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (38)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (5)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (10)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+</section>
+
+
+<section class="well">
+  <h1>Twitter</h1>
+  <ul id="tweets" class="nav">
+    <li class="nav-header">Latest Tweets</li>
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      getTwitterFeed("yag_ays", 10, true);
+    });
+  </script>
+  <script src="/javascripts/asides/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/yag_ays" class="twitter-follow-button" data-show-count="false">Follow @yag_ays</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2012 - yag_ays -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wolfeyesbioinformaticsbeta';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

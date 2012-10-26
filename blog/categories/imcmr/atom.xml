@@ -4,7 +4,7 @@
   <title><![CDATA[Category: imcmr | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/imcmr/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-26T01:58:06+09:00</updated>
+  <updated>2012-10-26T22:19:39+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -28,7 +28,7 @@
 <h3>例 3.3 モンテカルロ積分の具体例</h3>
 
 <p>図の上半分は<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%29+%3D+%5B%5Ccos%2850x%29+%2B+%5Csin%2820x%29+%5D%3Csup%3E2%3C%2Fsup%3E+>を0から1の間で図示したもの．モンテカルロ積分ではこの曲線の下側の面積を求めることになる．
-図の下半分は，実際にモンテカルロ積分のシミュレーションをしたもの．横軸がシミュレーション回数（サンプル数m）で，縦軸が経験平均<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbar%7Bh%7D%3Cem%3Em+%3D+%5Cfrac%7B1%7D%7Bm%7D%5Csum%3C%2Fem%3E%7Bj%3D1%7D%3Csup%3E%7Bm%7Dh%28x_j%29%3C%2Fsup%3E+>を示したもの．黒の線が平均値の推移，上限の黄色の線が推定標準誤差に基づく信頼幅，赤の直線がRのintegrate関数で求めた積分値を示している．この図から，シミュレーション回数を重ねるごとに数値的に求めた値が実際の積分値に収束していく様子がわかる．</p>
+図の下半分は，実際にモンテカルロ積分のシミュレーションをしたもの．横軸がシミュレーション回数（サンプル数m）で，縦軸が経験平均<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbar%7Bh%7D%3Cem%3Em+%3D+%5Cfrac%7B1%7D%7Bm%7D%5Csum%3C%2Fem%3E%7Bj%3D1%7D%3Csup%3E%7Bm%7Dh%28x_j%29%3C%2Fsup%3E+>を示したもの．黒の線が平均値の推移，上下の黄色の線が推定標準誤差に基づく信頼幅，赤の直線がRのintegrate関数で求めた積分値を示している．この図から，シミュレーション回数を重ねるごとに数値的に求めた値が実際の積分値に収束していく様子がわかる．</p>
 
 <p><code>r
 h &lt;- function(x){(cos(50*x) + sin(20*x))^2}

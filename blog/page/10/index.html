@@ -1,0 +1,577 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Wolfeyes Bioinformatics beta</title>
+  <meta name="author" content="yag_ays">
+
+  
+  <meta name="description" content="本書はタイトルでハッキリとわかるように「数学で犯罪を解決する話！」の一言で表されて身も蓋もないのだが，中で紹介されているトピックは非常に豊富で多岐にわたる．統計の基礎から始まり，ニューラルネットや画像処理，データマイニング，ベイズ統計や暗号など，数学といっても理論をこねる退屈な感じではなく， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yagays.github.com/blog/page/10">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <script src="/javascripts/libs/jquery.js"></script>
+  <script src="/javascripts/libs/modernizr-2.0.js"></script>
+  <script src="/javascripts/libs/bootstrap.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Wolfeyes Bioinformatics beta" type="application/atom+xml">
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17620484-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <a class="brand" href="/">Wolfeyes Bioinformatics beta</a>
+
+      <div class="nav-collapse">
+        <ul class="nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+        <ul class="nav pull-right" data-subscription="rss">
+          <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+          
+        </ul>
+
+        
+          <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <fieldset role="search">
+              <input type="hidden" name="q" value="site:yagays.github.com" />
+              <input class="search-query" type="text" name="q" results="0" placeholder="Search"/>
+            </fieldset>
+          </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</nav>
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span9">
+  
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/07/03/review-numbers/">「数学で犯罪を解決する」読了</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-03T18:34:00+09:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=447800420X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>本書はタイトルでハッキリとわかるように「数学で犯罪を解決する話！」の一言で表されて身も蓋もないのだが，中で紹介されているトピックは非常に豊富で多岐にわたる．統計の基礎から始まり，ニューラルネットや画像処理，データマイニング，ベイズ統計や暗号など，数学といっても理論をこねる退屈な感じではなく，犯罪捜査でいかに数学が実用的に使われてるかが分かりやすく書かれている．犯罪捜査の花形といえば敏腕刑事や名探偵などを思い浮かべるが，本書では登場するのは地味な数式や確率などの数学理論だ．町中で犯人を追いかけたり名推理で犯人を追い詰めたりといったことはなく，数学で手がかりや問題の兆候など解決の糸口を提示するだけだ．だが，複雑な現象から技巧的な数学テクニックを使ってパターンを見つけ出したり犯人像をあぶり出す様は，刑事モノや推理小説に引けをとらない爽快感や喜びがある．</p>
+
+<p>この本は元々海外ドラマ「NUMB3RS」(ナンバーズ)の解説として書かれているが，ドラマを見ていなくても読めるような作りになっている．ドラマの解説として紹介されている事例はどれも面白いものばかりだったが，個人的に思うに，この本で見所となるのは「訳者あとがき」だろう．訳者の山形浩生がFurther Readingの趣旨の文章を25ページほど書いており，原著者の経歴や各トピックに関して深く理解するための参考書などが紹介されていたり，本文で詳しく述べられなかった部分についての補足がされている．さすが山形浩生といったところで，それぞれの分野について私見を交えつつ特徴をうまく捉えた解説がされている．本に出てくるトピックについて多少知見があれば，ここを眺めるだけでもなかなか面白い．</p>
+
+<p>早くドラマNUMB3RSの方も見なくては…．</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/30/review-maidrobot/">「メイドロボットはどこから生物となるか」読了</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-30T16:32:00+09:00" pubdate data-updated="true">Jun 30<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=427406770X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>いわゆるライトノベルで生物学を勉強しようという本．タイトルと中身があまり一致していない部分もあるが，無生物と人間の生物の境界というものを，無生物であるロボットと比較しつつ現代の生物学と照らし合わせながら考えてみようといった内容となっている．原始地球において生物がどのようにして生まれたかを初めてとして，遺伝学や発生生物学，進化学，微生物学など，「生物」を軸にしてかなり広い部分をカバーしており，身近な疑問などを交えて非常にわかりやすく解説されている．物語自体はストレートでよくありがちな，ちょっと不思議系の恋愛物で非常に分かりやすい．登場人物は，何も知らないが勘だけは冴えていて情熱ある主人公と，生物のことなら何でも知ってる同級生の女の子と，科学の叡智を結集して作られたメイドロボットの3人(2人＋ロボット)で，生物部を舞台にして生物について勉強するといった感じで話は進んでいく．ただ，逆にメイドロボットである無生物の方から生物の条件を考えることは殆ど行われないので，ロボットの話と思って読み進めると肩透かしを食らう可能性がある．あと最終的に生物と無生物の境界に関して結論なんてものは出せないのだけれども，厳密な定義はともかくとして，生命誕生や進化の歴史，多様な生命活動などを通じて，世間一般に生物と呼ばれているものについて纏まった理解をすることは出来ると思う．</p>
+
+<p>私自身高校で生物をまともに勉強してこなかったので実感がないが，レベルとしては高校〜大学初頭くらいの内容だろう．読んで理解するだけなら中学生でも問題ないと思う．ただ，図などが少ないのが少し難点といったところか．あとはホメオボックスやゲノムインプリンティングなど少し難しい話題も出てくるが出てくるが，話の流れの手助けとなるよう深入りしないので，概念程度の理解で問題ない．</p>
+
+<p>猫耳メイドロボット良いですね．なんでロボットがそんな格好なのかというと，完全に人間に似せると両者の区別が付かなくなって犯罪に使われるからという設定らしい．変に納得してしまった反面，現実の科学を見る限り不気味の谷を超えるのは当分先だろうし，まだまだそんな心配する必要な無いのかもしれないと悲しい気分になったり．</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/26/review-species/">「分類思考の世界」読了</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-26T19:12:00+09:00" pubdate data-updated="true">Jun 26<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4062880148" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>だいぶ前に書店をうろついていた時に散財欲求を抑えることができず，タガが外れて高い本から少しでも気になった本まで纏めて科学書を購入したときの1冊．三中信宏氏の本を読むのは初めてだが，著者に関しては統計学やRの資料で度々目にすることがあり，プロフィールから研究内容，キャラを含めて前々から断片的には知っていた．かなりアクの強いことは承知の上で，言ってもこの本は新書なので少しは安易な形で一般向けな内容かと思ったのだが，本書も相変わらず著者の思想が濃く入り混じった感じだった．</p>
+
+<p>大まかな内容としては生物を分類に関する話なのだが，具体的な生物の話は殆ど紹介されず，専ら分類方法の考え方と歴史，そして哲学に関して，西洋文学や西洋音楽などの文化的な背景と絡めて非常に濃密に解説されている．生物の分類を考えることは「種」という概念を明確にする必要があるのだが，リンネの系統分類の時代から進化学や遺伝学が進歩した現代においても，その定義は定まっていない．当然ながら本書においても「種」や「分類」の決定的な概念を提唱するものではなく，その思考の歴史から紐解いていこうという形となっている．</p>
+
+<p>本書は元を辿ると「<a href="http://www.amazon.co.jp/gp/product/4061498495/ref=as_li_ss_tl?ie=UTF8&tag=yagays-22&linkCode=as2&camp=247&creative=7399&creativeASIN=4061498495">系統樹思考の世界 (講談社現代新書)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4061498495" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+」という同出版社から3年前に出された新書の姉妹本として，水平思考と垂直思考という対比の元に書かれた本らしい．そっちはまだ手を付けていないので，この分野の興味と読みきる気力があるうちに手を付けたいところ&#8230;．</p>
+
+<h3>ちなみに&#8230;</h3>
+
+<p><a href="http://cse.niaes.affrc.go.jp/minaka/files/SpeciesRIP.html">http://cse.niaes.affrc.go.jp/minaka/files/SpeciesRIP.html</a></p>
+
+<p>正誤表を確認するために著者自身がホストするサイトを訪れたのだが，ここのhtmlファイル名が<strong>「SpeciesRIP」</strong>になっていることに気付いた．これは最終章で語られる種の議論において，ある植物学者がリンネ体系を捨てて新しい命名体系に移行すべきと主張した時の締めくくりの言葉だ．本文では「種よ，安らかに眠りたまえ」という訳となっている．本文では明確には書かれていない(と思う)が，つまるところ種とは愛であり，そして神であるということなのだろう．</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/23/review-shell/">「プロのための Linuxシステム・10年効く技術」など，Linuxやプログラミング周りの読書をいくつか</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-23T15:12:00+09:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774151432" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4904807049" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0086W5MI4" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774151041" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<p><strong>「プロのための Linuxシステム・10年効く技術」</strong>はまだ読んでいる最中だが，Linux中級・上級者向けの解説書として非常に良さそうな印象を受ける．普段自分が扱う範囲のシェルコマンドやLinuxの基本的な知識は問題無いけれども，そこから次に行けないといった人，コマンドの詳細な動作を理解していない人，システムの込み入った問題になると手が出せないような人向けのような感じだ．本書の内容としては，Linuxの内部構造から始まり，仮想化，シェルスクリプトの書き方，最後にはカーネルのソースまで読み解くところまで突き進むが，ざっと見た限りでは他の技術書などと比べてかなりわかりやすく丁寧に書かれているようだ．読み通す気力は無くとも，トピックをかいつまむだけでもだいぶ基礎力が付くだろうと思う．</p>
+
+<p><strong>「覚えて便利 いますぐ使える!シェルスクリプトシンプルレシピ54」</strong>も上の本と同様に，シェルスクリプトは書けるけれども少し複雑なことをしようとすると途端に手が止まってしまうような人向けのレシピ本になっている．内容は非常によく纏まっており，ざっと見ても知らないコマンドやすぐ使えそうなコマンドがいくつかあった．まあ個人的には，がっつりシェルスクリプトを書くというのはスパコンでSGE(UGE)アレイジョブを流す時くらいなのだが&#8230;．といっても，もっとスマートに簡潔に書きたいと常々思いつつ結局泥臭い感じでその場しのぎを繰り返していたので，今度からはレシピ本を見つつ少しずつ書き方を変えていきたいところ．</p>
+
+<p><strong>「Software Design」</strong>と<strong>「WEB+DB PRESS」</strong>はいつも通り気になるところをざっと読み流し．やっぱり雑誌という紙媒体で様々な情報を纏まった形として俯瞰できるというのは，知りたい情報だけを見るようなネットの記事と比べて，思いがけず得られる情報というものが多くて良い．全く知識の無い分野の内容でも不思議と読んでみるかという気になるのは，やっぱり紙の雑誌だからだろうか．</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/21/genesinconflict-3-1/">「せめぎ合う遺伝子」読書ノート 3章その1</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-21T20:34:00+09:00" pubdate data-updated="true">Jun 21<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yagays-22&o=9&p=8&l=as1&asins=432005699X&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px; height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h1>3章 キラーX染色体</h1>
+
+<ul>
+<li>その因子は，どのようにして利己的な優位性を獲得したのだろうか？
+
+<ul>
+<li>精子形成時の減数第2分裂においてY染色分体の不分離</li>
+</ul>
+</li>
+<li>いかにして，その因子は出現したのだろう？
+
+<ul>
+<li>???</li>
+</ul>
+</li>
+<li>どれくらい昔に出現したのだろう？
+
+<ul>
+<li>???</li>
+</ul>
+</li>
+<li>大型生物に対する影響はどのようなものだろうか？
+
+<ul>
+<li>???</li>
+</ul>
+</li>
+<li>どのくらいの速度で，その因子は分布を拡大すると期待されるだろうか？
+
+<ul>
+<li>頻度は高くならない</li>
+</ul>
+</li>
+<li>種内における頻度はどれくらいか？
+
+<ul>
+<li>種によってばらつきがある</li>
+</ul>
+</li>
+<li>頻度を決定づけているものは何か？
+
+<ul>
+<li>オスの側の精子の補充の不十分さ</li>
+<li>メスにおける有害なホモ接合効果</li>
+</ul>
+</li>
+<li>いくつかの種にその因子が見いだされるのに，他の種には見いだされないのはなぜか？
+
+<ul>
+<li>???</li>
+</ul>
+</li>
+<li>ゲノムの他の因子は，利己的な因子に対抗してどのような適応を強いられてきたか？
+
+<ul>
+<li>キラーX染色体に対し，Y染色体に連鎖した抑制因子または常染色体上の抑制因子が，X染色体のドライヴを抑制</li>
+<li>キラーX染色体がドラッグするほど強く抑制するものもある</li>
+</ul>
+</li>
+<li>ホストの系統に対しておよぼしてきた効果以外に，どのような影響をもたらすだろうか？
+
+<ul>
+<li>???</li>
+</ul>
+</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/06/21/genesinconflict-3-1/">続きを読む &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <ul class="pager">
+    
+    <li class="previous"><a href="/blog/page/11/">&larr; Older</a></li>
+    
+    <li><a href="/blog/archives">Blog Archives</a></li>
+    
+    <li class="next"><a href="/blog/page/9/">Newer &rarr;</a></li>
+    
+  </ul>
+</div>
+<aside class="sidebar-nav span3">
+  
+    <section class="well">
+  <h1>About Me</h1>
+  <p>id : yag_ays</p>
+  <p>E-mail : yanagi.ayase [at] gmail.com</p>
+  <ul>
+    <li><a href="https://twitter.com/#!/yag_ays" target="_blank">Twitter</a></li>
+    <li><a href="https://github.com/yagays" target="_blank">Github</a> </li>
+    <li><a href="https://gist.github.com/yagays" target="_blank">Gist</a></li>
+    <li><a href="http://b.hatena.ne.jp/yag_ays/" target="_blank">Bookmark</a></li>
+    <li><a href="http://slideshare.net/yag_ays/" target="_blank">Slideshare</a></li>
+    <li><a href="http://yan-ase.tumblr.com/" target="_blank">Tumblr</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="http://yag-ays.hateblo.jp/" target="_blank">Hatena Blog (Technical)</a> </li>
+    <li><a href="http://yag-ays.hatenablog.com/" target="_blank">Hatena Blog (Personal)</a></li>
+    <li><a href="http://g86.dbcls.jp/~yag/wordpress/" target="_blank">Wordpress Blog (Technical, <i>old</i>)</a></li>
+    <li><a href="http://d.hatena.ne.jp/yag_ays/" target="_blank">Hatena Diary (<i>old</i>)</a></li>
+  </ul>
+
+</section>
+<section class="well">
+  <h1>Recent Post</h1>
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/26/review-one-click/">「ワンクリック―ジェフ・ベゾス率いるAmazonの隆盛」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/25/imcmr-3-1/">「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/23/imcmr-2-3/">「Rによるモンテカルロ法入門」読書ノート：2章 練習問題</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/22/imcmr-2-2/">「Rによるモンテカルロ法入門」読書ノート：2章 受理・棄却法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/21/imcmr-2-1/">「Rによるモンテカルロ法入門」読書ノート：2章 逆変換・一般変換法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">「Rによるモンテカルロ法入門」読書ノート：アーカイブ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex/">TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/18/review-the-art-of-designing/">「デザインする技術 -よりよいデザインのための基礎知識」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/13/soapdenovo2-install/">SOAPdenovo2のインストール方法</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="well">
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (38)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (5)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (10)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+</section>
+
+
+<section class="well">
+  <h1>Twitter</h1>
+  <ul id="tweets" class="nav">
+    <li class="nav-header">Latest Tweets</li>
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      getTwitterFeed("yag_ays", 10, true);
+    });
+  </script>
+  <script src="/javascripts/asides/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/yag_ays" class="twitter-follow-button" data-show-count="false">Follow @yag_ays</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2012 - yag_ays -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wolfeyesbioinformaticsbeta';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
