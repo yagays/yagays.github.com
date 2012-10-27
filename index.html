@@ -158,7 +158,7 @@
 
 <p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+%3D+%5Cfrac%7B%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+%5Ctheta+%5Ctimes+Cauchy+%5Ctimes+Normal%7D%7B%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+Cauchy+%5Ctimes+Normal%7D+></p>
 
-<p>このように，上と下でそれぞれ積分しているので，モンテカルロ積分の実装においても上下別々に推定値を計算した後に推定値を求める．また，コーシー分布と正規分布を掛けた形となっているため，どちらの分布からも乱数を生成してモンテカルロ積分ができる．</p>
+<p>このように，上と下でそれぞれ積分しているので，モンテカルロ積分の実装においても上下別々に推定値を計算した後に<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+>の推定値を求める．また，コーシー分布と正規分布を掛けた形となっているため，どちらの分布からも乱数を生成してモンテカルロ積分ができる．</p>
 
 <p>ちなみに，本問題は4章の例4.2（P.107）にも同様の推定量を扱った問題が出てくる．</p>
 
@@ -182,17 +182,13 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
 </pre></td><td class='code'><pre><code class='r'><span class='line'>delta_num <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>t<span class="p">){</span>t<span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span>t<span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">*</span>exp<span class="p">(</span><span class="o">-</span><span class="p">(</span>x<span class="o">-</span>t<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="m">2</span><span class="p">)}</span>
 </span><span class='line'>delta_den <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>t<span class="p">){</span><span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span>t<span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">*</span>exp<span class="p">(</span><span class="o">-</span><span class="p">(</span>x<span class="o">-</span>t<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="m">2</span><span class="p">)}</span>
-</span><span class='line'>delta <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>t<span class="p">){</span>delta_num<span class="p">(</span>t<span class="p">)</span><span class="o">/</span>delta_den<span class="p">(</span>t<span class="p">)}</span>
 </span><span class='line'>
-</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
 </span><span class='line'><span class="kr">for</span><span class="p">(</span>x in c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">)){</span>
 </span><span class='line'>  curve<span class="p">(</span>delta_num<span class="p">,</span> from<span class="o">=</span><span class="m">-10</span><span class="p">,</span> to<span class="o">=</span><span class="m">10</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;numerator : x=&quot;</span><span class="p">,</span>x<span class="p">))</span>
 </span><span class='line'>  curve<span class="p">(</span>delta_den<span class="p">,</span> from<span class="o">=</span><span class="m">-10</span><span class="p">,</span> to<span class="o">=</span><span class="m">10</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;denominator : x=&quot;</span><span class="p">,</span>x<span class="p">))</span>
-</span><span class='line'>  curve<span class="p">(</span>delta<span class="p">,</span> from<span class="o">=</span><span class="m">-10</span><span class="p">,</span> to<span class="o">=</span><span class="m">10</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;normal-Cauchy Bayes : x=&quot;</span><span class="p">,</span>x<span class="p">))</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 

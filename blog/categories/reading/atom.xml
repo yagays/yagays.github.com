@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Reading | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-27T15:09:48+09:00</updated>
+  <updated>2012-10-27T15:15:59+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -44,7 +44,7 @@
 
 <p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+%3D+%5Cfrac%7B%5Cint%3Cem%3E%7B-%5Cinfty%7D%3Csup%3E%7B%5Cinfty%7D%3C%2Fsup%3E+%5Ctheta+%5Ctimes+Cauchy+%5Ctimes+Normal%7D%7B%5Cint%3C%2Fem%3E%7B-%5Cinfty%7D%3Csup%3E%7B%5Cinfty%7D%3C%2Fsup%3E+Cauchy+%5Ctimes+Normal%7D+></p>
 
-<p>このように，上と下でそれぞれ積分しているので，モンテカルロ積分の実装においても上下別々に推定値を計算した後に推定値を求める．また，コーシー分布と正規分布を掛けた形となっているため，どちらの分布からも乱数を生成してモンテカルロ積分ができる．</p>
+<p>このように，上と下でそれぞれ積分しているので，モンテカルロ積分の実装においても上下別々に推定値を計算した後に<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+>の推定値を求める．また，コーシー分布と正規分布を掛けた形となっているため，どちらの分布からも乱数を生成してモンテカルロ積分ができる．</p>
 
 <p>ちなみに，本問題は4章の例4.2（P.107）にも同様の推定量を扱った問題が出てくる．</p>
 
@@ -62,14 +62,12 @@
 
 <p>```r
 delta_num &lt;- function(t){t/(1+t<sup>2)*exp(-(x-t)<sup>2/2)}</sup></sup>
-delta_den &lt;- function(t){1/(1+t<sup>2)*exp(-(x-t)<sup>2/2)}</sup></sup>
-delta &lt;- function(t){delta_num(t)/delta_den(t)}</p>
+delta_den &lt;- function(t){1/(1+t<sup>2)*exp(-(x-t)<sup>2/2)}</sup></sup></p>
 
-<p>par(mfrow=c(3,3))
+<p>par(mfrow=c(3,2))
 for(x in c(0,2,4)){
   curve(delta_num, from=-10, to=10, main=paste("numerator : x=",x))
   curve(delta_den, from=-10, to=10, main=paste("denominator : x=",x))
-  curve(delta, from=-10, to=10, main=paste("normal-Cauchy Bayes : x=",x))
 }
 ```</p>
 
