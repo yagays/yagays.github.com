@@ -1,0 +1,693 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分 その2 - Wolfeyes Bioinformatics beta</title>
+  <meta name="author" content="yag_ays">
+
+  
+  <meta name="description" content="読書ノート アーカイブ:http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/ 練習問題 3.1 正規・コーシー-ベイズ推定量のモンテカルロ積分を2通りの方法で計算する 正規 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yagays.github.com/blog/2012/10/27/imcmr-3-2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <script src="/javascripts/libs/jquery.js"></script>
+  <script src="/javascripts/libs/modernizr-2.0.js"></script>
+  <script src="/javascripts/libs/bootstrap.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Wolfeyes Bioinformatics beta" type="application/atom+xml">
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17620484-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <a class="brand" href="/">Wolfeyes Bioinformatics beta</a>
+
+      <div class="nav-collapse">
+        <ul class="nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+        <ul class="nav pull-right" data-subscription="rss">
+          <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+          
+        </ul>
+
+        
+          <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <fieldset role="search">
+              <input type="hidden" name="q" value="site:yagays.github.com" />
+              <input class="search-query" type="text" name="q" results="0" placeholder="Search"/>
+            </fieldset>
+          </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</nav>
+  <div class="container">
+    <div class="row-fluid">
+      
+<article class="hentry span9" role="article">
+
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分 その2</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-27T12:33:00+09:00" pubdate data-updated="true">Oct 27<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><ul>
+<li>読書ノート アーカイブ:<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>練習問題 3.1 正規・コーシー-ベイズ推定量のモンテカルロ積分を2通りの方法で計算する</h3>
+
+<p>正規・コーシー-ベイズ推定量について，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+0%2C2%2C4+>だとしてモンテカルロ積分を計算する．</p>
+
+<blockquote><p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+%3D+%5Cfrac%7B%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+%5Cfrac%7B%5Ctheta%7D%7B1%2B%5Ctheta%5E2%7De%5E%7B-%28x-%5Ctheta%29%5E2%2F2%7D+d%5Ctheta%7D%7B%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+%5Cfrac%7B1%7D%7B1%2B%5Ctheta%5E2%7De%5E%7B-%28x-%5Ctheta%29%5E2%2F2%7D+d%5Ctheta%7D+></p></blockquote>
+
+<p>さて，この式だけだと何のことか全然分からないのだが，式中で消えている係数をしっかり書くと，</p>
+
+<ul>
+<li>分子：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%5Ctheta%5Ctimes%5Cfrac%7B1%7D%7B%5Cpi%281%2B%5Ctheta%5E2%29%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%28x-%5Ctheta%29%5E2%2F2%7Dd%5Ctheta+></li>
+<li>分母：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%5Cfrac%7B1%7D%7B%5Cpi%281%2B%5Ctheta%5E2%29%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%28x-%5Ctheta%29%5E2%2F2%7Dd%5Ctheta+></li>
+</ul>
+
+
+<p>に分解され，結局はコーシー分布と正規分布の掛け算をしていることになる．模式的に書くと以下のようになる．</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+%3D+%5Cfrac%7B%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+%5Ctheta+%5Ctimes+Cauchy+%5Ctimes+Normal%7D%7B%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+Cauchy+%5Ctimes+Normal%7D+></p>
+
+<p>このように，上と下でそれぞれ積分しているので，モンテカルロ積分の実装においても上下別々に推定値を計算した後に推定値を求める．また，コーシー分布と正規分布を掛けた形となっているため，どちらの分布からも乱数を生成してモンテカルロ積分ができる．</p>
+
+<p>ちなみに，本問題は4章の例4.2（P.107）にも同様の推定量を扱った問題が出てくる．</p>
+
+<h3>a.1 被積分関数をプロットする</h3>
+
+<p>左から順に，</p>
+
+<ul>
+<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+>の分子の分布</li>
+<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+>の分母の分布</li>
+</ul>
+
+
+<p>を，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+0%2C2%2C4+>についてプロットしたのが以下の図になる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>delta_num <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>t<span class="p">){</span>t<span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span>t<span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">*</span>exp<span class="p">(</span><span class="o">-</span><span class="p">(</span>x<span class="o">-</span>t<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="m">2</span><span class="p">)}</span>
+</span><span class='line'>delta_den <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>t<span class="p">){</span><span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span>t<span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">*</span>exp<span class="p">(</span><span class="o">-</span><span class="p">(</span>x<span class="o">-</span>t<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="m">2</span><span class="p">)}</span>
+</span><span class='line'>delta <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>t<span class="p">){</span>delta_num<span class="p">(</span>t<span class="p">)</span><span class="o">/</span>delta_den<span class="p">(</span>t<span class="p">)}</span>
+</span><span class='line'>
+</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>x in c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">)){</span>
+</span><span class='line'>  curve<span class="p">(</span>delta_num<span class="p">,</span> from<span class="o">=</span><span class="m">-10</span><span class="p">,</span> to<span class="o">=</span><span class="m">10</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;numerator : x=&quot;</span><span class="p">,</span>x<span class="p">))</span>
+</span><span class='line'>  curve<span class="p">(</span>delta_den<span class="p">,</span> from<span class="o">=</span><span class="m">-10</span><span class="p">,</span> to<span class="o">=</span><span class="m">10</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;denominator : x=&quot;</span><span class="p">,</span>x<span class="p">))</span>
+</span><span class='line'>  curve<span class="p">(</span>delta<span class="p">,</span> from<span class="o">=</span><span class="m">-10</span><span class="p">,</span> to<span class="o">=</span><span class="m">10</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;normal-Cauchy Bayes : x=&quot;</span><span class="p">,</span>x<span class="p">))</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3.png" alt="" /></p>
+
+<h3>a.2 コーシー・シミュレーションにもとづくモンテカルロ積分を計算する</h3>
+
+<p>コーシー分布から乱数を生成してモンテカルロ積分をシミュレーションする．イテレーションごとの推定値と標準分散のプロットは<a href="http://yagays.github.com/blog/2012/10/25/imcmr-3-1/">例3.3</a>のプロットと同じで，黒の線が推定値の推移，上下の黄色の線が推定値の誤差の範囲となっている．</p>
+
+<p>モンテカルロ積分の結果としては</p>
+
+<ul>
+<li>x=0のとき：-0.01243</li>
+<li>x=2のとき：1.282</li>
+<li>x=4のとき：3.389</li>
+</ul>
+
+
+<p>となった．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>Nsim <span class="o">&lt;-</span> <span class="m">10</span><span class="o">^</span><span class="m">4</span>
+</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>x in c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">)){</span>
+</span><span class='line'>  theta <span class="o">&lt;-</span> rcauchy<span class="p">(</span>Nsim<span class="p">)</span>
+</span><span class='line'>  num <span class="o">&lt;-</span> theta <span class="o">*</span> dnorm<span class="p">(</span>theta<span class="p">,</span> mean<span class="o">=</span>x<span class="p">)</span>
+</span><span class='line'>  den <span class="o">&lt;-</span> dnorm<span class="p">(</span>theta<span class="p">,</span> mean<span class="o">=</span>x<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  n <span class="o">&lt;-</span> num<span class="p">[</span>den <span class="o">!=</span> <span class="m">0</span><span class="p">]</span>
+</span><span class='line'>  d <span class="o">&lt;-</span> den<span class="p">[</span>den <span class="o">!=</span> <span class="m">0</span><span class="p">]</span> <span class="c1"># ゼロ除算を起こさないようにしている</span>
+</span><span class='line'>  y <span class="o">&lt;-</span> n <span class="o">/</span> d
+</span><span class='line'>  estint <span class="o">&lt;-</span> <span class="p">(</span>cumsum<span class="p">(</span>n<span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:length<span class="p">(</span>n<span class="p">)))</span> <span class="o">/</span> <span class="p">(</span>cumsum<span class="p">(</span>d<span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:length<span class="p">(</span>d<span class="p">)))</span>
+</span><span class='line'>  esterr <span class="o">&lt;-</span> sqrt<span class="p">(</span>cumsum<span class="p">((</span>y <span class="o">-</span> estint<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:length<span class="p">(</span>y<span class="p">))</span>
+</span><span class='line'>  plot<span class="p">(</span>estint<span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;x = &quot;</span><span class="p">,</span>x<span class="p">,</span><span class="s">&quot;, Estimate= &quot;</span><span class="p">,</span>mean<span class="p">(</span>estint<span class="p">)),</span>
+</span><span class='line'>       type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span>x<span class="o">-</span><span class="m">1</span><span class="p">,</span>x<span class="o">+</span><span class="m">1</span><span class="p">))</span>
+</span><span class='line'>  lines<span class="p">(</span>estint<span class="o">+</span><span class="m">2</span><span class="o">*</span>esterr<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;gold&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>  lines<span class="p">(</span>estint<span class="o">-</span><span class="m">2</span><span class="o">*</span>esterr<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;gold&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-1_1.png" alt="" /></p>
+
+<h3>b. 収束する様子を推定値の標準誤差でモニタリングする</h3>
+
+<p>上図の黄色の幅で示してある．</p>
+
+<h3>c. 正規近似によるモンテカルロ積分を計算する</h3>
+
+<p>以下のグラフでは，コーシー乱数のシミュレーションのグラフを重ねてプロットすることで，コーシー乱数を使った場合と正規乱数を使った場合の標準誤差を比較をしている．正規乱数を使ったシミュレーションの結果は，赤とピンクの線で表している．このプロットを見ると，正規乱数を使った場合の方がより誤差が少なく推定値を求められることがわかる．</p>
+
+<ul>
+<li>黒＆黄色：正規乱数（問題 a.）</li>
+<li>赤＆ピンク：コーシー乱数（問題 c.）</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>Nsim <span class="o">&lt;-</span> <span class="m">10</span><span class="o">^</span><span class="m">4</span>
+</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>x in c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">)){</span>
+</span><span class='line'>  theta <span class="o">&lt;-</span> rnorm<span class="p">(</span>Nsim<span class="p">,</span> mean<span class="o">=</span>x<span class="p">)</span>
+</span><span class='line'>  num <span class="o">&lt;-</span> theta <span class="o">*</span> dcauchy<span class="p">(</span>theta<span class="p">)</span>
+</span><span class='line'>  den <span class="o">&lt;-</span> dcauchy<span class="p">(</span>theta<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  n <span class="o">&lt;-</span> num<span class="p">[</span>den <span class="o">!=</span> <span class="m">0</span><span class="p">]</span>
+</span><span class='line'>  d <span class="o">&lt;-</span> den<span class="p">[</span>den <span class="o">!=</span> <span class="m">0</span><span class="p">]</span>
+</span><span class='line'>  y <span class="o">&lt;-</span> n <span class="o">/</span> d
+</span><span class='line'>  estint <span class="o">&lt;-</span> <span class="p">(</span>cumsum<span class="p">(</span>n<span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:length<span class="p">(</span>n<span class="p">)))</span> <span class="o">/</span> <span class="p">(</span>cumsum<span class="p">(</span>d<span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:length<span class="p">(</span>d<span class="p">)))</span>
+</span><span class='line'>  esterr <span class="o">&lt;-</span> sqrt<span class="p">(</span>cumsum<span class="p">((</span>y <span class="o">-</span> estint<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:length<span class="p">(</span>y<span class="p">))</span>
+</span><span class='line'>  plot<span class="p">(</span>estint<span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;x = &quot;</span><span class="p">,</span>x<span class="p">,</span><span class="s">&quot;, Estimate= &quot;</span><span class="p">,</span>mean<span class="p">(</span>estint<span class="p">)),</span>
+</span><span class='line'>       type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span>x<span class="o">-</span><span class="m">1</span><span class="p">,</span>x<span class="o">+</span><span class="m">1</span><span class="p">))</span>
+</span><span class='line'>  lines<span class="p">(</span>estint<span class="o">+</span><span class="m">2</span><span class="o">*</span>esterr<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;pink&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>  lines<span class="p">(</span>estint<span class="o">-</span><span class="m">2</span><span class="o">*</span>esterr<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;pink&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-1_3.png" alt="" /></p>
+
+<h3>練習問題 3.9</h3>
+
+<p>この問題は，練習問題3.1の続き．</p>
+
+<h4>a.コーシー候補にもとづく受理・棄却アルゴリズムから推定量を計算する</h4>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=X+%5Csim+%5Cmathcal%7BN%7D%28%5Ctheta%2C1%29><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+%5Csim+%5Cmathcal%7BC%7D%280%2C1%29>において，事後分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=p%28%5Ctheta%7Cx%29+>は以下のように表される．</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=p%28%5Ctheta%7Cx%29%3D%5Cfrac%7Bp%28x%7C%5Ctheta%29p%28%5Ctheta%29%7D%7Bp%28x%29%7D></p>
+
+<p>ここで，<img src=http://chart.apis.google.com/chart?cht=tx&chl=p%28x%7C%5Ctheta%29+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7B%28x-%5Ctheta%29%5E2%7D%7B2%7D%7D+>より，</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbegin%7Balign%7D+p%28%5Ctheta%7Cx%29+%3D%26+%5Cfrac%7Bp%28%5Ctheta%29%7D%7Bp%28x%29%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7B%28x-%5Ctheta%29%5E2%7D%7B2%7D%7D+%5C%5C+%5Cpropto%26+p%28%5Ctheta%29e%5E%7B-%5Cfrac%7B%28x-%5Ctheta%29%5E2%7D%7B2%7D%7D+%5Cend%7Balign%7D+></p>
+
+<p>となる．受理・棄却アルゴリズムにおける目標分布と候補分布は</p>
+
+<ul>
+<li>目標分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=f%28%5Ctheta%29+>：<img src=http://chart.apis.google.com/chart?cht=tx&chl=p%28%5Ctheta%29e%5E%7B-%28x-%5Ctheta%29%5E2%2F2%7D></li>
+<li><p>候補分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28%5Ctheta%29+>：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Cpi%281%2B%5Ctheta%5E2%29%7D></p></li>
+<li><p>受理・棄却条件：<img src=http://chart.apis.google.com/chart?cht=tx&chl=U%5Ctimes+M+%5Cleq+%5Cfrac%7Bf%28Y%29%7D%7Bg%28Y%29%7D+>，（<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y+%5Csim+%5Cmathcal%7BC%7D%280%2C1%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2C1%5D%7D>）</p></li>
+</ul>
+
+
+<p>のようになる．受理・棄却アルゴリズムの実験は，練習問題3.1と同様に<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+0%2C2%2C4+>で実行している．以下の図は，受理された乱数のヒストグラムと，その乱数の平均値の値を赤い線で示してある．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>Nsim <span class="o">&lt;-</span> <span class="m">10</span><span class="o">^</span><span class="m">4</span>
+</span><span class='line'>x <span class="o">&lt;-</span> rep<span class="p">(</span><span class="m">0</span><span class="p">,</span> Nsim<span class="p">)</span>
+</span><span class='line'>M <span class="o">&lt;-</span> pi
+</span><span class='line'>f <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>theta<span class="p">){</span> exp<span class="p">(</span><span class="o">-</span><span class="p">(</span>xx<span class="o">-</span>theta<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span>theta<span class="o">^</span><span class="m">2</span><span class="p">)}</span>
+</span><span class='line'>
+</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>xx in c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">)){</span>
+</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>i in <span class="m">1</span>:Nsim<span class="p">){</span>
+</span><span class='line'>    y <span class="o">&lt;-</span> rcauchy<span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>    <span class="kr">while</span><span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">*</span>M <span class="o">&gt;</span> f<span class="p">(</span>y<span class="p">)</span><span class="o">/</span>dcauchy<span class="p">(</span>y<span class="p">)){</span>
+</span><span class='line'>      y <span class="o">&lt;-</span> rcauchy<span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    x<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> y
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  hist<span class="p">(</span>x<span class="p">,</span> freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> nclass<span class="o">=</span><span class="m">150</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;x = &quot;</span><span class="p">,</span>xx<span class="p">))</span>
+</span><span class='line'>  abline<span class="p">(</span>v<span class="o">=</span>mean<span class="p">(</span>x<span class="p">),</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-9_1.png" alt="" /></p>
+
+<h4>b. 正規・コーシー-ベイズ推定量のモンテカルロ積分における，分母と分子の乱数の選択</h4>
+
+<p>分母と分子で同じ乱数を使う場合と違う乱数を使う場合で，どのような誤差の影響が出るかを比較する．</p>
+
+<ul>
+<li>黒＆黄色：分母と分子で同じ乱数<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_i+>を使う場合</li>
+<li>青＆水色：分母と分子で違う乱数<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_i+>を使う場合</li>
+</ul>
+
+
+<p>以下の図を見ると，違う乱数を使う場合の方が標準誤差が大きい．つまり，分母と分子で別々にシミュレーションを行う際にも，乱数から生成する値を統一することで推定値の分散を押さえることができる．逆に言えば，分母と分子で別々の乱数を使うと，分母と分子どちらかが極端な値を引いてしまったときには推定値が変な値を取ってしまう場合がある．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>Nsim <span class="o">&lt;-</span> <span class="m">10</span><span class="o">^</span><span class="m">4</span>
+</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>x in c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">)){</span>
+</span><span class='line'>  theta <span class="o">&lt;-</span> rnorm<span class="p">(</span>Nsim<span class="p">,</span> mean<span class="o">=</span>x<span class="p">)</span>
+</span><span class='line'>  theta_2 <span class="o">&lt;-</span> rnorm<span class="p">(</span>Nsim<span class="p">,</span> mean<span class="o">=</span>x<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  num <span class="o">&lt;-</span> theta <span class="o">*</span> dcauchy<span class="p">(</span>theta<span class="p">)</span>
+</span><span class='line'>  den <span class="o">&lt;-</span> dcauchy<span class="p">(</span>theta<span class="p">)</span>
+</span><span class='line'>  num_2 <span class="o">&lt;-</span> theta <span class="o">*</span> dcauchy<span class="p">(</span>theta<span class="p">)</span>
+</span><span class='line'>  den_2 <span class="o">&lt;-</span> dcauchy<span class="p">(</span>theta_2<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  n <span class="o">&lt;-</span> num<span class="p">[</span>den <span class="o">!=</span> <span class="m">0</span><span class="p">]</span>
+</span><span class='line'>  d <span class="o">&lt;-</span> den<span class="p">[</span>den <span class="o">!=</span> <span class="m">0</span><span class="p">]</span>
+</span><span class='line'>  y <span class="o">&lt;-</span> n <span class="o">/</span> d
+</span><span class='line'>  n_2 <span class="o">&lt;-</span> num_2<span class="p">[</span>den_2 <span class="o">!=</span> <span class="m">0</span><span class="p">]</span>
+</span><span class='line'>  d_2 <span class="o">&lt;-</span> den_2<span class="p">[</span>den_2 <span class="o">!=</span> <span class="m">0</span><span class="p">]</span>
+</span><span class='line'>  y_2 <span class="o">&lt;-</span> n_2 <span class="o">/</span> d_2
+</span><span class='line'>
+</span><span class='line'>  estint <span class="o">&lt;-</span> <span class="p">(</span>cumsum<span class="p">(</span>n<span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:length<span class="p">(</span>n<span class="p">)))</span> <span class="o">/</span> <span class="p">(</span>cumsum<span class="p">(</span>d<span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:length<span class="p">(</span>d<span class="p">)))</span>
+</span><span class='line'>  esterr <span class="o">&lt;-</span> sqrt<span class="p">(</span>cumsum<span class="p">((</span>y <span class="o">-</span> estint<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:length<span class="p">(</span>y<span class="p">))</span>
+</span><span class='line'>  estint_2 <span class="o">&lt;-</span> <span class="p">(</span>cumsum<span class="p">(</span>n_2<span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:length<span class="p">(</span>n_2<span class="p">)))</span> <span class="o">/</span> <span class="p">(</span>cumsum<span class="p">(</span>d_2<span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:length<span class="p">(</span>d_2<span class="p">)))</span>
+</span><span class='line'>  esterr_2 <span class="o">&lt;-</span> sqrt<span class="p">(</span>cumsum<span class="p">((</span>y_2 <span class="o">-</span> estint_2<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:length<span class="p">(</span>y_2<span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>  plot<span class="p">(</span>estint<span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span> <span class="p">,</span>type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span>x<span class="o">-</span><span class="m">1</span><span class="p">,</span>x<span class="o">+</span><span class="m">1</span><span class="p">))</span>
+</span><span class='line'>  lines<span class="p">(</span>estint<span class="o">+</span><span class="m">2</span><span class="o">*</span>esterr<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;gold&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>  lines<span class="p">(</span>estint<span class="o">-</span><span class="m">2</span><span class="o">*</span>esterr<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;gold&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  par<span class="p">(</span>new<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+</span><span class='line'>  plot<span class="p">(</span>estint_2<span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span>x<span class="o">-</span><span class="m">1</span><span class="p">,</span>x<span class="o">+</span><span class="m">1</span><span class="p">))</span>
+</span><span class='line'>  lines<span class="p">(</span>estint_2<span class="o">+</span><span class="m">2</span><span class="o">*</span>esterr_2<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;skyblue&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>  lines<span class="p">(</span>estint_2<span class="o">-</span><span class="m">2</span><span class="o">*</span>esterr_2<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;skyblue&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-9_2.png" alt="" /></p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://waxworksmath.com/Authors/N_Z/Robert_N_Casella/robert_n_casella.html">http://waxworksmath.com/Authors/N_Z/Robert_N_Casella/robert_n_casella.html</a></li>
+</ul>
+
+
+<p>1章から3章途中までの解説とRのコードがある．今回の作図に関しては，このページのBook Notesを参考にさせていただいた．</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">yag_ays</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-27T12:33:00+09:00" pubdate data-updated="true">Oct 27<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/reading/'>Reading</a>, <a class='category' href='/blog/categories/imcmr/'>imcmr</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/10/27/imcmr-3-2/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/10/27/imcmr-3-2/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/10/27/imcmr-3-2/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    
+    <section>
+      <h1>Comments</h1>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+    
+    <ul class="pager">
+      
+      <li class="previous"><a class="basic-alignment left"
+        href="/blog/2012/10/26/review-one-click/" title="Previous Post:
+        「ワンクリック―ジェフ・ベゾス率いるAmazonの隆盛」読了">&laquo; 「ワンクリック―ジェフ・ベゾス率いるAmazonの隆盛」読了</a></li>
+      
+      <li><a href="/blog/archives">Blog Archives</a></li>
+      
+    </ul>
+  </footer>
+</article>
+
+<aside class="sidebar-nav span3">
+  
+    <section class="well">
+  <h1>About Me</h1>
+  <p>id : yag_ays</p>
+  <p>E-mail : yanagi.ayase [at] gmail.com</p>
+  <ul>
+    <li><a href="https://twitter.com/#!/yag_ays" target="_blank">Twitter</a></li>
+    <li><a href="https://github.com/yagays" target="_blank">Github</a> </li>
+    <li><a href="https://gist.github.com/yagays" target="_blank">Gist</a></li>
+    <li><a href="http://b.hatena.ne.jp/yag_ays/" target="_blank">Bookmark</a></li>
+    <li><a href="http://slideshare.net/yag_ays/" target="_blank">Slideshare</a></li>
+    <li><a href="http://yan-ase.tumblr.com/" target="_blank">Tumblr</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="http://yag-ays.hateblo.jp/" target="_blank">Hatena Blog (Technical)</a> </li>
+    <li><a href="http://yag-ays.hatenablog.com/" target="_blank">Hatena Blog (Personal)</a></li>
+    <li><a href="http://g86.dbcls.jp/~yag/wordpress/" target="_blank">Wordpress Blog (Technical, <i>old</i>)</a></li>
+    <li><a href="http://d.hatena.ne.jp/yag_ays/" target="_blank">Hatena Diary (<i>old</i>)</a></li>
+  </ul>
+
+</section>
+<section class="well">
+  <h1>Recent Post</h1>
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/27/imcmr-3-2/">「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分 その2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/26/review-one-click/">「ワンクリック―ジェフ・ベゾス率いるAmazonの隆盛」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/25/imcmr-3-1/">「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/23/imcmr-2-3/">「Rによるモンテカルロ法入門」読書ノート：2章 練習問題</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/22/imcmr-2-2/">「Rによるモンテカルロ法入門」読書ノート：2章 受理・棄却法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/21/imcmr-2-1/">「Rによるモンテカルロ法入門」読書ノート：2章 逆変換・一般変換法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">「Rによるモンテカルロ法入門」読書ノート：アーカイブ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex/">TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/18/review-the-art-of-designing/">「デザインする技術 -よりよいデザインのための基礎知識」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="well">
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (38)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (6)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (1)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (11)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+</section>
+
+
+<section class="well">
+  <h1>Twitter</h1>
+  <ul id="tweets" class="nav">
+    <li class="nav-header">Latest Tweets</li>
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      getTwitterFeed("yag_ays", 10, true);
+    });
+  </script>
+  <script src="/javascripts/asides/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/yag_ays" class="twitter-follow-button" data-show-count="false">Follow @yag_ays</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2012 - yag_ays -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wolfeyesbioinformaticsbeta';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://yagays.github.com/blog/2012/10/27/imcmr-3-2/';
+        var disqus_url = 'http://yagays.github.com/blog/2012/10/27/imcmr-3-2/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
