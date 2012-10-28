@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-28T10:00:03+09:00</updated>
+  <updated>2012-10-28T10:04:20+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -1244,6 +1244,12 @@
 
 <ul>
 <li>練習問題 3.1，練習問題 3.9</li>
+</ul>
+</li>
+<li><a href="http://yagays.github.com/blog/2012/10/28/imcmr-3-3/">「Rによるモンテカルロ法入門」読書ノート：3章 重点サンプリング</a>
+
+<ul>
+<li>例 3.5，練習問題 3.5</li>
 </ul>
 </li>
 </ul>
