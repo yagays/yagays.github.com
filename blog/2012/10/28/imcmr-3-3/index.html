@@ -142,7 +142,7 @@
 
 <h3>例 3.5 <img src=http://chart.apis.google.com/chart?cht=tx&chl=Z+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+>で<img src=http://chart.apis.google.com/chart?cht=tx&chl=P%28Z+%3E+4.5%29+>の確率を求める</h3>
 
-<p>確率を求めると書いてあるが，要するに<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cint_%7B4.5%7D%5E%7B%5Cinfty%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7Bx%5E2%7D%7B2%7D%7D+>を求めるというもの．ただし，正規分布でxの値が4.5ともなると確率そのものがものすごく小さいので，普通のモンテカルロ積分で正規分布から乱数を生成したとしても，シミュレーション回数を非常に大きくしないと精度の良い値が求まらない．</p>
+<p>確率を求めると書いてあるが，要するに正規分布の確率密度関数において4.5からInfまでの面積（<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cint_%7B4.5%7D%5E%7B%5Cinfty%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7Bx%5E2%7D%7B2%7D%7D+dx+>）を求めるというもの．ただし，正規分布でxの値が4.5ともなると確率そのものがものすごく小さいので，普通のモンテカルロ積分で正規分布から乱数を生成したとしても，シミュレーション回数を非常に大きくしないと精度の良い値が求まらない．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
