@@ -4,7 +4,7 @@
   <title><![CDATA[Category: imcmr | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/imcmr/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-28T10:04:20+09:00</updated>
+  <updated>2012-10-28T10:54:50+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -18,7 +18,12 @@
     <link href="http://yagays.github.com/blog/2012/10/28/imcmr-3-3/"/>
     <updated>2012-10-28T09:45:00+09:00</updated>
     <id>http://yagays.github.com/blog/2012/10/28/imcmr-3-3</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+    <content type="html"><![CDATA[<ul>
+<li>読書ノート アーカイブ:<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
 <h3>内容：重点サンプリングにより推定量の分散と効率を改善する</h3>
@@ -38,7 +43,7 @@ pnorm(-4.5,log=T)</p>
 
 <p>```</p>
 
-<p>ということで，重点サンプリングでシミュレーション回数を抑える．<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28y%29+%3D+%5Cfrac%7Be%3Csup%3E%7B-y%7D%7D%7B%5Cint_%7B4.5%7D%3Csup%3E%7B%5Cinfty%7De%3Csup%3E%7B-x%7Ddx%7D%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E+%3D+e%3Csup%3E%7B-%28y-4.5%29%7D%3C%2Fsup%3E+>として，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bi%3D1%7D%3Csup%3E%7Bm%7D%5Cfrac%7Bf%28Y%3Csup%3E%7B%28i%29%7D%29%7D%7Bg%28Y%3Csup%3E%7B%28i%29%7D%29%7D%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E+>を求める．ここで，gの選択の箇所は「gを，<strong>4.5で切り詰めた指数分布の密度</strong><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BExp%7D%281%29+>とする」ということ(P.81)．</p>
+<p>ということで，重点サンプリングでシミュレーション回数を抑える．<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28y%29+%3D+%5Cfrac%7Be%3Csup%3E%7B-y%7D%7D%7B%5Cint_%7B4.5%7D%3Csup%3E%7B%5Cinfty%7De%3Csup%3E%7B-x%7Ddx%7D%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E+%3D+e%3Csup%3E%7B-%28y-4.5%29%7D%3C%2Fsup%3E+>として，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bi%3D1%7D%3Csup%3E%7Bm%7D%5Cfrac%7Bf%28Y%3Csup%3E%7B%28i%29%7D%29%7D%7Bg%28Y%3Csup%3E%7B%28i%29%7D%29%7D%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E+>を求める．ここで，gの選択の箇所は「gを，4.5で切り詰めた指数分布の密度<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BExp%7D%281%29+>とする」ということ(P.81)．</p>
 
 <p><code>r
 Nsim &lt;- 10^3
@@ -52,7 +57,7 @@ abline(h=pnorm(-4.5), col="red", lwd=2)
 
 <h3>練習問題 3.5 切り詰められた指数分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BExp%7D%28%5Clambda%29+>をg(x)としたときの近似値の分散への影響を調べる</h3>
 
-<p>例3.5で<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+%3D+1+>だった指数分布の値を色々と変えてみて実験する．以下の図は，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+%3D+1%2C5%2C10%2C20+>の時の．推定値の変化を示している．左上の図が例3.5と同じ条件となり，そこから<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+>の値を大きくしている．黒の線が推定値の推移，上下の黄色の線が推定値の誤差の範囲（＝分散）となっている．
+<p>例3.5で<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+%3D+1+>だった指数分布の値を色々と変えてみて実験する．以下の図は，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+%3D+1%2C5%2C10%2C20+>の時の推定値の変化を示している．左上の図が例3.5と同じ条件となり，そこから右上・左下・右下と<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+>の値を大きくしている．黒の線が推定値の推移，上下の黄色の線が推定値の誤差の範囲（＝分散）となっている．
 このプロットを見ると，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+>の値が大きくなるにつれて，分散も大きくなることがわかる．</p>
 
 <p><code>r
