@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-27T15:15:59+09:00</updated>
+  <updated>2012-10-28T10:00:03+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,93 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：3章 重点サンプリング]]></title>
+    <link href="http://yagays.github.com/blog/2012/10/28/imcmr-3-3/"/>
+    <updated>2012-10-28T09:45:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/10/28/imcmr-3-3</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>内容：重点サンプリングにより推定量の分散と効率を改善する</h3>
+
+<h3>例 3.5 <img src=http://chart.apis.google.com/chart?cht=tx&chl=Z+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+>で<img src=http://chart.apis.google.com/chart?cht=tx&chl=P%28Z+%3E+4.5%29+>の確率を求める</h3>
+
+<p>確率を求めると書いてあるが，要するに<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cint_%7B4.5%7D%5E%7B%5Cinfty%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7Bx%5E2%7D%7B2%7D%7D+>を求めるというもの．ただし，正規分布でxの値が4.5ともなると確率そのものがものすごく小さいので，普通のモンテカルロ積分で正規分布から乱数を生成したとしても，シミュレーション回数を非常に大きくしないと精度の良い値が求まらない．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>pnorm<span class="p">(</span><span class="m">-4.5</span><span class="p">,</span>log<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># [1] -12.59242</span>
+</span><span class='line'>pnorm<span class="p">(</span><span class="m">-4.5</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># [1] 3.397673e-06</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ということで，重点サンプリングでシミュレーション回数を抑える．<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28y%29+%3D+%5Cfrac%7Be%5E%7B-y%7D%7D%7B%5Cint_%7B4.5%7D%5E%7B%5Cinfty%7De%5E%7B-x%7Ddx%7D+%3D+e%5E%7B-%28y-4.5%29%7D+>として，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bi%3D1%7D%5E%7Bm%7D%5Cfrac%7Bf%28Y%5E%7B%28i%29%7D%29%7D%7Bg%28Y%5E%7B%28i%29%7D%29%7D+>を求める．ここで，gの選択の箇所は「gを，<strong>4.5で切り詰めた指数分布の密度</strong><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BExp%7D%281%29+>とする」ということ(P.81)．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>Nsim <span class="o">&lt;-</span> <span class="m">10</span><span class="o">^</span><span class="m">3</span>
+</span><span class='line'>y <span class="o">&lt;-</span> rexp<span class="p">(</span>Nsim<span class="p">)</span><span class="o">+</span><span class="m">4.5</span>
+</span><span class='line'>weit <span class="o">&lt;-</span> dnorm<span class="p">(</span>y<span class="p">)</span><span class="o">/</span>dexp<span class="p">(</span>y<span class="o">-</span><span class="m">4.5</span><span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span>cumsum<span class="p">(</span>weit<span class="p">)</span><span class="o">/</span><span class="m">1</span>:Nsim<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+</span><span class='line'>abline<span class="p">(</span>h<span class="o">=</span>pnorm<span class="p">(</span><span class="m">-4.5</span><span class="p">),</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-5_1.png" alt="" /></p>
+
+<h3>練習問題 3.5 切り詰められた指数分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BExp%7D%28%5Clambda%29+>をg(x)としたときの近似値の分散への影響を調べる</h3>
+
+<p>例3.5で<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+%3D+1+>だった指数分布の値を色々と変えてみて実験する．以下の図は，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+%3D+1%2C5%2C10%2C20+>の時の．推定値の変化を示している．左上の図が例3.5と同じ条件となり，そこから<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+>の値を大きくしている．黒の線が推定値の推移，上下の黄色の線が推定値の誤差の範囲（＝分散）となっている．
+このプロットを見ると，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+>の値が大きくなるにつれて，分散も大きくなることがわかる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>lambda in c<span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">20</span><span class="p">)){</span>
+</span><span class='line'>  Nsim <span class="o">&lt;-</span> <span class="m">10</span><span class="o">^</span><span class="m">4</span>
+</span><span class='line'>  y <span class="o">&lt;-</span> rexp<span class="p">(</span>Nsim<span class="p">)</span><span class="o">/</span>lambda<span class="o">+</span><span class="m">4.5</span>
+</span><span class='line'>  weit <span class="o">&lt;-</span> dnorm<span class="p">(</span>y<span class="p">)</span><span class="o">/</span>dexp<span class="p">(</span>y<span class="o">-</span><span class="m">4.5</span><span class="p">,</span> lambda<span class="p">)</span>
+</span><span class='line'>  estint <span class="o">&lt;-</span> cumsum<span class="p">(</span>weit<span class="p">)</span><span class="o">/</span><span class="m">1</span>:Nsim
+</span><span class='line'>  esterr <span class="o">&lt;-</span> sqrt<span class="p">(</span>cumsum<span class="p">((</span>weit<span class="o">-</span>estint<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:Nsim<span class="p">)</span>
+</span><span class='line'>  plot<span class="p">(</span>estint<span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Mean and error range&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;prob&quot;</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;lambda = &quot;</span><span class="p">,</span>lambda<span class="p">))</span>
+</span><span class='line'>  lines<span class="p">(</span>estint<span class="o">+</span><span class="m">2</span><span class="o">*</span>esterr<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;gold&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>  lines<span class="p">(</span>estint<span class="o">-</span><span class="m">2</span><span class="o">*</span>esterr<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;gold&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>  abline<span class="p">(</span>h<span class="o">=</span>pnorm<span class="p">(</span><span class="m">-4.5</span><span class="p">),</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-5_2.png" alt="" /></p>
+
+<p>また，がくっと値が変わっている部分は乱数でかなりレアな値を引いて全体的に値が引きずられたからだと思われる．weitの中から値の非常に大きいものを10個選び出して，その時の推定値の変化を見たのが以下の図になる．青の点線で示した箇所が，weitの値が非常に大きくなったポイントを示している．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>abline<span class="p">(</span>v<span class="o">=</span>seq<span class="p">(</span><span class="m">1</span><span class="p">,</span>Nsim<span class="p">)[</span>rank<span class="p">(</span>weit<span class="p">)</span><span class="o">&gt;</span>Nsim<span class="o">-</span><span class="m">10</span><span class="p">],</span> col<span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span> lty<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-5_3.png" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分 その2]]></title>
@@ -2327,22 +2414,6 @@ end
 <p>本書「外国語を身につけるための日本語レッスン」は，会話における論理的な言語技術を身につけるための本である．疑問と回答を繰り返す論理的な対話は，基本的に言語に依存しない．ただ，言語の背景にある文化や共通認識によって，そのスタイルというのはかなり違ったものとなっている．そういった点において外国語に翻訳できるような日本語というのは，日本語でありながら日本語的ではない一面も持つ．本書はその違いを埋めつつ言語的に互換があるような論理的な会話を組み立てるために，日本語で曖昧になっている部分をとことん突き詰めて理解するところから始まる．そして，自分の理解を相手にはっきり分かりやすく伝え理解してもらうためには，どういう情報を伝えればいいのか，そしてどういう順番で伝えればいいのかといった具体的な手法が述べられる．</p>
 
 <p>「外国語で発想するための日本語レッスン」が文章の書き方指南だとしたら，本書はプレゼンテーション指南の本だ．自分の考えを人に伝えるという点では同じだが，対話ならではの会話のやり取りやリアルタイムで流れる時間は，文章とは違った即興性や論理展開を必要とする．取り敢えず大学生は背伸びした振りをしてビジネス書や就活本に手をだすくらいなら，一通りこれを読めと言いたくなるような，非常に信頼出来る1冊．できる事なら，テストで自己満足の論述や発表をしては一人満足するものの実際の点数はあんまり良くない，みたいな昔の自分に教えたいくらいだ…．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「原典による生命科学入門」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/09/24/review-lifescience-10-classics/"/>
-    <updated>2012-09-24T22:41:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/09/24/review-lifescience-10-classics</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4480094784" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>生物を相手にした学問というのは，医学という人間自身を対象とした研究を含めれば，数学など他の学問に勝るとも劣らない長い歴史を持っている．そのような生命科学において，後世に多大なる影響を与えパラダイムシフトに重要な役割を果たしたと思われる10の著作を取り上げ，その研究の概要と著作の一部の翻訳を纏めたのが本書の概要だ．とりあげられる著作は，ヒポクラテスやアリストテレスのギリシャ哲学から始まり，ハーヴィやデカルト，ベルナール，ラマルク，ダーウィン，メンデル，モーガン，そしてワトソン・クリックと，近代の生物学の勃興を支えた数多くの研究者の名前とその著作が並ぶ．</p>
-
-<p>「巨人の肩の上に立つ」と言うように，今の学問は当然ながら今までの研究成果の上に築かれるが，だからといって過去の科学史を順に追っていく必要もなければ今となっては古くなった知識を入れる必要も無い．だが，今まで人間が築いてきた知識体系の歴史を知るということは，真理であろうとなかろうと，当時の科学思想の理解，そして脈々と続く科学そのものを理解することができる．そういった意味で本書は，当時の歴史背景を含め要点を抑えた形で過去の名著を現代でも読みやすく示されるので，特に過去の名著を知る良い機会となるだろう．原典全部を読むのは大変でも，本書ならある程度の分量で全体を俯瞰することができる．</p>
-
-<p>ただ一つ苦言を呈するならば，本書はただただ単調だ．10の著作それぞれの解説と著作の一部翻訳が羅列されるだけで，その時代の主流を表面的に攫ったようなだけに感じる．百科事典のようであり，ある意味Wikipediaの記事を読んでいるかのような感覚を覚えた．著作の翻訳も紙面の都合上全部が掲載されているわけではなく，特に時代を象徴する箇所をかいつまんだ形で示されるので，どうしても広く浅くという印象しか残らなかった．ここで扱われている著作の多くはそれぞれ文庫などで翻訳が存在するので，生命科学史を俯瞰する必要がなければ個別の著作を当たったほうがいいだろう．</p>
 ]]></content>
   </entry>
   
