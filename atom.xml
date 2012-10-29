@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-28T11:26:24+09:00</updated>
+  <updated>2012-10-29T20:32:39+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「TED Talks ボディランゲージが人を作る」の主張における継続のニュアンス]]></title>
+    <link href="http://yagays.github.com/blog/2012/10/29/fake-it-till-you-become-it/"/>
+    <updated>2012-10-29T18:38:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/10/29/fake-it-till-you-become-it</id>
+    <content type="html"><![CDATA[<p>素晴らしいプレゼンテーションがあったので，ここで紹介しつつ実際に自分の人生に適用する方法を考えてみよう．</p>
+
+<iframe src="http://embed.ted.com/talks/lang/ja/amy_cuddy_your_body_language_shapes_who_you_are.html" width="560" height="315" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+<p>このTED Talksでは，体の状態と心の状態の相互関係の例として，ボディーランゲージが人の心理的な状態に与える影響について考察している．その中で，ボディランゲージという体を使った表現は，何らかの情報を伝える相手だけでなく発信した自分にも心理的な影響を及ぼすという科学的な実験結果が示される．そして，その効果を逆手に取ることで，自発的なボディランゲージは自分自身の心の状態を変化させ，より良いパフォーマンスを引き出すことができるということが自身の経験とともに語られる．</p>
+
+<p>その中で，発表者であるAmy Cuddyは以下のように主張している．</p>
+
+<blockquote><p>「だから皆さんに言いたいんです。フリをしてやり過ごすのではなく、フリを本物にしてくださいと。それが本当に自分のものになるまでやるんです。」</p>
+
+<p><a href="http://www.aoky.net/articles/amy_cuddy/your_body_language_shapes_who_you_are.htm">http://www.aoky.net/articles/amy_cuddy/your_body_language_shapes_who_you_are.htm</a>,</p></blockquote>
+
+<p>じゃあ「ふり」ってどうやるんだろう．もちろん外見を真似しようということではなく，内面や行動を目標とする人物像に近づけていこうということを言っているわけだが，これは結局のところ「なりきる」ってことなんじゃないかと思う．</p>
+
+<p>TEDに出てきた体験談に当てはめて考えてみると，例えば優秀な生徒のふりをしようと思ってクラスで意見を発表したところ，反対意見が多数出て自分の主張は間違っていたことが後から解ったとしよう．そうしたときに，ああやっぱり自分は駄目だったんだなと諦めてしまえば，Amy Cuddyの言う「フリをしてやり過ごす」ということになってしまう．つまり優秀な生徒という役に成りきれなかったのだ．しかし，そこで怯むことなく優秀な生徒のフリを続けていれば，間違いが分かったとしてもそこから考えを巡らせて，また新しい意見や主張を導く事ができるかもしれない．そうやって役になりきった状態を続けていくうちに，気がつけば本物と区別が付かないような状態になっているということだろう．</p>
+
+<p>原文にはこうある．</p>
+
+<blockquote><p>&#8220;And so I want to say to you, don&#8217;t fake it till you make it. Fake it till you become it. You know? It&#8217;s not — Do it enough until you actually become it and internalize.&#8221;”</p>
+
+<p><a href="http://www.ted.com/talks/lang/ja/amy_cuddy_your_body_language_shapes_who_you_are.html">http://www.ted.com/talks/lang/ja/amy_cuddy_your_body_language_shapes_who_you_are.html</a></p></blockquote>
+
+<p>この原文からは，makeからは一時的な変化，becomeからは本質的な変化という対比を感じる．そう考えると，「一時的にフリをするのではなくフリをし続ける」という意味で，「なりきる」という言い方には一時的なものではない継続の意味が含まれているように感じて，ぼくとしては具体的に何をすればいいのかと考えた時にしっくり来る言葉だった．</p>
+
+<p>といっても，最初の引用で示した青木氏の訳に不満があるわけではなく，「本物にする」というのはまさにピッタリな意訳だと思う．最終的な目標はまさに「本物にする」というところにある．なので，じゃあどうやってそれを実現していこうかと考えた時に，結局は役に「なりきる」ということを続けていけばいいのかなぁという結論となった．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：3章 重点サンプリング]]></title>
@@ -2409,22 +2443,6 @@ end
 <li><a href="http://www.lifehacker.jp/2011/05/110521iphonesafarisearch.html">http://www.lifehacker.jp/2011/05/110521iphonesafarisearch.html</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「外国語を身につけるための日本語レッスン」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/09/25/review-critical-speaking/"/>
-    <updated>2012-09-25T00:04:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/09/25/review-critical-speaking</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4560049882" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>だいぶ時間が空いてしまった．<a href="http://yagays.github.com/blog/2012/09/05/review-critical-reading/">「外国語で発想するための日本語レッスン」</a>に続いて本書も既に読み終えていたのだけれども，色々な印象をもう片方の本に引っ張られそうだったので，あえて書評を書くのを先送りにしていた1冊．少し間をおいて改めて通読したのだが，その間に本書の技術をどれだけ現実に活かすことができたかと考えると，なかなか自分で評価するのは難しい．</p>
-
-<p>本書「外国語を身につけるための日本語レッスン」は，会話における論理的な言語技術を身につけるための本である．疑問と回答を繰り返す論理的な対話は，基本的に言語に依存しない．ただ，言語の背景にある文化や共通認識によって，そのスタイルというのはかなり違ったものとなっている．そういった点において外国語に翻訳できるような日本語というのは，日本語でありながら日本語的ではない一面も持つ．本書はその違いを埋めつつ言語的に互換があるような論理的な会話を組み立てるために，日本語で曖昧になっている部分をとことん突き詰めて理解するところから始まる．そして，自分の理解を相手にはっきり分かりやすく伝え理解してもらうためには，どういう情報を伝えればいいのか，そしてどういう順番で伝えればいいのかといった具体的な手法が述べられる．</p>
-
-<p>「外国語で発想するための日本語レッスン」が文章の書き方指南だとしたら，本書はプレゼンテーション指南の本だ．自分の考えを人に伝えるという点では同じだが，対話ならではの会話のやり取りやリアルタイムで流れる時間は，文章とは違った即興性や論理展開を必要とする．取り敢えず大学生は背伸びした振りをしてビジネス書や就活本に手をだすくらいなら，一通りこれを読めと言いたくなるような，非常に信頼出来る1冊．できる事なら，テストで自己満足の論述や発表をしては一人満足するものの実際の点数はあんまり良くない，みたいな昔の自分に教えたいくらいだ…．</p>
 ]]></content>
   </entry>
   

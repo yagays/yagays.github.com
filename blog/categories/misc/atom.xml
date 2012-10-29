@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Misc | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/misc/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-28T11:26:24+09:00</updated>
+  <updated>2012-10-29T20:32:39+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「TED Talks ボディランゲージが人を作る」の主張における継続のニュアンス]]></title>
+    <link href="http://yagays.github.com/blog/2012/10/29/fake-it-till-you-become-it/"/>
+    <updated>2012-10-29T18:38:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/10/29/fake-it-till-you-become-it</id>
+    <content type="html"><![CDATA[<p>素晴らしいプレゼンテーションがあったので，ここで紹介しつつ実際に自分の人生に適用する方法を考えてみよう．</p>
+
+<iframe src="http://embed.ted.com/talks/lang/ja/amy_cuddy_your_body_language_shapes_who_you_are.html" width="560" height="315" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+<p>このTED Talksでは，体の状態と心の状態の相互関係の例として，ボディーランゲージが人の心理的な状態に与える影響について考察している．その中で，ボディランゲージという体を使った表現は，何らかの情報を伝える相手だけでなく発信した自分にも心理的な影響を及ぼすという科学的な実験結果が示される．そして，その効果を逆手に取ることで，自発的なボディランゲージは自分自身の心の状態を変化させ，より良いパフォーマンスを引き出すことができるということが自身の経験とともに語られる．</p>
+
+<p>その中で，発表者であるAmy Cuddyは以下のように主張している．</p>
+
+<blockquote><p>「だから皆さんに言いたいんです。フリをしてやり過ごすのではなく、フリを本物にしてくださいと。それが本当に自分のものになるまでやるんです。」</p>
+
+<p><a href="http://www.aoky.net/articles/amy_cuddy/your_body_language_shapes_who_you_are.htm">http://www.aoky.net/articles/amy_cuddy/your_body_language_shapes_who_you_are.htm</a>,</p></blockquote>
+
+<p>じゃあ「ふり」ってどうやるんだろう．もちろん外見を真似しようということではなく，内面や行動を目標とする人物像に近づけていこうということを言っているわけだが，これは結局のところ「なりきる」ってことなんじゃないかと思う．</p>
+
+<p>TEDに出てきた体験談に当てはめて考えてみると，例えば優秀な生徒のふりをしようと思ってクラスで意見を発表したところ，反対意見が多数出て自分の主張は間違っていたことが後から解ったとしよう．そうしたときに，ああやっぱり自分は駄目だったんだなと諦めてしまえば，Amy Cuddyの言う「フリをしてやり過ごす」ということになってしまう．つまり優秀な生徒という役に成りきれなかったのだ．しかし，そこで怯むことなく優秀な生徒のフリを続けていれば，間違いが分かったとしてもそこから考えを巡らせて，また新しい意見や主張を導く事ができるかもしれない．そうやって役になりきった状態を続けていくうちに，気がつけば本物と区別が付かないような状態になっているということだろう．</p>
+
+<p>原文にはこうある．</p>
+
+<blockquote><p>"And so I want to say to you, don't fake it till you make it. Fake it till you become it. You know? It's not — Do it enough until you actually become it and internalize."”</p>
+
+<p><a href="http://www.ted.com/talks/lang/ja/amy_cuddy_your_body_language_shapes_who_you_are.html">http://www.ted.com/talks/lang/ja/amy_cuddy_your_body_language_shapes_who_you_are.html</a></p></blockquote>
+
+<p>この原文からは，makeからは一時的な変化，becomeからは本質的な変化という対比を感じる．そう考えると，「一時的にフリをするのではなくフリをし続ける」という意味で，「なりきる」という言い方には一時的なものではない継続の意味が含まれているように感じて，ぼくとしては具体的に何をすればいいのかと考えた時にしっくり来る言葉だった．</p>
+
+<p>といっても，最初の引用で示した青木氏の訳に不満があるわけではなく，「本物にする」というのはまさにピッタリな意訳だと思う．最終的な目標はまさに「本物にする」というところにある．なので，じゃあどうやってそれを実現していこうかと考えた時に，結局は役に「なりきる」ということを続けていけばいいのかなぁという結論となった．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「そのデータ，本当？」―思い込みによる曲解と前提条件を信用することの難しさ]]></title>
