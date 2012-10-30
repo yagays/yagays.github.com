@@ -1,0 +1,616 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 数値的最適化法 - Wolfeyes Bioinformatics beta</title>
+  <meta name="author" content="yag_ays">
+
+  
+  <meta name="description" content="読書ノート アーカイブ：http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/ 本章の概要 乱数を使って最適化問題を解くには2つの方法がある． &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yagays.github.com/blog/2012/10/30/imcmr-5-1">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <script src="/javascripts/libs/jquery.js"></script>
+  <script src="/javascripts/libs/modernizr-2.0.js"></script>
+  <script src="/javascripts/libs/bootstrap.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Wolfeyes Bioinformatics beta" type="application/atom+xml">
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17620484-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <a class="brand" href="/">Wolfeyes Bioinformatics beta</a>
+
+      <div class="nav-collapse">
+        <ul class="nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+        <ul class="nav pull-right" data-subscription="rss">
+          <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+          
+        </ul>
+
+        
+          <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <fieldset role="search">
+              <input type="hidden" name="q" value="site:yagays.github.com" />
+              <input class="search-query" type="text" name="q" results="0" placeholder="Search"/>
+            </fieldset>
+          </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</nav>
+  <div class="container">
+    <div class="row-fluid">
+      
+<article class="hentry span9" role="article">
+
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 数値的最適化法</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-30T15:54:00+09:00" pubdate data-updated="true">Oct 30<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><ul>
+<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>本章の概要</h3>
+
+<p>乱数を使って最適化問題を解くには2つの方法がある．</p>
+
+<ul>
+<li>確率的探索を用いて関数の最大値を探す（本章前半）</li>
+<li>シミュレーションを使って最適化する関数を近似する（本章後半，5.4以降）</li>
+</ul>
+
+
+<h3>内容：モンテカルロ最適化で関数の最大値を求める</h3>
+
+<h4>最適化問題には2種類ある</h4>
+
+<p>最適化問題には大きくわけて2種類存在する．</p>
+
+<ul>
+<li>定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>で関数<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28%5Ctheta%29>の極値を求める</li>
+<li>定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>で陰的方程式<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28%5Ctheta%29+%3D+0+>の解を求める</li>
+</ul>
+
+
+<p>問題設定はそれぞれ違うのだが，今回は最大化問題だけを取り上げる．つまり，以下の式のように定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>で一番大きな値を求めたい．</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=max_%7B%5Ctheta+%5Cin+%5CTheta%7D%3Dh%28%5Ctheta%29></p>
+
+<h4>解き方にも2種類ある</h4>
+
+<ul>
+<li>数値的手法（5.2 数値的最適化法）
+
+<ul>
+<li>目標関数の特性に強く依存する</li>
+</ul>
+</li>
+<li>確率的手法（5.3 確率的探索）</li>
+</ul>
+
+
+<p>さて，ある関数のある定義域内における最大値を求めようと思った場合にじゃあどうするかというと，定義域内の値を片っ端から入れていって大きいものを探すといったアプローチと，別の分布をシミュレーションしてそこから最大値が現れるまでシミュレーションし続けるという方法の2通りがあるということになる．ここで重要になるポイントが定義域で，3章のモンテカルロ積分において積分する範囲を決めていたように，5章モンテカルロ最適化においても定義域内で最大値を探すということに繋がる．ただし，モンテカルロ積分よりもモンテカルロ最適化のほうが，全体の平均を求めるよりもピンポイントで値の大きい極値を求めるという点で，一般的に難しい．</p>
+
+<h3>例 5.1 コーシー分布から得られたサンプルの尤度を最大化する</h3>
+
+<h4>左の図</h4>
+
+<p>何かしらのコーシー分布から生成された乱数<img src=http://chart.apis.google.com/chart?cht=tx&chl=%7Bx_1%2C+%5Cdots+%2Cx_n%7D>が与えられた時に，それを生成したコーシー分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BC%7D%28%5Ctheta%2C1%29+>の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+>を最尤法で推定しようという問題．尤度は以下の式で表される</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=l%28%5Ctheta%7C+x_1%2C%5Cdots%2Cx_n%29+%3D+%5Cprod_%7Bi%3D1%7D%5E%7Bn%7D%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%5E2%7D></p>
+
+<p>実際に計算するときには以下の対数尤度を使う．</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clog+l%28%5Ctheta%7C+x_1%2C%5Cdots%2Cx_n%29+%3D+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%5E2%7D></p>
+
+<p>今回は実験として，上の尤度と対数尤度の2パターンで計算したときに，どういう違いが現れるかを示す．数式上は違いはないが，計算機上では値の取り扱いにおいて違いが出てくる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>xm <span class="o">&lt;-</span> rcauchy<span class="p">(</span><span class="m">500</span><span class="p">)</span>
+</span><span class='line'>loglik <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>y<span class="p">){</span><span class="o">-</span>sum<span class="p">(</span>log<span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="p">(</span>x<span class="o">-</span>y<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))}</span>
+</span><span class='line'>lik <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>y<span class="p">){</span>prod<span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="p">(</span>x<span class="o">-</span>y<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))}</span>
+</span><span class='line'>
+</span><span class='line'>mi <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">500</span><span class="p">)</span>
+</span><span class='line'>mi2 <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">500</span><span class="p">)</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in <span class="m">1</span>:<span class="m">500</span><span class="p">){</span>
+</span><span class='line'>  x <span class="o">&lt;-</span> xm<span class="p">[</span><span class="m">1</span>:i<span class="p">]</span>
+</span><span class='line'>  mi<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> optimize<span class="p">(</span>loglik<span class="p">,</span> interval<span class="o">=</span>c<span class="p">(</span><span class="m">-10</span><span class="p">,</span><span class="m">10</span><span class="p">),</span> maximum<span class="o">=</span><span class="k-Variable">T</span><span class="p">)$</span>max
+</span><span class='line'>  mi2<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> optimize<span class="p">(</span>lik<span class="p">,</span> interval<span class="o">=</span>c<span class="p">(</span><span class="m">-10</span><span class="p">,</span><span class="m">10</span><span class="p">),</span>maximum<span class="o">=</span><span class="k-Variable">T</span><span class="p">)$</span>max
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>plot<span class="p">(</span>mi<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">-5</span><span class="p">,</span> <span class="m">10</span><span class="p">),</span> ylab<span class="o">=</span><span class="s">&quot;theta&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;sample size&quot;</span><span class="p">)</span>
+</span><span class='line'>par<span class="p">(</span>new<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span>mi2<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">-5</span><span class="p">,</span><span class="m">10</span><span class="p">),</span>col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;theta&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;sample size&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>尤度で計算した(赤)と対数尤度で計算した計算(黒)を以下のプロットの左側の図に示してある．これをみると，対数尤度で計算した場合では着実に推定値が収束していくのに対し，尤度で計算した場合ではある地点で値が発散してるのがわかる．これは，Rのoptimizeにおいて，尤度を直接観察すると値が発散することがあるからである．このように，確率を扱う場合には，値が非常に小さくなることに注意しなければならない．</p>
+
+<h4>右の図</h4>
+
+<p>次に，上記の尤度を，摂動が加えられた尤度に置き換える．これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=-%5B%5Csin%28100y%29%5D%5E2+>という0から1の間の値を取るノイズを加えている．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>perturbedloglik <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>y<span class="p">){</span><span class="o">-</span>sin<span class="p">(</span>y<span class="o">*</span><span class="m">100</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">-</span> sum<span class="p">(</span>log<span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="p">(</span>x<span class="o">-</span>y<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))}</span>
+</span><span class='line'>perturbedlik <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>y<span class="p">){</span><span class="o">-</span>sin<span class="p">(</span>y<span class="o">*</span><span class="m">100</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> prod<span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="p">(</span>x<span class="o">-</span>y<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))}</span>
+</span><span class='line'>mi <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">500</span><span class="p">)</span>
+</span><span class='line'>mi2 <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">500</span><span class="p">)</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in <span class="m">1</span>:<span class="m">500</span><span class="p">){</span>
+</span><span class='line'>  x <span class="o">&lt;-</span> xm<span class="p">[</span><span class="m">1</span>:i<span class="p">]</span>
+</span><span class='line'>  mi<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> optimize<span class="p">(</span>perturbedloglik<span class="p">,</span> interval<span class="o">=</span>c<span class="p">(</span><span class="m">-10</span><span class="p">,</span><span class="m">10</span><span class="p">),</span> maximum<span class="o">=</span><span class="k-Variable">T</span><span class="p">)$</span>max
+</span><span class='line'>  mi2<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> optimize<span class="p">(</span>perturbedlik<span class="p">,</span> interval<span class="o">=</span>c<span class="p">(</span><span class="m">-10</span><span class="p">,</span><span class="m">10</span><span class="p">),</span>maximum<span class="o">=</span><span class="k-Variable">T</span><span class="p">)$</span>max
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>plot<span class="p">(</span>mi<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">-5</span><span class="p">,</span> <span class="m">10</span><span class="p">),</span> ylab<span class="o">=</span><span class="s">&quot;theta&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;sample size&quot;</span><span class="p">)</span>
+</span><span class='line'>par<span class="p">(</span>new<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span>mi2<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">-5</span><span class="p">,</span><span class="m">10</span><span class="p">),</span>col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;theta&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;sample size&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これをみると，尤度に関しては左図で示したように発散してしまっている．対数尤度を見てみると，左図と比べて値がばらつきグラフがギザギザになっている．当然だが，ノイズを加えれば値がばらついてしまう．</p>
+
+<p>(個人的な感想)右図は何が言いたいのかちょっと分からない．ここの解釈は本書では出てこないと思うのだが，尤度関数に何らかの関数が加わる状況といえば，最小二乗法などにおける正則化項を加えて過学習を押さえる場合だろうか？　正則化項は摂動というよりかは，lassoやridgeのように1次/2次の関数になるので，今回の場合みたいにノイズのようにはならないと思うのだが…．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-1.png" alt="" /></p>
+
+<h3>例 5.2 Newton-Raphson法を用いて混合正規分布モデルから得られたサンプルの尤度を最大化する</h3>
+
+<p>今回の混合正規モデルでは，</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_1%2C1%29%2B%5Cfrac%7B3%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_2%2C1%29+></p>
+
+<p>を考える．まずは分布の形を調べるために，<img src=http://chart.apis.google.com/chart?cht=tx&chl=mu_1+%3D+0+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=mu_2+%3D+2.5+>における対数尤度の分布を示してみる．そして，初期値(-1,-1)からスタートして，Newton-Raphson法がどのように推定値に収束していくかを図示する．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>da <span class="o">&lt;-</span> sample<span class="p">(</span>c<span class="p">(</span>rnorm<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">2</span><span class="p">),</span> <span class="m">2.5</span><span class="o">+</span>rnorm<span class="p">(</span><span class="m">3</span><span class="o">*</span><span class="m">10</span><span class="o">^</span><span class="m">2</span><span class="p">)))</span>
+</span><span class='line'>like <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>mu<span class="p">){</span> <span class="o">-</span>sum<span class="p">(</span>log<span class="p">((</span><span class="m">0.25</span><span class="o">*</span>dnorm<span class="p">(</span>da<span class="o">-</span>mu<span class="p">[</span><span class="m">1</span><span class="p">])</span> <span class="o">+</span> <span class="m">0.75</span><span class="o">*</span>dnorm<span class="p">(</span>da<span class="o">-</span>mu<span class="p">[</span><span class="m">2</span><span class="p">]))))</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>mu1 <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">-2</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> le<span class="o">=</span><span class="m">250</span><span class="p">)</span>
+</span><span class='line'>mu2 <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">-2</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> le<span class="o">=</span><span class="m">250</span><span class="p">)</span>
+</span><span class='line'>lli<span class="o">=</span>matrix<span class="p">(</span><span class="m">0</span><span class="p">,</span>nco<span class="o">=</span><span class="m">250</span><span class="p">,</span>nro<span class="o">=</span><span class="m">250</span><span class="p">)</span>
+</span><span class='line'><span class="kr">for</span> <span class="p">(</span>i in <span class="m">1</span>:<span class="m">250</span><span class="p">)</span>
+</span><span class='line'>  <span class="kr">for</span> <span class="p">(</span>j in <span class="m">1</span>:<span class="m">250</span><span class="p">)</span>
+</span><span class='line'>    lli<span class="p">[</span>i<span class="p">,</span>j<span class="p">]</span><span class="o">=</span>like<span class="p">(</span>c<span class="p">(</span>mu1<span class="p">[</span>i<span class="p">],</span>mu2<span class="p">[</span>j<span class="p">]))</span>
+</span><span class='line'>image<span class="p">(</span>mu1<span class="p">,</span> mu2<span class="p">,</span> <span class="o">-</span>lli<span class="p">)</span>
+</span><span class='line'>contour<span class="p">(</span>mu1<span class="p">,</span> mu2<span class="p">,</span> <span class="o">-</span>lli<span class="p">,</span>nlevels<span class="o">=</span><span class="m">100</span><span class="p">,</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>sta <span class="o">&lt;-</span> c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>mmu <span class="o">&lt;-</span> sta
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in <span class="m">1</span>:<span class="p">(</span>nlm<span class="p">(</span>like<span class="p">,</span> sta<span class="p">)$</span>it<span class="p">)){</span>
+</span><span class='line'>  mmu <span class="o">&lt;-</span> rbind<span class="p">(</span>mmu<span class="p">,</span> nlm<span class="p">(</span>like<span class="p">,</span> sta<span class="p">,</span> iterlim<span class="o">=</span>i<span class="p">)$</span>est<span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="c1">#plot(mi,ty=&quot;l&quot;,lwd=2,xlab=&quot;&quot;,ylab=&quot;arg&quot;)</span>
+</span><span class='line'>lines<span class="p">(</span>mmu<span class="p">,</span> pch<span class="o">=</span><span class="m">19</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-2_1.png" alt="" /></p>
+
+<h4>アニメーションにしてみる</h4>
+
+<p>例が1つだけでは面白くないので，初期値をバラバラに選んで何回もシミュレーションしてみて，初期値からどのように推定値が更新されていくのかを見てみる．今回は，初期値として<img src=http://chart.apis.google.com/chart?cht=tx&chl=mu_1+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=mu_2+>ともに図に表されている-2から5の範囲内でランダムに値を取るようにして，そこからのNewton-Raphson法による推定値の変化を1ステップごとにアニメーションとして作成した．それを25パターン作成して繋げている．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>library<span class="p">(</span>animation<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>mixtureloglik <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>Niter<span class="p">){</span>
+</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>n in <span class="m">1</span>:Niter<span class="p">){</span>
+</span><span class='line'>    sta <span class="o">&lt;-</span> c<span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="o">-</span><span class="m">2</span><span class="p">,</span><span class="m">5</span><span class="p">),</span>runif<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">-2</span><span class="p">,</span><span class="m">5</span><span class="p">))</span>
+</span><span class='line'>    mmu <span class="o">&lt;-</span> sta
+</span><span class='line'>    da <span class="o">&lt;-</span> sample<span class="p">(</span>c<span class="p">(</span>rnorm<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">2</span><span class="p">),</span> <span class="m">2.5</span><span class="o">+</span>rnorm<span class="p">(</span><span class="m">3</span><span class="o">*</span><span class="m">10</span><span class="o">^</span><span class="m">2</span><span class="p">)))</span>
+</span><span class='line'>    <span class="kr">for</span><span class="p">(</span>i in <span class="m">1</span>:<span class="p">(</span>nlm<span class="p">(</span>like<span class="p">,</span> sta<span class="p">)$</span>it<span class="p">)){</span>
+</span><span class='line'>      mmu <span class="o">&lt;-</span> rbind<span class="p">(</span>mmu<span class="p">,</span> nlm<span class="p">(</span>like<span class="p">,</span> sta<span class="p">,</span> iterlim<span class="o">=</span>i<span class="p">)$</span>est<span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="kr">for</span><span class="p">(</span>j in <span class="m">1</span>:nrow<span class="p">(</span>mmu<span class="p">)){</span>
+</span><span class='line'>      image<span class="p">(</span>mu1<span class="p">,</span> mu2<span class="p">,</span> <span class="o">-</span>lli<span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;Iter:&quot;</span><span class="p">,</span>n<span class="p">))</span>
+</span><span class='line'>      contour<span class="p">(</span>mu1<span class="p">,</span> mu2<span class="p">,</span> <span class="o">-</span>lli<span class="p">,</span>nlevels<span class="o">=</span><span class="m">100</span><span class="p">,</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+</span><span class='line'>      lines<span class="p">(</span>mmu<span class="p">[</span><span class="m">1</span>:j<span class="p">,</span><span class="m">1</span><span class="p">],</span>mmu<span class="p">[</span><span class="m">1</span>:j<span class="p">,</span><span class="m">2</span><span class="p">],</span> pch<span class="o">=</span><span class="m">19</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>saveMovie<span class="p">(</span>mixtureloglik<span class="p">(</span><span class="m">10</span><span class="p">),</span> interval<span class="o">=</span><span class="m">0.05</span><span class="p">,</span> moviename<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>
+</span><span class='line'>          movietype<span class="o">=</span><span class="s">&quot;gif&quot;</span><span class="p">,</span> outdir<span class="o">=</span>getwd<span class="p">(),</span>
+</span><span class='line'>          width<span class="o">=</span><span class="m">640</span><span class="p">,</span> height<span class="o">=</span><span class="m">480</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Rのanimationというパッケージを使用して作成している．このパッケージでは標準でmpgも出力できるらしいのだが，今回上手くいかなかったので，gifアニメとして出力したのちにImagemagickとffmpegを使用してmpgの動画として出力した．gifアニメは思いの外重いので，今回はYoutubeにアップロードした．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>convert animation.gif Rplot%d.png
+</span><span class='line'><span class="nv">$ </span>ffmpeg -f image2 -i Rplot%d.png animation.mpg
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<iframe width="420" height="315" src="http://www.youtube.com/embed/ZbppoIltz3E" frameborder="0" allowfullscreen></iframe>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">yag_ays</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-30T15:54:00+09:00" pubdate data-updated="true">Oct 30<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/reading/'>Reading</a>, <a class='category' href='/blog/categories/imcmr/'>imcmr</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/10/30/imcmr-5-1/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/10/30/imcmr-5-1/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/10/30/imcmr-5-1/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    
+    <section>
+      <h1>Comments</h1>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+    
+    <ul class="pager">
+      
+      <li class="previous"><a class="basic-alignment left"
+        href="/blog/2012/10/29/fake-it-till-you-become-it/" title="Previous Post:
+        「TED Talks ボディランゲージが人を作る」の主張における継続のニュアンス">&laquo; 「TED Talks ボディランゲージが人を作る」の主張における継続のニュアンス</a></li>
+      
+      <li><a href="/blog/archives">Blog Archives</a></li>
+      
+    </ul>
+  </footer>
+</article>
+
+<aside class="sidebar-nav span3">
+  
+    <section class="well">
+  <h1>About Me</h1>
+  <p>id : yag_ays</p>
+  <p>E-mail : yanagi.ayase [at] gmail.com</p>
+  <ul>
+    <li><a href="https://twitter.com/#!/yag_ays" target="_blank">Twitter</a></li>
+    <li><a href="https://github.com/yagays" target="_blank">Github</a> </li>
+    <li><a href="https://gist.github.com/yagays" target="_blank">Gist</a></li>
+    <li><a href="http://b.hatena.ne.jp/yag_ays/" target="_blank">Bookmark</a></li>
+    <li><a href="http://slideshare.net/yag_ays/" target="_blank">Slideshare</a></li>
+    <li><a href="http://yan-ase.tumblr.com/" target="_blank">Tumblr</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="http://yag-ays.hateblo.jp/" target="_blank">Hatena Blog (Technical)</a> </li>
+    <li><a href="http://yag-ays.hatenablog.com/" target="_blank">Hatena Blog (Personal)</a></li>
+    <li><a href="http://g86.dbcls.jp/~yag/wordpress/" target="_blank">Wordpress Blog (Technical, <i>old</i>)</a></li>
+    <li><a href="http://d.hatena.ne.jp/yag_ays/" target="_blank">Hatena Diary (<i>old</i>)</a></li>
+  </ul>
+
+</section>
+<section class="well">
+  <h1>Recent Post</h1>
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/30/imcmr-5-1/">「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 数値的最適化法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/29/fake-it-till-you-become-it/">「TED Talks ボディランゲージが人を作る」の主張における継続のニュアンス</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/28/imcmr-3-3/">「Rによるモンテカルロ法入門」読書ノート：3章 重点サンプリング</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/27/imcmr-3-2/">「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分 その2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/26/review-one-click/">「ワンクリック―ジェフ・ベゾス率いるAmazonの隆盛」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/25/imcmr-3-1/">「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/23/imcmr-2-3/">「Rによるモンテカルロ法入門」読書ノート：2章 練習問題</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/22/imcmr-2-2/">「Rによるモンテカルロ法入門」読書ノート：2章 受理・棄却法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/21/imcmr-2-1/">「Rによるモンテカルロ法入門」読書ノート：2章 逆変換・一般変換法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">「Rによるモンテカルロ法入門」読書ノート：アーカイブ</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="well">
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (38)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (8)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (2)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (13)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+</section>
+
+
+<section class="well">
+  <h1>Twitter</h1>
+  <ul id="tweets" class="nav">
+    <li class="nav-header">Latest Tweets</li>
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      getTwitterFeed("yag_ays", 10, true);
+    });
+  </script>
+  <script src="/javascripts/asides/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/yag_ays" class="twitter-follow-button" data-show-count="false">Follow @yag_ays</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2012 - yag_ays -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wolfeyesbioinformaticsbeta';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://yagays.github.com/blog/2012/10/30/imcmr-5-1/';
+        var disqus_url = 'http://yagays.github.com/blog/2012/10/30/imcmr-5-1/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

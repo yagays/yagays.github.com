@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Reading | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-29T23:13:18+09:00</updated>
+  <updated>2012-10-30T16:04:20+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,204 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 数値的最適化法]]></title>
+    <link href="http://yagays.github.com/blog/2012/10/30/imcmr-5-1/"/>
+    <updated>2012-10-30T15:54:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/10/30/imcmr-5-1</id>
+    <content type="html"><![CDATA[<ul>
+<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>本章の概要</h3>
+
+<p>乱数を使って最適化問題を解くには2つの方法がある．</p>
+
+<ul>
+<li>確率的探索を用いて関数の最大値を探す（本章前半）</li>
+<li>シミュレーションを使って最適化する関数を近似する（本章後半，5.4以降）</li>
+</ul>
+
+
+<h3>内容：モンテカルロ最適化で関数の最大値を求める</h3>
+
+<h4>最適化問題には2種類ある</h4>
+
+<p>最適化問題には大きくわけて2種類存在する．</p>
+
+<ul>
+<li>定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>で関数<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28%5Ctheta%29>の極値を求める</li>
+<li>定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>で陰的方程式<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28%5Ctheta%29+%3D+0+>の解を求める</li>
+</ul>
+
+
+<p>問題設定はそれぞれ違うのだが，今回は最大化問題だけを取り上げる．つまり，以下の式のように定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>で一番大きな値を求めたい．</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=max_%7B%5Ctheta+%5Cin+%5CTheta%7D%3Dh%28%5Ctheta%29></p>
+
+<h4>解き方にも2種類ある</h4>
+
+<ul>
+<li>数値的手法（5.2 数値的最適化法）
+
+<ul>
+<li>目標関数の特性に強く依存する</li>
+</ul>
+</li>
+<li>確率的手法（5.3 確率的探索）</li>
+</ul>
+
+
+<p>さて，ある関数のある定義域内における最大値を求めようと思った場合にじゃあどうするかというと，定義域内の値を片っ端から入れていって大きいものを探すといったアプローチと，別の分布をシミュレーションしてそこから最大値が現れるまでシミュレーションし続けるという方法の2通りがあるということになる．ここで重要になるポイントが定義域で，3章のモンテカルロ積分において積分する範囲を決めていたように，5章モンテカルロ最適化においても定義域内で最大値を探すということに繋がる．ただし，モンテカルロ積分よりもモンテカルロ最適化のほうが，全体の平均を求めるよりもピンポイントで値の大きい極値を求めるという点で，一般的に難しい．</p>
+
+<h3>例 5.1 コーシー分布から得られたサンプルの尤度を最大化する</h3>
+
+<h4>左の図</h4>
+
+<p>何かしらのコーシー分布から生成された乱数<img src=http://chart.apis.google.com/chart?cht=tx&chl=%7Bx_1%2C+%5Cdots+%2Cx_n%7D>が与えられた時に，それを生成したコーシー分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BC%7D%28%5Ctheta%2C1%29+>の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+>を最尤法で推定しようという問題．尤度は以下の式で表される</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=l%28%5Ctheta%7C+x_1%2C%5Cdots%2Cx_n%29+%3D+%5Cprod_%7Bi%3D1%7D%3Csup%3E%7Bn%7D%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%3Csup%3E2%7D></sup></sup></p>
+
+<p>実際に計算するときには以下の対数尤度を使う．</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clog+l%28%5Ctheta%7C+x_1%2C%5Cdots%2Cx_n%29+%3D+%5Csum_%7Bi%3D1%7D%3Csup%3E%7Bn%7D%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%3Csup%3E2%7D></sup></sup></p>
+
+<p>今回は実験として，上の尤度と対数尤度の2パターンで計算したときに，どういう違いが現れるかを示す．数式上は違いはないが，計算機上では値の取り扱いにおいて違いが出てくる．</p>
+
+<p>```r
+xm &lt;- rcauchy(500)
+loglik &lt;- function(y){-sum(log(1+(x-y)<sup>2))}</sup>
+lik &lt;- function(y){prod(1/(1+(x-y)<sup>2))}</sup></p>
+
+<p>mi &lt;- numeric(500)
+mi2 &lt;- numeric(500)
+for(i in 1:500){
+  x &lt;- xm[1:i]
+  mi[i] &lt;- optimize(loglik, interval=c(-10,10), maximum=T)$max
+  mi2[i] &lt;- optimize(lik, interval=c(-10,10),maximum=T)$max
+}</p>
+
+<p>plot(mi, type="l", ylim=c(-5, 10), ylab="theta", xlab="sample size")
+par(new=T)
+plot(mi2, type="l", ylim=c(-5,10),col="red", ylab="theta", xlab="sample size")
+```</p>
+
+<p>尤度で計算した(赤)と対数尤度で計算した計算(黒)を以下のプロットの左側の図に示してある．これをみると，対数尤度で計算した場合では着実に推定値が収束していくのに対し，尤度で計算した場合ではある地点で値が発散してるのがわかる．これは，Rのoptimizeにおいて，尤度を直接観察すると値が発散することがあるからである．このように，確率を扱う場合には，値が非常に小さくなることに注意しなければならない．</p>
+
+<h4>右の図</h4>
+
+<p>次に，上記の尤度を，摂動が加えられた尤度に置き換える．これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=-%5B%5Csin%28100y%29%5D%3Csup%3E2%3C%2Fsup%3E+>という0から1の間の値を取るノイズを加えている．</p>
+
+<p>```r
+perturbedloglik &lt;- function(y){-sin(y<em>100)<sup>2</sup> - sum(log(1+(x-y)<sup>2))}</sup>
+perturbedlik &lt;- function(y){-sin(y</em>100)<sup>2</sup> + prod(1/(1+(x-y)<sup>2))}</sup>
+mi &lt;- numeric(500)
+mi2 &lt;- numeric(500)
+for(i in 1:500){
+  x &lt;- xm[1:i]
+  mi[i] &lt;- optimize(perturbedloglik, interval=c(-10,10), maximum=T)$max
+  mi2[i] &lt;- optimize(perturbedlik, interval=c(-10,10),maximum=T)$max
+}</p>
+
+<p>plot(mi, type="l", ylim=c(-5, 10), ylab="theta", xlab="sample size")
+par(new=T)
+plot(mi2, type="l", ylim=c(-5,10),col="red", ylab="theta", xlab="sample size")</p>
+
+<p>```</p>
+
+<p>これをみると，尤度に関しては左図で示したように発散してしまっている．対数尤度を見てみると，左図と比べて値がばらつきグラフがギザギザになっている．当然だが，ノイズを加えれば値がばらついてしまう．</p>
+
+<p>(個人的な感想)右図は何が言いたいのかちょっと分からない．ここの解釈は本書では出てこないと思うのだが，尤度関数に何らかの関数が加わる状況といえば，最小二乗法などにおける正則化項を加えて過学習を押さえる場合だろうか？　正則化項は摂動というよりかは，lassoやridgeのように1次/2次の関数になるので，今回の場合みたいにノイズのようにはならないと思うのだが…．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-1.png" alt="" /></p>
+
+<h3>例 5.2 Newton-Raphson法を用いて混合正規分布モデルから得られたサンプルの尤度を最大化する</h3>
+
+<p>今回の混合正規モデルでは，</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_1%2C1%29%2B%5Cfrac%7B3%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_2%2C1%29+></p>
+
+<p>を考える．まずは分布の形を調べるために，<img src=http://chart.apis.google.com/chart?cht=tx&chl=mu_1+%3D+0+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=mu_2+%3D+2.5+>における対数尤度の分布を示してみる．そして，初期値(-1,-1)からスタートして，Newton-Raphson法がどのように推定値に収束していくかを図示する．</p>
+
+<p>```r
+da &lt;- sample(c(rnorm(10<sup>2),</sup> 2.5+rnorm(3<em>10<sup>2)))</sup>
+like &lt;- function(mu){ -sum(log((0.25</em>dnorm(da-mu[1]) + 0.75*dnorm(da-mu[2])))) }</p>
+
+<p>mu1 &lt;- seq(-2, 5, le=250)
+mu2 &lt;- seq(-2, 5, le=250)
+lli=matrix(0,nco=250,nro=250)
+for (i in 1:250)
+  for (j in 1:250)</p>
+
+<pre><code>lli[i,j]=like(c(mu1[i],mu2[j]))
+</code></pre>
+
+<p>image(mu1, mu2, -lli)
+contour(mu1, mu2, -lli,nlevels=100, add=T)</p>
+
+<p>sta &lt;- c(1,1)
+mmu &lt;- sta
+for(i in 1:(nlm(like, sta)$it)){
+  mmu &lt;- rbind(mmu, nlm(like, sta, iterlim=i)$est)
+}</p>
+
+<h1>plot(mi,ty="l",lwd=2,xlab="",ylab="arg")</h1>
+
+<p>lines(mmu, pch=19, lwd=2)
+```</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-2_1.png" alt="" /></p>
+
+<h4>アニメーションにしてみる</h4>
+
+<p>例が1つだけでは面白くないので，初期値をバラバラに選んで何回もシミュレーションしてみて，初期値からどのように推定値が更新されていくのかを見てみる．今回は，初期値として<img src=http://chart.apis.google.com/chart?cht=tx&chl=mu_1+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=mu_2+>ともに図に表されている-2から5の範囲内でランダムに値を取るようにして，そこからのNewton-Raphson法による推定値の変化を1ステップごとにアニメーションとして作成した．それを25パターン作成して繋げている．</p>
+
+<p>```r
+library(animation)</p>
+
+<p>mixtureloglik &lt;- function(Niter){
+  for(n in 1:Niter){</p>
+
+<pre><code>sta &lt;- c(runif(1,2-2,5),runif(1,-2,5))
+mmu &lt;- sta
+da &lt;- sample(c(rnorm(10^2), 2.5+rnorm(3*10^2)))
+for(i in 1:(nlm(like, sta)$it)){
+  mmu &lt;- rbind(mmu, nlm(like, sta, iterlim=i)$est)
+}
+for(j in 1:nrow(mmu)){
+  image(mu1, mu2, -lli, main=paste("Iter:",n))
+  contour(mu1, mu2, -lli,nlevels=100, add=T)
+  lines(mmu[1:j,1],mmu[1:j,2], pch=19, lwd=2)
+}
+</code></pre>
+
+<p>  }
+}</p>
+
+<p>saveMovie(mixtureloglik(10), interval=0.05, moviename="",</p>
+
+<pre><code>      movietype="gif", outdir=getwd(),
+      width=640, height=480)
+</code></pre>
+
+<p>```</p>
+
+<p>Rのanimationというパッケージを使用して作成している．このパッケージでは標準でmpgも出力できるらしいのだが，今回上手くいかなかったので，gifアニメとして出力したのちにImagemagickとffmpegを使用してmpgの動画として出力した．gifアニメは思いの外重いので，今回はYoutubeにアップロードした．</p>
+
+<p><code>bash
+$ convert animation.gif Rplot%d.png
+$ ffmpeg -f image2 -i Rplot%d.png animation.mpg
+</code></p>
+
+<iframe width="420" height="315" src="http://www.youtube.com/embed/ZbppoIltz3E" frameborder="0" allowfullscreen></iframe>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：3章 重点サンプリング]]></title>
@@ -196,8 +394,8 @@ for(x in c(0,2,4)){
 <p>以下のグラフでは，コーシー乱数のシミュレーションのグラフを重ねてプロットすることで，コーシー乱数を使った場合と正規乱数を使った場合の標準誤差を比較をしている．正規乱数を使ったシミュレーションの結果は，赤とピンクの線で表している．このプロットを見ると，正規乱数を使った場合の方がより誤差が少なく推定値を求められることがわかる．</p>
 
 <ul>
-<li>黒＆黄色：正規乱数（問題 a.）</li>
-<li>赤＆ピンク：コーシー乱数（問題 c.）</li>
+<li>黒＆黄色：コーシー乱数（問題 a.）</li>
+<li>赤＆ピンク：正規乱数（問題 c.）</li>
 </ul>
 
 
@@ -618,174 +816,6 @@ z &lt;- rnorm(1, mean=mu, sd=sigma)
 <p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+%5Cfrac%7Ba+%5Cpm+%5Csqrt%7Ba%3Csup%3E2%3C%2Fsup%3E+%2B+4%7D%7D%7B2%7D+%5Cgeq+a+></p>
 
 <p>が成り立つ． <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Csqrt%7Ba%3Csup%3E2%3C%2Fsup%3E+%2B+4%7D+>というのはaよりちょっとだけ大きい数なので，上式を満たすaは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+%5Cfrac%7Ba+%2B+%5Csqrt%7Ba%3Csup%3E2%3C%2Fsup%3E+%2B+4%7D%7D%7B2%7D+>となり，この式は常に正である．よって，<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%3D+%5Calpha+>の場合に，正当な候補密度になる．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：2章 受理・棄却法]]></title>
-    <link href="http://yagays.github.com/blog/2012/10/22/imcmr-2-2/"/>
-    <updated>2012-10-22T21:38:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/10/22/imcmr-2-2</id>
-    <content type="html"><![CDATA[<ul>
-<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>内容：逆変換法や一般変換法で生成できない分布から乱数を生成する</h3>
-
-<p>逆変換法や一般変換法では，一様分布から生成される乱数に何らかの関数を通すことで任意の乱数を生成してきた．しかし，このような直接的な方法で乱数を生成できない分布の場合には，間接的な方法によって乱数を生成する必要がある．そのような場合には，本来求めたい乱数の分布とは違った分布から乱数を生成し，それが受理できる値か棄却できる値かを選り分けることで，間接的に求めたい分布から生成された乱数を表現する．</p>
-
-<ul>
-<li>目標密度（target）: <img src=http://chart.apis.google.com/chart?cht=tx&chl=f+></li>
-<li>手段密度・候補密度（candidate）: <img src=http://chart.apis.google.com/chart?cht=tx&chl=g+></li>
-</ul>
-
-
-<p>この受理・棄却法では1つの乱数の値<img src=http://chart.apis.google.com/chart?cht=tx&chl=X+>につき，2つの乱数<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y+%5Csim+g+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2C1%5D%7D+>を考える．前者は候補密度から乱数を生成したもの，後者は受理・棄却に用いる一様乱数．この2つの乱数を，以下の式にあてはめて受理するか棄却するかを判断する．</p>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Cleq+%5Cfrac%7Bf%28Y%29%7D%7BM+%5Ctimes+g%28Y%29%7D+></p>
-
-<p>ここで登場するMは提案分布と候補密度から見積もった定数で，候補密度の制約の中で登場する値．基本的にある値より大きければ何でも良いのだが，シミュレーションの効率に関わってくる．これが小さい値であればあるほど，シミュレーションで棄却される乱数の候補が少なくて済むので，結果として効率が良くなる．最適なMは以下の式で与えられる（<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">UserR!資料pdf</a> p.51）．</p>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=M+%3D+%5Csup_x+%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D+></p>
-
-<br />
-
-
-<h3>例 2.7, 例2.8 ベータ分布の乱数を生成する(2通り)</h3>
-
-<p>黒の点が一様分布/ベータ分布から生成した乱数，赤の点がアルゴリズムで受理された乱数（今回求めたかった乱数），青の線が極限<img src=http://chart.apis.google.com/chart?cht=tx&chl=M+g%28x%29+>．</p>
-
-<p>受理・棄却の条件</p>
-
-<ul>
-<li>例2.7: <img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%26lt%3B+f%28Y%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2CM%5D%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=f+%5Csim+%5Cmathcal%7BBe%282.7%2C6.3%29%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=g+%3A+1+>
-
-<ul>
-<li>ここでgは何らかの分布ではなく「gは1に等しい」としているので，上式の1つ目の式の中にgが含まれていない．この場合，gで生成される乱数は一様乱数．</li>
-<li>一様分布のグラフを考えてみるとわかりやすい．区間[0,1]の間で常に値1を取る関数なので，上では1に等しいと表している．</li>
-</ul>
-</li>
-<li>例2.8: <img src=http://chart.apis.google.com/chart?cht=tx&chl=Ug%28Y%29+%26lt%3B+f%28Y%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2CM%5D%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=f+%5Csim+%5Cmathcal%7BBe%282.7%2C6.3%29%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=g+%5Csim+%5Cmathcal%7BBe%282%2C6%29%7D+></li>
-</ul>
-
-
-<p>例2.8における「提案分布」という言葉は，新しく設定した候補分布のこと．</p>
-
-<p>```r</p>
-
-<h1>例2.7</h1>
-
-<p>Nsim &lt;- 2500
-a &lt;- 2.7
-b &lt;- 6.3
-M &lt;- 2.67
-u &lt;- runif(Nsim, max=M)
-y &lt;- runif(Nsim)
-x &lt;- y[u &lt; dbeta(y,a,b)]</p>
-
-<p>y2 &lt;- rbeta(Nsim,2,6)
-u2 &lt;- runif(Nsim, max=1.67) * dbeta(y2,2,6)
-x2 &lt;- y2[u2 &lt; dbeta(y2,2.7,6.3)]</p>
-
-<p>par(mfrow=c(1,2))
-plot(y, u, xlim=c(0,1.0), ylim=c(0,2.8), cex=0.5, xlab="y", ylab="u.g(y)")
-par(new=T)
-plot(x, u[u &lt; dbeta(y,a,b)], col="red", xlim=c(0,1.0), ylim=c(0,2.8), cex=0.5, xlab="y", ylab="u.g(y)")
-curve(dbeta(x,a,b), add=T, col="red", lwd=2)
-abline(h=M, lwd=2, col="blue")</p>
-
-<p>plot(y2, u2, xlim=c(0,1.0), ylim=c(0,5), cex=0.5, xlab="y", ylab="u.g(y)")
-par(new=T)
-plot(x2, u2[u2 &lt; dbeta(y2,2.7,6.3)], col="red", xlim=c(0,1.0), ylim=c(0,5), cex=0.5, xlab="y", ylab="u.g(y)")
-curve(dbeta(x,2.7,6.3), add=T, col="red", lwd=2)
-curve(dbeta(x,2,6)*1.67, add=T, col="blue", lwd=2)
-```</p>
-
-<p>![](http://dl.dropbox.com/u/142306/b/imcmr/chp2_6.png )</p>
-
-<h4>上の図の解釈</h4>
-
-<p>乱数の値が赤の分布の線より中に入れば受理となる．候補として生成される乱数は青の分布の線の中でランダムに生成されるので，赤と青の線の間の部分が棄却された乱数になる．この赤と青の線の間の部分が少なければ少ないほど，この受理・棄却法の効率も良くなる．じゃあ効率を良くするにはどうすればいいかというと，いじることのできるポイントは2つ</p>
-
-<ul>
-<li>提案分布gを良い感じにする（青の線の形を決める）</li>
-<li>定数Mを出来るだけ小さくする（青の線の高さを決める，fとgの間の幅を決める）</li>
-</ul>
-
-
-<p>この受理・棄却法の前提として<strong>目標分布（赤の線）から乱数は生成できない</strong>のだから，100％受理されるようなシミュレーションは理論上不可能．だから，乱数が生成できるような候補分布を使って，定数Mを定めて，間接的に乱数を発生させようということ．</p>
-
-<br />
-
-
-<h3>練習問題 2.7 目標分布fと候補密度gがともにベータ分布だった場合に，どのような制約があるのか</h3>
-
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%5Cleq+%5Calpha%2C+b+%5Cleq+%5Cbeta+>が必要なことの証明</h4>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=f%28x%29++%3D+%5Cfrac%7B%5CGamma%28%5Calpha%2B%5Cbeta%29%7D%7B%5CGamma%28%5Calpha%29%5CGamma%28%5Cbeta%29%7D+x%3Csup%3E%7B%5Calpha-1%7D%3C%2Fsup%3E+%281-x%29%3Csup%3E%7B%5Cbeta-1%7D%3C%2Fsup%3E+%5Csim+%5Cmathcal%7BBe%7D%28%5Calpha%2C%5Cbeta%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28x%29++%3D+%5Cfrac%7B%5CGamma%28a%2Bb%29%7D%7B%5CGamma%28a%29%5CGamma%28b%29%7D+x%3Csup%3E%7Ba-1%7D%3C%2Fsup%3E+%281-x%29%3Csup%3E%7Bb-1%7D%3C%2Fsup%3E+%5Csim+%5Cmathcal%7BBe%7D%28a%2Cb%29+>
-より</p>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D++%3D+%5Cfrac%7B%5CGamma%28%5Calpha%2B%5Cbeta%29%5CGamma%28a%29%5CGamma%28b%29%7D%7B%5CGamma%28a%2Bb%29%5CGamma%28%5Calpha%29%5CGamma%28%5Cbeta%29%7D+x%3Csup%3E%7B%5Calpha-a%7D%3C%2Fsup%3E+%281-x%29%3Csup%3E%7B%5Cbeta-b%7D%3C%2Fsup%3E+></p>
-
-<p>となり，比<img src=http://chart.apis.google.com/chart?cht=tx&chl=f%2Fg+>が有界になる（どっかのxの値が<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cinf+>になったりしない）には，xや(1-x)のベキ数の部分が0以上でである必要がある．よって<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%5Cleq+%5Calpha%2C+b+%5Cleq+%5Cbeta+>が必要．</p>
-
-<p>上の細かい証明は省略するが，要するにベータ分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D%28a%2Cb%29+>において，aとbが1未満の時には0と1の両端で値が跳ね上がる．以下の図は，「<a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22">パターン認識と機械学習 上</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のP.70を参考にベータ分布を作図したもの．これを見ると，aとbが1のときにちょうど一様分布のような形をとり，それより小さいと下に凸，それより大きいと上に凸のような分布の形になることがわかる．なので，ベータ分布が有界であるにはxや(1-x)のベキ数の部分がポイントになってくる．</p>
-
-<p>```r</p>
-
-<h1>練習問題 2.7 ベータ関数の分布を図示してみる</h1>
-
-<p>par(mfrow=c(2,2))
-curve(dbeta(x,0.1,0.1),col="red",lwd=2,ylim=c(0,3),main="Be(0.1,0.1)")
-curve(dbeta(x,1,1),col="red",lwd=2,ylim=c(0,3),main="Be(1,1)")
-curve(dbeta(x,2,3),col="red",lwd=2,ylim=c(0,3),main="Be(2,3)")
-curve(dbeta(x,8,4),col="red",lwd=2,ylim=c(0,3),main="Be(8,4)")
-```</p>
-
-<p>![](http://dl.dropbox.com/u/142306/b/imcmr/chp2_beta.png )</p>
-
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%3D+%5Cleft%5Clfloor+%5Calpha+%5Cright%5Crfloor+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=b+%3D+%5Cleft%5Clfloor+%5Cbeta+%5Cright%5Crfloor+>の証明</h4>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=f%28x%29%2Fg%28x%29+>を微分して最大値を取る時のxを求めると，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x_%7Bmax%7D+%3D+%5Cfrac%7B%5Calpha-a%7D%7B%5Calpha-a%2B%5Cbeta-b%7D+>となる．よって，上で証明した<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%5Cleq+%5Calpha%2C+b+%5Cleq+%5Cbeta+>を満たしつつ自然数aとbが最適な値を取るには，<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%3D+%5Cleft%5Clfloor+%5Calpha+%5Cright%5Crfloor+%2C+b+%3D+%5Cleft%5Clfloor+%5Cbeta+%5Cright%5Crfloor+>となる．これもまあ厳密な証明はできなくても直感的に考えれば明らかだろう．</p>
-
-<br />
-
-
-<h3>練習問題 2.8 二重指数分布から正規乱数を生成する</h3>
-
-<ul>
-<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=f%28x%29+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D%5Cexp%28-%5Cfrac%7Bx%3Csup%3E2%7D%7B2%7D%29%3C%2Fsup%3E+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+></li>
-<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28x%7C%5Calpha%29+%3D+%5Cfrac%7B%5Calpha%7D%7B2%7D%7D%5Cexp%28-%5Calpha+%7Cx%7C%29+></li>
-</ul>
-
-
-<h4>a. 定数Mの取りうる範囲と最小値を求める</h4>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%7C%5Calpha%29%7D+%3D+%5Csqrt%7B%5Cfrac%7B2%7D%7B%5Cpi%7D%7D%5Calpha%3Csup%3E%7B-1%7D%5Cexp%28-%5Cfrac%7Bx%3Csup%3E2%7D%7B2%7D%3C%2Fsup%3E%3C%2Fsup%3E+%2B+%5Calpha%7Cx%7C%29+></p>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+%5Calpha+>のとき，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28%5Calpha%29%7D%7Bg%28%5Calpha%29%7D+%3D+%5Csqrt%7B%5Cfrac%7B2%7D%7B%5Cpi%7D%7D%5Calpha%3Csup%3E%7B-1%7D%5Cexp%28-%5Cfrac%7B%5Calpha%3Csup%3E2%7D%7B2%7D%3C%2Fsup%3E%3C%2Fsup%3E+%2B+%5Calpha%3Csup%3E2%29%3C%2Fsup%3E+%3D+%5Csqrt%7B%5Cfrac%7B2%7D%7B%5Cpi%7D%7D%5Calpha%3Csup%3E%7B-1%7De%3Csup%3E%7B%5Calpha%3Csup%3E2%2F2%7D%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E+>となり，与式を満たす．</p>
-
-<p>Mの最小値は，上式を微分すると<img src=http://chart.apis.google.com/chart?cht=tx&chl=%28-%5Calpha%3Csup%3E2%2B1%29%5Cexp%28-%5Cfrac%7B%5Calpha%3Csup%3E2%7D%7B2%7D%29%3C%2Fsup%3E%3C%2Fsup%3E+>が出てくるので，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+%5Cpm+1+>となる．候補分布に課された制約(P.59)より，fとgどちらか一方だけ負になることは無いので，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+1+>が正解．（二階微分すれば-1のとき最小値，1のとき最大値だとわかる）</p>
-
-<h4>b. 受理確率を求める</h4>
-
-<p>受理確率は1/Mで表される．最適なMの値は<img src=http://chart.apis.google.com/chart?cht=tx&chl=M+%3D+%5Csqrt%7B%5Cfrac%7B2%7D%7B%5Cpi%7D%7De%3Csup%3E%7B1%2F2%7D%3C%2Fsup%3E+>となるので，<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2FM+%3D+%5Csqrt%7B%5Cpi%2F2e%7D+%3D+1%2F0.76+%5Csimeq+1.3+>となる．</p>
-
-<h4>c. 候補分布から乱数を生成するために逆変換をする</h4>
-
-<p>受理・棄却法を使うには，当然候補分布から乱数が生成できなければいけない．今回は二重指数分布から乱数を生成して間接的に正規乱数を求めているので，二重指数分布から乱数を生成するために，2章前半で行った逆変換を行う．</p>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=G%28x%29+%3D+%5Cint_%7B-%5Cinfty%7D%3Csup%3E%7Bx%7D%3C%2Fsup%3E+g%28y%7C%5Calpha%29+dy+%3D+%5Cbegin%7Bcases%7D+%5Cfrac%7B1%7D%7B2%7De%3Csup%3E%7B%5Calpha%3C%2Fsup%3E+x%7D+%26amp%3B+%28x+%26lt%3B+0%29+%5C+1+-+%5Cfrac%7B1%7D%7B2%7De%3Csup%3E%7B%5Calpha%3C%2Fsup%3E+x%7D+%26amp%3B+%28x+%3E+0%29+%5Cend%7Bcases%7D+></p>
-
-<p>より，</p>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbegin%7Bcases%7D+x+%3D+%5Cfrac%7B1%7D%7B%5Calpha%7D%5Clog%282u%29+%26amp%3B+%28u+%26lt%3B+%5Cfrac%7B1%7D%7B2%7D%29+%5C+x+%3D+-%5Cfrac%7B1%7D%7B%5Calpha%7D%5Clog%282%281-u%29%29+%26amp%3B+%28%5Cfrac%7B1%7D%7B2%7D+%26lt%3B+u+%26lt%3B+1+%29%5Cend%7Bcases%7D+></p>
-
-<p>となる．あとは<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2C1%5D%7D+>で生成される乱数を上式に当てはめて計算すればよい．</p>
 ]]></content>
   </entry>
   
