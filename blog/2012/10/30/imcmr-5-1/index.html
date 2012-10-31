@@ -273,7 +273,7 @@
 
 <p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_1%2C1%29%2B%5Cfrac%7B3%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_2%2C1%29+></p>
 
-<p>を考える．まずは分布の形を調べるために，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_1+%3D+0+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_2+%3D+2.5+>における対数尤度の分布を示してみる．そして，初期値(-1,-1)からスタートして，Newton-Raphson法がどのように推定値に収束していくかを図示する．</p>
+<p>を考える．まずは分布の形を調べるために，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_1+%3D+0+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_2+%3D+2.5+>における対数尤度の分布を示してみる．そして，初期値(1,1)からスタートして，Newton-Raphson法がどのように推定値に収束していくかを図示する．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -294,15 +294,18 @@
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
+<span class='line-number'>20</span>
 </pre></td><td class='code'><pre><code class='r'><span class='line'>da <span class="o">&lt;-</span> sample<span class="p">(</span>c<span class="p">(</span>rnorm<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">2</span><span class="p">),</span> <span class="m">2.5</span><span class="o">+</span>rnorm<span class="p">(</span><span class="m">3</span><span class="o">*</span><span class="m">10</span><span class="o">^</span><span class="m">2</span><span class="p">)))</span>
 </span><span class='line'>like <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>mu<span class="p">){</span> <span class="o">-</span>sum<span class="p">(</span>log<span class="p">((</span><span class="m">0.25</span><span class="o">*</span>dnorm<span class="p">(</span>da<span class="o">-</span>mu<span class="p">[</span><span class="m">1</span><span class="p">])</span> <span class="o">+</span> <span class="m">0.75</span><span class="o">*</span>dnorm<span class="p">(</span>da<span class="o">-</span>mu<span class="p">[</span><span class="m">2</span><span class="p">]))))</span> <span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'>mu1 <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">-2</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> le<span class="o">=</span><span class="m">250</span><span class="p">)</span>
 </span><span class='line'>mu2 <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">-2</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> le<span class="o">=</span><span class="m">250</span><span class="p">)</span>
 </span><span class='line'>lli<span class="o">=</span>matrix<span class="p">(</span><span class="m">0</span><span class="p">,</span>nco<span class="o">=</span><span class="m">250</span><span class="p">,</span>nro<span class="o">=</span><span class="m">250</span><span class="p">)</span>
-</span><span class='line'><span class="kr">for</span> <span class="p">(</span>i in <span class="m">1</span>:<span class="m">250</span><span class="p">)</span>
-</span><span class='line'>  <span class="kr">for</span> <span class="p">(</span>j in <span class="m">1</span>:<span class="m">250</span><span class="p">)</span>
-</span><span class='line'>    lli<span class="p">[</span>i<span class="p">,</span>j<span class="p">]</span><span class="o">=</span>like<span class="p">(</span>c<span class="p">(</span>mu1<span class="p">[</span>i<span class="p">],</span>mu2<span class="p">[</span>j<span class="p">]))</span>
+</span><span class='line'><span class="kr">for</span> <span class="p">(</span>i in <span class="m">1</span>:<span class="m">250</span><span class="p">){</span>
+</span><span class='line'>  <span class="kr">for</span> <span class="p">(</span>j in <span class="m">1</span>:<span class="m">250</span><span class="p">){</span>
+</span><span class='line'>    lli<span class="p">[</span>i<span class="p">,</span>j<span class="p">]</span> <span class="o">&lt;-</span> like<span class="p">(</span>c<span class="p">(</span>mu1<span class="p">[</span>i<span class="p">],</span>mu2<span class="p">[</span>j<span class="p">]))</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>image<span class="p">(</span>mu1<span class="p">,</span> mu2<span class="p">,</span> <span class="o">-</span>lli<span class="p">)</span>
 </span><span class='line'>contour<span class="p">(</span>mu1<span class="p">,</span> mu2<span class="p">,</span> <span class="o">-</span>lli<span class="p">,</span>nlevels<span class="o">=</span><span class="m">100</span><span class="p">,</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
 </span><span class='line'>
@@ -311,7 +314,6 @@
 </span><span class='line'><span class="kr">for</span><span class="p">(</span>i in <span class="m">1</span>:<span class="p">(</span>nlm<span class="p">(</span>like<span class="p">,</span> sta<span class="p">)$</span>it<span class="p">)){</span>
 </span><span class='line'>  mmu <span class="o">&lt;-</span> rbind<span class="p">(</span>mmu<span class="p">,</span> nlm<span class="p">(</span>like<span class="p">,</span> sta<span class="p">,</span> iterlim<span class="o">=</span>i<span class="p">)$</span>est<span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="c1">#plot(mi,ty=&quot;l&quot;,lwd=2,xlab=&quot;&quot;,ylab=&quot;arg&quot;)</span>
 </span><span class='line'>lines<span class="p">(</span>mmu<span class="p">,</span> pch<span class="o">=</span><span class="m">19</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -320,7 +322,7 @@
 
 <h4>アニメーションにしてみる</h4>
 
-<p>例が1つだけでは面白くないので，初期値をバラバラに選んで何回もシミュレーションしてみて，初期値からどのように推定値が更新されていくのかを見てみる．今回は，初期値として<img src=http://chart.apis.google.com/chart?cht=tx&chl=mu_1+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=mu_2+>ともに図に表されている-2から5の範囲内でランダムに値を取るようにして，そこからのNewton-Raphson法による推定値の変化を1ステップごとにアニメーションとして作成した．それを25パターン作成して繋げている．</p>
+<p>例が1つだけでは面白くないので，初期値をバラバラに選んで何回もシミュレーションしてみて，初期値からどのように推定値が更新されていくのかを見てみる．今回は，初期値として<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_1+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_2+>ともに図に表されている-2から5の範囲内でランダムに値を取るようにして，そこからのNewton-Raphson法による推定値の変化を1ステップごとにアニメーションとして作成した．それを25パターン作成して繋げている．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -361,7 +363,7 @@
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>saveMovie<span class="p">(</span>mixtureloglik<span class="p">(</span><span class="m">10</span><span class="p">),</span> interval<span class="o">=</span><span class="m">0.05</span><span class="p">,</span> moviename<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>
+</span><span class='line'>saveMovie<span class="p">(</span>mixtureloglik<span class="p">(</span><span class="m">25</span><span class="p">),</span> interval<span class="o">=</span><span class="m">0.05</span><span class="p">,</span> moviename<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>
 </span><span class='line'>          movietype<span class="o">=</span><span class="s">&quot;gif&quot;</span><span class="p">,</span> outdir<span class="o">=</span>getwd<span class="p">(),</span>
 </span><span class='line'>          width<span class="o">=</span><span class="m">640</span><span class="p">,</span> height<span class="o">=</span><span class="m">480</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>

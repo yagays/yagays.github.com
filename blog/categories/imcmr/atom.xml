@@ -4,7 +4,7 @@
   <title><![CDATA[Category: imcmr | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/imcmr/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-10-31T01:36:28+09:00</updated>
+  <updated>2012-11-01T01:43:18+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -134,7 +134,7 @@ plot(mi2, type="l", ylim=c(-5,10),col="red", ylab="theta", xlab="sample size")</
 
 <p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_1%2C1%29%2B%5Cfrac%7B3%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_2%2C1%29+></p>
 
-<p>を考える．まずは分布の形を調べるために，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_1+%3D+0+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_2+%3D+2.5+>における対数尤度の分布を示してみる．そして，初期値(-1,-1)からスタートして，Newton-Raphson法がどのように推定値に収束していくかを図示する．</p>
+<p>を考える．まずは分布の形を調べるために，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_1+%3D+0+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_2+%3D+2.5+>における対数尤度の分布を示してみる．そして，初期値(1,1)からスタートして，Newton-Raphson法がどのように推定値に収束していくかを図示する．</p>
 
 <p>```r
 da &lt;- sample(c(rnorm(10<sup>2),</sup> 2.5+rnorm(3<em>10<sup>2)))</sup>
@@ -143,31 +143,30 @@ like &lt;- function(mu){ -sum(log((0.25</em>dnorm(da-mu[1]) + 0.75*dnorm(da-mu[2
 <p>mu1 &lt;- seq(-2, 5, le=250)
 mu2 &lt;- seq(-2, 5, le=250)
 lli=matrix(0,nco=250,nro=250)
-for (i in 1:250)
-  for (j in 1:250)</p>
+for (i in 1:250){
+  for (j in 1:250){</p>
 
-<pre><code>lli[i,j]=like(c(mu1[i],mu2[j]))
+<pre><code>lli[i,j] &lt;- like(c(mu1[i],mu2[j]))
 </code></pre>
 
-<p>image(mu1, mu2, -lli)
+<p>  }
+}
+image(mu1, mu2, -lli)
 contour(mu1, mu2, -lli,nlevels=100, add=T)</p>
 
 <p>sta &lt;- c(1,1)
 mmu &lt;- sta
 for(i in 1:(nlm(like, sta)$it)){
   mmu &lt;- rbind(mmu, nlm(like, sta, iterlim=i)$est)
-}</p>
-
-<h1>plot(mi,ty="l",lwd=2,xlab="",ylab="arg")</h1>
-
-<p>lines(mmu, pch=19, lwd=2)
+}
+lines(mmu, pch=19, lwd=2)
 ```</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-2_1.png" alt="" /></p>
 
 <h4>アニメーションにしてみる</h4>
 
-<p>例が1つだけでは面白くないので，初期値をバラバラに選んで何回もシミュレーションしてみて，初期値からどのように推定値が更新されていくのかを見てみる．今回は，初期値として<img src=http://chart.apis.google.com/chart?cht=tx&chl=mu_1+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=mu_2+>ともに図に表されている-2から5の範囲内でランダムに値を取るようにして，そこからのNewton-Raphson法による推定値の変化を1ステップごとにアニメーションとして作成した．それを25パターン作成して繋げている．</p>
+<p>例が1つだけでは面白くないので，初期値をバラバラに選んで何回もシミュレーションしてみて，初期値からどのように推定値が更新されていくのかを見てみる．今回は，初期値として<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_1+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_2+>ともに図に表されている-2から5の範囲内でランダムに値を取るようにして，そこからのNewton-Raphson法による推定値の変化を1ステップごとにアニメーションとして作成した．それを25パターン作成して繋げている．</p>
 
 <p>```r
 library(animation)</p>
@@ -191,7 +190,7 @@ for(j in 1:nrow(mmu)){
 <p>  }
 }</p>
 
-<p>saveMovie(mixtureloglik(10), interval=0.05, moviename="",</p>
+<p>saveMovie(mixtureloglik(25), interval=0.05, moviename="",</p>
 
 <pre><code>      movietype="gif", outdir=getwd(),
       width=640, height=480)
