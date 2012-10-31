@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-01T01:43:18+09:00</updated>
+  <updated>2012-11-01T02:48:17+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,149 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 確率的探索]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/01/imcmr-5-2/"/>
+    <updated>2012-11-01T02:18:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/01/imcmr-5-2</id>
+    <content type="html"><![CDATA[<ul>
+<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>例 5.3</h3>
+
+<p><a href="http://yagays.github.com/blog/2012/10/25/imcmr-3-1/">例 3.3</a>で積分を考えた関数<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%29+%3D+%5B%5Ccos%2850x%29+%2B+%5Csin%2820x%29+%5D%5E2+>について，今度はその最大値について考える．</p>
+
+<p>今回の実験は，1000回シミュレーションを行う．それぞれのシミュレーションには，まず一様乱数<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BU%7D_%7B%5B0%2C1%5D%7D+%3D+u_1%2C+%5Cldots+%2C+u_m+>を1000個作成し，それぞれに関数を掛けた値の中から最大値<img src=http://chart.apis.google.com/chart?cht=tx&chl=h_%7Bm%7D%5E%7B%2A%7D+%3D+%5Cmax%28h%28u_1%29%2C+%5Cldots+%2Ch%28u_m%29%29+>を求める．</p>
+
+<p>確率的探索といっても，今回の場合にやっていることは結局のところ，定義域内で乱数を発生させて関数の値が大きいところを探しているだけとなる．今回は一様乱数で定義域内をまんべんなく探すという方法を取っているが，この後の確率的探索の例では「密度」を考えて，関数の値が大きい領域でのシミュレーションの確率を高くし，その他の関数の値の小さい領域での確率を小さくするという方法が取られる．</p>
+
+<h4>今回のシミュレーションの仕組み</h4>
+
+<p>今回のコードは少しややこしいので，まずは試しにシミュレーションを1回だけ行なってみよう．今回は推定値がどのように更新されていくかを見るために，単純にmax()関数を使うのではなく，cummax()関数を使用している．これにより，ベクトルの前から順に値を見ていって，最大値を更新していく様子を見ることができる．以下の図の黒の線が推定値<img src=http://chart.apis.google.com/chart?cht=tx&chl=h_%7Bm%7D%5E%7B%2A%7D+>，赤の線がoptimize()関数で求めた定義域内における関数<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%29+>の最大値を示している．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>h <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">){(</span>cos<span class="p">(</span><span class="m">50</span><span class="o">*</span>x<span class="p">)</span> <span class="o">+</span> sin<span class="p">(</span><span class="m">20</span><span class="o">*</span>x<span class="p">))</span><span class="o">^</span><span class="m">2</span><span class="p">}</span>
+</span><span class='line'>plot<span class="p">(</span>cummax<span class="p">(</span>h<span class="p">(</span>runif<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">3</span><span class="p">))),</span>type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+</span><span class='line'>abline<span class="p">(</span>h<span class="o">=</span>optimize<span class="p">(</span>h<span class="p">,</span>int<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> maximum<span class="o">=</span><span class="k-Variable">T</span><span class="p">)$</span>ob<span class="p">,</span>col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-3_3.png" alt="" /></p>
+
+<h4>実際に例5.3のシミュレーションを行う</h4>
+
+<p>では実際に1000回のシミュレーションを行なって，推定値がどのように更新されていくのか，そしてその値がどれほどバラけるのかを見ていこう．</p>
+
+<p>以下の図が今回の結果となっている．まず，本書に載っている左図ではなく，右の赤い線が重なった図から説明する．これは，1000回シミュレーションした中から10回だけ抜き出してプロットしたものとなっている．これを見ると，最初のうちは0に近いような値から始まっていたりと値が安定しないものの，200回もすると実際の値と殆ど変わらないような推定値になり落ち着いているのがわかる．このように，値がきちんと実際の値に近づくかどうかを見るために，各イテレーションごとの最小値を求めてプロットしたのが左図となっている．灰色の部分は，イテレーションごとの推定値の幅を示しており，これを見ると，800回程度実験すれば一応どのシミュレーションでも実際の値と推定値がほぼ同じになることが分かる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>h <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">){(</span>cos<span class="p">(</span><span class="m">50</span><span class="o">*</span>x<span class="p">)</span> <span class="o">+</span> sin<span class="p">(</span><span class="m">20</span><span class="o">*</span>x<span class="p">))</span><span class="o">^</span><span class="m">2</span><span class="p">}</span>
+</span><span class='line'>rangom <span class="o">&lt;-</span> h<span class="p">(</span>matrix<span class="p">(</span>runif<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">6</span><span class="p">),</span> ncol<span class="o">=</span><span class="m">10</span><span class="o">^</span><span class="m">3</span><span class="p">))</span>
+</span><span class='line'>monitor <span class="o">&lt;-</span> t<span class="p">(</span>apply<span class="p">(</span>rangom<span class="p">,</span> <span class="m">1</span><span class="p">,</span> cummax<span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+</span><span class='line'>plot<span class="p">(</span>monitor<span class="p">[</span><span class="m">1</span><span class="p">,],</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;white&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span> optimize<span class="p">(</span>h<span class="p">,</span>int<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> maximum<span class="o">=</span><span class="k-Variable">T</span><span class="p">)$</span>ob<span class="p">),</span>
+</span><span class='line'>     xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;h(theta)&quot;</span><span class="p">)</span> <span class="c1"># 描写する領域をplotしているだけ</span>
+</span><span class='line'>par<span class="p">(</span>new<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+</span><span class='line'>polygon<span class="p">(</span>c<span class="p">(</span><span class="m">1</span>:<span class="m">10</span><span class="o">^</span><span class="m">3</span><span class="p">,</span> <span class="m">10</span><span class="o">^</span><span class="m">3</span>:<span class="m">1</span><span class="p">),</span> c<span class="p">(</span>apply<span class="p">(</span>monitor<span class="p">,</span><span class="m">2</span><span class="p">,</span>max<span class="p">),</span> rev<span class="p">(</span>apply<span class="p">(</span>monitor<span class="p">,</span> <span class="m">2</span><span class="p">,</span> min<span class="p">))),</span> col<span class="o">=</span><span class="s">&quot;gray&quot;</span><span class="p">)</span>
+</span><span class='line'>abline<span class="p">(</span>h<span class="o">=</span>optimize<span class="p">(</span>h<span class="p">,</span> int<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> maximum<span class="o">=</span><span class="k-Variable">T</span><span class="p">)$</span>ob<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>plot<span class="p">(</span>monitor<span class="p">[</span><span class="m">1</span><span class="p">,],</span>type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span>col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span>optimize<span class="p">(</span>h<span class="p">,</span> int<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> maximum<span class="o">=</span><span class="k-Variable">T</span><span class="p">)$</span>ob<span class="p">),</span>
+</span><span class='line'>     xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;h(theta)&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in <span class="m">2</span>:<span class="m">10</span><span class="p">){</span>
+</span><span class='line'>  lines<span class="p">(</span>monitor<span class="p">[</span>i<span class="p">,],</span>col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-3_1.png" alt="" /></p>
+
+<h3>練習問題 5.3</h3>
+
+<p>まず最初に注意．この問題は解けないわけではないが，厳密には間違っているらしい．訂正は<a href="http://www.ceremade.dauphine.fr/~xian/shortManual.pdf">解答</a>(pdf)に書かれているが，つまりは定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>の制約は，</p>
+
+<blockquote><p><img src=http://chart.apis.google.com/chart?cht=tx&chl=x%5E2%281%2B%5Csin%283y%29%5Ccos%288x%29%29+%2B+y%5E2%282%2B%5Ccos%285x%29%5Ccos%288y%29%29+%5Cleq+1+></p></blockquote>
+
+<p>ではなく，</p>
+
+<blockquote><p> <img src=http://chart.apis.google.com/chart?cht=tx&chl=x%5E2%281%2B%5Csin%28%5Cfrac%7B3%7D%7By%7D%29%5Ccos%288x%29%29+%2B+y%5E2%282%2B%5Ccos%285x%29%5Ccos%288y%29%29+%5Cleq+1+></p></blockquote>
+
+<p>としなければいけないようだ．今回はどちらの式も試してみて，本に書かれている式の何がおかしかったのを見てみる．</p>
+
+<p>まず，左図は解答に記載されている修正後の式を使った場合，右図は本書に載っているオリジナルの式を使った場合となっている．これを見ると，左図では黒の円の中に式で表された制約の定義域が収まっているのに対し，右図では黒の円から一部制約の定義域がはみ出ているように見える．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>theta<span class="o">=</span>runif<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">5</span><span class="p">)</span><span class="o">*</span><span class="m">2</span><span class="o">*</span>pi
+</span><span class='line'>rho <span class="o">&lt;-</span> runif<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">5</span><span class="p">)</span>
+</span><span class='line'>xunif <span class="o">&lt;-</span> rho<span class="o">*</span>cos<span class="p">(</span>theta<span class="p">)</span><span class="o">/</span><span class="m">.77</span>
+</span><span class='line'>yunif <span class="o">&lt;-</span> rho<span class="o">*</span>sin<span class="p">(</span>theta<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+</span><span class='line'>plot<span class="p">(</span>xunif<span class="p">,</span> yunif<span class="p">,</span> pch<span class="o">=</span><span class="m">19</span><span class="p">,</span> cex<span class="o">=</span><span class="m">.4</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;y&quot;</span><span class="p">)</span>
+</span><span class='line'>const <span class="o">&lt;-</span> <span class="p">(</span>xunif<span class="o">^</span><span class="m">2</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">+</span>sin<span class="p">(</span>yunif<span class="o">/</span><span class="m">3</span><span class="p">)</span><span class="o">*</span>cos<span class="p">(</span>xunif<span class="o">*</span><span class="m">8</span><span class="p">))</span><span class="o">+</span>
+</span><span class='line'>  yunif<span class="o">^</span><span class="m">2</span><span class="o">*</span><span class="p">(</span><span class="m">2</span><span class="o">+</span>cos<span class="p">(</span><span class="m">5</span><span class="o">*</span>xunif<span class="p">)</span><span class="o">*</span>cos<span class="p">(</span><span class="m">8</span><span class="o">*</span>yunif<span class="p">))</span><span class="o">&lt;</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>points<span class="p">(</span>xunif<span class="p">[</span>const<span class="p">],</span> yunif<span class="p">[</span>const<span class="p">],</span> col<span class="o">=</span><span class="s">&quot;cornsilk2&quot;</span><span class="p">,</span> pch<span class="o">=</span><span class="m">19</span><span class="p">,</span>cex<span class="o">=</span><span class="m">.4</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>plot<span class="p">(</span>xunif<span class="p">,</span> yunif<span class="p">,</span> pch<span class="o">=</span><span class="m">19</span><span class="p">,</span> cex<span class="o">=</span><span class="m">.4</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;y&quot;</span><span class="p">)</span>
+</span><span class='line'>const2 <span class="o">&lt;-</span> <span class="p">(</span>xunif<span class="o">^</span><span class="m">2</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">+</span>sin<span class="p">(</span>yunif<span class="o">*</span><span class="m">3</span><span class="p">)</span><span class="o">*</span>cos<span class="p">(</span>xunif<span class="o">*</span><span class="m">8</span><span class="p">))</span><span class="o">+</span>
+</span><span class='line'>  yunif<span class="o">^</span><span class="m">2</span><span class="o">*</span><span class="p">(</span><span class="m">2</span><span class="o">+</span>cos<span class="p">(</span><span class="m">5</span><span class="o">*</span>xunif<span class="p">)</span><span class="o">*</span>cos<span class="p">(</span><span class="m">8</span><span class="o">*</span>yunif<span class="p">))</span><span class="o">&lt;</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>points<span class="p">(</span>xunif<span class="p">[</span>const2<span class="p">],</span> yunif<span class="p">[</span>const2<span class="p">],</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> pch<span class="o">=</span><span class="m">19</span><span class="p">,</span> cex<span class="o">=</span><span class="m">.4</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-3_2.png" alt="" /></p>
+
+<p>また，この方法のパフォーマンスを測定するために，棄却された点の平均数で評価してみる．生成した乱数の総数が10<sup>5</sup> 個なので，74%は受理され，26%が棄却されたことがわかる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>summary<span class="p">(</span>const<span class="p">)</span>
+</span><span class='line'><span class="c1"># Mode   FALSE    TRUE    NA&#39;s </span>
+</span><span class='line'><span class="c1"># logical   26285   73715       0</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>それにしても，この図に何とも言えない可愛らしさを感じる，宇宙の侵略者を撃ち落とす某ゲームで見たことがあるような…．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 数値的最適化法]]></title>
@@ -1551,10 +1694,16 @@
 <li>例 3.5，練習問題 3.5</li>
 </ul>
 </li>
-<li><a href="http://yagays.github.com/blog/2012/10/30/imcmr-5-5/">「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 数値的最適化法</a>
+<li><a href="http://yagays.github.com/blog/2012/10/30/imcmr-5-1/">「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 数値的最適化法</a>
 
 <ul>
 <li>例 5.1，例 5.2</li>
+</ul>
+</li>
+<li><a href="http://yagays.github.com/blog/2012/11/01/imcmr-5-2/">「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 確率的探索</a>
+
+<ul>
+<li>例 5.3，練習問題 5.3</li>
 </ul>
 </li>
 </ul>
@@ -1563,7 +1712,13 @@
 <h3>私的正誤表</h3>
 
 <ul>
-<li>P143 例題5.1内のコード8行目
+<li><p>全体的な修正点</p>
+
+<ul>
+<li>Rのoptimize()関数で最大値を求める際には「max=T」→「maximum=T」を使う．</li>
+</ul>
+</li>
+<li><p>P143 例題5.1内のコード8行目</p>
 
 <ul>
 <li>「maximum=max=T」→「maximum=T」</li>
@@ -1571,6 +1726,10 @@
 </li>
 </ul>
 
+
+<h3>実行環境</h3>
+
+<p>R version 2.15.1 (2012-06-22)</p>
 
 <h3>お決まりごと</h3>
 
@@ -1629,6 +1788,13 @@
 
 
 <p>UseR!の発表スライドっぽい資料．</p>
+
+<ul>
+<li><a href="http://waxworksmath.com/Authors/N_Z/Robert_N_Casella/robert_n_casella.html">http://waxworksmath.com/Authors/N_Z/Robert_N_Casella/robert_n_casella.html</a></li>
+</ul>
+
+
+<p>1章から3章途中までの解説とRのコードがある．</p>
 ]]></content>
   </entry>
   
@@ -2551,24 +2717,6 @@ end
 
 <iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B001F10YUE" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「読書力」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/10/01/review-reading-skill/"/>
-    <updated>2012-10-01T07:57:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/10/01/review-reading-skill</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4004308011" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>タイトルにあるように，本書は読書をする能力の重要性を唱える本である．著者は，読書は自己形成の手段であり教養を養うために必要な能力であると主張する．特に本書冒頭では，本を読む読まないは自由だという意見を否定し，本は絶対に読むべきものだと断定している．それと同時に，今まで読書によく親しんできた人間が読書を軽んじている発言をすることを強く非難し，本を読むという行為の重要性や意味，効果などが列挙される．また後半では，どういった方法で本を読めばよいかといった技術に関しても語られる．</p>
-
-<p>読書というものは，言ってしまえば文字や文章を読むといったことは，文字の読み方を覚えたばかりの子供から眼が衰えた老人まで，文字を読める人間すべてが行う行為だ．読む対象としての活字の種類も多岐にわたる．しかし本書では，読書と言いながらも，語られるのは子供や若者に対する，よく言われるような活字離れや読解力の低下に対する警鐘と，自分が感じてきた読書の素晴らしさや思い出話ばかりが強調される．言ってしまえば，本書は子供のための読書論であり，それはただの教育という行為にすぎない．それを悪いとは言わないが，それを読書論として展開するのはあまりにも読書という行為とかけ離れている気がする．結局のところ読書を他の単語に変えても若者のだらしない現状を憂いているような文脈で成り立つようでは，読書に関して何も踏み込んだことが言えてないのではないかと思う．巻末のお薦め文庫100選も近代文学などの古典や個人的なお薦め本ばかりで，つまるところ読書ではなく教養についてアレコレ言いたいだけなのだといった感想しか持てない．</p>
-
-<p>結局はよくある読書礼賛本だったが，ただ個別に見れば同意する部分もある．本の読み方には色々と種類があり，軽く要点だけを掴むような読み方から，じっくり時間をかけて文字を追っていくな読み方まで，本の種類や状況に応じて変えるべきだという意見は正にその通りだ．ボールペンで書き込みをしたり音読することの重要性も賛同できる．その他にも読書による思考能力の強化に関しては全面否定出来無いあたり，言ってることは正しくても全体として意味をなしていない感じが否めない．</p>
-
-<p>あと，妙なところに突っかかっても意味がないのだが，どうしても一言言いたい部分がある．「本を引用する会話」に出てくる衒学的な会話にまつわる話だ．著者は，ペダンティック・衒学的という言葉自体が死語になりつつあるのは，知らないことを恥と思う文化がなくなったからだという．知らないことが恥でなくなったから，相手に難しいことを言われても恥だと思わなくなった．教養が尊敬されることだからこそ，意味のないひけらかしを批判する言葉も使われる意味があったのだと言っている．これは本当だろうか．衒学という言葉が死語になったのと知らないことを恥と思わない文化がなくなったことの真偽はまあ脇においておこう．では，教養がなく物事を知らないことを恥と思わなくなれば，意味のないひけらかしをする人間に対して衒学だと思わないのだろうか．僕はそうは思わない．レベルの程度はあれど，本質的に意味のある話をしないことに対する蔑視は，教養の無さを恥と思うか思わないかに依らず存在する．「グローバルなイノベーションをマネージメントする」なんて糞みたいな定型文を聞いてイノベーションという単語の意味をしらないけど恥とは思わないから何も感じませんといったことにはならないだろう．教養や知識は関係なくとも，相手の言葉に意味がないということを感じ取れるからこそ，その発言を空虚だと判断して衒学的だと非難できる．そこに物事を知らないことで感じる恥は関係ないと思うのだが，どうやら著者の眼には若者が何も考えてないとしか写っていないらしい，本書ではこのあと唐突に本の話を若者がしなくなってけしからんという話が始まって余計に辟易するのだが，衒学のところにも非常に疑問が残る．そもそも本書自体が，古典文学や昔の偉い学者を盾にして一方的に時代の変化を憂いているだけの衒学的な雑感にとどまっているんじゃないだろうか．</p>
 ]]></content>
   </entry>
   
