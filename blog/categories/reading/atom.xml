@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Reading | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-02T07:16:58+09:00</updated>
+  <updated>2012-11-02T07:30:40+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -38,7 +38,7 @@
 
 <p>ここでは，ロジスティクス回帰におけるGLMMを考える．種子生存数が二項分布</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathrm%7BBin%7D%28y_i%7CN%2Cq_i%29+%3D+%7B%7BN%7D%5Cchoose%7By_i%7D%7D+q_%7Bi%7D%3Csup%3E%7By_i%7D%281-q_i%29%3Csup%3E%7BN-y_i%7D%3C%2Fsup%3E%3C%2Fsup%3E+>，（<img src=http://chart.apis.google.com/chart?cht=tx&chl=N%3D8+>）</p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathrm%7BBin%7D%28y_i%7C%5Cbeta_1%2C%5Cbeta_2%2Cs%29+%3D+%7B%7BN%7D%5Cchoose%7By_i%7D%7D+q_%7Bi%7D%3Csup%3E%7By_i%7D%281-q_i%29%3Csup%3E%7BN-y_i%7D%3C%2Fsup%3E%3C%2Fsup%3E+>，（<img src=http://chart.apis.google.com/chart?cht=tx&chl=N%3D8+>）</p>
 
 <p>に従うとした上で，そのパラメータ<img src=http://chart.apis.google.com/chart?cht=tx&chl=q_i+>を</p>
 
@@ -59,7 +59,9 @@
 <p>この実験を1000回繰り返し，その時の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>の分布をプロットしたのが以下の図となっている．左図が切片<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>の分布，右図が傾き<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>で，それぞれ黒の線がGLMが推定した値の分布，赤の線がGLMMが推定した値の分布となっている．また，GLMとGLMMの推定値の平均を縦の点線で表している．</p>
 
 <p>```r
-logistic &lt;- function(z){ 1/(1+exp(-z))}
+library(glmmML)</p>
+
+<p>logistic &lt;- function(z){ 1/(1+exp(-z))}
 Niter &lt;- 1000
 sigma &lt;- 3
 glm_b &lt;- matrix(0, nrow=Niter, ncol=2)

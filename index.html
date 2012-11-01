@@ -152,7 +152,7 @@
 
 <p>ここでは，ロジスティクス回帰におけるGLMMを考える．種子生存数が二項分布</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathrm%7BBin%7D%28y_i%7CN%2Cq_i%29+%3D+%7B%7BN%7D%5Cchoose%7By_i%7D%7D+q_%7Bi%7D%5E%7By_i%7D%281-q_i%29%5E%7BN-y_i%7D+>，（<img src=http://chart.apis.google.com/chart?cht=tx&chl=N%3D8+>）</p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathrm%7BBin%7D%28y_i%7C%5Cbeta_1%2C%5Cbeta_2%2Cs%29+%3D+%7B%7BN%7D%5Cchoose%7By_i%7D%7D+q_%7Bi%7D%5E%7By_i%7D%281-q_i%29%5E%7BN-y_i%7D+>，（<img src=http://chart.apis.google.com/chart?cht=tx&chl=N%3D8+>）</p>
 
 <p>に従うとした上で，そのパラメータ<img src=http://chart.apis.google.com/chart?cht=tx&chl=q_i+>を</p>
 
@@ -189,7 +189,11 @@
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>logistic <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>z<span class="p">){</span> <span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span>exp<span class="p">(</span><span class="o">-</span>z<span class="p">))}</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>library<span class="p">(</span>glmmML<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>logistic <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>z<span class="p">){</span> <span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span>exp<span class="p">(</span><span class="o">-</span>z<span class="p">))}</span>
 </span><span class='line'>Niter <span class="o">&lt;-</span> <span class="m">1000</span>
 </span><span class='line'>sigma <span class="o">&lt;-</span> <span class="m">3</span>
 </span><span class='line'>glm_b <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="m">0</span><span class="p">,</span> nrow<span class="o">=</span>Niter<span class="p">,</span> ncol<span class="o">=</span><span class="m">2</span><span class="p">)</span>
