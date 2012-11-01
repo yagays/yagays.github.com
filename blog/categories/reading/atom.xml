@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Reading | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-02T08:26:55+09:00</updated>
+  <updated>2012-11-02T08:48:31+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -98,7 +98,7 @@ legend(1.1, 3.0, c("glm","glmmML"), col=c(1:2), lwd=2)
 
 <p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc_7.png" alt="" /></p>
 
-<p>さて，この図の解釈だが，今回データセット作成に用いた実験条件は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+%3D+-4+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+%3D+1+>だったので，GLMMにおいて切片・傾きどちらもある程度正しい推定ができていることがわかる．逆にGLMでは，切片は過大推定，傾きは過小推定されている．逆に，推定値のばらつきである分布の山の裾の拡がりを見てみると，GLMMでは大きく，GLMでは小さくなっている．これはいわゆるバイアス・バリアンスのトレードオフによるものだと思われる．</p>
+<p>さて，この図の解釈だが，今回データセット作成に用いた実験条件は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+%3D+-4+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+%3D+1+>だったので，GLMMにおいて切片・傾きどちらもある程度正しい推定ができていることがわかる．逆にGLMでは，切片は過大推定，傾きは過小推定されている．また，推定値のばらつきである分布の山の裾の拡がりを見てみると，GLMMでは大きく，GLMでは小さくなっている．これはいわゆるバイアス・バリアンスのトレードオフによるものだと思われる．</p>
 
 <h4>参考</h4>
 
