@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>「データ解析のための統計モデリング入門」読書ノート 7章 GLMMとGLMを比較する - Wolfeyes Bioinformatics beta</title>
+  <meta name="author" content="yag_ays">
+
+  
+  <meta name="description" content="前回：「データ解析のための統計モデリング入門」読書ノート：http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/ 前回の読書ノートでは全体の流れを簡単に追ったが，今回は「データ解析のための統計モデリング入門」 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yagays.github.com/blog/2012/11/02/glm-mcmc-chp7">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <script src="/javascripts/libs/jquery.js"></script>
+  <script src="/javascripts/libs/modernizr-2.0.js"></script>
+  <script src="/javascripts/libs/bootstrap.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Wolfeyes Bioinformatics beta" type="application/atom+xml">
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17620484-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <a class="brand" href="/">Wolfeyes Bioinformatics beta</a>
+
+      <div class="nav-collapse">
+        <ul class="nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+        <ul class="nav pull-right" data-subscription="rss">
+          <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+          
+        </ul>
+
+        
+          <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <fieldset role="search">
+              <input type="hidden" name="q" value="site:yagays.github.com" />
+              <input class="search-query" type="text" name="q" results="0" placeholder="Search"/>
+            </fieldset>
+          </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</nav>
+  <div class="container">
+    <div class="row-fluid">
+      
+<article class="hentry span9" role="article">
+
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">「データ解析のための統計モデリング入門」読書ノート 7章 GLMMとGLMを比較する</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-02T06:54:00+09:00" pubdate data-updated="true">Nov 2<span>nd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><ul>
+<li>前回：「データ解析のための統計モデリング入門」読書ノート：<a href="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/">http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=400006973X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>前回の読書ノートでは全体の流れを簡単に追ったが，今回は「データ解析のための統計モデリング入門」7章の一般化線形混合モデルのシミュレーションを動かしてみた．</p>
+
+<h3>7章の概要</h3>
+
+<p>6章までは，ある植物100個体から得られた生存種子数と葉数のデータから，その関係性をモデル化しGLMで推定してきた．7章では，個体差を取り入れたモデルを作成し，生存種子数の過分散にうまくあてはまるようなパラメータを推定する．ただし，個体差を表すパラメータを個体ごとに割り当てて最尤推定するのではなく，個体差がある分布に従うと仮定した上で，その分布のパラメータを推定する．</p>
+
+<p>大雑把な目標としては，葉の数だけが生存種子数に効いているわけではないんだから，それぞれの個体で観測されていない/できないデータというのを考えようというもの．ただし，個体ごとに何らかの値を振って生存種子数を上手く表すことのできるモデルを組んでも予測に使えないので，じゃあその個体差がある分布に従っているだろうと考える．そうすると，個体ごとにパラメータを持たせるんじゃなくて，個体のばらつきという一つのパラメータで表すことができるので，より現実的なモデルとなると同時に簡単にパラメータの推定ができるようになる．</p>
+
+<h3>問題設定</h3>
+
+<p>ここでは，ロジスティクス回帰におけるGLMMを考える．種子生存数が二項分布</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathrm%7BBin%7D%28y_i%7CN%2Cq_i%29+%3D+%7B%7BN%7D%5Cchoose%7By_i%7D%7D+q_%7Bi%7D%5E%7By_i%7D%281-q_i%29%5E%7BN-y_i%7D+>，（<img src=http://chart.apis.google.com/chart?cht=tx&chl=N%3D8+>）</p>
+
+<p>に従うとした上で，そのパラメータ<img src=http://chart.apis.google.com/chart?cht=tx&chl=q_i+>を</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathrm%7Blogit%7D%28q_i%29+%3D+%5Cbeta_1+%2B+%5Cbeta_2+x_i+%2B+r_i+></p>
+
+<p>とおく．ここで，個体差<img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+>は</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+%5Csim+%5Cmathcal%7BN%7D%280%2Cs%29+></p>
+
+<p>平均0，標準誤差sの正規分布に従うとする．</p>
+
+<h3>実験</h3>
+
+<p>今回の実験は，なぜ応答変数が過分散の場合にGLMでは駄目でGLMMで推定すべきかを確かめるために，本書に記載されているGLMおよびGLMMの実験を1000回行なって，そのときの切片<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>と傾き<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>の分布を見ることにする．目標は<a href="http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/26401/1/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%85%8B%E5%AD%A656-2.pdf">「「個体差」の統計モデリング」</a>(pdf)の図11をプロットすること．</p>
+
+<p>各実験は，葉数が2〜6枚の個体を20個体ずつ合計100個体のデータが得られたという条件で，それぞれの生存種子数をパラメータ<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+%3D+-4+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+%3D+1+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+%5Csim+%5Cmathcal%7BN%7D%280%2C3%29+>の二項乱数から生成した．このように生成したデータを用いて，GLMMとGLMを実行した．</p>
+
+<p>この実験を1000回繰り返し，その時の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>の分布をプロットしたのが以下の図となっている．左図が切片<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>の分布，右図が傾き<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>で，それぞれ黒の線がGLMが推定した値の分布，赤の線がGLMMが推定した値の分布となっている．また，GLMとGLMMの推定値の平均を縦の点線で表している．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>logistic <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>z<span class="p">){</span> <span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span>exp<span class="p">(</span><span class="o">-</span>z<span class="p">))}</span>
+</span><span class='line'>Niter <span class="o">&lt;-</span> <span class="m">1000</span>
+</span><span class='line'>sigma <span class="o">&lt;-</span> <span class="m">3</span>
+</span><span class='line'>glm_b <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="m">0</span><span class="p">,</span> nrow<span class="o">=</span>Niter<span class="p">,</span> ncol<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>glmm_b <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="m">0</span><span class="p">,</span> nrow<span class="o">=</span>Niter<span class="p">,</span> ncol<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in <span class="m">1</span>:Niter<span class="p">){</span>
+</span><span class='line'>  N <span class="o">&lt;-</span> rep<span class="p">(</span><span class="m">8</span><span class="p">,</span><span class="m">100</span><span class="p">)</span>
+</span><span class='line'>  x <span class="o">&lt;-</span> rep<span class="p">(</span><span class="m">2</span>:<span class="m">6</span><span class="p">,</span>each<span class="o">=</span><span class="m">20</span><span class="p">)</span>
+</span><span class='line'>  re <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> sigma<span class="p">)</span>
+</span><span class='line'>  y <span class="o">&lt;-</span> rbinom<span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> prob<span class="o">=</span>logistic<span class="p">(</span><span class="m">-4</span><span class="o">+</span>x<span class="o">+</span>re<span class="p">))</span>
+</span><span class='line'>  id <span class="o">&lt;-</span> <span class="m">1</span>:<span class="m">100</span>
+</span><span class='line'>  d <span class="o">&lt;-</span> data.frame<span class="p">(</span>N<span class="p">,</span>x<span class="p">,</span>y<span class="p">,</span>id<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  glm_b<span class="p">[</span>i<span class="p">,]</span> <span class="o">&lt;-</span> glm<span class="p">(</span>cbind<span class="p">(</span>y<span class="p">,</span>N<span class="o">-</span>y<span class="p">)</span> ~ x<span class="p">,</span> data<span class="o">=</span>d<span class="p">,</span> family<span class="o">=</span>binomial<span class="p">)$</span>coefficients
+</span><span class='line'>  glmm_b<span class="p">[</span>i<span class="p">,]</span> <span class="o">&lt;-</span> glmmML<span class="p">(</span>cbind<span class="p">(</span>y<span class="p">,</span>N<span class="o">-</span>y<span class="p">)</span> ~ x<span class="p">,</span> data<span class="o">=</span>d<span class="p">,</span> family<span class="o">=</span>binomial<span class="p">,</span> cluster<span class="o">=</span>id<span class="p">)$</span>coefficients
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+</span><span class='line'>plot<span class="p">(</span>density<span class="p">(</span>glm_b<span class="p">[,</span><span class="m">1</span><span class="p">]),</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">-8</span><span class="p">,</span><span class="m">0</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0.8</span><span class="p">),</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Estimate of beta_1&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>par<span class="p">(</span>new<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span>density<span class="p">(</span>glmm_b<span class="p">[,</span><span class="m">1</span><span class="p">]),</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">-8</span><span class="p">,</span><span class="m">0</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0.8</span><span class="p">),</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Estimate of beta_1&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>abline<span class="p">(</span>v<span class="o">=</span>mean<span class="p">(</span>glm_b<span class="p">[,</span><span class="m">1</span><span class="p">]),</span> lty<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>abline<span class="p">(</span>v<span class="o">=</span>mean<span class="p">(</span>glmm_b<span class="p">[,</span><span class="m">1</span><span class="p">]),</span> lty<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>plot<span class="p">(</span>density<span class="p">(</span>glm_b<span class="p">[,</span><span class="m">2</span><span class="p">]),</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">2</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">3</span><span class="p">),</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Estimate of beta_2&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>par<span class="p">(</span>new<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span>density<span class="p">(</span>glmm_b<span class="p">[,</span><span class="m">2</span><span class="p">]),</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">2</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">3</span><span class="p">),</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Estimate of beta_2&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>abline<span class="p">(</span>v<span class="o">=</span>mean<span class="p">(</span>glm_b<span class="p">[,</span><span class="m">2</span><span class="p">]),</span> lty<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>abline<span class="p">(</span>v<span class="o">=</span>mean<span class="p">(</span>glmm_b<span class="p">[,</span><span class="m">2</span><span class="p">]),</span> lty<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</span><span class='line'>legend<span class="p">(</span><span class="m">1.1</span><span class="p">,</span> <span class="m">3.0</span><span class="p">,</span> c<span class="p">(</span><span class="s">&quot;glm&quot;</span><span class="p">,</span><span class="s">&quot;glmmML&quot;</span><span class="p">),</span> col<span class="o">=</span>c<span class="p">(</span><span class="m">1</span>:<span class="m">2</span><span class="p">),</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc_7.png" alt="" /></p>
+
+<p>さて，この図の解釈だが，今回データセット作成に用いた実験条件は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+%3D+-4+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+%3D+1+>だったので，GLMMにおいて切片・傾きどちらもある程度正しい推定ができていることがわかる．逆にGLMでは，切片は過大推定，傾きは過小推定されている．逆に，推定値のばらつきである分布の山の裾の拡がりを見てみると，GLMMでは大きく，GLMでは小さくなっている．これはいわゆるバイアス・バリアンスのトレードオフを表していると思われる．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://hosho.ees.hokudai.ac.jp/~kubo/ce/IwanamiBook.html">生態学データ解析 - 本/データ解析のための統計モデリング入門</a></li>
+<li><a href="http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/49477/7/kubostat2008f.pdf">http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/49477/7/kubostat2008f.pdf</a></li>
+<li><a href="http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/26401/1/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%85%8B%E5%AD%A656-2.pdf">http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/26401/1/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%85%8B%E5%AD%A656-2.pdf</a></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">yag_ays</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-02T06:54:00+09:00" pubdate data-updated="true">Nov 2<span>nd</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/reading/'>Reading</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/11/02/glm-mcmc-chp7/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/11/02/glm-mcmc-chp7/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/11/02/glm-mcmc-chp7/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    
+    <section>
+      <h1>Comments</h1>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+    
+    <ul class="pager">
+      
+      <li class="previous"><a class="basic-alignment left"
+        href="/blog/2012/11/01/imcmr-5-2/" title="Previous Post:
+        「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 確率的探索">&laquo; 「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 確率的探索</a></li>
+      
+      <li><a href="/blog/archives">Blog Archives</a></li>
+      
+    </ul>
+  </footer>
+</article>
+
+<aside class="sidebar-nav span3">
+  
+    <section class="well">
+  <h1>About Me</h1>
+  <p>id : yag_ays</p>
+  <p>E-mail : yanagi.ayase [at] gmail.com</p>
+  <ul>
+    <li><a href="https://twitter.com/#!/yag_ays" target="_blank">Twitter</a></li>
+    <li><a href="https://github.com/yagays" target="_blank">Github</a> </li>
+    <li><a href="https://gist.github.com/yagays" target="_blank">Gist</a></li>
+    <li><a href="http://b.hatena.ne.jp/yag_ays/" target="_blank">Bookmark</a></li>
+    <li><a href="http://slideshare.net/yag_ays/" target="_blank">Slideshare</a></li>
+    <li><a href="http://yan-ase.tumblr.com/" target="_blank">Tumblr</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="http://yag-ays.hateblo.jp/" target="_blank">Hatena Blog (Technical)</a> </li>
+    <li><a href="http://yag-ays.hatenablog.com/" target="_blank">Hatena Blog (Personal)</a></li>
+    <li><a href="http://g86.dbcls.jp/~yag/wordpress/" target="_blank">Wordpress Blog (Technical, <i>old</i>)</a></li>
+    <li><a href="http://d.hatena.ne.jp/yag_ays/" target="_blank">Hatena Diary (<i>old</i>)</a></li>
+  </ul>
+
+</section>
+<section class="well">
+  <h1>Recent Post</h1>
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/02/glm-mcmc-chp7/">「データ解析のための統計モデリング入門」読書ノート 7章 GLMMとGLMを比較する</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/01/imcmr-5-2/">「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 確率的探索</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/30/imcmr-5-1/">「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 数値的最適化法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/29/fake-it-till-you-become-it/">「TED Talks ボディランゲージが人を作る」の主張における継続のニュアンス</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/28/imcmr-3-3/">「Rによるモンテカルロ法入門」読書ノート：3章 重点サンプリング</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/27/imcmr-3-2/">「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分 その2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/26/review-one-click/">「ワンクリック―ジェフ・ベゾス率いるAmazonの隆盛」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/25/imcmr-3-1/">「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/23/imcmr-2-3/">「Rによるモンテカルロ法入門」読書ノート：2章 練習問題</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/22/imcmr-2-2/">「Rによるモンテカルロ法入門」読書ノート：2章 受理・棄却法</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="well">
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (38)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (9)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (2)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (15)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+</section>
+
+
+<section class="well">
+  <h1>Twitter</h1>
+  <ul id="tweets" class="nav">
+    <li class="nav-header">Latest Tweets</li>
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      getTwitterFeed("yag_ays", 10, true);
+    });
+  </script>
+  <script src="/javascripts/asides/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/yag_ays" class="twitter-follow-button" data-show-count="false">Follow @yag_ays</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  Copyright &copy; 2012 - yag_ays -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wolfeyesbioinformaticsbeta';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://yagays.github.com/blog/2012/11/02/glm-mcmc-chp7/';
+        var disqus_url = 'http://yagays.github.com/blog/2012/11/02/glm-mcmc-chp7/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

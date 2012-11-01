@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Reading | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-01T03:09:28+09:00</updated>
+  <updated>2012-11-02T07:16:58+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,102 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「データ解析のための統計モデリング入門」読書ノート 7章 GLMMとGLMを比較する]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/02/glm-mcmc-chp7/"/>
+    <updated>2012-11-02T06:54:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/02/glm-mcmc-chp7</id>
+    <content type="html"><![CDATA[<ul>
+<li>前回：「データ解析のための統計モデリング入門」読書ノート：<a href="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/">http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=400006973X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>前回の読書ノートでは全体の流れを簡単に追ったが，今回は「データ解析のための統計モデリング入門」7章の一般化線形混合モデルのシミュレーションを動かしてみた．</p>
+
+<h3>7章の概要</h3>
+
+<p>6章までは，ある植物100個体から得られた生存種子数と葉数のデータから，その関係性をモデル化しGLMで推定してきた．7章では，個体差を取り入れたモデルを作成し，生存種子数の過分散にうまくあてはまるようなパラメータを推定する．ただし，個体差を表すパラメータを個体ごとに割り当てて最尤推定するのではなく，個体差がある分布に従うと仮定した上で，その分布のパラメータを推定する．</p>
+
+<p>大雑把な目標としては，葉の数だけが生存種子数に効いているわけではないんだから，それぞれの個体で観測されていない/できないデータというのを考えようというもの．ただし，個体ごとに何らかの値を振って生存種子数を上手く表すことのできるモデルを組んでも予測に使えないので，じゃあその個体差がある分布に従っているだろうと考える．そうすると，個体ごとにパラメータを持たせるんじゃなくて，個体のばらつきという一つのパラメータで表すことができるので，より現実的なモデルとなると同時に簡単にパラメータの推定ができるようになる．</p>
+
+<h3>問題設定</h3>
+
+<p>ここでは，ロジスティクス回帰におけるGLMMを考える．種子生存数が二項分布</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathrm%7BBin%7D%28y_i%7CN%2Cq_i%29+%3D+%7B%7BN%7D%5Cchoose%7By_i%7D%7D+q_%7Bi%7D%3Csup%3E%7By_i%7D%281-q_i%29%3Csup%3E%7BN-y_i%7D%3C%2Fsup%3E%3C%2Fsup%3E+>，（<img src=http://chart.apis.google.com/chart?cht=tx&chl=N%3D8+>）</p>
+
+<p>に従うとした上で，そのパラメータ<img src=http://chart.apis.google.com/chart?cht=tx&chl=q_i+>を</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathrm%7Blogit%7D%28q_i%29+%3D+%5Cbeta_1+%2B+%5Cbeta_2+x_i+%2B+r_i+></p>
+
+<p>とおく．ここで，個体差<img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+>は</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+%5Csim+%5Cmathcal%7BN%7D%280%2Cs%29+></p>
+
+<p>平均0，標準誤差sの正規分布に従うとする．</p>
+
+<h3>実験</h3>
+
+<p>今回の実験は，なぜ応答変数が過分散の場合にGLMでは駄目でGLMMで推定すべきかを確かめるために，本書に記載されているGLMおよびGLMMの実験を1000回行なって，そのときの切片<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>と傾き<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>の分布を見ることにする．目標は<a href="http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/26401/1/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%85%8B%E5%AD%A656-2.pdf">「「個体差」の統計モデリング」</a>(pdf)の図11をプロットすること．</p>
+
+<p>各実験は，葉数が2〜6枚の個体を20個体ずつ合計100個体のデータが得られたという条件で，それぞれの生存種子数をパラメータ<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+%3D+-4+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+%3D+1+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+%5Csim+%5Cmathcal%7BN%7D%280%2C3%29+>の二項乱数から生成した．このように生成したデータを用いて，GLMMとGLMを実行した．</p>
+
+<p>この実験を1000回繰り返し，その時の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>の分布をプロットしたのが以下の図となっている．左図が切片<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>の分布，右図が傾き<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>で，それぞれ黒の線がGLMが推定した値の分布，赤の線がGLMMが推定した値の分布となっている．また，GLMとGLMMの推定値の平均を縦の点線で表している．</p>
+
+<p>```r
+logistic &lt;- function(z){ 1/(1+exp(-z))}
+Niter &lt;- 1000
+sigma &lt;- 3
+glm_b &lt;- matrix(0, nrow=Niter, ncol=2)
+glmm_b &lt;- matrix(0, nrow=Niter, ncol=2)</p>
+
+<p>for(i in 1:Niter){
+  N &lt;- rep(8,100)
+  x &lt;- rep(2:6,each=20)
+  re &lt;- rnorm(100, 0, sigma)
+  y &lt;- rbinom(100, 8, prob=logistic(-4+x+re))
+  id &lt;- 1:100
+  d &lt;- data.frame(N,x,y,id)</p>
+
+<p>  glm_b[i,] &lt;- glm(cbind(y,N-y) ~ x, data=d, family=binomial)$coefficients
+  glmm_b[i,] &lt;- glmmML(cbind(y,N-y) ~ x, data=d, family=binomial, cluster=id)$coefficients
+}
+```</p>
+
+<p>```r
+par(mfrow=c(1,2))
+plot(density(glm_b[,1]), xlim=c(-8,0), ylim=c(0,0.8), lwd=2, main="Estimate of beta_1", xlab="")
+par(new=T)
+plot(density(glmm_b[,1]), xlim=c(-8,0), ylim=c(0,0.8), col="red", lwd=2, main="Estimate of beta_1", xlab="")
+abline(v=mean(glm_b[,1]), lty=2)
+abline(v=mean(glmm_b[,1]), lty=2, col="red")</p>
+
+<p>plot(density(glm_b[,2]), xlim=c(0,2), ylim=c(0,3), lwd=2, main="Estimate of beta_2", xlab="")
+par(new=T)
+plot(density(glmm_b[,2]), xlim=c(0,2), ylim=c(0,3), col="red", lwd=2, main="Estimate of beta_2", xlab="")
+abline(v=mean(glm_b[,2]), lty=2)
+abline(v=mean(glmm_b[,2]), lty=2, col="red")
+legend(1.1, 3.0, c("glm","glmmML"), col=c(1:2), lwd=2)
+```</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc_7.png" alt="" /></p>
+
+<p>さて，この図の解釈だが，今回データセット作成に用いた実験条件は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+%3D+-4+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+%3D+1+>だったので，GLMMにおいて切片・傾きどちらもある程度正しい推定ができていることがわかる．逆にGLMでは，切片は過大推定，傾きは過小推定されている．逆に，推定値のばらつきである分布の山の裾の拡がりを見てみると，GLMMでは大きく，GLMでは小さくなっている．これはいわゆるバイアス・バリアンスのトレードオフを表していると思われる．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://hosho.ees.hokudai.ac.jp/~kubo/ce/IwanamiBook.html">生態学データ解析 - 本/データ解析のための統計モデリング入門</a></li>
+<li><a href="http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/49477/7/kubostat2008f.pdf">http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/49477/7/kubostat2008f.pdf</a></li>
+<li><a href="http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/26401/1/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%85%8B%E5%AD%A656-2.pdf">http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/26401/1/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%85%8B%E5%AD%A656-2.pdf</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 確率的探索]]></title>
@@ -645,87 +741,6 @@ for(x in c(0,2,4)){
 
 
 <p>1章から3章途中までの解説とRのコードがある．今回の作図に関しては，このページのBook Notesを参考にさせていただいた．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分]]></title>
-    <link href="http://yagays.github.com/blog/2012/10/25/imcmr-3-1/"/>
-    <updated>2012-10-25T20:33:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/10/25/imcmr-3-1</id>
-    <content type="html"><![CDATA[<ul>
-<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>内容：乱数を利用して積分を数値的に求める</h3>
-
-<p>モンテカルロ積分とは，乱数を利用して単変量や多変数の積分を近似し，解析的に解けない問題を数値的に解くという手法である．これは2章で示したように，任意の分布に従う乱数を理論上無限に生成できるからこそ成り立つ手法であり，本手法はi.i.dを前提とした大数の法則や中心極限定理のような確率論に落としこんで解析している．具体的なモンテカルロ法の利用例としては確率分布を積分といったことが挙げられ，ベイズなどに限らず確率分布を仮定するような統計手法などにおいて必要となる．</p>
-
-<h3>例 3.3 モンテカルロ積分の具体例</h3>
-
-<p>図の上半分は<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%29+%3D+%5B%5Ccos%2850x%29+%2B+%5Csin%2820x%29+%5D%3Csup%3E2%3C%2Fsup%3E+>を0から1の間で図示したもの．モンテカルロ積分ではこの曲線の下側の面積を求めることになる．
-図の下半分は，実際にモンテカルロ積分のシミュレーションをしたもの．横軸がシミュレーション回数（サンプル数m）で，縦軸が経験平均<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbar%7Bh%7D%3Cem%3Em+%3D+%5Cfrac%7B1%7D%7Bm%7D%5Csum%3C%2Fem%3E%7Bj%3D1%7D%3Csup%3E%7Bm%7Dh%28x_j%29%3C%2Fsup%3E+>を示したもの．黒の線が平均値の推移，上下の黄色の線が推定標準誤差に基づく信頼幅，赤の直線がRのintegrate関数で求めた積分値を示している．この図から，シミュレーション回数を重ねるごとに数値的に求めた値が実際の積分値に収束していく様子がわかる．</p>
-
-<p><code>r
-h &lt;- function(x){(cos(50*x) + sin(20*x))^2}
-par(mar=c(2,2,1,1), mfrow=c(2,1))
-curve(h, xlab="Function", ylab="", lwd=2)
-integrate(h,0,1)
-x &lt;- h(runif(10^4))
-estint &lt;- cumsum(x)/(1:10^4)
-esterr &lt;- sqrt(cumsum((x-estint)^2))/(1:10^4)
-plot(estint, xlab="Mean and error range", type="l", lwd=2, ylim=mean(x)+20*c(-esterr[10^4], esterr[10^4]))
-lines(estint+2*esterr, col="gold", lwd=2)
-lines(estint-2*esterr, col="gold", lwd=2)
-abline(h=integrate(h,0,1)$value,lwd=2,col="red")
-</code></p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_1.png" alt="" /></p>
-
-<h3>例 3.4 正規分布のモンテカルロ積分における値の精度と効率</h3>
-
-<p>「裾」と呼ばれる部分は正規分布において釣鐘型の山の頂点から遠く離れた部分のことを指しており，正規分布の平均から外れるということは起こる確率がきわめて低い部分である．そのため，正規乱数を基にしたモンテカルロ積分においては，山の頂点に近い部分の値は乱数でよく引きあてるので数は十分なのだが，裾の部分の「値が大きい/小さい」値は乱数でなかなか引き当てることができない．精度に大きな影響を与える部分でありながらもシミュレーションを重ねないと十分な数を得ることができないため，古典的なモンテカルロ積分の方法で精度を上げるためには，試行回数を多くしなければならない．</p>
-
-<p>以下の実験では，実際に有効数字4ケタで正確な数値を出すために，10<sup>8</sup> 回ものシミュレーションを行なっている．最終的な表3.1は，行が試行回数，列が<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+>のときのxに対応している．一番下の行の値がboundという変数のそれぞれ値と同じになっていることから，10<sup>8</sup> もの試行回数が必要であることがわかる．</p>
-
-<p>```r
-x &lt;- rnorm(10<sup>8)</sup>
-bound &lt;- qnorm(c(0.5, 0.75, 0.8, 0.9, 0.95, 0.99, 0.999, 0.9999))
-res &lt;- matrix(0, ncol=8, nrow=7)
-for(i in 2:8)
-  for(j in 1:8)</p>
-
-<pre><code>res[i-1, j] &lt;- mean(x[1:10^i] &lt; bound[j])
-</code></pre>
-
-<p>matrix(as.numeric(format(res, digi=4)), ncol=8)
-```</p>
-
-<p>```r</p>
-
-<h1>> matrix(as.numeric(format(res, digi=4)), ncol=8)</h1>
-
-<h1>[,1]   [,2]   [,3]   [,4]   [,5]   [,6]   [,7]   [,8]</h1>
-
-<h1>[1,] 0.5200 0.7600 0.8000 0.9300 0.9800 1.0000 1.0000 1.0000</h1>
-
-<h1>[2,] 0.4760 0.7400 0.7880 0.8980 0.9550 0.9950 1.0000 1.0000</h1>
-
-<h1>[3,] 0.4980 0.7477 0.7967 0.8981 0.9480 0.9889 0.9993 0.9999</h1>
-
-<h1>[4,] 0.4994 0.7503 0.7996 0.8992 0.9504 0.9899 0.9989 0.9999</h1>
-
-<h1>[5,] 0.4999 0.7503 0.8002 0.9001 0.9501 0.9899 0.9990 0.9999</h1>
-
-<h1>[6,] 0.4999 0.7500 0.8000 0.9001 0.9500 0.9900 0.9990 0.9999</h1>
-
-<h1>[7,] 0.5000 0.7500 0.8000 0.9000 0.9500 0.9900 0.9990 0.9999</h1>
-
-<p>```</p>
 ]]></content>
   </entry>
   
