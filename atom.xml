@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-02T09:12:05+09:00</updated>
+  <updated>2012-11-02T16:26:25+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -2091,6 +2091,13 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
 <!-- more -->
 
 
+<h3>個別記事</h3>
+
+<ul>
+<li><a href="http://yagays.github.com/blog/2012/11/02/glm-mcmc-chp7/">「データ解析のための統計モデリング入門」読書ノート 7章 GLMMとGLMを比較する</a></li>
+</ul>
+
+
 <h3>全体的に</h3>
 
 <ul>
@@ -2182,8 +2189,7 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
 <li>固定効果とランダム効果</li>
 <li>サンプル数の分だけ必要なパラメータをまとめて最尤推定できないので積分して分布を混ぜる</li>
 <li>無限個の二項分布をまぜることで平均よりも分散が大きいような確率分布になる</li>
-<li><p>反復/擬似反復</p></li>
-<li><p><a href="http://yagays.github.com/blog/2012/11/02/glm-mcmc-chp7/">「データ解析のための統計モデリング入門」読書ノート 7章 GLMMとGLMを比較する</a></p></li>
+<li>反復/擬似反復</li>
 </ul>
 
 
