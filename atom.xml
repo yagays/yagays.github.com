@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-05T07:59:15+09:00</updated>
+  <updated>2012-11-05T08:01:15+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -14,19 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Review Mac Kung Fu]]></title>
+    <title type="html"><![CDATA[「カンフーマック ―猛獣を飼いならす310の技」読了]]></title>
     <link href="http://yagays.github.com/blog/2012/11/05/review-mac-kung-fu/"/>
-    <updated>2012-11-05T00:00:00+09:00</updated>
+    <updated>2012-11-05T07:03:00+09:00</updated>
     <id>http://yagays.github.com/blog/2012/11/05/review-mac-kung-fu</id>
-    <content type="html"><![CDATA[<p>1;2c&#8212;
-layout: post
-title: &#8220;「カンフーマック ―猛獣を飼いならす310の技」読了&#8221;
-date: 2012-11-05 07:03
-comments: true</p>
-
-<h2>categories: Book</h2>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873115825" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873115825" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
 <h3>基本的な使い方からTerminalを駆使した設定変更まで，MacのGUIにおけるテクニックを網羅した手引書</h3>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Book | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/book/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-05T07:59:15+09:00</updated>
+  <updated>2012-11-05T08:01:15+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「カンフーマック ―猛獣を飼いならす310の技」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/05/review-mac-kung-fu/"/>
+    <updated>2012-11-05T07:03:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/05/review-mac-kung-fu</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873115825" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>基本的な使い方からTerminalを駆使した設定変更まで，MacのGUIにおけるテクニックを網羅した手引書</h3>
+
+<p>本書はいわゆる「入門書」と呼ばれるOSの使い方や各種ツールの便利な機能を紹介した本なのだが，その中でも特にショートカットや隠れた機能に絞ってマニアックな使い方を紹介するという，いかにもO'Reillyが好きそうな内容となっている．この本に登場するTipsの数は300を超え，スクリーンショットはほどほどに，紙面にはびっちりと文字が並ぶ．Tipsの対象はプレビューからSafari，Mail，Spotlight，Mission Controlなどの基本的なアプリケーションや機能に加えて，メモリの増設方法であったりOSやHDDが不調の時の対処法まで，あらゆる使い方に幅広く対応できるようなラインナップになっている．そのため，頭からざっと読んで新しいショートカットを覚えるもよし，何かしたいと思った時に逆引き辞典として使っても良しと，多彩な使い方ができる1冊だ．</p>
+
+<p>取り敢えず私もひと通り眺めようと思ってポストイットを持って最初から最後までひと通り流し読みしたのだが，気付けばポストイットが本の上部にびっしり貼り付けられるという感じで，今まで知らなかったテクニックが非常に多かった．特に，Optionキーを組み合わさせたショートカットはかなりマニアックなものが揃っており，テキストの矩形選択やFinderの新規フォルダ作成など，この本を読まなければずっと知らなかったであろうテクニックばかりだった．また，Terminalを使って1行で設定変更が出来るTipsもかなり掲載されており，普段はインターネットで時々目にするようなHackが纏まっているのも有用だった．</p>
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873112745" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>ちなみに，O'Reillyで出版されているMacに関連した本では「<a href="http://www.amazon.co.jp/gp/product/4873112745/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4873112745&linkCode=as2&tag=yagays-22">入門 Unix for Mac OS X 第4版</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4873112745" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」というこれまたマニアックな本があるのだが，こちらはタイトルにもあるようにMacのUNIX的な使い方を紹介する本だ．こちらはこちらでUNIXコマンドの基本的な使い方に始まり，Mac OS X特有のコマンドが紹介されていたりと，なかなかユニークで面白い本になっている．本書とは方向性が全然違う本だが，Macをより一層便利に使いたいという点では共通しているだろう．内容が少し古くなっているのが難点だけれども，基本的なところは変わっていないので，特に問題ないと思われる．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「ワンクリック―ジェフ・ベゾス率いるAmazonの隆盛」読了]]></title>
@@ -109,24 +130,6 @@
 
 <iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B001F10YUE" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「読書力」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/10/01/review-reading-skill/"/>
-    <updated>2012-10-01T07:57:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/10/01/review-reading-skill</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4004308011" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>タイトルにあるように，本書は読書をする能力の重要性を唱える本である．著者は，読書は自己形成の手段であり教養を養うために必要な能力であると主張する．特に本書冒頭では，本を読む読まないは自由だという意見を否定し，本は絶対に読むべきものだと断定している．それと同時に，今まで読書によく親しんできた人間が読書を軽んじている発言をすることを強く非難し，本を読むという行為の重要性や意味，効果などが列挙される．また後半では，どういった方法で本を読めばよいかといった技術に関しても語られる．</p>
-
-<p>読書というものは，言ってしまえば文字や文章を読むといったことは，文字の読み方を覚えたばかりの子供から眼が衰えた老人まで，文字を読める人間すべてが行う行為だ．読む対象としての活字の種類も多岐にわたる．しかし本書では，読書と言いながらも，語られるのは子供や若者に対する，よく言われるような活字離れや読解力の低下に対する警鐘と，自分が感じてきた読書の素晴らしさや思い出話ばかりが強調される．言ってしまえば，本書は子供のための読書論であり，それはただの教育という行為にすぎない．それを悪いとは言わないが，それを読書論として展開するのはあまりにも読書という行為とかけ離れている気がする．結局のところ読書を他の単語に変えても若者のだらしない現状を憂いているような文脈で成り立つようでは，読書に関して何も踏み込んだことが言えてないのではないかと思う．巻末のお薦め文庫100選も近代文学などの古典や個人的なお薦め本ばかりで，つまるところ読書ではなく教養についてアレコレ言いたいだけなのだといった感想しか持てない．</p>
-
-<p>結局はよくある読書礼賛本だったが，ただ個別に見れば同意する部分もある．本の読み方には色々と種類があり，軽く要点だけを掴むような読み方から，じっくり時間をかけて文字を追っていくな読み方まで，本の種類や状況に応じて変えるべきだという意見は正にその通りだ．ボールペンで書き込みをしたり音読することの重要性も賛同できる．その他にも読書による思考能力の強化に関しては全面否定出来無いあたり，言ってることは正しくても全体として意味をなしていない感じが否めない．</p>
-
-<p>あと，妙なところに突っかかっても意味がないのだが，どうしても一言言いたい部分がある．「本を引用する会話」に出てくる衒学的な会話にまつわる話だ．著者は，ペダンティック・衒学的という言葉自体が死語になりつつあるのは，知らないことを恥と思う文化がなくなったからだという．知らないことが恥でなくなったから，相手に難しいことを言われても恥だと思わなくなった．教養が尊敬されることだからこそ，意味のないひけらかしを批判する言葉も使われる意味があったのだと言っている．これは本当だろうか．衒学という言葉が死語になったのと知らないことを恥と思わない文化がなくなったことの真偽はまあ脇においておこう．では，教養がなく物事を知らないことを恥と思わなくなれば，意味のないひけらかしをする人間に対して衒学だと思わないのだろうか．僕はそうは思わない．レベルの程度はあれど，本質的に意味のある話をしないことに対する蔑視は，教養の無さを恥と思うか思わないかに依らず存在する．「グローバルなイノベーションをマネージメントする」なんて糞みたいな定型文を聞いてイノベーションという単語の意味をしらないけど恥とは思わないから何も感じませんといったことにはならないだろう．教養や知識は関係なくとも，相手の言葉に意味がないということを感じ取れるからこそ，その発言を空虚だと判断して衒学的だと非難できる．そこに物事を知らないことで感じる恥は関係ないと思うのだが，どうやら著者の眼には若者が何も考えてないとしか写っていないらしい，本書ではこのあと唐突に本の話を若者がしなくなってけしからんという話が始まって余計に辟易するのだが，衒学のところにも非常に疑問が残る．そもそも本書自体が，古典文学や昔の偉い学者を盾にして一方的に時代の変化を憂いているだけの衒学的な雑感にとどまっているんじゃないだろうか．</p>
 ]]></content>
   </entry>
   
