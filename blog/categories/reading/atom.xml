@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Reading | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-05T10:08:44+09:00</updated>
+  <updated>2012-11-06T11:46:41+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,120 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 確率的探索 その2]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/06/imcmr-5-3/"/>
+    <updated>2012-11-06T11:25:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/06/imcmr-5-3</id>
+    <content type="html"><![CDATA[<ul>
+<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>例 5.4 数値的最適化法と確率的探索を比較する</h3>
+
+<p><a href="http://yagays.github.com/blog/2012/10/30/imcmr-5-1/">例5.1</a>の続き．前回は数値的最適化法によって<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+>の値を推定したが，今回は確率的探索による推定を行なって，両者の手法の比較を行う．問題としては，以下の対数尤度を最大化する．</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clog+l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Csum_%7Bi%3D1%7D%3Csup%3E%7Bn%7D%3C%2Fsup%3E+%5Clog+%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%3Csup%3E2%7D%3C%2Fsup%3E+></p>
+
+<p>この式は<img src=http://chart.apis.google.com/chart?cht=tx&chl=n+%5Crightarrow+%5Cinfty+>において<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta%3Csup%3E%2A%3C%2Fsup%3E+%3D0+>になる．すなわちこれから求める推定値の答えは0ということになる．</p>
+
+<h4>ソースコード</h4>
+
+<p>以下のソースコードにおける変数の対応は以下のようになっている．</p>
+
+<ul>
+<li>数値的最適化法
+
+<ul>
+<li>trul：推定値</li>
+<li>truv：対数尤度</li>
+</ul>
+</li>
+<li>確率的探索
+
+<ul>
+<li>loc：推定値</li>
+<li>maxv：対数尤度</li>
+</ul>
+</li>
+</ul>
+
+
+<p>なお，mcsmパッケージに付随するデモスクリプトでは，数値的最適化法における乱数を正規乱数としていたり対数尤度の関数が微妙に違っているが，今回は例5.1の解法と同様のコーシー乱数と対数尤度の式を用いている．</p>
+
+<p>```r
+ref &lt;- rcauchy(5001)
+f=function(y){-sum(log(1+(x-y)<sup>2))}</sup></p>
+
+<p>maxv &lt;- NULL
+loc &lt;- NULL
+truv &lt;- NULL
+trul &lt;- NULL</p>
+
+<p>for (i in 10:length(ref)){
+  # 数値的最適化
+  x &lt;- ref[1:i]
+  tru &lt;- optimize(f,c(-5,5),maximum=T)
+  trul &lt;- c(trul, tru$max)
+  truv &lt;- c(truv, tru$ob)</p>
+
+<p>  # 確率的探索
+  prop &lt;- runif(10<sup>3,-5,5)</sup>
+  vale &lt;- apply(as.matrix(prop),1,f)
+  loc &lt;- c(loc, prop[order(-vale)[1]])
+  maxv &lt;- c(maxv, max(vale))
+}</p>
+
+<p>par(mar=c(4,4,1,1), mfrow=c(2,1))
+plot(trul, loc, cex=.5, pch=19, xlab=expression(theta<sup>0),</sup> ylab=expression(hat(theta)))
+abline(a=0, b=1, col="grey")
+plot(10:length(ref), (truv-maxv)/abs(truv), type="l", lwd=2, xlab="Sample size", ylab="Relative error", ylim=c(0,0.02))
+```</p>
+
+<p>まず，上のプロットは，数値的最適化法による推定値を横軸に，確率的探索による推定値を縦軸に取った図となっている．真の値が<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta%3Csup%3E%2A%3C%2Fsup%3E+%3D0+>なので，当然ながら両者ともに推定値は(0,0)付近に集まっている．また，推定値が外れる場合では，どちらかの値が大きくなればもう片方も大きくなるといった具合に，そのパターンはグレーの線で示した<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta%3Csup%3E0%3C%2Fsup%3E+%3D+%5Chat%7B%5Ctheta%7D+>の線分の上に乗るような形となる．</p>
+
+<p>次に，下のプロットは，横軸にサンプルサイズを取り，縦軸に推定値における対数尤度の差を取った図となっている．今回は相対的誤差なので，(数値的最適化法-確率的探索)/(数値的最適化法)といった形で値を求めている．相対的誤差が大きいということは，数値的最適化法と確率的探索それぞれ求めた対数尤度に差がある，すなわち<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+>に差があるということで，上のプロットにおけるグレーの線分から離れれば離れるほど相対的誤差も大きくなるということになる．なお，図示しているサンプルサイズは<img src=http://chart.apis.google.com/chart?cht=tx&chl=n%3D10+>から<img src=http://chart.apis.google.com/chart?cht=tx&chl=n%3D5001+>までの値となっており，これは両者の手法がどちらも一定サイズのサンプルサイズを必要とするからである（つまり1から10までは図示していない）．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-4.png" alt="" /></p>
+
+<h3>例 5.6 グローバルミニマムのまわりにローカルミニマムが配置されている関数を可視化する</h3>
+
+<p>以下の関数の最小化を検討する．</p>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%2Cy%29%3D%28x%5Csin%2820y%29%2By%5Csin%2820x%29%29%3Csup%3E2%5Ccosh%28%5Csin%2810x%29x%29%2B%3C%2Fsup%3E+%28x%5Ccos%2810y%29-y%5Csin%2810x%29%29%3Csup%3E2%5Ccosh%28%5Ccos%2820y%29y%29%3C%2Fsup%3E+></p>
+
+<p>今回は可視化するだけだが，この後の例5.7などで度々登場する関数となる．3Dプロットを描写すると，(0,0)に最小値があり，その周りには山あり谷ありとローカルミニマムがたくさん配置されている関数だとわかる．この図を上から見ると，P.157のプロットのようになる．</p>
+
+<p>```r
+h &lt;- function(x,y){
+  (x<em>sin(20</em>y) + y<em>sin(20</em>x))<sup>2</sup> * cosh(sin(10<em>x)</em>x) +</p>
+
+<pre><code>(x*cos(10*y) - y*sin(10*x))^2 * cosh(cos(20*y)*y)
+</code></pre>
+
+<p>}
+x &lt;- seq(-3, 3, le=435)
+y &lt;- seq(-3, 3, le=435)
+z &lt;- outer(x, y, h)</p>
+
+<h1>par(bg="wheat", mar=c(1,1,1,1))</h1>
+
+<p>par(bg="wheat", mar=c(1,1,1,1))
+persp(x, y, z, theta=155, phi=30, col="green4",</p>
+
+<pre><code>  ltheta=-120, shade=0.75, border=NA, box=FALSE)
+</code></pre>
+
+<p>```</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-6.png" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「データ解析のための統計モデリング入門」読書ノート 7章 GLMMとGLMを比較する]]></title>
@@ -494,255 +608,6 @@ abline(v=seq(1,Nsim)[rank(weit)&gt;Nsim-10], col="blue", lty=2)
 </code></p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-5_3.png" alt="" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分 その2]]></title>
-    <link href="http://yagays.github.com/blog/2012/10/27/imcmr-3-2/"/>
-    <updated>2012-10-27T12:33:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/10/27/imcmr-3-2</id>
-    <content type="html"><![CDATA[<ul>
-<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>練習問題 3.1 正規・コーシー-ベイズ推定量のモンテカルロ積分を2通りの方法で計算する</h3>
-
-<p>正規・コーシー-ベイズ推定量について，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+0%2C2%2C4+>だとしてモンテカルロ積分を計算する．</p>
-
-<blockquote><p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+%3D+%5Cfrac%7B%5Cint%3Cem%3E%7B-%5Cinfty%7D%3Csup%3E%7B%5Cinfty%7D%3C%2Fsup%3E+%5Cfrac%7B%5Ctheta%7D%7B1%2B%5Ctheta%3Csup%3E2%7De%3Csup%3E%7B-%28x-%5Ctheta%29%3Csup%3E2%2F2%7D%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E+d%5Ctheta%7D%7B%5Cint%3C%2Fem%3E%7B-%5Cinfty%7D%3Csup%3E%7B%5Cinfty%7D%3C%2Fsup%3E+%5Cfrac%7B1%7D%7B1%2B%5Ctheta%3Csup%3E2%7De%3Csup%3E%7B-%28x-%5Ctheta%29%3Csup%3E2%2F2%7D%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E+d%5Ctheta%7D+></p></blockquote>
-
-<p>さて，この式だけだと何のことか全然分からないのだが，式中で消えている係数をしっかり書くと，</p>
-
-<ul>
-<li>分子：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cint_%7B-%5Cinfty%7D%3Csup%3E%7B%5Cinfty%7D%5Ctheta%5Ctimes%5Cfrac%7B1%7D%7B%5Cpi%281%2B%5Ctheta%3Csup%3E2%29%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%3Csup%3E%7B-%28x-%5Ctheta%29%3Csup%3E2%2F2%7Dd%5Ctheta%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E+></li>
-<li>分母：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cint_%7B-%5Cinfty%7D%3Csup%3E%7B%5Cinfty%7D%5Cfrac%7B1%7D%7B%5Cpi%281%2B%5Ctheta%3Csup%3E2%29%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%3Csup%3E%7B-%28x-%5Ctheta%29%3Csup%3E2%2F2%7Dd%5Ctheta%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E+></li>
-</ul>
-
-
-<p>に分解され，結局はコーシー分布と正規分布の掛け算をしていることになる．模式的に書くと以下のようになる．</p>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+%3D+%5Cfrac%7B%5Cint%3Cem%3E%7B-%5Cinfty%7D%3Csup%3E%7B%5Cinfty%7D%3C%2Fsup%3E+%5Ctheta+%5Ctimes+Cauchy+%5Ctimes+Normal%7D%7B%5Cint%3C%2Fem%3E%7B-%5Cinfty%7D%3Csup%3E%7B%5Cinfty%7D%3C%2Fsup%3E+Cauchy+%5Ctimes+Normal%7D+></p>
-
-<p>このように，上と下でそれぞれ積分しているので，モンテカルロ積分の実装においても上下別々に推定値を計算した後に<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+>の推定値を求める．また，コーシー分布と正規分布を掛けた形となっているため，どちらの分布からも乱数を生成してモンテカルロ積分ができる．</p>
-
-<p>ちなみに，本問題は4章の例4.2（P.107）にも同様の推定量を扱った問題が出てくる．</p>
-
-<h3>a.1 被積分関数をプロットする</h3>
-
-<p>左から順に，</p>
-
-<ul>
-<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+>の分子の分布</li>
-<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+>の分母の分布</li>
-</ul>
-
-
-<p>を，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+0%2C2%2C4+>についてプロットしたのが以下の図になる．</p>
-
-<p>```r
-delta_num &lt;- function(t){t/(1+t<sup>2)*exp(-(x-t)<sup>2/2)}</sup></sup>
-delta_den &lt;- function(t){1/(1+t<sup>2)*exp(-(x-t)<sup>2/2)}</sup></sup></p>
-
-<p>par(mfrow=c(3,2))
-for(x in c(0,2,4)){
-  curve(delta_num, from=-10, to=10, main=paste("numerator : x=",x))
-  curve(delta_den, from=-10, to=10, main=paste("denominator : x=",x))
-}
-```</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3.png" alt="" /></p>
-
-<h3>a.2 コーシー・シミュレーションにもとづくモンテカルロ積分を計算する</h3>
-
-<p>コーシー分布から乱数を生成してモンテカルロ積分をシミュレーションする．イテレーションごとの推定値と標準分散のプロットは<a href="http://yagays.github.com/blog/2012/10/25/imcmr-3-1/">例3.3</a>のプロットと同じで，黒の線が推定値の推移，上下の黄色の線が推定値の誤差の範囲となっている．</p>
-
-<p>モンテカルロ積分の結果としては</p>
-
-<ul>
-<li>x=0のとき：-0.01243</li>
-<li>x=2のとき：1.282</li>
-<li>x=4のとき：3.389</li>
-</ul>
-
-
-<p>となった．</p>
-
-<p>```r
-Nsim &lt;- 10<sup>4</sup>
-par(mfrow=c(1,3))
-for(x in c(0,2,4)){
-  theta &lt;- rcauchy(Nsim)
-  num &lt;- theta * dnorm(theta, mean=x)
-  den &lt;- dnorm(theta, mean=x)</p>
-
-<p>  n &lt;- num[den != 0]
-  d &lt;- den[den != 0] # ゼロ除算を起こさないようにしている
-  y &lt;- n / d
-  estint &lt;- (cumsum(n)/(1:length(n))) / (cumsum(d)/(1:length(d)))
-  esterr &lt;- sqrt(cumsum((y - estint)<sup>2))/(1:length(y))</sup>
-  plot(estint, xlab="Iterations", main=paste("x = ",x,", Estimate= ",mean(estint)),</p>
-
-<pre><code>   type="l", lwd=2, xlim=c(0,10^4), ylim=c(x-1,x+1))
-</code></pre>
-
-<p>  lines(estint+2<em>esterr, col="gold", lwd=2)
-  lines(estint-2</em>esterr, col="gold", lwd=2)
-}
-```</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-1_1.png" alt="" /></p>
-
-<h3>b. 収束する様子を推定値の標準誤差でモニタリングする</h3>
-
-<p>上図の黄色の幅で示してある．</p>
-
-<h3>c. 正規近似によるモンテカルロ積分を計算する</h3>
-
-<p>以下のグラフでは，コーシー乱数のシミュレーションのグラフを重ねてプロットすることで，コーシー乱数を使った場合と正規乱数を使った場合の標準誤差を比較をしている．正規乱数を使ったシミュレーションの結果は，赤とピンクの線で表している．このプロットを見ると，正規乱数を使った場合の方がより誤差が少なく推定値を求められることがわかる．</p>
-
-<ul>
-<li>黒＆黄色：コーシー乱数（問題 a.）</li>
-<li>赤＆ピンク：正規乱数（問題 c.）</li>
-</ul>
-
-
-<p>```r
-Nsim &lt;- 10<sup>4</sup>
-par(mfrow=c(1,3))
-for(x in c(0,2,4)){
-  theta &lt;- rnorm(Nsim, mean=x)
-  num &lt;- theta * dcauchy(theta)
-  den &lt;- dcauchy(theta)</p>
-
-<p>  n &lt;- num[den != 0]
-  d &lt;- den[den != 0]
-  y &lt;- n / d
-  estint &lt;- (cumsum(n)/(1:length(n))) / (cumsum(d)/(1:length(d)))
-  esterr &lt;- sqrt(cumsum((y - estint)<sup>2))/(1:length(y))</sup>
-  plot(estint, xlab="Iterations", main=paste("x = ",x,", Estimate= ",mean(estint)),</p>
-
-<pre><code>   type="l", lwd=2, col="red", xlim=c(0,10^4), ylim=c(x-1,x+1))
-</code></pre>
-
-<p>  lines(estint+2<em>esterr, col="pink", lwd=2)
-  lines(estint-2</em>esterr, col="pink", lwd=2)
-}
-```</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-1_3.png" alt="" /></p>
-
-<h3>練習問題 3.9</h3>
-
-<p>この問題は，練習問題3.1の続き．</p>
-
-<h4>a.コーシー候補にもとづく受理・棄却アルゴリズムから推定量を計算する</h4>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=X+%5Csim+%5Cmathcal%7BN%7D%28%5Ctheta%2C1%29><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+%5Csim+%5Cmathcal%7BC%7D%280%2C1%29>において，事後分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=p%28%5Ctheta%7Cx%29+>は以下のように表される．</p>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=p%28%5Ctheta%7Cx%29%3D%5Cfrac%7Bp%28x%7C%5Ctheta%29p%28%5Ctheta%29%7D%7Bp%28x%29%7D></p>
-
-<p>ここで，<img src=http://chart.apis.google.com/chart?cht=tx&chl=p%28x%7C%5Ctheta%29+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%3Csup%3E%7B-%5Cfrac%7B%28x-%5Ctheta%29%3Csup%3E2%7D%7B2%7D%7D%3C%2Fsup%3E%3C%2Fsup%3E+>より，</p>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbegin%7Balign%7D+p%28%5Ctheta%7Cx%29+%3D%26amp%3B+%5Cfrac%7Bp%28%5Ctheta%29%7D%7Bp%28x%29%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%3Csup%3E%7B-%5Cfrac%7B%28x-%5Ctheta%29%3Csup%3E2%7D%7B2%7D%7D%3C%2Fsup%3E%3C%2Fsup%3E+%5C+%5Cpropto%26amp%3B+p%28%5Ctheta%29e%3Csup%3E%7B-%5Cfrac%7B%28x-%5Ctheta%29%3Csup%3E2%7D%7B2%7D%7D%3C%2Fsup%3E%3C%2Fsup%3E+%5Cend%7Balign%7D+></p>
-
-<p>となる．受理・棄却アルゴリズムにおける目標分布と候補分布は</p>
-
-<ul>
-<li>目標分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=f%28%5Ctheta%29+>：<img src=http://chart.apis.google.com/chart?cht=tx&chl=p%28%5Ctheta%29e%3Csup%3E%7B-%28x-%5Ctheta%29%3Csup%3E2%2F2%7D></sup></sup></li>
-<li><p>候補分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28%5Ctheta%29+>：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Cpi%281%2B%5Ctheta%3Csup%3E2%29%7D></sup></p></li>
-<li><p>受理・棄却条件：<img src=http://chart.apis.google.com/chart?cht=tx&chl=U%5Ctimes+M+%5Cleq+%5Cfrac%7Bf%28Y%29%7D%7Bg%28Y%29%7D+>，（<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y+%5Csim+%5Cmathcal%7BC%7D%280%2C1%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2C1%5D%7D>）</p></li>
-</ul>
-
-
-<p>のようになる．受理・棄却アルゴリズムの実験は，練習問題3.1と同様に<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+0%2C2%2C4+>で実行している．以下の図は，受理された乱数のヒストグラムと，その乱数の平均値の値を赤い線で示してある．</p>
-
-<p>```r
-Nsim &lt;- 10<sup>4</sup>
-x &lt;- rep(0, Nsim)
-M &lt;- pi
-f &lt;- function(theta){ exp(-(xx-theta)<sup>2/2)/(1+theta<sup>2)}</sup></sup></p>
-
-<p>par(mfrow=c(3,1))
-for(xx in c(0,2,4)){
-  for(i in 1:Nsim){</p>
-
-<pre><code>y &lt;- rcauchy(1)
-while(runif(1)*M &gt; f(y)/dcauchy(y)){
-  y &lt;- rcauchy(1)
-}
-x[i] &lt;- y
-</code></pre>
-
-<p>  }
-  hist(x, freq=F, nclass=150, main=paste("x = ",xx))
-  abline(v=mean(x), col="red", lwd=2)
-}
-```</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-9_1.png" alt="" /></p>
-
-<h4>b. 正規・コーシー-ベイズ推定量のモンテカルロ積分における，分母と分子の乱数の選択</h4>
-
-<p>分母と分子で同じ乱数を使う場合と違う乱数を使う場合で，どのような誤差の影響が出るかを比較する．今回は正規乱数を用いたモンテカルロ積分で試してみる．</p>
-
-<ul>
-<li>黒＆黄色：分母と分子で同じ乱数<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_i+>を使う場合</li>
-<li>青＆水色：分母と分子で違う乱数<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_i+>を使う場合</li>
-</ul>
-
-
-<p>以下の図を見ると，xの値が大きい時に違う乱数を使う場合の方が標準誤差が大きい．つまり，分母と分子で別々にシミュレーションを行う際にも，乱数から生成する値を統一することで推定値の分散を押さえることができる．逆に言えば，分母と分子で別々の乱数を使うと，分母と分子どちらかが極端な値を引いてしまったときには推定値が変な値を取ってしまう場合がある．</p>
-
-<p>```r
-Nsim &lt;- 10<sup>4</sup>
-par(mfrow=c(1,3))
-for(x in c(0,2,4)){
-  theta &lt;- rnorm(Nsim, mean=x)
-  theta_2 &lt;- rnorm(Nsim, mean=x)</p>
-
-<p>  num &lt;- theta * dcauchy(theta)
-  den &lt;- dcauchy(theta)
-  num_2 &lt;- theta * dcauchy(theta)
-  den_2 &lt;- dcauchy(theta_2)</p>
-
-<p>  n &lt;- num[den != 0]
-  d &lt;- den[den != 0]
-  y &lt;- n / d
-  n_2 &lt;- num_2[den_2 != 0]
-  d_2 &lt;- den_2[den_2 != 0]
-  y_2 &lt;- n_2 / d_2</p>
-
-<p>  estint &lt;- (cumsum(n)/(1:length(n))) / (cumsum(d)/(1:length(d)))
-  esterr &lt;- sqrt(cumsum((y - estint)<sup>2))/(1:length(y))</sup>
-  estint_2 &lt;- (cumsum(n_2)/(1:length(n_2))) / (cumsum(d_2)/(1:length(d_2)))
-  esterr_2 &lt;- sqrt(cumsum((y_2 - estint_2)<sup>2))/(1:length(y_2))</sup></p>
-
-<p>  plot(estint, xlab="Iterations", ylab="" ,type="l", lwd=2, col="black", xlim=c(0,10<sup>4),</sup> ylim=c(x-1,x+1))
-  lines(estint+2<em>esterr, col="gold", lwd=2)
-  lines(estint-2</em>esterr, col="gold", lwd=2)</p>
-
-<p>  par(new=T)
-  plot(estint_2, xlab="Iterations", ylab="", type="l", lwd=2, col="blue", xlim=c(0,10<sup>4),</sup> ylim=c(x-1,x+1))
-  lines(estint_2+2<em>esterr_2, col="skyblue", lwd=2)
-  lines(estint_2-2</em>esterr_2, col="skyblue", lwd=2)
-}
-```</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-9_2.png" alt="" /></p>
-
-<h3>参考</h3>
-
-<ul>
-<li><a href="http://waxworksmath.com/Authors/N_Z/Robert_N_Casella/robert_n_casella.html">http://waxworksmath.com/Authors/N_Z/Robert_N_Casella/robert_n_casella.html</a></li>
-</ul>
-
-
-<p>1章から3章途中までの解説とRのコードがある．今回の作図に関しては，このページのBook Notesを参考にさせていただいた．</p>
 ]]></content>
   </entry>
   
