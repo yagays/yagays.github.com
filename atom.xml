@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-06T15:58:24+09:00</updated>
+  <updated>2012-11-06T20:49:29+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -85,7 +85,7 @@
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
 </pre></td><td class='code'><pre><code class='r'><span class='line'>ref <span class="o">&lt;-</span> rcauchy<span class="p">(</span><span class="m">5001</span><span class="p">)</span>
-</span><span class='line'>f<span class="o">=</span><span class="kr">function</span><span class="p">(</span>y<span class="p">){</span><span class="o">-</span>sum<span class="p">(</span>log<span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="p">(</span>x<span class="o">-</span>y<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))}</span>
+</span><span class='line'>f <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>y<span class="p">){</span><span class="o">-</span>sum<span class="p">(</span>log<span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="p">(</span>x<span class="o">-</span>y<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))}</span>
 </span><span class='line'>
 </span><span class='line'>maxv <span class="o">&lt;-</span> <span class="kc">NULL</span>
 </span><span class='line'>loc <span class="o">&lt;-</span> <span class="kc">NULL</span>
@@ -2287,7 +2287,7 @@
 <li><p>P.155 例5.7内のコード4行目</p>
 
 <ul>
-<li>「diff > 10<sup>-5」→「dif</sup> > 10<sup>-5」</sup></li>
+<li>「diff > 10<sup>-5</sup> 」→「dif > 10<sup>-5</sup> 」</li>
 <li>ただしこれは原書でも同様の表記をしている</li>
 <li>mcsmパッケージのデモスクリプトでは直っている</li>
 </ul>
@@ -2295,7 +2295,7 @@
 <li><p>P.171 式(5.12)右辺</p>
 
 <ul>
-<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=max_%7B%5Ctheta%7DQ%28%5Ctheta%7C%5Chat%7B%5Ctheta%7D_%7B%28j-1%29%7D%5Cbf%7Bx%7D%29+>→<img src=http://chart.apis.google.com/chart?cht=tx&chl=max_%7B%5Ctheta%7DQ%28%5Ctheta%7C%5Chat%7B%5Ctheta%7D_%7B%28j-1%29%7D%2Cbf%7Bx%7D%29+></li>
+<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=max_%7B%5Ctheta%7DQ%28%5Ctheta%7C%5Chat%7B%5Ctheta%7D_%7B%28j-1%29%7D%5Cbf%7Bx%7D%29+>→<img src=http://chart.apis.google.com/chart?cht=tx&chl=max_%7B%5Ctheta%7DQ%28%5Ctheta%7C%5Chat%7B%5Ctheta%7D_%7B%28j-1%29%7D%2C%5Cbf%7Bx%7D%29+></li>
 </ul>
 </li>
 </ul>

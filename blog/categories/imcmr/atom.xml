@@ -4,7 +4,7 @@
   <title><![CDATA[Category: imcmr | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/imcmr/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-06T15:58:24+09:00</updated>
+  <updated>2012-11-06T20:49:29+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -60,7 +60,7 @@
 
 <p>```r
 ref &lt;- rcauchy(5001)
-f=function(y){-sum(log(1+(x-y)<sup>2))}</sup></p>
+f &lt;- function(y){-sum(log(1+(x-y)<sup>2))}</sup></p>
 
 <p>maxv &lt;- NULL
 loc &lt;- NULL
