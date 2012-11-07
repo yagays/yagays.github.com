@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Jekyll/Octopress | Wolfeyes Bioinformatics beta]]></title>
+  <link href="http://yagays.github.com/blog/categories/jekyll-octopress/atom.xml" rel="self"/>
+  <link href="http://yagays.github.com/"/>
+  <updated>2012-11-08T06:45:12+09:00</updated>
+  <id>http://yagays.github.com/</id>
+  <author>
+    <name><![CDATA[yag_ays]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Jekyll/Octopressのフッターにクリエイティブ・コモンズ・ライセンスを書き加える]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/08/creative-commons-jekyll-octopress-footer/"/>
+    <updated>2012-11-08T06:35:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/08/creative-commons-jekyll-octopress-footer</id>
+    <content type="html"><![CDATA[<p>このBlogも書き始めてから半年ほど経ち投稿した記事も増えてきたので，前々からやろうと思っていたクリエイティブ・コモンズのライセンスを付けることにした．ライセンスはもう既に貼り終えていて，個別記事すべてをカバーできる場所に配置するように，ページ一番下のフッターに記述している．</p>
+
+<p>今回は，クリエイティブ・コモンズの公式ウェブサイトからテンプレートを作成し，それをJekyll/Octopress用に少し変更した上でfooter.htmlを書き換えるという一連の作業を，メモとしてまとめてみた．</p>
+
+<h3>テンプレートを作成する</h3>
+
+<p>クリエイティブ・コモンズのライセンスを表明するには，<a href="http://creativecommons.org/">公式ウェブサイト</a>からライセンス付与の書式を作成してウェブページに貼り付ける方法が一番簡単である．まずは以下のページにアクセスして，ライセンスの種類とその他の情報を付加したHTMLコードを作成する．</p>
+
+<ul>
+<li><a href="http://creativecommons.org/choose/">http://creativecommons.org/choose/</a></li>
+</ul>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/cc_1.png" alt="http://creativecommons.org/choose/のスクリーンショット" /></p>
+
+<p>(<a href="http://creativecommons.org/choose/">http://creativecommons.org/choose/</a>のスクリーンショット)</p>
+
+<p>HTLMコードの作成で必ず行わなければ行けないは，左上のボックスにあるライセンスの選択の部分だ．ここの選択肢によって，BY・NC・SA・NDのライセンス選択が行われる．「License Jurisdiction」に関しては，CC-Lisence3.0から「国際」と呼ばれるUnported版を選択できるようになっているようだ．必要がなければ特に変更しなくても問題ないと想われる．</p>
+
+<p>また，左下のボックスには，HTMLコードに付加する情報を入力できるようになっている．貼り付けるウェブサイトのタイトルや著者情報を入力すると，それらの情報がHTMLコードの文面の中にRDFのタグとともにメタデータとして組み込まれる．これらは必須項目ではないが，今回はウェブサイトのタイトルと著者名を入力しておいて，あとで書き換えることにする．</p>
+
+<p>以上の情報を選択/入力して出来上がったHTMLコードが，右下のボックスに表示される．ボックス上側のプレビューで表示されるライセンスのアイコンとテキストに問題がなければ，ボックス下側に表示されるHTMLコードをコピーして，自分のウェブサイトのどこかのに貼り付ければ完了となる．</p>
+
+<h3>ブログのタイトルと作成者の名前をJekyll/Octopress風に書き換える</h3>
+
+<p>さて，今回は上で作成したテンプレートを少し書き換えて，Jekyll/Octopressの設定を利用したHTMLコードにする．書き換えるといっても最終的にウェブページに表示されるテキストは全く変化しないが，テンプレート内に決め打ちで書かれているウェブサイトのタイトルと著者名を，Jekyll/Octopressの_config.ymlに登録されている情報を使って置換するようにする．</p>
+
+<p>具体的な書き方としては，以下のようにfooter.htmlに書き込むと，</p>
+
+<p><code>html
+{{ site.title }} by {{ site.author }}
+</code></p>
+
+<p>実際にウェブページに表示されるテキストは</p>
+
+<p><code>html
+Wolfeyes Bioinformatics beta by yag_ays
+</code></p>
+
+<p>このように_config.ymlに登録したウェブサイトのタイトルと著者名に変換される．</p>
+
+<h3>フッターを書き換える</h3>
+
+<p>このような表記を使って，source/_includes/custom/footer.htmlを以下のコードに書き換える．</p>
+
+<p>```html</p>
+
+<hr>
+
+
+<p>
+  <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
+  <br />
+  <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Wolfeyes Bioinformatics beta</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">yag_ays</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+  <br />
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+
+<p>```</p>
+
+<p>すると，ウェブページの一番下のフッターの部分に，このようにクリエイティブ・コモンズのラインセンスを付けることができる（下のスクリーンショットの枠は別）．ウェブサイトのタイトルや著者名も正しく変換されていることがわかる．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/cc_2.png" alt="" /></p>
+
+<h3>まとめ</h3>
+
+<p>といった感じで，このサイトをCC BYにしてライセンスを表記してみた．作品の利用条件は「表示/BY」のみなので，このサイトのクレジットさえ表示すれば，このサイトのコンテンツを改変して発表したり営利目的で利用できるようになっている．</p>
+
+<p>あと，これは書き手の問題だが，これまで書いてきたテキストの中から文書を引用しているものに関しては，その中にCCのSAが含まれていれば個別にクリエイティブ・コモンズ・ライセンスを継承する必要がある．今回自分のウェブサイトにクリエイティブ・コモンズ・ライセンスを付与するにあたり，各リンク先を見てCCのSAがあるかどうかを確認したが，特に見当たらなかった．というわけでこれまでの記事に関しては問題は無いが，これから記事を書く際にはその辺りを注意しつつ書く必要がある．そういう意味では，クリエイティブ・コモンズ・ライセンスを表記することで，ウェブサイトには特に変化はないものの，記事を書く側の人間の意識はだいぶ変わるものだと感じた．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://www.baldanders.info/spiegel/log2/000425.shtml">Creative Commons Lisence 3.0 日本版ドラフト -- Baldanders.info</a></li>
+<li><a href="http://tokkono.cute.coocan.jp/blog/slow/index.php/programming/making-blog-with-jekyll/">WordPressよりjekyllで本格的ブログを作りたくなる、かもしれないまとめ | ゆっくりと…</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました]]></title>
+    <link href="http://yagays.github.com/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex/"/>
+    <updated>2012-10-19T12:14:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex</id>
+    <content type="html"><![CDATA[<h3>概要</h3>
+
+<p>Jekyll/Octopressで数式を使った記事の作成を簡単にします．</p>
+
+<p><a href="https://developers.google.com/chart/">Google Chart Tools</a>には，Tex形式で書かれた数式をURLに含めて投げると変換した画像を返してくれるAPIがあります．しかし，URLで数式を投げるには特定の文字のエスケープ(変換)をする必要があり，とても面倒です．ということで，Jekyll/Octopress内に書かれた数式を自動でGoogle Chart APIのURL形式に変換するプラグインを作りました．これを使えば，記事の中で数式を書くときに，面倒なHTMLのタグやURLの変換を気にする必要がありません．</p>
+
+<h3>使い方</h3>
+
+<p>以下のように<strong>gctex</strong>というタグとTex形式の数式を埋め込むと，Google Chart APIの画像のURLに変換されます．</p>
+
+<p>```
+{% gctex \frac{1}{\sqrt{2\pi}\sigma} \exp(\frac{-(x-\mu)<sup>2}{2\sigma<sup>2})</sup></sup> %}</p>
+
+<p>```</p>
+
+<p><code>
+<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7D+%5Cexp%28%5Cfrac%7B-%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%29+>
+</code></p>
+
+<p>また，文字の途中に埋め込むことも可能です．</p>
+
+<p>```
+これは{% gctex \mathcal{N}(x|\mu,\sigma) %}です．</p>
+
+<p>```</p>
+
+<p><code>
+これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%28x%7C%5Cmu%2C%5Csigma%29+>です．
+</code></p>
+
+<h3>注意</h3>
+
+<p>ここで使用しているLiquid Tagプラグインは，中に改行を入れてしまうとコンパイルエラーを起こして正しく変換されません．なので，</p>
+
+<p><code>
+{% gctex x \\ y \\ z %} 
+</code></p>
+
+<p><code>
+<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%5C%5C+y+%5C%5C+z+>
+</code></p>
+
+<p>TeX内で改行を表すことはできますが，</p>
+
+<p>```
+{% gctex x \</p>
+
+<pre><code>     y \\
+     z% } 
+</code></pre>
+
+<p>```</p>
+
+<p>のように，実際にテキストの中で改行を含めるような書き方はできません．</p>
+
+<h3>インストールとコード</h3>
+
+<p>以下のgooglechart_tex.rbをダウンロードして，プラグインのコードがあるディレクトリに入れるだけです（Jekyllの場合は_plugins，Octopressの場合はplugins）．</p>
+
+<p><div><script src='https://gist.github.com/3915940.js?file='></script>
+<noscript><pre><code># Convert tex formula into google chart API format (Jekyll/Octopress plugin)
+#
+# Usage: {% gctex tex_formula %}
+#
+# Author: yag_ays (yanagi.ayase [at] gmail.com)
+# blog  http://yagays.github.com/
+#
+# Ref : http://d.hatena.ne.jp/repose/20110506/1304612242
+
+require &quot;cgi&quot;
+
+module Jekyll
+  class GoogleChartTexTag &lt; Liquid::Tag
+
+    def initialize(tag_name, text, tokens)
+      super
+      @text = text
+    end
+
+    def render(context)
+      &quot;&lt;img src=http://chart.apis.google.com/chart?cht=tx&amp;chl=#{CGI.escape(@text)}&gt;&quot;
+    end
+  end
+end
+
+Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
+</code></pre></noscript></div>
+</p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/repose/20110506/1304612242">http://d.hatena.ne.jp/repose/20110506/1304612242</a></li>
+<li><a href="https://github.com/mojombo/jekyll/wiki/Plugins">https://github.com/mojombo/jekyll/wiki/Plugins</a></li>
+<li><a href="https://developers.google.com/chart/infographics/docs/formulas">https://developers.google.com/chart/infographics/docs/formulas</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
