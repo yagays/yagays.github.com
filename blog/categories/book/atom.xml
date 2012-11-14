@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Book | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/book/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-14T22:10:06+09:00</updated>
+  <updated>2012-11-15T04:44:49+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「WIRED VOL.5」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/15/review-wired-5/"/>
+    <updated>2012-11-15T03:24:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/15/review-wired-5</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B008IWXLBC" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>相変わらずデザイナーの実験場のような雑誌だ．ページレイアウトを重視するあまり規定ページ数から溢れた記事の一部を巻末に押しやるという普通なら考えられないことをするのは，この雑誌だけなんじゃないかと思う．そんな雑誌の作り方をしていることもあってか，ページをペラペラめくりながら目に留まった記事を片っ端から読んでいくという読み方も楽しいし，やはり1冊の雑誌として興味あるもの無いものを混ぜこぜにして読めるのは，紙媒体だからこそできる体験だろう．個人的には，なんだかんだ言って雑誌は紙の方が好きだ．机の上に置いてあるだけで何度も開いて読みたくなる．</p>
+
+<p>本号の特集は「教育」ということで，オンラインで大学の授業を受けられる<a href="http://www.udacity.com">Udacity</a>・<a href="https://www.coursera.org">Coursera</a>などのプログラムや，TEDやMITメディアラボなどの取り組みも紹介される．この特集の他には，Twitter創業者の一人のジャック・ドーシーのインタビューやスタートアップの紹介，宇宙やSF，面白ガジェットなどなど，普段<a href="http://wired.jp/">WIRED.jp</a>で見かけるようなタイプの記事を，多彩な写真・画像とボリュームある記事で読むことができる．個人的には伊藤計劃などのSFまわりの海外展開やマルチメディア展開が興味深かった．こういった裏で着々と進行していくプロジェクトなんかは，ニュース記事などで断片がポツポツと出てくるくらいで忘れた頃にまた続報がといったことになることが多いので，こうやってひとつの記事として出てきてくれると記憶にも残りやすい．</p>
+
+<p>そういえば，最近定期購読している雑誌はWIREDくらいだ．去年に新装してから買い続けていることになる．前々からよく読んでいるWEB+DB PRESSとSoftware Designは気になる記事があれば買う程度なので，不定期ながらも情報源やネタ帳として軽い感じで楽しめるWIREDはある意味貴重な存在になっている．</p>
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B004UEPGYW" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B005M16XXU" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0070V8RF2" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B007K57V1O" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「日経ビジネス Associe (アソシエ) 2012年 12月号」読了]]></title>
@@ -90,34 +118,6 @@
 <p>題材としては研究人生であったりiPS細胞であったりと専門性があり難しい内容でありながら，語り口は非常に軽く，欄外の注釈や写真も充実しているなど，中学生・高校生から一般の人にとっても問題なく読める書き方をされている．例えばiPS細胞の遺伝子と転写因子の関係を本としおりに喩えて説明されているなど，その生物学的な特徴や細胞をリプログラミングする仕組みのみならず，研究する動機となったES細胞の倫理的側面や今後の医療への応用の展望などもあわせて紹介されている．</p>
 
 <p>ノーベル賞受賞を受けて出版というだけあって，ニュースだけの情報に物足なさを感じる人向けの気軽に読める1冊となっている．iPS細胞というトピックに関して，現状としては取り敢えず今は本書を読んでおけば問題ないんじゃないだろうか．ただし，これから問題になるであろう倫理問題や研究を促進するための法的整備などの詳しい話はあまり触れられていないので，そっちが読みたい人はむしろ少し前のES細胞周りの文献を当たった方が良さそうな気がする．個人的な要望としては，もう少し世間が落ち着いてiPS細胞に対する評価がまとまった頃に，今度はもっと詳しい内容で研究競争などの専門的な話を盛り込んだ本を出していただきたいところ．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「TN君の伝記」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/07/review-tn-biography/"/>
-    <updated>2012-11-07T13:28:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/07/review-tn-biography</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4834018849" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>TN君の本当の名前は，とうとう本書の中には出てこなかった．しかし，TN君が生きた19世紀後半という時代，世の中の大きな流れ，政治や生活などの急激な変化，そしてTN君が何を思い何を考え，何をしてきたかについて，彼の名前よりも重要な何かがこの本の中で描かれている．</p>
-
-<p>本書は，19世紀後半に生き，ルソーの思想をいち早く日本に広め，自由民権運動の活動家として活躍した思想家である中江兆民の伝記的小説である．彼が生まれそして亡くなるまでの約50年間の人生と，その時代を取り巻く世相や事件を扱った1冊だ．本書は福音館書店から出版される児童文学の中の1冊であり，本には「小学校上級以上」という読者の目安が書かれている．読みやすいように本文の漢字の大半にはフリガナがふられているが，だからといって子供向けの安易な置き換えがごまかしのようなものが含まれているわけではない．近代史についてほとんど知らないような子供が読んでもわかるように，時代背景から当時の日本の階級制度，人々の生活に至るまで，とても分かりやすく丁寧に紹介しながらTN君の人生が描かれる．</p>
-
-<p>本当であれば，本書の内容，つまりTN君の人生や思想に関して自分の意見や感想を書きたいところなのだけれども，僕は哲学や政治そして近代史に関して何か書けるだけの知識が殆どないので，代わりに別のことを書こうと思う．</p>
-
-<p>僕は本書を読み終えて，このTN君の人生にある人のことを思い浮かべた．それは，数年前に亡くなった音楽の指揮者の先生のことなのだが，その先生の性格や人柄，そして人生までもが，本書で描かれるTN君そのもののように思えてならなかった．もちろんその先生の人生を僕が実際に見てきたわけではないし何か書籍として残っているわけでもない．ほとんどすべてのことは先生自身や周りの人たちから伝え聞いたことばかりなのだが，もしかしたらTN君と同じように確固たる志をもって人生を歩まれてきたのかなと，どうしてもTN君とその先生のことを重ねてしまう．その先生は，戦争が始まる少し前に生まれ，戦後の混乱のさなか音楽を勉強され音楽家になられたという話だ．そして今でも名前が残る有名な指揮者に師事され，その後指揮者として活躍される．一時は音大の先生にならないかと誘われるほどではあったものの，大学に入って教壇に立つよりかは楽団の指揮者として若者に指導したいということで，その誘いを断りそれから様々な楽団を立ち上げ音楽活動を積極的におこなってきたという．そして，その先生の晩年に僕は生徒として関わりを持つことになった．先生からは音楽から人生の教訓に至るまで様々なことを教えてもらったと同時に，先生との関わりの中でもっと自分にできることがあったのではないかと今でも当時のことを思い返しては考えることがある．結局は5年ほどの本当に短い付き合いとなってしまったが，僕の中での先生はまさに本書のTN君そのものだった．</p>
-
-<p>本書を読んだ後は，少しばかり先生のことを色々と思い出し感慨にふけってしまった．これもおそらく本書におけるTN君の人間としての描き方が見事であったからであり，歴史上の偉人としてではなく，人間的な部分までを含めた一人の人間を見事に描ききったという点で，本書は非常に優れた伝記的小説であると言える．読み始める前の僕は明治維新などの近代史に全く興味がなく，各所で絶賛されていたがために本書を手にとって読み始めたのだが，読んでいるうちにすっかり引きこまれてしまった．歴史や登場人物の知識が無くとも問題なく読めるという意味でも，一般向けに洗練された読み応えのある本だった．</p>
-
-<h4>影響を受けた書評</h4>
-
-<ul>
-<li><a href="http://cruel.org/cut/cut199506.html">CUT 1995.06 Book Review</a> （これは「<a href="http://www.amazon.co.jp/gp/product/4794964153/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4794964153&linkCode=as2&tag=yagays-22">新教養主義宣言</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4794964153" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」にもコメント付きで掲載されている）</li>
-<li><a href="http://brevis.exblog.jp/19032748/">書評：　「TN君の伝記」　なだ・いなだ : タイム・コンサルタントの日誌から</a></li>
-</ul>
-
 ]]></content>
   </entry>
   
