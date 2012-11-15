@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-16T01:13:31+09:00</updated>
+  <updated>2012-11-16T01:23:47+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -18,9 +18,9 @@
     <link href="http://yagays.github.com/blog/2012/11/16/sublimerepl-clojure/"/>
     <updated>2012-11-16T00:07:00+09:00</updated>
     <id>http://yagays.github.com/blog/2012/11/16/sublimerepl-clojure</id>
-    <content type="html"><![CDATA[<p>最近ローカルの開発環境をEmacsから<a href="http://www.sublimetext.com/">Sublime Text 2</a>に乗り換えたので，長い間.emacsに溜め込んだ環境をSublime Text 2でも再現するために，ちまちまと移行作業をしている．Sublime Text 2の強みというのはPythonで拡張パッケージが書ける上にパッケージ管理が非常に簡単ということで，とりあえずデフォルトの環境をなんとかしたいと思えばパッケージを探せば何とかなるところにある．</p>
+    <content type="html"><![CDATA[<p>最近ローカルの開発環境をEmacsから<a href="http://www.sublimetext.com/">Sublime Text 2</a>に乗り換えたので，長い間.emacsに溜め込んだ環境をSublime Text 2でも再現するために，ちまちまと移行作業をしている．Sublime Text 2の強みというのはPythonで拡張パッケージが書ける上にパッケージ管理が非常に簡単というところにあると思っていて，とりあえずデフォルトの環境をなんとかしたいと思えばパッケージを探せば何とかなる．</p>
 
-<p>ということで，今回はEmacsで構築していたClojureの開発環境をSublime Text 2に移行する．Emacsではswank-clojureとslime-replで書いたコードを逐次実行できる環境を作っていたが，今回もSublime Text 2内でClojureを動かして，エディタ内でコードの編集と実行を両立できるようにする．なお，今回の環境構築ではClojureやLeiningenのインストールはひと通り終えているものとする．</p>
+<p>ということで，今回はEmacsで構築していたClojureの開発環境を，SublimeREPLパッケージを使ってSublime Text 2で再現してみる．Emacsではswank-clojureとslime-replで書いたコードを逐次実行できる環境を作っていたが，今回もSublime Text 2内でClojureを動かして，エディタ内でコードの編集と実行を両立できるようにする．なお，今回の環境構築ではClojureやLeiningenのインストールはひと通り終えているものとする．</p>
 
 <p>ちなみに，私の過去のEmacs＆Clojure環境は以下のblogにまとめてある．</p>
 
@@ -29,7 +29,7 @@
 </ul>
 
 
-<h3>1. Package Controlをセッティングする</h3>
+<h3>1. Package Controlをインストールする</h3>
 
 <p>これについては他のサイトでもよく解説されていることなので，簡単に紹介とインストール方法だけ．Sublime Text 2では<a href="http://wbond.net/sublime_packages/package_control">Sublime Package Control</a>というパッケージ管理が定番となっていて，Sublime Text 2内のコマンドから検索・インストール・最新バージョンへの更新などを簡単に行うことができる．</p>
 
@@ -40,7 +40,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>インストールが終了したら，Sublime Text 2を再起動する．ショートカットCmd+Shift+PでCommand Paletteを開いて「package」と入力して，以下のようにPackage Controlのコマンドが表示されればOK．これでパッケージのインストールが簡単に行えるようになる．</p>
+<p>インストールが終了したら，Sublime Text 2を再起動する．メニューバーの&#8221;Tools&#8221;からCommand Paletteを開いて「package」と入力して，以下のようにPackage Controlのコマンドが表示されればOK．これでパッケージのインストールが簡単に行えるようになる．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/subl_1.png" alt="" /></p>
 
