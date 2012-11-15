@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-16T01:37:32+09:00</updated>
+  <updated>2012-11-16T04:57:23+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -66,14 +66,14 @@
 <br />
 
 
-<h3>3.SublimeREPLの環境設定にLeiningenのPATHを追記する</h3>
+<h3>3. SublimeREPLの環境設定にLeiningenのPATHを追記する</h3>
 
 <p>最後に，SublimeREPLの環境設定を行う．具体的にはLeiningenがインストールされているディレクトリにPATHを通すのだが，これをしないと「OSError(2, &#8216;No such file or directory&#8217;)」といったエラーが表示されるので注意．</p>
 
 <p>今回の場合は，パッケージ内の設定ファイルに直接追記することにする．まず，SublimeREPLのパッケージのディレクトリ内にあるClojureのMain.sublime-menuというファイルを開く．これには，Sublime Text 2の&#8221;Preference&#8221;→&#8221;Browse Packages…&#8221;でFinderを表示してディレクトリを辿っても良いが，今回はTerminal.appで以下のコマンドを入力する．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="nb">open</span> <span class="err">$</span><span class="n">HOME</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Application</span>\ <span class="n">Support</span><span class="o">/</span><span class="n">Sublime</span>\ <span class="n">Text</span>\ <span class="mi">2</span><span class="o">/</span><span class="n">Packages</span><span class="o">/</span><span class="n">SublimeREPL</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">Clojure</span><span class="o">/</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>open <span class="nv">$HOME</span>/Library/Application<span class="se">\ </span>Support/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2/Packages/SublimeREPL/config/Clojure/
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -82,14 +82,14 @@
 <p>そして，Finderで表示された中にあるMain.sublime-menuをエディタで読み込み，29行目のextend_envの行にLeiningenがあるディレクトリのPATHを入力する．今回はMacPortsで入れたLeiningenを使用するために，/opt/local/binを指定する．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="s">&quot;extend_env&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;INSIDE_EMACS&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span> <span class="p">}</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="s2">&quot;extend_env&quot;</span>: <span class="o">{</span><span class="s2">&quot;INSIDE_EMACS&quot;</span>: <span class="s2">&quot;1&quot;</span> <span class="o">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>と書かれている行の末尾に「&#8221;PATH&#8221;: &#8220;{PATH}:/opt/local/bin/&#8221;」を追記する．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="s">&quot;extend_env&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;INSIDE_EMACS&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;PATH&quot;</span><span class="p">:</span> <span class="s">&quot;{PATH}:/opt/local/bin/&quot;</span><span class="p">}</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="s2">&quot;extend_env&quot;</span>: <span class="o">{</span><span class="s2">&quot;INSIDE_EMACS&quot;</span>: <span class="s2">&quot;1&quot;</span>, <span class="s2">&quot;PATH&quot;</span>: <span class="s2">&quot;{PATH}:/opt/local/bin/&quot;</span><span class="o">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
