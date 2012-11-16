@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>「読書の技法 誰でも本物の知識が身につく熟読術・速読術「超」入門」読了 - Wolfeyes Bioinformatics beta</title>
+  <title>Sublime Text 2でRVM環境のOctopressを操作する - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="対象は文学・思想・哲学・歴史に偏っているが，読書法としては簡潔で的確 本書は佐藤優が実践している読書法や勉強法，そして大量の情報をどうやって効率良く捌くかについて論じた本だ．本書前半では，佐藤氏のこれまでの人生における読書遍歴が語られるほか， &hellip;">
+  <meta name="description" content="Sublime Text 2でOctopressの基本コマンドを実行できるパッケージを使ってみた． http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/ sublime-text-2- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.com/blog/2012/10/09/review-art-of-reading">
+  <link rel="canonical" href="http://yagays.github.com/blog/2012/11/17/sublime-text-2-octopress-package">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -111,7 +111,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">「読書の技法 誰でも本物の知識が身につく熟読術・速読術「超」入門」読了</h1>
+      <h1 class="entry-title">Sublime Text 2でRVM環境のOctopressを操作する</h1>
     
     
       <p class="meta">
@@ -127,29 +127,75 @@
   
 
 
-<time datetime="2012-10-09T06:45:00+09:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
+<time datetime="2012-11-17T01:59:00+09:00" pubdate data-updated="true">Nov 17<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4492044698" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+<div class="entry-content"><p>Sublime Text 2でOctopressの基本コマンドを実行できるパッケージを使ってみた．</p>
+
+<ul>
+<li><a href="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/">http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/</a></li>
+</ul>
 
 
-<h3>対象は文学・思想・哲学・歴史に偏っているが，読書法としては簡潔で的確</h3>
+<h3>sublime-text-2-octopressをインストールする</h3>
 
-<p>本書は佐藤優が実践している読書法や勉強法，そして大量の情報をどうやって効率良く捌くかについて論じた本だ．本書前半では，佐藤氏のこれまでの人生における読書遍歴が語られるほか，本書全体を通して文章の端々に彼独自の試行錯誤の跡が見られる．</p>
+<p>Package Controlでsublime-text-2-octopressをインストールする．これは定石通り．</p>
 
-<p>読書に対する彼の態度は非常に明確で，本や情報の取捨選択をはっきりすることが繰り返し述べられる．それは，どのような本を読むべきでどのような本を読まないべきか，どういう情報を重視してどういう情報を読み飛ばすかということだ．ある事柄に関して読書で知識を得ようと思った時に，まず基本となる本の選び方から，重要な箇所のマーキングや書き込み，そして要約などの情報の整理に至るまで，本の著者の意見や自分の欲しい情報を的確に抜き出す技術が具体的に語られる．このような考えの根本には，時間は有限であるという彼自身の強い考えがあり，多読・速読を勧める上での佐藤氏ならではの理由付けがある．本書の技法に倣って文章を抜き出せば，</p>
+<h3>Octopress.sublime-settingsを編集する</h3>
 
-<blockquote><p>「読書は有限であり希少財である」という大原則を忘れてはいけない．速読はあくまで熟読する本を精査するための手段にすぎず，熟読できる本の数が限られるからこそ必要となるものだ．速読が熟読よりも効果を上げることは絶対にない．</p>
+<p>sublime-text-2-octopressの環境設定を行う．Sublime Text 2のメニューバーから&#8221;Sublime Text 2&#8221;→&#8221;Preferences&#8221;→&#8221;Package Settings&#8221;→&#8221;Octopress&#8221;→&#8221;Settings-User&#8221;でOctopress.sublime-settingsを開く．</p>
 
-<p><a href="http://www.amazon.co.jp/gp/product/4492044698/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4492044698&linkCode=as2&tag=yagays-22">読書の技法 誰でも本物の知識が身につく熟読術・速読術「超」入門</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4492044698" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> (p.88)</p></blockquote>
+<p>今回設定するのは&#8221;octopress_path&#8221;と&#8221;octopress_cmd_before_rake&#8221;の2箇所．&#8221;octopress_path&#8221;はOctopressのディレクトリを指定する．そして&#8221;octopress_cmd_before_rake&#8221;にはrubyやrakeのパスを通す設定を読み込むコマンドを指定するのだが，下手に.zshrcなどを読み込むと不要な設定が多すぎてエラーになってしまうので注意が必要になる．自分の環境の場合，RubyはRVMで管理しているため，&#8221;octopress_cmd_before_rake&#8221;にはRVMの設定ファイルである<strong>&#8220;$HOME/rvm/scripts/rvm&#8221;</strong>を読み込むように指定する．</p>
 
-<p>と，速読をただ単に早く本を読む技術と見なしているわけではないことがわかる．本書の帯には「月平均300冊，多い月は500冊以上」と多読を煽る謳い文句が並んでいるが，中をしっかりと読めばそれが安易な多読を推奨しているわけではないことが理解できるだろう．こういった点においては，読書ありきで自然と知識が身につくという陳腐な読書論と比較して，本書の主張や読書手法は非常に合理的であり，ある程度の訓練を必要としながらも実用的である．</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  // path to your octopress
+</span><span class='line'>  "octopress_path": "/Users/yag_ays/Dropbox/octopress",  
+</span><span class='line'>  // command to run before calling rake, eg source ~/.bash_profile to set up your local environment inc paths to ruby, rake etc.
+</span><span class='line'>  "octopress_cmd_before_rake" : "source /Users/yag_ays/.rvm/scripts/rvm",
+</span><span class='line'>  // set to generate, deploy or generate_and_deploy if you wish to have your changes generated into the /public folder and/or deployed upon file save
+</span><span class='line'>  "octopress_onsave_action": "",
+</span><span class='line'>  // true or false
+</span><span class='line'>  "use_bundle": false
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
-<p>佐藤氏の元外務省主任分析官という経歴や神学部出身という学歴から分かる通り，主に思想や歴史の分野に関わる話が多い．科学や理学系に関しては，数学の勉強法で「テクネー」と呼ばれる繰り返しによる理解の重要性に触れている等ある程度の言及はあるものの，少し物足りなさは感じる．しかし，だからといって彼の技法が理学系に通用しないというわけではなく，全体を通して読書法や勉強法は首尾一貫しており応用が効くようなものだ．また，漫画や小説の読み方もそれぞれ読み方があり，漫画のデフォルメされた主張を鵜呑みにし過ぎないことや小説から何を汲み取るべきかなど，学問以外の読書に関しても言及があるのが本書の良いところだ．読書技法の基本から応用まで幅広く網羅した，誰でも読める幅広い年齢層向けの本として，かなり良くまとまっていてクオリティが高い1冊だと思う．</p>
+
+<h3>OctopressのNew Postを実行してみる</h3>
+
+<p>それでは試しに新しい記事を書いてみる．Command Paletteで「octopress」と入力すると，sublime-text-2-octopressでサポートされているコマンド一覧が表示される．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_1.png" alt="" /></p>
+
+<p>「Octopress: New Post」を選択すると，画面下にタイトルを入力する欄が表示される．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_2.png" alt="" /></p>
+
+<p>タイトルを入力してEnterを押すと，Octopressのテンプレートが表示され，New Postが実行される．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_3.png" alt="" /></p>
+
+<p>この他にも，既存のPostやPageを編集したり，GenerateやDeployができる仕様となっている．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/">sublime text 2 の octopress プラグインを作ってみました - Welcome to the blog of blueplanet</a></li>
+<li><a href="https://github.com/blueplanet/sublime-text-2-octopress">blueplanet/sublime-text-2-octopress</a></li>
+</ul>
+
 </div>
 
 
@@ -172,12 +218,12 @@
   
 
 
-<time datetime="2012-10-09T06:45:00+09:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
+<time datetime="2012-11-17T01:59:00+09:00" pubdate data-updated="true">Nov 17<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/book/'>Book</a>
+    <a class='category' href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress</a>, <a class='category' href='/blog/categories/sublimetext2/'>SublimeText2</a>
   
 </span>
 
@@ -185,9 +231,9 @@
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/10/09/review-art-of-reading/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/11/17/sublime-text-2-octopress-package/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/10/09/review-art-of-reading/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/10/09/review-art-of-reading/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/11/17/sublime-text-2-octopress-package/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/11/17/sublime-text-2-octopress-package/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -208,14 +254,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/10/02/review-nhk-virus/" title="Previous Post:
-        「NHKスペシャル 最強ウイルス―新型インフルエンザの恐怖」読了">&laquo; 「NHKスペシャル 最強ウイルス―新型インフルエンザの恐怖」読了</a></li>
+        href="/blog/2012/11/16/sublimerepl-clojure/" title="Previous Post:
+        Sublime Text 2のSublimeREPLパッケージでClojureを動かす">&laquo; Sublime Text 2のSublimeREPLパッケージでClojureを動かす</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/10/10/shut-the-fuck-up-and-download-all-pdf-files/"
-        title="Next Post: ウェブページにリストアップされているpdfファイルをwgetでまとめてダウンロードする方法">ウェブページにリストアップされているpdfファイルをwgetでまとめてダウンロードする方法
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -351,8 +393,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.com/blog/2012/10/09/review-art-of-reading/';
-        var disqus_url = 'http://yagays.github.com/blog/2012/10/09/review-art-of-reading/';
+        var disqus_identifier = 'http://yagays.github.com/blog/2012/11/17/sublime-text-2-octopress-package/';
+        var disqus_url = 'http://yagays.github.com/blog/2012/11/17/sublime-text-2-octopress-package/';
         var disqus_script = 'embed.js';
       
     (function () {

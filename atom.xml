@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-16T04:57:23+09:00</updated>
+  <updated>2012-11-17T02:14:08+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,76 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text 2でRVM環境のOctopressを操作する]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/17/sublime-text-2-octopress-package/"/>
+    <updated>2012-11-17T01:59:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/17/sublime-text-2-octopress-package</id>
+    <content type="html"><![CDATA[<p>Sublime Text 2でOctopressの基本コマンドを実行できるパッケージを使ってみた．</p>
+
+<ul>
+<li><a href="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/">http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/</a></li>
+</ul>
+
+
+<h3>sublime-text-2-octopressをインストールする</h3>
+
+<p>Package Controlでsublime-text-2-octopressをインストールする．これは定石通り．</p>
+
+<h3>Octopress.sublime-settingsを編集する</h3>
+
+<p>sublime-text-2-octopressの環境設定を行う．Sublime Text 2のメニューバーから&#8221;Sublime Text 2&#8221;→&#8221;Preferences&#8221;→&#8221;Package Settings&#8221;→&#8221;Octopress&#8221;→&#8221;Settings-User&#8221;でOctopress.sublime-settingsを開く．</p>
+
+<p>今回設定するのは&#8221;octopress_path&#8221;と&#8221;octopress_cmd_before_rake&#8221;の2箇所．&#8221;octopress_path&#8221;はOctopressのディレクトリを指定する．そして&#8221;octopress_cmd_before_rake&#8221;にはrubyやrakeのパスを通す設定を読み込むコマンドを指定するのだが，下手に.zshrcなどを読み込むと不要な設定が多すぎてエラーになってしまうので注意が必要になる．自分の環境の場合，RubyはRVMで管理しているため，&#8221;octopress_cmd_before_rake&#8221;にはRVMの設定ファイルである<strong>&#8220;$HOME/rvm/scripts/rvm&#8221;</strong>を読み込むように指定する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  // path to your octopress
+</span><span class='line'>  "octopress_path": "/Users/yag_ays/Dropbox/octopress",  
+</span><span class='line'>  // command to run before calling rake, eg source ~/.bash_profile to set up your local environment inc paths to ruby, rake etc.
+</span><span class='line'>  "octopress_cmd_before_rake" : "source /Users/yag_ays/.rvm/scripts/rvm",
+</span><span class='line'>  // set to generate, deploy or generate_and_deploy if you wish to have your changes generated into the /public folder and/or deployed upon file save
+</span><span class='line'>  "octopress_onsave_action": "",
+</span><span class='line'>  // true or false
+</span><span class='line'>  "use_bundle": false
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>OctopressのNew Postを実行してみる</h3>
+
+<p>それでは試しに新しい記事を書いてみる．Command Paletteで「octopress」と入力すると，sublime-text-2-octopressでサポートされているコマンド一覧が表示される．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_1.png" alt="" /></p>
+
+<p>「Octopress: New Post」を選択すると，画面下にタイトルを入力する欄が表示される．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_2.png" alt="" /></p>
+
+<p>タイトルを入力してEnterを押すと，Octopressのテンプレートが表示され，New Postが実行される．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_3.png" alt="" /></p>
+
+<p>この他にも，既存のPostやPageを編集したり，GenerateやDeployができる仕様となっている．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/">sublime text 2 の octopress プラグインを作ってみました - Welcome to the blog of blueplanet</a></li>
+<li><a href="https://github.com/blueplanet/sublime-text-2-octopress">blueplanet/sublime-text-2-octopress</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sublime Text 2のSublimeREPLパッケージでClojureを動かす]]></title>
@@ -2232,32 +2302,6 @@
 
 
 <p>1章から3章途中までの解説とRのコードがある．今回の作図に関しては，このページのBook Notesを参考にさせていただいた．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「ワンクリック―ジェフ・ベゾス率いるAmazonの隆盛」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/10/26/review-one-click/"/>
-    <updated>2012-10-26T01:12:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/10/26/review-one-click</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4822249158" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>Kindleに至るまでの小売時代のアマゾンを総括する1冊</h3>
-
-<p>「Aamazonは一体何の会社なのか」という問いに，ある人は本屋と答えるだろうし，またある人は何でも買えるネットショッピングサイトだと答えるだろう．インターネットの技術屋に聞けばAmazonはクラウドやAWSだと答えるだろうし，最近ではAmazonといえばKindleだと答える人が多いだろう．ジェフ・ベゾスが起こしたAmazonという会社は，今やインターネットでのショッピングのサービスを提供するという枠を乗り越え，AppleやMicrosoftなどに続いて不動の地位とブランドを獲得している．本書は，そのようなAmazonとジェフ・ベゾスが辿ってきた歴史を紐解いて，いかにAmazonが成長しジェフ・ベゾスが成功に導いてきたかに関する本である．</p>
-
-<p>本書はジェフ・ベゾスの人生を軸に書かれている．まずはじめに，Amazonが成功するに至った2つの要因である</p>
-
-<ul>
-<li>顧客を第一に考えること</li>
-<li>長期的な視点をもって決断をすることに</li>
-</ul>
-
-
-<p>の2つにまつわる話が描かれ，彼の作り上げた作品が紹介される．時には消費者の利便性を最大限に引き出すようなサービスを提供し，時には非情なまでに自動化されたシステムを作り上げる．輝かしい成功の影で行われている生々しい特許論争に関しても取り上げられる．そのようなAmazonをすべて統括してきたジェフ・ベゾスという人物が，いかにアントレプレナーとして優れており，その才能を発揮してきたかということが，彼の幼少時代から順に語られていく．彼はすぐにアントレプレナーとして頭角を現したわけでは無かったが，彼が大学を出た後に入った会社では非情に優れた技術者として出世していったという逸話や，インターネットを使った書籍販売というアイデアを思いつくまでの経緯などからも，Amazonに繋がる一連の流れをうかがい知ることができる．Amazonの会社を起こしてからは，今からは想像も出来無いようなベンチャーとしての苦労話や逸話が出てくる．そして最後の数章では，現在のAmazonのイノベーションの中心とも言えるKindleの誕生とその戦略にフォーカスが移る．</p>
-
-<p>個人的な感想としては，興味はやはりAmazonが現在推し進めているKindleやAWSに集中してしまう．ネットショッピングとしてのAmazonはもはやネットに当然のようにあるものとして，空気のような必要不可欠なものであり，普段はその重要性や革新性に意識を向けないような存在になってしまった．それはまさに，AppleがiPodを開発して音楽業界に進出したときのような時代の分かれ目を感じさせる．そういった現状を踏まえると，本書は小売時代のAmazonという企業の歴史を総括する1冊として上手く収まっているといえる．その反面，本書におけるKindleの扱いはどうしても付け加え感が拭えず，本書は全体的に伝記的な作品とも言いにくくマーケティングや経営戦略的な部分も薄いといった難点はあるものの，これからの電子書籍戦争を見守る中でAmazonの立ち位置が分かりやすく示されているところはとても評価できる部分だ．本書で見られるジェフ・ベゾスの一貫した理念を考えると，書籍から電子書籍へと媒体が変わったとしても恐らく根本の部分では何も変わらないのだろう．</p>
 ]]></content>
   </entry>
   

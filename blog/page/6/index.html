@@ -9,7 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="概要 Jekyll/Octopressで数式を使った記事の作成を簡単にします． Google Chart Toolsには，Tex形式で書かれた数式をURLに含めて投げると変換した画像を返してくれるAPIがあります．しかし，URLで数式を投げるには特定の文字のエスケープ(変換)をする必要があり， &hellip;">
+  <meta name="description" content="「Rによるモンテカルロ法入門」 本書は，モンテカルロ法の実践的な解説書であり，統計解析ソフトのRを用いた豊富な実例と練習問題が組まれている．モンテカルロ法とは乱数を用いて数値計算を行う手法の総称であり，本書で扱う内容は乱数の発生からモンテカルロ積分，そしてマルコフ連鎖モンテカルロ法（MCMC） &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -107,6 +107,220 @@
     <div class="row-fluid">
       <div class="span9">
   
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">「Rによるモンテカルロ法入門」読書ノート：アーカイブ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-20T11:13:00+09:00" pubdate data-updated="true">Oct 20<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>「Rによるモンテカルロ法入門」</h3>
+
+<p>本書は，モンテカルロ法の実践的な解説書であり，統計解析ソフトのRを用いた豊富な実例と練習問題が組まれている．モンテカルロ法とは乱数を用いて数値計算を行う手法の総称であり，本書で扱う内容は乱数の発生からモンテカルロ積分，そしてマルコフ連鎖モンテカルロ法（MCMC）の各種アルゴリズムに至るまで非常に幅広い．たいていの解説には理論に実践演習が付随した形となっており，数学的な理論を軸にして実際にRを用いたコード例が示される．</p>
+
+<h3>練習問題を解きつつ読書ノートをまとめてみる</h3>
+
+<p><a href="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/">そんなこんな</a>で，<a href="http://www.amazon.co.jp/gp/product/400006973X/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=400006973X&amp;linkCode=as2&amp;tag=yagays-22">久保本</a>と並行する形で「<a href="http://www.amazon.co.jp/gp/product/4621065270/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621065270&linkCode=as2&tag=yagays-22">Rによるモンテカルロ法入門</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621065270" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」を読んでいる．一応MCMCの部分だけひと通り目を通したのだが，最終的にMCMCの実装までひと通りやるにしても一連の流れを簡単にでも追っておかなければと思って，最初の乱数の部分からじっくり読み進めている．これがなかなか難しくて，手も足も出ないところをなんとかRのコードを動かして理解を補っているわけなのだが……取り敢えず練習問題を解ける範囲で解きつつRのコードを書いていこうというこでとはセクションごとに小分けてして，じっくり読書ノートを付けて勉強することにしてみた．</p>
+
+<p>以下に，読書ノートのリンクを書き加えていく</p>
+
+<h3>読書ノートまとめ</h3>
+
+<ul>
+<li><a href="http://yagays.github.com/blog/2012/10/21/imcmr-2-1/">「Rによるモンテカルロ法入門」読書ノート：2章 逆変換・一般変換法</a>
+
+<ul>
+<li>例 2.1，練習問題 2.2，練習問題 2.12</li>
+</ul>
+</li>
+<li><a href="http://yagays.github.com/blog/2012/10/22/imcmr-2-2/">「Rによるモンテカルロ法入門」読書ノート：2章 受理・棄却法</a>
+
+<ul>
+<li>例 2.7，例 2.8，練習問題 2.7，練習問題 2.8</li>
+</ul>
+</li>
+<li><a href="http://yagays.github.com/blog/2012/10/23/imcmr-2-3/">「Rによるモンテカルロ法入門」読書ノート：2章 練習問題</a>
+
+<ul>
+<li>練習問題 2.18，練習問題 2.19，練習問題 2.22</li>
+</ul>
+</li>
+<li><a href="http://yagays.github.com/blog/2012/10/25/imcmr-3-1/">「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分</a>
+
+<ul>
+<li>例 3.3，例 3.4</li>
+</ul>
+</li>
+<li><a href="http://yagays.github.com/blog/2012/10/27/imcmr-3-2/">「Rによるモンテカルロ法入門」読書ノート：3章 モンテカルロ積分 その2</a>
+
+<ul>
+<li>練習問題 3.1，練習問題 3.9</li>
+</ul>
+</li>
+<li><a href="http://yagays.github.com/blog/2012/10/28/imcmr-3-3/">「Rによるモンテカルロ法入門」読書ノート：3章 重点サンプリング</a>
+
+<ul>
+<li>例 3.5，練習問題 3.5</li>
+</ul>
+</li>
+<li><a href="http://yagays.github.com/blog/2012/10/30/imcmr-5-1/">「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 数値的最適化法</a>
+
+<ul>
+<li>例 5.1，例 5.2</li>
+</ul>
+</li>
+<li><a href="http://yagays.github.com/blog/2012/11/01/imcmr-5-2/">「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 確率的探索</a>
+
+<ul>
+<li>例 5.3，練習問題 5.3</li>
+</ul>
+</li>
+<li><a href="http://yagays.github.com/blog/2012/11/06/imcmr-5-3/">「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 確率的探索 その2</a>
+
+<ul>
+<li>例 5.4，例 5.6</li>
+</ul>
+</li>
+<li><a href="http://yagays.github.com/blog/2012/11/11/imcmr-5-4/">「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 確率的勾配法</a>
+
+<ul>
+<li>例 5.7</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>私的正誤表</h3>
+
+<ul>
+<li><p>全体的な修正点</p>
+
+<ul>
+<li>Rのoptimize()関数で最大値を求める際には「max=T」→「maximum=T」を使う．</li>
+</ul>
+</li>
+<li><p>P.143 例題5.1内のコード8行目</p>
+
+<ul>
+<li>「maximum=max=T」→「maximum=T」</li>
+</ul>
+</li>
+<li><p>P.155 例5.7内のコード4行目</p>
+
+<ul>
+<li>「diff > 10<sup>-5</sup> 」→「dif > 10<sup>-5</sup> 」</li>
+<li>ただしこれは原書でも同様の表記をしている</li>
+<li>mcsmパッケージのデモスクリプトでは直っている</li>
+</ul>
+</li>
+<li><p>P.171 式(5.12)右辺</p>
+
+<ul>
+<li>「<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmax_%7B%5Ctheta%7DQ%28%5Ctheta%7C%5Chat%7B%5Ctheta%7D_%7B%28j-1%29%7D%5Cbf%7Bx%7D%29+>」→「<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmax_%7B%5Ctheta%7DQ%28%5Ctheta%7C%5Chat%7B%5Ctheta%7D_%7B%28j-1%29%7D%2C%5Cbf%7Bx%7D%29+>」</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>実行環境</h3>
+
+<p>R version 2.15.1 (2012-06-22)</p>
+
+<h3>お決まりごと</h3>
+
+<p>この読書ノート（上記リンク先を含む）は個人的なメモであって，解答およびコードの正確さや厳密さを保証するものではありません．間違いが多分に含まれている可能性があるので，参考にされる際には十分ご注意下さい．</p>
+
+<h3>参考：サンプルコード</h3>
+
+<p>CRANのmcsmパッケージに，本書の一部コードのスクリプトがデモとして入っている．</p>
+
+<ul>
+<li><a href="http://cran.r-project.org/web/packages/mcsm/index.html">http://cran.r-project.org/web/packages/mcsm/index.html</a></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="o">&gt;</span> install.packages<span class="p">(</span><span class="s">&quot;mcsm&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="o">&gt;</span> library<span class="p">(</span>mcsm<span class="p">)</span>
+</span><span class='line'><span class="o">&gt;</span> demo<span class="p">(</span>Chapter.1<span class="p">)</span> <span class="c1"># Chapter.8まである</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>参考：基本的な確率分布の略称</h3>
+
+<ul>
+<li>一様分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BU%7D></li>
+<li>指数分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BExp%7D></li>
+<li>カイ二乗分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7B%5Cchi%5E2%7D></li>
+<li>ガンマ分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BG%7D></li>
+<li>ベータ分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D></li>
+<li>正規分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D></li>
+<li>二項分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBin%7D></li>
+<li>負の二項分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BNeg%7D></li>
+<li>ポアソン分布(※): <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BP%7D></li>
+<li>コーシー分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BC%7D></li>
+<li>スチューデントのT分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BT%7D></li>
+<li>二重指数分布（ラプラス分布）: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D></li>
+</ul>
+
+
+<p>（※ <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BP%7D>は場合によって変わる）</p>
+
+<h3>参考</h3>
+
+<ul>
+<li>(pdf) <a href="http://www.ceremade.dauphine.fr/~xian/shortManual.pdf">http://www.ceremade.dauphine.fr/~xian/shortManual.pdf</a></li>
+</ul>
+
+
+<p>公式ページには，番号が奇数の練習問題だけ解答がある．</p>
+
+<ul>
+<li>(pdf) <a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf</a></li>
+</ul>
+
+
+<p>UseR!の発表スライドっぽい資料．</p>
+
+<ul>
+<li><a href="http://waxworksmath.com/Authors/N_Z/Robert_N_Casella/robert_n_casella.html">http://waxworksmath.com/Authors/N_Z/Robert_N_Casella/robert_n_casella.html</a></li>
+</ul>
+
+
+<p>1章から3章途中までの解説とRのコードがある．</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -498,98 +712,6 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/12/prml-talksession/">「今度こそわかる!? PRMLの学習の学習」に参加しました</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-12T10:03:00+09:00" pubdate data-updated="true">Oct 12<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621061240" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621061224" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>昨日池袋ジュンク堂で開催されたPRML同人誌トークセッションに参加してました．講演者の皆様お疲れ様でした＆貴重なお話をありがとうございました．</p>
-
-<ul>
-<li><a href="http://www.junkudo.co.jp/tenpo/evtalk.html#20121011_talk">http://www.junkudo.co.jp/tenpo/evtalk.html#20121011_talk</a></li>
-</ul>
-
-
-<p>ということで，トークセッションの中で話題に上がった話を私見を交えつつ幾つか．全部の話題を網羅しているわけではないのでご了承下さい．</p>
-
-<br />
-
-
-<h3>「PRMLの学習」の2版が出た</h3>
-
-<p>なんと「パターン認識と機械学習の学習」が早くも2版ということで，どこかで見覚えのある黄色い表紙．私はもう既に1版を買っているので2版を買おうかどうか悩んでいたら，トークセッションの受付で2版で新たに加わった内容が印刷された小冊子を頂いた．</p>
-
-<h3>PRML翻訳は@shima__shimaさん自らが同僚や出版社に話を持ちかけて実現した</h3>
-
-<p>翻訳に関しては，本の中では分担されているということしか分からなかったので，ちょっとした裏話．あとは，Wikiを立てて訳語の統一をされたということで，fittingやjoint distributionなどで議論が紛糾したという話も．</p>
-
-<h3>モデルというのはモノの見方である</h3>
-
-<p>機械学習全般の話でもよく出てくるが，今回のトークセッションでもやはり話題になったのはモデルに関する問題だった．機械学習では何らかの関数に近似したり分類したりと，未来を予測するためにはモデルを立ててパラメータをチューニングして…ということが必要になるのだが，じゃあどうやってモデルを組み上げていけばいいのか．何が良いモデルで何が悪いモデルなのか．適当にモデルを組んだら機械学習の結果が現実のデータに上手い具合に当てはまった/予想に反して全然当てはまらなかった場合には，どう解釈すればいいのか．モデルを選ぶ以前に特徴量を選ぶところにおいても，どんな工夫をすればいいのか．．．などなど，手法にかぎらず色々な部分で正当性や性能を評価する必要があり，理論が固まった現在でも人が介入する部分というのは多いという話．それを克服(?)したのが今話題のDeep Learningで，膨大なデータ量を元にして，特徴量の選択自体も機械学習の中に含めてしまおうという話とも繋がった．</p>
-
-<h3>贋作を愛でる</h3>
-
-<p>モデルの話に関連して，ノーフリーランチ定理やボックス氏の言葉などが話の中に出てきたが，そういった流れの中で統数研の樋口知之先生が仰られている「贋作」という単語が出てきて，個人的にはそのニュアンスが非常に腑に落ちる感じで印象に残った．最終的には現実問題を解決したいということが根本にあると思うのだが，機械学習なんかは理論などは置いておいて単純に動けばいいやという考えもあり，逆に何でも適用しようとすると論文を量産する機械になってしまったり，SOMみたいな万能性に溺れてしまうという話もあり，なかなか難しい部分ではある．</p>
-
-<ul>
-<li><a href="http://d.hatena.ne.jp/what_a_dude/20110902/p1">http://d.hatena.ne.jp/what_a_dude/20110902/p1</a></li>
-<li><a href="http://www.ai-gakkai.or.jp/jsai/sig/dmsm/007/discussion.html">http://www.ai-gakkai.or.jp/jsai/sig/dmsm/007/discussion.html</a></li>
-<li><a href="http://www.ai-gakkai.or.jp/jsai/activity/241_p162_165.pdf">http://www.ai-gakkai.or.jp/jsai/activity/241_p162_165.pdf</a> (pdf)</li>
-</ul>
-
-
-<h3>余談：PRMLの学習と実装に関する疑問について．</h3>
-
-<p>実装の話はトークセッションではあまり出て来なかったのだが，帰り際の電車の中で実装に関する疑問をふと思いついて「さっき訊いときゃよかった」と思ったので，折角なので書いてみる．</p>
-
-<p>プログラマーなどは，アルゴリズムを自分で実装しないと本当に理解したことにならない，なんてことがよく言われるけれども，そういう環境で育った技術系の人がPRMLを読み始めると「書いてあることをひと通りまんべんなく実装しないといけない」みたいな感じになって，取っ掛かりとしては非常に辛いんじゃないかなーという個人的な印象がある．</p>
-
-<p>例えば，尤度関数でlogを取って対数尤度にするのは小さな確率の値を掛け算していくと非常に小さい値になって計算機で扱うには困るからlogを取って足し算にしているんだよ，という実装上の工夫は非常によくされる説明だけれども，じゃあ他の機械学習の理論においても，実装のことを考慮した勉強をしないといけないんじゃないかという感覚は今でもある．</p>
-
-<p>そのあたり，トークセッションの中で話があったように，理論レベルの難しさと実装レベルの難しさは別物だし，今は良質の機械学習パッケージが充実しているから機械学習を使うだけなら自分で実装する必要性は必ずしも無いけれども，「加減」の問題として，どの程度やったらいいのかという疑問．まあ，現実の問題を解こうと思った時には，やはりその分野（自然言語処理であったりレコメンドであったり）の機械学習本を参考にしたほうが良いのだけれども．</p>
-
-<p>そういえば@Shuyoさんが「数式をnumpyに落としこむコツ」という解説を書かれており，非常に分かりやすくていつも参考にしているのだが，そのあたり「プログラマのためのPRMLの学習」同人誌があるといいんじゃないかと思う．</p>
-
-<ul>
-<li><a href="http://d.hatena.ne.jp/n_shuyo/20111016/numpy">http://d.hatena.ne.jp/n_shuyo/20111016/numpy</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/7/">&larr; Older</a></li>
@@ -638,6 +760,10 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/11/17/sublime-text-2-octopress-package/">Sublime Text 2でRVM環境のOctopressを操作する</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/11/16/sublimerepl-clojure/">Sublime Text 2のSublimeREPLパッケージでClojureを動かす</a>
       </li>
     
@@ -673,15 +799,11 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
         <a href="/blog/2012/11/08/creative-commons-jekyll-octopress-footer/">Jekyll/Octopressのフッターにクリエイティブ・コモンズ・ライセンスを書き加える</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/11/07/review-tn-biography/">「TN君の伝記」読了</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (45)</a></li><li><a href='/blog/categories/clojure'>Clojure (1)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (11)</a></li><li><a href='/blog/categories/jekyll-octopress'>Jekyll/Octopress (2)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (2)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (17)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/sublimetext2'>SublimeText2 (1)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (45)</a></li><li><a href='/blog/categories/clojure'>Clojure (1)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (11)</a></li><li><a href='/blog/categories/jekyll-octopress'>Jekyll/Octopress (3)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/misc'>Misc (2)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (17)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/sublimetext2'>SublimeText2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
 </section>
 
 

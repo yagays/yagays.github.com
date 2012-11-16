@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Jekyll/Octopress | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/jekyll-octopress/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-16T04:57:23+09:00</updated>
+  <updated>2012-11-17T02:15:04+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text 2でRVM環境のOctopressを操作する]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/17/sublime-text-2-octopress-package/"/>
+    <updated>2012-11-17T01:59:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/17/sublime-text-2-octopress-package</id>
+    <content type="html"><![CDATA[<p>Sublime Text 2でOctopressの基本コマンドを実行できるパッケージを使ってみた．</p>
+
+<ul>
+<li><a href="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/">http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/</a></li>
+</ul>
+
+
+<h3>1. sublime-text-2-octopressをインストールする</h3>
+
+<p>Package Controlでsublime-text-2-octopressをインストールする．これは定石通り．</p>
+
+<h3>2. Octopress.sublime-settingsを編集する</h3>
+
+<p>sublime-text-2-octopressの環境設定を行う．Sublime Text 2のメニューバーから"Sublime Text 2"→"Preferences"→"Package Settings"→"Octopress"→"Settings-User"でOctopress.sublime-settingsを開く．</p>
+
+<p>今回設定するのは"octopress_path"と"octopress_cmd_before_rake"の2箇所．"octopress_path"はOctopressのディレクトリを指定する．そして"octopress_cmd_before_rake"にはrubyやrakeのパスを通す設定を読み込むコマンドを指定するのだが，下手に.zshrcなどを読み込むと不要な設定が多すぎてエラーになってしまうので注意が必要になる．自分の環境の場合，RubyはRVMで管理しているため，"octopress_cmd_before_rake"にはRVMの設定ファイルである<strong>"$HOME/rvm/scripts/rvm"</strong>を読み込むように指定する．</p>
+
+<p><code>
+{
+  // path to your octopress
+  "octopress_path": "/Users/yag_ays/Dropbox/octopress",  
+  // command to run before calling rake, eg source ~/.bash_profile to set up your local environment inc paths to ruby, rake etc.
+  "octopress_cmd_before_rake" : "source /Users/yag_ays/.rvm/scripts/rvm",
+  // set to generate, deploy or generate_and_deploy if you wish to have your changes generated into the /public folder and/or deployed upon file save
+  "octopress_onsave_action": "",
+  // true or false
+  "use_bundle": false
+}
+</code></p>
+
+<h3>3. OctopressのNew Postを実行してみる</h3>
+
+<p>それでは試しに新しい記事を書いてみる．Command Paletteで「octopress」と入力すると，sublime-text-2-octopressでサポートされているコマンド一覧が表示される．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_1.png" alt="" /></p>
+
+<p>「Octopress: New Post」を選択すると，画面下にタイトルを入力する欄が表示される．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_2.png" alt="" /></p>
+
+<p>タイトルを入力してEnterを押すと，Octopressのテンプレートが表示され，New Postが実行される．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_3.png" alt="" /></p>
+
+<p>この他にも，既存のPostやPageを編集したり，GenerateやDeployができる仕様となっている．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/">sublime text 2 の octopress プラグインを作ってみました - Welcome to the blog of blueplanet</a></li>
+<li><a href="https://github.com/blueplanet/sublime-text-2-octopress">blueplanet/sublime-text-2-octopress</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Jekyll/Octopressのフッターにクリエイティブ・コモンズ・ライセンスを書き加える]]></title>
@@ -48,7 +109,7 @@
 <p>具体的な書き方としては，以下のようにfooter.htmlに書き込むと，</p>
 
 <p><code>html
-{{ site.title }} by {{ site.author }}
+{% raw %}{{ site.title }} by {{ site.author }}{% endraw %}
 </code></p>
 
 <p>実際にウェブページに表示されるテキストは</p>
@@ -64,7 +125,7 @@ Wolfeyes Bioinformatics beta by yag_ays
 <p>このような表記を使って，source/_includes/custom/footer.htmlを以下のコードに書き換える．</p>
 
 <p>```html
-<hr></p>
+{% raw %}<hr></p>
 
 <p>
   <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
@@ -75,7 +136,7 @@ Wolfeyes Bioinformatics beta by yag_ays
 </p>
 
 
-<p>
+<p>{% endraw %}
 ```</p>
 
 <p>すると，ウェブページの一番下のフッターの部分に，このようにクリエイティブ・コモンズのラインセンスを付けることができる（下のスクリーンショットの枠は別）．ウェブサイトのタイトルや著者名も正しく変換されていることがわかる．</p>
@@ -114,23 +175,23 @@ Wolfeyes Bioinformatics beta by yag_ays
 <p>以下のように<strong>gctex</strong>というタグとTex形式の数式を埋め込むと，Google Chart APIの画像のURLに変換されます．</p>
 
 <p>```
-{% gctex \frac{1}{\sqrt{2\pi}\sigma} \exp(\frac{-(x-\mu)<sup>2}{2\sigma<sup>2})</sup></sup> %}</p>
+{% raw %}{% gctex \frac{1}{\sqrt{2\pi}\sigma} \exp(\frac{-(x-\mu)<sup>2}{2\sigma<sup>2})</sup></sup> %}{% endraw %}</p>
 
 <p>```</p>
 
 <p><code>
-<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7D+%5Cexp%28%5Cfrac%7B-%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%29+>
+{% gctex \frac{1}{\sqrt{2\pi}\sigma} \exp(\frac{-(x-\mu)^2}{2\sigma^2}) %}
 </code></p>
 
 <p>また，文字の途中に埋め込むことも可能です．</p>
 
 <p>```
-これは{% gctex \mathcal{N}(x|\mu,\sigma) %}です．</p>
+{% raw %}これは{% gctex \mathcal{N}(x|\mu,\sigma) %}です．{% endraw %}</p>
 
 <p>```</p>
 
 <p><code>
-これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%28x%7C%5Cmu%2C%5Csigma%29+>です．
+これは{% gctex \mathcal{N}(x|\mu,\sigma) %}です．
 </code></p>
 
 <h3>注意</h3>
@@ -138,20 +199,20 @@ Wolfeyes Bioinformatics beta by yag_ays
 <p>ここで使用しているLiquid Tagプラグインは，中に改行を入れてしまうとコンパイルエラーを起こして正しく変換されません．なので，</p>
 
 <p><code>
-{% gctex x \\ y \\ z %} 
+{% raw %}{% gctex x \\ y \\ z %} {% endraw %}
 </code></p>
 
 <p><code>
-<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%5C%5C+y+%5C%5C+z+>
+{% gctex x \\ y \\ z %}
 </code></p>
 
 <p>TeX内で改行を表すことはできますが，</p>
 
 <p>```
-{% gctex x \</p>
+{% raw %}{% gctex x \</p>
 
 <pre><code>     y \\
-     z% } 
+     z% } {% endraw %}
 </code></pre>
 
 <p>```</p>
@@ -162,35 +223,7 @@ Wolfeyes Bioinformatics beta by yag_ays
 
 <p>以下のgooglechart_tex.rbをダウンロードして，プラグインのコードがあるディレクトリに入れるだけです（Jekyllの場合は_plugins，Octopressの場合はplugins）．</p>
 
-<p><div><script src='https://gist.github.com/3915940.js?file='></script>
-<noscript><pre><code># Convert tex formula into google chart API format (Jekyll/Octopress plugin)
-#
-# Usage: {% gctex tex_formula %}
-#
-# Author: yag_ays (yanagi.ayase [at] gmail.com)
-# blog  http://yagays.github.com/
-#
-# Ref : http://d.hatena.ne.jp/repose/20110506/1304612242
-
-require &quot;cgi&quot;
-
-module Jekyll
-  class GoogleChartTexTag &lt; Liquid::Tag
-
-    def initialize(tag_name, text, tokens)
-      super
-      @text = text
-    end
-
-    def render(context)
-      &quot;&lt;img src=http://chart.apis.google.com/chart?cht=tx&amp;chl=#{CGI.escape(@text)}&gt;&quot;
-    end
-  end
-end
-
-Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
-</code></pre></noscript></div>
-</p>
+<p>{% gist:3915940 %}</p>
 
 <h3>参考</h3>
 
