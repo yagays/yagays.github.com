@@ -4,7 +4,7 @@
   <title><![CDATA[Category: SOAPdenovo2 | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/soapdenovo2/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-18T16:02:23+09:00</updated>
+  <updated>2012-11-18T18:19:11+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -252,7 +252,117 @@ q2=/home/yag_ays/tmp/soapdenovo2_testrun/SRR001665_2.fastq
 <!-- more -->
 
 
-<p>{% gist 3870629 %}</p>
+<p><div><script src='https://gist.github.com/3870629.js?file='></script>
+<noscript><pre><code>#/usr/bin/env ruby
+
+require &quot;optparse&quot;
+
+def v(s)
+  if s == &quot;NaN&quot;
+    return s
+  elsif s.include?(&quot;%&quot;)
+    return s.gsub(&quot;%&quot;,&quot;&quot;).to_f
+  else
+    return s.to_i
+  end
+end
+
+def parse_scafstatistics(file)
+  stats = []
+  header = []
+  open(file) { |f|
+    header &lt;&lt; &quot;Filename&quot;
+    stats &lt;&lt; File.basename(file)
+    f.each_line do |line|
+      if !line.include?(&quot;&lt;--&quot;) &amp;&amp; line != &quot;\n&quot;
+        l = line.chomp.split(&quot;\t&quot;)
+        if l[0] == &quot;GC_Content&quot;
+          header &lt;&lt; l[0]
+          stats &lt;&lt; v(l[1])
+        elsif l.length == 3
+          if l[2].include?(&quot;%&quot;)
+            header &lt;&lt; l[0].strip
+            header &lt;&lt; l[0].strip + &quot; (%)&quot;
+            stats &lt;&lt; v(l[1])
+            stats &lt;&lt; v(l[2])
+          else
+            header &lt;&lt; l[0]
+            header &lt;&lt; &quot;Contigs &gt;0 in &quot; + l[0]
+            stats &lt;&lt; v(l[1])
+            stats &lt;&lt; v(l[2])
+          end
+        else
+          header &lt;&lt; l[0]
+          stats &lt;&lt; v(l[1])
+        end
+      end
+    end
+  }
+  return header, stats
+end
+
+def print_tsv(header, stats, print_all, print_scaffold)
+  h = []
+  s = []
+  if print_scaffold
+    if print_all
+      h = header[0..57]
+      s = stats.map{|a| a[0..57]}
+    else
+      h = [header[0..8],header[45]]
+      s = stats.map{|a| [a[0..8],a[45]]}
+    end
+  else
+    if print_all
+      h = header[58..header.length]
+      s = stats.map{|a| a[58..a.length]}
+    else
+      h = [header[58..65].flatten,header[98]]
+      s = stats.map{|a| [a[58..65].flatten,a[98]]}
+    end
+  end
+  puts h.join(&quot;\t&quot;)
+  s.each do |f|
+    puts f.join(&quot;\t&quot;)
+  end
+end
+
+
+if __FILE__ == $PROGRAM_NAME
+  header = []
+  stats = []
+
+  sort_column = nil
+  print_all = false
+  print_scaffold = true
+
+  ARGV.options do |opt|
+    opt.on( &quot;-a&quot;,&quot;--all&quot;) { print_all = true }
+    opt.on( &quot;-s VAL&quot;,&quot;--sort&quot;) { |a| sort_column = a }
+    opt.on( &quot;-c&quot;, &quot;--contig&quot;) { print_scaffold = false }
+    opt.on( &quot;-h&quot;,&quot;--help&quot;) { puts opt ;exit }
+    opt.parse!
+  end
+
+  Dir.glob(ARGV).each do |f|
+    h, s = parse_scafstatistics(f)
+    header = h
+    stats &lt;&lt; s
+  end
+
+  if sort_column
+    i = header.index(sort_column)
+    if i == nil
+      puts &quot;ERROR : unknown column name '#{sort_column}' &quot;
+      exit 1
+    end
+    stats = stats.sort{|a,b| b[i] &lt;=&gt; a[i] }
+  end
+
+  print_tsv(header, stats, print_all, print_scaffold)
+end
+</code></pre></noscript></div>
+</p>
 ]]></content>
   </entry>
   

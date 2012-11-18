@@ -174,7 +174,7 @@
 </span><span class='line'>  X<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> X<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span>Y <span class="o">-</span> X<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">])</span><span class="o">*</span><span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">&lt;</span>rho<span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>plot<span class="p">(</span><span class="m">1</span>:Nsim<span class="p">,</span> X<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span><span class="m">1</span>:Nsim<span class="p">,</span> X<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Sequence X^t&quot;</span><span class="p">)</span>
 </span><span class='line'>plot<span class="p">(</span><span class="m">4500</span>:<span class="m">4800</span><span class="p">,</span> X<span class="p">[</span><span class="m">4500</span>:<span class="m">4800</span><span class="p">],</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Sequence X^t for t = 4500 - 4800&quot;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -208,7 +208,7 @@
 
 <h3>例 6.2 メトロポリス・ヘイスティング・アルゴリズムでコーシー分布の乱数を生成する</h3>
 
-<p>例6.1のベータ分布の乱数生成における候補分布は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BU%7D_%7B0%2C1%7D+>だったが，コーシー分布の乱数生成における候補分布には，</p>
+<p>例6.1のベータ分布の乱数生成における提案分布は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BU%7D_%7B0%2C1%7D+>だったが，コーシー分布の乱数生成における提案分布には，</p>
 
 <ul>
 <li>標準正規分布：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%280%2C1%29+></li>
@@ -216,7 +216,7 @@
 </ul>
 
 
-<p>を使うことができる．このような候補分布はマルコフ連鎖とは独立である．なお，本問題ではこれらの分布を表す単語として候補分布と提案分布という2つの言葉が出てくるが，今回は「独立メトロポリス・ヘイスティング・アルゴリズムの候補分布」ということで，表記としては候補分布で統一する．</p>
+<p>を使うことができる．このような提案分布はマルコフ連鎖とは独立である．なお，本問題ではこれらの分布を表す単語として候補分布と提案分布という2つの言葉が出てくるが，今回は表記として提案分布で統一する．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -253,7 +253,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>まずはそれぞれの系列をプロットして特徴を見ていく．左側に候補分布を標準正規分布とした場合，右側に候補分布をスチューデントt分布とした場合で，上から順に系列のプロット，系列のヒストグラム，系列の自己相関プロットを図示したのが以下の図になっている．</p>
+<p>まずはそれぞれの系列をプロットして特徴を見ていく．左側に提案分布を標準正規分布とした場合，右側に提案分布をスチューデントt分布とした場合で，上から順に系列のプロット，系列のヒストグラム，系列の自己相関プロットを図示したのが以下の図になっている．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-2_1.png" alt="" /></p>
 
@@ -264,11 +264,11 @@
 <br />
 
 
-<p>次に，2つの候補分布におけるメトロポリス・ヘイスティング・アルゴリズムによって生成したコーシー乱数の累積収束プロット，すなわち乱数の平均値がどのように収束していくかを図示する．</p>
+<p>次に，2つの提案分布におけるメトロポリス・ヘイスティング・アルゴリズムによって生成したコーシー乱数の累積収束プロット，すなわち乱数の平均値がどのように収束していくかを図示する．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-2_2.png" alt="" /></p>
 
-<p>黒線が候補分布に標準正規分布を使った場合，黄色の線が候補分布にスチューデントt分布を使った場合となっている．今回シミュレートしているコーシー分布から求めた正確な値は0.896なので，スチューデントt分布はイテレーション回数を重ねるごとに真の値に収束していくことがわかる．一方で標準正規分布においては，今回のイテレーション回数(N=5000)では真の値に収束していないようにみえる．しかし，平均値の傾向を見ると値が徐々に上昇しては一気に下がり&#8230;といった傾向が見られ，理論的にも標準正規分布を提案分布として用いた場合でも真の値に収束することがわかっている．</p>
+<p>黒線が提案分布に標準正規分布を使った場合，黄色の線が提案分布にスチューデントt分布を使った場合となっている．今回シミュレートしているコーシー分布から求めた正確な値は0.896なので，スチューデントt分布はイテレーション回数を重ねるごとに真の値に収束していくことがわかる．一方で標準正規分布においては，今回のイテレーション回数(N=5000)では真の値に収束していないようにみえる．しかし，平均値の傾向を見ると値が徐々に上昇しては一気に下がり&#8230;といった傾向が見られ，理論的にも標準正規分布を提案分布として用いた場合でも真の値に収束することがわかっている．なので，今回の場合はイテレーション回数が少なすぎるために，収束の様子が見られない．</p>
 </div>
   
   
