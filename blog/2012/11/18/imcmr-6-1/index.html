@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Wolfeyes Bioinformatics beta</title>
+  <title>「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その1 - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.com">
+  <link rel="canonical" href="http://yagays.github.com/blog/2012/11/18/imcmr-6-1">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -105,15 +105,13 @@
 </nav>
   <div class="container">
     <div class="row-fluid">
-      <div class="span9">
-  
-  
-  
-    <article>
       
+<article class="hentry span9" role="article">
+
+  
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2012/11/18/imcmr-6-1/">「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その1</a></h1>
+      <h1 class="entry-title">「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その1</h1>
     
     
       <p class="meta">
@@ -136,7 +134,7 @@
   </header>
 
 
-  <div class="entry-content"><ul>
+<div class="entry-content"><ul>
 <li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
 </ul>
 
@@ -270,119 +268,16 @@
 
 <p>黒線が候補分布に標準正規分布を使った場合，黄色の線が候補分布にスチューデントt分布を使った場合となっている．今回シミュレートしているコーシー分布から求めた正確な値は0.896なので，スチューデントt分布はイテレーション回数を重ねるごとに真の値に収束していくことがわかる．一方で標準正規分布においては，今回のイテレーション回数(N=5000)では真の値に収束していないようにみえる．しかし，平均値の傾向を見ると値が徐々に上昇しては一気に下がり&#8230;といった傾向が見られ，理論的にも標準正規分布を提案分布として用いた場合でも真の値に収束することがわかっている．</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/17/sublime-text-2-octopress-package/">Sublime Text 2でRVM環境のOctopressを操作する</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">yag_ays</span></span>
 
-<time datetime="2012-11-17T01:59:00+09:00" pubdate data-updated="true">Nov 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sublime Text 2でOctopressの基本コマンドを実行できるパッケージを使ってみた．</p>
-
-<ul>
-<li><a href="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/">http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/</a></li>
-</ul>
-
-
-<h3>1. sublime-text-2-octopressをインストールする</h3>
-
-<p>Package Controlでsublime-text-2-octopressをインストールする．これは定石通り．</p>
-
-<h3>2. Octopress.sublime-settingsを編集する</h3>
-
-<p>sublime-text-2-octopressの環境設定を行う．Sublime Text 2のメニューバーから&#8221;Sublime Text 2&#8221;→&#8221;Preferences&#8221;→&#8221;Package Settings&#8221;→&#8221;Octopress&#8221;→&#8221;Settings-User&#8221;でOctopress.sublime-settingsを開く．</p>
-
-<p>今回設定するのは&#8221;octopress_path&#8221;と&#8221;octopress_cmd_before_rake&#8221;の2箇所．&#8221;octopress_path&#8221;はOctopressのディレクトリを指定する．そして&#8221;octopress_cmd_before_rake&#8221;にはrubyやrakeのパスを通す設定を読み込むコマンドを指定するのだが，下手に.zshrcなどを読み込むと不要な設定が多すぎてエラーになってしまうので注意が必要になる．自分の環境の場合，RubyはRVMで管理しているため，&#8221;octopress_cmd_before_rake&#8221;にはRVMの設定ファイルである<strong>&#8220;$HOME/rvm/scripts/rvm&#8221;</strong>を読み込むように指定する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>  // path to your octopress
-</span><span class='line'>  "octopress_path": "/Users/yag_ays/Dropbox/octopress",  
-</span><span class='line'>  // command to run before calling rake, eg source ~/.bash_profile to set up your local environment inc paths to ruby, rake etc.
-</span><span class='line'>  "octopress_cmd_before_rake" : "source /Users/yag_ays/.rvm/scripts/rvm",
-</span><span class='line'>  // set to generate, deploy or generate_and_deploy if you wish to have your changes generated into the /public folder and/or deployed upon file save
-</span><span class='line'>  "octopress_onsave_action": "",
-</span><span class='line'>  // true or false
-</span><span class='line'>  "use_bundle": false
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>3. OctopressのNew Postを実行してみる</h3>
-
-<p>それでは試しに新しい記事を書いてみる．Command Paletteで「octopress」と入力すると，sublime-text-2-octopressでサポートされているコマンド一覧が表示される．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_1.png" alt="" /></p>
-
-<p>「Octopress: New Post」を選択すると，画面下にタイトルを入力する欄が表示される．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_2.png" alt="" /></p>
-
-<p>タイトルを入力してEnterを押すと，Octopressのテンプレートが表示され，New Postが実行される．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_3.png" alt="" /></p>
-
-<p>この他にも，既存のPostやPageを編集したり，GenerateやDeployができる仕様となっている．</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/">sublime text 2 の octopress プラグインを作ってみました - Welcome to the blog of blueplanet</a></li>
-<li><a href="https://github.com/blueplanet/sublime-text-2-octopress">blueplanet/sublime-text-2-octopress</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/16/sublimerepl-clojure/">Sublime Text 2のSublimeREPLパッケージでClojureを動かす</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -394,251 +289,51 @@
   
 
 
-<time datetime="2012-11-16T00:07:00+09:00" pubdate data-updated="true">Nov 16<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>最近ローカルの開発環境をEmacsから<a href="http://www.sublimetext.com/">Sublime Text 2</a>に乗り換えたので，長い間.emacsに溜め込んだ環境をSublime Text 2でも再現するために，ちまちまと移行作業をしている．Sublime Text 2の強みというのはPythonで拡張パッケージが書ける上にパッケージ管理が非常に簡単というところにあると思っていて，とりあえずデフォルトの環境をなんとかしたいと思えばパッケージを探せば何とかなる．</p>
-
-<p>ということで，今回はEmacsで構築していたClojureの開発環境を，SublimeREPLパッケージを使ってSublime Text 2で再現してみる．Emacsではswank-clojureとslime-replで書いたコードを逐次実行できる環境を作っていたが，今回もSublime Text 2内でClojureを動かして，エディタ内でコードの編集と実行を両立できるようにする．なお，今回の環境構築ではClojureやLeiningenのインストールはひと通り終えているものとする．</p>
-
-<p>ちなみに，私の過去のEmacs＆Clojure環境は以下のblogにまとめてある．</p>
-
-<ul>
-<li><a href="http://yag-ays.hateblo.jp/entry/2012/01/09/224531">Clojure + Emacs環境のセッティング（MacOSX Lion 10.7） - やぐブロ</a></li>
-</ul>
-
-
-<h3>1. Package Controlをインストールする</h3>
-
-<p>これについては他のサイトでもよく解説されていることなので，簡単に紹介とインストール方法だけ．Sublime Text 2では<a href="http://wbond.net/sublime_packages/package_control">Sublime Package Control</a>というパッケージ管理が定番となっていて，Sublime Text 2内のコマンドから検索・インストール・最新バージョンへの更新などを簡単に行うことができる．</p>
-
-<p>まず，Sublime Text 2のコンソールに以下のコマンドを入力（コピペ）する．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">urllib2</span><span class="o">,</span><span class="nn">os</span><span class="p">;</span><span class="n">pf</span><span class="o">=</span><span class="s">&#39;Package Control.sublime-package&#39;</span><span class="p">;</span><span class="n">ipp</span><span class="o">=</span><span class="n">sublime</span><span class="o">.</span><span class="n">installed_packages_path</span><span class="p">();</span><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span><span class="p">;</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ipp</span><span class="p">,</span><span class="n">pf</span><span class="p">),</span><span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://sublime.wbond.net/&#39;</span><span class="o">+</span><span class="n">pf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="s">&#39;%20&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>インストールが終了したら，Sublime Text 2を再起動する．メニューバーの&#8221;Tools&#8221;からCommand Paletteを開いて「package」と入力して，以下のようにPackage Controlのコマンドが表示されればOK．これでパッケージのインストールが簡単に行えるようになる．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/subl_1.png" alt="" /></p>
-
-<br />
-
-
-<h3>2. SublimeREPLをインストールする</h3>
-
-<p>次に，Clojureをエディタ内で動かすためにSublimeREPLというパッケージをインストールする．ちなみにこのパッケージはClojure専用というわけではないので，RubyやPython，Rなどの他の言語のREPLの機能も兼ね備えている．</p>
-
-<p>まず，先ほどの確認のときのようにCommand Paletteを開いて「install」と入力し，「Package Control: Install Package」を選択する．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/subl_2.png" alt="" /></p>
-
-<p>すると，登録されているパッケージ一覧が表示されるので，「SublimeREPL」と入力してパッケージを選択してインストールを行う．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/subl_3.png" alt="" /></p>
-
-<p>これで，SublimeREPLパッケージのインストールは完了．メニューバーのToolsにSublimeREPLという項目が表示されればOK．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/subl_4.png" alt="" /></p>
-
-<br />
-
-
-<h3>3. SublimeREPLの環境設定にLeiningenのPATHを追記する</h3>
-
-<p>最後に，SublimeREPLの環境設定を行う．具体的にはLeiningenがインストールされているディレクトリにPATHを通すのだが，これをしないと「OSError(2, &#8216;No such file or directory&#8217;)」といったエラーが表示されるので注意．</p>
-
-<p>今回の場合は，パッケージ内の設定ファイルに直接追記することにする．まず，SublimeREPLのパッケージのディレクトリ内にあるClojureのMain.sublime-menuというファイルを開く．これには，Sublime Text 2の&#8221;Preference&#8221;→&#8221;Browse Packages…&#8221;でFinderを表示してディレクトリを辿っても良いが，今回はTerminal.appで以下のコマンドを入力する．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>open <span class="nv">$HOME</span>/Library/Application<span class="se">\ </span>Support/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2/Packages/SublimeREPL/config/Clojure/
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/subl_5.png" alt="" /></p>
-
-<p>そして，Finderで表示された中にあるMain.sublime-menuをエディタで読み込み，29行目のextend_envの行にLeiningenがあるディレクトリのPATHを入力する．今回はMacPortsで入れたLeiningenを使用するために，/opt/local/binを指定する．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="s2">&quot;extend_env&quot;</span>: <span class="o">{</span><span class="s2">&quot;INSIDE_EMACS&quot;</span>: <span class="s2">&quot;1&quot;</span> <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>と書かれている行の末尾に「&#8221;PATH&#8221;: &#8220;{PATH}:/opt/local/bin/&#8221;」を追記する．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="s2">&quot;extend_env&quot;</span>: <span class="o">{</span><span class="s2">&quot;INSIDE_EMACS&quot;</span>: <span class="s2">&quot;1&quot;</span>, <span class="s2">&quot;PATH&quot;</span>: <span class="s2">&quot;{PATH}:/opt/local/bin/&quot;</span><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>4. SublimeREPLの起動</h3>
-
-<p>メニューバーの&#8221;Tools&#8221;から&#8221;SublimeREPL&#8221;→&#8221;Clojure&#8221;→&#8221;Clojure&#8221;を選択して，以下のようにREPLが起動すれば，無事にSublimeREPLの環境設定は終了．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/subl_6.png" alt="" /></p>
-
-<h4>環境</h4>
-
-<ul>
-<li>OS
-
-<ul>
-<li>Mac OS X 10.8.2</li>
-</ul>
-</li>
-<li>Sublime Text 2
-
-<ul>
-<li>Version 2.0.1, Build 2217</li>
-</ul>
-</li>
-<li>Leiningen
-
-<ul>
-<li>Leiningen 1.6.1.1</li>
-</ul>
-</li>
-</ul>
-
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://wbond.net/sublime_packages/package_control">Sublime Package Control – a Sublime Text 2 Package Manager by wbond</a></li>
-<li><a href="http://sublimerepl.readthedocs.org/en/latest/">SublimeREPL — SublimeREPL 1.0.30 documentation</a></li>
-<li><a href="https://github.com/wuub/SublimeREPL/issues/11">Opening clojure REPL fails / Fix PATH problems · Issue #11 · wuub/SublimeREPL</a></li>
-<li><a href="http://dev.clojure.org/display/doc/Getting+Started+With+Sublime+Text+2">Getting Started With Sublime Text 2 - Clojure Documentation - Clojure Development</a></li>
-<li><a href="https://gist.github.com/2407109">Setting Up Clojure on OS X — Gist</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
+<time datetime="2012-11-18T14:37:00+09:00" pubdate data-updated="true">Nov 18<span>th</span>, 2012</time>
       
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/15/review-wired-5/">「WIRED VOL.5」読了</a></h1>
-    
-    
-      <p class="meta">
-        
 
-
-
-
-
-
-
-
+<span class="categories">
   
+    <a class='category' href='/blog/categories/reading/'>Reading</a>, <a class='category' href='/blog/categories/imcmr/'>imcmr</a>
+  
+</span>
 
 
-<time datetime="2012-11-15T03:24:00+09:00" pubdate data-updated="true">Nov 15<span>th</span>, 2012</time>
-        
-      </p>
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B008IWXLBC" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>相変わらずデザイナーの実験場のような雑誌だ．ページレイアウトを重視するあまり規定ページ数から溢れた記事の一部を巻末に押しやるという普通なら考えられないことをするのは，この雑誌だけなんじゃないかと思う．そんな雑誌の作り方をしていることもあってか，ページをペラペラめくりながら目に留まった記事を片っ端から読んでいくという読み方も楽しいし，やはり1冊の雑誌として興味あるもの無いものを混ぜこぜにして読めるのは，紙媒体だからこそできる体験だろう．個人的には，なんだかんだ言って雑誌は紙の方が好きだ．机の上に置いてあるだけで何度も開いて読みたくなる．</p>
-
-<p>本号の特集は「教育」ということで，オンラインで大学の授業を受けられる<a href="http://www.udacity.com">Udacity</a>・<a href="https://www.coursera.org">Coursera</a>などのプログラムや，TEDやMITメディアラボなどの取り組みも紹介される．この特集の他には，Twitter創業者の一人のジャック・ドーシーのインタビューやスタートアップの紹介，宇宙やSF，面白ガジェットなどなど，普段<a href="http://wired.jp/">WIRED.jp</a>で見かけるようなタイプの記事を，多彩な写真・画像とボリュームある記事で読むことができる．個人的には伊藤計劃などのSFまわりの海外展開やマルチメディア展開が興味深かった．こういった裏で着々と進行していくプロジェクトなんかは，ニュース記事などで断片がポツポツと出てくるくらいで忘れた頃にまた続報がといったことになることが多いので，こうやってひとつの記事として出てきてくれると記憶にも残りやすい．</p>
-
-<p>そういえば，最近定期購読している雑誌はWIREDくらいだ．去年に新装してから買い続けていることになる．前々からよく読んでいるWEB+DB PRESSとSoftware Designは気になる記事があれば買う程度なので，不定期ながらも情報源やネタ帳として軽い感じで楽しめるWIREDはある意味貴重な存在になっている．</p>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B004UEPGYW" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B005M16XXU" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0070V8RF2" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B007K57V1O" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
+      <div class="sharing">
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/11/18/imcmr-6-1/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/11/18/imcmr-6-1/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/11/18/imcmr-6-1/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
 </div>
-  
-  
 
-
-    </article>
-  
-  
-    <article>
+    
+    
+    <section>
+      <h1>Comments</h1>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+    
+    <ul class="pager">
       
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/14/review-nikkei-associe-2012-12/">「日経ビジネス Associe (アソシエ) 2012年 12月号」読了</a></h1>
-    
-    
-      <p class="meta">
-        
+      <li class="previous"><a class="basic-alignment left"
+        href="/blog/2012/11/17/sublime-text-2-octopress-package/" title="Previous Post:
+        Sublime Text 2でRVM環境のOctopressを操作する">&laquo; Sublime Text 2でRVM環境のOctopressを操作する</a></li>
+      
+      <li><a href="/blog/archives">Blog Archives</a></li>
+      
+    </ul>
+  </footer>
+</article>
 
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-14T00:24:00+09:00" pubdate data-updated="true">Nov 14<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B009W5J4RY" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p><a href="http://yagays.github.com/blog/2012/11/13/review-ultimate-method-for-reaching-the-essentials/">前回の「佐藤可士和の超整理術」</a>を読んでる途中にコンビニで整理術の雑誌を見つけたので読んでみた．相変わらずAssocieは読者ターゲットがブレない記事構成でいつも感心する．自分の手の届く範囲でなんとかやりくりしないといけない新人ビジネスマンも，なかなか大変なご様子．</p>
-
-<p>内容としては，やはり机で働くビジネスマン向けの実践的なテクニックが多め．机の上を片付けたり電子化したり名刺を整理したりと王道は抑えつつ，タクシー運転手やカメラマン，料理人などの少し変わった整理術も紹介される．整理といえばやはりバインダーや手帳などの文房具に自然と話が進むわけで，定番文房具の使い方から最新文房具の紹介までひと通りカバーされているのもいつも通り．</p>
-
-<p>そういった内容がいろんな分野の中堅社員の具体例とともに語られるのだが，前回の佐藤可士和の本を読んだ後に眺めると，それぞれのテクニックは一体何がしたいのかということがクリアに理解できて面白かった．佐藤可士和のように何もモノを置かないというのは現実的に厳しいだろうし，本の中ではあまり語られなかった具体的な方法をこういった雑誌で穴埋めできると思う．ポイントとしては，どうプライオリティをつけて取捨選択するのか，そしていかに整理のための規格を統一するかの2点に集約されるというあたりで，あとは自分に合った方法で実践するのみ．</p>
-
-<p>ちなみに，個人的には針無しホッチキスに非常に興味を惹かれたが，わざわざ買うものだろうかと考えた結果購入は見送りになった．針無しだとシュレッダーにそのまま入れられるメリットはあるが，キチンと書類を留めてくれる方が大事ということで，今のところは物欲を抑えている．ちなみに，ホッチキスの針を簡単に取ることができる「<a href="http://www.amazon.co.jp/gp/product/B001CR5DZM/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B001CR5DZM&linkCode=as2&tag=yagays-22">サンスター文具 はりトルプロ 4765-800</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=B001CR5DZM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」は本当に便利なのでオススメ．ハサミを握る程度の軽い力で簡単に針を抜くことができるので，量が多くても全然疲れない．これのお陰で，針を取る手間をそれほど煩わしく感じていないというのもある．一方，「<a href="http://www.amazon.co.jp/gp/product/B002IJ2BZI/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B002IJ2BZI&linkCode=as2&tag=yagays-22">リムーバー ブルー</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=B002IJ2BZI" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」は，針を抜くときに力をいれなければいけないのでちょっと大変．それに分厚い紙を束ねている針はほとんど取れない．</p>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B001CR5DZM" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B002IJ2BZI" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
-  <ul class="pager">
-    
-    <li class="previous"><a href="/blog/page/2/">&larr; Older</a></li>
-    
-    <li><a href="/blog/archives">Blog Archives</a></li>
-    
-  </ul>
-</div>
 <aside class="sidebar-nav span3">
   
     <section class="well">
@@ -728,7 +423,7 @@
   <h1>Twitter</h1>
   <ul id="tweets" class="nav">
     <li class="nav-header">Latest Tweets</li>
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   <script type="text/javascript">
     $(document).ready(function(){
@@ -747,6 +442,7 @@
 
   
 </aside>
+
 
     </div>
   </div>
@@ -767,7 +463,10 @@
       var disqus_shortname = 'wolfeyesbioinformaticsbeta';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://yagays.github.com/blog/2012/11/18/imcmr-6-1/';
+        var disqus_url = 'http://yagays.github.com/blog/2012/11/18/imcmr-6-1/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
