@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-18T18:19:11+09:00</updated>
+  <updated>2012-11-19T07:35:44+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,191 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「マルコフ連鎖モンテカルロ法」1章のメトロポリス・ヘイスティング・アルゴリズムによるガンベル分布の乱数生成]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/19/mcmc-statlib-chp1-mh/"/>
+    <updated>2012-11-19T07:10:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/19/mcmc-statlib-chp1-mh</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4254126972" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>「<a href="http://www.amazon.co.jp/gp/product/4254126972/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4254126972&linkCode=as2&tag=yagays-22">マルコフ連鎖モンテカルロ法 (統計ライブラリー)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4254126972" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」PP.11-14のメトロポリス・ヘイスティング・アルゴリズムによる二重指数分布からの乱数生成（サンプリング）をやってみた．</p>
+
+<p>この問題は本書にも実験結果が掲載されているので，自分が行った実験結果と見比べることができる．結論から言うと，一応大まかな結果としては同じ傾向を示したが，乱数を用いた実験ということもあって多少の値のズレがでている．また，パラメータによっては結果の値/分布が安定しないものもあるので，何度か実験を行なって結果を吟味している部分もあるが，結果を曲解するためのものではないということを付け加えておく．</p>
+
+<p>なお，この文章ではメトロポリス・ヘイスティング・アルゴリズムを以降MHと表記する．</p>
+
+<h3>問題</h3>
+
+<p>ガンベル分布（二重指数分布）からの乱数生成を考える．今回はガンベル分布からの直接的な乱数生成ができないとしたうえで，MHによる乱数生成を行う．ガンベル分布は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B2b%7D%5Cexp%28%5Cfrac%7B-%7Cx-%5Cmu%7C%7D%7Bb%7D%29+>で表され，今回は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu%3D0+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=b%3D+3+>の分布を考える．なお，ガンベル分布の平均と分散は解析的に得られ，それぞれ<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=2b%5E2+>である．</p>
+
+<h3>実験条件</h3>
+
+<p>今回は，MHの中でも酔歩過程/ランダムウォーク（Random walk）と独立連鎖（Independent chain）の2種類の方法を試す．それぞれのMHにおける推移カーネル<img src=http://chart.apis.google.com/chart?cht=tx&chl=K+>は</p>
+
+<ul>
+<li>酔歩過程：<img src=http://chart.apis.google.com/chart?cht=tx&chl=K%28x%5E%7B%28t%29%7D%2Cx%5E%7B%28t%2B1%29%7D%29+%3D+%5Cmathcal%7BN%7D%28x%5E%7B%28t%29%7D%2Cc_%7Bran%7D%5E2%29+></li>
+<li>独立連鎖：<img src=http://chart.apis.google.com/chart?cht=tx&chl=K%28x%5E%7B%28t%29%7D%2Cx%5E%7B%28t%2B1%29%7D%29+%3D+%5Cmathcal%7BN%7D%280%2Cc_%7Bind%7D%5E2%29+></li>
+</ul>
+
+
+<p>となる．ここで，<img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%5E2+>および<img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%5E2+>は調整母数/チューニング・パラメータであり，今回はそれぞれ<strong>{0.25, 1, 5, 15, 150}</strong>の5パターンで実験を行った．</p>
+
+<p>また，生成した乱数の系列において，系列初期の<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D1%5Cdots+1000+>までの結果は初期値に依存した値となっているため，今回は結果として用いていない．</p>
+
+<h3>結果：以下の図の見方</h3>
+
+<p>以下に示す図は，各行にチューニング・パラメータの値，各列に系列のプロット，系列の分布，系列の平均の推移，系列の自己相関プロットを示したものである．図のタイトルに，チューニング・パラメータの値，生成した乱数の平均と分散，そして採択率を示している（便宜的にタイトルの部分に情報を書き加えているだけで，タイトルと図は直接的には関連していない）．</p>
+
+<p>例えば，<a href="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_1.png">一番上の図</a>では，<img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%5E2%3D0.25+>の場合の酔歩過程の実験結果を示している．一番左の図は，横軸にイテレーションの回数を，縦軸に生成した乱数の値を取ったプロットである．</p>
+
+<h3>結果：酔歩過程/ランダムウォーク</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in c<span class="p">(</span><span class="m">0.25</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">150</span><span class="p">)){</span>
+</span><span class='line'>  c.ran <span class="o">&lt;-</span> i<span class="o">^</span><span class="m">2</span>
+</span><span class='line'>  alpha <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">0</span><span class="p">)</span>
+</span><span class='line'>  Niter <span class="o">&lt;-</span> <span class="m">10000</span>
+</span><span class='line'>  x <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span><span class="m">0</span><span class="p">,</span> sd<span class="o">=</span>c.ran<span class="p">)</span>
+</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>t in <span class="m">2</span>:Niter<span class="p">){</span>
+</span><span class='line'>    z <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span><span class="m">0</span><span class="p">,</span> sd<span class="o">=</span>c.ran<span class="p">)</span>
+</span><span class='line'>    alpha<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span> <span class="o">&lt;-</span> min<span class="p">(</span><span class="m">1</span><span class="p">,</span> exp<span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span>abs<span class="p">(</span>x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="o">+</span>z<span class="p">)</span><span class="o">-</span>abs<span class="p">(</span>x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]))))</span>
+</span><span class='line'>    x<span class="p">[</span>t<span class="p">]</span> <span class="o">&lt;-</span> x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span> <span class="o">+</span> z<span class="o">*</span><span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">&lt;</span>alpha<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">])</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  X <span class="o">&lt;-</span> x<span class="p">[</span><span class="m">1001</span>:Niter<span class="p">]</span>
+</span><span class='line'>  stat <span class="o">&lt;-</span> table<span class="p">(</span>alpha<span class="o">==</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>  plot<span class="p">(</span><span class="m">1001</span>:Niter<span class="p">,</span> X<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;c_ran=&quot;</span><span class="p">,</span>i<span class="p">),</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>  plot<span class="p">(</span>density<span class="p">(</span>X<span class="p">),</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;mean=&quot;</span><span class="p">,</span>round<span class="p">(</span>mean<span class="p">(</span>X<span class="p">),</span>digit<span class="o">=</span><span class="m">2</span><span class="p">),</span><span class="s">&quot; var=&quot;</span><span class="p">,</span>round<span class="p">(</span>var<span class="p">(</span>X<span class="p">),</span>digit<span class="o">=</span><span class="m">2</span><span class="p">)))</span>
+</span><span class='line'>  plot<span class="p">(</span>cumsum<span class="p">(</span>X<span class="p">)</span><span class="o">/</span><span class="m">1</span>:length<span class="p">(</span>X<span class="p">),</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;accept ratio=&quot;</span><span class="p">,</span>round<span class="p">(</span><span class="m">100</span><span class="o">*</span>stat<span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">/</span>stat<span class="p">[</span><span class="m">1</span><span class="p">]),</span><span class="s">&quot;%&quot;</span><span class="p">))</span>
+</span><span class='line'>  abline<span class="p">(</span>h<span class="o">=</span><span class="m">0</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%5E2%3D0.25+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_1.png" alt="" /></p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%5E2%3D1+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_2.png" alt="" /></p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%5E2%3D5+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_3.png" alt="" /></p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%5E2%3D15+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_4.png" alt="" /></p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%5E2%3D150+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_5.png" alt="" /></p>
+
+<h3>結果：独立連鎖の場合</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">4</span><span class="p">))</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in c<span class="p">(</span><span class="m">0.25</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">150</span><span class="p">)){</span>
+</span><span class='line'>  c.ind <span class="o">&lt;-</span> i
+</span><span class='line'>  alpha <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">0</span><span class="p">)</span>
+</span><span class='line'>  Niter <span class="o">&lt;-</span> <span class="m">10000</span>
+</span><span class='line'>  x <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span><span class="m">0</span><span class="p">,</span> sd<span class="o">=</span>c.ind<span class="p">)</span>
+</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>t in <span class="m">2</span>:Niter<span class="p">){</span>
+</span><span class='line'>    z <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span><span class="m">0</span><span class="p">,</span> sd<span class="o">=</span>c.ind<span class="p">)</span>
+</span><span class='line'>    alpha<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span> <span class="o">&lt;-</span> min<span class="p">(</span><span class="m">1</span><span class="p">,</span> exp<span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span>abs<span class="p">(</span>z<span class="p">)</span><span class="o">-</span>abs<span class="p">(</span>x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]))</span>
+</span><span class='line'>                             <span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">*</span><span class="p">((</span>x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="o">/</span>c.ind<span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">-</span> <span class="p">(</span>z<span class="o">/</span>c.ind<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>                             <span class="p">)</span>
+</span><span class='line'>                      <span class="p">)</span>
+</span><span class='line'>    <span class="kr">if</span><span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">&lt;</span>alpha<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]){</span>
+</span><span class='line'>      x<span class="p">[</span>t<span class="p">]</span> <span class="o">&lt;-</span> z
+</span><span class='line'>    <span class="p">}</span>else<span class="p">{</span>
+</span><span class='line'>      x<span class="p">[</span>t<span class="p">]</span> <span class="o">&lt;-</span> x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  X <span class="o">&lt;-</span> x<span class="p">[</span><span class="m">1001</span>:Niter<span class="p">]</span>
+</span><span class='line'>  stat <span class="o">&lt;-</span> table<span class="p">(</span>alpha<span class="o">==</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>  plot<span class="p">(</span><span class="m">1001</span>:Niter<span class="p">,</span> X<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;c_ind=&quot;</span><span class="p">,</span>i<span class="p">),</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>  plot<span class="p">(</span>density<span class="p">(</span>X<span class="p">),</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;mean=&quot;</span><span class="p">,</span>round<span class="p">(</span>mean<span class="p">(</span>X<span class="p">),</span>digit<span class="o">=</span><span class="m">2</span><span class="p">),</span><span class="s">&quot; var=&quot;</span><span class="p">,</span>round<span class="p">(</span>var<span class="p">(</span>X<span class="p">),</span>digit<span class="o">=</span><span class="m">2</span><span class="p">)))</span>
+</span><span class='line'>  plot<span class="p">(</span>cumsum<span class="p">(</span>X<span class="p">)</span><span class="o">/</span><span class="m">1</span>:length<span class="p">(</span>X<span class="p">),</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;accept ratio=&quot;</span><span class="p">,</span>round<span class="p">(</span><span class="m">100</span><span class="o">*</span>stat<span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">/</span>stat<span class="p">[</span><span class="m">1</span><span class="p">]),</span><span class="s">&quot;%&quot;</span><span class="p">),</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">)</span>
+</span><span class='line'>  abline<span class="p">(</span>h<span class="o">=</span><span class="m">0</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</span><span class='line'>  acf<span class="p">(</span>X<span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%5E2%3D0.25+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_1.png" alt="" /></p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%5E2%3D1+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_2.png" alt="" /></p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%5E2%3D5+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_3.png" alt="" /></p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%5E2%3D15+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_4.png" alt="" /></p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%5E2%3D150+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_5.png" alt="" /></p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/syou6162/20081214/1229197092">Example of Metropolis Hastings Algorithm - Seeking for my unique color.</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その1]]></title>
@@ -2020,98 +2205,6 @@
 <p>この原文からは，makeからは一時的な変化，becomeからは本質的な変化という対比を感じる．そう考えると，「一時的にフリをするのではなくフリをし続ける」という意味で，「なりきる」という言い方には一時的なものではない継続の意味が含まれているように感じて，ぼくとしては具体的に何をすればいいのかと考えた時にしっくり来る言葉だった．</p>
 
 <p>といっても，最初の引用で示した青木氏の訳に不満があるわけではなく，「本物にする」というのはまさにピッタリな意訳だと思う．最終的な目標はまさに「本物にする」というところにある．なので，じゃあどうやってそれを実現していこうかと考えた時に，結局は役に「なりきる」ということを続けていけばいいのかなぁという結論となった．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：3章 重点サンプリング]]></title>
-    <link href="http://yagays.github.com/blog/2012/10/28/imcmr-3-3/"/>
-    <updated>2012-10-28T09:45:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/10/28/imcmr-3-3</id>
-    <content type="html"><![CDATA[<ul>
-<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>内容：重点サンプリングにより推定量の分散と効率を改善する</h3>
-
-<h3>例 3.5 <img src=http://chart.apis.google.com/chart?cht=tx&chl=Z+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+>で<img src=http://chart.apis.google.com/chart?cht=tx&chl=P%28Z+%3E+4.5%29+>の確率を求める</h3>
-
-<p>確率を求めると書いてあるが，要するに正規分布の確率密度関数において4.5からInfまでの面積（<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cint_%7B4.5%7D%5E%7B%5Cinfty%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7Bx%5E2%7D%7B2%7D%7D+dx+>）を求めるというもの．ただし，正規分布でxの値が4.5ともなると確率そのものがものすごく小さいので，普通のモンテカルロ積分で正規分布から乱数を生成したとしても，シミュレーション回数を非常に大きくしないと精度の良い値が求まらない．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>pnorm<span class="p">(</span><span class="m">-4.5</span><span class="p">,</span>log<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># [1] -12.59242</span>
-</span><span class='line'>pnorm<span class="p">(</span><span class="m">-4.5</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># [1] 3.397673e-06</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ということで，重点サンプリングでシミュレーション回数を抑える．<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28y%29+%3D+%5Cfrac%7Be%5E%7B-y%7D%7D%7B%5Cint_%7B4.5%7D%5E%7B%5Cinfty%7De%5E%7B-x%7Ddx%7D+%3D+e%5E%7B-%28y-4.5%29%7D+>として，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bi%3D1%7D%5E%7Bm%7D%5Cfrac%7Bf%28Y%5E%7B%28i%29%7D%29%7D%7Bg%28Y%5E%7B%28i%29%7D%29%7D+>を求める．ここで，gの選択の箇所は「gを，4.5で切り詰めた指数分布の密度<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BExp%7D%281%29+>とする」ということ(P.81)．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>Nsim <span class="o">&lt;-</span> <span class="m">10</span><span class="o">^</span><span class="m">3</span>
-</span><span class='line'>y <span class="o">&lt;-</span> rexp<span class="p">(</span>Nsim<span class="p">)</span><span class="o">+</span><span class="m">4.5</span>
-</span><span class='line'>weit <span class="o">&lt;-</span> dnorm<span class="p">(</span>y<span class="p">)</span><span class="o">/</span>dexp<span class="p">(</span>y<span class="o">-</span><span class="m">4.5</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span>cumsum<span class="p">(</span>weit<span class="p">)</span><span class="o">/</span><span class="m">1</span>:Nsim<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
-</span><span class='line'>abline<span class="p">(</span>h<span class="o">=</span>pnorm<span class="p">(</span><span class="m">-4.5</span><span class="p">),</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-5_1.png" alt="" /></p>
-
-<h3>練習問題 3.5 切り詰められた指数分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BExp%7D%28%5Clambda%29+>をg(x)としたときの近似値の分散への影響を調べる</h3>
-
-<p>例3.5で<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+%3D+1+>だった指数分布の値を色々と変えてみて実験する．以下の図は，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+%3D+1%2C5%2C10%2C20+>の時の推定値の変化を示している．左上の図が例3.5と同じ条件となり，そこから右上・左下・右下と<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+>の値を大きくしている．黒の線が推定値の推移，上下の黄色の線が推定値の誤差の範囲（＝分散）となっている．
-このプロットを見ると，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+>の値が大きくなるにつれて，分散も大きくなることがわかる．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-</span><span class='line'><span class="kr">for</span><span class="p">(</span>lambda in c<span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">20</span><span class="p">)){</span>
-</span><span class='line'>  Nsim <span class="o">&lt;-</span> <span class="m">10</span><span class="o">^</span><span class="m">4</span>
-</span><span class='line'>  y <span class="o">&lt;-</span> rexp<span class="p">(</span>Nsim<span class="p">)</span><span class="o">/</span>lambda<span class="o">+</span><span class="m">4.5</span>
-</span><span class='line'>  weit <span class="o">&lt;-</span> dnorm<span class="p">(</span>y<span class="p">)</span><span class="o">/</span>dexp<span class="p">(</span>y<span class="o">-</span><span class="m">4.5</span><span class="p">,</span> lambda<span class="p">)</span>
-</span><span class='line'>  estint <span class="o">&lt;-</span> cumsum<span class="p">(</span>weit<span class="p">)</span><span class="o">/</span><span class="m">1</span>:Nsim
-</span><span class='line'>  esterr <span class="o">&lt;-</span> sqrt<span class="p">(</span>cumsum<span class="p">((</span>weit<span class="o">-</span>estint<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:Nsim<span class="p">)</span>
-</span><span class='line'>  plot<span class="p">(</span>estint<span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Mean and error range&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;prob&quot;</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;lambda = &quot;</span><span class="p">,</span>lambda<span class="p">))</span>
-</span><span class='line'>  lines<span class="p">(</span>estint<span class="o">+</span><span class="m">2</span><span class="o">*</span>esterr<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;gold&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>  lines<span class="p">(</span>estint<span class="o">-</span><span class="m">2</span><span class="o">*</span>esterr<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;gold&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>  abline<span class="p">(</span>h<span class="o">=</span>pnorm<span class="p">(</span><span class="m">-4.5</span><span class="p">),</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-5_2.png" alt="" /></p>
-
-<p>また，がくっと値が変わっている部分は乱数でかなりレアな値を引いて全体的に値が引きずられたからだと思われる．weitの中から値の非常に大きいものを10個選び出して，その時の推定値の変化を見たのが以下の図になる．青の点線で示した箇所が，weitの値が非常に大きくなったポイントを示している．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>abline<span class="p">(</span>v<span class="o">=</span>seq<span class="p">(</span><span class="m">1</span><span class="p">,</span>Nsim<span class="p">)[</span>rank<span class="p">(</span>weit<span class="p">)</span><span class="o">&gt;</span>Nsim<span class="o">-</span><span class="m">10</span><span class="p">],</span> col<span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span> lty<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-5_3.png" alt="" /></p>
 ]]></content>
   </entry>
   
