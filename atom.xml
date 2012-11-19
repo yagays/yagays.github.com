@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-20T04:54:23+09:00</updated>
+  <updated>2012-11-20T04:59:11+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -70,7 +70,7 @@
 
 <p>MCMCのアルゴリズムの一つであるメトロポリス法を実際に動かしてサンプリングをしてみる．</p>
 
-<p>メトロポリス法の実装は本書にコード例が無かったので自作している．このコードで使っているアルゴリズムに関しては，本書P.176で述べられている手順を使っているわけではなく，スタンダードなメトロポリス法の手法を用いて先に対数尤度比を求めて条件分岐を作っている．また，マルコフ連鎖における新しい候補値qは必ず左右どちらかに動くように設定しているが，本書のP.179図8.8(A)をよく見るとその場にとどまるケースがあるようなので，その点においては少しアルゴリズムの設定が違っているかもしれない．しかし，細かい部分で違いはあれど基本的にやっていることは同じで作図もうまくいっているので，たぶん問題はないだろう．</p>
+<p>メトロポリス法の実装は本書にコード例が無かったので自作している．このコードで使っているアルゴリズムに関しては，本書P.176で述べられている手順を使っているわけではなく，スタンダードなメトロポリス法の手法を用いて先に対数尤度比を求めて条件分岐を作っている．細かい部分で違いはあれど基本的にやっていることは同じで作図もうまくいっているので，たぶん問題はないだろう．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
