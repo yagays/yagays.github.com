@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: MCMC | Wolfeyes Bioinformatics beta]]></title>
+  <link href="http://yagays.github.com/blog/categories/mcmc/atom.xml" rel="self"/>
+  <link href="http://yagays.github.com/"/>
+  <updated>2012-11-20T04:54:23+09:00</updated>
+  <id>http://yagays.github.com/</id>
+  <author>
+    <name><![CDATA[yag_ays]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[「データ解析のための統計モデリング入門」読書ノート 8章 MCMCとメトロポリス法]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/20/glm-mcmc-chp8/"/>
+    <updated>2012-11-20T04:46:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/20/glm-mcmc-chp8</id>
+    <content type="html"><![CDATA[<ul>
+<li>まとめ：<a href="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート</a></li>
+<li>前々回：<a href="http://yagays.github.com/blog/2012/11/02/glm-mcmc-chp7/">「データ解析のための統計モデリング入門」読書ノート 7章 GLMMとGLMを比較する</a></li>
+<li>前回　：<a href="http://yagays.github.com/blog/2012/11/09/glm-mcmc-chp7-2/">「データ解析のための統計モデリング入門」読書ノート 7章 無限混合分布の生成過程をアニメーションにした</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=400006973X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>8章の図を再現する</h3>
+
+<p>今回は，本書の8章「マルコフ連鎖モンテカルロ（MCMC）法とベイズ統計モデル」の解析を実際に自分でやってみて，図を再現することを目的とする．基本的に本書の作図を真似するということを目標にして調整しているが，細部で少し違いがあるかもしれないので注意していただきたい．</p>
+
+<h3>問題設定とサンプルデータ</h3>
+
+<p>問題設定は6章と同じく，上限があるカウントデータを用いる．植物個体から8個種子を取ってきた時の種子の生存数が二項分布に従うとした上で，そのときの尤度を最大化し，生存確率であるパラメータqを推定することを目標とする．</p>
+
+<p>まずはサンプルデータと二項分布の対数尤度関数の設定．</p>
+
+<p><code>r
+data &lt;- c(4,3,4,5,5,2,3,1,4,0,1,5,5,6,5,4,4,5,3,4)
+loglik &lt;- function(q){data*log(q)+(8-data)*log(1-q)+log(choose(8,data))}
+</code></p>
+
+<h3>図 8.2・8.3</h3>
+
+<p>生存確率qと対数尤度の関係を図示する．8章の解析の大きな特徴としては，この後に出てくるメトロポリス法の説明のために，本来は連続変数である生存確率qを0から1までの0.01刻みの離散値として扱っている点にある．以下の図では，それらの生存確率に対応する対数尤度がマル印で示されてる．</p>
+
+<p>また，解析的に求まる最大対数尤度とその時の生存確率q=0.45625を縦の赤線とバツ印で表示してある．今回は生存確率を離散値として表現しているため，最大対数尤度に対応する対数尤度の値は図示されていない．この図の中では，対数尤度の最大値を取るときの生存確率はq=0.46となっている．</p>
+
+<p>```r
+q &lt;- seq(0.01, 0.99, by=0.01)
+plot(q, apply(matrix(q),1,function(z){sum(loglik(z))}),</p>
+
+<pre><code> xlim=c(0.2,0.7), ylim=c(-60,-35), xlab="q", ylab="log L(q)")
+</code></pre>
+
+<p>abline(v=0.45625, lwd=2, col="red", lty=2)
+points(0.45625, sum(loglik(0.45625)), pch=4, ,cex=2, col="red")
+```
+ <img src="http://dl.dropbox.com/u/142306/b/glm_mcmc_8_3.png" alt="" /></p>
+
+<h3>図 8.8</h3>
+
+<p>MCMCのアルゴリズムの一つであるメトロポリス法を実際に動かしてサンプリングをしてみる．</p>
+
+<p>メトロポリス法の実装は本書にコード例が無かったので自作している．このコードで使っているアルゴリズムに関しては，本書P.176で述べられている手順を使っているわけではなく，スタンダードなメトロポリス法の手法を用いて先に対数尤度比を求めて条件分岐を作っている．また，マルコフ連鎖における新しい候補値qは必ず左右どちらかに動くように設定しているが，本書のP.179図8.8(A)をよく見るとその場にとどまるケースがあるようなので，その点においては少しアルゴリズムの設定が違っているかもしれない．しかし，細かい部分で違いはあれど基本的にやっていることは同じで作図もうまくいっているので，たぶん問題はないだろう．</p>
+
+<p>```r</p>
+
+<h1>Metropolis method</h1>
+
+<p>niter &lt;- 100000
+x &lt;- 0.30
+for(i in 2:niter){
+  z &lt;- sample(c(-0.01,0.01),1)
+  r &lt;- min(1, exp(loglik(x[i-1]+z)-loglik(x[i-1])))</p>
+
+<p>  if(runif(1) &lt; r){</p>
+
+<pre><code>x[i] &lt;- x[i-1] + z
+</code></pre>
+
+<p>  }else{</p>
+
+<pre><code>x[i] &lt;- x[i-1]
+</code></pre>
+
+<p>  }
+}</p>
+
+<h1>Fig. 8.8</h1>
+
+<p>par(mfrow=c(3,2))
+plot(1:100,x[1:100], type="l", xlab="Iterations", main="100 MC steps")
+plot(density(x[1:100]), xlim=c(0,1), main="")
+plot(1:1000,x[1:1000], type="l", xlab="Iterations", main="1000 MC steps")
+plot(density(x[1:1000]), xlim=c(0,1), main="")
+plot(1:niter,x, type="l", xlab="Iterations", main="100000 MC steps")
+plot(density(x), xlim=c(0,1),  main="")
+```</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc_8_1.png" alt="" /></p>
+
+<h3>図 8.9</h3>
+
+<p>メトロポリス法では，ステップ数を大きくしていくとサンプリングの値は定常分布に収束する．しかし，ステップ数が小さい段階では初期値に依存するため，Burn-inとしてある程度のステップまでの結果を捨てるということが行われる．このような初期値に依存する様子を見るために，以下の図では初期値を0.1から0.9までの0.1刻みとした上でメトロポリス法を実行し，その結果を重ねあわせている．</p>
+
+<p>これを見ると，ステップスを重ねる毎に初期値依存が解消されていくことがわかるが，では実際にどのあたりまでを捨てるべきかという疑問については図を見ても判断できない．Burn-inの範囲設定は色々と手法があるものの，ある程度は実験者の裁量に任されているようだ．</p>
+
+<p>```r
+palette &lt;- c("#000000","#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")</p>
+
+<h1>http://wiki.stdout.org/rcookbook/Graphs/Colors%20(ggplot2)/</h1>
+
+<p>plot(1:500, rep(0,500), ylim=c(0,1), type="n", xlab="Iterations", ylab="q", main="500 MC steps")
+for(init in seq(1,9)){
+  niter &lt;- 500
+  x &lt;- init*0.1
+  for(i in 2:niter){</p>
+
+<pre><code>z &lt;- sample(c(-0.01,0.01),1)
+r &lt;- min(1, exp(loglik(x[i-1]+z)-loglik(x[i-1])))
+
+if(runif(1) &lt; r){
+  x[i] &lt;- x[i-1] + z
+}else{
+  x[i] &lt;- x[i-1]
+}
+</code></pre>
+
+<p>  }
+  lines(x, col=palette[init], ylim=c(0,1), lwd=2)
+}
+```</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc_8_2.png" alt="" /></p>
+
+<h4>参考</h4>
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4000068520" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[「マルコフ連鎖モンテカルロ法」1章のメトロポリス・ヘイスティング・アルゴリズムによるガンベル分布の乱数生成]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/19/mcmc-statlib-chp1-mh/"/>
+    <updated>2012-11-19T07:10:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/19/mcmc-statlib-chp1-mh</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4254126972" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>「<a href="http://www.amazon.co.jp/gp/product/4254126972/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4254126972&linkCode=as2&tag=yagays-22">マルコフ連鎖モンテカルロ法 (統計ライブラリー)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4254126972" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」PP.11-14のメトロポリス・ヘイスティング・アルゴリズムによる二重指数分布からの乱数生成（サンプリング）をやってみた．</p>
+
+<p>この問題は本書にも実験結果が掲載されているので，自分が行った実験結果と見比べることができる．結論から言うと，一応大まかな結果としては同じ傾向を示したが，乱数を用いた実験ということもあって多少の値のズレがでている．また，パラメータによっては結果の値/分布が安定しないものもあるので，何度か実験を行なって結果を吟味している部分もあるが，結果を曲解するためのものではないということを付け加えておく．</p>
+
+<p>なお，この文章ではメトロポリス・ヘイスティング・アルゴリズムを以降MHと表記する．</p>
+
+<h3>問題</h3>
+
+<p>ガンベル分布（二重指数分布）からの乱数生成を考える．今回はガンベル分布からの直接的な乱数生成ができないとしたうえで，MHによる乱数生成を行う．ガンベル分布は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B2b%7D%5Cexp%28%5Cfrac%7B-%7Cx-%5Cmu%7C%7D%7Bb%7D%29+>で表され，今回は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu%3D0+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=b%3D+3+>の分布を考える．なお，ガンベル分布の平均と分散は解析的に得られ，それぞれ<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=2b%3Csup%3E2%3C%2Fsup%3E+>である．</p>
+
+<h3>実験条件</h3>
+
+<p>今回は，MHの中でも酔歩過程/ランダムウォーク（Random walk）と独立連鎖（Independent chain）の2種類の方法を試す．それぞれのMHにおける推移カーネル<img src=http://chart.apis.google.com/chart?cht=tx&chl=K+>は</p>
+
+<ul>
+<li>酔歩過程：<img src=http://chart.apis.google.com/chart?cht=tx&chl=K%28x%3Csup%3E%7B%28t%29%7D%2Cx%3Csup%3E%7B%28t%2B1%29%7D%29%3C%2Fsup%3E%3C%2Fsup%3E+%3D+%5Cmathcal%7BN%7D%28x%3Csup%3E%7B%28t%29%7D%2Cc_%7Bran%7D%3Csup%3E2%29%3C%2Fsup%3E%3C%2Fsup%3E+></li>
+<li>独立連鎖：<img src=http://chart.apis.google.com/chart?cht=tx&chl=K%28x%3Csup%3E%7B%28t%29%7D%2Cx%3Csup%3E%7B%28t%2B1%29%7D%29%3C%2Fsup%3E%3C%2Fsup%3E+%3D+%5Cmathcal%7BN%7D%280%2Cc_%7Bind%7D%3Csup%3E2%29%3C%2Fsup%3E+></li>
+</ul>
+
+
+<p>となる．ここで，<img src=http://chart.apis.google.com/chart?cht=tx&chl=c%3Cem%3E%7Bran%7D%3Csup%3E2%3C%2Fsup%3E+>および<img src=http://chart.apis.google.com/chart?cht=tx&chl=c%3C%2Fem%3E%7Bind%7D%3Csup%3E2%3C%2Fsup%3E+>は調整母数/チューニングパラメータであり，今回はそれぞれ<strong>{0.25, 1, 5, 15, 150}</strong>の5パターンで実験を行った．</p>
+
+<p>また，生成した乱数の系列において，系列初期の<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D1%5Cdots+1000+>までの結果は初期値に依存した値となっているため，今回は結果として用いていない．</p>
+
+<h3>結果：以下の図の見方</h3>
+
+<p>以下に示す図は，各行にチューニングパラメータの値，各列に系列のプロット，系列の分布，系列の平均の推移，系列の自己相関プロットを示したものである．図のタイトルに，チューニングパラメータの値，生成した乱数の平均と分散，そして採択率を示している（便宜的にタイトルの部分に情報を書き加えているだけで，タイトルと図は直接的には関連していない）．</p>
+
+<h3>結果：酔歩過程/ランダムウォーク</h3>
+
+<p>```r
+par(mfrow=c(5,3))
+for(i in c(0.25,1,5,15,150)){
+  c.ran &lt;- i<sup>2</sup>
+  alpha &lt;- numeric(0)
+  Niter &lt;- 10000
+  x &lt;- rnorm(1, mean=0, sd=c.ran)
+  for(t in 2:Niter){</p>
+
+<pre><code>z &lt;- rnorm(1, mean=0, sd=c.ran)
+alpha[t-1] &lt;- min(1, exp(-(1/3)*(abs(x[t-1]+z)-abs(x[t-1]))))
+x[t] &lt;- x[t-1] + z*(runif(1)&lt;alpha[t-1])
+</code></pre>
+
+<p>  }
+  X &lt;- x[1001:Niter]
+  stat &lt;- table(alpha==1)
+  plot(1001:Niter, X, type="l", main=paste("c_ran=",i), xlab="Iterations", ylab="")
+  plot(density(X), main=paste("mean=",round(mean(X),digit=2)," var=",round(var(X),digit=2)))
+  plot(cumsum(X)/1:length(X), type="l", main=paste("accept ratio=",round(100*stat[2]/stat[1]),"%"))
+  abline(h=0, lwd=2, col="red")
+}
+```</p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D0.25%3C%2Fsup%3E+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_1.png" alt="" /></p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D1%3C%2Fsup%3E+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_2.png" alt="" /></p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D5%3C%2Fsup%3E+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_3.png" alt="" /></p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D15%3C%2Fsup%3E+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_4.png" alt="" /></p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D150%3C%2Fsup%3E+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_5.png" alt="" /></p>
+
+<h3>結果：独立連鎖の場合</h3>
+
+<p>```r
+par(mfrow=c(5,4))
+for(i in c(0.25,1,5,15,150)){
+  c.ind &lt;- i
+  alpha &lt;- numeric(0)
+  Niter &lt;- 10000
+  x &lt;- rnorm(1, mean=0, sd=c.ind)
+  for(t in 2:Niter){</p>
+
+<pre><code>z &lt;- rnorm(1, mean=0, sd=c.ind)
+alpha[t-1] &lt;- min(1, exp(-(1/3)*(abs(z)-abs(x[t-1]))
+                         -(1/2)*((x[t-1]/c.ind)^2 - (z/c.ind)^2)
+                         )
+                  )
+if(runif(1)&lt;alpha[t-1]){
+  x[t] &lt;- z
+}else{
+  x[t] &lt;- x[t-1]
+}
+</code></pre>
+
+<p>  }
+  X &lt;- x[1001:Niter]
+  stat &lt;- table(alpha==1)
+  plot(1001:Niter, X, type="l", main=paste("c_ind=",i), xlab="Iterations", ylab="")
+  plot(density(X), main=paste("mean=",round(mean(X),digit=2)," var=",round(var(X),digit=2)))
+  plot(cumsum(X)/1:length(X), type="l", main=paste("accept ratio=",round(100*stat[2]/stat[1]),"%"), ylab="",xlab="Iterations")
+  abline(h=0, lwd=2, col="red")
+  acf(X)
+}</p>
+
+<p>```</p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%3Csup%3E2%3D0.25%3C%2Fsup%3E+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_1.png" alt="" /></p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%3Csup%3E2%3D1%3C%2Fsup%3E+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_2.png" alt="" /></p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%3Csup%3E2%3D5%3C%2Fsup%3E+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_3.png" alt="" /></p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%3Csup%3E2%3D15%3C%2Fsup%3E+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_4.png" alt="" /></p>
+
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%3Csup%3E2%3D150%3C%2Fsup%3E+>の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_5.png" alt="" /></p>
+
+<h3>解釈</h3>
+
+<p>さて，このように色々とプロットしてみたわけだが，酔歩過程の場合も独立連鎖の場合もチューニングパラメータの値が0.25や150といった非常に小さい/大きい場合においては，乱数の分布や収束速度などに問題があることがわかる．</p>
+
+<p>酔歩過程においては，マルコフ連鎖の候補点の生成は少しずつ値を移動させていくという点で，分布の表面をなぞる形となる．そのため，チューニングパラメータの値である分散が小さい場合では候補点の移動範囲が狭いため，分布全体を探索するのに非常に時間がかかる．<img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D0.25%3C%2Fsup%3E+>の図を見ると，系列のプロットではあまり大幅な移動（縦のぶれ）が少なく，生成した乱数の分布もかなりいびつである．また，値があまり変動しないという点で，自己相関係数も非常に大きな値を取っていることがわかる．一方チューニングパラメータの値が大きい場合においては，採択率が非常に小さな値を取り，系列のプロットからも値の変動しない部分が他と比べて多い．</p>
+
+<p>一方，独立連鎖においては，マルコフ連鎖の候補点の生成は現在の状態に依存しない．そのため，酔歩過程のように値を移動させていくということは見られないが，一方で採択確率の部分でチューニングパラメータの値が影響していることがわかる．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/syou6162/20081214/1229197092">Example of Metropolis Hastings Algorithm - Seeking for my unique color.</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その1]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/18/imcmr-6-1/"/>
+    <updated>2012-11-18T14:37:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/18/imcmr-6-1</id>
+    <content type="html"><![CDATA[<ul>
+<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>例 6.1 メトロポリス・ヘイスティング・アルゴリズムでベータ分布の乱数を生成する</h3>
+
+<p><a href="http://yagays.github.com/blog/2012/10/22/imcmr-2-2/">例2.7</a>では受理・棄却法を用いてベータ分布の乱数を生成したが，本問題ではメトロポリス・ヘイスティング・アルゴリズムを使ってベータ分布をシミュレートすることを目的とする．</p>
+
+<p>```r
+a &lt;- 2.7
+b &lt;- 6.3
+c &lt;- 2.669
+Nsim &lt;- 5000
+X &lt;- rep(runif(1), Nsim)</p>
+
+<p>for(i in 2:Nsim){
+  Y &lt;- runif(1)
+  rho &lt;- dbeta(Y, a, b)/dbeta(X[i-1], a, b)
+  X[i] &lt;- X[i-1] + (Y - X[i-1])*(runif(1)&lt;rho)
+}</p>
+
+<p>plot(1:Nsim, X, type="l", xlab="Iterations", main="Sequence X<sup>t")</sup>
+plot(4500:4800, X[4500:4800], type="l", xlab="Iterations", main="Sequence X<sup>t</sup> for t = 4500 - 4800")
+```</p>
+
+<p>以下の図は，系列<img src=http://chart.apis.google.com/chart?cht=tx&chl=%7BX%3Csup%3E%7B%28t%29%7D%7D%3C%2Fsup%3E+>をプロットしたものである．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-1_1.png" alt="" /></p>
+
+<p>そして，その中からシミュレーション回数4500〜4800回までの系列を抜き出したのが以下の図となっている．このように一部分を拡大して見てみると，系列を表す線が変化せずにx軸に並行に遷移している部分が見られる．これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=1-%5Crho%28x%3Csup%3E%7B%28t%29%7D%2CY_t%29%3C%2Fsup%3E+>の確率で棄却されて値が変化していないことを表している．これは対応する<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y_t+>に依存し，マルコフ連鎖の性質から次の<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%2B1+>にも影響するため，値が変化しない状態は一定期間続く．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-1_2.png" alt="" /></p>
+
+<p>また，得られた系列がベータ分布の乱数となっているかを確かめるため，以下のプロットのように，左側に今回のメトロポリス・ヘイスティング・アルゴリズムで作成した乱数，右側にRの組込み関数rbeta()で生成した乱数をヒストグラムで図示し，今回実験で設定したベータ分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D%282.7%2C6.3%29+>を赤の曲線で表した．</p>
+
+<p><code>r
+par(mfrow=c(1,2))
+hist(X, nclass=100, freq=F, xlim=c(0,1.0), main="Metropolis-Hastings")
+curve(dbeta(x,a,b), add=T, col="red", lwd=2)
+hist(rbeta(Nsim,a,b), freq=F, nclass=100, xlim=c(0,1.0), main="Direct Generation")
+curve(dbeta(x,a,b), add=T, col="red", lwd=2)
+</code></p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-1_3.png" alt="" /></p>
+
+<p>この図を見ると，メトロポリス・ヘイスティング・アルゴリズムを使った場合でも，受理・棄却法の時と同じく乱数の生成に成功していることがわかる．</p>
+
+<h3>例 6.2 メトロポリス・ヘイスティング・アルゴリズムでコーシー分布の乱数を生成する</h3>
+
+<p>例6.1のベータ分布の乱数生成における提案分布は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BU%7D_%7B0%2C1%7D+>だったが，コーシー分布の乱数生成における提案分布には，</p>
+
+<ul>
+<li>標準正規分布：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%280%2C1%29+></li>
+<li>自由度0.5のスチューデントt分布：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BT%7D_%7B1%2F2%7D+></li>
+</ul>
+
+
+<p>を使うことができる．このような提案分布はマルコフ連鎖とは独立である．なお，本問題ではこれらの分布を表す単語として候補分布と提案分布という2つの言葉が出てくるが，今回は表記として提案分布で統一する．</p>
+
+<p>```r</p>
+
+<h1>Standard Normal Distributionp</h1>
+
+<p>Nsim &lt;- 10<sup>4</sup>
+X &lt;- c(rt(1,1))
+for(t in 2:Nsim){
+  Y &lt;- rnorm(1)
+  rho &lt;- min(1, dt(Y, 1)<em>dnorm(X[t-1]) / (dt(X[t-1],1)</em>dnorm(Y)))
+  X[t] &lt;- X[t-1] + (Y - X[t-1])*(runif(1) &lt; rho)
+}</p>
+
+<h1>t-distribution (0.5 degree of freedom)</h1>
+
+<p>X2 &lt;- c(rt(1,1))
+for(t in 2:Nsim){
+  Y &lt;- rt(1, 0.5)
+  rho &lt;- min(1, dt(Y, 1)<em>dt(X2[t-1], 0.5) / (dt(X2[t-1],1)</em>dt(Y, 0.5)))
+  X2[t] &lt;- X2[t-1] + (Y - X2[t-1])*(runif(1) &lt; rho)
+}
+```</p>
+
+<p>まずはそれぞれの系列をプロットして特徴を見ていく．左側に提案分布を標準正規分布とした場合，右側に提案分布をスチューデントt分布とした場合で，上から順に系列のプロット，系列のヒストグラム，系列の自己相関プロットを図示したのが以下の図になっている．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-2_1.png" alt="" /></p>
+
+<p>まずは標準正規分布を使った場合からみていく．系列のプロットは例6.1と同じような形を示しているが，イテレーションが8500を過ぎたあたりで値が一定期間変化しない部分がある．これは乱数から生成する正規候補<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y_t+>が大きい（または小さい）値を取ってしまい，連鎖で長い間引きずることになったからである．この現象は，系列のヒストグラムの右端において値が少し大きくなっていることからも確認することができる．</p>
+
+<p>一方，スチューデントt分布を使った場合においては，系列のプロットは0付近で集中しており，たまに正規候補<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y_t+>が非常に大きい値を取ることはあるものの，それが継続して続くわけではないことがわかる．系列のヒストグラムを見ても，標準正規分布の場合と比べて分布がなだらかでコーシー分布に当てはまっていることがわかる．ただし，実際には両端の外れ値を除外して系列のヒストグラムをプロットしているので，このヒストグラムの描写範囲から外れている値があることには注意が必要である．</p>
+
+<br />
+
+
+<p>次に，2つの提案分布におけるメトロポリス・ヘイスティング・アルゴリズムによって生成したコーシー乱数の累積収束プロット，すなわち乱数の平均値がどのように収束していくかを図示する．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-2_2.png" alt="" /></p>
+
+<p>黒線が提案分布に標準正規分布を使った場合，黄色の線が提案分布にスチューデントt分布を使った場合となっている．今回シミュレートしているコーシー分布から求めた正確な値は0.896なので，スチューデントt分布はイテレーション回数を重ねるごとに真の値に収束していくことがわかる．一方で標準正規分布においては，今回のイテレーション回数(N=5000)では真の値に収束していないようにみえる．しかし，平均値の傾向を見ると値が徐々に上昇しては一気に下がり...といった傾向が見られ，理論的にも標準正規分布を提案分布として用いた場合でも真の値に収束することがわかっている．なので，今回の場合はイテレーション回数が少なすぎるために，収束の様子が見られない．</p>
+]]></content>
+  </entry>
+  
+</feed>
