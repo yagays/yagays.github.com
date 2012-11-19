@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Jekyll/Octopress | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/jekyll-octopress/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-19T07:36:32+09:00</updated>
+  <updated>2012-11-19T13:47:44+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -109,7 +109,7 @@
 <p>具体的な書き方としては，以下のようにfooter.htmlに書き込むと，</p>
 
 <p><code>html
-{% raw %}{{ site.title }} by {{ site.author }}{% endraw %}
+{{ site.title }} by {{ site.author }}
 </code></p>
 
 <p>実際にウェブページに表示されるテキストは</p>
@@ -125,7 +125,7 @@ Wolfeyes Bioinformatics beta by yag_ays
 <p>このような表記を使って，source/_includes/custom/footer.htmlを以下のコードに書き換える．</p>
 
 <p>```html
-{% raw %}<hr></p>
+<hr></p>
 
 <p>
   <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
@@ -136,7 +136,7 @@ Wolfeyes Bioinformatics beta by yag_ays
 </p>
 
 
-<p>{% endraw %}
+<p>
 ```</p>
 
 <p>すると，ウェブページの一番下のフッターの部分に，このようにクリエイティブ・コモンズのラインセンスを付けることができる（下のスクリーンショットの枠は別）．ウェブサイトのタイトルや著者名も正しく変換されていることがわかる．</p>
@@ -175,23 +175,23 @@ Wolfeyes Bioinformatics beta by yag_ays
 <p>以下のように<strong>gctex</strong>というタグとTex形式の数式を埋め込むと，Google Chart APIの画像のURLに変換されます．</p>
 
 <p>```
-{% raw %}{% gctex \frac{1}{\sqrt{2\pi}\sigma} \exp(\frac{-(x-\mu)<sup>2}{2\sigma<sup>2})</sup></sup> %}{% endraw %}</p>
+{% gctex \frac{1}{\sqrt{2\pi}\sigma} \exp(\frac{-(x-\mu)<sup>2}{2\sigma<sup>2})</sup></sup> %}</p>
 
 <p>```</p>
 
 <p><code>
-{% gctex \frac{1}{\sqrt{2\pi}\sigma} \exp(\frac{-(x-\mu)^2}{2\sigma^2}) %}
+<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7D+%5Cexp%28%5Cfrac%7B-%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%29+>
 </code></p>
 
 <p>また，文字の途中に埋め込むことも可能です．</p>
 
 <p>```
-{% raw %}これは{% gctex \mathcal{N}(x|\mu,\sigma) %}です．{% endraw %}</p>
+これは{% gctex \mathcal{N}(x|\mu,\sigma) %}です．</p>
 
 <p>```</p>
 
 <p><code>
-これは{% gctex \mathcal{N}(x|\mu,\sigma) %}です．
+これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%28x%7C%5Cmu%2C%5Csigma%29+>です．
 </code></p>
 
 <h3>注意</h3>
@@ -199,20 +199,20 @@ Wolfeyes Bioinformatics beta by yag_ays
 <p>ここで使用しているLiquid Tagプラグインは，中に改行を入れてしまうとコンパイルエラーを起こして正しく変換されません．なので，</p>
 
 <p><code>
-{% raw %}{% gctex x \\ y \\ z %} {% endraw %}
+{% gctex x \\ y \\ z %} 
 </code></p>
 
 <p><code>
-{% gctex x \\ y \\ z %}
+<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%5C%5C+y+%5C%5C+z+>
 </code></p>
 
 <p>TeX内で改行を表すことはできますが，</p>
 
 <p>```
-{% raw %}{% gctex x \</p>
+{% gctex x \</p>
 
 <pre><code>     y \\
-     z% } {% endraw %}
+     z% } 
 </code></pre>
 
 <p>```</p>
@@ -223,7 +223,35 @@ Wolfeyes Bioinformatics beta by yag_ays
 
 <p>以下のgooglechart_tex.rbをダウンロードして，プラグインのコードがあるディレクトリに入れるだけです（Jekyllの場合は_plugins，Octopressの場合はplugins）．</p>
 
-<p>{% gist:3915940 %}</p>
+<p><div><script src='https://gist.github.com/3915940.js?file='></script>
+<noscript><pre><code># Convert tex formula into google chart API format (Jekyll/Octopress plugin)
+#
+# Usage: {% gctex tex_formula %}
+#
+# Author: yag_ays (yanagi.ayase [at] gmail.com)
+# blog  http://yagays.github.com/
+#
+# Ref : http://d.hatena.ne.jp/repose/20110506/1304612242
+
+require &quot;cgi&quot;
+
+module Jekyll
+  class GoogleChartTexTag &lt; Liquid::Tag
+
+    def initialize(tag_name, text, tokens)
+      super
+      @text = text
+    end
+
+    def render(context)
+      &quot;&lt;img src=http://chart.apis.google.com/chart?cht=tx&amp;chl=#{CGI.escape(@text)}&gt;&quot;
+    end
+  end
+end
+
+Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
+</code></pre></noscript></div>
+</p>
 
 <h3>参考</h3>
 

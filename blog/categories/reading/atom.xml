@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Reading | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-19T07:36:32+09:00</updated>
+  <updated>2012-11-19T13:47:44+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -47,15 +47,15 @@ X &lt;- rep(runif(1), Nsim)</p>
 plot(4500:4800, X[4500:4800], type="l", xlab="Iterations", main="Sequence X<sup>t</sup> for t = 4500 - 4800")
 ```</p>
 
-<p>以下の図は，系列{% gctex {X<sup>{(t)}}</sup> %}をプロットしたものである．</p>
+<p>以下の図は，系列<img src=http://chart.apis.google.com/chart?cht=tx&chl=%7BX%3Csup%3E%7B%28t%29%7D%7D%3C%2Fsup%3E+>をプロットしたものである．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-1_1.png" alt="" /></p>
 
-<p>そして，その中からシミュレーション回数4500〜4800回までの系列を抜き出したのが以下の図となっている．このように一部分を拡大して見てみると，系列を表す線が変化せずにx軸に並行に遷移している部分が見られる．これは{% gctex 1-\rho(x<sup>{(t)},Y_t)</sup> %}の確率で棄却されて値が変化していないことを表している．これは対応する{% gctex Y_t %}に依存し，マルコフ連鎖の性質から次の{% gctex t+1 %}にも影響するため，値が変化しない状態は一定期間続く．</p>
+<p>そして，その中からシミュレーション回数4500〜4800回までの系列を抜き出したのが以下の図となっている．このように一部分を拡大して見てみると，系列を表す線が変化せずにx軸に並行に遷移している部分が見られる．これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=1-%5Crho%28x%3Csup%3E%7B%28t%29%7D%2CY_t%29%3C%2Fsup%3E+>の確率で棄却されて値が変化していないことを表している．これは対応する<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y_t+>に依存し，マルコフ連鎖の性質から次の<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%2B1+>にも影響するため，値が変化しない状態は一定期間続く．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-1_2.png" alt="" /></p>
 
-<p>また，得られた系列がベータ分布の乱数となっているかを確かめるため，以下のプロットのように，左側に今回のメトロポリス・ヘイスティング・アルゴリズムで作成した乱数，右側にRの組込み関数rbeta()で生成した乱数をヒストグラムで図示し，今回実験で設定したベータ分布{% gctex \mathcal{Be}(2.7,6.3) %}を赤の曲線で表した．</p>
+<p>また，得られた系列がベータ分布の乱数となっているかを確かめるため，以下のプロットのように，左側に今回のメトロポリス・ヘイスティング・アルゴリズムで作成した乱数，右側にRの組込み関数rbeta()で生成した乱数をヒストグラムで図示し，今回実験で設定したベータ分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D%282.7%2C6.3%29+>を赤の曲線で表した．</p>
 
 <p><code>r
 par(mfrow=c(1,2))
@@ -71,11 +71,11 @@ curve(dbeta(x,a,b), add=T, col="red", lwd=2)
 
 <h3>例 6.2 メトロポリス・ヘイスティング・アルゴリズムでコーシー分布の乱数を生成する</h3>
 
-<p>例6.1のベータ分布の乱数生成における提案分布は{% gctex \mathcal{U}_{0,1} %}だったが，コーシー分布の乱数生成における提案分布には，</p>
+<p>例6.1のベータ分布の乱数生成における提案分布は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BU%7D_%7B0%2C1%7D+>だったが，コーシー分布の乱数生成における提案分布には，</p>
 
 <ul>
-<li>標準正規分布：{% gctex \mathcal{N}(0,1) %}</li>
-<li>自由度0.5のスチューデントt分布：{% gctex \mathcal{T}_{1/2} %}</li>
+<li>標準正規分布：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%280%2C1%29+></li>
+<li>自由度0.5のスチューデントt分布：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BT%7D_%7B1%2F2%7D+></li>
 </ul>
 
 
@@ -107,9 +107,9 @@ for(t in 2:Nsim){
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-2_1.png" alt="" /></p>
 
-<p>まずは標準正規分布を使った場合からみていく．系列のプロットは例6.1と同じような形を示しているが，イテレーションが8500を過ぎたあたりで値が一定期間変化しない部分がある．これは乱数から生成する正規候補{% gctex Y_t %}が大きい（または小さい）値を取ってしまい，連鎖で長い間引きずることになったからである．この現象は，系列のヒストグラムの右端において値が少し大きくなっていることからも確認することができる．</p>
+<p>まずは標準正規分布を使った場合からみていく．系列のプロットは例6.1と同じような形を示しているが，イテレーションが8500を過ぎたあたりで値が一定期間変化しない部分がある．これは乱数から生成する正規候補<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y_t+>が大きい（または小さい）値を取ってしまい，連鎖で長い間引きずることになったからである．この現象は，系列のヒストグラムの右端において値が少し大きくなっていることからも確認することができる．</p>
 
-<p>一方，スチューデントt分布を使った場合においては，系列のプロットは0付近で集中しており，たまに正規候補{% gctex Y_t %}が非常に大きい値を取ることはあるものの，それが継続して続くわけではないことがわかる．系列のヒストグラムを見ても，標準正規分布の場合と比べて分布がなだらかでコーシー分布に当てはまっていることがわかる．ただし，実際には両端の外れ値を除外して系列のヒストグラムをプロットしているので，このヒストグラムの描写範囲から外れている値があることには注意が必要である．</p>
+<p>一方，スチューデントt分布を使った場合においては，系列のプロットは0付近で集中しており，たまに正規候補<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y_t+>が非常に大きい値を取ることはあるものの，それが継続して続くわけではないことがわかる．系列のヒストグラムを見ても，標準正規分布の場合と比べて分布がなだらかでコーシー分布に当てはまっていることがわかる．ただし，実際には両端の外れ値を除外して系列のヒストグラムをプロットしているので，このヒストグラムの描写範囲から外れている値があることには注意が必要である．</p>
 
 <br />
 
@@ -139,9 +139,9 @@ for(t in 2:Nsim){
 
 <p>目的関数からの直接的なシミュレーションが難しい場合，関数の表面をローカルになぞって最大値を探索するという手法が使える．探索に用いる系列は以下のように表す事ができる．</p>
 
-<p>{% gctex \theta_{j+1} = \theta_j +  \epsilon_j %}</p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_%7Bj%2B1%7D+%3D+%5Ctheta_j+%2B++%5Cepsilon_j+></p>
 
-<p>これは現在のステップに摂動項{% gctex \epsilon_j %}を加えて次のステップとすることを表している．つまりこれはマルコフ連鎖となるのだが，今回はそれほどマルコフ性は重要にはならない．</p>
+<p>これは現在のステップに摂動項<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_j+>を加えて次のステップとすることを表している．つまりこれはマルコフ連鎖となるのだが，今回はそれほどマルコフ性は重要にはならない．</p>
 
 <p>概念的に目的関数の分布を山の斜面と考えるならば，現在の位置からちょっと動いて…を繰り返して山を登っていくような動きをする．ただし，単純に傾斜の上の方に登っていくのではなく，どちらかに進むかはランダムなので，たまに斜面を下ったりもする．その試行を繰り返していくことで，山の頂上を目指すような方法となっている．</p>
 
@@ -149,17 +149,17 @@ for(t in 2:Nsim){
 
 <p>有限差分法では，関数の勾配は</p>
 
-<p>{% gctex \nabla h(\theta_j) \approx \frac{h(\theta_j+\beta_j\zeta_j)-h(\theta_j-\beta_j\zeta_j)}{2\beta_j}\zeta_j = \frac{\Delta h(\theta_j,\beta_j\zeta_j)}{2\beta_j}\zeta_j %}</p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cnabla+h%28%5Ctheta_j%29+%5Capprox+%5Cfrac%7Bh%28%5Ctheta_j%2B%5Cbeta_j%5Czeta_j%29-h%28%5Ctheta_j-%5Cbeta_j%5Czeta_j%29%7D%7B2%5Cbeta_j%7D%5Czeta_j+%3D+%5Cfrac%7B%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%7D%7B2%5Cbeta_j%7D%5Czeta_j+></p>
 
-<p>とし，摂動項{% gctex \epsilon_j %}を組み込んだ系列の更新は以のようになる．</p>
+<p>とし，摂動項<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_j+>を組み込んだ系列の更新は以のようになる．</p>
 
-<p>{% gctex \theta_{j+1} = \theta_j +  \frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j)\zeta_j %}</p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_%7Bj%2B1%7D+%3D+%5Ctheta_j+%2B++%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+></p>
 
 <h3>例 5.7</h3>
 
 <p><a href="http://yagays.github.com/blog/2012/11/06/imcmr-5-3/">例5.6</a>の続き．有限差分法を用いて以下の式を最小化することを目的とする．</p>
 
-<p>{% gctex h(x,y)=(x\sin(20y)+y\sin(20x))<sup>2\cosh(\sin(10x)x)+</sup> (x\cos(10y)-y\sin(10x))<sup>2\cosh(\cos(20y)y)</sup> %}</p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%2Cy%29%3D%28x%5Csin%2820y%29%2By%5Csin%2820x%29%29%3Csup%3E2%5Ccosh%28%5Csin%2810x%29x%29%2B%3C%2Fsup%3E+%28x%5Ccos%2810y%29-y%5Csin%2810x%29%29%3Csup%3E2%5Ccosh%28%5Ccos%2820y%29y%29%3C%2Fsup%3E+></p>
 
 <p>今回は最大化ではなく最小化することが目的なので，この関数をマイナスにする必要がある．</p>
 
@@ -179,10 +179,10 @@ h &lt;- function(x){
 <li>勾配の値が10<sup>-5</sup> になるまで以下を繰り返す
 
 <ol>
-<li>{% gctex \zeta_j %}を生成する</li>
-<li>{% gctex \theta_{j} %}を使って勾配{% gctex \frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j)\zeta_j %}を生成する</li>
-<li>{% gctex \theta<em>{j}+\epsilon_j %}を{% gctex \theta</em>{j+1} %}とする</li>
-<li>{% gctex \alpha_j %}と{% gctex \beta_j %}を更新する</li>
+<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>を生成する</li>
+<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_%7Bj%7D+>を使って勾配<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+>を生成する</li>
+<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta%3Cem%3E%7Bj%7D%2B%5Cepsilon_j+>を<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta%3C%2Fem%3E%7Bj%2B1%7D+>とする</li>
+<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_j+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_j+>を更新する</li>
 </ol>
 </li>
 </ul>
@@ -198,13 +198,13 @@ h &lt;- function(x){
 <iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4274068307" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
-<h4>{% gctex \zeta_j %}の生成方法と有限差分法における役割</h4>
+<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>の生成方法と有限差分法における役割</h4>
 
-<p>さて，ここで有限差分法のポイントとなる{% gctex \zeta_j %}に関して，実際にどうやって値を生成するのか，そしてこの値がどういう意味を持っているかについて考えてみる．</p>
+<p>さて，ここで有限差分法のポイントとなる<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>に関して，実際にどうやって値を生成するのか，そしてこの値がどういう意味を持っているかについて考えてみる．</p>
 
-<p>まずは{% gctex \zeta_j %}の生成方法について．本文中では<strong>「{% gctex \zeta_j %}は単位球{% gctex \| \zeta_j \| = 1 %}上に一様に分布しています」</strong>とあるだけで，コードの方を参照してみてもzeta / sqrt(t(zeta) %*% zeta)としか書かれていない．ではこれは一体何をしているのかというと，一言で言うと「球面上の一様分布から乱数を生成する」，つまり今回の場合は単位円の円周の上からある一点を取ってきて{% gctex \zeta_j %}の値にするということをしている．</p>
+<p>まずは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>の生成方法について．本文中では<strong>「<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>は単位球<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5C%7C+%5Czeta_j+%5C%7C+%3D+1+>上に一様に分布しています」</strong>とあるだけで，コードの方を参照してみてもzeta / sqrt(t(zeta) %*% zeta)としか書かれていない．ではこれは一体何をしているのかというと，一言で言うと「球面上の一様分布から乱数を生成する」，つまり今回の場合は単位円の円周の上からある一点を取ってきて<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>の値にするということをしている．</p>
 
-<p>このような球面上の一様分布に関しては「<a href="http://www.amazon.co.jp/gp/product/4274068307/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4274068307&linkCode=as2&tag=yagays-22">Ｒによる計算機統計学</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274068307" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のP.96に詳しく書かれており，この本ではD次元の球面上の一様乱数を生成する方法についてrunif.sphere()関数を定義している．今回の場合はxとyの2次元について考えているので，「<a href="http://www.amazon.co.jp/gp/product/4274068307/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4274068307&linkCode=as2&tag=yagays-22">Ｒによる計算機統計学</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274068307" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」に倣ってrunif.sphere(1,2)とすれば，{% gctex \zeta_j %}と同様の値が得られる．</p>
+<p>このような球面上の一様分布に関しては「<a href="http://www.amazon.co.jp/gp/product/4274068307/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4274068307&linkCode=as2&tag=yagays-22">Ｒによる計算機統計学</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274068307" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のP.96に詳しく書かれており，この本ではD次元の球面上の一様乱数を生成する方法についてrunif.sphere()関数を定義している．今回の場合はxとyの2次元について考えているので，「<a href="http://www.amazon.co.jp/gp/product/4274068307/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4274068307&linkCode=as2&tag=yagays-22">Ｒによる計算機統計学</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274068307" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」に倣ってrunif.sphere(1,2)とすれば，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>と同様の値が得られる．</p>
 
 <p>```r</p>
 
@@ -227,13 +227,13 @@ U
 <p>}
 ```</p>
 
-<p>次に，有限差分法における{% gctex \zeta_j %}の役割について考えてみる．</p>
+<p>次に，有限差分法における<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>の役割について考えてみる．</p>
 
-<p>そもそも，確率的勾配法はローカルに関数の表面をなぞるように探索して，値の大きいポイントを探す確率的なアプローチだった．概念的には，<a href="http://yagays.github.com/blog/2012/11/06/imcmr-5-3/">前回3Dプロットをした</a>ような山みたいになっている関数の上をあちこち動いて頂上を探し出すということだが，あちこち動きまわるためには，歩く「方向」と「距離」を考えなければならない．今回の有限差分法における勾配は{% gctex \epsilon_j = \frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j)\zeta_j %}で表されていたが，その「方向」が{% gctex \zeta_j %}，「距離」が{% gctex \frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j) %}に対応している．</p>
+<p>そもそも，確率的勾配法はローカルに関数の表面をなぞるように探索して，値の大きいポイントを探す確率的なアプローチだった．概念的には，<a href="http://yagays.github.com/blog/2012/11/06/imcmr-5-3/">前回3Dプロットをした</a>ような山みたいになっている関数の上をあちこち動いて頂上を探し出すということだが，あちこち動きまわるためには，歩く「方向」と「距離」を考えなければならない．今回の有限差分法における勾配は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_j+%3D+%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+>で表されていたが，その「方向」が<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>，「距離」が<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29+>に対応している．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-7_3.png" alt="" /></p>
 
-<p>では実際に{% gctex \zeta_j %}と勾配{% gctex \epsilon_j %}を図示して，「方向」と「距離」の意味を確かめてみよう．以下の図は，{% gctex \zeta_j %}の取りうる単位円と，赤い矢印{% gctex \zeta_j %}，黒い矢印{% gctex \epsilon_j %}を示した図になっている（{% gctex j=1 %}）．この図を見ると，赤い矢印で方向が示され，黒い矢印でどれくらいの距離を進むかが見て取れる．{% gctex \zeta_j %}は乱数で生成された値なので，本書の「そのつど方向をランダムに選択する」という勾配の説明の通り，単位円の円周上からどこか一点を選択して進む方向を決めている．</p>
+<p>では実際に<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>と勾配<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_j+>を図示して，「方向」と「距離」の意味を確かめてみよう．以下の図は，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>の取りうる単位円と，赤い矢印<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>，黒い矢印<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_j+>を示した図になっている（<img src=http://chart.apis.google.com/chart?cht=tx&chl=j%3D1+>）．この図を見ると，赤い矢印で方向が示され，黒い矢印でどれくらいの距離を進むかが見て取れる．<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>は乱数で生成された値なので，本書の「そのつど方向をランダムに選択する」という勾配の説明の通り，単位円の円周上からどこか一点を選択して進む方向を決めている．</p>
 
 <p>といったように，この有限差分法では関数の山の傾斜を考えて進む方向を決めるのではなく，何も考えずに動いてみるといったアプローチとなっている．ただし，距離に関しては別で，関数を使って傾斜を見つつ調整しているので，その点は注意．</p>
 
@@ -247,13 +247,13 @@ arrows(0,0,zeta[1],zeta[2], lwd=2, col="red")  # 赤の矢印がゼータ
 
 <h4>今回実験を行う4つのシナリオ</h4>
 
-<p>この有限差分法において，{% gctex \alpha_j %}と{% gctex \beta_j %}の系列の更新式は任意に設定できる．今回は4つのシナリオを用意して実験を行った．それぞれのシナリオの更新式は以下の通り．</p>
+<p>この有限差分法において，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_j+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_j+>の系列の更新式は任意に設定できる．今回は4つのシナリオを用意して実験を行った．それぞれのシナリオの更新式は以下の通り．</p>
 
 <ul>
-<li>シナリオ1：{% gctex 1/\log(j+1) %}，{% gctex 1/\log(j+1)<sup>{0.1}</sup> %}</li>
-<li>シナリオ2：{% gctex 1/100\log(j+1) %}，{% gctex 1/\log(j+1)<sup>{0.1}</sup> %}</li>
-<li>シナリオ3：{% gctex 1/(j+1) %}，{% gctex 1/(j+1)<sup>{0.5}</sup> %}</li>
-<li>シナリオ4：{% gctex 1/(j+1) %}，{% gctex 1/(j+1)<sup>{0.1}</sup> %}</li>
+<li>シナリオ1：<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2F%5Clog%28j%2B1%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2F%5Clog%28j%2B1%29%3Csup%3E%7B0.1%7D%3C%2Fsup%3E+></li>
+<li>シナリオ2：<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2F100%5Clog%28j%2B1%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2F%5Clog%28j%2B1%29%3Csup%3E%7B0.1%7D%3C%2Fsup%3E+></li>
+<li>シナリオ3：<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2F%28j%2B1%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2F%28j%2B1%29%3Csup%3E%7B0.5%7D%3C%2Fsup%3E+></li>
+<li>シナリオ4：<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2F%28j%2B1%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2F%28j%2B1%29%3Csup%3E%7B0.1%7D%3C%2Fsup%3E+></li>
 </ul>
 
 
@@ -329,7 +329,7 @@ title(main="scenario 1")</p>
 
 <p>```</p>
 
-<p>シナリオ2,3,4の場合は，whileループの最後の{% gctex \alpha_j %}と{% gctex \beta_j %}の更新式を以下の通りにする．</p>
+<p>シナリオ2,3,4の場合は，whileループの最後の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_j+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_j+>の更新式を以下の通りにする．</p>
 
 <p>```r</p>
 
@@ -354,8 +354,8 @@ title(main="scenario 1")</p>
 <p>上の図の解釈だが，この4つのシナリオの場合において</p>
 
 <ul>
-<li>シナリオ1では，動きまわる距離が大きすぎて（{% gctex \alpha_j %}が収束するのに時間がかかって）なかなかアルゴリズムが停止しない</li>
-<li>シナリオ2では，動きまわる距離が小さすぎて（{% gctex \alpha_j %}がすぐ収束してしまって）ローカルミニマムにはまっている</li>
+<li>シナリオ1では，動きまわる距離が大きすぎて（<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_j+>が収束するのに時間がかかって）なかなかアルゴリズムが停止しない</li>
+<li>シナリオ2では，動きまわる距離が小さすぎて（<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_j+>がすぐ収束してしまって）ローカルミニマムにはまっている</li>
 <li>シナリオ3では，動きまわる距離はシナリオ2より改善しているが，最大値を見つけられていない</li>
 <li>シナリオ4では，上手い具合に最大値を見つけることができている</li>
 </ul>
@@ -367,10 +367,10 @@ title(main="scenario 1")</p>
 
 <h3>本問題の疑問点</h3>
 
-<p>さて，この問題を素直に解いてもP.157の図5.7のようにはいかない．色々と試してみた結果，どうやら<strong>本書におけるシナリオ1と2の{% gctex \beta_j %}において，分母にかかっている0.1乗の表記がおかしい気がする．</strong>この0.1乗がlogの中の括弧にかかっていると考えて0.1*log()としてコードを組むと，値が発散しすぎてなかなか収束しなくなる．ということで，ここでは以下のように式を解釈して問題を解いた．正直なところ，これが正しいのかよくわかっていない．</p>
+<p>さて，この問題を素直に解いてもP.157の図5.7のようにはいかない．色々と試してみた結果，どうやら<strong>本書におけるシナリオ1と2の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_j+>において，分母にかかっている0.1乗の表記がおかしい気がする．</strong>この0.1乗がlogの中の括弧にかかっていると考えて0.1*log()としてコードを組むと，値が発散しすぎてなかなか収束しなくなる．ということで，ここでは以下のように式を解釈して問題を解いた．正直なところ，これが正しいのかよくわかっていない．</p>
 
 <ul>
-<li>シナリオ1と2の{% gctex \beta_j %}：{% gctex \frac{1}{\log(j+1)<sup>{0.1}}</sup> %}→{% gctex \frac{1}{(\log(j+1))<sup>{0.1}}</sup> %}</li>
+<li>シナリオ1と2の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_j+>：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Clog%28j%2B1%29%3Csup%3E%7B0.1%7D%7D%3C%2Fsup%3E+>→<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%28%5Clog%28j%2B1%29%29%3Csup%3E%7B0.1%7D%7D%3C%2Fsup%3E+></li>
 </ul>
 
 
@@ -393,11 +393,11 @@ title(main="scenario 1")</p>
 
 <h3>例 5.4 数値的最適化法と確率的探索を比較する</h3>
 
-<p><a href="http://yagays.github.com/blog/2012/10/30/imcmr-5-1/">例5.1</a>の続き．前回は数値的最適化法によって{% gctex \theta %}の値を推定したが，今回は確率的探索による推定を行なって，両者の手法の比較を行う．問題としては，以下の対数尤度を最大化する．</p>
+<p><a href="http://yagays.github.com/blog/2012/10/30/imcmr-5-1/">例5.1</a>の続き．前回は数値的最適化法によって<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+>の値を推定したが，今回は確率的探索による推定を行なって，両者の手法の比較を行う．問題としては，以下の対数尤度を最大化する．</p>
 
-<p>{% gctex \log l(\theta| x_1,\ldots,x_n) = \sum_{i=1}<sup>{n}</sup> \log \frac{1}{1+(x_i-\theta)<sup>2}</sup> %}</p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clog+l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Csum_%7Bi%3D1%7D%3Csup%3E%7Bn%7D%3C%2Fsup%3E+%5Clog+%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%3Csup%3E2%7D%3C%2Fsup%3E+></p>
 
-<p>この式は{% gctex n \rightarrow \infty %}において{% gctex \theta<sup>*</sup> =0 %}になる．すなわちこれから求める推定値の答えは0ということになる．</p>
+<p>この式は<img src=http://chart.apis.google.com/chart?cht=tx&chl=n+%5Crightarrow+%5Cinfty+>において<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta%3Csup%3E%2A%3C%2Fsup%3E+%3D0+>になる．すなわちこれから求める推定値の答えは0ということになる．</p>
 
 <h4>ソースコード</h4>
 
@@ -452,9 +452,9 @@ abline(a=0, b=1, col="grey")
 plot(10:length(ref), (truv-maxv)/abs(truv), type="l", lwd=2, xlab="Sample size", ylab="Relative error", ylim=c(0,0.02))
 ```</p>
 
-<p>まず，上のプロットは，数値的最適化法による推定値を横軸に，確率的探索による推定値を縦軸に取った図となっている．真の値が{% gctex \theta<sup>*</sup> =0 %}なので，当然ながら両者ともに推定値は(0,0)付近に集まっている．また，推定値が外れる場合では，どちらかの値が大きくなればもう片方も大きくなるといった具合に，そのパターンはグレーの線で示した{% gctex \theta<sup>0</sup> = \hat{\theta} %}の線分の上に乗るような形となる．</p>
+<p>まず，上のプロットは，数値的最適化法による推定値を横軸に，確率的探索による推定値を縦軸に取った図となっている．真の値が<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta%3Csup%3E%2A%3C%2Fsup%3E+%3D0+>なので，当然ながら両者ともに推定値は(0,0)付近に集まっている．また，推定値が外れる場合では，どちらかの値が大きくなればもう片方も大きくなるといった具合に，そのパターンはグレーの線で示した<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta%3Csup%3E0%3C%2Fsup%3E+%3D+%5Chat%7B%5Ctheta%7D+>の線分の上に乗るような形となる．</p>
 
-<p>次に，下のプロットは，横軸にサンプルサイズを取り，縦軸に推定値における対数尤度の差を取った図となっている．今回は相対的誤差なので，(数値的最適化法-確率的探索)/(数値的最適化法)といった形で値を求めている．相対的誤差が大きいということは，数値的最適化法と確率的探索それぞれ求めた対数尤度に差がある，すなわち{% gctex \theta %}に差があるということで，上のプロットにおけるグレーの線分から離れれば離れるほど相対的誤差も大きくなるということになる．なお，図示しているサンプルサイズは{% gctex n=10 %}から{% gctex n=5001 %}までの値となっており，これは両者の手法がどちらも一定サイズのサンプルサイズを必要とするからである（つまり1から10までは図示していない）．</p>
+<p>次に，下のプロットは，横軸にサンプルサイズを取り，縦軸に推定値における対数尤度の差を取った図となっている．今回は相対的誤差なので，(数値的最適化法-確率的探索)/(数値的最適化法)といった形で値を求めている．相対的誤差が大きいということは，数値的最適化法と確率的探索それぞれ求めた対数尤度に差がある，すなわち<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+>に差があるということで，上のプロットにおけるグレーの線分から離れれば離れるほど相対的誤差も大きくなるということになる．なお，図示しているサンプルサイズは<img src=http://chart.apis.google.com/chart?cht=tx&chl=n%3D10+>から<img src=http://chart.apis.google.com/chart?cht=tx&chl=n%3D5001+>までの値となっており，これは両者の手法がどちらも一定サイズのサンプルサイズを必要とするからである（つまり1から10までは図示していない）．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-4.png" alt="" /></p>
 
@@ -462,7 +462,7 @@ plot(10:length(ref), (truv-maxv)/abs(truv), type="l", lwd=2, xlab="Sample size",
 
 <p>以下の関数の最小化を検討する．</p>
 
-<p>{% gctex h(x,y)=(x\sin(20y)+y\sin(20x))<sup>2\cosh(\sin(10x)x)+</sup> (x\cos(10y)-y\sin(10x))<sup>2\cosh(\cos(20y)y)</sup> %}</p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%2Cy%29%3D%28x%5Csin%2820y%29%2By%5Csin%2820x%29%29%3Csup%3E2%5Ccosh%28%5Csin%2810x%29x%29%2B%3C%2Fsup%3E+%28x%5Ccos%2810y%29-y%5Csin%2810x%29%29%3Csup%3E2%5Ccosh%28%5Ccos%2820y%29y%29%3C%2Fsup%3E+></p>
 
 <p>今回は可視化するだけだが，この後の例5.7などで度々登場する関数となる．3Dプロットを描写すると，(0,0)に最小値があり，その周りには山あり谷ありとローカルミニマムがたくさん配置されている関数だとわかる．この図を上から見ると，P.157のプロットのようになる．</p>
 
@@ -514,25 +514,25 @@ persp(x, y, z, theta=155, phi=30, col="green4",</p>
 
 <p>ここでは，ロジスティック回帰におけるGLMMを考える．種子生存数が二項分布</p>
 
-<p>{% gctex \mathrm{Bin}(y_i|\beta_1,\beta_2,s) = {{N}\choose{y_i}} q_{i}<sup>{y_i}(1-q_i)<sup>{N-y_i}</sup></sup> %}</p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathrm%7BBin%7D%28y_i%7C%5Cbeta_1%2C%5Cbeta_2%2Cs%29+%3D+%7B%7BN%7D%5Cchoose%7By_i%7D%7D+q_%7Bi%7D%3Csup%3E%7By_i%7D%281-q_i%29%3Csup%3E%7BN-y_i%7D%3C%2Fsup%3E%3C%2Fsup%3E+></p>
 
-<p>に従うとした上で，そのパラメータ{% gctex q_i %}を</p>
+<p>に従うとした上で，そのパラメータ<img src=http://chart.apis.google.com/chart?cht=tx&chl=q_i+>を</p>
 
-<p>{% gctex \mathrm{logit}(q_i) = \beta_1 + \beta_2 x_i + r_i %}</p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathrm%7Blogit%7D%28q_i%29+%3D+%5Cbeta_1+%2B+%5Cbeta_2+x_i+%2B+r_i+></p>
 
-<p>とおく．ここで，個体差{% gctex r_i %}は</p>
+<p>とおく．ここで，個体差<img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+>は</p>
 
-<p>{% gctex r_i \sim \mathcal{N}(0,s) %}</p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+%5Csim+%5Cmathcal%7BN%7D%280%2Cs%29+></p>
 
 <p>平均0，標準誤差sの正規分布に従うとする．</p>
 
 <h3>実験</h3>
 
-<p>今回の実験は，なぜ応答変数が過分散の場合にGLMでは駄目でGLMMで推定すべきかを確かめるために，本書に記載されているGLMおよびGLMMの実験を1000回行なって，そのときの切片{% gctex \beta_1 %}と傾き{% gctex \beta_2 %}の分布を見ることにする．目標は<a href="http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/26401/1/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%85%8B%E5%AD%A656-2.pdf">「「個体差」の統計モデリング」</a>(pdf)の図11をプロットすること．</p>
+<p>今回の実験は，なぜ応答変数が過分散の場合にGLMでは駄目でGLMMで推定すべきかを確かめるために，本書に記載されているGLMおよびGLMMの実験を1000回行なって，そのときの切片<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>と傾き<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>の分布を見ることにする．目標は<a href="http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/26401/1/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%85%8B%E5%AD%A656-2.pdf">「「個体差」の統計モデリング」</a>(pdf)の図11をプロットすること．</p>
 
-<p>各実験は，葉数が2〜6枚の個体を20個体ずつ合計100個体のデータが得られたという条件で，それぞれの生存種子数をパラメータ{% gctex \beta_1 = -4 %}，{% gctex \beta_2 = 1 %}，{% gctex r_i \sim \mathcal{N}(0,3) %}の二項乱数から生成した．このように生成したデータを用いて，GLMMとGLMを実行した．</p>
+<p>各実験は，葉数が2〜6枚の個体を20個体ずつ合計100個体のデータが得られたという条件で，それぞれの生存種子数をパラメータ<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+%3D+-4+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+%3D+1+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+%5Csim+%5Cmathcal%7BN%7D%280%2C3%29+>の二項乱数から生成した．このように生成したデータを用いて，GLMMとGLMを実行した．</p>
 
-<p>この実験を1000回繰り返し，その時の{% gctex \beta_1 %}と{% gctex \beta_2 %}の分布をプロットしたのが以下の図となっている．左図が切片{% gctex \beta_1 %}の分布，右図が傾き{% gctex \beta_2 %}の分布で，それぞれ黒の線がGLMが推定した値の分布，赤の線がGLMMが推定した値の分布となっている．また，GLMとGLMMの推定値の平均を縦の点線で表している．</p>
+<p>この実験を1000回繰り返し，その時の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>の分布をプロットしたのが以下の図となっている．左図が切片<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>の分布，右図が傾き<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>の分布で，それぞれ黒の線がGLMが推定した値の分布，赤の線がGLMMが推定した値の分布となっている．また，GLMとGLMMの推定値の平均を縦の点線で表している．</p>
 
 <p>```r
 library(glmmML)</p>
@@ -574,7 +574,7 @@ legend(1.1, 3.0, c("glm","glmmML"), col=c(1:2), lwd=2)
 
 <p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc_7.png" alt="" /></p>
 
-<p>さて，この図の解釈だが，今回データセット作成に用いた実験条件は{% gctex \beta_1 = -4 %}，{% gctex \beta_2 = 1 %}だったので，GLMMにおいて切片・傾きどちらもある程度正しい推定ができていることがわかる．逆にGLMでは，切片は過大推定，傾きは過小推定されている．また，推定値のばらつきである分布の山の裾の拡がりを見てみると，GLMMでは大きく，GLMでは小さくなっている．これはいわゆるバイアス・バリアンスのトレードオフによるものだと思われる．</p>
+<p>さて，この図の解釈だが，今回データセット作成に用いた実験条件は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+%3D+-4+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+%3D+1+>だったので，GLMMにおいて切片・傾きどちらもある程度正しい推定ができていることがわかる．逆にGLMでは，切片は過大推定，傾きは過小推定されている．また，推定値のばらつきである分布の山の裾の拡がりを見てみると，GLMMでは大きく，GLMでは小さくなっている．これはいわゆるバイアス・バリアンスのトレードオフによるものだと思われる．</p>
 
 <h4>参考</h4>
 
@@ -602,15 +602,15 @@ legend(1.1, 3.0, c("glm","glmmML"), col=c(1:2), lwd=2)
 
 <h3>例 5.3 確率的探索を使って，一様分布からのシミュレーションにより関数の最大値を求める</h3>
 
-<p><a href="http://yagays.github.com/blog/2012/10/25/imcmr-3-1/">例 3.3</a>で積分を考えた関数{% gctex h(x) = [\cos(50x) + \sin(20x) ]<sup>2</sup> %}について，今度はその最大値について考える．</p>
+<p><a href="http://yagays.github.com/blog/2012/10/25/imcmr-3-1/">例 3.3</a>で積分を考えた関数<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%29+%3D+%5B%5Ccos%2850x%29+%2B+%5Csin%2820x%29+%5D%3Csup%3E2%3C%2Fsup%3E+>について，今度はその最大値について考える．</p>
 
-<p>今回の実験は1000回シミュレーションを行う．それぞれのシミュレーションには，まず一様乱数{% gctex \mathcal{U}<em>{[0,1]} = u_1, \ldots , u_m %}を1000個作成し，それぞれに関数を掛けた値の中から最大値{% gctex h</em>{m}<sup>{*}</sup> = \max(h(u_1), \ldots ,h(u_m)) %}を求める．</p>
+<p>今回の実験は1000回シミュレーションを行う．それぞれのシミュレーションには，まず一様乱数<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BU%7D%3Cem%3E%7B%5B0%2C1%5D%7D+%3D+u_1%2C+%5Cldots+%2C+u_m+>を1000個作成し，それぞれに関数を掛けた値の中から最大値<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%3C%2Fem%3E%7Bm%7D%3Csup%3E%7B%2A%7D%3C%2Fsup%3E+%3D+%5Cmax%28h%28u_1%29%2C+%5Cldots+%2Ch%28u_m%29%29+>を求める．</p>
 
 <p>確率的探索といっても，今回の場合にやっていることは結局のところ定義域内で乱数を発生させて関数の値が大きいところを探しているだけとなる．今回は一様乱数で定義域内をまんべんなく探すという方法を取っているが，この後の確率的探索の例では「密度」を考えて，関数の値が大きい領域でのシミュレーションの確率を高くし，その他の関数の値の小さい領域での確率を小さくするという方法が取られる．</p>
 
 <h4>今回のシミュレーションの仕組み</h4>
 
-<p>今回のコードは少しややこしいので，まずは試しにシミュレーションを1回だけ行なってみよう．今回は推定値がどのように更新されていくかを見るために，単純にmax()関数を使うのではなく，cummax()関数を使用している．これにより，ベクトルの前から順に値を見ていって，最大値を更新していく様子を見ることができる．以下の図の黒の線が推定値{% gctex h_{m}<sup>{*}</sup> %}，赤の線がoptimize()関数で求めた定義域内における関数{% gctex h(x) %}の最大値を示している．</p>
+<p>今回のコードは少しややこしいので，まずは試しにシミュレーションを1回だけ行なってみよう．今回は推定値がどのように更新されていくかを見るために，単純にmax()関数を使うのではなく，cummax()関数を使用している．これにより，ベクトルの前から順に値を見ていって，最大値を更新していく様子を見ることができる．以下の図の黒の線が推定値<img src=http://chart.apis.google.com/chart?cht=tx&chl=h_%7Bm%7D%3Csup%3E%7B%2A%7D%3C%2Fsup%3E+>，赤の線がoptimize()関数で求めた定義域内における関数<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%29+>の最大値を示している．</p>
 
 <p><code>r
 h &lt;- function(x){(cos(50*x) + sin(20*x))^2}
@@ -655,13 +655,13 @@ abline(h=optimize(h, int=c(0,1), maximum=T)$ob)</p>
 
 <h3>練習問題 5.3 一様分布を用いたシミュレーションのパフォーマンスを向上させるために使用する定義域における制約を可視化する</h3>
 
-<p>まず最初に注意．この問題は解けないわけではないが，厳密には間違っているらしい．訂正は<a href="http://www.ceremade.dauphine.fr/~xian/shortManual.pdf">解答</a>(pdf)に書かれているが，つまりは定義域{% gctex \it{\Theta} %}の制約は，</p>
+<p>まず最初に注意．この問題は解けないわけではないが，厳密には間違っているらしい．訂正は<a href="http://www.ceremade.dauphine.fr/~xian/shortManual.pdf">解答</a>(pdf)に書かれているが，つまりは定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>の制約は，</p>
 
-<blockquote><p>{% gctex x<sup>2(1+\sin(3y)\cos(8x))</sup> + y<sup>2(2+\cos(5x)\cos(8y))</sup> \leq 1 %}</p></blockquote>
+<blockquote><p><img src=http://chart.apis.google.com/chart?cht=tx&chl=x%3Csup%3E2%281%2B%5Csin%283y%29%5Ccos%288x%29%29%3C%2Fsup%3E+%2B+y%3Csup%3E2%282%2B%5Ccos%285x%29%5Ccos%288y%29%29%3C%2Fsup%3E+%5Cleq+1+></p></blockquote>
 
 <p>ではなく，</p>
 
-<blockquote><p> {% gctex x<sup>2(1+\sin(\frac{3}{y})\cos(8x))</sup> + y<sup>2(2+\cos(5x)\cos(8y))</sup> \leq 1 %}</p></blockquote>
+<blockquote><p> <img src=http://chart.apis.google.com/chart?cht=tx&chl=x%3Csup%3E2%281%2B%5Csin%28%5Cfrac%7B3%7D%7By%7D%29%5Ccos%288x%29%29%3C%2Fsup%3E+%2B+y%3Csup%3E2%282%2B%5Ccos%285x%29%5Ccos%288y%29%29%3C%2Fsup%3E+%5Cleq+1+></p></blockquote>
 
 <p>としなければいけないようだ．今回はどちらの式も試してみて，本に書かれている式の何がおかしかったのを見てみる．</p>
 
