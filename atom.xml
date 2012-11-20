@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-20T04:59:11+09:00</updated>
+  <updated>2012-11-20T21:03:21+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -56,8 +56,8 @@
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>q <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">0.01</span><span class="p">,</span> <span class="m">0.99</span><span class="p">,</span> by<span class="o">=</span><span class="m">0.01</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span>q<span class="p">,</span> apply<span class="p">(</span>matrix<span class="p">(</span>q<span class="p">),</span><span class="m">1</span><span class="p">,</span><span class="kr">function</span><span class="p">(</span>z<span class="p">){</span>sum<span class="p">(</span>loglik<span class="p">(</span>z<span class="p">))}),</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>a <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">0.01</span><span class="p">,</span> <span class="m">0.99</span><span class="p">,</span> by<span class="o">=</span><span class="m">0.01</span><span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span>a<span class="p">,</span> apply<span class="p">(</span>matrix<span class="p">(</span>a<span class="p">),</span><span class="m">1</span><span class="p">,</span><span class="kr">function</span><span class="p">(</span>z<span class="p">){</span>sum<span class="p">(</span>loglik<span class="p">(</span>z<span class="p">))}),</span>
 </span><span class='line'>     xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0.2</span><span class="p">,</span><span class="m">0.7</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">-60</span><span class="p">,</span><span class="m">-35</span><span class="p">),</span> xlab<span class="o">=</span><span class="s">&quot;q&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;log L(q)&quot;</span><span class="p">)</span>
 </span><span class='line'>abline<span class="p">(</span>v<span class="o">=</span><span class="m">0.45625</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lty<span class="o">=</span><span class="m">2</span><span class="p">)</span>
 </span><span class='line'>points<span class="p">(</span><span class="m">0.45625</span><span class="p">,</span> sum<span class="p">(</span>loglik<span class="p">(</span><span class="m">0.45625</span><span class="p">)),</span> pch<span class="o">=</span><span class="m">4</span><span class="p">,</span> <span class="p">,</span>cex<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
