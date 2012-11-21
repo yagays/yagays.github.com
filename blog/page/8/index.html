@@ -9,7 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="pdf中毒者のためのwget入門 大学の先生方が用意する講義資料やプレゼンテーションのスライドの類なんかは，得てして個人のウェブページにまとまりなくリストアップされているだけの場合が多い． &hellip;">
+  <meta name="description" content="SOAPdenovo2になって，アセンブリで得られた配列の統計情報がscafStatisticsというファイルに出力されるようになった．そのため，自分でアセンブリ結果を解析しなくとも，コンティグ数やN50などの基本情報をチェックすることができる……のだが， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -107,6 +107,206 @@
     <div class="row-fluid">
       <div class="span9">
   
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/11/soapdenovo2-stats/">SOAPdenovo2のアセンブル情報を集計するスクリプト</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-11T16:08:00+09:00" pubdate data-updated="true">Oct 11<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>SOAPdenovo2になって，アセンブリで得られた配列の統計情報がscafStatisticsというファイルに出力されるようになった．そのため，自分でアセンブリ結果を解析しなくとも，コンティグ数やN50などの基本情報をチェックすることができる……のだが，scafStatisticsは項目を並べただけのテキストファイルなので，複数のアセンブリ結果を比較しようと思った場合，いちいちファイルを開いて統計情報を集計するのが非常に面倒になる．</p>
+
+<p>ということで，SOAPdenovo2のアセンブルで出力される情報を一つにまとめるスクリプトを簡単に書いてみた．タブ区切りテキストで出力されるので，Excelなどでも見やすいようにしてある．</p>
+
+<br />
+
+
+<h2>インストール</h2>
+
+<ul>
+<li><a href="https://gist.github.com/3870629">https://gist.github.com/3870629</a></li>
+</ul>
+
+
+<p>上記のgistに置いてあるソースコードをダウンロードするか，wgetでソースコードを落としてくる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>wget --no-check-certificate https://raw.github.com/gist/3870629/6547d69e768e3d87a140d6405fdf19102ff525cb/soapdenovo2_stats.rb
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>動作確認はRuby 1.8.7および1.9.3で行っているが，まあ変なことはしてないのでどんな環境でもだいたい動くと思う．RubyのバージョンよりかはSOAPdenovo2の未知の部分や仕様変更などが怖いわけで，そもそも以下のデータセットで出てきたscafStatisticsを参考にしているため，SOAPdenovo2のパラメータなどによっては期待通りの動きをしないかもしれない．あと，例外処理などをあまり真面目に書いていないので，入力ファイルが見つからない場合にエラーを吐かなかったりするが，そこらへんは後々修正するかも．</p>
+
+<br />
+
+
+<h2>使い方</h2>
+
+<h3>基本的な使い方</h3>
+
+<p><strong><code>ruby soapdenovo2_stats.rb</code></strong>のあとにscafStatisticsのファイルを並べるだけ．標準出力に表示される情報は，scafStatistics内のInformation for assembly Scaffoldのうち，重要な統計量のみとなっている．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ruby soapdenovo2_stats.rb path/to/k23.scafStatistics path/to/k25.scafStatistics
+</span><span class='line'>Filename        Size_includeN   Size_withoutN   Scaffold_Num    Mean_Size       Median_Size     Longest_Seq     Shortest_Seq    Singleton_Num   N50
+</span><span class='line'>k23.scafStatistics      4533843 4533843 845     5365    2919    55290   100     845     11457
+</span><span class='line'>k25.scafStatistics      4536449 4536449 654     6936    3609    71235   100     654     14798
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>その他の詳細な統計量を出力する</h3>
+
+<p><strong><code>-a</code></strong>または<strong><code>--all</code></strong>オプションをつけることでscafStatistics内のすべての統計量を出力するようにしている．また，<strong><code>-c</code></strong>または<strong><code>--contig</code></strong>オプションをつけることによって，ScaffoldではなくContigの情報（scafStatistics内のInformation for assembly Contig より下側の情報）を出力できる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ruby soapdenovo2_stats.rb -a -c path/to/k23.scafStatistics
+</span><span class='line'>Size_includeN   Size_withoutN   Contig_Num      Mean_Size       Median_Size     Longest_Seq     Shortest_Seq    Contig&gt;100      Contig&gt;100 <span class="o">(</span>%<span class="o">)</span>  Contig&gt;500      Contig&gt;500 <span class="o">(</span>%<span class="o">)</span>  Contig&gt;1K       Contig&gt;1K <span class="o">(</span>%<span class="o">)</span>   Contig&gt;10K      Contig&gt;10K <span class="o">(</span>%<span class="o">)</span>  Contig&gt;100K     Contig&gt;100K <span class="o">(</span>%<span class="o">)</span> Contig&gt;1M       Contig&gt;1M <span class="o">(</span>%<span class="o">)</span>   Nucleotide_A    Nucleotide_A <span class="o">(</span>%<span class="o">)</span>        Nucleotide_C    Nucleotide_C <span class="o">(</span>%<span class="o">)</span>    Nucleotide_G    Nucleotide_G <span class="o">(</span>%<span class="o">)</span>        Nucleotide_T    Nucleotide_T <span class="o">(</span>%<span class="o">)</span>        GapContent_N    GapContent_N <span class="o">(</span>%<span class="o">)</span>        Non_ACGTN       Non_ACGTN <span class="o">(</span>%<span class="o">)</span>   GC_Content      N10     Contigs &gt;0 in N10       N20     Contigs &gt;0 in N20       N30     Contigs &gt;0 in N30       N40     Contigs &gt;0 in N40       N50     Contigs &gt;0 in N50       N60     Contigs &gt;0 in N60   N70     Contigs &gt;0 in N70       N80     Contigs &gt;0 in N80       N90     Contigs &gt;0 in N90       NG50    Contigs &gt;0 in NG50      N50_contig-NG50_contig_length_difference        Number_of_contigs_in_scaffolds  Number_of_contigs_not_in_scaffolds<span class="o">(</span>Singleton<span class="o">)</span>   Average_number_of_contigs_per_scaffold
+</span><span class='line'>4533843 4533843 845     5365    2919    55290   100     840     99.41   646     76.45   589     69.7    147     17.4    0       0.0     0       0.0     1122311 24.75   1154274 25.46   1146494 25.29   1110764 24.5    0       0.0     0       0.0     50.75   29554   13      21527   31      17094   55      13748   85      11457   121     9180    165     7136    2225257     296     3315    403     NaN     NaN     NaN     0       845     0
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>ワイルドカードを使って入力ファイルを複数指定する</h3>
+
+<p>Zshなどのシェルコマンドと同様に，入力ファイルの指定には<strong><code>*</code></strong>や<strong><code>?</code></strong>などのワイルドカードなどが使用できる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ruby soapdenovo2_stats.rb  path/to/*.scafStatistics
+</span><span class='line'>Filename        Size_includeN   Size_withoutN   Scaffold_Num    Mean_Size       Median_Size     Longest_Seq     Shortest_Seq    Singleton_Num   N50
+</span><span class='line'>k23.scafStatistics      4533843 4533843 845     5365    2919    55290   100     845     11457
+</span><span class='line'>k25.scafStatistics      4536449 4536449 654     6936    3609    71235   100     654     14798
+</span><span class='line'>k27.scafStatistics      4539473 4539473 578     7853    3781    79498   100     578     18157
+</span><span class='line'>k29.scafStatistics      4544164 4544164 570     7972    3672    103369  100     570     17945
+</span><span class='line'>k31.scafStatistics      4550461 4550461 621     7327    3306    77302   100     621     17052
+</span><span class='line'>k33.scafStatistics      4582773 4582773 1655    2769    1688    22953   100     1655    5435
+</span><span class='line'>k35.scafStatistics      2393501 2393501 16300   146     132     1345    105     16300   142
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>特定のカラムでソートする</h3>
+
+<p><strong><code>-s</code></strong>オプションを使うことで，特定のカラムで値をソートした結果を出力することができる．ここではN50を降順で並び替えており，一番右端の列を見るとN50が一番大きいものはk=27であったことがわかる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ruby soapdenovo2_stats.rb -s N50 path/to/*.scafStatistics
+</span><span class='line'>Filename        Size_includeN   Size_withoutN   Scaffold_Num    Mean_Size       Median_Size     Longest_Seq     Shortest_Seq    Singleton_Num   N50
+</span><span class='line'>k27.scafStatistics      4539473 4539473 578     7853    3781    79498   100     578     18157
+</span><span class='line'>k29.scafStatistics      4544164 4544164 570     7972    3672    103369  100     570     17945
+</span><span class='line'>k31.scafStatistics      4550461 4550461 621     7327    3306    77302   100     621     17052
+</span><span class='line'>k25.scafStatistics      4536449 4536449 654     6936    3609    71235   100     654     14798
+</span><span class='line'>k23.scafStatistics      4533843 4533843 845     5365    2919    55290   100     845     11457
+</span><span class='line'>k33.scafStatistics      4582773 4582773 1655    2769    1688    22953   100     1655    5435
+</span><span class='line'>k35.scafStatistics      2393501 2393501 16300   146     132     1345    105     16300   142
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>今回用いたサンプルデータ</h2>
+
+<p>なお，今回上記で示したデータは，E.coliのSRR001665のデータを用いてSOAPdenovo2_revision210でアセンブルしたものを使用している．アセンブルのコマンドとconfigファイルは以下のとおり．SEQanswersのWikiにあったExampleをそのまま使わせてもらっている（ <a href="http://seqanswers.com/wiki/How-to/de_novo_assembly#SOAP_denovo">http://seqanswers.com/wiki/How-to/de_novo_assembly#SOAP_denovo</a>）．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>SOAPdenovo-63mer all -K 25 -R -s cont.config -o output/k25
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>cont.config</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#maximal read length</span>
+</span><span class='line'><span class="nv">max_rd_len</span><span class="o">=</span>36
+</span><span class='line'><span class="o">[</span>LIB<span class="o">]</span>
+</span><span class='line'><span class="c">#average insert size</span>
+</span><span class='line'><span class="nv">avg_ins</span><span class="o">=</span>200
+</span><span class='line'><span class="c">#if sequence needs to be reversed </span>
+</span><span class='line'><span class="nv">reverse_seq</span><span class="o">=</span>0
+</span><span class='line'><span class="c">#use for contig building only</span>
+</span><span class='line'><span class="nv">asm_flags</span><span class="o">=</span>1
+</span><span class='line'><span class="c">#in which order the reads are used while scaffolding</span>
+</span><span class='line'><span class="nv">rank</span><span class="o">=</span>1
+</span><span class='line'><span class="c">#fastq files</span>
+</span><span class='line'><span class="nv">q1</span><span class="o">=</span>/home/yag_ays/tmp/soapdenovo2_testrun/SRR001665_1.fastq
+</span><span class='line'><span class="nv">q2</span><span class="o">=</span>/home/yag_ays/tmp/soapdenovo2_testrun/SRR001665_2.fastq
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://sourceforge.net/projects/soapdenovo2/">http://sourceforge.net/projects/soapdenovo2/</a></li>
+<li><a href="http://www.homolog.us/blogs/2012/07/10/testing-soapdenovo2-prerelease-v-map-and-scaff/">http://www.homolog.us/blogs/2012/07/10/testing-soapdenovo2-prerelease-v-map-and-scaff/</a></li>
+</ul>
+
+
+<h3>ソースコード</h3>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/11/soapdenovo2-stats/">続きを読む &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -350,55 +550,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/09/29/sphinx-dropbox-bookshelf/">Dropbox+Sphinxで自分専用の電子書籍リストを作ってみた</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-29T14:05:00+09:00" pubdate data-updated="true">Sep 29<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="http://dl.dropbox.com/u/142306/b/bookshelf.png" align="right" hspace="10px"></p>
-
-<h3>きっかけ</h3>
-
-<p>本を裁断してpdfにする自炊というものをやり始めて1年以上が経ち，自炊したpdfも350冊・35GBを超えてしまった．手持ちのiPadには全部の書籍が入りきらなくなってしまい，終いには自炊した本のことを忘れて中古で買い直す始末．そんなこんなで，自炊した書籍のpdfをまとめる本棚みたいなものが欲しくなってきた．手の込んだものはいらないので，表紙をざっと眺めたり，タイトルと著者を検索できる程度のもので簡単に済ませたい．</p>
-
-<p>というわけで，<strong>Sphinxで静的htmlを吐き出してDropboxのPublicフォルダで公開するようなシステム</strong>を簡単に組んでみた．SphinxはPythonで書かれたドキュメンテーションツールで，rst形式のテキストから静的なhtmlを出力できるほか，jsで簡易な検索もできる．バックグラウンドでスクリプトを動かしたりデータベースを置いておく必要がないので，DropboxのPublicフォルダみたいな場所でも公開できる便利さがある．今回はそれをメインにして，付加情報として書籍ファイルのISBNを使ってAmazonのProduct Advertising APIを叩いてメタ情報を入手し，書籍カバーの画像と一緒に表示させるようなSphinxのrstファイルを作成するという目論見．今回やってみた限りだとDropbox+Sphinxは連携が案外簡単だったので，この他にも個人的なメモなどの用途にも最適だと思う．</p>
-
-<p>なお，今回のウェブページはリンクを一般に公開しておらず，また書籍pdfはダウンロードできる状態にはしていない．書籍の電子化に関しては色々難しいところがあるのでスクリプトの公開などは控えるようにする．</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/09/29/sphinx-dropbox-bookshelf/">続きを読む &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/9/">&larr; Older</a></li>
@@ -447,6 +598,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/11/21/review-apple-matsuhiro/">「僕がアップルで学んだこと 環境を整えれば人が変わる、組織が変わる」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/11/20/glm-mcmc-chp8/">「データ解析のための統計モデリング入門」読書ノート 8章 MCMCとメトロポリス法</a>
       </li>
     
@@ -482,15 +637,11 @@
         <a href="/blog/2012/11/12/review-who-moved-my-cheese/">「チーズはどこへ消えた?」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/11/11/imcmr-5-4/">「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 確率的勾配法</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (45)</a></li><li><a href='/blog/categories/clojure'>Clojure (1)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (12)</a></li><li><a href='/blog/categories/jekyll-octopress'>Jekyll/Octopress (3)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/mcmc'>MCMC (3)</a></li><li><a href='/blog/categories/misc'>Misc (2)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (18)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/sublimetext2'>SublimeText2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (46)</a></li><li><a href='/blog/categories/clojure'>Clojure (1)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (12)</a></li><li><a href='/blog/categories/jekyll-octopress'>Jekyll/Octopress (3)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/mcmc'>MCMC (3)</a></li><li><a href='/blog/categories/misc'>Misc (2)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (18)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/sublimetext2'>SublimeText2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
 </section>
 
 
