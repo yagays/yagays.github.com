@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Misc | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/misc/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-22T12:24:50+09:00</updated>
+  <updated>2012-11-23T02:49:14+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Software Design 2012年 12月号」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/23/review-softwaredesign-2012-12/"/>
+    <updated>2012-11-23T02:32:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/23/review-softwaredesign-2012-12</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B009YK3U3Q" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>最近Blogで継続的に記事を書くようになって，自分の書く文章について特に意識するようになった．書評なり読書ノートを1つの記事をしてまとめるにあたり，とにかく文章を書いては読みを繰り返し，記事を公開したあとも電車の中で読み返すなどして誤字脱字を訂正したり推敲を重ねている．自分のBlogの一番の読者は，まぎれもなく自分だ．いったい誰のために/何のために書いているかという問題は自分の中でもハッキリしていないが，色んなことを差し置いても，結局まわりまわって自分のために書き貯めている部分は大きい．</p>
+
+<p>文章の書き方は今でもよくわからない．ある程度まとまった記事を書くのに慣れてきた面もあり，逆にあまり代わり映えしない表現力に萎えることもある．色々と本を読んで参考にしたり，尊敬する人物の書いた文章を写経したこともあったけれども，結局血肉となったかはよくわからない．本来ならば人に添削してもらうのが一番良いのだが，特に独創性であったり主義主張があるわけではないただのBlog記事にそこまでできるはずもなく，今のところ自分でなんとか改善を繰り返している．</p>
+
+<p>ということで，今月のSoftware Designの特集はエンジニアのための文章力養成講座だ．製品の紹介文やマニュアルなどの文章の書き方であったり，情報をいかに整理して文章を構成していくかといったテクニックが載っている．エンジニア出身のブロガーが文章力について書いているコラムでは，文章を書く人間が普段どういうことを思いながら書いているのかということが色々と書かれていて，なかなかに興味深かった．何かを主張したり情報を広めたり布教をしたりと，アウトプットの質を高めていくにはとにかく書き続けるしかないということで，これからも引き続きblogを続けていこうというモチベーションに繋がる記事だった．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「TED Talks ボディランゲージが人を作る」の主張における継続のニュアンス]]></title>

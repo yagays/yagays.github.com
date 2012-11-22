@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-22T12:24:50+09:00</updated>
+  <updated>2012-11-23T02:49:14+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Software Design 2012年 12月号」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/23/review-softwaredesign-2012-12/"/>
+    <updated>2012-11-23T02:32:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/23/review-softwaredesign-2012-12</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B009YK3U3Q" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>最近Blogで継続的に記事を書くようになって，自分の書く文章について特に意識するようになった．書評なり読書ノートを1つの記事をしてまとめるにあたり，とにかく文章を書いては読みを繰り返し，記事を公開したあとも電車の中で読み返すなどして誤字脱字を訂正したり推敲を重ねている．自分のBlogの一番の読者は，まぎれもなく自分だ．いったい誰のために/何のために書いているかという問題は自分の中でもハッキリしていないが，色んなことを差し置いても，結局まわりまわって自分のために書き貯めている部分は大きい．</p>
+
+<p>文章の書き方は今でもよくわからない．ある程度まとまった記事を書くのに慣れてきた面もあり，逆にあまり代わり映えしない表現力に萎えることもある．色々と本を読んで参考にしたり，尊敬する人物の書いた文章を写経したこともあったけれども，結局血肉となったかはよくわからない．本来ならば人に添削してもらうのが一番良いのだが，特に独創性であったり主義主張があるわけではないただのBlog記事にそこまでできるはずもなく，今のところ自分でなんとか改善を繰り返している．</p>
+
+<p>ということで，今月のSoftware Designの特集はエンジニアのための文章力養成講座だ．製品の紹介文やマニュアルなどの文章の書き方であったり，情報をいかに整理して文章を構成していくかといったテクニックが載っている．エンジニア出身のブロガーが文章力について書いているコラムでは，文章を書く人間が普段どういうことを思いながら書いているのかということが色々と書かれていて，なかなかに興味深かった．何かを主張したり情報を広めたり布教をしたりと，アウトプットの質を高めていくにはとにかく書き続けるしかないということで，これからも引き続きblogを続けていこうというモチベーションに繋がる記事だった．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：6章 マルコフ連鎖とランダム・ウォーク]]></title>
@@ -1934,138 +1950,6 @@
 <li><a href="http://mascalade.blog89.fc2.com/blog-entry-296.html">http://mascalade.blog89.fc2.com/blog-entry-296.html</a></li>
 <li><a href="http://vad.seesaa.net/article/149852007.html">http://vad.seesaa.net/article/149852007.html</a></li>
 <li><a href="http://d.hatena.ne.jp/i_ogi/20080326/1206516540">http://d.hatena.ne.jp/i_ogi/20080326/1206516540</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「データ解析のための統計モデリング入門」読書ノート 7章 GLMMとGLMを比較する]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/02/glm-mcmc-chp7/"/>
-    <updated>2012-11-02T06:54:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/02/glm-mcmc-chp7</id>
-    <content type="html"><![CDATA[<ul>
-<li>前回：「データ解析のための統計モデリング入門」読書ノート：<a href="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/">http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=400006973X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>前回の読書ノートでは全体の流れを簡単に追ったが，今回は「データ解析のための統計モデリング入門」7章の一般化線形混合モデルのシミュレーションを動かしてみた．</p>
-
-<h3>7章の概要</h3>
-
-<p>6章までは，ある植物100個体から得られた生存種子数と葉数のデータから，その関係性をモデル化しGLMで推定してきた．7章では，個体差を取り入れたモデルを作成し，生存種子数の過分散にうまくあてはまるようなパラメータを推定する．ただし，個体差を表すパラメータを個体ごとに割り当てて最尤推定するのではなく，個体差がある分布に従うと仮定した上で，その分布のパラメータを推定する．</p>
-
-<p>大雑把な目標としては，葉の数だけが生存種子数に効いているわけではないんだから，それぞれの個体で観測されていない/できないデータというのを考えようというもの．ただし，個体ごとに何らかの値を振って生存種子数を上手く表すことのできるモデルを組んだとしても予測には使えないので，じゃあ個体差自体を扱えるように分布を仮定してそこからランダムに値が選ばれるとする．そうすると，個体ごとにパラメータを持たせるんじゃなくて，個体のばらつきという一つのパラメータで表すことができるので，より現実的なモデルとなると同時に簡単にパラメータの推定ができるようになる．</p>
-
-<h3>問題設定</h3>
-
-<p>ここでは，ロジスティック回帰におけるGLMMを考える．種子生存数が二項分布</p>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathrm%7BBin%7D%28y_i%7C%5Cbeta_1%2C%5Cbeta_2%2Cs%29+%3D+%7B%7BN%7D%5Cchoose%7By_i%7D%7D+q_%7Bi%7D%5E%7By_i%7D%281-q_i%29%5E%7BN-y_i%7D+></p>
-
-<p>に従うとした上で，そのパラメータ<img src=http://chart.apis.google.com/chart?cht=tx&chl=q_i+>を</p>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathrm%7Blogit%7D%28q_i%29+%3D+%5Cbeta_1+%2B+%5Cbeta_2+x_i+%2B+r_i+></p>
-
-<p>とおく．ここで，個体差<img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+>は</p>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+%5Csim+%5Cmathcal%7BN%7D%280%2Cs%29+></p>
-
-<p>平均0，標準誤差sの正規分布に従うとする．</p>
-
-<h3>実験</h3>
-
-<p>今回の実験は，なぜ応答変数が過分散の場合にGLMでは駄目でGLMMで推定すべきかを確かめるために，本書に記載されているGLMおよびGLMMの実験を1000回行なって，そのときの切片<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>と傾き<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>の分布を見ることにする．目標は<a href="http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/26401/1/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%85%8B%E5%AD%A656-2.pdf">「「個体差」の統計モデリング」</a>(pdf)の図11をプロットすること．</p>
-
-<p>各実験は，葉数が2〜6枚の個体を20個体ずつ合計100個体のデータが得られたという条件で，それぞれの生存種子数をパラメータ<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+%3D+-4+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+%3D+1+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+%5Csim+%5Cmathcal%7BN%7D%280%2C3%29+>の二項乱数から生成した．このように生成したデータを用いて，GLMMとGLMを実行した．</p>
-
-<p>この実験を1000回繰り返し，その時の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>の分布をプロットしたのが以下の図となっている．左図が切片<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>の分布，右図が傾き<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>の分布で，それぞれ黒の線がGLMが推定した値の分布，赤の線がGLMMが推定した値の分布となっている．また，GLMとGLMMの推定値の平均を縦の点線で表している．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>library<span class="p">(</span>glmmML<span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>logistic <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>z<span class="p">){</span> <span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span>exp<span class="p">(</span><span class="o">-</span>z<span class="p">))}</span>
-</span><span class='line'>Niter <span class="o">&lt;-</span> <span class="m">1000</span>
-</span><span class='line'>sigma <span class="o">&lt;-</span> <span class="m">3</span>
-</span><span class='line'>glm_b <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="m">0</span><span class="p">,</span> nrow<span class="o">=</span>Niter<span class="p">,</span> ncol<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>glmm_b <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="m">0</span><span class="p">,</span> nrow<span class="o">=</span>Niter<span class="p">,</span> ncol<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in <span class="m">1</span>:Niter<span class="p">){</span>
-</span><span class='line'>  N <span class="o">&lt;-</span> rep<span class="p">(</span><span class="m">8</span><span class="p">,</span><span class="m">100</span><span class="p">)</span>
-</span><span class='line'>  x <span class="o">&lt;-</span> rep<span class="p">(</span><span class="m">2</span>:<span class="m">6</span><span class="p">,</span>each<span class="o">=</span><span class="m">20</span><span class="p">)</span>
-</span><span class='line'>  re <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> sigma<span class="p">)</span>
-</span><span class='line'>  y <span class="o">&lt;-</span> rbinom<span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> prob<span class="o">=</span>logistic<span class="p">(</span><span class="m">-4</span><span class="o">+</span>x<span class="o">+</span>re<span class="p">))</span>
-</span><span class='line'>  id <span class="o">&lt;-</span> <span class="m">1</span>:<span class="m">100</span>
-</span><span class='line'>  d <span class="o">&lt;-</span> data.frame<span class="p">(</span>N<span class="p">,</span>x<span class="p">,</span>y<span class="p">,</span>id<span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>  glm_b<span class="p">[</span>i<span class="p">,]</span> <span class="o">&lt;-</span> glm<span class="p">(</span>cbind<span class="p">(</span>y<span class="p">,</span>N<span class="o">-</span>y<span class="p">)</span> ~ x<span class="p">,</span> data<span class="o">=</span>d<span class="p">,</span> family<span class="o">=</span>binomial<span class="p">)$</span>coefficients
-</span><span class='line'>  glmm_b<span class="p">[</span>i<span class="p">,]</span> <span class="o">&lt;-</span> glmmML<span class="p">(</span>cbind<span class="p">(</span>y<span class="p">,</span>N<span class="o">-</span>y<span class="p">)</span> ~ x<span class="p">,</span> data<span class="o">=</span>d<span class="p">,</span> family<span class="o">=</span>binomial<span class="p">,</span> cluster<span class="o">=</span>id<span class="p">)$</span>coefficients
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-</span><span class='line'>plot<span class="p">(</span>density<span class="p">(</span>glm_b<span class="p">[,</span><span class="m">1</span><span class="p">]),</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">-8</span><span class="p">,</span><span class="m">0</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0.8</span><span class="p">),</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Estimate of beta_1&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>par<span class="p">(</span>new<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span>density<span class="p">(</span>glmm_b<span class="p">[,</span><span class="m">1</span><span class="p">]),</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">-8</span><span class="p">,</span><span class="m">0</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0.8</span><span class="p">),</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Estimate of beta_1&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>abline<span class="p">(</span>v<span class="o">=</span>mean<span class="p">(</span>glm_b<span class="p">[,</span><span class="m">1</span><span class="p">]),</span> lty<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>abline<span class="p">(</span>v<span class="o">=</span>mean<span class="p">(</span>glmm_b<span class="p">[,</span><span class="m">1</span><span class="p">]),</span> lty<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>plot<span class="p">(</span>density<span class="p">(</span>glm_b<span class="p">[,</span><span class="m">2</span><span class="p">]),</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">2</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">3</span><span class="p">),</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Estimate of beta_2&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>par<span class="p">(</span>new<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span>density<span class="p">(</span>glmm_b<span class="p">[,</span><span class="m">2</span><span class="p">]),</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">2</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">3</span><span class="p">),</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Estimate of beta_2&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>abline<span class="p">(</span>v<span class="o">=</span>mean<span class="p">(</span>glm_b<span class="p">[,</span><span class="m">2</span><span class="p">]),</span> lty<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>abline<span class="p">(</span>v<span class="o">=</span>mean<span class="p">(</span>glmm_b<span class="p">[,</span><span class="m">2</span><span class="p">]),</span> lty<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
-</span><span class='line'>legend<span class="p">(</span><span class="m">1.1</span><span class="p">,</span> <span class="m">3.0</span><span class="p">,</span> c<span class="p">(</span><span class="s">&quot;glm&quot;</span><span class="p">,</span><span class="s">&quot;glmmML&quot;</span><span class="p">),</span> col<span class="o">=</span>c<span class="p">(</span><span class="m">1</span>:<span class="m">2</span><span class="p">),</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc_7.png" alt="" /></p>
-
-<p>さて，この図の解釈だが，今回データセット作成に用いた実験条件は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+%3D+-4+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+%3D+1+>だったので，GLMMにおいて切片・傾きどちらもある程度正しい推定ができていることがわかる．逆にGLMでは，切片は過大推定，傾きは過小推定されている．また，推定値のばらつきである分布の山の裾の拡がりを見てみると，GLMMでは大きく，GLMでは小さくなっている．これはいわゆるバイアス・バリアンスのトレードオフによるものだと思われる．</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://hosho.ees.hokudai.ac.jp/~kubo/ce/IwanamiBook.html">生態学データ解析 - 本/データ解析のための統計モデリング入門</a></li>
-<li><a href="http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/49477/7/kubostat2008f.pdf">http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/49477/7/kubostat2008f.pdf</a></li>
-<li><a href="http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/26401/1/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%85%8B%E5%AD%A656-2.pdf">http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/26401/1/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%85%8B%E5%AD%A656-2.pdf</a></li>
 </ul>
 
 ]]></content>
