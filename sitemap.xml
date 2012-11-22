@@ -238,7 +238,7 @@
         <loc>
             http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/
         </loc>
-        <lastmod>2012-11-18T17:05:35+09:00</lastmod>
+        <lastmod>2012-11-22T12:24:30+09:00</lastmod>
     </url>
     <url>
         <loc>http://yagays.github.com/blog/2012/10/21/imcmr-2-1/</loc>
@@ -358,7 +358,11 @@
     </url>
     <url>
         <loc>http://yagays.github.com/blog/2012/11/21/review-apple-matsuhiro/</loc>
-        <lastmod>2012-11-21T18:38:10+09:00</lastmod>
+        <lastmod>2012-11-22T03:43:44+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yagays.github.com/blog/2012/11/22/imcmr-6-2/</loc>
+        <lastmod>2012-11-22T12:23:00+09:00</lastmod>
     </url>
     <url>
         <loc>http://yagays.github.com/404.html</loc>
@@ -366,10 +370,10 @@
     </url>
     <url>
         <loc>http://yagays.github.com/blog/archives/</loc>
-        <lastmod>2012-11-21T18:38:10+09:00</lastmod>
+        <lastmod>2012-11-22T12:24:30+09:00</lastmod>
     </url>
     <url>
         <loc>http://yagays.github.com/</loc>
-        <lastmod>2012-11-21T18:38:10+09:00</lastmod>
+        <lastmod>2012-11-22T12:24:30+09:00</lastmod>
     </url>
 </urlset>

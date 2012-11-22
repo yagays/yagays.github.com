@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Reading | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-21T21:06:43+09:00</updated>
+  <updated>2012-11-22T12:24:50+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,93 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：6章 マルコフ連鎖とランダム・ウォーク]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/22/imcmr-6-2/"/>
+    <updated>2012-11-22T12:14:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/22/imcmr-6-2</id>
+    <content type="html"><![CDATA[<ul>
+<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>練習問題 6.1</h3>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=X%3Csup%3E%7B%28t%2B1%29%7D%3C%2Fsup%3E+%3D+%5Crho+X%3Csup%3E%7B%28t%29%7D%2B%5Cepsilon_t%3C%2Fsup%3E+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_t+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+>で定義されるマルコフ連鎖において，系列<img src=http://chart.apis.google.com/chart?cht=tx&chl=%7BX%3Csup%3E%7B%28t%29%7D%7D%3C%2Fsup%3E+>の定常分布は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%280%2C+%5Cfrac%7B%5Csigma%3Csup%3E2%7D%7B1-%5Crho%3Csup%3E2%7D%29>で表される．</sup></sup></p>
+
+<p>詳しくは<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">MCMC-UseR.pdf</a>のP.130を参照．この問題はいわゆるAR(1)というもの．</p>
+
+<p>```r
+rho &lt;- 0.9
+x &lt;- rnorm(1)
+for(t in 2:10<sup>4){</sup>
+  x[t] &lt;- x[t-1]*rho + rnorm(1)
+}</p>
+
+<p>hist(x, nclass=150, freq=F)
+curve(dnorm(x, mean=0, sd=(1/sqrt(1-rho<sup>2))),</sup> add=T, col="red")
+```</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6_1.png" alt="" /></p>
+
+<h3>練習問題 6.2</h3>
+
+<p>ランダム・ウォーク<img src=http://chart.apis.google.com/chart?cht=tx&chl=X%3Csup%3E%7B%28t%2B1%29%7D%3DX%3Csup%3E%7B%28t%29%7D%2B%5Cepsilon_t%3C%2Fsup%3E%3C%2Fsup%3E+>が定常分布を持たないことを実験的に確かめる．</p>
+
+<p>この問題は練習問題6.1における<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Crho+%3D+1>の場合と同じになるので，上で書いたコードのパラメータを変更するだけで再現できる．ただ，今回は別の書き方としてcumsum()関数を用いてランダム・ウォークの系列を計算している．</p>
+
+<p>```r
+init &lt;- 0
+x1 &lt;- cumsum(rnorm(10<sup>4-1))</sup>
+x2 &lt;- cumsum(rnorm(10<sup>6-1))</sup></p>
+
+<p>par(mfrow=c(2,2))
+hist(x1, nclass=150, main="t=10<sup>4")</sup>
+plot(1:10<sup>4,</sup> c(init,x1), type="l", xlab="t", main="t=10<sup>4")</sup>
+hist(x2, nclass=150, main="t=10<sup>6")</sup>
+plot(1:10<sup>6,</sup> c(init,x2), type="l", xlab="t", main="t=10<sup>6")</sup>
+```</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6_2.png" alt="" /></p>
+
+<p>試行回数を<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%3Csup%3E4%3C%2Fsup%3E+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%3Csup%3E6%3C%2Fsup%3E+>としてランダム・ウォークを実行した結果が上図である．左図に系列のヒストグラム，右図に試行回数を横軸に取った系列をプロットしている．上のように図示すると，たとえ10<sup>6</sup> 回試行したとしても何らかの分布に収束しないことがわかる．</p>
+
+<h3>雑感</h3>
+
+<p>練習問題 6.1と練習問題6.2を比較すると，ランダム・ウォークにおいて先行する状態に<img src=http://chart.apis.google.com/chart?cht=tx&chl=0+%5Cleq+%5Crho+%26lt%3B+1+>のような値を掛け合わせるだけで定常分布を取るというのは，なんとも面白い結果となっている．</p>
+
+<h3>補足：<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">MCMC-UseR.pdf</a>のP.132</h3>
+
+<ul>
+<li>練習問題の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Crho+>と以下図の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+>は同じ</li>
+<li>pdfにも書いてあるがスケール（x軸とy軸の描写範囲）に注意．いかに<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+>が効いているかがわかる</li>
+<li>左上はマルコフ連鎖ではない</li>
+</ul>
+
+
+<p>```r
+par(mfrow=c(2,2))
+for(rho in c(0, 0.4, 0.8, 0.95)){
+  x &lt;- rnorm(1)
+  y &lt;- rnorm(1)
+  for(t in 2:1000){</p>
+
+<pre><code>x[t] &lt;- x[t-1]*rho + rnorm(1)
+y[t] &lt;- y[t-1]*rho + rnorm(1)
+</code></pre>
+
+<p>  }
+  plot(x,y, type="l", main=paste("theta=",rho))
+}
+```</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6_extra.png" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その1]]></title>
@@ -584,121 +671,6 @@ legend(1.1, 3.0, c("glm","glmmML"), col=c(1:2), lwd=2)
 <li><a href="http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/26401/1/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%85%8B%E5%AD%A656-2.pdf">http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/26401/1/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%85%8B%E5%AD%A656-2.pdf</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 確率的探索]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/01/imcmr-5-2/"/>
-    <updated>2012-11-01T02:18:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/01/imcmr-5-2</id>
-    <content type="html"><![CDATA[<ul>
-<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>例 5.3 確率的探索を使って，一様分布からのシミュレーションにより関数の最大値を求める</h3>
-
-<p><a href="http://yagays.github.com/blog/2012/10/25/imcmr-3-1/">例 3.3</a>で積分を考えた関数<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%29+%3D+%5B%5Ccos%2850x%29+%2B+%5Csin%2820x%29+%5D%3Csup%3E2%3C%2Fsup%3E+>について，今度はその最大値について考える．</p>
-
-<p>今回の実験は1000回シミュレーションを行う．それぞれのシミュレーションには，まず一様乱数<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BU%7D%3Cem%3E%7B%5B0%2C1%5D%7D+%3D+u_1%2C+%5Cldots+%2C+u_m+>を1000個作成し，それぞれに関数を掛けた値の中から最大値<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%3C%2Fem%3E%7Bm%7D%3Csup%3E%7B%2A%7D%3C%2Fsup%3E+%3D+%5Cmax%28h%28u_1%29%2C+%5Cldots+%2Ch%28u_m%29%29+>を求める．</p>
-
-<p>確率的探索といっても，今回の場合にやっていることは結局のところ定義域内で乱数を発生させて関数の値が大きいところを探しているだけとなる．今回は一様乱数で定義域内をまんべんなく探すという方法を取っているが，この後の確率的探索の例では「密度」を考えて，関数の値が大きい領域でのシミュレーションの確率を高くし，その他の関数の値の小さい領域での確率を小さくするという方法が取られる．</p>
-
-<h4>今回のシミュレーションの仕組み</h4>
-
-<p>今回のコードは少しややこしいので，まずは試しにシミュレーションを1回だけ行なってみよう．今回は推定値がどのように更新されていくかを見るために，単純にmax()関数を使うのではなく，cummax()関数を使用している．これにより，ベクトルの前から順に値を見ていって，最大値を更新していく様子を見ることができる．以下の図の黒の線が推定値<img src=http://chart.apis.google.com/chart?cht=tx&chl=h_%7Bm%7D%3Csup%3E%7B%2A%7D%3C%2Fsup%3E+>，赤の線がoptimize()関数で求めた定義域内における関数<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%29+>の最大値を示している．</p>
-
-<p><code>r
-h &lt;- function(x){(cos(50*x) + sin(20*x))^2}
-plot(cummax(h(runif(10^3))),type="l")
-abline(h=optimize(h,int=c(0,1), maximum=T)$ob,col="red")
-</code></p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-3_3.png" alt="" /></p>
-
-<h4>実際に例5.3のシミュレーションを行う</h4>
-
-<p>では実際に1000回のシミュレーションを行なって，推定値がどのように更新されていくのか，そしてその値がどれほどバラけるのかを見ていく．</p>
-
-<p>以下の図が今回の結果となっている．まず，本書に載っている左図ではなく，右の赤い線が重なった図から説明する．この図は1000回シミュレーションした中から10回だけ抜き出してプロットしたものとなっている．これを見ると，最初のうちは0に近いような値から始まっていたりと値が安定しないものの，200回もすると実際の値と殆ど変わらないような推定値になり落ち着いているのがわかる．このように，値がきちんと実際の値に近づくかどうかを見るために，各イテレーションごとの最小値を求めてプロットしたのが左図となっている．灰色の部分は，イテレーションごとの推定値の幅を示しており，これを見ると，800回程度実験すれば一応どのシミュレーションでも実際の値と推定値がほぼ同じになることが分かる．</p>
-
-<p>```r
-h &lt;- function(x){(cos(50<em>x) + sin(20</em>x))<sup>2}</sup>
-rangom &lt;- h(matrix(runif(10<sup>6),</sup> ncol=10<sup>3))</sup>
-monitor &lt;- t(apply(rangom, 1, cummax))</p>
-
-<p>par(mfrow=c(1,2))
-plot(monitor[1,], type="l", col="white", ylim=c(0, optimize(h,int=c(0,1), maximum=T)$ob),</p>
-
-<pre><code> xlab="Iterations", ylab="h(theta)") # 描写する領域をplotしているだけ
-</code></pre>
-
-<p>par(new=T)
-polygon(c(1:10<sup>3,</sup> 10<sup>3:1),</sup> c(apply(monitor,2,max), rev(apply(monitor, 2, min))), col="gray")
-abline(h=optimize(h, int=c(0,1), maximum=T)$ob)</p>
-
-<p>plot(monitor[1,],type="l",col="red", ylim=c(0,optimize(h, int=c(0,1), maximum=T)$ob),</p>
-
-<pre><code> xlab="Iterations", ylab="h(theta)")
-</code></pre>
-
-<p>for(i in 2:10){
-  lines(monitor[i,],col="red")
-}
-```</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-3_1.png" alt="" /></p>
-
-<h3>練習問題 5.3 一様分布を用いたシミュレーションのパフォーマンスを向上させるために使用する定義域における制約を可視化する</h3>
-
-<p>まず最初に注意．この問題は解けないわけではないが，厳密には間違っているらしい．訂正は<a href="http://www.ceremade.dauphine.fr/~xian/shortManual.pdf">解答</a>(pdf)に書かれているが，つまりは定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>の制約は，</p>
-
-<blockquote><p><img src=http://chart.apis.google.com/chart?cht=tx&chl=x%3Csup%3E2%281%2B%5Csin%283y%29%5Ccos%288x%29%29%3C%2Fsup%3E+%2B+y%3Csup%3E2%282%2B%5Ccos%285x%29%5Ccos%288y%29%29%3C%2Fsup%3E+%5Cleq+1+></p></blockquote>
-
-<p>ではなく，</p>
-
-<blockquote><p> <img src=http://chart.apis.google.com/chart?cht=tx&chl=x%3Csup%3E2%281%2B%5Csin%28%5Cfrac%7B3%7D%7By%7D%29%5Ccos%288x%29%29%3C%2Fsup%3E+%2B+y%3Csup%3E2%282%2B%5Ccos%285x%29%5Ccos%288y%29%29%3C%2Fsup%3E+%5Cleq+1+></p></blockquote>
-
-<p>としなければいけないようだ．今回はどちらの式も試してみて，本に書かれている式の何がおかしかったのを見てみる．</p>
-
-<p>まず，左図は解答に記載されている修正後の式を使った場合，右図は本書に載っているオリジナルの式を使った場合となっている．これを見ると，左図では黒の円の中に式で表された制約の定義域が収まっているのに対し，右図では黒の円から一部制約の定義域がはみ出ているように見える．</p>
-
-<p>```r
-theta=runif(10<sup>5)<em>2</em>pi</sup>
-rho &lt;- runif(10<sup>5)</sup>
-xunif &lt;- rho<em>cos(theta)/.77
-yunif &lt;- rho</em>sin(theta)</p>
-
-<p>par(mfrow=c(1,2))
-plot(xunif, yunif, pch=19, cex=.4, xlab="x", ylab="y")
-const &lt;- (xunif<sup>2<em>(1+sin(yunif/3)</em>cos(xunif*8))+</sup>
-  yunif<sup>2<em>(2+cos(5</em>xunif)<em>cos(8</em>yunif))&lt;1)</sup>
-points(xunif[const], yunif[const], col="cornsilk2", pch=19,cex=.4)</p>
-
-<p>plot(xunif, yunif, pch=19, cex=.4, xlab="x", ylab="y")
-const2 &lt;- (xunif<sup>2<em>(1+sin(yunif</em>3)<em>cos(xunif</em>8))+</sup>
-  yunif<sup>2<em>(2+cos(5</em>xunif)<em>cos(8</em>yunif))&lt;1)</sup>
-points(xunif[const2], yunif[const2], col="red", pch=19, cex=.4)
-```</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-3_2.png" alt="" /></p>
-
-<p>また，この方法のパフォーマンスを測定するために，棄却された点の平均数で評価してみる．生成した乱数の総数が10<sup>5</sup> 個なので，74%は受理され，26%が棄却されたことがわかる．</p>
-
-<p>```r
-summary(const)</p>
-
-<h1>Mode   FALSE    TRUE    NA's</h1>
-
-<h1>logical   26285   73715       0</h1>
-
-<p>```</p>
-
-<p>それにしても，この図に何とも言えない可愛らしさを感じる，宇宙の侵略者を撃ち落とす某ゲームで見たことがあるような…．</p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: imcmr | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/imcmr/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-21T21:06:43+09:00</updated>
+  <updated>2012-11-22T12:24:50+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,93 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：6章 マルコフ連鎖とランダム・ウォーク]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/22/imcmr-6-2/"/>
+    <updated>2012-11-22T12:14:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/22/imcmr-6-2</id>
+    <content type="html"><![CDATA[<ul>
+<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>練習問題 6.1</h3>
+
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=X%3Csup%3E%7B%28t%2B1%29%7D%3C%2Fsup%3E+%3D+%5Crho+X%3Csup%3E%7B%28t%29%7D%2B%5Cepsilon_t%3C%2Fsup%3E+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_t+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+>で定義されるマルコフ連鎖において，系列<img src=http://chart.apis.google.com/chart?cht=tx&chl=%7BX%3Csup%3E%7B%28t%29%7D%7D%3C%2Fsup%3E+>の定常分布は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%280%2C+%5Cfrac%7B%5Csigma%3Csup%3E2%7D%7B1-%5Crho%3Csup%3E2%7D%29>で表される．</sup></sup></p>
+
+<p>詳しくは<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">MCMC-UseR.pdf</a>のP.130を参照．この問題はいわゆるAR(1)というもの．</p>
+
+<p>```r
+rho &lt;- 0.9
+x &lt;- rnorm(1)
+for(t in 2:10<sup>4){</sup>
+  x[t] &lt;- x[t-1]*rho + rnorm(1)
+}</p>
+
+<p>hist(x, nclass=150, freq=F)
+curve(dnorm(x, mean=0, sd=(1/sqrt(1-rho<sup>2))),</sup> add=T, col="red")
+```</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6_1.png" alt="" /></p>
+
+<h3>練習問題 6.2</h3>
+
+<p>ランダム・ウォーク<img src=http://chart.apis.google.com/chart?cht=tx&chl=X%3Csup%3E%7B%28t%2B1%29%7D%3DX%3Csup%3E%7B%28t%29%7D%2B%5Cepsilon_t%3C%2Fsup%3E%3C%2Fsup%3E+>が定常分布を持たないことを実験的に確かめる．</p>
+
+<p>この問題は練習問題6.1における<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Crho+%3D+1>の場合と同じになるので，上で書いたコードのパラメータを変更するだけで再現できる．ただ，今回は別の書き方としてcumsum()関数を用いてランダム・ウォークの系列を計算している．</p>
+
+<p>```r
+init &lt;- 0
+x1 &lt;- cumsum(rnorm(10<sup>4-1))</sup>
+x2 &lt;- cumsum(rnorm(10<sup>6-1))</sup></p>
+
+<p>par(mfrow=c(2,2))
+hist(x1, nclass=150, main="t=10<sup>4")</sup>
+plot(1:10<sup>4,</sup> c(init,x1), type="l", xlab="t", main="t=10<sup>4")</sup>
+hist(x2, nclass=150, main="t=10<sup>6")</sup>
+plot(1:10<sup>6,</sup> c(init,x2), type="l", xlab="t", main="t=10<sup>6")</sup>
+```</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6_2.png" alt="" /></p>
+
+<p>試行回数を<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%3Csup%3E4%3C%2Fsup%3E+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%3Csup%3E6%3C%2Fsup%3E+>としてランダム・ウォークを実行した結果が上図である．左図に系列のヒストグラム，右図に試行回数を横軸に取った系列をプロットしている．上のように図示すると，たとえ10<sup>6</sup> 回試行したとしても何らかの分布に収束しないことがわかる．</p>
+
+<h3>雑感</h3>
+
+<p>練習問題 6.1と練習問題6.2を比較すると，ランダム・ウォークにおいて先行する状態に<img src=http://chart.apis.google.com/chart?cht=tx&chl=0+%5Cleq+%5Crho+%26lt%3B+1+>のような値を掛け合わせるだけで定常分布を取るというのは，なんとも面白い結果となっている．</p>
+
+<h3>補足：<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">MCMC-UseR.pdf</a>のP.132</h3>
+
+<ul>
+<li>練習問題の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Crho+>と以下図の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+>は同じ</li>
+<li>pdfにも書いてあるがスケール（x軸とy軸の描写範囲）に注意．いかに<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+>が効いているかがわかる</li>
+<li>左上はマルコフ連鎖ではない</li>
+</ul>
+
+
+<p>```r
+par(mfrow=c(2,2))
+for(rho in c(0, 0.4, 0.8, 0.95)){
+  x &lt;- rnorm(1)
+  y &lt;- rnorm(1)
+  for(t in 2:1000){</p>
+
+<pre><code>x[t] &lt;- x[t-1]*rho + rnorm(1)
+y[t] &lt;- y[t-1]*rho + rnorm(1)
+</code></pre>
+
+<p>  }
+  plot(x,y, type="l", main=paste("theta=",rho))
+}
+```</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6_extra.png" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その1]]></title>
@@ -601,203 +688,6 @@ summary(const)</p>
 <p>```</p>
 
 <p>それにしても，この図に何とも言えない可愛らしさを感じる，宇宙の侵略者を撃ち落とす某ゲームで見たことがあるような…．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 数値的最適化法]]></title>
-    <link href="http://yagays.github.com/blog/2012/10/30/imcmr-5-1/"/>
-    <updated>2012-10-30T15:54:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/10/30/imcmr-5-1</id>
-    <content type="html"><![CDATA[<ul>
-<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>本章の概要</h3>
-
-<p>乱数を使って最適化問題を解くには2つの方法がある．</p>
-
-<ul>
-<li>確率的探索を用いて関数の最大値を探す（本章前半）</li>
-<li>シミュレーションを使って最適化する関数を近似する（本章後半，5.4以降）</li>
-</ul>
-
-
-<h3>内容：モンテカルロ最適化で関数の最大値を求める</h3>
-
-<h4>最適化問題には2種類ある</h4>
-
-<p>最適化問題には大きくわけて2種類存在する．</p>
-
-<ul>
-<li>定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>で関数<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28%5Ctheta%29>の極値を求める</li>
-<li>定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>で陰的方程式<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28%5Ctheta%29+%3D+0+>の解を求める</li>
-</ul>
-
-
-<p>問題設定はそれぞれ違うのだが，今回は最大化問題だけを取り上げる．つまり，以下の式のように定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>で一番大きな値を求めたい．</p>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=max_%7B%5Ctheta+%5Cin+%5CTheta%7D%3Dh%28%5Ctheta%29></p>
-
-<h4>解き方にも2種類ある</h4>
-
-<ul>
-<li>数値的手法（5.2 数値的最適化法）
-
-<ul>
-<li>目標関数の特性に強く依存する</li>
-</ul>
-</li>
-<li>確率的手法（5.3 確率的探索）</li>
-</ul>
-
-
-<p>さて，ある関数のある定義域内における最大値を求めようと思った場合にじゃあどうするかというと，定義域内の値を片っ端から入れていって大きいものを探すといったアプローチと，別の分布をシミュレーションしてそこから最大値が現れるまでシミュレーションし続けるという方法の2通りがあるということになる．ここで重要になるポイントが定義域で，3章のモンテカルロ積分において積分する範囲を決めていたように，5章モンテカルロ最適化においても定義域内で最大値を探すということに繋がる．ただし，モンテカルロ積分よりもモンテカルロ最適化のほうが，全体の平均を求めるよりもピンポイントで値の大きい極値を求めるという点で，一般的に難しい．</p>
-
-<h3>例 5.1 コーシー分布から得られたサンプルの尤度を最大化する</h3>
-
-<h4>左の図</h4>
-
-<p>何かしらのコーシー分布から生成された乱数<img src=http://chart.apis.google.com/chart?cht=tx&chl=%7Bx_1%2C+%5Cdots+%2Cx_n%7D>が与えられた時に，それを生成したコーシー分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BC%7D%28%5Ctheta%2C1%29+>の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+>を最尤法で推定しようという問題．尤度は以下の式で表される</p>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Cprod_%7Bi%3D1%7D%3Csup%3E%7Bn%7D%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%3Csup%3E2%7D%3C%2Fsup%3E%3C%2Fsup%3E+></p>
-
-<p>実際に計算するときには以下の対数尤度を使う．</p>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clog+l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Csum_%7Bi%3D1%7D%3Csup%3E%7Bn%7D%3C%2Fsup%3E+%5Clog+%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%3Csup%3E2%7D%3C%2Fsup%3E+></p>
-
-<p>今回は実験として，上の尤度と対数尤度の2パターンで計算したときに，どういう違いが現れるかを示す．数式上は違いはないが，計算機上では値の取り扱いにおいて違いが出てくる．</p>
-
-<p>```r
-xm &lt;- rcauchy(500)
-loglik &lt;- function(y){-sum(log(1+(x-y)<sup>2))}</sup>
-lik &lt;- function(y){prod(1/(1+(x-y)<sup>2))}</sup></p>
-
-<p>mi &lt;- numeric(500)
-mi2 &lt;- numeric(500)
-for(i in 1:500){
-  x &lt;- xm[1:i]
-  mi[i] &lt;- optimize(loglik, interval=c(-10,10), maximum=T)$max
-  mi2[i] &lt;- optimize(lik, interval=c(-10,10),maximum=T)$max
-}</p>
-
-<p>plot(mi, type="l", ylim=c(-5, 10), ylab="theta", xlab="sample size")
-par(new=T)
-plot(mi2, type="l", ylim=c(-5,10),col="red", ylab="theta", xlab="sample size")
-```</p>
-
-<p>尤度で計算した(赤)と対数尤度で計算した計算(黒)を以下のプロットの左側の図に示してある．これをみると，対数尤度で計算した場合では着実に推定値が収束していくのに対し，尤度で計算した場合ではある地点で値が発散してるのがわかる．これは，Rのoptimizeにおいて，尤度を直接観察すると値が発散することがあるからである．このように，確率を扱う場合には，値が非常に小さくなることに注意しなければならない．</p>
-
-<h4>右の図</h4>
-
-<p>次に，上記の尤度を，摂動が加えられた尤度に置き換える．これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=-%5B%5Csin%28100y%29%5D%3Csup%3E2%3C%2Fsup%3E+>という0から1の間の値を取るノイズを加えている．</p>
-
-<p>```r
-perturbedloglik &lt;- function(y){-sin(y<em>100)<sup>2</sup> - sum(log(1+(x-y)<sup>2))}</sup>
-perturbedlik &lt;- function(y){-sin(y</em>100)<sup>2</sup> + prod(1/(1+(x-y)<sup>2))}</sup>
-mi &lt;- numeric(500)
-mi2 &lt;- numeric(500)
-for(i in 1:500){
-  x &lt;- xm[1:i]
-  mi[i] &lt;- optimize(perturbedloglik, interval=c(-10,10), maximum=T)$max
-  mi2[i] &lt;- optimize(perturbedlik, interval=c(-10,10),maximum=T)$max
-}</p>
-
-<p>plot(mi, type="l", ylim=c(-5, 10), ylab="theta", xlab="sample size")
-par(new=T)
-plot(mi2, type="l", ylim=c(-5,10),col="red", ylab="theta", xlab="sample size")</p>
-
-<p>```</p>
-
-<p>これをみると，尤度に関しては左図で示したように発散してしまっている．対数尤度を見てみると，左図と比べて値がばらつきグラフがギザギザになっている．当然だが，ノイズを加えれば値がばらついてしまう．</p>
-
-<p>(個人的な感想)右図は何が言いたいのかちょっと分からない．ここの解釈は本書では出てこないと思うのだが，尤度関数に何らかの関数が加わる状況といえば，最小二乗法などにおける正則化項を加えて過学習を押さえる場合だろうか？　正則化項は摂動というよりかは，lassoやridgeのように1次/2次の関数になるので，今回の場合みたいにノイズのようにはならないと思うのだが…．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-1.png" alt="" /></p>
-
-<h3>例 5.2 Newton-Raphson法を用いて混合正規分布モデルから得られたサンプルの尤度を最大化する</h3>
-
-<p>今回の混合正規モデルでは，</p>
-
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_1%2C1%29%2B%5Cfrac%7B3%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_2%2C1%29+></p>
-
-<p>を考える．まずは分布の形を調べるために，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_1+%3D+0+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_2+%3D+2.5+>における対数尤度の分布を示してみる．そして，初期値(1,1)からスタートして，Newton-Raphson法がどのように推定値に収束していくかを図示する．</p>
-
-<p>```r
-da &lt;- sample(c(rnorm(10<sup>2),</sup> 2.5+rnorm(3<em>10<sup>2)))</sup>
-like &lt;- function(mu){ -sum(log((0.25</em>dnorm(da-mu[1]) + 0.75*dnorm(da-mu[2])))) }</p>
-
-<p>mu1 &lt;- seq(-2, 5, le=250)
-mu2 &lt;- seq(-2, 5, le=250)
-lli=matrix(0,nco=250,nro=250)
-for (i in 1:250){
-  for (j in 1:250){</p>
-
-<pre><code>lli[i,j] &lt;- like(c(mu1[i],mu2[j]))
-</code></pre>
-
-<p>  }
-}
-image(mu1, mu2, -lli)
-contour(mu1, mu2, -lli,nlevels=100, add=T)</p>
-
-<p>sta &lt;- c(1,1)
-mmu &lt;- sta
-for(i in 1:(nlm(like, sta)$it)){
-  mmu &lt;- rbind(mmu, nlm(like, sta, iterlim=i)$est)
-}
-lines(mmu, pch=19, lwd=2)
-```</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-2_1.png" alt="" /></p>
-
-<h4>アニメーションにしてみる</h4>
-
-<p>例が1つだけでは面白くないので，初期値をバラバラに選んで何回もシミュレーションしてみて，初期値からどのように推定値が更新されていくのかを見てみる．今回は，初期値として<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_1+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_2+>ともに図に表されている-2から5の範囲内でランダムに値を取るようにして，そこからのNewton-Raphson法による推定値の変化を1ステップごとにアニメーションとして作成した．それを25パターン作成して繋げている．</p>
-
-<p>```r
-library(animation)</p>
-
-<p>mixtureloglik &lt;- function(Niter){
-  for(n in 1:Niter){</p>
-
-<pre><code>sta &lt;- c(runif(1,2-2,5),runif(1,-2,5))
-mmu &lt;- sta
-da &lt;- sample(c(rnorm(10^2), 2.5+rnorm(3*10^2)))
-for(i in 1:(nlm(like, sta)$it)){
-  mmu &lt;- rbind(mmu, nlm(like, sta, iterlim=i)$est)
-}
-for(j in 1:nrow(mmu)){
-  image(mu1, mu2, -lli, main=paste("Iter:",n))
-  contour(mu1, mu2, -lli,nlevels=100, add=T)
-  lines(mmu[1:j,1],mmu[1:j,2], pch=19, lwd=2)
-}
-</code></pre>
-
-<p>  }
-}</p>
-
-<p>saveMovie(mixtureloglik(25), interval=0.05, moviename="",</p>
-
-<pre><code>      movietype="gif", outdir=getwd(),
-      width=640, height=480)
-</code></pre>
-
-<p>```</p>
-
-<p>Rのanimationというパッケージを使用して作成している．このパッケージでは標準でmpgも出力できるらしいのだが，今回上手くいかなかったので，gifアニメとして出力したのちにImagemagickとffmpegを使用してmpgの動画として出力した．gifアニメは思いの外重いので，今回はYoutubeにアップロードした．</p>
-
-<p><code>bash
-$ convert animation.gif Rplot%d.png
-$ ffmpeg -f image2 -i Rplot%d.png animation.mpg
-</code></p>
-
-<iframe width="420" height="315" src="http://www.youtube.com/embed/ZbppoIltz3E" frameborder="0" allowfullscreen></iframe>
-
 ]]></content>
   </entry>
   
