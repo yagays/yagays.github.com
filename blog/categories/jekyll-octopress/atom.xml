@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Jekyll/Octopress | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/jekyll-octopress/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-23T18:20:27+09:00</updated>
+  <updated>2012-11-23T22:28:13+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -180,7 +180,7 @@ Wolfeyes Bioinformatics beta by yag_ays
 <p>```</p>
 
 <p><code>
-<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7D+%5Cexp%28%5Cfrac%7B-%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%29+>
+![\frac{1}{\sqrt{2\pi}\sigma} \exp(\frac{-(x-\mu)^2}{2\sigma^2}) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7D+%5Cexp%28%5Cfrac%7B-%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%29+)
 </code></p>
 
 <p>また，文字の途中に埋め込むことも可能です．</p>
@@ -191,7 +191,7 @@ Wolfeyes Bioinformatics beta by yag_ays
 <p>```</p>
 
 <p><code>
-これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%28x%7C%5Cmu%2C%5Csigma%29+>です．
+これは![\mathcal{N}(x|\mu,\sigma) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%28x%7C%5Cmu%2C%5Csigma%29+)です．
 </code></p>
 
 <h3>注意</h3>
@@ -203,7 +203,7 @@ Wolfeyes Bioinformatics beta by yag_ays
 </code></p>
 
 <p><code>
-<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%5C%5C+y+%5C%5C+z+>
+![x \\ y \\ z ](http://chart.apis.google.com/chart?cht=tx&chl=x+%5C%5C+y+%5C%5C+z+)
 </code></p>
 
 <p>TeX内で改行を表すことはできますが，</p>

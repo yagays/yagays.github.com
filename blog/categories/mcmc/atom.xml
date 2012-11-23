@@ -4,7 +4,7 @@
   <title><![CDATA[Category: MCMC | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/mcmc/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-23T18:20:27+09:00</updated>
+  <updated>2012-11-23T22:28:13+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -163,21 +163,21 @@ if(runif(1) &lt; r){
 
 <h3>問題</h3>
 
-<p>ガンベル分布（二重指数分布）からの乱数生成を考える．今回はガンベル分布からの直接的な乱数生成ができないとしたうえで，MHによる乱数生成を行う．ガンベル分布は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B2b%7D%5Cexp%28%5Cfrac%7B-%7Cx-%5Cmu%7C%7D%7Bb%7D%29+>で表され，今回は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu%3D0+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=b%3D+3+>の分布を考える．なお，ガンベル分布の平均と分散は解析的に得られ，それぞれ<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=2b%3Csup%3E2%3C%2Fsup%3E+>である．</p>
+<p>ガンベル分布（二重指数分布）からの乱数生成を考える．今回はガンベル分布からの直接的な乱数生成ができないとしたうえで，MHによる乱数生成を行う．ガンベル分布は![\frac{1}{2b}\exp(\frac{-|x-\mu|}{b}) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B2b%7D%5Cexp%28%5Cfrac%7B-%7Cx-%5Cmu%7C%7D%7Bb%7D%29+)で表され，今回は![\mu=0 ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu%3D0+)，![b= 3 ](http://chart.apis.google.com/chart?cht=tx&chl=b%3D+3+)の分布を考える．なお，ガンベル分布の平均と分散は解析的に得られ，それぞれ![\mu ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu+)と![2b<sup>2</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=2b%3Csup%3E2%3C%2Fsup%3E+)である．</p>
 
 <h3>実験条件</h3>
 
-<p>今回は，MHの中でも酔歩過程/ランダムウォーク（Random walk）と独立連鎖（Independent chain）の2種類の方法を試す．それぞれのMHにおける推移カーネル<img src=http://chart.apis.google.com/chart?cht=tx&chl=K+>は</p>
+<p>今回は，MHの中でも酔歩過程/ランダムウォーク（Random walk）と独立連鎖（Independent chain）の2種類の方法を試す．それぞれのMHにおける推移カーネル![K ](http://chart.apis.google.com/chart?cht=tx&chl=K+)は</p>
 
 <ul>
-<li>酔歩過程：<img src=http://chart.apis.google.com/chart?cht=tx&chl=K%28x%3Csup%3E%7B%28t%29%7D%2Cx%3Csup%3E%7B%28t%2B1%29%7D%29%3C%2Fsup%3E%3C%2Fsup%3E+%3D+%5Cmathcal%7BN%7D%28x%3Csup%3E%7B%28t%29%7D%2Cc_%7Bran%7D%3Csup%3E2%29%3C%2Fsup%3E%3C%2Fsup%3E+></li>
-<li>独立連鎖：<img src=http://chart.apis.google.com/chart?cht=tx&chl=K%28x%3Csup%3E%7B%28t%29%7D%2Cx%3Csup%3E%7B%28t%2B1%29%7D%29%3C%2Fsup%3E%3C%2Fsup%3E+%3D+%5Cmathcal%7BN%7D%280%2Cc_%7Bind%7D%3Csup%3E2%29%3C%2Fsup%3E+></li>
+<li>酔歩過程：![K(x<sup>{(t)},x<sup>{(t+1)})</sup></sup> = \mathcal{N}(x<sup>{(t)},c_{ran}<sup>2)</sup></sup> ](http://chart.apis.google.com/chart?cht=tx&chl=K%28x%3Csup%3E%7B%28t%29%7D%2Cx%3Csup%3E%7B%28t%2B1%29%7D%29%3C%2Fsup%3E%3C%2Fsup%3E+%3D+%5Cmathcal%7BN%7D%28x%3Csup%3E%7B%28t%29%7D%2Cc_%7Bran%7D%3Csup%3E2%29%3C%2Fsup%3E%3C%2Fsup%3E+)</li>
+<li>独立連鎖：![K(x<sup>{(t)},x<sup>{(t+1)})</sup></sup> = \mathcal{N}(0,c_{ind}<sup>2)</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=K%28x%3Csup%3E%7B%28t%29%7D%2Cx%3Csup%3E%7B%28t%2B1%29%7D%29%3C%2Fsup%3E%3C%2Fsup%3E+%3D+%5Cmathcal%7BN%7D%280%2Cc_%7Bind%7D%3Csup%3E2%29%3C%2Fsup%3E+)</li>
 </ul>
 
 
-<p>となる．ここで，<img src=http://chart.apis.google.com/chart?cht=tx&chl=c%3Cem%3E%7Bran%7D%3Csup%3E2%3C%2Fsup%3E+>および<img src=http://chart.apis.google.com/chart?cht=tx&chl=c%3C%2Fem%3E%7Bind%7D%3Csup%3E2%3C%2Fsup%3E+>は調整母数/チューニングパラメータであり，今回はそれぞれ<strong>{0.25, 1, 5, 15, 150}</strong>の5パターンで実験を行った．</p>
+<p>となる．ここで，![c<em>{ran}<sup>2</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=c%3Cem%3E%7Bran%7D%3Csup%3E2%3C%2Fsup%3E+)および![c</em>{ind}<sup>2</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=c%3C%2Fem%3E%7Bind%7D%3Csup%3E2%3C%2Fsup%3E+)は調整母数/チューニングパラメータであり，今回はそれぞれ<strong>{0.25, 1, 5, 15, 150}</strong>の5パターンで実験を行った．</p>
 
-<p>また，生成した乱数の系列において，系列初期の<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D1%5Cdots+1000+>までの結果は初期値に依存した値となっているため，今回は結果として用いていない．</p>
+<p>また，生成した乱数の系列において，系列初期の![t=1\dots 1000 ](http://chart.apis.google.com/chart?cht=tx&chl=t%3D1%5Cdots+1000+)までの結果は初期値に依存した値となっているため，今回は結果として用いていない．</p>
 
 <h3>結果：以下の図の見方</h3>
 
@@ -209,23 +209,23 @@ x[t] &lt;- x[t-1] + z*(runif(1)&lt;alpha[t-1])
 }
 ```</p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D0.25%3C%2Fsup%3E+>の場合</h4>
+<h4>![c_{ran}<sup>2=0.25</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D0.25%3C%2Fsup%3E+)の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_1.png" alt="" /></p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D1%3C%2Fsup%3E+>の場合</h4>
+<h4>![c_{ran}<sup>2=1</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D1%3C%2Fsup%3E+)の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_2.png" alt="" /></p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D5%3C%2Fsup%3E+>の場合</h4>
+<h4>![c_{ran}<sup>2=5</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D5%3C%2Fsup%3E+)の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_3.png" alt="" /></p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D15%3C%2Fsup%3E+>の場合</h4>
+<h4>![c_{ran}<sup>2=15</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D15%3C%2Fsup%3E+)の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_4.png" alt="" /></p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D150%3C%2Fsup%3E+>の場合</h4>
+<h4>![c_{ran}<sup>2=150</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D150%3C%2Fsup%3E+)の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_5.png" alt="" /></p>
 
@@ -264,23 +264,23 @@ if(runif(1)&lt;alpha[t-1]){
 
 <p>```</p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%3Csup%3E2%3D0.25%3C%2Fsup%3E+>の場合</h4>
+<h4>![c_{ind}<sup>2=0.25</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%3Csup%3E2%3D0.25%3C%2Fsup%3E+)の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_1.png" alt="" /></p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%3Csup%3E2%3D1%3C%2Fsup%3E+>の場合</h4>
+<h4>![c_{ind}<sup>2=1</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%3Csup%3E2%3D1%3C%2Fsup%3E+)の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_2.png" alt="" /></p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%3Csup%3E2%3D5%3C%2Fsup%3E+>の場合</h4>
+<h4>![c_{ind}<sup>2=5</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%3Csup%3E2%3D5%3C%2Fsup%3E+)の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_3.png" alt="" /></p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%3Csup%3E2%3D15%3C%2Fsup%3E+>の場合</h4>
+<h4>![c_{ind}<sup>2=15</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%3Csup%3E2%3D15%3C%2Fsup%3E+)の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_4.png" alt="" /></p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%3Csup%3E2%3D150%3C%2Fsup%3E+>の場合</h4>
+<h4>![c_{ind}<sup>2=150</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%3Csup%3E2%3D150%3C%2Fsup%3E+)の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_5.png" alt="" /></p>
 
@@ -288,7 +288,7 @@ if(runif(1)&lt;alpha[t-1]){
 
 <p>さて，このように色々とプロットしてみたわけだが，酔歩過程の場合も独立連鎖の場合もチューニングパラメータの値が0.25や150といった非常に小さい/大きい場合においては，乱数の分布や収束速度などに問題があることがわかる．</p>
 
-<p>酔歩過程においては，マルコフ連鎖の候補点の生成は少しずつ値を移動させていくという点で，分布の表面をなぞる形となる．そのため，チューニングパラメータの値である分散が小さい場合では候補点の移動範囲が狭いため，分布全体を探索するのに非常に時間がかかる．<img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D0.25%3C%2Fsup%3E+>の図を見ると，系列のプロットではあまり大幅な移動（縦のぶれ）が少なく，生成した乱数の分布もかなりいびつである．また，値があまり変動しないという点で，自己相関係数も非常に大きな値を取っていることがわかる．一方チューニングパラメータの値が大きい場合においては，採択率が非常に小さな値を取り，系列のプロットからも値の変動しない部分が他と比べて多い．</p>
+<p>酔歩過程においては，マルコフ連鎖の候補点の生成は少しずつ値を移動させていくという点で，分布の表面をなぞる形となる．そのため，チューニングパラメータの値である分散が小さい場合では候補点の移動範囲が狭いため，分布全体を探索するのに非常に時間がかかる．![c_{ran}<sup>2=0.25</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%3Csup%3E2%3D0.25%3C%2Fsup%3E+)の図を見ると，系列のプロットではあまり大幅な移動（縦のぶれ）が少なく，生成した乱数の分布もかなりいびつである．また，値があまり変動しないという点で，自己相関係数も非常に大きな値を取っていることがわかる．一方チューニングパラメータの値が大きい場合においては，採択率が非常に小さな値を取り，系列のプロットからも値の変動しない部分が他と比べて多い．</p>
 
 <p>一方，独立連鎖においては，マルコフ連鎖の候補点の生成は現在の状態に依存しない．そのため，酔歩過程のように値を移動させていくということは見られないが，一方で採択確率の部分でチューニングパラメータの値が影響していることがわかる．</p>
 
@@ -335,15 +335,15 @@ X &lt;- rep(runif(1), Nsim)</p>
 plot(4500:4800, X[4500:4800], type="l", xlab="Iterations", main="Sequence X<sup>t</sup> for t = 4500 - 4800")
 ```</p>
 
-<p>まず，以下の図は系列<img src=http://chart.apis.google.com/chart?cht=tx&chl=%7BX%3Csup%3E%7B%28t%29%7D%7D%3C%2Fsup%3E+>をプロットしたものである．</p>
+<p>まず，以下の図は系列![{X<sup>{(t)}}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%7BX%3Csup%3E%7B%28t%29%7D%7D%3C%2Fsup%3E+)をプロットしたものである．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-1_1.png" alt="" /></p>
 
-<p>そして，その中からシミュレーション回数が4500〜4800回までの系列を抜き出したのが以下の図となっている．このように一部分を拡大して見てみると，系列を表す線が変化せずにx軸に並行に遷移している部分が見られる．これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Crho%28x%3Csup%3E%7B%28t%29%7D%2CY_t%29%3C%2Fsup%3E+>の確率で棄却されて値が変化していないことを表している．これは対応する<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y_t+>に依存し，マルコフ連鎖の性質から次の状態にも影響するため，値が変化しない状態が一定期間続くことがあるからである．</p>
+<p>そして，その中からシミュレーション回数が4500〜4800回までの系列を抜き出したのが以下の図となっている．このように一部分を拡大して見てみると，系列を表す線が変化せずにx軸に並行に遷移している部分が見られる．これは![\rho(x<sup>{(t)},Y_t)</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Crho%28x%3Csup%3E%7B%28t%29%7D%2CY_t%29%3C%2Fsup%3E+)の確率で棄却されて値が変化していないことを表している．これは対応する![Y_t ](http://chart.apis.google.com/chart?cht=tx&chl=Y_t+)に依存し，マルコフ連鎖の性質から次の状態にも影響するため，値が変化しない状態が一定期間続くことがあるからである．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-1_2.png" alt="" /></p>
 
-<p>また，得られた系列がベータ分布の乱数となっているかを確かめるため，左側に今回のメトロポリス・ヘイスティング・アルゴリズムで作成した乱数，右側にRの組込み関数rbeta()で生成した乱数をヒストグラムで図示し，今回実験で設定したベータ分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D%282.7%2C6.3%29+>を赤の曲線で表した．</p>
+<p>また，得られた系列がベータ分布の乱数となっているかを確かめるため，左側に今回のメトロポリス・ヘイスティング・アルゴリズムで作成した乱数，右側にRの組込み関数rbeta()で生成した乱数をヒストグラムで図示し，今回実験で設定したベータ分布![\mathcal{Be}(2.7,6.3) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D%282.7%2C6.3%29+)を赤の曲線で表した．</p>
 
 <p><code>r
 par(mfrow=c(1,2))
@@ -359,11 +359,11 @@ curve(dbeta(x,a,b), add=T, col="red", lwd=2)
 
 <h3>例 6.2 メトロポリス・ヘイスティング・アルゴリズムでコーシー分布の乱数を生成する</h3>
 
-<p>例6.1のベータ分布の乱数生成における提案分布は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BU%7D_%7B0%2C1%7D+>だったが，コーシー分布の乱数生成における提案分布には，</p>
+<p>例6.1のベータ分布の乱数生成における提案分布は![\mathcal{U}_{0,1} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BU%7D_%7B0%2C1%7D+)だったが，コーシー分布の乱数生成における提案分布には，</p>
 
 <ul>
-<li>標準正規分布：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%280%2C1%29+></li>
-<li>自由度0.5のスチューデントt分布：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BT%7D_%7B1%2F2%7D+></li>
+<li>標準正規分布：![\mathcal{N}(0,1) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%280%2C1%29+)</li>
+<li>自由度0.5のスチューデントt分布：![\mathcal{T}_{1/2} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BT%7D_%7B1%2F2%7D+)</li>
 </ul>
 
 
@@ -397,9 +397,9 @@ for(t in 2:Nsim){
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-2_1.png" alt="" /></p>
 
-<p>まずは標準正規分布を使った場合からみていく．系列のプロットは例6.1と同じような形を示しているが，イテレーションが8500を過ぎたあたりで値が一定期間変化しない部分がある．これは乱数から生成する正規候補<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y_t+>が大きい（または小さい）値を取ってしまい，連鎖で長い間引きずることになったからである．この現象は，系列のヒストグラムの右端において値が少し大きくなっていることからも確認することができる．</p>
+<p>まずは標準正規分布を使った場合からみていく．系列のプロットは例6.1と同じような形を示しているが，イテレーションが8500を過ぎたあたりで値が一定期間変化しない部分がある．これは乱数から生成する正規候補![Y_t ](http://chart.apis.google.com/chart?cht=tx&chl=Y_t+)が大きい（または小さい）値を取ってしまい，連鎖で長い間引きずることになったからである．この現象は，系列のヒストグラムの右端において値が少し大きくなっていることからも確認することができる．</p>
 
-<p>一方，スチューデントt分布を使った場合においては，系列のプロットは0付近で集中しており，たまに正規候補<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y_t+>が非常に大きい値を取ることはあるものの，それが継続して続くわけではないことがわかる．系列のヒストグラムを見ても，標準正規分布の場合と比べて分布がなだらかでコーシー分布に当てはまっていることがわかる．ただし，実際には両端の外れ値を除外して系列のヒストグラムをプロットしているので，このヒストグラムの描写範囲から外れている値があることには注意が必要である．</p>
+<p>一方，スチューデントt分布を使った場合においては，系列のプロットは0付近で集中しており，たまに正規候補![Y_t ](http://chart.apis.google.com/chart?cht=tx&chl=Y_t+)が非常に大きい値を取ることはあるものの，それが継続して続くわけではないことがわかる．系列のヒストグラムを見ても，標準正規分布の場合と比べて分布がなだらかでコーシー分布に当てはまっていることがわかる．ただし，実際には両端の外れ値を除外して系列のヒストグラムをプロットしているので，このヒストグラムの描写範囲から外れている値があることには注意が必要である．</p>
 
 <br />
 

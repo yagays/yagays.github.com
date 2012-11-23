@@ -156,7 +156,7 @@
 
 <p>これはテキストにある通りのコードと作図．mcsmパッケージのdemo(Chapter.2)にも同様のコードがある．</p>
 
-<p>以下のコードでは<img src=http://chart.apis.google.com/chart?cht=tx&chl=-%5Clog%7B%281-u%29%7D+>をそのままコードに落とし込んでいる．テキストにもある通り，<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2C1%5D%7D+>ならば0から1の間で一様に等しい確率分布なのだがら，<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+>も<img src=http://chart.apis.google.com/chart?cht=tx&chl=1-U+>も一様分布になる．</p>
+<p>以下のコードでは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=-%5Clog%7B%281-u%29%7D+" alt="-\log{(1-u)} " />をそのままコードに落とし込んでいる．テキストにもある通り，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2C1%5D%7D+" alt="U \sim \mathcal{U}_{[0,1]} " />ならば0から1の間で一様に等しい確率分布なのだがら，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=U+" alt="U " />も<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1-U+" alt="1-U " />も一様分布になる．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -189,9 +189,9 @@
 
 <h4>a.ロジスティック分布</h4>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=u+%3D+%5Cfrac%7B1%7D%7B1%2Be%5E%7B-%5Cfrac%7Bx-%5Cmu%7D%7B%5Cbeta%7D%7D%7D+>を変形して，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+-%5Cbeta+%5Clog%7B%5Cfrac%7B1-u%7D%7Bu%7D%7D+%2B+%5Cmu+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=u+%3D+%5Cfrac%7B1%7D%7B1%2Be%5E%7B-%5Cfrac%7Bx-%5Cmu%7D%7B%5Cbeta%7D%7D%7D+" alt="u = \frac{1}{1+e^{-\frac{x-\mu}{\beta}}} " />を変形して，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+%3D+-%5Cbeta+%5Clog%7B%5Cfrac%7B1-u%7D%7Bu%7D%7D+%2B+%5Cmu+" alt="x = -\beta \log{\frac{1-u}{u}} + \mu " /></p>
 
-<p>以下のコードは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu%3D0+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta%3D1+>の場合．</p>
+<p>以下のコードは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu%3D0+" alt="\mu=0 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta%3D1+" alt="\beta=1 " />の場合．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -218,9 +218,9 @@
 
 <h4>b.コーシー分布</h4>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=u+%3D+%5Cfrac%7B1%7D%7B2%7D+%2B+%5Cfrac%7B1%7D%7B%5Cpi%7D+%5Carctan%7B%5Cfrac%7Bx-%5Cmu%7D%7B%5Csigma%7D%7D+>を変形して，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+%5Cmu+%2B+%5Csigma+%5Ctan%7B%5Cpi%28u-%5Cfrac%7B1%7D%7B2%7D%29%7D+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=u+%3D+%5Cfrac%7B1%7D%7B2%7D+%2B+%5Cfrac%7B1%7D%7B%5Cpi%7D+%5Carctan%7B%5Cfrac%7Bx-%5Cmu%7D%7B%5Csigma%7D%7D+" alt="u = \frac{1}{2} + \frac{1}{\pi} \arctan{\frac{x-\mu}{\sigma}} " />を変形して，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+%3D+%5Cmu+%2B+%5Csigma+%5Ctan%7B%5Cpi%28u-%5Cfrac%7B1%7D%7B2%7D%29%7D+" alt="x = \mu + \sigma \tan{\pi(u-\frac{1}{2})} " /></p>
 
-<p>以下のコードは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu%3D0+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Csigma%3D1+>の場合．</p>
+<p>以下のコードは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu%3D0+" alt="\mu=0 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Csigma%3D1+" alt="\sigma=1 " />の場合．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -249,7 +249,7 @@
 
 <h4>a.ガンマ乱数</h4>
 
-<p>以下の作図では，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta+>の値を固定して<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+>の値を1,2,5,9と変化させたときの分布の変化を見ている．</p>
+<p>以下の作図では，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta+" alt="\beta " />の値を固定して<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=a+" alt="a " />の値を1,2,5,9と変化させたときの分布の変化を見ている．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -284,7 +284,7 @@
 
 <h4>a.ベータ乱数</h4>
 
-<p>この手法では<img src=http://chart.apis.google.com/chart?cht=tx&chl=%28a+%5Cin+%5Cmathbb%7BN%5E%2A%7D%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathbb%7BN%5E%2A%7D+%3D+1%2C2%2C+%5Cdots+> という制約があるため，<img src=http://chart.apis.google.com/chart?cht=tx&chl=a%3D0.1+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=b%3D0.1+>のようなベータ分布は作ることが出来ない．以下はa=1,b=1，a=2,b=3，a=8,b=4の場合．</p>
+<p>この手法では<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%28a+%5Cin+%5Cmathbb%7BN%5E%2A%7D%29+" alt="(a \in \mathbb{N^*}) " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathbb%7BN%5E%2A%7D+%3D+1%2C2%2C+%5Cdots+" alt="\mathbb{N^*} = 1,2, \dots " /> という制約があるため，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=a%3D0.1+" alt="a=0.1 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=b%3D0.1+" alt="b=0.1 " />のようなベータ分布は作ることが出来ない．以下はa=1,b=1，a=2,b=3，a=8,b=4の場合．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -319,11 +319,11 @@
 
 <h4>b. 一様分布から指数乱数を作る(逆変換)</h4>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%3D+e%5E%7B-%5Clambda+x%7D+>より <img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+-+%5Cfrac%7B%5Clog%7BU%7D%7D%7B%5Clambda%7D+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=U+%3D+e%5E%7B-%5Clambda+x%7D+" alt="U = e^{-\lambda x} " />より <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+%3D+-+%5Cfrac%7B%5Clog%7BU%7D%7D%7B%5Clambda%7D+" alt="x = - \frac{\log{U}}{\lambda} " /></p>
 
 <h4>c. 一様分布からロジスティック乱数を作る(逆変換)</h4>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%3D+%5Cfrac%7Be%5Ex%7D%7B1%2Be%5Ex%7D+>より<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+%5Clog%7B%5Cfrac%7BU%7D%7B1-U%7D%7D+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=U+%3D+%5Cfrac%7Be%5Ex%7D%7B1%2Be%5Ex%7D+" alt="U = \frac{e^x}{1+e^x} " />より<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+%3D+%5Clog%7B%5Cfrac%7BU%7D%7B1-U%7D%7D+" alt="x = \log{\frac{U}{1-U}} " /></p>
 </div>
   
   
@@ -476,7 +476,7 @@
 <li><p>P.171 式(5.12)右辺</p>
 
 <ul>
-<li>「<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmax_%7B%5Ctheta%7DQ%28%5Ctheta%7C%5Chat%7B%5Ctheta%7D_%7B%28j-1%29%7D%5Cbf%7Bx%7D%29+>」→「<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmax_%7B%5Ctheta%7DQ%28%5Ctheta%7C%5Chat%7B%5Ctheta%7D_%7B%28j-1%29%7D%2C%5Cbf%7Bx%7D%29+>」</li>
+<li>「<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmax_%7B%5Ctheta%7DQ%28%5Ctheta%7C%5Chat%7B%5Ctheta%7D_%7B%28j-1%29%7D%5Cbf%7Bx%7D%29+" alt="\max_{\theta}Q(\theta|\hat{\theta}_{(j-1)}\bf{x}) " />」→「<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmax_%7B%5Ctheta%7DQ%28%5Ctheta%7C%5Chat%7B%5Ctheta%7D_%7B%28j-1%29%7D%2C%5Cbf%7Bx%7D%29+" alt="\max_{\theta}Q(\theta|\hat{\theta}_{(j-1)},\bf{x}) " />」</li>
 </ul>
 </li>
 <li><p>P.199 下から10行目のplot()の中</p>
@@ -488,9 +488,9 @@
 <li><p>P.200 下から4行目</p>
 
 <ul>
-<li>「<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_%7Bij%7D+%5Csim+N%280%2C%5Csigma%5E2%29+>」→「<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_%7Bij%7D+%5Csim+%5Cmathcal%7BN%7D%280%2C%5Csigma%5E2%29+>」</li>
+<li>「<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cepsilon_%7Bij%7D+%5Csim+N%280%2C%5Csigma%5E2%29+" alt="\epsilon_{ij} \sim N(0,\sigma^2) " />」→「<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cepsilon_%7Bij%7D+%5Csim+%5Cmathcal%7BN%7D%280%2C%5Csigma%5E2%29+" alt="\epsilon_{ij} \sim \mathcal{N}(0,\sigma^2) " />」</li>
 <li>これは原書でも同様の表記をしている</li>
-<li>ここでの<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D+>は正規分布，<img src=http://chart.apis.google.com/chart?cht=tx&chl=N+>はサンプルの総数</li>
+<li>ここでの<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BN%7D+" alt="\mathcal{N} " />は正規分布，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=N+" alt="N " />はサンプルの総数</li>
 </ul>
 </li>
 </ul>
@@ -525,23 +525,23 @@
 <h3>参考：基本的な確率分布の略称</h3>
 
 <ul>
-<li>一様分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BU%7D></li>
-<li>指数分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BExp%7D></li>
-<li>カイ二乗分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7B%5Cchi%5E2%7D></li>
-<li>ガンマ分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BG%7D></li>
-<li>ベータ分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D></li>
-<li>正規分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D></li>
-<li>二項分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBin%7D></li>
-<li>負の二項分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BNeg%7D></li>
-<li>ポアソン分布(※): <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BP%7D></li>
-<li>コーシー分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BC%7D></li>
-<li>スチューデントのT分布: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BT%7D></li>
-<li>二重指数分布（ラプラス分布）: <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D></li>
-<li>逆ガンマ分布 : <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BIG%7D></li>
+<li>一様分布: <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BU%7D" alt="\mathcal{U}" /></li>
+<li>指数分布: <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BExp%7D" alt="\mathcal{Exp}" /></li>
+<li>カイ二乗分布: <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7B%5Cchi%5E2%7D" alt="\mathcal{\chi^2}" /></li>
+<li>ガンマ分布: <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BG%7D" alt="\mathcal{G}" /></li>
+<li>ベータ分布: <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BBe%7D" alt="\mathcal{Be}" /></li>
+<li>正規分布: <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BN%7D" alt="\mathcal{N}" /></li>
+<li>二項分布: <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BBin%7D" alt="\mathcal{Bin}" /></li>
+<li>負の二項分布: <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BNeg%7D" alt="\mathcal{Neg}" /></li>
+<li>ポアソン分布(※): <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BP%7D" alt="\mathcal{P}" /></li>
+<li>コーシー分布: <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BC%7D" alt="\mathcal{C}" /></li>
+<li>スチューデントのT分布: <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BT%7D" alt="\mathcal{T}" /></li>
+<li>二重指数分布（ラプラス分布）: <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BL%7D" alt="\mathcal{L}" /></li>
+<li>逆ガンマ分布 : <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BIG%7D" alt="\mathcal{IG}" /></li>
 </ul>
 
 
-<p>（※ <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BP%7D>は場合によって変わる）</p>
+<p>（※ <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BP%7D" alt="\mathcal{P}" />は場合によって変わる）</p>
 
 <h3>参考</h3>
 
@@ -618,7 +618,7 @@
 
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7D+%5Cexp%28%5Cfrac%7B-%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%29+></span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>![\frac{1}{\sqrt{2\pi}\sigma} \exp(\frac{-(x-\mu)^2}{2\sigma^2}) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7D+%5Cexp%28%5Cfrac%7B-%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%29+)</span></code></pre></td></tr></table></div></figure>
 
 
 <p>また，文字の途中に埋め込むことも可能です．</p>
@@ -631,7 +631,7 @@
 
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%28x%7C%5Cmu%2C%5Csigma%29+>です．</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>これは![\mathcal{N}(x|\mu,\sigma) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%28x%7C%5Cmu%2C%5Csigma%29+)です．</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>注意</h3>
@@ -645,7 +645,7 @@
 
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'><img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%5C%5C+y+%5C%5C+z+></span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>![x \\ y \\ z ](http://chart.apis.google.com/chart?cht=tx&chl=x+%5C%5C+y+%5C%5C+z+)</span></code></pre></td></tr></table></div></figure>
 
 
 <p>TeX内で改行を表すことはできますが，</p>

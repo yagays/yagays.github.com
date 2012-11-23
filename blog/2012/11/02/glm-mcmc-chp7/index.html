@@ -154,25 +154,25 @@
 
 <p>ここでは，ロジスティック回帰におけるGLMMを考える．種子生存数が二項分布</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathrm%7BBin%7D%28y_i%7C%5Cbeta_1%2C%5Cbeta_2%2Cs%29+%3D+%7B%7BN%7D%5Cchoose%7By_i%7D%7D+q_%7Bi%7D%5E%7By_i%7D%281-q_i%29%5E%7BN-y_i%7D+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathrm%7BBin%7D%28y_i%7C%5Cbeta_1%2C%5Cbeta_2%2Cs%29+%3D+%7B%7BN%7D%5Cchoose%7By_i%7D%7D+q_%7Bi%7D%5E%7By_i%7D%281-q_i%29%5E%7BN-y_i%7D+" alt="\mathrm{Bin}(y_i|\beta_1,\beta_2,s) = {{N}\choose{y_i}} q_{i}^{y_i}(1-q_i)^{N-y_i} " /></p>
 
-<p>に従うとした上で，そのパラメータ<img src=http://chart.apis.google.com/chart?cht=tx&chl=q_i+>を</p>
+<p>に従うとした上で，そのパラメータ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=q_i+" alt="q_i " />を</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathrm%7Blogit%7D%28q_i%29+%3D+%5Cbeta_1+%2B+%5Cbeta_2+x_i+%2B+r_i+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathrm%7Blogit%7D%28q_i%29+%3D+%5Cbeta_1+%2B+%5Cbeta_2+x_i+%2B+r_i+" alt="\mathrm{logit}(q_i) = \beta_1 + \beta_2 x_i + r_i " /></p>
 
-<p>とおく．ここで，個体差<img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+>は</p>
+<p>とおく．ここで，個体差<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_i+" alt="r_i " />は</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+%5Csim+%5Cmathcal%7BN%7D%280%2Cs%29+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_i+%5Csim+%5Cmathcal%7BN%7D%280%2Cs%29+" alt="r_i \sim \mathcal{N}(0,s) " /></p>
 
 <p>平均0，標準誤差sの正規分布に従うとする．</p>
 
 <h3>実験</h3>
 
-<p>今回の実験は，なぜ応答変数が過分散の場合にGLMでは駄目でGLMMで推定すべきかを確かめるために，本書に記載されているGLMおよびGLMMの実験を1000回行なって，そのときの切片<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>と傾き<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>の分布を見ることにする．目標は<a href="http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/26401/1/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%85%8B%E5%AD%A656-2.pdf">「「個体差」の統計モデリング」</a>(pdf)の図11をプロットすること．</p>
+<p>今回の実験は，なぜ応答変数が過分散の場合にGLMでは駄目でGLMMで推定すべきかを確かめるために，本書に記載されているGLMおよびGLMMの実験を1000回行なって，そのときの切片<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_1+" alt="\beta_1 " />と傾き<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_2+" alt="\beta_2 " />の分布を見ることにする．目標は<a href="http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/26401/1/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%85%8B%E5%AD%A656-2.pdf">「「個体差」の統計モデリング」</a>(pdf)の図11をプロットすること．</p>
 
-<p>各実験は，葉数が2〜6枚の個体を20個体ずつ合計100個体のデータが得られたという条件で，それぞれの生存種子数をパラメータ<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+%3D+-4+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+%3D+1+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+%5Csim+%5Cmathcal%7BN%7D%280%2C3%29+>の二項乱数から生成した．このように生成したデータを用いて，GLMMとGLMを実行した．</p>
+<p>各実験は，葉数が2〜6枚の個体を20個体ずつ合計100個体のデータが得られたという条件で，それぞれの生存種子数をパラメータ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_1+%3D+-4+" alt="\beta_1 = -4 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_2+%3D+1+" alt="\beta_2 = 1 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_i+%5Csim+%5Cmathcal%7BN%7D%280%2C3%29+" alt="r_i \sim \mathcal{N}(0,3) " />の二項乱数から生成した．このように生成したデータを用いて，GLMMとGLMを実行した．</p>
 
-<p>この実験を1000回繰り返し，その時の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>の分布をプロットしたのが以下の図となっている．左図が切片<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>の分布，右図が傾き<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>の分布で，それぞれ黒の線がGLMが推定した値の分布，赤の線がGLMMが推定した値の分布となっている．また，GLMとGLMMの推定値の平均を縦の点線で表している．</p>
+<p>この実験を1000回繰り返し，その時の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_1+" alt="\beta_1 " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_2+" alt="\beta_2 " />の分布をプロットしたのが以下の図となっている．左図が切片<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_1+" alt="\beta_1 " />の分布，右図が傾き<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_2+" alt="\beta_2 " />の分布で，それぞれ黒の線がGLMが推定した値の分布，赤の線がGLMMが推定した値の分布となっている．また，GLMとGLMMの推定値の平均を縦の点線で表している．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -248,7 +248,7 @@
 
 <p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc_7.png" alt="" /></p>
 
-<p>さて，この図の解釈だが，今回データセット作成に用いた実験条件は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+%3D+-4+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+%3D+1+>だったので，GLMMにおいて切片・傾きどちらもある程度正しい推定ができていることがわかる．逆にGLMでは，切片は過大推定，傾きは過小推定されている．また，推定値のばらつきである分布の山の裾の拡がりを見てみると，GLMMでは大きく，GLMでは小さくなっている．これはいわゆるバイアス・バリアンスのトレードオフによるものだと思われる．</p>
+<p>さて，この図の解釈だが，今回データセット作成に用いた実験条件は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_1+%3D+-4+" alt="\beta_1 = -4 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_2+%3D+1+" alt="\beta_2 = 1 " />だったので，GLMMにおいて切片・傾きどちらもある程度正しい推定ができていることがわかる．逆にGLMでは，切片は過大推定，傾きは過小推定されている．また，推定値のばらつきである分布の山の裾の拡がりを見てみると，GLMMでは大きく，GLMでは小さくなっている．これはいわゆるバイアス・バリアンスのトレードオフによるものだと思われる．</p>
 
 <h4>参考</h4>
 

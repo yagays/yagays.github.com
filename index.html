@@ -191,7 +191,7 @@
 
 <p>本問題の設定の詳細は<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">MCMC-UseR.pdf</a>のP.130を参照．この問題はいわゆるAR(1)というもの．</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=X%5E%7B%28t%2B1%29%7D+%3D+%5Crho+X%5E%7B%28t%29%7D%2B%5Cepsilon_t+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_t+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+>で定義されるマルコフ連鎖において，系列<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5C%7BX%5E%7B%28t%29%7D%5C%7D+>の定常分布は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%280%2C+%5Cfrac%7B%5Csigma%5E2%7D%7B1-%5Crho%5E2%7D%29+>で表される．今回は<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E4+>までのシミュレーション結果をヒストグラムとしてプロットし，定常分布を赤い曲線で示した．</p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X%5E%7B%28t%2B1%29%7D+%3D+%5Crho+X%5E%7B%28t%29%7D%2B%5Cepsilon_t+" alt="X^{(t+1)} = \rho X^{(t)}+\epsilon_t " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cepsilon_t+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+" alt="\epsilon_t \sim \mathcal{N}(0,1) " />で定義されるマルコフ連鎖において，系列<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5C%7BX%5E%7B%28t%29%7D%5C%7D+" alt="{X^{(t)}} " />の定常分布は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BN%7D%280%2C+%5Cfrac%7B%5Csigma%5E2%7D%7B1-%5Crho%5E2%7D%29+" alt="\mathcal{N}(0, \frac{\sigma^2}{1-\rho^2}) " />で表される．今回は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D10%5E4+" alt="t=10^4 " />までのシミュレーション結果をヒストグラムとしてプロットし，定常分布を赤い曲線で示した．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -216,8 +216,8 @@
 
 <h3>練習問題 6.2 ランダム・ウォークが定常分布を持たないことを実験的に示す</h3>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=X%5E%7B%28t%2B1%29%7D%3DX%5E%7B%28t%29%7D%2B%5Cepsilon_t+>で表されるランダム・ウォークが，シミュレーション回数を増やしても定常分布に収束しないことを実験的に確かめる．今回は初期値<img src=http://chart.apis.google.com/chart?cht=tx&chl=X%5E%7B%280%29%7D%3D0+>として，<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E4+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E6+>までマルコフ連鎖をシミュレートする．
-この問題は練習問題6.1における<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Crho+%3D+1>の場合と同じになるので，上で書いたコードのパラメータを変更するだけで再現できる．ただ，今回は別の書き方としてcumsum()関数を用いてランダム・ウォークの系列を計算している．</p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X%5E%7B%28t%2B1%29%7D%3DX%5E%7B%28t%29%7D%2B%5Cepsilon_t+" alt="X^{(t+1)}=X^{(t)}+\epsilon_t " />で表されるランダム・ウォークが，シミュレーション回数を増やしても定常分布に収束しないことを実験的に確かめる．今回は初期値<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X%5E%7B%280%29%7D%3D0+" alt="X^{(0)}=0 " />として，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D10%5E4+" alt="t=10^4 " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D10%5E6+" alt="t=10^6 " />までマルコフ連鎖をシミュレートする．
+この問題は練習問題6.1における<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho+%3D+1" alt="\rho = 1" />の場合と同じになるので，上で書いたコードのパラメータを変更するだけで再現できる．ただ，今回は別の書き方としてcumsum()関数を用いてランダム・ウォークの系列を計算している．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -242,17 +242,17 @@
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6_2.png" alt="" /></p>
 
-<p>シミュレーション回数を<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E4+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E6+>としてランダム・ウォークを実行した結果が上図である．左図に系列のヒストグラム，右図に試行回数を横軸に取った系列をプロットしている．上のように図示すると，たとえ10<sup>6</sup> 回試行したとしても何らかの分布に収束しないことがわかる．</p>
+<p>シミュレーション回数を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D10%5E4+" alt="t=10^4 " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D10%5E6+" alt="t=10^6 " />としてランダム・ウォークを実行した結果が上図である．左図に系列のヒストグラム，右図に試行回数を横軸に取った系列をプロットしている．上のように図示すると，たとえ10<sup>6</sup> 回試行したとしても何らかの分布に収束しないことがわかる．</p>
 
 <h3>雑感</h3>
 
-<p>練習問題 6.1と練習問題6.2を比較すると，ランダム・ウォークにおいて先行する状態に<img src=http://chart.apis.google.com/chart?cht=tx&chl=0+%5Cleq+%5Crho+%3C+1+>のような値を掛け合わせるだけで定常分布を取るというのは，なんとも面白い結果となっている．</p>
+<p>練習問題 6.1と練習問題6.2を比較すると，ランダム・ウォークにおいて先行する状態に<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=0+%5Cleq+%5Crho+%3C+1+" alt="0 \leq \rho &lt; 1 " />のような値を掛け合わせるだけで定常分布を取るというのは，なんとも面白い結果となっている．</p>
 
 <h3>補足：<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">MCMC-UseR.pdf</a>のP.132</h3>
 
 <ul>
-<li>練習問題の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Crho+>と以下図の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+>は同じ</li>
-<li>pdfにも書いてあるがスケール（x軸とy軸の描写範囲）に注意．いかに<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+>が効いているかがわかる</li>
+<li>練習問題の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho+" alt="\rho " />と以下図の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta+" alt="\theta " />は同じ</li>
+<li>pdfにも書いてあるがスケール（x軸とy軸の描写範囲）に注意．いかに<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta+" alt="\theta " />が効いているかがわかる</li>
 <li>左上はマルコフ連鎖ではない</li>
 </ul>
 
@@ -564,21 +564,21 @@
 
 <h3>問題</h3>
 
-<p>ガンベル分布（二重指数分布）からの乱数生成を考える．今回はガンベル分布からの直接的な乱数生成ができないとしたうえで，MHによる乱数生成を行う．ガンベル分布は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B2b%7D%5Cexp%28%5Cfrac%7B-%7Cx-%5Cmu%7C%7D%7Bb%7D%29+>で表され，今回は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu%3D0+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=b%3D+3+>の分布を考える．なお，ガンベル分布の平均と分散は解析的に得られ，それぞれ<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=2b%5E2+>である．</p>
+<p>ガンベル分布（二重指数分布）からの乱数生成を考える．今回はガンベル分布からの直接的な乱数生成ができないとしたうえで，MHによる乱数生成を行う．ガンベル分布は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7B2b%7D%5Cexp%28%5Cfrac%7B-%7Cx-%5Cmu%7C%7D%7Bb%7D%29+" alt="\frac{1}{2b}\exp(\frac{-|x-\mu|}{b}) " />で表され，今回は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu%3D0+" alt="\mu=0 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=b%3D+3+" alt="b= 3 " />の分布を考える．なお，ガンベル分布の平均と分散は解析的に得られ，それぞれ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu+" alt="\mu " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=2b%5E2+" alt="2b^2 " />である．</p>
 
 <h3>実験条件</h3>
 
-<p>今回は，MHの中でも酔歩過程/ランダムウォーク（Random walk）と独立連鎖（Independent chain）の2種類の方法を試す．それぞれのMHにおける推移カーネル<img src=http://chart.apis.google.com/chart?cht=tx&chl=K+>は</p>
+<p>今回は，MHの中でも酔歩過程/ランダムウォーク（Random walk）と独立連鎖（Independent chain）の2種類の方法を試す．それぞれのMHにおける推移カーネル<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=K+" alt="K " />は</p>
 
 <ul>
-<li>酔歩過程：<img src=http://chart.apis.google.com/chart?cht=tx&chl=K%28x%5E%7B%28t%29%7D%2Cx%5E%7B%28t%2B1%29%7D%29+%3D+%5Cmathcal%7BN%7D%28x%5E%7B%28t%29%7D%2Cc_%7Bran%7D%5E2%29+></li>
-<li>独立連鎖：<img src=http://chart.apis.google.com/chart?cht=tx&chl=K%28x%5E%7B%28t%29%7D%2Cx%5E%7B%28t%2B1%29%7D%29+%3D+%5Cmathcal%7BN%7D%280%2Cc_%7Bind%7D%5E2%29+></li>
+<li>酔歩過程：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=K%28x%5E%7B%28t%29%7D%2Cx%5E%7B%28t%2B1%29%7D%29+%3D+%5Cmathcal%7BN%7D%28x%5E%7B%28t%29%7D%2Cc_%7Bran%7D%5E2%29+" alt="K(x^{(t)},x^{(t+1)}) = \mathcal{N}(x^{(t)},c_{ran}^2) " /></li>
+<li>独立連鎖：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=K%28x%5E%7B%28t%29%7D%2Cx%5E%7B%28t%2B1%29%7D%29+%3D+%5Cmathcal%7BN%7D%280%2Cc_%7Bind%7D%5E2%29+" alt="K(x^{(t)},x^{(t+1)}) = \mathcal{N}(0,c_{ind}^2) " /></li>
 </ul>
 
 
-<p>となる．ここで，<img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%5E2+>および<img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%5E2+>は調整母数/チューニングパラメータであり，今回はそれぞれ<strong>{0.25, 1, 5, 15, 150}</strong>の5パターンで実験を行った．</p>
+<p>となる．ここで，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2+" alt="c_{ran}^2 " />および<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2+" alt="c_{ind}^2 " />は調整母数/チューニングパラメータであり，今回はそれぞれ<strong>{0.25, 1, 5, 15, 150}</strong>の5パターンで実験を行った．</p>
 
-<p>また，生成した乱数の系列において，系列初期の<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D1%5Cdots+1000+>までの結果は初期値に依存した値となっているため，今回は結果として用いていない．</p>
+<p>また，生成した乱数の系列において，系列初期の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D1%5Cdots+1000+" alt="t=1\dots 1000 " />までの結果は初期値に依存した値となっているため，今回は結果として用いていない．</p>
 
 <h3>結果：以下の図の見方</h3>
 
@@ -625,23 +625,23 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%5E2%3D0.25+>の場合</h4>
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D0.25+" alt="c_{ran}^2=0.25 " />の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_1.png" alt="" /></p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%5E2%3D1+>の場合</h4>
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D1+" alt="c_{ran}^2=1 " />の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_2.png" alt="" /></p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%5E2%3D5+>の場合</h4>
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D5+" alt="c_{ran}^2=5 " />の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_3.png" alt="" /></p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%5E2%3D15+>の場合</h4>
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D15+" alt="c_{ran}^2=15 " />の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_4.png" alt="" /></p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%5E2%3D150+>の場合</h4>
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D150+" alt="c_{ran}^2=150 " />の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_5.png" alt="" /></p>
 
@@ -702,23 +702,23 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%5E2%3D0.25+>の場合</h4>
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2%3D0.25+" alt="c_{ind}^2=0.25 " />の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_1.png" alt="" /></p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%5E2%3D1+>の場合</h4>
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2%3D1+" alt="c_{ind}^2=1 " />の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_2.png" alt="" /></p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%5E2%3D5+>の場合</h4>
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2%3D5+" alt="c_{ind}^2=5 " />の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_3.png" alt="" /></p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%5E2%3D15+>の場合</h4>
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2%3D15+" alt="c_{ind}^2=15 " />の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_4.png" alt="" /></p>
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bind%7D%5E2%3D150+>の場合</h4>
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2%3D150+" alt="c_{ind}^2=150 " />の場合</h4>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_5.png" alt="" /></p>
 
@@ -726,7 +726,7 @@
 
 <p>さて，このように色々とプロットしてみたわけだが，酔歩過程の場合も独立連鎖の場合もチューニングパラメータの値が0.25や150といった非常に小さい/大きい場合においては，乱数の分布や収束速度などに問題があることがわかる．</p>
 
-<p>酔歩過程においては，マルコフ連鎖の候補点の生成は少しずつ値を移動させていくという点で，分布の表面をなぞる形となる．そのため，チューニングパラメータの値である分散が小さい場合では候補点の移動範囲が狭いため，分布全体を探索するのに非常に時間がかかる．<img src=http://chart.apis.google.com/chart?cht=tx&chl=c_%7Bran%7D%5E2%3D0.25+>の図を見ると，系列のプロットではあまり大幅な移動（縦のぶれ）が少なく，生成した乱数の分布もかなりいびつである．また，値があまり変動しないという点で，自己相関係数も非常に大きな値を取っていることがわかる．一方チューニングパラメータの値が大きい場合においては，採択率が非常に小さな値を取り，系列のプロットからも値の変動しない部分が他と比べて多い．</p>
+<p>酔歩過程においては，マルコフ連鎖の候補点の生成は少しずつ値を移動させていくという点で，分布の表面をなぞる形となる．そのため，チューニングパラメータの値である分散が小さい場合では候補点の移動範囲が狭いため，分布全体を探索するのに非常に時間がかかる．<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D0.25+" alt="c_{ran}^2=0.25 " />の図を見ると，系列のプロットではあまり大幅な移動（縦のぶれ）が少なく，生成した乱数の分布もかなりいびつである．また，値があまり変動しないという点で，自己相関係数も非常に大きな値を取っていることがわかる．一方チューニングパラメータの値が大きい場合においては，採択率が非常に小さな値を取り，系列のプロットからも値の変動しない部分が他と比べて多い．</p>
 
 <p>一方，独立連鎖においては，マルコフ連鎖の候補点の生成は現在の状態に依存しない．そのため，酔歩過程のように値を移動させていくということは見られないが，一方で採択確率の部分でチューニングパラメータの値が影響していることがわかる．</p>
 

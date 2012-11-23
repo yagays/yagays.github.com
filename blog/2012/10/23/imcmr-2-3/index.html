@@ -169,7 +169,7 @@
 
 <h3>b. 受理・棄却アルゴリズムを使ってfから2500個の乱数を生成する</h3>
 
-<p>ここで標準正規分布からの乱数を使うのは，g(x)が標準正規密度だから（P.59の受理・棄却法のアルゴリズムの1.にある<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y+%5Csim+g+>の部分に該当する）．</p>
+<p>ここで標準正規分布からの乱数を使うのは，g(x)が標準正規密度だから（P.59の受理・棄却法のアルゴリズムの1.にある<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=Y+%5Csim+g+" alt="Y \sim g " />の部分に該当する）．</p>
 
 <p>この問題では2500個の<strong>受理された</strong>乱数が欲しいので，P.61のコードを真似て作成している．ただし，このコードは少々効率が悪く，決められた数の乱数を作ったらループが終わりというものではない（受理確率を元にして多めに作ってる）ので，ヒストグラムとして図示する際には2500個のみを取り出して作図している．</p>
 
@@ -204,7 +204,7 @@
 
 <p>P.60にあるように，受理確率は基本的に1/Mだけれども，正規化されていない関数に関しては定数CがMに吸収されているので注意が必要となる．今回の場合，シミュレーションから求めた受理確率rを使うことで，以下の式から正規化定数を近似することができる．</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=r+%3D+%5Cfrac%7B1%7D%7BC+%5Ctimes+M%7D+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r+%3D+%5Cfrac%7B1%7D%7BC+%5Ctimes+M%7D+" alt="r = \frac{1}{C \times M} " /></p>
 
 <p>今回の場合，Mは10.94，rは0.54となったので，Cは0.17程度だと見積もった．</p>
 
@@ -244,7 +244,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>さて，答え合わせ(?)だが，正規化定数は単純にfの<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5B-%5Cinfty%2C%5Cinfty%5D>の積分を求めることによって計算することができる．これにはRのintegrate()関数を使って-infからinfまでを計算すればよい．確率分布の定義から，これが1になるように正規化定数を定めれば良いということで，以下のように計算した結果，0.1696543となった．</p>
+<p>さて，答え合わせ(?)だが，正規化定数は単純にfの<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5B-%5Cinfty%2C%5Cinfty%5D" alt="[-\infty,\infty]" />の積分を求めることによって計算することができる．これにはRのintegrate()関数を使って-infからinfまでを計算すればよい．確率分布の定義から，これが1になるように正規化定数を定めれば良いということで，以下のように計算した結果，0.1696543となった．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -255,12 +255,12 @@
 
 <h3>練習問題 2.19 二重指数分布が候補分布の受理・棄却アルゴリズムにおいて標準正規分布から乱数を生成する際のMとg(x)の最適化</h3>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=f%28x%29+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D+%5Cexp%28-%5Cfrac%7Bx%5E2%7D%7B2%7D%29+%5C%5C+g%28x%29+%3D+%5Cfrac%7B%5Calpha%7D%7B2%7D+%5Cexp%28-%5Calpha+%7Cx%7C%29></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f%28x%29+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D+%5Cexp%28-%5Cfrac%7Bx%5E2%7D%7B2%7D%29+%5C%5C+g%28x%29+%3D+%5Cfrac%7B%5Calpha%7D%7B2%7D+%5Cexp%28-%5Calpha+%7Cx%7C%29" alt="f(x) = \frac{1}{\sqrt{2\pi}} \exp(-\frac{x^2}{2}) \ g(x) = \frac{\alpha}{2} \exp(-\alpha |x|)" /></p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=f%2Fg+%3D+%5Cfrac%7B%5Csqrt%7B2%2F%5Cpi%7D%7D%7B%5Calpha%7D+%5Cexp%28%5Calpha%7Cx%7C-%5Cfrac%7Bx%5E2%7D%7B2%7D%29+>より，上界Mを取るときのx_maxの値を調べるには，とりあえずxで微分して0になるときの値を求めれば良い．expの部分を微分すると<img src=http://chart.apis.google.com/chart?cht=tx&chl=%28%5Calpha+-+x%29+>みたいな項が出てくるので，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x_%7Bmax%7D+%3D+%5Calpha+>（厳密には<img src=http://chart.apis.google.com/chart?cht=tx&chl=x_%7Bmax%7D+%3D+%5Cpm+%5Calpha+>）．</p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f%2Fg+%3D+%5Cfrac%7B%5Csqrt%7B2%2F%5Cpi%7D%7D%7B%5Calpha%7D+%5Cexp%28%5Calpha%7Cx%7C-%5Cfrac%7Bx%5E2%7D%7B2%7D%29+" alt="f/g = \frac{\sqrt{2/\pi}}{\alpha} \exp(\alpha|x|-\frac{x^2}{2}) " />より，上界Mを取るときのx_maxの値を調べるには，とりあえずxで微分して0になるときの値を求めれば良い．expの部分を微分すると<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%28%5Calpha+-+x%29+" alt="(\alpha - x) " />みたいな項が出てくるので，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x_%7Bmax%7D+%3D+%5Calpha+" alt="x_{max} = \alpha " />（厳密には<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x_%7Bmax%7D+%3D+%5Cpm+%5Calpha+" alt="x_{max} = \pm \alpha " />）．</p>
 
-<p>次に，受理率を最適化するということは1/Mの値を大きくすれば良いので，結局はMの値の最大値を求めれば良い．<img src=http://chart.apis.google.com/chart?cht=tx&chl=x_%7Bmax%7D+%3D+%5Calpha+>のときのMを<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+>に関して微分して0になるときの値ということで計算していくと
-<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B%28%5Calpha%5E2-1%29%5Cexp%28%5Calpha%5E2%2F2%29%7D%7B%5Calpha%5E2%7D+>みたいな項が出てくるので，つまり<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+1+>の時にMが最大値を取り，受理率が最適化される．</p>
+<p>次に，受理率を最適化するということは1/Mの値を大きくすれば良いので，結局はMの値の最大値を求めれば良い．<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x_%7Bmax%7D+%3D+%5Calpha+" alt="x_{max} = \alpha " />のときのMを<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha+" alt="\alpha " />に関して微分して0になるときの値ということで計算していくと
+<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B%28%5Calpha%5E2-1%29%5Cexp%28%5Calpha%5E2%2F2%29%7D%7B%5Calpha%5E2%7D+" alt="\frac{(\alpha^2-1)\exp(\alpha^2/2)}{\alpha^2} " />みたいな項が出てくるので，つまり<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha+%3D+1+" alt="\alpha = 1 " />の時にMが最大値を取り，受理率が最適化される．</p>
 
 <h3>練習問題 2.22 切断正規分布から正規乱数を生成する</h3>
 
@@ -309,73 +309,73 @@
 
 <h4>b. シミュレーションので受理する確率を求める</h4>
 
-<p>上で示したアルゴリズムで考える．z &lt; aならアタリ，それ以外ならハズレというようなときにどれだけ数を撃てばz&lt;aに入るかということを考えると，正規分布のz &lt; aの面積を求めればいいことがわかる．なお，ここで出てくる<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CPhi%28x%29+>という関数は定義されていないが，以下のような累積標準正規分布（本書P.78に出てくる）のことだと思われる．</p>
+<p>上で示したアルゴリズムで考える．z &lt; aならアタリ，それ以外ならハズレというようなときにどれだけ数を撃てばz&lt;aに入るかということを考えると，正規分布のz &lt; aの面積を求めればいいことがわかる．なお，ここで出てくる<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5CPhi%28x%29+" alt="\Phi(x) " />という関数は定義されていないが，以下のような累積標準正規分布（本書P.78に出てくる）のことだと思われる．</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CPhi%28t%29+%3D+%5Cint_%7B-%5Cinfty%7D%5E%7Bt%7D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-y%5E2%2F2%7Ddy+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5CPhi%28t%29+%3D+%5Cint_%7B-%5Cinfty%7D%5E%7Bt%7D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-y%5E2%2F2%7Ddy+" alt="\Phi(t) = \int_{-\infty}^{t} \frac{1}{\sqrt{2\pi}}e^{-y^2/2}dy " /></p>
 
-<p>この形式になるように，aからの累積正規分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=F%28x%7C%5Cmu%2C+%5Csigma%5E2%2C+a%29+%5Csim++%5Cint_%7Ba%7D%5E%7B%5Cinfty%7D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7De%5E%7B-%5Cfrac%7B%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%7Ddx>を変形していけばよい．</p>
+<p>この形式になるように，aからの累積正規分布<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F%28x%7C%5Cmu%2C+%5Csigma%5E2%2C+a%29+%5Csim++%5Cint_%7Ba%7D%5E%7B%5Cinfty%7D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%5Csigma%7De%5E%7B-%5Cfrac%7B%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%7Ddx" alt="F(x|\mu, \sigma^2, a) \sim  \int_{a}^{\infty} \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}dx" />を変形していけばよい．</p>
 
-<p>ここで，<img src=http://chart.apis.google.com/chart?cht=tx&chl=v+%3D+-%5Cfrac%7Bx-%5Cmu%7D%7B%5Csigma%7D+>とおくと，<img src=http://chart.apis.google.com/chart?cht=tx&chl=dv+%3D+-%5Cfrac%7Bdx%7D%7B%5Csigma%7D+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x%3Aa+%5Crightarrow+%5Cinfty+> のとき，<img src=http://chart.apis.google.com/chart?cht=tx&chl=v%3A-%5Cinfty+%5Crightarrow+%5Cfrac%7B%5Cmu-a%7D%7B%5Csigma%7D+>をとる．よって，</p>
+<p>ここで，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=v+%3D+-%5Cfrac%7Bx-%5Cmu%7D%7B%5Csigma%7D+" alt="v = -\frac{x-\mu}{\sigma} " />とおくと，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=dv+%3D+-%5Cfrac%7Bdx%7D%7B%5Csigma%7D+" alt="dv = -\frac{dx}{\sigma} " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x%3Aa+%5Crightarrow+%5Cinfty+" alt="x:a \rightarrow \infty " /> のとき，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=v%3A-%5Cinfty+%5Crightarrow+%5Cfrac%7B%5Cmu-a%7D%7B%5Csigma%7D+" alt="v:-\infty \rightarrow \frac{\mu-a}{\sigma} " />をとる．よって，</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=F%28v%7C%5Cmu%2C%5Csigma%5E2%2Ca%29+%3D+%5Cint_%7B%5Cinfty%7D%5E%7B%5Cfrac%7B%5Cmu-a%7D%7B%5Csigma%7D%7D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7Bv%5E2%7D%7B2%7D%7Ddv+%3D+%5CPhi%28%5Cfrac%7B%5Cmu-a%7D%7B%5Csigma%7D%29+>  となる．</p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F%28v%7C%5Cmu%2C%5Csigma%5E2%2Ca%29+%3D+%5Cint_%7B%5Cinfty%7D%5E%7B%5Cfrac%7B%5Cmu-a%7D%7B%5Csigma%7D%7D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7Bv%5E2%7D%7B2%7D%7Ddv+%3D+%5CPhi%28%5Cfrac%7B%5Cmu-a%7D%7B%5Csigma%7D%29+" alt="F(v|\mu,\sigma^2,a) = \int_{\infty}^{\frac{\mu-a}{\sigma}} \frac{1}{\sqrt{2\pi}}e^{-\frac{v^2}{2}}dv = \Phi(\frac{\mu-a}{\sigma}) " />  となる．</p>
 
-<p>また，aの値が裾にある（値が大きくなる）と，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CPhi%28%5Cfrac%7B%5Cmu-a%7D%7B%5Csigma%7D%29+>の値が小さくなるので，シミュレーション回数が多くなる．</p>
+<p>また，aの値が裾にある（値が大きくなる）と，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5CPhi%28%5Cfrac%7B%5Cmu-a%7D%7B%5Csigma%7D%29+" alt="\Phi(\frac{\mu-a}{\sigma}) " />の値が小さくなるので，シミュレーション回数が多くなる．</p>
 
 <h4>c. 切断正規分布の乱数を正規分布から生成することを考える</h4>
 
 <ul>
-<li>目標分布；<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cexp%28-%28x-%5Cmu%29%2F2%5Csigma%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+></li>
-<li>候補分布：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D%5Cexp%28-%5Cfrac%7B%28x-%5Cbar%7B%5Cmu%7D%29%5E2%7D%7B2%7D%29+></li>
+<li>目標分布；<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cexp%28-%28x-%5Cmu%29%2F2%5Csigma%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+" alt="\exp(-(x-\mu)/2\sigma^2)\mathbb{I}_{x \geq a} " /></li>
+<li>候補分布：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D%5Cexp%28-%5Cfrac%7B%28x-%5Cbar%7B%5Cmu%7D%29%5E2%7D%7B2%7D%29+" alt="\frac{1}{\sqrt{2\pi}}\exp(-\frac{(x-\bar{\mu})^2}{2}) " /></li>
 </ul>
 
 
 <p>より</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D%3D%5Cfrac%7B%5Cexp%28-%28x-%5Cmu%29%2F2%5Csigma%5E2%29%5Cmathbb%7BI%7D_%7Bx%5Cgeq+z%7D%7D%7B%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D%5Cexp%28-%5Cfrac%7B%28x-%5Cbar%7B%5Cmu%7D%29%5E2%7D%7B2%7D%29%7D%5C%5C+><img src=http://chart.apis.google.com/chart?cht=tx&chl=%3D+%5Csqrt%7B2%5Cpi%7D%5Cexp%28-x%5Cbar%7B%5Cmu%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Cbar%7B%5Cmu%7D%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D%3D%5Cfrac%7B%5Cexp%28-%28x-%5Cmu%29%2F2%5Csigma%5E2%29%5Cmathbb%7BI%7D_%7Bx%5Cgeq+z%7D%7D%7B%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D%5Cexp%28-%5Cfrac%7B%28x-%5Cbar%7B%5Cmu%7D%29%5E2%7D%7B2%7D%29%7D%5C%5C+" alt="\frac{f(x)}{g(x)}=\frac{\exp(-(x-\mu)/2\sigma^2)\mathbb{I}_{x\geq z}}{\frac{1}{\sqrt{2\pi}}\exp(-\frac{(x-\bar{\mu})^2}{2})}\ " /><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%3D+%5Csqrt%7B2%5Cpi%7D%5Cexp%28-x%5Cbar%7B%5Cmu%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Cbar%7B%5Cmu%7D%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+" alt="= \sqrt{2\pi}\exp(-x\bar{\mu}+\frac{1}{2}\bar{\mu}^2)\mathbb{I}_{x \geq a} " /></p>
 
 <p>となり候補分布の制約を満たすので，正規候補にもとづく受理・棄却アルゴリズムは切断正規分布から乱数を生成するために使える．</p>
 
-<p>次に，このときの最適なMを考える．x=aにおいて<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28a%29%7D%7Bg%28a%29%7D+%3D+%5Csqrt%7B2%5Cpi%7D%5Cexp%28-a%5Cbar%7B%5Cmu%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Cbar%7B%5Cmu%7D%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+>より，この式を<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbar%7B%5Cmu%7D+>で微分すると</p>
+<p>次に，このときの最適なMを考える．x=aにおいて<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7Bf%28a%29%7D%7Bg%28a%29%7D+%3D+%5Csqrt%7B2%5Cpi%7D%5Cexp%28-a%5Cbar%7B%5Cmu%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Cbar%7B%5Cmu%7D%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+" alt="\frac{f(a)}{g(a)} = \sqrt{2\pi}\exp(-a\bar{\mu}+\frac{1}{2}\bar{\mu}^2)\mathbb{I}_{x \geq a} " />より，この式を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbar%7B%5Cmu%7D+" alt="\bar{\mu} " />で微分すると</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CBigl%28%5Cfrac%7Bf%28a%29%7D%7Bg%28a%29%7D%5CBigr%29%27+%3D+%5Csqrt%7B2%5Cpi%7D%28-a%2B%5Cbar%7B%5Cmu%7D%29%5Cexp%28-a%5Cbar%7B%5Cmu%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Cbar%7B%5Cmu%7D%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5CBigl%28%5Cfrac%7Bf%28a%29%7D%7Bg%28a%29%7D%5CBigr%29%27+%3D+%5Csqrt%7B2%5Cpi%7D%28-a%2B%5Cbar%7B%5Cmu%7D%29%5Cexp%28-a%5Cbar%7B%5Cmu%7D%2B%5Cfrac%7B1%7D%7B2%7D%5Cbar%7B%5Cmu%7D%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+" alt="\Bigl(\frac{f(a)}{g(a)}\Bigr)' = \sqrt{2\pi}(-a+\bar{\mu})\exp(-a\bar{\mu}+\frac{1}{2}\bar{\mu}^2)\mathbb{I}_{x \geq a} " /></p>
 
-<p>となるので，Mは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbar%7B%5Cmu%7D%3Da+>のとき最適値をとる．</p>
+<p>となるので，Mは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbar%7B%5Cmu%7D%3Da+" alt="\bar{\mu}=a " />のとき最適値をとる．</p>
 
 <h3>d. 候補分布に指数分布を使うことを考える</h3>
 
 <ul>
-<li>目標分布；<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cexp%28-%28x-%5Cmu%29%2F2%5Csigma%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+></li>
-<li>候補分布：<img src=http://chart.apis.google.com/chart?cht=tx&chl=g_%7B%5Calpha%7D%28z%29%3D%5Calpha+e%5E%7B-%5Calpha%28z-a%29%7D%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+></li>
+<li>目標分布；<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cexp%28-%28x-%5Cmu%29%2F2%5Csigma%5E2%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+" alt="\exp(-(x-\mu)/2\sigma^2)\mathbb{I}_{x \geq a} " /></li>
+<li>候補分布：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=g_%7B%5Calpha%7D%28z%29%3D%5Calpha+e%5E%7B-%5Calpha%28z-a%29%7D%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D+" alt="g_{\alpha}(z)=\alpha e^{-\alpha(z-a)}\mathbb{I}_{x \geq a} " /></li>
 </ul>
 
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbegin%7Balign%7D%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D%26%3D%5Cfrac%7B%5Cexp%28-%28x-%5Cmu%29%2F2%5Csigma%5E2%29%5Cmathbb%7BI%7D_%7Bx%5Cgeq+a%7D%7D%7B%5Calpha+e%5E%7B-%5Calpha%28z-a%29%7D%7D%5C%5C%26%3D%5Cfrac%7B1%7D%7B%5Calpha%7D%5Cexp%28-%5Cfrac%7Bx%5E2%7D%7B2%7D%2B%5Calpha%28x-a%29%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D%5Cend%7Balign%7D+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbegin%7Balign%7D%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D%26%3D%5Cfrac%7B%5Cexp%28-%28x-%5Cmu%29%2F2%5Csigma%5E2%29%5Cmathbb%7BI%7D_%7Bx%5Cgeq+a%7D%7D%7B%5Calpha+e%5E%7B-%5Calpha%28z-a%29%7D%7D%5C%5C%26%3D%5Cfrac%7B1%7D%7B%5Calpha%7D%5Cexp%28-%5Cfrac%7Bx%5E2%7D%7B2%7D%2B%5Calpha%28x-a%29%29%5Cmathbb%7BI%7D_%7Bx+%5Cgeq+a%7D%5Cend%7Balign%7D+" alt="\begin{align}\frac{f(x)}{g(x)}&amp;=\frac{\exp(-(x-\mu)/2\sigma^2)\mathbb{I}_{x\geq a}}{\alpha e^{-\alpha(z-a)}}\&amp;=\frac{1}{\alpha}\exp(-\frac{x^2}{2}+\alpha(x-a))\mathbb{I}_{x \geq a}\end{align} " /></p>
 
 <p>より，</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D+%5Cpropto+e%5E%7B%5Calpha%28x-a%29%7De%5E%7B-z%5E2%2F2%7D+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D+%5Cpropto+e%5E%7B%5Calpha%28x-a%29%7De%5E%7B-z%5E2%2F2%7D+" alt="\frac{f(x)}{g(x)} \propto e^{\alpha(x-a)}e^{-z^2/2} " /></p>
 
-<p>となる．上式を前と同じように微分すると<img src=http://chart.apis.google.com/chart?cht=tx&chl=%28-x%2B%5Calpha%29+>が出てくるので，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+%5Calpha+>のとき最大値を取り，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cexp%28%5Calpha%5E2%2F2-%5Calpha+a%29+>で極限が与えられる．</p>
+<p>となる．上式を前と同じように微分すると<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%28-x%2B%5Calpha%29+" alt="(-x+\alpha) " />が出てくるので，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+%3D+%5Calpha+" alt="x = \alpha " />のとき最大値を取り，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cexp%28%5Calpha%5E2%2F2-%5Calpha+a%29+" alt="\exp(\alpha^2/2-\alpha a) " />で極限が与えられる．</p>
 
-<p>次に，<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%3D+%5Calpha+>の場合に正当な候補密度になることを導く．f/gの比が0より大きいことを示せば良いのだが，上式を見ると結局expの外側の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Calpha%7D+>，つまり<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+>を調べないといけない．ということで，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+>で微分して最適値の時の値を求める．</p>
+<p>次に，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=a+%3D+%5Calpha+" alt="a = \alpha " />の場合に正当な候補密度になることを導く．f/gの比が0より大きいことを示せば良いのだが，上式を見ると結局expの外側の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7B%5Calpha%7D+" alt="\frac{1}{\alpha} " />，つまり<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha+" alt="\alpha " />を調べないといけない．ということで，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha+" alt="\alpha " />で微分して最適値の時の値を求める．</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+%5Calpha>のとき<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7Bf%28%5Calpha%29%7D%7Bg%28%5Calpha%29%7D+%3D+%5Cfrac%7B1%7D%7B%5Calpha%7D%5Cexp%28%5Cfrac%7B%5Calpha%5E2%7D%7B2%7D-%5Calpha+a%29+>なので，</p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+%3D+%5Calpha" alt="x = \alpha" />のとき<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7Bf%28%5Calpha%29%7D%7Bg%28%5Calpha%29%7D+%3D+%5Cfrac%7B1%7D%7B%5Calpha%7D%5Cexp%28%5Cfrac%7B%5Calpha%5E2%7D%7B2%7D-%5Calpha+a%29+" alt="\frac{f(\alpha)}{g(\alpha)} = \frac{1}{\alpha}\exp(\frac{\alpha^2}{2}-\alpha a) " />なので，</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5CBigl%28%5Cfrac%7Bf%28%5Calpha%29%7D%7Bg%28%5Calpha%29%7D%5CBigr%29%27+%3D+-%5Cfrac%7B1%7D%7B%5Calpha%5E2%7D%5Cexp%28%5Cfrac%7B%5Calpha%5E2%7D%7B2%7D-%5Calpha+a%29%2B%5Cfrac%7B1%7D%7B%5Calpha%7D%28%5Calpha-a%29%5Cexp%28%5Cfrac%7B%5Calpha%5E2%7D%7B2%7D-%5Calpha+a%29+><img src=http://chart.apis.google.com/chart?cht=tx&chl=%3D%5Cfrac%7B1%7D%7B%5Calpha%7D%5Cbigl%28-%5Cfrac%7B1%7D%7B%5Calpha%5E2%7D%2B%28%5Calpha-a%29%5Cbigr%29%5Cexp%28%5Cfrac%7B%5Calpha%5E2%7D%7B2%7D-%5Calpha+a%29></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5CBigl%28%5Cfrac%7Bf%28%5Calpha%29%7D%7Bg%28%5Calpha%29%7D%5CBigr%29%27+%3D+-%5Cfrac%7B1%7D%7B%5Calpha%5E2%7D%5Cexp%28%5Cfrac%7B%5Calpha%5E2%7D%7B2%7D-%5Calpha+a%29%2B%5Cfrac%7B1%7D%7B%5Calpha%7D%28%5Calpha-a%29%5Cexp%28%5Cfrac%7B%5Calpha%5E2%7D%7B2%7D-%5Calpha+a%29+" alt="\Bigl(\frac{f(\alpha)}{g(\alpha)}\Bigr)' = -\frac{1}{\alpha^2}\exp(\frac{\alpha^2}{2}-\alpha a)+\frac{1}{\alpha}(\alpha-a)\exp(\frac{\alpha^2}{2}-\alpha a) " /><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%3D%5Cfrac%7B1%7D%7B%5Calpha%7D%5Cbigl%28-%5Cfrac%7B1%7D%7B%5Calpha%5E2%7D%2B%28%5Calpha-a%29%5Cbigr%29%5Cexp%28%5Cfrac%7B%5Calpha%5E2%7D%7B2%7D-%5Calpha+a%29" alt="=\frac{1}{\alpha}\bigl(-\frac{1}{\alpha^2}+(\alpha-a)\bigr)\exp(\frac{\alpha^2}{2}-\alpha a)" /></p>
 
 <p>より</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=-%5Cfrac%7B1%7D%7B%5Calpha%5E2%7D%2B%28%5Calpha-a%29+%3D+0+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=-%5Cfrac%7B1%7D%7B%5Calpha%5E2%7D%2B%28%5Calpha-a%29+%3D+0+" alt="-\frac{1}{\alpha^2}+(\alpha-a) = 0 " /></p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha%5E2+-+a+%5Calpha+-+1+%3D+0+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha%5E2+-+a+%5Calpha+-+1+%3D+0+" alt="\alpha^2 - a \alpha - 1 = 0 " /></p>
 
-<p>よって，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+%5Cfrac%7Ba+%5Cpm+%5Csqrt%7Ba%5E2+%2B+4%7D%7D%7B2%7D+>となる．</p>
+<p>よって，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha+%3D+%5Cfrac%7Ba+%5Cpm+%5Csqrt%7Ba%5E2+%2B+4%7D%7D%7B2%7D+" alt="\alpha = \frac{a \pm \sqrt{a^2 + 4}}{2} " />となる．</p>
 
-<p>じゃあプラスかマイナスかどっちなんだという話になるのだが，ここで<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%5Cgeq+a+>という前提条件を使うと，</p>
+<p>じゃあプラスかマイナスかどっちなんだという話になるのだが，ここで<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha+%5Cgeq+a+" alt="\alpha \geq a " />という前提条件を使うと，</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+%5Cfrac%7Ba+%5Cpm+%5Csqrt%7Ba%5E2+%2B+4%7D%7D%7B2%7D+%5Cgeq+a+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha+%3D+%5Cfrac%7Ba+%5Cpm+%5Csqrt%7Ba%5E2+%2B+4%7D%7D%7B2%7D+%5Cgeq+a+" alt="\alpha = \frac{a \pm \sqrt{a^2 + 4}}{2} \geq a " /></p>
 
-<p>が成り立つ． <img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Csqrt%7Ba%5E2+%2B+4%7D+>というのはaよりちょっとだけ大きい数なので，上式を満たすaは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha+%3D+%5Cfrac%7Ba+%2B+%5Csqrt%7Ba%5E2+%2B+4%7D%7D%7B2%7D+>となり，この式は常に正である．よって，<img src=http://chart.apis.google.com/chart?cht=tx&chl=a+%3D+%5Calpha+>の場合に，正当な候補密度になる．</p>
+<p>が成り立つ． <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Csqrt%7Ba%5E2+%2B+4%7D+" alt="\sqrt{a^2 + 4} " />というのはaよりちょっとだけ大きい数なので，上式を満たすaは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha+%3D+%5Cfrac%7Ba+%2B+%5Csqrt%7Ba%5E2+%2B+4%7D%7D%7B2%7D+" alt="\alpha = \frac{a + \sqrt{a^2 + 4}}{2} " />となり，この式は常に正である．よって，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=a+%3D+%5Calpha+" alt="a = \alpha " />の場合に，正当な候補密度になる．</p>
 </div>
 
 

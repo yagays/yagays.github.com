@@ -144,23 +144,23 @@
 
 <h3>練習問題 3.1 正規・コーシー-ベイズ推定量のモンテカルロ積分を2通りの方法で計算する</h3>
 
-<p>正規・コーシー-ベイズ推定量について，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+0%2C2%2C4+>だとしてモンテカルロ積分を計算する．</p>
+<p>正規・コーシー-ベイズ推定量について，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+%3D+0%2C2%2C4+" alt="x = 0,2,4 " />だとしてモンテカルロ積分を計算する．</p>
 
-<blockquote><p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+%3D+%5Cfrac%7B%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+%5Cfrac%7B%5Ctheta%7D%7B1%2B%5Ctheta%5E2%7De%5E%7B-%28x-%5Ctheta%29%5E2%2F2%7D+d%5Ctheta%7D%7B%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+%5Cfrac%7B1%7D%7B1%2B%5Ctheta%5E2%7De%5E%7B-%28x-%5Ctheta%29%5E2%2F2%7D+d%5Ctheta%7D+></p></blockquote>
+<blockquote><p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta%28x%29+%3D+%5Cfrac%7B%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+%5Cfrac%7B%5Ctheta%7D%7B1%2B%5Ctheta%5E2%7De%5E%7B-%28x-%5Ctheta%29%5E2%2F2%7D+d%5Ctheta%7D%7B%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+%5Cfrac%7B1%7D%7B1%2B%5Ctheta%5E2%7De%5E%7B-%28x-%5Ctheta%29%5E2%2F2%7D+d%5Ctheta%7D+" alt="\delta(x) = \frac{\int_{-\infty}^{\infty} \frac{\theta}{1+\theta^2}e^{-(x-\theta)^2/2} d\theta}{\int_{-\infty}^{\infty} \frac{1}{1+\theta^2}e^{-(x-\theta)^2/2} d\theta} " /></p></blockquote>
 
 <p>さて，この式だけだと何のことか全然分からないのだが，式中で消えている係数をしっかり書くと，</p>
 
 <ul>
-<li>分子：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%5Ctheta%5Ctimes%5Cfrac%7B1%7D%7B%5Cpi%281%2B%5Ctheta%5E2%29%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%28x-%5Ctheta%29%5E2%2F2%7Dd%5Ctheta+></li>
-<li>分母：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%5Cfrac%7B1%7D%7B%5Cpi%281%2B%5Ctheta%5E2%29%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%28x-%5Ctheta%29%5E2%2F2%7Dd%5Ctheta+></li>
+<li>分子：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%5Ctheta%5Ctimes%5Cfrac%7B1%7D%7B%5Cpi%281%2B%5Ctheta%5E2%29%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%28x-%5Ctheta%29%5E2%2F2%7Dd%5Ctheta+" alt="\int_{-\infty}^{\infty}\theta\times\frac{1}{\pi(1+\theta^2)}\frac{1}{\sqrt{2\pi}}e^{-(x-\theta)^2/2}d\theta " /></li>
+<li>分母：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%5Cfrac%7B1%7D%7B%5Cpi%281%2B%5Ctheta%5E2%29%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%28x-%5Ctheta%29%5E2%2F2%7Dd%5Ctheta+" alt="\int_{-\infty}^{\infty}\frac{1}{\pi(1+\theta^2)}\frac{1}{\sqrt{2\pi}}e^{-(x-\theta)^2/2}d\theta " /></li>
 </ul>
 
 
 <p>に分解され，結局はコーシー分布と正規分布の掛け算をしていることになる．模式的に書くと以下のようになる．</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+%3D+%5Cfrac%7B%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+%5Ctheta+%5Ctimes+Cauchy+%5Ctimes+Normal%7D%7B%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+Cauchy+%5Ctimes+Normal%7D+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta%28x%29+%3D+%5Cfrac%7B%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+%5Ctheta+%5Ctimes+Cauchy+%5Ctimes+Normal%7D%7B%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+Cauchy+%5Ctimes+Normal%7D+" alt="\delta(x) = \frac{\int_{-\infty}^{\infty} \theta \times Cauchy \times Normal}{\int_{-\infty}^{\infty} Cauchy \times Normal} " /></p>
 
-<p>このように，上と下でそれぞれ積分しているので，モンテカルロ積分の実装においても上下別々に推定値を計算した後に<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+>の推定値を求める．また，コーシー分布と正規分布を掛けた形となっているため，どちらの分布からも乱数を生成してモンテカルロ積分ができる．</p>
+<p>このように，上と下でそれぞれ積分しているので，モンテカルロ積分の実装においても上下別々に推定値を計算した後に<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta%28x%29+" alt="\delta(x) " />の推定値を求める．また，コーシー分布と正規分布を掛けた形となっているため，どちらの分布からも乱数を生成してモンテカルロ積分ができる．</p>
 
 <p>ちなみに，本問題は4章の例4.2（P.107）にも同様の推定量を扱った問題が出てくる．</p>
 
@@ -169,12 +169,12 @@
 <p>左から順に，</p>
 
 <ul>
-<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+>の分子の分布</li>
-<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cdelta%28x%29+>の分母の分布</li>
+<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta%28x%29+" alt="\delta(x) " />の分子の分布</li>
+<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta%28x%29+" alt="\delta(x) " />の分母の分布</li>
 </ul>
 
 
-<p>を，<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+0%2C2%2C4+>についてプロットしたのが以下の図になる．</p>
+<p>を，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+%3D+0%2C2%2C4+" alt="x = 0,2,4 " />についてプロットしたのが以下の図になる．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -310,24 +310,24 @@
 
 <h4>a.コーシー候補にもとづく受理・棄却アルゴリズムから推定量を計算する</h4>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=X+%5Csim+%5Cmathcal%7BN%7D%28%5Ctheta%2C1%29><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+%5Csim+%5Cmathcal%7BC%7D%280%2C1%29>において，事後分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=p%28%5Ctheta%7Cx%29+>は以下のように表される．</p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X+%5Csim+%5Cmathcal%7BN%7D%28%5Ctheta%2C1%29" alt="X \sim \mathcal{N}(\theta,1)" /><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta+%5Csim+%5Cmathcal%7BC%7D%280%2C1%29" alt="\theta \sim \mathcal{C}(0,1)" />において，事後分布<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28%5Ctheta%7Cx%29+" alt="p(\theta|x) " />は以下のように表される．</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=p%28%5Ctheta%7Cx%29%3D%5Cfrac%7Bp%28x%7C%5Ctheta%29p%28%5Ctheta%29%7D%7Bp%28x%29%7D></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28%5Ctheta%7Cx%29%3D%5Cfrac%7Bp%28x%7C%5Ctheta%29p%28%5Ctheta%29%7D%7Bp%28x%29%7D" alt="p(\theta|x)=\frac{p(x|\theta)p(\theta)}{p(x)}" /></p>
 
-<p>ここで，<img src=http://chart.apis.google.com/chart?cht=tx&chl=p%28x%7C%5Ctheta%29+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7B%28x-%5Ctheta%29%5E2%7D%7B2%7D%7D+>より，</p>
+<p>ここで，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28x%7C%5Ctheta%29+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7B%28x-%5Ctheta%29%5E2%7D%7B2%7D%7D+" alt="p(x|\theta) = \frac{1}{\sqrt{2\pi}}e^{-\frac{(x-\theta)^2}{2}} " />より，</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbegin%7Balign%7D+p%28%5Ctheta%7Cx%29+%3D%26+%5Cfrac%7Bp%28%5Ctheta%29%7D%7Bp%28x%29%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7B%28x-%5Ctheta%29%5E2%7D%7B2%7D%7D+%5C%5C+%5Cpropto%26+p%28%5Ctheta%29e%5E%7B-%5Cfrac%7B%28x-%5Ctheta%29%5E2%7D%7B2%7D%7D+%5Cend%7Balign%7D+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbegin%7Balign%7D+p%28%5Ctheta%7Cx%29+%3D%26+%5Cfrac%7Bp%28%5Ctheta%29%7D%7Bp%28x%29%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7B%28x-%5Ctheta%29%5E2%7D%7B2%7D%7D+%5C%5C+%5Cpropto%26+p%28%5Ctheta%29e%5E%7B-%5Cfrac%7B%28x-%5Ctheta%29%5E2%7D%7B2%7D%7D+%5Cend%7Balign%7D+" alt="\begin{align} p(\theta|x) =&amp; \frac{p(\theta)}{p(x)}\frac{1}{\sqrt{2\pi}}e^{-\frac{(x-\theta)^2}{2}} \ \propto&amp; p(\theta)e^{-\frac{(x-\theta)^2}{2}} \end{align} " /></p>
 
 <p>となる．受理・棄却アルゴリズムにおける目標分布と候補分布は</p>
 
 <ul>
-<li>目標分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=f%28%5Ctheta%29+>：<img src=http://chart.apis.google.com/chart?cht=tx&chl=p%28%5Ctheta%29e%5E%7B-%28x-%5Ctheta%29%5E2%2F2%7D></li>
-<li><p>候補分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28%5Ctheta%29+>：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Cpi%281%2B%5Ctheta%5E2%29%7D></p></li>
-<li><p>受理・棄却条件：<img src=http://chart.apis.google.com/chart?cht=tx&chl=U%5Ctimes+M+%5Cleq+%5Cfrac%7Bf%28Y%29%7D%7Bg%28Y%29%7D+>，（<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y+%5Csim+%5Cmathcal%7BC%7D%280%2C1%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2C1%5D%7D>）</p></li>
+<li>目標分布<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f%28%5Ctheta%29+" alt="f(\theta) " />：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28%5Ctheta%29e%5E%7B-%28x-%5Ctheta%29%5E2%2F2%7D" alt="p(\theta)e^{-(x-\theta)^2/2}" /></li>
+<li><p>候補分布<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=g%28%5Ctheta%29+" alt="g(\theta) " />：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7B%5Cpi%281%2B%5Ctheta%5E2%29%7D" alt="\frac{1}{\pi(1+\theta^2)}" /></p></li>
+<li><p>受理・棄却条件：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=U%5Ctimes+M+%5Cleq+%5Cfrac%7Bf%28Y%29%7D%7Bg%28Y%29%7D+" alt="U\times M \leq \frac{f(Y)}{g(Y)} " />，（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=Y+%5Csim+%5Cmathcal%7BC%7D%280%2C1%29+" alt="Y \sim \mathcal{C}(0,1) " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2C1%5D%7D" alt="U \sim \mathcal{U}_{[0,1]}" />）</p></li>
 </ul>
 
 
-<p>のようになる．受理・棄却アルゴリズムの実験は，練習問題3.1と同様に<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%3D+0%2C2%2C4+>で実行している．以下の図は，受理された乱数のヒストグラムと，その乱数の平均値の値を赤い線で示してある．</p>
+<p>のようになる．受理・棄却アルゴリズムの実験は，練習問題3.1と同様に<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+%3D+0%2C2%2C4+" alt="x = 0,2,4 " />で実行している．以下の図は，受理された乱数のヒストグラムと，その乱数の平均値の値を赤い線で示してある．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -373,8 +373,8 @@
 <p>分母と分子で同じ乱数を使う場合と違う乱数を使う場合で，どのような誤差の影響が出るかを比較する．今回は正規乱数を用いたモンテカルロ積分で試してみる．</p>
 
 <ul>
-<li>黒＆黄色：分母と分子で同じ乱数<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_i+>を使う場合</li>
-<li>青＆水色：分母と分子で違う乱数<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_i+>を使う場合</li>
+<li>黒＆黄色：分母と分子で同じ乱数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta_i+" alt="\theta_i " />を使う場合</li>
+<li>青＆水色：分母と分子で違う乱数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta_i+" alt="\theta_i " />を使う場合</li>
 </ul>
 
 

@@ -156,25 +156,25 @@
 
 <p>ここでは，ロジスティック回帰におけるGLMMを考える．種子生存数が二項分布</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathrm%7BBin%7D%28y_i%7C%5Cbeta_1%2C%5Cbeta_2%2Cs%29+%3D+%7B%7BN%7D%5Cchoose%7By_i%7D%7D+q_%7Bi%7D%5E%7By_i%7D%281-q_i%29%5E%7BN-y_i%7D+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathrm%7BBin%7D%28y_i%7C%5Cbeta_1%2C%5Cbeta_2%2Cs%29+%3D+%7B%7BN%7D%5Cchoose%7By_i%7D%7D+q_%7Bi%7D%5E%7By_i%7D%281-q_i%29%5E%7BN-y_i%7D+" alt="\mathrm{Bin}(y_i|\beta_1,\beta_2,s) = {{N}\choose{y_i}} q_{i}^{y_i}(1-q_i)^{N-y_i} " /></p>
 
-<p>に従うとした上で，そのパラメータ<img src=http://chart.apis.google.com/chart?cht=tx&chl=q_i+>を</p>
+<p>に従うとした上で，そのパラメータ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=q_i+" alt="q_i " />を</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathrm%7Blogit%7D%28q_i%29+%3D+%5Cbeta_1+%2B+%5Cbeta_2+x_i+%2B+r_i+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathrm%7Blogit%7D%28q_i%29+%3D+%5Cbeta_1+%2B+%5Cbeta_2+x_i+%2B+r_i+" alt="\mathrm{logit}(q_i) = \beta_1 + \beta_2 x_i + r_i " /></p>
 
-<p>とおく．ここで，個体差<img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+>は</p>
+<p>とおく．ここで，個体差<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_i+" alt="r_i " />は</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+%5Csim+%5Cmathcal%7BN%7D%280%2Cs%29+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_i+%5Csim+%5Cmathcal%7BN%7D%280%2Cs%29+" alt="r_i \sim \mathcal{N}(0,s) " /></p>
 
 <p>平均0，標準誤差sの正規分布に従うとする．</p>
 
 <h3>実験</h3>
 
-<p>今回の実験は，なぜ応答変数が過分散の場合にGLMでは駄目でGLMMで推定すべきかを確かめるために，本書に記載されているGLMおよびGLMMの実験を1000回行なって，そのときの切片<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>と傾き<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>の分布を見ることにする．目標は<a href="http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/26401/1/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%85%8B%E5%AD%A656-2.pdf">「「個体差」の統計モデリング」</a>(pdf)の図11をプロットすること．</p>
+<p>今回の実験は，なぜ応答変数が過分散の場合にGLMでは駄目でGLMMで推定すべきかを確かめるために，本書に記載されているGLMおよびGLMMの実験を1000回行なって，そのときの切片<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_1+" alt="\beta_1 " />と傾き<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_2+" alt="\beta_2 " />の分布を見ることにする．目標は<a href="http://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/26401/1/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%85%8B%E5%AD%A656-2.pdf">「「個体差」の統計モデリング」</a>(pdf)の図11をプロットすること．</p>
 
-<p>各実験は，葉数が2〜6枚の個体を20個体ずつ合計100個体のデータが得られたという条件で，それぞれの生存種子数をパラメータ<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+%3D+-4+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+%3D+1+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+%5Csim+%5Cmathcal%7BN%7D%280%2C3%29+>の二項乱数から生成した．このように生成したデータを用いて，GLMMとGLMを実行した．</p>
+<p>各実験は，葉数が2〜6枚の個体を20個体ずつ合計100個体のデータが得られたという条件で，それぞれの生存種子数をパラメータ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_1+%3D+-4+" alt="\beta_1 = -4 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_2+%3D+1+" alt="\beta_2 = 1 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_i+%5Csim+%5Cmathcal%7BN%7D%280%2C3%29+" alt="r_i \sim \mathcal{N}(0,3) " />の二項乱数から生成した．このように生成したデータを用いて，GLMMとGLMを実行した．</p>
 
-<p>この実験を1000回繰り返し，その時の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>の分布をプロットしたのが以下の図となっている．左図が切片<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+>の分布，右図が傾き<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+>の分布で，それぞれ黒の線がGLMが推定した値の分布，赤の線がGLMMが推定した値の分布となっている．また，GLMとGLMMの推定値の平均を縦の点線で表している．</p>
+<p>この実験を1000回繰り返し，その時の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_1+" alt="\beta_1 " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_2+" alt="\beta_2 " />の分布をプロットしたのが以下の図となっている．左図が切片<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_1+" alt="\beta_1 " />の分布，右図が傾き<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_2+" alt="\beta_2 " />の分布で，それぞれ黒の線がGLMが推定した値の分布，赤の線がGLMMが推定した値の分布となっている．また，GLMとGLMMの推定値の平均を縦の点線で表している．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -250,7 +250,7 @@
 
 <p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc_7.png" alt="" /></p>
 
-<p>さて，この図の解釈だが，今回データセット作成に用いた実験条件は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_1+%3D+-4+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_2+%3D+1+>だったので，GLMMにおいて切片・傾きどちらもある程度正しい推定ができていることがわかる．逆にGLMでは，切片は過大推定，傾きは過小推定されている．また，推定値のばらつきである分布の山の裾の拡がりを見てみると，GLMMでは大きく，GLMでは小さくなっている．これはいわゆるバイアス・バリアンスのトレードオフによるものだと思われる．</p>
+<p>さて，この図の解釈だが，今回データセット作成に用いた実験条件は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_1+%3D+-4+" alt="\beta_1 = -4 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_2+%3D+1+" alt="\beta_2 = 1 " />だったので，GLMMにおいて切片・傾きどちらもある程度正しい推定ができていることがわかる．逆にGLMでは，切片は過大推定，傾きは過小推定されている．また，推定値のばらつきである分布の山の裾の拡がりを見てみると，GLMMでは大きく，GLMでは小さくなっている．これはいわゆるバイアス・バリアンスのトレードオフによるものだと思われる．</p>
 
 <h4>参考</h4>
 
@@ -305,15 +305,15 @@
 
 <h3>例 5.3 確率的探索を使って，一様分布からのシミュレーションにより関数の最大値を求める</h3>
 
-<p><a href="http://yagays.github.com/blog/2012/10/25/imcmr-3-1/">例 3.3</a>で積分を考えた関数<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%29+%3D+%5B%5Ccos%2850x%29+%2B+%5Csin%2820x%29+%5D%5E2+>について，今度はその最大値について考える．</p>
+<p><a href="http://yagays.github.com/blog/2012/10/25/imcmr-3-1/">例 3.3</a>で積分を考えた関数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=h%28x%29+%3D+%5B%5Ccos%2850x%29+%2B+%5Csin%2820x%29+%5D%5E2+" alt="h(x) = [\cos(50x) + \sin(20x) ]^2 " />について，今度はその最大値について考える．</p>
 
-<p>今回の実験は1000回シミュレーションを行う．それぞれのシミュレーションには，まず一様乱数<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BU%7D_%7B%5B0%2C1%5D%7D+%3D+u_1%2C+%5Cldots+%2C+u_m+>を1000個作成し，それぞれに関数を掛けた値の中から最大値<img src=http://chart.apis.google.com/chart?cht=tx&chl=h_%7Bm%7D%5E%7B%2A%7D+%3D+%5Cmax%28h%28u_1%29%2C+%5Cldots+%2Ch%28u_m%29%29+>を求める．</p>
+<p>今回の実験は1000回シミュレーションを行う．それぞれのシミュレーションには，まず一様乱数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BU%7D_%7B%5B0%2C1%5D%7D+%3D+u_1%2C+%5Cldots+%2C+u_m+" alt="\mathcal{U}_{[0,1]} = u_1, \ldots , u_m " />を1000個作成し，それぞれに関数を掛けた値の中から最大値<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=h_%7Bm%7D%5E%7B%2A%7D+%3D+%5Cmax%28h%28u_1%29%2C+%5Cldots+%2Ch%28u_m%29%29+" alt="h_{m}^{*} = \max(h(u_1), \ldots ,h(u_m)) " />を求める．</p>
 
 <p>確率的探索といっても，今回の場合にやっていることは結局のところ定義域内で乱数を発生させて関数の値が大きいところを探しているだけとなる．今回は一様乱数で定義域内をまんべんなく探すという方法を取っているが，この後の確率的探索の例では「密度」を考えて，関数の値が大きい領域でのシミュレーションの確率を高くし，その他の関数の値の小さい領域での確率を小さくするという方法が取られる．</p>
 
 <h4>今回のシミュレーションの仕組み</h4>
 
-<p>今回のコードは少しややこしいので，まずは試しにシミュレーションを1回だけ行なってみよう．今回は推定値がどのように更新されていくかを見るために，単純にmax()関数を使うのではなく，cummax()関数を使用している．これにより，ベクトルの前から順に値を見ていって，最大値を更新していく様子を見ることができる．以下の図の黒の線が推定値<img src=http://chart.apis.google.com/chart?cht=tx&chl=h_%7Bm%7D%5E%7B%2A%7D+>，赤の線がoptimize()関数で求めた定義域内における関数<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%29+>の最大値を示している．</p>
+<p>今回のコードは少しややこしいので，まずは試しにシミュレーションを1回だけ行なってみよう．今回は推定値がどのように更新されていくかを見るために，単純にmax()関数を使うのではなく，cummax()関数を使用している．これにより，ベクトルの前から順に値を見ていって，最大値を更新していく様子を見ることができる．以下の図の黒の線が推定値<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=h_%7Bm%7D%5E%7B%2A%7D+" alt="h_{m}^{*} " />，赤の線がoptimize()関数で求めた定義域内における関数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=h%28x%29+" alt="h(x) " />の最大値を示している．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -371,13 +371,13 @@
 
 <h3>練習問題 5.3 一様分布を用いたシミュレーションのパフォーマンスを向上させるために使用する定義域における制約を可視化する</h3>
 
-<p>まず最初に注意．この問題は解けないわけではないが，厳密には間違っているらしい．訂正は<a href="http://www.ceremade.dauphine.fr/~xian/shortManual.pdf">解答</a>(pdf)に書かれているが，つまりは定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>の制約は，</p>
+<p>まず最初に注意．この問題は解けないわけではないが，厳密には間違っているらしい．訂正は<a href="http://www.ceremade.dauphine.fr/~xian/shortManual.pdf">解答</a>(pdf)に書かれているが，つまりは定義域<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cit%7B%5CTheta%7D+" alt="\it{\Theta} " />の制約は，</p>
 
-<blockquote><p><img src=http://chart.apis.google.com/chart?cht=tx&chl=x%5E2%281%2B%5Csin%283y%29%5Ccos%288x%29%29+%2B+y%5E2%282%2B%5Ccos%285x%29%5Ccos%288y%29%29+%5Cleq+1+></p></blockquote>
+<blockquote><p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x%5E2%281%2B%5Csin%283y%29%5Ccos%288x%29%29+%2B+y%5E2%282%2B%5Ccos%285x%29%5Ccos%288y%29%29+%5Cleq+1+" alt="x^2(1+\sin(3y)\cos(8x)) + y^2(2+\cos(5x)\cos(8y)) \leq 1 " /></p></blockquote>
 
 <p>ではなく，</p>
 
-<blockquote><p> <img src=http://chart.apis.google.com/chart?cht=tx&chl=x%5E2%281%2B%5Csin%28%5Cfrac%7B3%7D%7By%7D%29%5Ccos%288x%29%29+%2B+y%5E2%282%2B%5Ccos%285x%29%5Ccos%288y%29%29+%5Cleq+1+></p></blockquote>
+<blockquote><p> <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x%5E2%281%2B%5Csin%28%5Cfrac%7B3%7D%7By%7D%29%5Ccos%288x%29%29+%2B+y%5E2%282%2B%5Ccos%285x%29%5Ccos%288y%29%29+%5Cleq+1+" alt="x^2(1+\sin(\frac{3}{y})\cos(8x)) + y^2(2+\cos(5x)\cos(8y)) \leq 1 " /></p></blockquote>
 
 <p>としなければいけないようだ．今回はどちらの式も試してみて，本に書かれている式の何がおかしかったのを見てみる．</p>
 
@@ -490,14 +490,14 @@
 <p>最適化問題には大きくわけて2種類存在する．</p>
 
 <ul>
-<li>定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>で関数<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28%5Ctheta%29>の極値を求める</li>
-<li>定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>で陰的方程式<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28%5Ctheta%29+%3D+0+>の解を求める</li>
+<li>定義域<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cit%7B%5CTheta%7D+" alt="\it{\Theta} " />で関数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=h%28%5Ctheta%29" alt="h(\theta)" />の極値を求める</li>
+<li>定義域<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cit%7B%5CTheta%7D+" alt="\it{\Theta} " />で陰的方程式<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=g%28%5Ctheta%29+%3D+0+" alt="g(\theta) = 0 " />の解を求める</li>
 </ul>
 
 
-<p>問題設定はそれぞれ違うのだが，今回は最大化問題だけを取り上げる．つまり，以下の式のように定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>で一番大きな値を求めたい．</p>
+<p>問題設定はそれぞれ違うのだが，今回は最大化問題だけを取り上げる．つまり，以下の式のように定義域<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cit%7B%5CTheta%7D+" alt="\it{\Theta} " />で一番大きな値を求めたい．</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=max_%7B%5Ctheta+%5Cin+%5CTheta%7D%3Dh%28%5Ctheta%29></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=max_%7B%5Ctheta+%5Cin+%5CTheta%7D%3Dh%28%5Ctheta%29" alt="max_{\theta \in \Theta}=h(\theta)" /></p>
 
 <h4>解き方にも2種類ある</h4>
 
@@ -518,13 +518,13 @@
 
 <h4>左の図</h4>
 
-<p>何かしらのコーシー分布から生成された乱数<img src=http://chart.apis.google.com/chart?cht=tx&chl=%7Bx_1%2C+%5Cdots+%2Cx_n%7D>が与えられた時に，それを生成したコーシー分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BC%7D%28%5Ctheta%2C1%29+>の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+>を最尤法で推定しようという問題．尤度は以下の式で表される</p>
+<p>何かしらのコーシー分布から生成された乱数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7Bx_1%2C+%5Cdots+%2Cx_n%7D" alt="{x_1, \dots ,x_n}" />が与えられた時に，それを生成したコーシー分布<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BC%7D%28%5Ctheta%2C1%29+" alt="\mathcal{C}(\theta,1) " />の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta+" alt="\theta " />を最尤法で推定しようという問題．尤度は以下の式で表される</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Cprod_%7Bi%3D1%7D%5E%7Bn%7D%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%5E2%7D+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Cprod_%7Bi%3D1%7D%5E%7Bn%7D%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%5E2%7D+" alt="l(\theta| x_1,\ldots,x_n) = \prod_{i=1}^{n}\frac{1}{1+(x_i-\theta)^2} " /></p>
 
 <p>実際に計算するときには以下の対数尤度を使う．</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clog+l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D+%5Clog+%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%5E2%7D+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clog+l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D+%5Clog+%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%5E2%7D+" alt="\log l(\theta| x_1,\ldots,x_n) = \sum_{i=1}^{n} \log \frac{1}{1+(x_i-\theta)^2} " /></p>
 
 <p>今回は実験として，上の尤度と対数尤度の2パターンで計算したときに，どういう違いが現れるかを示す．数式上は違いはないが，計算機上では値の取り扱いにおいて違いが出てくる．</p>
 
@@ -565,7 +565,7 @@
 
 <h4>右の図</h4>
 
-<p>次に，上記の尤度を，摂動が加えられた尤度に置き換える．これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=-%5B%5Csin%28100y%29%5D%5E2+>という0から1の間の値を取るノイズを加えている．</p>
+<p>次に，上記の尤度を，摂動が加えられた尤度に置き換える．これは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=-%5B%5Csin%28100y%29%5D%5E2+" alt="-[\sin(100y)]^2 " />という0から1の間の値を取るノイズを加えている．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -606,9 +606,9 @@
 
 <p>今回の混合正規モデルでは，</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_1%2C1%29%2B%5Cfrac%7B3%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_2%2C1%29+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_1%2C1%29%2B%5Cfrac%7B3%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_2%2C1%29+" alt="\frac{1}{4}\mathcal{N}(\mu_1,1)+\frac{3}{4}\mathcal{N}(\mu_2,1) " /></p>
 
-<p>を考える．まずは分布の形を調べるために，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_1+%3D+0+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_2+%3D+2.5+>における対数尤度の分布を示してみる．そして，初期値(1,1)からスタートして，Newton-Raphson法がどのように推定値に収束していくかを図示する．</p>
+<p>を考える．まずは分布の形を調べるために，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu_1+%3D+0+" alt="\mu_1 = 0 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu_2+%3D+2.5+" alt="\mu_2 = 2.5 " />における対数尤度の分布を示してみる．そして，初期値(1,1)からスタートして，Newton-Raphson法がどのように推定値に収束していくかを図示する．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -657,7 +657,7 @@
 
 <h4>アニメーションにしてみる</h4>
 
-<p>例が1つだけでは面白くないので，初期値をバラバラに選んで何回もシミュレーションしてみて，初期値からどのように推定値が更新されていくのかを見てみる．今回は，初期値として<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_1+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_2+>ともに図に表されている-2から5の範囲内でランダムに値を取るようにして，そこからのNewton-Raphson法による推定値の変化を1ステップごとにアニメーションとして作成した．それを25パターン作成して繋げている．</p>
+<p>例が1つだけでは面白くないので，初期値をバラバラに選んで何回もシミュレーションしてみて，初期値からどのように推定値が更新されていくのかを見てみる．今回は，初期値として<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu_1+" alt="\mu_1 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu_2+" alt="\mu_2 " />ともに図に表されている-2から5の範囲内でランダムに値を取るようにして，そこからのNewton-Raphson法による推定値の変化を1ステップごとにアニメーションとして作成した．それを25パターン作成して繋げている．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -823,9 +823,9 @@
 
 <h3>内容：重点サンプリングにより推定量の分散と効率を改善する</h3>
 
-<h3>例 3.5 <img src=http://chart.apis.google.com/chart?cht=tx&chl=Z+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+>で<img src=http://chart.apis.google.com/chart?cht=tx&chl=P%28Z+%3E+4.5%29+>の確率を求める</h3>
+<h3>例 3.5 <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=Z+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+" alt="Z \sim \mathcal{N}(0,1) " />で<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=P%28Z+%3E+4.5%29+" alt="P(Z &gt; 4.5) " />の確率を求める</h3>
 
-<p>確率を求めると書いてあるが，要するに正規分布の確率密度関数において4.5からInfまでの面積（<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cint_%7B4.5%7D%5E%7B%5Cinfty%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7Bx%5E2%7D%7B2%7D%7D+dx+>）を求めるというもの．ただし，正規分布でxの値が4.5ともなると確率そのものがものすごく小さいので，普通のモンテカルロ積分で正規分布から乱数を生成したとしても，シミュレーション回数を非常に大きくしないと精度の良い値が求まらない．</p>
+<p>確率を求めると書いてあるが，要するに正規分布の確率密度関数において4.5からInfまでの面積（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cint_%7B4.5%7D%5E%7B%5Cinfty%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7Bx%5E2%7D%7B2%7D%7D+dx+" alt="\int_{4.5}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}} dx " />）を求めるというもの．ただし，正規分布でxの値が4.5ともなると確率そのものがものすごく小さいので，普通のモンテカルロ積分で正規分布から乱数を生成したとしても，シミュレーション回数を非常に大きくしないと精度の良い値が求まらない．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -838,7 +838,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>ということで，重点サンプリングでシミュレーション回数を抑える．<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28y%29+%3D+%5Cfrac%7Be%5E%7B-y%7D%7D%7B%5Cint_%7B4.5%7D%5E%7B%5Cinfty%7De%5E%7B-x%7Ddx%7D+%3D+e%5E%7B-%28y-4.5%29%7D+>として，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bi%3D1%7D%5E%7Bm%7D%5Cfrac%7Bf%28Y%5E%7B%28i%29%7D%29%7D%7Bg%28Y%5E%7B%28i%29%7D%29%7D+>を求める．ここで，gの選択の箇所は「gを，4.5で切り詰めた指数分布の密度<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BExp%7D%281%29+>とする」ということ(P.81)．</p>
+<p>ということで，重点サンプリングでシミュレーション回数を抑える．<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=g%28y%29+%3D+%5Cfrac%7Be%5E%7B-y%7D%7D%7B%5Cint_%7B4.5%7D%5E%7B%5Cinfty%7De%5E%7B-x%7Ddx%7D+%3D+e%5E%7B-%28y-4.5%29%7D+" alt="g(y) = \frac{e^{-y}}{\int_{4.5}^{\infty}e^{-x}dx} = e^{-(y-4.5)} " />として，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bi%3D1%7D%5E%7Bm%7D%5Cfrac%7Bf%28Y%5E%7B%28i%29%7D%29%7D%7Bg%28Y%5E%7B%28i%29%7D%29%7D+" alt="\frac{1}{m}\sum_{i=1}^{m}\frac{f(Y^{(i)})}{g(Y^{(i)})} " />を求める．ここで，gの選択の箇所は「gを，4.5で切り詰めた指数分布の密度<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BExp%7D%281%29+" alt="\mathcal{Exp}(1) " />とする」ということ(P.81)．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -855,10 +855,10 @@
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-5_1.png" alt="" /></p>
 
-<h3>練習問題 3.5 切り詰められた指数分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BExp%7D%28%5Clambda%29+>をg(x)としたときの近似値の分散への影響を調べる</h3>
+<h3>練習問題 3.5 切り詰められた指数分布<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BExp%7D%28%5Clambda%29+" alt="\mathcal{Exp}(\lambda) " />をg(x)としたときの近似値の分散への影響を調べる</h3>
 
-<p>例3.5で<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+%3D+1+>だった指数分布の値を色々と変えてみて実験する．以下の図は，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+%3D+1%2C5%2C10%2C20+>の時の推定値の変化を示している．左上の図が例3.5と同じ条件となり，そこから右上・左下・右下と<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+>の値を大きくしている．黒の線が推定値の推移，上下の黄色の線が推定値の誤差の範囲（＝分散）となっている．
-このプロットを見ると，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+>の値が大きくなるにつれて，分散も大きくなることがわかる．</p>
+<p>例3.5で<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clambda+%3D+1+" alt="\lambda = 1 " />だった指数分布の値を色々と変えてみて実験する．以下の図は，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clambda+%3D+1%2C5%2C10%2C20+" alt="\lambda = 1,5,10,20 " />の時の推定値の変化を示している．左上の図が例3.5と同じ条件となり，そこから右上・左下・右下と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clambda+" alt="\lambda " />の値を大きくしている．黒の線が推定値の推移，上下の黄色の線が推定値の誤差の範囲（＝分散）となっている．
+このプロットを見ると，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clambda+" alt="\lambda " />の値が大きくなるにつれて，分散も大きくなることがわかる．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

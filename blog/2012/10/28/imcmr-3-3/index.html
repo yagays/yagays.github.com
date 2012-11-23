@@ -144,9 +144,9 @@
 
 <h3>内容：重点サンプリングにより推定量の分散と効率を改善する</h3>
 
-<h3>例 3.5 <img src=http://chart.apis.google.com/chart?cht=tx&chl=Z+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+>で<img src=http://chart.apis.google.com/chart?cht=tx&chl=P%28Z+%3E+4.5%29+>の確率を求める</h3>
+<h3>例 3.5 <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=Z+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+" alt="Z \sim \mathcal{N}(0,1) " />で<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=P%28Z+%3E+4.5%29+" alt="P(Z &gt; 4.5) " />の確率を求める</h3>
 
-<p>確率を求めると書いてあるが，要するに正規分布の確率密度関数において4.5からInfまでの面積（<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cint_%7B4.5%7D%5E%7B%5Cinfty%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7Bx%5E2%7D%7B2%7D%7D+dx+>）を求めるというもの．ただし，正規分布でxの値が4.5ともなると確率そのものがものすごく小さいので，普通のモンテカルロ積分で正規分布から乱数を生成したとしても，シミュレーション回数を非常に大きくしないと精度の良い値が求まらない．</p>
+<p>確率を求めると書いてあるが，要するに正規分布の確率密度関数において4.5からInfまでの面積（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cint_%7B4.5%7D%5E%7B%5Cinfty%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7Bx%5E2%7D%7B2%7D%7D+dx+" alt="\int_{4.5}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}} dx " />）を求めるというもの．ただし，正規分布でxの値が4.5ともなると確率そのものがものすごく小さいので，普通のモンテカルロ積分で正規分布から乱数を生成したとしても，シミュレーション回数を非常に大きくしないと精度の良い値が求まらない．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -159,7 +159,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>ということで，重点サンプリングでシミュレーション回数を抑える．<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28y%29+%3D+%5Cfrac%7Be%5E%7B-y%7D%7D%7B%5Cint_%7B4.5%7D%5E%7B%5Cinfty%7De%5E%7B-x%7Ddx%7D+%3D+e%5E%7B-%28y-4.5%29%7D+>として，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bi%3D1%7D%5E%7Bm%7D%5Cfrac%7Bf%28Y%5E%7B%28i%29%7D%29%7D%7Bg%28Y%5E%7B%28i%29%7D%29%7D+>を求める．ここで，gの選択の箇所は「gを，4.5で切り詰めた指数分布の密度<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BExp%7D%281%29+>とする」ということ(P.81)．</p>
+<p>ということで，重点サンプリングでシミュレーション回数を抑える．<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=g%28y%29+%3D+%5Cfrac%7Be%5E%7B-y%7D%7D%7B%5Cint_%7B4.5%7D%5E%7B%5Cinfty%7De%5E%7B-x%7Ddx%7D+%3D+e%5E%7B-%28y-4.5%29%7D+" alt="g(y) = \frac{e^{-y}}{\int_{4.5}^{\infty}e^{-x}dx} = e^{-(y-4.5)} " />として，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bi%3D1%7D%5E%7Bm%7D%5Cfrac%7Bf%28Y%5E%7B%28i%29%7D%29%7D%7Bg%28Y%5E%7B%28i%29%7D%29%7D+" alt="\frac{1}{m}\sum_{i=1}^{m}\frac{f(Y^{(i)})}{g(Y^{(i)})} " />を求める．ここで，gの選択の箇所は「gを，4.5で切り詰めた指数分布の密度<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BExp%7D%281%29+" alt="\mathcal{Exp}(1) " />とする」ということ(P.81)．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -176,10 +176,10 @@
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-5_1.png" alt="" /></p>
 
-<h3>練習問題 3.5 切り詰められた指数分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BExp%7D%28%5Clambda%29+>をg(x)としたときの近似値の分散への影響を調べる</h3>
+<h3>練習問題 3.5 切り詰められた指数分布<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BExp%7D%28%5Clambda%29+" alt="\mathcal{Exp}(\lambda) " />をg(x)としたときの近似値の分散への影響を調べる</h3>
 
-<p>例3.5で<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+%3D+1+>だった指数分布の値を色々と変えてみて実験する．以下の図は，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+%3D+1%2C5%2C10%2C20+>の時の推定値の変化を示している．左上の図が例3.5と同じ条件となり，そこから右上・左下・右下と<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+>の値を大きくしている．黒の線が推定値の推移，上下の黄色の線が推定値の誤差の範囲（＝分散）となっている．
-このプロットを見ると，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+>の値が大きくなるにつれて，分散も大きくなることがわかる．</p>
+<p>例3.5で<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clambda+%3D+1+" alt="\lambda = 1 " />だった指数分布の値を色々と変えてみて実験する．以下の図は，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clambda+%3D+1%2C5%2C10%2C20+" alt="\lambda = 1,5,10,20 " />の時の推定値の変化を示している．左上の図が例3.5と同じ条件となり，そこから右上・左下・右下と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clambda+" alt="\lambda " />の値を大きくしている．黒の線が推定値の推移，上下の黄色の線が推定値の誤差の範囲（＝分散）となっている．
+このプロットを見ると，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clambda+" alt="\lambda " />の値が大きくなるにつれて，分散も大きくなることがわかる．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

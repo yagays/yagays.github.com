@@ -319,11 +319,11 @@
 
 <h3>例 5.4 数値的最適化法と確率的探索を比較する</h3>
 
-<p><a href="http://yagays.github.com/blog/2012/10/30/imcmr-5-1/">例5.1</a>の続き．前回は数値的最適化法によって<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+>の値を推定したが，今回は確率的探索による推定を行なって，両者の手法の比較を行う．問題としては，以下の対数尤度を最大化する．</p>
+<p><a href="http://yagays.github.com/blog/2012/10/30/imcmr-5-1/">例5.1</a>の続き．前回は数値的最適化法によって<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta+" alt="\theta " />の値を推定したが，今回は確率的探索による推定を行なって，両者の手法の比較を行う．問題としては，以下の対数尤度を最大化する．</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clog+l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D+%5Clog+%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%5E2%7D+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clog+l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D+%5Clog+%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%5E2%7D+" alt="\log l(\theta| x_1,\ldots,x_n) = \sum_{i=1}^{n} \log \frac{1}{1+(x_i-\theta)^2} " /></p>
 
-<p>この式は<img src=http://chart.apis.google.com/chart?cht=tx&chl=n+%5Crightarrow+%5Cinfty+>において<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta%5E%2A+%3D0+>になる．すなわちこれから求める推定値の答えは0ということになる．</p>
+<p>この式は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=n+%5Crightarrow+%5Cinfty+" alt="n \rightarrow \infty " />において<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta%5E%2A+%3D0+" alt="\theta^* =0 " />になる．すなわちこれから求める推定値の答えは0ということになる．</p>
 
 <h4>ソースコード</h4>
 
@@ -404,9 +404,9 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>まず，上のプロットは，数値的最適化法による推定値を横軸に，確率的探索による推定値を縦軸に取った図となっている．真の値が<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta%5E%2A+%3D0+>なので，当然ながら両者ともに推定値は(0,0)付近に集まっている．また，推定値が外れる場合では，どちらかの値が大きくなればもう片方も大きくなるといった具合に，そのパターンはグレーの線で示した<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta%5E0+%3D+%5Chat%7B%5Ctheta%7D+>の線分の上に乗るような形となる．</p>
+<p>まず，上のプロットは，数値的最適化法による推定値を横軸に，確率的探索による推定値を縦軸に取った図となっている．真の値が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta%5E%2A+%3D0+" alt="\theta^* =0 " />なので，当然ながら両者ともに推定値は(0,0)付近に集まっている．また，推定値が外れる場合では，どちらかの値が大きくなればもう片方も大きくなるといった具合に，そのパターンはグレーの線で示した<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta%5E0+%3D+%5Chat%7B%5Ctheta%7D+" alt="\theta^0 = \hat{\theta} " />の線分の上に乗るような形となる．</p>
 
-<p>次に，下のプロットは，横軸にサンプルサイズを取り，縦軸に推定値における対数尤度の差を取った図となっている．今回は相対的誤差なので，(数値的最適化法-確率的探索)/(数値的最適化法)といった形で値を求めている．相対的誤差が大きいということは，数値的最適化法と確率的探索それぞれ求めた対数尤度に差がある，すなわち<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+>に差があるということで，上のプロットにおけるグレーの線分から離れれば離れるほど相対的誤差も大きくなるということになる．なお，図示しているサンプルサイズは<img src=http://chart.apis.google.com/chart?cht=tx&chl=n%3D10+>から<img src=http://chart.apis.google.com/chart?cht=tx&chl=n%3D5001+>までの値となっており，これは両者の手法がどちらも一定サイズのサンプルサイズを必要とするからである（つまり1から10までは図示していない）．</p>
+<p>次に，下のプロットは，横軸にサンプルサイズを取り，縦軸に推定値における対数尤度の差を取った図となっている．今回は相対的誤差なので，(数値的最適化法-確率的探索)/(数値的最適化法)といった形で値を求めている．相対的誤差が大きいということは，数値的最適化法と確率的探索それぞれ求めた対数尤度に差がある，すなわち<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta+" alt="\theta " />に差があるということで，上のプロットにおけるグレーの線分から離れれば離れるほど相対的誤差も大きくなるということになる．なお，図示しているサンプルサイズは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=n%3D10+" alt="n=10 " />から<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=n%3D5001+" alt="n=5001 " />までの値となっており，これは両者の手法がどちらも一定サイズのサンプルサイズを必要とするからである（つまり1から10までは図示していない）．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-4.png" alt="" /></p>
 
@@ -414,7 +414,7 @@
 
 <p>以下の関数の最小化を検討する．</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%2Cy%29%3D%28x%5Csin%2820y%29%2By%5Csin%2820x%29%29%5E2%5Ccosh%28%5Csin%2810x%29x%29%2B+%28x%5Ccos%2810y%29-y%5Csin%2810x%29%29%5E2%5Ccosh%28%5Ccos%2820y%29y%29+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=h%28x%2Cy%29%3D%28x%5Csin%2820y%29%2By%5Csin%2820x%29%29%5E2%5Ccosh%28%5Csin%2810x%29x%29%2B+%28x%5Ccos%2810y%29-y%5Csin%2810x%29%29%5E2%5Ccosh%28%5Ccos%2820y%29y%29+" alt="h(x,y)=(x\sin(20y)+y\sin(20x))^2\cosh(\sin(10x)x)+ (x\cos(10y)-y\sin(10x))^2\cosh(\cos(20y)y) " /></p>
 
 <p>今回は可視化するだけだが，この後の例5.7などで度々登場する関数となる．3Dプロットを描写すると，(0,0)に最小値があり，その周りには山あり谷ありとローカルミニマムがたくさん配置されている関数だとわかる．この図を上から見ると，P.157のプロットのようになる．</p>
 

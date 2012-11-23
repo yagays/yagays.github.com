@@ -159,14 +159,14 @@
 <p>最適化問題には大きくわけて2種類存在する．</p>
 
 <ul>
-<li>定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>で関数<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28%5Ctheta%29>の極値を求める</li>
-<li>定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>で陰的方程式<img src=http://chart.apis.google.com/chart?cht=tx&chl=g%28%5Ctheta%29+%3D+0+>の解を求める</li>
+<li>定義域<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cit%7B%5CTheta%7D+" alt="\it{\Theta} " />で関数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=h%28%5Ctheta%29" alt="h(\theta)" />の極値を求める</li>
+<li>定義域<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cit%7B%5CTheta%7D+" alt="\it{\Theta} " />で陰的方程式<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=g%28%5Ctheta%29+%3D+0+" alt="g(\theta) = 0 " />の解を求める</li>
 </ul>
 
 
-<p>問題設定はそれぞれ違うのだが，今回は最大化問題だけを取り上げる．つまり，以下の式のように定義域<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cit%7B%5CTheta%7D+>で一番大きな値を求めたい．</p>
+<p>問題設定はそれぞれ違うのだが，今回は最大化問題だけを取り上げる．つまり，以下の式のように定義域<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cit%7B%5CTheta%7D+" alt="\it{\Theta} " />で一番大きな値を求めたい．</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=max_%7B%5Ctheta+%5Cin+%5CTheta%7D%3Dh%28%5Ctheta%29></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=max_%7B%5Ctheta+%5Cin+%5CTheta%7D%3Dh%28%5Ctheta%29" alt="max_{\theta \in \Theta}=h(\theta)" /></p>
 
 <h4>解き方にも2種類ある</h4>
 
@@ -187,13 +187,13 @@
 
 <h4>左の図</h4>
 
-<p>何かしらのコーシー分布から生成された乱数<img src=http://chart.apis.google.com/chart?cht=tx&chl=%7Bx_1%2C+%5Cdots+%2Cx_n%7D>が与えられた時に，それを生成したコーシー分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BC%7D%28%5Ctheta%2C1%29+>の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta+>を最尤法で推定しようという問題．尤度は以下の式で表される</p>
+<p>何かしらのコーシー分布から生成された乱数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7Bx_1%2C+%5Cdots+%2Cx_n%7D" alt="{x_1, \dots ,x_n}" />が与えられた時に，それを生成したコーシー分布<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BC%7D%28%5Ctheta%2C1%29+" alt="\mathcal{C}(\theta,1) " />の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta+" alt="\theta " />を最尤法で推定しようという問題．尤度は以下の式で表される</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Cprod_%7Bi%3D1%7D%5E%7Bn%7D%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%5E2%7D+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Cprod_%7Bi%3D1%7D%5E%7Bn%7D%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%5E2%7D+" alt="l(\theta| x_1,\ldots,x_n) = \prod_{i=1}^{n}\frac{1}{1+(x_i-\theta)^2} " /></p>
 
 <p>実際に計算するときには以下の対数尤度を使う．</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clog+l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D+%5Clog+%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%5E2%7D+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clog+l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D+%5Clog+%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%5E2%7D+" alt="\log l(\theta| x_1,\ldots,x_n) = \sum_{i=1}^{n} \log \frac{1}{1+(x_i-\theta)^2} " /></p>
 
 <p>今回は実験として，上の尤度と対数尤度の2パターンで計算したときに，どういう違いが現れるかを示す．数式上は違いはないが，計算機上では値の取り扱いにおいて違いが出てくる．</p>
 
@@ -234,7 +234,7 @@
 
 <h4>右の図</h4>
 
-<p>次に，上記の尤度を，摂動が加えられた尤度に置き換える．これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=-%5B%5Csin%28100y%29%5D%5E2+>という0から1の間の値を取るノイズを加えている．</p>
+<p>次に，上記の尤度を，摂動が加えられた尤度に置き換える．これは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=-%5B%5Csin%28100y%29%5D%5E2+" alt="-[\sin(100y)]^2 " />という0から1の間の値を取るノイズを加えている．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -275,9 +275,9 @@
 
 <p>今回の混合正規モデルでは，</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_1%2C1%29%2B%5Cfrac%7B3%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_2%2C1%29+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_1%2C1%29%2B%5Cfrac%7B3%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_2%2C1%29+" alt="\frac{1}{4}\mathcal{N}(\mu_1,1)+\frac{3}{4}\mathcal{N}(\mu_2,1) " /></p>
 
-<p>を考える．まずは分布の形を調べるために，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_1+%3D+0+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_2+%3D+2.5+>における対数尤度の分布を示してみる．そして，初期値(1,1)からスタートして，Newton-Raphson法がどのように推定値に収束していくかを図示する．</p>
+<p>を考える．まずは分布の形を調べるために，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu_1+%3D+0+" alt="\mu_1 = 0 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu_2+%3D+2.5+" alt="\mu_2 = 2.5 " />における対数尤度の分布を示してみる．そして，初期値(1,1)からスタートして，Newton-Raphson法がどのように推定値に収束していくかを図示する．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -326,7 +326,7 @@
 
 <h4>アニメーションにしてみる</h4>
 
-<p>例が1つだけでは面白くないので，初期値をバラバラに選んで何回もシミュレーションしてみて，初期値からどのように推定値が更新されていくのかを見てみる．今回は，初期値として<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_1+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmu_2+>ともに図に表されている-2から5の範囲内でランダムに値を取るようにして，そこからのNewton-Raphson法による推定値の変化を1ステップごとにアニメーションとして作成した．それを25パターン作成して繋げている．</p>
+<p>例が1つだけでは面白くないので，初期値をバラバラに選んで何回もシミュレーションしてみて，初期値からどのように推定値が更新されていくのかを見てみる．今回は，初期値として<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu_1+" alt="\mu_1 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu_2+" alt="\mu_2 " />ともに図に表されている-2から5の範囲内でランダムに値を取るようにして，そこからのNewton-Raphson法による推定値の変化を1ステップごとにアニメーションとして作成した．それを25パターン作成して繋げている．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

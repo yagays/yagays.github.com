@@ -146,9 +146,9 @@
 
 <p>目的関数からの直接的なシミュレーションが難しい場合，関数の表面をローカルになぞって最大値を探索するという手法が使える．探索に用いる系列は以下のように表す事ができる．</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_%7Bj%2B1%7D+%3D+%5Ctheta_j+%2B++%5Cepsilon_j+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta_%7Bj%2B1%7D+%3D+%5Ctheta_j+%2B++%5Cepsilon_j+" alt="\theta_{j+1} = \theta_j +  \epsilon_j " /></p>
 
-<p>これは現在のステップに摂動項<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_j+>を加えて次のステップとすることを表している．つまりこれはマルコフ連鎖となるのだが，今回はそれほどマルコフ性は重要にはならない．</p>
+<p>これは現在のステップに摂動項<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cepsilon_j+" alt="\epsilon_j " />を加えて次のステップとすることを表している．つまりこれはマルコフ連鎖となるのだが，今回はそれほどマルコフ性は重要にはならない．</p>
 
 <p>概念的に目的関数の分布を山の斜面と考えるならば，現在の位置からちょっと動いて…を繰り返して山を登っていくような動きをする．ただし，単純に傾斜の上の方に登っていくのではなく，どちらかに進むかはランダムなので，たまに斜面を下ったりもする．その試行を繰り返していくことで，山の頂上を目指すような方法となっている．</p>
 
@@ -156,17 +156,17 @@
 
 <p>有限差分法では，関数の勾配は</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cnabla+h%28%5Ctheta_j%29+%5Capprox+%5Cfrac%7Bh%28%5Ctheta_j%2B%5Cbeta_j%5Czeta_j%29-h%28%5Ctheta_j-%5Cbeta_j%5Czeta_j%29%7D%7B2%5Cbeta_j%7D%5Czeta_j+%3D+%5Cfrac%7B%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%7D%7B2%5Cbeta_j%7D%5Czeta_j+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cnabla+h%28%5Ctheta_j%29+%5Capprox+%5Cfrac%7Bh%28%5Ctheta_j%2B%5Cbeta_j%5Czeta_j%29-h%28%5Ctheta_j-%5Cbeta_j%5Czeta_j%29%7D%7B2%5Cbeta_j%7D%5Czeta_j+%3D+%5Cfrac%7B%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%7D%7B2%5Cbeta_j%7D%5Czeta_j+" alt="\nabla h(\theta_j) \approx \frac{h(\theta_j+\beta_j\zeta_j)-h(\theta_j-\beta_j\zeta_j)}{2\beta_j}\zeta_j = \frac{\Delta h(\theta_j,\beta_j\zeta_j)}{2\beta_j}\zeta_j " /></p>
 
-<p>とし，摂動項<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_j+>を組み込んだ系列の更新は以のようになる．</p>
+<p>とし，摂動項<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cepsilon_j+" alt="\epsilon_j " />を組み込んだ系列の更新は以のようになる．</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_%7Bj%2B1%7D+%3D+%5Ctheta_j+%2B++%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta_%7Bj%2B1%7D+%3D+%5Ctheta_j+%2B++%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+" alt="\theta_{j+1} = \theta_j +  \frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j)\zeta_j " /></p>
 
 <h3>例 5.7 有限差分法による関数の最大化において，複数の勾配パラメータがどのように収束に影響するかを調べる</h3>
 
 <p><a href="http://yagays.github.com/blog/2012/11/06/imcmr-5-3/">例5.6</a>の続き．有限差分法を用いて以下の式を最小化することを目的とする．</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%2Cy%29%3D%28x%5Csin%2820y%29%2By%5Csin%2820x%29%29%5E2%5Ccosh%28%5Csin%2810x%29x%29%2B+%28x%5Ccos%2810y%29-y%5Csin%2810x%29%29%5E2%5Ccosh%28%5Ccos%2820y%29y%29+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=h%28x%2Cy%29%3D%28x%5Csin%2820y%29%2By%5Csin%2820x%29%29%5E2%5Ccosh%28%5Csin%2810x%29x%29%2B+%28x%5Ccos%2810y%29-y%5Csin%2810x%29%29%5E2%5Ccosh%28%5Ccos%2820y%29y%29+" alt="h(x,y)=(x\sin(20y)+y\sin(20x))^2\cosh(\sin(10x)x)+ (x\cos(10y)-y\sin(10x))^2\cosh(\cos(20y)y) " /></p>
 
 <p>今回は最大化ではなく最小化することが目的なので，この関数をマイナスにする必要がある．</p>
 
@@ -187,10 +187,10 @@
 <li>勾配の値が10<sup>-5</sup> になるまで以下を繰り返す
 
 <ol>
-<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>を生成する</li>
-<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_%7Bj%7D+>を使って勾配<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+>を生成する</li>
-<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_%7Bj%7D%2B%5Cepsilon_j+>を<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_%7Bj%2B1%7D+>とする</li>
-<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_j+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_j+>を更新する</li>
+<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />を生成する</li>
+<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta_%7Bj%7D+" alt="\theta_{j} " />を使って勾配<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+" alt="\frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j)\zeta_j " />を生成する</li>
+<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta_%7Bj%7D%2B%5Cepsilon_j+" alt="\theta_{j}+\epsilon_j " />を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta_%7Bj%2B1%7D+" alt="\theta_{j+1} " />とする</li>
+<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha_j+" alt="\alpha_j " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_j+" alt="\beta_j " />を更新する</li>
 </ol>
 </li>
 </ul>
@@ -206,13 +206,13 @@
 <iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4274068307" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
-<h4><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>の生成方法と有限差分法における役割</h4>
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />の生成方法と有限差分法における役割</h4>
 
-<p>さて，ここで有限差分法のポイントとなる<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>に関して，実際にどうやって値を生成するのか，そしてこの値がどういう意味を持っているかについて考えてみる．</p>
+<p>さて，ここで有限差分法のポイントとなる<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />に関して，実際にどうやって値を生成するのか，そしてこの値がどういう意味を持っているかについて考えてみる．</p>
 
-<p>まずは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>の生成方法について．本文中では<strong>「<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>は単位球<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5C%7C+%5Czeta_j+%5C%7C+%3D+1+>上に一様に分布しています」</strong>とあるだけで，コードの方を参照してみてもzeta / sqrt(t(zeta) %*% zeta)としか書かれていない．ではこれは一体何をしているのかというと，一言で言うと「球面上の一様分布から乱数を生成する」，つまり今回の場合は単位円の円周の上からある一点を取ってきて<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>の値にするということをしている．</p>
+<p>まずは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />の生成方法について．本文中では<strong>「<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />は単位球<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5C%7C+%5Czeta_j+%5C%7C+%3D+1+" alt="\| \zeta_j \| = 1 " />上に一様に分布しています」</strong>とあるだけで，コードの方を参照してみてもzeta / sqrt(t(zeta) %*% zeta)としか書かれていない．ではこれは一体何をしているのかというと，一言で言うと「球面上の一様分布から乱数を生成する」，つまり今回の場合は単位円の円周の上からある一点を取ってきて<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />の値にするということをしている．</p>
 
-<p>このような球面上の一様分布に関しては「<a href="http://www.amazon.co.jp/gp/product/4274068307/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4274068307&linkCode=as2&tag=yagays-22">Ｒによる計算機統計学</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274068307" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のP.96に詳しく書かれており，この本ではD次元の球面上の一様乱数を生成する方法についてrunif.sphere()関数を定義している．今回の場合はxとyの2次元について考えているので，「<a href="http://www.amazon.co.jp/gp/product/4274068307/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4274068307&linkCode=as2&tag=yagays-22">Ｒによる計算機統計学</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274068307" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」に倣ってrunif.sphere(1,2)とすれば，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>と同様の値が得られる．</p>
+<p>このような球面上の一様分布に関しては「<a href="http://www.amazon.co.jp/gp/product/4274068307/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4274068307&linkCode=as2&tag=yagays-22">Ｒによる計算機統計学</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274068307" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のP.96に詳しく書かれており，この本ではD次元の球面上の一様乱数を生成する方法についてrunif.sphere()関数を定義している．今回の場合はxとyの2次元について考えているので，「<a href="http://www.amazon.co.jp/gp/product/4274068307/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4274068307&linkCode=as2&tag=yagays-22">Ｒによる計算機統計学</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274068307" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」に倣ってrunif.sphere(1,2)とすれば，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />と同様の値が得られる．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -241,13 +241,13 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>次に，有限差分法における<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>の役割について考えてみる．</p>
+<p>次に，有限差分法における<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />の役割について考えてみる．</p>
 
-<p>そもそも，確率的勾配法はローカルに関数の表面をなぞるように探索して，値の大きいポイントを探す確率的なアプローチだった．概念的には，<a href="http://yagays.github.com/blog/2012/11/06/imcmr-5-3/">前回3Dプロットをした</a>ような山みたいになっている関数の上をあちこち動いて頂上を探し出すということだが，あちこち動きまわるためには，歩く「方向」と「距離」を考えなければならない．今回の有限差分法における勾配は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_j+%3D+%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+>で表されていたが，その「方向」が<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>，「距離」が<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29+>に対応している．</p>
+<p>そもそも，確率的勾配法はローカルに関数の表面をなぞるように探索して，値の大きいポイントを探す確率的なアプローチだった．概念的には，<a href="http://yagays.github.com/blog/2012/11/06/imcmr-5-3/">前回3Dプロットをした</a>ような山みたいになっている関数の上をあちこち動いて頂上を探し出すということだが，あちこち動きまわるためには，歩く「方向」と「距離」を考えなければならない．今回の有限差分法における勾配は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cepsilon_j+%3D+%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+" alt="\epsilon_j = \frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j)\zeta_j " />で表されていたが，その「方向」が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />，「距離」が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29+" alt="\frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j) " />に対応している．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-7_3.png" alt="" /></p>
 
-<p>では実際に<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>と勾配<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_j+>を図示して，「方向」と「距離」の意味を確かめてみよう．以下の図は，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>の取りうる単位円と，赤い矢印<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>，黒い矢印<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_j+>を示した図になっている（<img src=http://chart.apis.google.com/chart?cht=tx&chl=j%3D1+>）．この図を見ると，赤い矢印で方向が示され，黒い矢印でどれくらいの距離を進むかが見て取れる．<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+>は乱数で生成された値なので，本書の「そのつど方向をランダムに選択する」という勾配の説明の通り，単位円の円周上からどこか一点を選択して進む方向を決めている．</p>
+<p>では実際に<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />と勾配<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cepsilon_j+" alt="\epsilon_j " />を図示して，「方向」と「距離」の意味を確かめてみよう．以下の図は，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />の取りうる単位円と，赤い矢印<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />，黒い矢印<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cepsilon_j+" alt="\epsilon_j " />を示した図になっている（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=j%3D1+" alt="j=1 " />）．この図を見ると，赤い矢印で方向が示され，黒い矢印でどれくらいの距離を進むかが見て取れる．<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />は乱数で生成された値なので，本書の「そのつど方向をランダムに選択する」という勾配の説明の通り，単位円の円周上からどこか一点を選択して進む方向を決めている．</p>
 
 <p>といったように，この有限差分法では関数の山の傾斜を考えて進む方向を決めるのではなく，何も考えずに動いてみるといったアプローチとなっている．ただし，距離に関しては別で，関数を使って傾斜を見つつ調整しているので，その点は注意．</p>
 
@@ -264,13 +264,13 @@
 
 <h4>今回実験を行う4つのシナリオ</h4>
 
-<p>この有限差分法において，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_j+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_j+>の系列の更新式は任意に設定できる．今回は4つのシナリオを用意して実験を行った．それぞれのシナリオの更新式は以下の通り．</p>
+<p>この有限差分法において，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha_j+" alt="\alpha_j " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_j+" alt="\beta_j " />の系列の更新式は任意に設定できる．今回は4つのシナリオを用意して実験を行った．それぞれのシナリオの更新式は以下の通り．</p>
 
 <ul>
-<li>シナリオ1：<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2F%5Clog%28j%2B1%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2F%5Clog%28j%2B1%29%5E%7B0.1%7D+></li>
-<li>シナリオ2：<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2F100%5Clog%28j%2B1%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2F%5Clog%28j%2B1%29%5E%7B0.1%7D+></li>
-<li>シナリオ3：<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2F%28j%2B1%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2F%28j%2B1%29%5E%7B0.5%7D+></li>
-<li>シナリオ4：<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2F%28j%2B1%29+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=1%2F%28j%2B1%29%5E%7B0.1%7D+></li>
+<li>シナリオ1：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1%2F%5Clog%28j%2B1%29+" alt="1/\log(j+1) " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1%2F%5Clog%28j%2B1%29%5E%7B0.1%7D+" alt="1/\log(j+1)^{0.1} " /></li>
+<li>シナリオ2：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1%2F100%5Clog%28j%2B1%29+" alt="1/100\log(j+1) " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1%2F%5Clog%28j%2B1%29%5E%7B0.1%7D+" alt="1/\log(j+1)^{0.1} " /></li>
+<li>シナリオ3：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1%2F%28j%2B1%29+" alt="1/(j+1) " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1%2F%28j%2B1%29%5E%7B0.5%7D+" alt="1/(j+1)^{0.5} " /></li>
+<li>シナリオ4：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1%2F%28j%2B1%29+" alt="1/(j+1) " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1%2F%28j%2B1%29%5E%7B0.1%7D+" alt="1/(j+1)^{0.1} " /></li>
 </ul>
 
 
@@ -381,7 +381,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>シナリオ2,3,4の場合は，whileループの最後の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_j+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_j+>の更新式を以下の通りにする．</p>
+<p>シナリオ2,3,4の場合は，whileループの最後の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha_j+" alt="\alpha_j " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_j+" alt="\beta_j " />の更新式を以下の通りにする．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -409,8 +409,8 @@
 <p>上の図の解釈だが，この4つのシナリオの場合において</p>
 
 <ul>
-<li>シナリオ1では，動きまわる距離が大きすぎて（<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_j+>が収束するのに時間がかかって）なかなかアルゴリズムが停止しない</li>
-<li>シナリオ2では，動きまわる距離が小さすぎて（<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_j+>がすぐ収束してしまって）ローカルミニマムにはまっている</li>
+<li>シナリオ1では，動きまわる距離が大きすぎて（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha_j+" alt="\alpha_j " />が収束するのに時間がかかって）なかなかアルゴリズムが停止しない</li>
+<li>シナリオ2では，動きまわる距離が小さすぎて（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha_j+" alt="\alpha_j " />がすぐ収束してしまって）ローカルミニマムにはまっている</li>
 <li>シナリオ3では，動きまわる距離はシナリオ2より改善しているが，最大値を見つけられていない</li>
 <li>シナリオ4では，上手い具合に最大値を見つけることができている</li>
 </ul>
@@ -422,10 +422,10 @@
 
 <h3>本問題の疑問点</h3>
 
-<p>さて，この問題を素直に解いてもP.157の図5.7のようにはいかない．色々と試してみた結果，どうやら<strong>本書におけるシナリオ1と2の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_j+>において，分母にかかっている0.1乗の表記がおかしい気がする．</strong>この0.1乗がlogの中の括弧にかかっていると考えて0.1*log()としてコードを組むと，値が発散しすぎてなかなか収束しなくなる．ということで，ここでは以下のように式を解釈して問題を解いた．正直なところ，これが正しいのかよくわかっていない．</p>
+<p>さて，この問題を素直に解いてもP.157の図5.7のようにはいかない．色々と試してみた結果，どうやら<strong>本書におけるシナリオ1と2の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_j+" alt="\beta_j " />において，分母にかかっている0.1乗の表記がおかしい気がする．</strong>この0.1乗がlogの中の括弧にかかっていると考えて0.1*log()としてコードを組むと，値が発散しすぎてなかなか収束しなくなる．ということで，ここでは以下のように式を解釈して問題を解いた．正直なところ，これが正しいのかよくわかっていない．</p>
 
 <ul>
-<li>シナリオ1と2の<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_j+>：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Clog%28j%2B1%29%5E%7B0.1%7D%7D+>→<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%28%5Clog%28j%2B1%29%29%5E%7B0.1%7D%7D+></li>
+<li>シナリオ1と2の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_j+" alt="\beta_j " />：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7B%5Clog%28j%2B1%29%5E%7B0.1%7D%7D+" alt="\frac{1}{\log(j+1)^{0.1}} " />→<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7B%28%5Clog%28j%2B1%29%29%5E%7B0.1%7D%7D+" alt="\frac{1}{(\log(j+1))^{0.1}} " /></li>
 </ul>
 
 

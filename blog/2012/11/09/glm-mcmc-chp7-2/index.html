@@ -150,11 +150,11 @@
 
 <h3>GLMMの最尤推定と積分</h3>
 
-<p>個体差<img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+>を考慮に入れた今回のGLMMでは，尤度<img src=http://chart.apis.google.com/chart?cht=tx&chl=L_i+>を以下の式のように積分をして<img src=http://chart.apis.google.com/chart?cht=tx&chl=r_i+>を消す．</p>
+<p>個体差<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_i+" alt="r_i " />を考慮に入れた今回のGLMMでは，尤度<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=L_i+" alt="L_i " />を以下の式のように積分をして<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_i+" alt="r_i " />を消す．</p>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=L_i+%3D+%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7Dp%28y_i%7C%5Cbeta_1%2C%5Cbeta_2%2Cr_i%29p%28r_i%7Cs%29dr_i+></p>
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=L_i+%3D+%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7Dp%28y_i%7C%5Cbeta_1%2C%5Cbeta_2%2Cr_i%29p%28r_i%7Cs%29dr_i+" alt="L_i = \int_{-\infty}^{\infty}p(y_i|\beta_1,\beta_2,r_i)p(r_i|s)dr_i " /></p>
 
-<p>これはすなわち，<img src=http://chart.apis.google.com/chart?cht=tx&chl=p%28y_i%7C%5Cbeta_1%2C%5Cbeta_2%2Cr_i%29>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=p%28r_i%7Cs%29+>を混ぜあわせた無限混合分布となっている．</p>
+<p>これはすなわち，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28y_i%7C%5Cbeta_1%2C%5Cbeta_2%2Cr_i%29" alt="p(y_i|\beta_1,\beta_2,r_i)" />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28r_i%7Cs%29+" alt="p(r_i|s) " />を混ぜあわせた無限混合分布となっている．</p>
 
 <h3>アニメーション作成過程</h3>
 
@@ -164,15 +164,15 @@
 <li><p>二項分布と正規分布</p>
 
 <ul>
-<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta+%3D+0+></li>
-<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=q+%3D+%5Cfrac%7B1%7D%7B1%2B%5Cexp%28-%28%5Cbeta+%2B+r%29%29%7D+></li>
+<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta+%3D+0+" alt="\beta = 0 " /></li>
+<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=q+%3D+%5Cfrac%7B1%7D%7B1%2B%5Cexp%28-%28%5Cbeta+%2B+r%29%29%7D+" alt="q = \frac{1}{1+\exp(-(\beta + r))} " /></li>
 </ul>
 </li>
 <li><p>ポアソン分布と正規分布</p>
 
 <ul>
-<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta+%3D+0.5+></li>
-<li><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Clambda+%3D+%5Cexp%28%5Cbeta+%2B+r%29+></li>
+<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta+%3D+0.5+" alt="\beta = 0.5 " /></li>
+<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clambda+%3D+%5Cexp%28%5Cbeta+%2B+r%29+" alt="\lambda = \exp(\beta + r) " /></li>
 </ul>
 </li>
 </ul>
@@ -190,7 +190,7 @@
 </ul>
 
 
-<p>以下のプロットは，その中から1枚だけ抜き出した例となっている．左の図は二項分布/ポアソン分布の変化，中央の図は正規分布と<img src=http://chart.apis.google.com/chart?cht=tx&chl=r+>の値，右の図は混合分布の変化を示している．rを小さい値から大きい値にかけて変化させていったときの，二項分布/ポアソン分布の変化と混合分布の形の変化がわかる．</p>
+<p>以下のプロットは，その中から1枚だけ抜き出した例となっている．左の図は二項分布/ポアソン分布の変化，中央の図は正規分布と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r+" alt="r " />の値，右の図は混合分布の変化を示している．rを小さい値から大きい値にかけて変化させていったときの，二項分布/ポアソン分布の変化と混合分布の形の変化がわかる．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc_7_1.png" alt="" /></p>
 

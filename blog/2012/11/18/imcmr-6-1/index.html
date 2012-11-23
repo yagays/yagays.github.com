@@ -177,15 +177,15 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>まず，以下の図は系列<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5C%7BX%5E%7B%28t%29%7D%5C%7D+>をプロットしたものである．</p>
+<p>まず，以下の図は系列<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5C%7BX%5E%7B%28t%29%7D%5C%7D+" alt="{X^{(t)}} " />をプロットしたものである．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-1_1.png" alt="" /></p>
 
-<p>そして，その中からシミュレーション回数が4500〜4800回までの系列を抜き出したのが以下の図となっている．このように一部分を拡大して見てみると，系列を表す線が変化せずにx軸に並行に遷移している部分が見られる．これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Crho%28x%5E%7B%28t%29%7D%2CY_t%29+>の確率で棄却されて値が変化していないことを表している．これは対応する<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y_t+>に依存し，マルコフ連鎖の性質から次の状態にも影響するため，値が変化しない状態が一定期間続くことがあるからである．</p>
+<p>そして，その中からシミュレーション回数が4500〜4800回までの系列を抜き出したのが以下の図となっている．このように一部分を拡大して見てみると，系列を表す線が変化せずにx軸に並行に遷移している部分が見られる．これは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho%28x%5E%7B%28t%29%7D%2CY_t%29+" alt="\rho(x^{(t)},Y_t) " />の確率で棄却されて値が変化していないことを表している．これは対応する<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=Y_t+" alt="Y_t " />に依存し，マルコフ連鎖の性質から次の状態にも影響するため，値が変化しない状態が一定期間続くことがあるからである．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-1_2.png" alt="" /></p>
 
-<p>また，得られた系列がベータ分布の乱数となっているかを確かめるため，左側に今回のメトロポリス・ヘイスティング・アルゴリズムで作成した乱数，右側にRの組込み関数rbeta()で生成した乱数をヒストグラムで図示し，今回実験で設定したベータ分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D%282.7%2C6.3%29+>を赤の曲線で表した．</p>
+<p>また，得られた系列がベータ分布の乱数となっているかを確かめるため，左側に今回のメトロポリス・ヘイスティング・アルゴリズムで作成した乱数，右側にRの組込み関数rbeta()で生成した乱数をヒストグラムで図示し，今回実験で設定したベータ分布<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BBe%7D%282.7%2C6.3%29+" alt="\mathcal{Be}(2.7,6.3) " />を赤の曲線で表した．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -206,11 +206,11 @@
 
 <h3>例 6.2 メトロポリス・ヘイスティング・アルゴリズムでコーシー分布の乱数を生成する</h3>
 
-<p>例6.1のベータ分布の乱数生成における提案分布は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BU%7D_%7B0%2C1%7D+>だったが，コーシー分布の乱数生成における提案分布には，</p>
+<p>例6.1のベータ分布の乱数生成における提案分布は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BU%7D_%7B0%2C1%7D+" alt="\mathcal{U}_{0,1} " />だったが，コーシー分布の乱数生成における提案分布には，</p>
 
 <ul>
-<li>標準正規分布：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%280%2C1%29+></li>
-<li>自由度0.5のスチューデントt分布：<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BT%7D_%7B1%2F2%7D+></li>
+<li>標準正規分布：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BN%7D%280%2C1%29+" alt="\mathcal{N}(0,1) " /></li>
+<li>自由度0.5のスチューデントt分布：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BT%7D_%7B1%2F2%7D+" alt="\mathcal{T}_{1/2} " /></li>
 </ul>
 
 
@@ -257,9 +257,9 @@
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-2_1.png" alt="" /></p>
 
-<p>まずは標準正規分布を使った場合からみていく．系列のプロットは例6.1と同じような形を示しているが，イテレーションが8500を過ぎたあたりで値が一定期間変化しない部分がある．これは乱数から生成する正規候補<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y_t+>が大きい（または小さい）値を取ってしまい，連鎖で長い間引きずることになったからである．この現象は，系列のヒストグラムの右端において値が少し大きくなっていることからも確認することができる．</p>
+<p>まずは標準正規分布を使った場合からみていく．系列のプロットは例6.1と同じような形を示しているが，イテレーションが8500を過ぎたあたりで値が一定期間変化しない部分がある．これは乱数から生成する正規候補<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=Y_t+" alt="Y_t " />が大きい（または小さい）値を取ってしまい，連鎖で長い間引きずることになったからである．この現象は，系列のヒストグラムの右端において値が少し大きくなっていることからも確認することができる．</p>
 
-<p>一方，スチューデントt分布を使った場合においては，系列のプロットは0付近で集中しており，たまに正規候補<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y_t+>が非常に大きい値を取ることはあるものの，それが継続して続くわけではないことがわかる．系列のヒストグラムを見ても，標準正規分布の場合と比べて分布がなだらかでコーシー分布に当てはまっていることがわかる．ただし，実際には両端の外れ値を除外して系列のヒストグラムをプロットしているので，このヒストグラムの描写範囲から外れている値があることには注意が必要である．</p>
+<p>一方，スチューデントt分布を使った場合においては，系列のプロットは0付近で集中しており，たまに正規候補<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=Y_t+" alt="Y_t " />が非常に大きい値を取ることはあるものの，それが継続して続くわけではないことがわかる．系列のヒストグラムを見ても，標準正規分布の場合と比べて分布がなだらかでコーシー分布に当てはまっていることがわかる．ただし，実際には両端の外れ値を除外して系列のヒストグラムをプロットしているので，このヒストグラムの描写範囲から外れている値があることには注意が必要である．</p>
 
 <br />
 

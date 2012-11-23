@@ -148,8 +148,8 @@
 
 <h3>例 3.3 モンテカルロ積分の具体例</h3>
 
-<p>図の上半分は<img src=http://chart.apis.google.com/chart?cht=tx&chl=h%28x%29+%3D+%5B%5Ccos%2850x%29+%2B+%5Csin%2820x%29+%5D%5E2+>を0から1の間で図示したもの．モンテカルロ積分ではこの曲線の下側の面積を求めることになる．
-図の下半分は，実際にモンテカルロ積分のシミュレーションをしたもの．横軸がシミュレーション回数（サンプル数m）で，縦軸が経験平均<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cbar%7Bh%7D_m+%3D+%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bj%3D1%7D%5E%7Bm%7Dh%28x_j%29+>を示したもの．黒の線が平均値の推移，上下の黄色の線が推定標準誤差に基づく信頼幅，赤の直線がRのintegrate関数で求めた積分値を示している．この図から，シミュレーション回数を重ねるごとに数値的に求めた値が実際の積分値に収束していく様子がわかる．</p>
+<p>図の上半分は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=h%28x%29+%3D+%5B%5Ccos%2850x%29+%2B+%5Csin%2820x%29+%5D%5E2+" alt="h(x) = [\cos(50x) + \sin(20x) ]^2 " />を0から1の間で図示したもの．モンテカルロ積分ではこの曲線の下側の面積を求めることになる．
+図の下半分は，実際にモンテカルロ積分のシミュレーションをしたもの．横軸がシミュレーション回数（サンプル数m）で，縦軸が経験平均<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbar%7Bh%7D_m+%3D+%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bj%3D1%7D%5E%7Bm%7Dh%28x_j%29+" alt="\bar{h}_m = \frac{1}{m}\sum_{j=1}^{m}h(x_j) " />を示したもの．黒の線が平均値の推移，上下の黄色の線が推定標準誤差に基づく信頼幅，赤の直線がRのintegrate関数で求めた積分値を示している．この図から，シミュレーション回数を重ねるごとに数値的に求めた値が実際の積分値に収束していく様子がわかる．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -182,7 +182,7 @@
 
 <p>「裾」と呼ばれる部分は正規分布において釣鐘型の山の頂点から遠く離れた部分のことを指しており，正規分布の平均から外れるということは起こる確率がきわめて低い部分である．そのため，正規乱数を基にしたモンテカルロ積分においては，山の頂点に近い部分の値は乱数でよく引きあてるので数は十分なのだが，裾の部分の「値が大きい/小さい」値は乱数でなかなか引き当てることができない．精度に大きな影響を与える部分でありながらもシミュレーションを重ねないと十分な数を得ることができないため，古典的なモンテカルロ積分の方法で精度を上げるためには，試行回数を多くしなければならない．</p>
 
-<p>以下の実験では，実際に有効数字4ケタで正確な数値を出すために，10<sup>8</sup> 回ものシミュレーションを行なっている．最終的な表3.1は，行が試行回数，列が<img src=http://chart.apis.google.com/chart?cht=tx&chl=x+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+>のときのxに対応している．一番下の行の値がboundという変数のそれぞれ値と同じになっていることから，10<sup>8</sup> もの試行回数が必要であることがわかる．</p>
+<p>以下の実験では，実際に有効数字4ケタで正確な数値を出すために，10<sup>8</sup> 回ものシミュレーションを行なっている．最終的な表3.1は，行が試行回数，列が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+" alt="x \sim \mathcal{N}(0,1) " />のときのxに対応している．一番下の行の値がboundという変数のそれぞれ値と同じになっていることから，10<sup>8</sup> もの試行回数が必要であることがわかる．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
