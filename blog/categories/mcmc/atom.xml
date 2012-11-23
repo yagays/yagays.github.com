@@ -4,7 +4,7 @@
   <title><![CDATA[Category: MCMC | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/mcmc/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-23T02:49:14+09:00</updated>
+  <updated>2012-11-23T18:20:27+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -316,7 +316,7 @@ if(runif(1)&lt;alpha[t-1]){
 
 <h3>例 6.1 メトロポリス・ヘイスティング・アルゴリズムでベータ分布の乱数を生成する</h3>
 
-<p><a href="http://yagays.github.com/blog/2012/10/22/imcmr-2-2/">例2.7</a>では受理・棄却法を用いてベータ分布の乱数を生成したが，本問題ではメトロポリス・ヘイスティング・アルゴリズムを使ってベータ分布をシミュレートすることを目的とする．</p>
+<p><a href="http://yagays.github.com/blog/2012/10/22/imcmr-2-2/">例2.7</a>では受理・棄却法を用いてベータ分布の乱数を生成したが，本問題ではメトロポリス・ヘイスティング・アルゴリズムを使ってベータ分布からサンプリングを行うことを目的とする．</p>
 
 <p>```r
 a &lt;- 2.7
@@ -335,15 +335,15 @@ X &lt;- rep(runif(1), Nsim)</p>
 plot(4500:4800, X[4500:4800], type="l", xlab="Iterations", main="Sequence X<sup>t</sup> for t = 4500 - 4800")
 ```</p>
 
-<p>以下の図は，系列<img src=http://chart.apis.google.com/chart?cht=tx&chl=%7BX%3Csup%3E%7B%28t%29%7D%7D%3C%2Fsup%3E+>をプロットしたものである．</p>
+<p>まず，以下の図は系列<img src=http://chart.apis.google.com/chart?cht=tx&chl=%7BX%3Csup%3E%7B%28t%29%7D%7D%3C%2Fsup%3E+>をプロットしたものである．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-1_1.png" alt="" /></p>
 
-<p>そして，その中からシミュレーション回数4500〜4800回までの系列を抜き出したのが以下の図となっている．このように一部分を拡大して見てみると，系列を表す線が変化せずにx軸に並行に遷移している部分が見られる．これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=1-%5Crho%28x%3Csup%3E%7B%28t%29%7D%2CY_t%29%3C%2Fsup%3E+>の確率で棄却されて値が変化していないことを表している．これは対応する<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y_t+>に依存し，マルコフ連鎖の性質から次の<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%2B1+>にも影響するため，値が変化しない状態は一定期間続く．</p>
+<p>そして，その中からシミュレーション回数が4500〜4800回までの系列を抜き出したのが以下の図となっている．このように一部分を拡大して見てみると，系列を表す線が変化せずにx軸に並行に遷移している部分が見られる．これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Crho%28x%3Csup%3E%7B%28t%29%7D%2CY_t%29%3C%2Fsup%3E+>の確率で棄却されて値が変化していないことを表している．これは対応する<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y_t+>に依存し，マルコフ連鎖の性質から次の状態にも影響するため，値が変化しない状態が一定期間続くことがあるからである．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-1_2.png" alt="" /></p>
 
-<p>また，得られた系列がベータ分布の乱数となっているかを確かめるため，以下のプロットのように，左側に今回のメトロポリス・ヘイスティング・アルゴリズムで作成した乱数，右側にRの組込み関数rbeta()で生成した乱数をヒストグラムで図示し，今回実験で設定したベータ分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D%282.7%2C6.3%29+>を赤の曲線で表した．</p>
+<p>また，得られた系列がベータ分布の乱数となっているかを確かめるため，左側に今回のメトロポリス・ヘイスティング・アルゴリズムで作成した乱数，右側にRの組込み関数rbeta()で生成した乱数をヒストグラムで図示し，今回実験で設定したベータ分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D%282.7%2C6.3%29+>を赤の曲線で表した．</p>
 
 <p><code>r
 par(mfrow=c(1,2))
@@ -367,7 +367,9 @@ curve(dbeta(x,a,b), add=T, col="red", lwd=2)
 </ul>
 
 
-<p>を使うことができる．このような提案分布はマルコフ連鎖とは独立である．なお，本問題ではこれらの分布を表す単語として候補分布と提案分布という2つの言葉が出てくるが，今回は表記として提案分布で統一する．</p>
+<p>を使うことができる．このような提案分布は独立提案分布であり，マルコフ連鎖ではない．</p>
+
+<p>なお，本問題ではこれらの分布を表す単語として候補分布と提案分布という2つの言葉が出てくるが，今回は表記として提案分布で統一する．</p>
 
 <p>```r</p>
 

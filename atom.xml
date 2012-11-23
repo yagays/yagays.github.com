@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-23T02:49:14+09:00</updated>
+  <updated>2012-11-23T18:20:27+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -42,11 +42,11 @@
 <iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
-<h3>練習問題 6.1</h3>
+<h3>練習問題 6.1 自己回帰モデルAR(1)が定常分布を持つことを実験的に示す</h3>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=X%5E%7B%28t%2B1%29%7D+%3D+%5Crho+X%5E%7B%28t%29%7D%2B%5Cepsilon_t+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_t+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+>で定義されるマルコフ連鎖において，系列<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5C%7BX%5E%7B%28t%29%7D%5C%7D+>の定常分布は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%280%2C+%5Cfrac%7B%5Csigma%5E2%7D%7B1-%5Crho%5E2%7D%29>で表される．</p>
+<p>本問題の設定の詳細は<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">MCMC-UseR.pdf</a>のP.130を参照．この問題はいわゆるAR(1)というもの．</p>
 
-<p>詳しくは<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">MCMC-UseR.pdf</a>のP.130を参照．この問題はいわゆるAR(1)というもの．</p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=X%5E%7B%28t%2B1%29%7D+%3D+%5Crho+X%5E%7B%28t%29%7D%2B%5Cepsilon_t+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_t+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+>で定義されるマルコフ連鎖において，系列<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5C%7BX%5E%7B%28t%29%7D%5C%7D+>の定常分布は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%280%2C+%5Cfrac%7B%5Csigma%5E2%7D%7B1-%5Crho%5E2%7D%29+>で表される．今回は<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E4+>までのシミュレーション結果をヒストグラムとしてプロットし，定常分布を赤い曲線で示した．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -69,11 +69,10 @@
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6_1.png" alt="" /></p>
 
-<h3>練習問題 6.2</h3>
+<h3>練習問題 6.2 ランダム・ウォークが定常分布を持たないことを実験的に示す</h3>
 
-<p>ランダム・ウォーク<img src=http://chart.apis.google.com/chart?cht=tx&chl=X%5E%7B%28t%2B1%29%7D%3DX%5E%7B%28t%29%7D%2B%5Cepsilon_t+>が定常分布を持たないことを実験的に確かめる．</p>
-
-<p>この問題は練習問題6.1における<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Crho+%3D+1>の場合と同じになるので，上で書いたコードのパラメータを変更するだけで再現できる．ただ，今回は別の書き方としてcumsum()関数を用いてランダム・ウォークの系列を計算している．</p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=X%5E%7B%28t%2B1%29%7D%3DX%5E%7B%28t%29%7D%2B%5Cepsilon_t+>で表されるランダム・ウォークが，シミュレーション回数を増やしても定常分布に収束しないことを実験的に確かめる．今回は初期値<img src=http://chart.apis.google.com/chart?cht=tx&chl=X%5E%7B%280%29%7D%3D0+>として，<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E4+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E6+>までマルコフ連鎖をシミュレートする．
+この問題は練習問題6.1における<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Crho+%3D+1>の場合と同じになるので，上で書いたコードのパラメータを変更するだけで再現できる．ただ，今回は別の書き方としてcumsum()関数を用いてランダム・ウォークの系列を計算している．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -98,7 +97,7 @@
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6_2.png" alt="" /></p>
 
-<p>試行回数を<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E4+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E6+>としてランダム・ウォークを実行した結果が上図である．左図に系列のヒストグラム，右図に試行回数を横軸に取った系列をプロットしている．上のように図示すると，たとえ10<sup>6</sup> 回試行したとしても何らかの分布に収束しないことがわかる．</p>
+<p>シミュレーション回数を<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E4+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E6+>としてランダム・ウォークを実行した結果が上図である．左図に系列のヒストグラム，右図に試行回数を横軸に取った系列をプロットしている．上のように図示すると，たとえ10<sup>6</sup> 回試行したとしても何らかの分布に収束しないことがわかる．</p>
 
 <h3>雑感</h3>
 
@@ -529,7 +528,7 @@
 
 <h3>例 6.1 メトロポリス・ヘイスティング・アルゴリズムでベータ分布の乱数を生成する</h3>
 
-<p><a href="http://yagays.github.com/blog/2012/10/22/imcmr-2-2/">例2.7</a>では受理・棄却法を用いてベータ分布の乱数を生成したが，本問題ではメトロポリス・ヘイスティング・アルゴリズムを使ってベータ分布をシミュレートすることを目的とする．</p>
+<p><a href="http://yagays.github.com/blog/2012/10/22/imcmr-2-2/">例2.7</a>では受理・棄却法を用いてベータ分布の乱数を生成したが，本問題ではメトロポリス・ヘイスティング・アルゴリズムを使ってベータ分布からサンプリングを行うことを目的とする．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -562,15 +561,15 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>以下の図は，系列<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5C%7BX%5E%7B%28t%29%7D%5C%7D+>をプロットしたものである．</p>
+<p>まず，以下の図は系列<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5C%7BX%5E%7B%28t%29%7D%5C%7D+>をプロットしたものである．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-1_1.png" alt="" /></p>
 
-<p>そして，その中からシミュレーション回数4500〜4800回までの系列を抜き出したのが以下の図となっている．このように一部分を拡大して見てみると，系列を表す線が変化せずにx軸に並行に遷移している部分が見られる．これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=1-%5Crho%28x%5E%7B%28t%29%7D%2CY_t%29+>の確率で棄却されて値が変化していないことを表している．これは対応する<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y_t+>に依存し，マルコフ連鎖の性質から次の<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%2B1+>にも影響するため，値が変化しない状態は一定期間続く．</p>
+<p>そして，その中からシミュレーション回数が4500〜4800回までの系列を抜き出したのが以下の図となっている．このように一部分を拡大して見てみると，系列を表す線が変化せずにx軸に並行に遷移している部分が見られる．これは<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Crho%28x%5E%7B%28t%29%7D%2CY_t%29+>の確率で棄却されて値が変化していないことを表している．これは対応する<img src=http://chart.apis.google.com/chart?cht=tx&chl=Y_t+>に依存し，マルコフ連鎖の性質から次の状態にも影響するため，値が変化しない状態が一定期間続くことがあるからである．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-1_2.png" alt="" /></p>
 
-<p>また，得られた系列がベータ分布の乱数となっているかを確かめるため，以下のプロットのように，左側に今回のメトロポリス・ヘイスティング・アルゴリズムで作成した乱数，右側にRの組込み関数rbeta()で生成した乱数をヒストグラムで図示し，今回実験で設定したベータ分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D%282.7%2C6.3%29+>を赤の曲線で表した．</p>
+<p>また，得られた系列がベータ分布の乱数となっているかを確かめるため，左側に今回のメトロポリス・ヘイスティング・アルゴリズムで作成した乱数，右側にRの組込み関数rbeta()で生成した乱数をヒストグラムで図示し，今回実験で設定したベータ分布<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BBe%7D%282.7%2C6.3%29+>を赤の曲線で表した．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -599,7 +598,9 @@
 </ul>
 
 
-<p>を使うことができる．このような提案分布はマルコフ連鎖とは独立である．なお，本問題ではこれらの分布を表す単語として候補分布と提案分布という2つの言葉が出てくるが，今回は表記として提案分布で統一する．</p>
+<p>を使うことができる．このような提案分布は独立提案分布であり，マルコフ連鎖ではない．</p>
+
+<p>なお，本問題ではこれらの分布を表す単語として候補分布と提案分布という2つの言葉が出てくるが，今回は表記として提案分布で統一する．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -971,7 +972,7 @@
 
 <p><img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_%7Bj%2B1%7D+%3D+%5Ctheta_j+%2B++%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+></p>
 
-<h3>例 5.7</h3>
+<h3>例 5.7 有限差分法による関数の最大化において，複数の勾配パラメータがどのように収束に影響するかを調べる</h3>
 
 <p><a href="http://yagays.github.com/blog/2012/11/06/imcmr-5-3/">例5.6</a>の続き．有限差分法を用いて以下の式を最小化することを目的とする．</p>
 

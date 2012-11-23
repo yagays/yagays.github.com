@@ -9,7 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="読書ノート アーカイブ：http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/ 練習問題 6.1 ，で定義されるマルコフ連鎖において，系列の定常分布はで表される． &hellip;">
+  <meta name="description" content="読書ノート アーカイブ：http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/ 練習問題 6.1 自己回帰モデルAR(1)が定常分布を持つことを実験的に示す &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -142,11 +142,11 @@
 <iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
-<h3>練習問題 6.1</h3>
+<h3>練習問題 6.1 自己回帰モデルAR(1)が定常分布を持つことを実験的に示す</h3>
 
-<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=X%5E%7B%28t%2B1%29%7D+%3D+%5Crho+X%5E%7B%28t%29%7D%2B%5Cepsilon_t+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_t+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+>で定義されるマルコフ連鎖において，系列<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5C%7BX%5E%7B%28t%29%7D%5C%7D+>の定常分布は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%280%2C+%5Cfrac%7B%5Csigma%5E2%7D%7B1-%5Crho%5E2%7D%29>で表される．</p>
+<p>本問題の設定の詳細は<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">MCMC-UseR.pdf</a>のP.130を参照．この問題はいわゆるAR(1)というもの．</p>
 
-<p>詳しくは<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">MCMC-UseR.pdf</a>のP.130を参照．この問題はいわゆるAR(1)というもの．</p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=X%5E%7B%28t%2B1%29%7D+%3D+%5Crho+X%5E%7B%28t%29%7D%2B%5Cepsilon_t+>，<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_t+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+>で定義されるマルコフ連鎖において，系列<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5C%7BX%5E%7B%28t%29%7D%5C%7D+>の定常分布は<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%280%2C+%5Cfrac%7B%5Csigma%5E2%7D%7B1-%5Crho%5E2%7D%29+>で表される．今回は<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E4+>までのシミュレーション結果をヒストグラムとしてプロットし，定常分布を赤い曲線で示した．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -169,11 +169,10 @@
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6_1.png" alt="" /></p>
 
-<h3>練習問題 6.2</h3>
+<h3>練習問題 6.2 ランダム・ウォークが定常分布を持たないことを実験的に示す</h3>
 
-<p>ランダム・ウォーク<img src=http://chart.apis.google.com/chart?cht=tx&chl=X%5E%7B%28t%2B1%29%7D%3DX%5E%7B%28t%29%7D%2B%5Cepsilon_t+>が定常分布を持たないことを実験的に確かめる．</p>
-
-<p>この問題は練習問題6.1における<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Crho+%3D+1>の場合と同じになるので，上で書いたコードのパラメータを変更するだけで再現できる．ただ，今回は別の書き方としてcumsum()関数を用いてランダム・ウォークの系列を計算している．</p>
+<p><img src=http://chart.apis.google.com/chart?cht=tx&chl=X%5E%7B%28t%2B1%29%7D%3DX%5E%7B%28t%29%7D%2B%5Cepsilon_t+>で表されるランダム・ウォークが，シミュレーション回数を増やしても定常分布に収束しないことを実験的に確かめる．今回は初期値<img src=http://chart.apis.google.com/chart?cht=tx&chl=X%5E%7B%280%29%7D%3D0+>として，<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E4+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E6+>までマルコフ連鎖をシミュレートする．
+この問題は練習問題6.1における<img src=http://chart.apis.google.com/chart?cht=tx&chl=%5Crho+%3D+1>の場合と同じになるので，上で書いたコードのパラメータを変更するだけで再現できる．ただ，今回は別の書き方としてcumsum()関数を用いてランダム・ウォークの系列を計算している．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -198,7 +197,7 @@
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6_2.png" alt="" /></p>
 
-<p>試行回数を<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E4+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E6+>としてランダム・ウォークを実行した結果が上図である．左図に系列のヒストグラム，右図に試行回数を横軸に取った系列をプロットしている．上のように図示すると，たとえ10<sup>6</sup> 回試行したとしても何らかの分布に収束しないことがわかる．</p>
+<p>シミュレーション回数を<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E4+>と<img src=http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%5E6+>としてランダム・ウォークを実行した結果が上図である．左図に系列のヒストグラム，右図に試行回数を横軸に取った系列をプロットしている．上のように図示すると，たとえ10<sup>6</sup> 回試行したとしても何らかの分布に収束しないことがわかる．</p>
 
 <h3>雑感</h3>
 
