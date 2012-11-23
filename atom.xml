@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-23T22:57:31+09:00</updated>
+  <updated>2012-11-24T00:23:40+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「N次元の単位球の体積は5次元で最大になる」をRで試してみた]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/24/mcmc-n-dimentional-unit-ball/"/>
+    <updated>2012-11-24T00:20:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/24/mcmc-n-dimentional-unit-ball</id>
+    <content type="html"><![CDATA[<p>先日の<a href="http://live.nicovideo.jp/watch/lv115119412">伊庭先生のニコ生MCMC講義</a>の中で出てきた「N次元の単位球の体積は5次元で最大になる」というのをRで試してみた．</p>
+
+<h4>体積</h4>
+
+<p>N次元の単位球の体積は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=V_n+%3D+%5Cfrac%7B%5Cpi%5E%7Bn%2F2%7D%7D%7B%5CGamma%281%2Bn%2F2%29%7D+" alt="V_n = \frac{\pi^{n/2}}{\Gamma(1+n/2)} " />で表される．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>plot<span class="p">(</span>apply<span class="p">(</span>matrix<span class="p">(</span>seq<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">15</span><span class="p">)),</span><span class="m">1</span><span class="p">,</span><span class="kr">function</span><span class="p">(</span>n<span class="p">){</span>pi<span class="o">^</span><span class="p">(</span>n<span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">/</span>gamma<span class="p">(</span>n<span class="o">/</span><span class="m">2</span><span class="o">+</span><span class="m">1</span><span class="p">)}),</span> type<span class="o">=</span><span class="s">&quot;b&quot;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&quot;N dimension&quot;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&quot;V&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/iba_1.png" alt="" /></p>
+
+<p>たしかに5次元で最大になっている．もはや想像が出来無い…．</p>
+
+<h4>表面積</h4>
+
+<p>ちなみに，単位球の表面積は7次元で最大になる．（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=A_n+%3D+nV_n+%3D+%5Cfrac%7B%5Cpi%5E%7Bn%2F2%7D%7D%7B%5CGamma%28n%2F2%29%7D+" alt="A_n = nV_n = \frac{\pi^{n/2}}{\Gamma(n/2)} " />）</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>plot<span class="p">(</span>apply<span class="p">(</span>matrix<span class="p">(</span>seq<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">15</span><span class="p">)),</span><span class="m">1</span><span class="p">,</span><span class="kr">function</span><span class="p">(</span>n<span class="p">){</span>pi<span class="o">^</span><span class="p">(</span>n<span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">/</span>gamma<span class="p">(</span>n<span class="o">/</span><span class="m">2</span><span class="p">)}),</span> type<span class="o">=</span><span class="s">&quot;b&quot;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&quot;N dimension&quot;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&quot;V&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Surface area of the unit ball in N dimensions&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/iba_2.png" alt="" /></p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Unit_sphere">Unit sphere - Wikipedia, the free encyclopedia</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Software Design 2012年 12月号」読了]]></title>
@@ -1692,266 +1732,6 @@
 <p>ちなみに，O&#8217;Reillyで出版されているMacに関連した本では「<a href="http://www.amazon.co.jp/gp/product/4873112745/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4873112745&linkCode=as2&tag=yagays-22">入門 Unix for Mac OS X 第4版</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4873112745" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」というこれまたマニアックな本があるのだが，こちらはタイトルにもあるようにMacのUNIX的な使い方を紹介する本だ．こちらはこちらでUNIXコマンドの基本的な使い方に始まり，Mac OS X特有のコマンドが紹介されていたりと，なかなかユニークで面白い本になっている．本書とは方向性が全然違う本だが，Macをより一層便利に使いたいという点では共通しているだろう．内容が少し古くなっているのが難点だけれども，基本的なところは変わっていないので，特に問題ないと思われる．</p>
 
 <iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873112745" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[学会・勉強会のUstream配信＆録画環境 on MacOSX]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/04/ustream-setting-on-macosx/"/>
-    <updated>2012-11-04T18:43:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/04/ustream-setting-on-macosx</id>
-    <content type="html"><![CDATA[<p>「ダダ漏れ」というバズワードを聞かなくなって久しいですが，それでも勉強会などのプレゼンテーションにおいてネット配信や録画の公開などの需要は高まっており，もはやあって当然という感じもあります．また，最近では学会などの基調講演なども録画してYouTubeで後日公開という話もよく耳にするようになりました．しかし，いざUstreamなどで配信を行おうと思っても，そもそもどうすればいいかわからない，手持ちの環境ではマトモに配信ができない，もっとクオリティを上げたい，といったように，技術的な知識を要求されたり高価な機器に依存する部分があるなど，色々なレベルで難しいところがあります．</p>
-
-<p>そこで今回は，ある程度マシな配信&amp;録画環境を作ろうということで，僕が以前勉強会で配信を担当したときに構築した環境についてまとめてみました．今回の目標としては，</p>
-
-<h3>コンセプト：ちょっとお金を掛けて比較的マシな配信/録画環境を作ろう</h3>
-
-<p>という感じで，高価な機器でいきなりプロ並の配信を目指すのではなく，ちょっとお金と労力をかけることである程度マトモな配信環境を目指そうじゃないかといったスタンスになっています．ただし，この記事を書いた人間は映像/音声関係に全く素人であり，もっと良い環境構築法やテクニックなどあるとは思うので，より詳細に知りたい場合には専門家などが公開している情報を参考にしてもらえればと思います．</p>
-
-<h4>この記事はこんな人向け</h4>
-
-<ul>
-<li>今までMacBookのFaceTimeカメラを講演者に向けてUstしてたけど，もうちょっとマシな配信がしたい</li>
-<li>とりあえず音を何とかしたい</li>
-<li>配信しつつ録画もしときたい．Ustの録画しょぼい</li>
-</ul>
-
-
-<h4>他にはこんな使い方も</h4>
-
-<ul>
-<li>ニコニコ生放送でも配信したい
-
-<ul>
-<li>ニコ生でもUstreamと同様のセッティングで配信ができます</li>
-</ul>
-</li>
-<li>Skypeの会話をそのままUstに流したい or Ustで喋ってる裏でPCに入ってる音楽を流したい
-
-<ul>
-<li>USBオーディオ機器によってはMacBookの音を拾って流せます</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<h3>用意する機材（ハードウェア編）</h3>
-
-<p>MacBookを中心にして，そこから音声を取ってくる部分と映像を取ってくる部分を外部のハードウェアで行う．それぞれ高画質/高音質を目指すとキリがないが，スタンダードモデルくらいのものを買えば大体は事が足りる．</p>
-
-<ul>
-<li><p><strong>MacBook</strong></p>
-
-<ul>
-<li>配信用/録画用として1台個別に用意する</li>
-<li>配信と録画をしている間はCPU使用率が高くなるので，熱が出る＆ファンが回りっぱなしになる</li>
-</ul>
-</li>
-<li><p><strong>USBオーディオ機器</strong></p>
-
-<ul>
-<li>マイクとMacBookを繋げる機器</li>
-<li>ハードウェアから音量調整やミュートができるので便利</li>
-<li>マイクからの音声を会場のスピーカーに流すこともできる（ハウリング注意）</li>
-</ul>
-</li>
-<li><p><strong>マイク</strong></p>
-
-<ul>
-<li>いわゆるカラオケにあるような奴</li>
-<li>ICレコーダーに付けるような小さいマイクは駄目</li>
-<li>基本は講演者の近くに置くか持ってもらう．集音性の高い専用のマイクを使う手もある</li>
-<li>マイクを講演者近くの壇上に置いておく場合には，マイクスタンドは必須</li>
-</ul>
-</li>
-<li><p><strong>USBカメラまたはデジカメ</strong></p>
-
-<ul>
-<li>要はMacBookに繋いで映像を入力できればよい</li>
-<li>三脚が付けられるタイプだと場所を選ばず安定して配置できるので良い</li>
-<li>外部接続のカメラ無ければ最悪MacBookのFaceTimeカメラでも良いが，中継している間はMacBookで調整などの操作ができないので注意</li>
-</ul>
-</li>
-<li><p><strong>各種ケーブルと変換アダプター</strong></p>
-
-<ul>
-<li>マイクやイヤホンの端子をUSBオーディオ機器の差し込み口に合わせないといけない
-
-<ul>
-<li>イヤホンだと6.3mmと3.5mm</li>
-<li>マイクだと6.3mmとXLR</li>
-</ul>
-</li>
-<li>この辺は変換アダプターが売られているので，それを購入すれば良い</li>
-<li><p>向きとかややこしい部分があるので，分からなかったら家電量販店の売り場の人に訊く</p></li>
-<li><p>講演者がいる壇上と中継する位置が遠い場合は，マイクのケーブルを延長する必要がある</p></li>
-</ul>
-</li>
-</ul>
-
-
-<h4>以下あれば嬉しいもの</h4>
-
-<ul>
-<li>イーモバイルなどのネット回線
-
-<ul>
-<li>会場にネットが無い場合は，中継用に1つ占有できる回線があると良い</li>
-</ul>
-</li>
-<li>Ustream確認用のPC端末
-
-<ul>
-<li>中継/録画している機器とは別に，実際に流れているUstreamの画像や音声を確認できるPCがあると状況を把握しやすい</li>
-</ul>
-</li>
-</ul>
-
-
-<h4>自分の場合の構成</h4>
-
-<ul>
-<li>MacBook Early2008（いわゆる白MacBook）</li>
-<li>USBオーディオ機器：ROLAND TRI-CAPTURE UA-33</li>
-<li>マイク：SONY F-V420</li>
-<li>USBカメラ：Logicool HD Webcam C615</li>
-<li>卓上に置けるマイクスタンド</li>
-<li>その他各種ケーブル・アダプター類</li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B004MP8AGA" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B005LFFE7I" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B00009VT6P" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B001O1116G" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B006HLUJPC" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-
-
-<br />
-
-
-<h3>MacBookにFlash Media Live Encoderをインストールする (ソフトウェア編)</h3>
-
-<ul>
-<li>Flash Media Live Encoder
-
-<ul>
-<li>このソフトウェアだけで配信と録画を同時に行う</li>
-<li>無料（要アカウント作成）</li>
-<li><a href="http://www.adobe.com/jp/products/flash-media-encoder.html">http://www.adobe.com/jp/products/flash-media-encoder.html</a></li>
-<li>画面全景：</li>
-</ul>
-</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/ustream_4.png" alt="" /></p>
-
-<h4>設定</h4>
-
-<ul>
-<li>VideoとAudioのデバイス設定だけは絶対に配信前に確認すること</li>
-<li>せっかく専用の機材を買ったのに，じつは音声はMacBookのスピーカーで録音してましたということになりかねないので注意</li>
-<li>Videoに外部接続カメラ，AudioにUSBオーディオ機器の名前が選択されていることを確認する</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/ustream_1.png" alt="" /></p>
-
-<ul>
-<li>映像や音声の設定は，要求されるクオリティや配信のネットワーク環境に合わせてチューニングする</li>
-</ul>
-
-
-<h4>配信</h4>
-
-<ul>
-<li>Ustreamで配信する場合は，配信用のプロファイルをUstreamのウェブサイトから入手する</li>
-<li>Ustreamのウェブサイトのダッシュボードから「番組設定」→「(番組名)」→「リモート」にある「Flash Media Encoder XML ファイル」をダウンロードする</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/ustream_3.png" alt="" /></p>
-
-<ul>
-<li>Flash Media Live Encoderのメニューバー「File」→「Open Profile」から，先ほどダウンロードしたXMLファイルを読み込む</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/ustream_2.jpg" alt="" /></p>
-
-<ul>
-<li>上のように画面右の「Stream to Flash Media Server」にFMS URLとStreamが表示されればOK</li>
-<li>あとは画面下のスタートを押せば，配信が開始される</li>
-</ul>
-
-
-<h4>録画</h4>
-
-<ul>
-<li>配信を録画するには，画面右下の「Save to File」にチェックを入れて保存する設定にしておく</li>
-</ul>
-
-
-<br />
-
-
-<h3>要するに</h3>
-
-<p>MacBook＋各種機材＋FlashMediaLiveEncoderで何とかなる！！！</p>
-
-<h3>という感じで，まとめ</h3>
-
-<p>だいぶ大雑把に環境構築についてまとめてみたが，実際には配信環境なり会場の様子なりシチュエーションによって必要な機材や技術が左右されるだろう．最初は何がなんだか分からず取っ付きにくい部分があるが，一度実際に勉強して機材を組んで配信してみると，何が必要でどこが重要なのかといったことが見えてくると思う．もし配信などに興味がある場合は，あれこれやりたいことは沢山あるとは思うが，まずはそこそこの機材からスタートしてだんだん慣れていくという感じが一番いいんじゃないだろうか．要点だけ掴めばあとは部分部分を改良していくだけなので，比較的スムーズに上達すると思う．</p>
-
-<h3>ちなみに：このまとめ記事ではできないこと</h3>
-
-<ul>
-<li>技術も知識もないけど手っ取り早くお金で解決したい
-
-<ul>
-<li>CEREVOのLiveSHellなどの専用機器を買って下さい</li>
-</ul>
-</li>
-<li>講演者のPCから映像をダイレクトに取ってきて配信に流す
-
-<ul>
-<li>TwinPactみたいな機器を買って下さい（ちょっと高い）</li>
-</ul>
-</li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0065G4GH6" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B005XDFD4M" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0000YTMVE" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://mascalade.blog89.fc2.com/blog-entry-296.html">http://mascalade.blog89.fc2.com/blog-entry-296.html</a></li>
-<li><a href="http://vad.seesaa.net/article/149852007.html">http://vad.seesaa.net/article/149852007.html</a></li>
-<li><a href="http://d.hatena.ne.jp/i_ogi/20080326/1206516540">http://d.hatena.ne.jp/i_ogi/20080326/1206516540</a></li>
-</ul>
 
 ]]></content>
   </entry>

@@ -9,7 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="前回：「データ解析のための統計モデリング入門」読書ノート：http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/ 前回の読書ノートでは全体の流れを簡単に追ったが，今回は「データ解析のための統計モデリング入門」 &hellip;">
+  <meta name="description" content="「ダダ漏れ」というバズワードを聞かなくなって久しいですが，それでも勉強会などのプレゼンテーションにおいてネット配信や録画の公開などの需要は高まっており，もはやあって当然という感じもあります．また，最近では学会などの基調講演なども録画してYouTubeで後日公開という話もよく耳にするようになりました &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -107,6 +107,293 @@
     <div class="row-fluid">
       <div class="span9">
   
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/04/ustream-setting-on-macosx/">学会・勉強会のUstream配信＆録画環境 on MacOSX</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-04T18:43:00+09:00" pubdate data-updated="true">Nov 4<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>「ダダ漏れ」というバズワードを聞かなくなって久しいですが，それでも勉強会などのプレゼンテーションにおいてネット配信や録画の公開などの需要は高まっており，もはやあって当然という感じもあります．また，最近では学会などの基調講演なども録画してYouTubeで後日公開という話もよく耳にするようになりました．しかし，いざUstreamなどで配信を行おうと思っても，そもそもどうすればいいかわからない，手持ちの環境ではマトモに配信ができない，もっとクオリティを上げたい，といったように，技術的な知識を要求されたり高価な機器に依存する部分があるなど，色々なレベルで難しいところがあります．</p>
+
+<p>そこで今回は，ある程度マシな配信&amp;録画環境を作ろうということで，僕が以前勉強会で配信を担当したときに構築した環境についてまとめてみました．今回の目標としては，</p>
+
+<h3>コンセプト：ちょっとお金を掛けて比較的マシな配信/録画環境を作ろう</h3>
+
+<p>という感じで，高価な機器でいきなりプロ並の配信を目指すのではなく，ちょっとお金と労力をかけることである程度マトモな配信環境を目指そうじゃないかといったスタンスになっています．ただし，この記事を書いた人間は映像/音声関係に全く素人であり，もっと良い環境構築法やテクニックなどあるとは思うので，より詳細に知りたい場合には専門家などが公開している情報を参考にしてもらえればと思います．</p>
+
+<h4>この記事はこんな人向け</h4>
+
+<ul>
+<li>今までMacBookのFaceTimeカメラを講演者に向けてUstしてたけど，もうちょっとマシな配信がしたい</li>
+<li>とりあえず音を何とかしたい</li>
+<li>配信しつつ録画もしときたい．Ustの録画しょぼい</li>
+</ul>
+
+
+<h4>他にはこんな使い方も</h4>
+
+<ul>
+<li>ニコニコ生放送でも配信したい
+
+<ul>
+<li>ニコ生でもUstreamと同様のセッティングで配信ができます</li>
+</ul>
+</li>
+<li>Skypeの会話をそのままUstに流したい or Ustで喋ってる裏でPCに入ってる音楽を流したい
+
+<ul>
+<li>USBオーディオ機器によってはMacBookの音を拾って流せます</li>
+</ul>
+</li>
+</ul>
+
+
+<br />
+
+
+<h3>用意する機材（ハードウェア編）</h3>
+
+<p>MacBookを中心にして，そこから音声を取ってくる部分と映像を取ってくる部分を外部のハードウェアで行う．それぞれ高画質/高音質を目指すとキリがないが，スタンダードモデルくらいのものを買えば大体は事が足りる．</p>
+
+<ul>
+<li><p><strong>MacBook</strong></p>
+
+<ul>
+<li>配信用/録画用として1台個別に用意する</li>
+<li>配信と録画をしている間はCPU使用率が高くなるので，熱が出る＆ファンが回りっぱなしになる</li>
+</ul>
+</li>
+<li><p><strong>USBオーディオ機器</strong></p>
+
+<ul>
+<li>マイクとMacBookを繋げる機器</li>
+<li>ハードウェアから音量調整やミュートができるので便利</li>
+<li>マイクからの音声を会場のスピーカーに流すこともできる（ハウリング注意）</li>
+</ul>
+</li>
+<li><p><strong>マイク</strong></p>
+
+<ul>
+<li>いわゆるカラオケにあるような奴</li>
+<li>ICレコーダーに付けるような小さいマイクは駄目</li>
+<li>基本は講演者の近くに置くか持ってもらう．集音性の高い専用のマイクを使う手もある</li>
+<li>マイクを講演者近くの壇上に置いておく場合には，マイクスタンドは必須</li>
+</ul>
+</li>
+<li><p><strong>USBカメラまたはデジカメ</strong></p>
+
+<ul>
+<li>要はMacBookに繋いで映像を入力できればよい</li>
+<li>三脚が付けられるタイプだと場所を選ばず安定して配置できるので良い</li>
+<li>外部接続のカメラ無ければ最悪MacBookのFaceTimeカメラでも良いが，中継している間はMacBookで調整などの操作ができないので注意</li>
+</ul>
+</li>
+<li><p><strong>各種ケーブルと変換アダプター</strong></p>
+
+<ul>
+<li>マイクやイヤホンの端子をUSBオーディオ機器の差し込み口に合わせないといけない
+
+<ul>
+<li>イヤホンだと6.3mmと3.5mm</li>
+<li>マイクだと6.3mmとXLR</li>
+</ul>
+</li>
+<li>この辺は変換アダプターが売られているので，それを購入すれば良い</li>
+<li><p>向きとかややこしい部分があるので，分からなかったら家電量販店の売り場の人に訊く</p></li>
+<li><p>講演者がいる壇上と中継する位置が遠い場合は，マイクのケーブルを延長する必要がある</p></li>
+</ul>
+</li>
+</ul>
+
+
+<h4>以下あれば嬉しいもの</h4>
+
+<ul>
+<li>イーモバイルなどのネット回線
+
+<ul>
+<li>会場にネットが無い場合は，中継用に1つ占有できる回線があると良い</li>
+</ul>
+</li>
+<li>Ustream確認用のPC端末
+
+<ul>
+<li>中継/録画している機器とは別に，実際に流れているUstreamの画像や音声を確認できるPCがあると状況を把握しやすい</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>自分の場合の構成</h4>
+
+<ul>
+<li>MacBook Early2008（いわゆる白MacBook）</li>
+<li>USBオーディオ機器：ROLAND TRI-CAPTURE UA-33</li>
+<li>マイク：SONY F-V420</li>
+<li>USBカメラ：Logicool HD Webcam C615</li>
+<li>卓上に置けるマイクスタンド</li>
+<li>その他各種ケーブル・アダプター類</li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B004MP8AGA" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B005LFFE7I" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B00009VT6P" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B001O1116G" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B006HLUJPC" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+
+
+<br />
+
+
+<h3>MacBookにFlash Media Live Encoderをインストールする (ソフトウェア編)</h3>
+
+<ul>
+<li>Flash Media Live Encoder
+
+<ul>
+<li>このソフトウェアだけで配信と録画を同時に行う</li>
+<li>無料（要アカウント作成）</li>
+<li><a href="http://www.adobe.com/jp/products/flash-media-encoder.html">http://www.adobe.com/jp/products/flash-media-encoder.html</a></li>
+<li>画面全景：</li>
+</ul>
+</li>
+</ul>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/ustream_4.png" alt="" /></p>
+
+<h4>設定</h4>
+
+<ul>
+<li>VideoとAudioのデバイス設定だけは絶対に配信前に確認すること</li>
+<li>せっかく専用の機材を買ったのに，じつは音声はMacBookのスピーカーで録音してましたということになりかねないので注意</li>
+<li>Videoに外部接続カメラ，AudioにUSBオーディオ機器の名前が選択されていることを確認する</li>
+</ul>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/ustream_1.png" alt="" /></p>
+
+<ul>
+<li>映像や音声の設定は，要求されるクオリティや配信のネットワーク環境に合わせてチューニングする</li>
+</ul>
+
+
+<h4>配信</h4>
+
+<ul>
+<li>Ustreamで配信する場合は，配信用のプロファイルをUstreamのウェブサイトから入手する</li>
+<li>Ustreamのウェブサイトのダッシュボードから「番組設定」→「(番組名)」→「リモート」にある「Flash Media Encoder XML ファイル」をダウンロードする</li>
+</ul>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/ustream_3.png" alt="" /></p>
+
+<ul>
+<li>Flash Media Live Encoderのメニューバー「File」→「Open Profile」から，先ほどダウンロードしたXMLファイルを読み込む</li>
+</ul>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/ustream_2.jpg" alt="" /></p>
+
+<ul>
+<li>上のように画面右の「Stream to Flash Media Server」にFMS URLとStreamが表示されればOK</li>
+<li>あとは画面下のスタートを押せば，配信が開始される</li>
+</ul>
+
+
+<h4>録画</h4>
+
+<ul>
+<li>配信を録画するには，画面右下の「Save to File」にチェックを入れて保存する設定にしておく</li>
+</ul>
+
+
+<br />
+
+
+<h3>要するに</h3>
+
+<p>MacBook＋各種機材＋FlashMediaLiveEncoderで何とかなる！！！</p>
+
+<h3>という感じで，まとめ</h3>
+
+<p>だいぶ大雑把に環境構築についてまとめてみたが，実際には配信環境なり会場の様子なりシチュエーションによって必要な機材や技術が左右されるだろう．最初は何がなんだか分からず取っ付きにくい部分があるが，一度実際に勉強して機材を組んで配信してみると，何が必要でどこが重要なのかといったことが見えてくると思う．もし配信などに興味がある場合は，あれこれやりたいことは沢山あるとは思うが，まずはそこそこの機材からスタートしてだんだん慣れていくという感じが一番いいんじゃないだろうか．要点だけ掴めばあとは部分部分を改良していくだけなので，比較的スムーズに上達すると思う．</p>
+
+<h3>ちなみに：このまとめ記事ではできないこと</h3>
+
+<ul>
+<li>技術も知識もないけど手っ取り早くお金で解決したい
+
+<ul>
+<li>CEREVOのLiveSHellなどの専用機器を買って下さい</li>
+</ul>
+</li>
+<li>講演者のPCから映像をダイレクトに取ってきて配信に流す
+
+<ul>
+<li>TwinPactみたいな機器を買って下さい（ちょっと高い）</li>
+</ul>
+</li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0065G4GH6" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B005XDFD4M" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0000YTMVE" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://mascalade.blog89.fc2.com/blog-entry-296.html">http://mascalade.blog89.fc2.com/blog-entry-296.html</a></li>
+<li><a href="http://vad.seesaa.net/article/149852007.html">http://vad.seesaa.net/article/149852007.html</a></li>
+<li><a href="http://d.hatena.ne.jp/i_ogi/20080326/1206516540">http://d.hatena.ne.jp/i_ogi/20080326/1206516540</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -785,125 +1072,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/28/imcmr-3-3/">「Rによるモンテカルロ法入門」読書ノート：3章 重点サンプリング</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-28T09:45:00+09:00" pubdate data-updated="true">Oct 28<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>内容：重点サンプリングにより推定量の分散と効率を改善する</h3>
-
-<h3>例 3.5 <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=Z+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+" alt="Z \sim \mathcal{N}(0,1) " />で<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=P%28Z+%3E+4.5%29+" alt="P(Z &gt; 4.5) " />の確率を求める</h3>
-
-<p>確率を求めると書いてあるが，要するに正規分布の確率密度関数において4.5からInfまでの面積（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cint_%7B4.5%7D%5E%7B%5Cinfty%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7Bx%5E2%7D%7B2%7D%7D+dx+" alt="\int_{4.5}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}} dx " />）を求めるというもの．ただし，正規分布でxの値が4.5ともなると確率そのものがものすごく小さいので，普通のモンテカルロ積分で正規分布から乱数を生成したとしても，シミュレーション回数を非常に大きくしないと精度の良い値が求まらない．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>pnorm<span class="p">(</span><span class="m">-4.5</span><span class="p">,</span>log<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># [1] -12.59242</span>
-</span><span class='line'>pnorm<span class="p">(</span><span class="m">-4.5</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># [1] 3.397673e-06</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ということで，重点サンプリングでシミュレーション回数を抑える．<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=g%28y%29+%3D+%5Cfrac%7Be%5E%7B-y%7D%7D%7B%5Cint_%7B4.5%7D%5E%7B%5Cinfty%7De%5E%7B-x%7Ddx%7D+%3D+e%5E%7B-%28y-4.5%29%7D+" alt="g(y) = \frac{e^{-y}}{\int_{4.5}^{\infty}e^{-x}dx} = e^{-(y-4.5)} " />として，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bi%3D1%7D%5E%7Bm%7D%5Cfrac%7Bf%28Y%5E%7B%28i%29%7D%29%7D%7Bg%28Y%5E%7B%28i%29%7D%29%7D+" alt="\frac{1}{m}\sum_{i=1}^{m}\frac{f(Y^{(i)})}{g(Y^{(i)})} " />を求める．ここで，gの選択の箇所は「gを，4.5で切り詰めた指数分布の密度<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BExp%7D%281%29+" alt="\mathcal{Exp}(1) " />とする」ということ(P.81)．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>Nsim <span class="o">&lt;-</span> <span class="m">10</span><span class="o">^</span><span class="m">3</span>
-</span><span class='line'>y <span class="o">&lt;-</span> rexp<span class="p">(</span>Nsim<span class="p">)</span><span class="o">+</span><span class="m">4.5</span>
-</span><span class='line'>weit <span class="o">&lt;-</span> dnorm<span class="p">(</span>y<span class="p">)</span><span class="o">/</span>dexp<span class="p">(</span>y<span class="o">-</span><span class="m">4.5</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span>cumsum<span class="p">(</span>weit<span class="p">)</span><span class="o">/</span><span class="m">1</span>:Nsim<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
-</span><span class='line'>abline<span class="p">(</span>h<span class="o">=</span>pnorm<span class="p">(</span><span class="m">-4.5</span><span class="p">),</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-5_1.png" alt="" /></p>
-
-<h3>練習問題 3.5 切り詰められた指数分布<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BExp%7D%28%5Clambda%29+" alt="\mathcal{Exp}(\lambda) " />をg(x)としたときの近似値の分散への影響を調べる</h3>
-
-<p>例3.5で<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clambda+%3D+1+" alt="\lambda = 1 " />だった指数分布の値を色々と変えてみて実験する．以下の図は，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clambda+%3D+1%2C5%2C10%2C20+" alt="\lambda = 1,5,10,20 " />の時の推定値の変化を示している．左上の図が例3.5と同じ条件となり，そこから右上・左下・右下と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clambda+" alt="\lambda " />の値を大きくしている．黒の線が推定値の推移，上下の黄色の線が推定値の誤差の範囲（＝分散）となっている．
-このプロットを見ると，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clambda+" alt="\lambda " />の値が大きくなるにつれて，分散も大きくなることがわかる．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-</span><span class='line'><span class="kr">for</span><span class="p">(</span>lambda in c<span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">20</span><span class="p">)){</span>
-</span><span class='line'>  Nsim <span class="o">&lt;-</span> <span class="m">10</span><span class="o">^</span><span class="m">4</span>
-</span><span class='line'>  y <span class="o">&lt;-</span> rexp<span class="p">(</span>Nsim<span class="p">)</span><span class="o">/</span>lambda<span class="o">+</span><span class="m">4.5</span>
-</span><span class='line'>  weit <span class="o">&lt;-</span> dnorm<span class="p">(</span>y<span class="p">)</span><span class="o">/</span>dexp<span class="p">(</span>y<span class="o">-</span><span class="m">4.5</span><span class="p">,</span> lambda<span class="p">)</span>
-</span><span class='line'>  estint <span class="o">&lt;-</span> cumsum<span class="p">(</span>weit<span class="p">)</span><span class="o">/</span><span class="m">1</span>:Nsim
-</span><span class='line'>  esterr <span class="o">&lt;-</span> sqrt<span class="p">(</span>cumsum<span class="p">((</span>weit<span class="o">-</span>estint<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="m">1</span>:Nsim<span class="p">)</span>
-</span><span class='line'>  plot<span class="p">(</span>estint<span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Mean and error range&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;prob&quot;</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;lambda = &quot;</span><span class="p">,</span>lambda<span class="p">))</span>
-</span><span class='line'>  lines<span class="p">(</span>estint<span class="o">+</span><span class="m">2</span><span class="o">*</span>esterr<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;gold&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>  lines<span class="p">(</span>estint<span class="o">-</span><span class="m">2</span><span class="o">*</span>esterr<span class="p">,</span> col<span class="o">=</span><span class="s">&quot;gold&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>  abline<span class="p">(</span>h<span class="o">=</span>pnorm<span class="p">(</span><span class="m">-4.5</span><span class="p">),</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-5_2.png" alt="" /></p>
-
-<p>また，がくっと値が変わっている部分は乱数でかなりレアな値を引いて全体的に値が引きずられたからだと思われる．weitの中から値の非常に大きいものを10個選び出して，その時の推定値の変化を見たのが以下の図になる．青の点線で示した箇所が，weitの値が非常に大きくなったポイントを示している．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>abline<span class="p">(</span>v<span class="o">=</span>seq<span class="p">(</span><span class="m">1</span><span class="p">,</span>Nsim<span class="p">)[</span>rank<span class="p">(</span>weit<span class="p">)</span><span class="o">&gt;</span>Nsim<span class="o">-</span><span class="m">10</span><span class="p">],</span> col<span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span> lty<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp3_3-5_3.png" alt="" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/6/">&larr; Older</a></li>
@@ -952,6 +1120,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/11/24/mcmc-n-dimentional-unit-ball/">「N次元の単位球の体積は5次元で最大になる」をRで試してみた</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/11/23/review-softwaredesign-2012-12/">「Software Design 2012年 12月号」読了</a>
       </li>
     
@@ -985,10 +1157,6 @@
     
       <li class="post">
         <a href="/blog/2012/11/15/review-wired-5/">「WIRED VOL.5」読了</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/14/review-nikkei-associe-2012-12/">「日経ビジネス Associe (アソシエ) 2012年 12月号」読了</a>
       </li>
     
   </ul>

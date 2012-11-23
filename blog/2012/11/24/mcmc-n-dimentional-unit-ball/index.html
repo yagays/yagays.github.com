@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>「『言語技術』が日本のサッカーを変える」読了 - Wolfeyes Bioinformatics beta</title>
+  <title>「N次元の単位球の体積は5次元で最大になる」をRで試してみた - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="前回の「外国語で発想するための日本語レッスン」の記事で，三森氏の言語技術に関連した書籍としてnext49さんに教えていただいた新書を読んだ（参考：next49氏のblog記事）． 本書は，海外のサッカー指導法に影響を受けた田嶋幸三氏が，日本のサッカー選手/ &hellip;">
+  <meta name="description" content="先日の伊庭先生のニコ生MCMC講義の中で出てきた「N次元の単位球の体積は5次元で最大になる」というのをRで試してみた． 体積 N次元の単位球の体積はで表される． 1
+plot(apply(matrix(seq(1,15)),1,function(n){pi^(n/2)/gamma(n/2+1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.com/blog/2012/09/14/review-tajima-soccer">
+  <link rel="canonical" href="http://yagays.github.com/blog/2012/11/24/mcmc-n-dimentional-unit-ball">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -111,7 +112,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">「『言語技術』が日本のサッカーを変える」読了</h1>
+      <h1 class="entry-title">「N次元の単位球の体積は5次元で最大になる」をRで試してみた</h1>
     
     
       <p class="meta">
@@ -127,21 +128,45 @@
   
 
 
-<time datetime="2012-09-14T01:03:00+09:00" pubdate data-updated="true">Sep 14<span>th</span>, 2012</time>
+<time datetime="2012-11-24T00:20:00+09:00" pubdate data-updated="true">Nov 24<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4334034268" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+<div class="entry-content"><p>先日の<a href="http://live.nicovideo.jp/watch/lv115119412">伊庭先生のニコ生MCMC講義</a>の中で出てきた「N次元の単位球の体積は5次元で最大になる」というのをRで試してみた．</p>
+
+<h4>体積</h4>
+
+<p>N次元の単位球の体積は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=V_n+%3D+%5Cfrac%7B%5Cpi%5E%7Bn%2F2%7D%7D%7B%5CGamma%281%2Bn%2F2%29%7D+" alt="V_n = \frac{\pi^{n/2}}{\Gamma(1+n/2)} " />で表される．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>plot<span class="p">(</span>apply<span class="p">(</span>matrix<span class="p">(</span>seq<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">15</span><span class="p">)),</span><span class="m">1</span><span class="p">,</span><span class="kr">function</span><span class="p">(</span>n<span class="p">){</span>pi<span class="o">^</span><span class="p">(</span>n<span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">/</span>gamma<span class="p">(</span>n<span class="o">/</span><span class="m">2</span><span class="o">+</span><span class="m">1</span><span class="p">)}),</span> type<span class="o">=</span><span class="s">&quot;b&quot;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&quot;N dimension&quot;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&quot;V&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p><a href="http://yagays.github.com/blog/2012/09/05/review-critical-reading/">前回の「外国語で発想するための日本語レッスン」の記事</a>で，三森氏の言語技術に関連した書籍としてnext49さんに教えていただいた新書を読んだ（参考：<a href="http://d.hatena.ne.jp/next49/20120906/p1">next49氏のblog記事</a>）．</p>
+<p><img src="http://dl.dropbox.com/u/142306/b/iba_1.png" alt="" /></p>
 
-<p>本書は，海外のサッカー指導法に影響を受けた田嶋幸三氏が，日本のサッカー選手/指導者の育成に言語技術などを取り入れ実践している現場を紹介したものとなっている．田嶋氏は個人的な指導にとどまらず，指導者のライセンス制度の改革や全寮制のエリート育成学校を立ち上げるなど，精力的に活動されている．その中で教えている内容というのが，本書のキーワードである「言語技術」である．どのようにして選手に考える力を付け自己決定力の能力を育てるか，そういう選手に育てるようなサッカー指導者自体をどう育てるか，そういった選手と指導者の両者にわたる指導法が非常に詳しく具体的に書かれている．それに加え，現在の活躍に至る過程にあった，田嶋氏自身の留学の苦い経験や海外勢の根本的に違う価値観や考え方，そして日本サッカー自体の不振と再興への思いも盛り込まれている．</p>
+<p>たしかに5次元で最大になっている．もはや想像が出来無い…．</p>
 
-<p>三森ゆりか氏の著作では言語技術の基礎や背景などの理論的な部分が多かったが，本書ではより応用・実践的な部分について，じゃあどうやって子供に教えればいいのか，どういう段階を踏むべきなのか，目指すところはどこなのかといった疑問をひと通り網羅している．ただ，かなり多岐にわたるトピックが新書1冊に詰め込まれているため，始めにいきなり服装や態度の話から入ったり，論理とは別の話として偉人の言葉のリスペクトといった本題から脇にそれる話が挟まったりと，少し論理的な思考技術から外れる部分もあるが，言語技術に関しては実例とともに分かりやすく整理されている．そして何よりもまず実践に基づいた語り口ほど説得力のあるものは無いと言える．三森氏の「外国語で発想するための日本語レッスン」と合わせてお薦めできる1冊だ．</p>
+<h4>表面積</h4>
+
+<p>ちなみに，単位球の表面積は7次元で最大になる．（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=A_n+%3D+nV_n+%3D+%5Cfrac%7B%5Cpi%5E%7Bn%2F2%7D%7D%7B%5CGamma%28n%2F2%29%7D+" alt="A_n = nV_n = \frac{\pi^{n/2}}{\Gamma(n/2)} " />）</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>plot<span class="p">(</span>apply<span class="p">(</span>matrix<span class="p">(</span>seq<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">15</span><span class="p">)),</span><span class="m">1</span><span class="p">,</span><span class="kr">function</span><span class="p">(</span>n<span class="p">){</span>pi<span class="o">^</span><span class="p">(</span>n<span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">/</span>gamma<span class="p">(</span>n<span class="o">/</span><span class="m">2</span><span class="p">)}),</span> type<span class="o">=</span><span class="s">&quot;b&quot;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&quot;N dimension&quot;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&quot;V&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Surface area of the unit ball in N dimensions&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/iba_2.png" alt="" /></p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Unit_sphere">Unit sphere - Wikipedia, the free encyclopedia</a></li>
+</ul>
+
 </div>
 
 
@@ -164,22 +189,16 @@
   
 
 
-<time datetime="2012-09-14T01:03:00+09:00" pubdate data-updated="true">Sep 14<span>th</span>, 2012</time>
+<time datetime="2012-11-24T00:20:00+09:00" pubdate data-updated="true">Nov 24<span>th</span>, 2012</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/book/'>Book</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/09/14/review-tajima-soccer/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/11/24/mcmc-n-dimentional-unit-ball/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/09/14/review-tajima-soccer/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/09/14/review-tajima-soccer/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/11/24/mcmc-n-dimentional-unit-ball/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/11/24/mcmc-n-dimentional-unit-ball/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -200,14 +219,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/09/13/review-rework/" title="Previous Post:
-        「小さなチーム、大きな仕事〔完全版〕」読了">&laquo; 「小さなチーム、大きな仕事〔完全版〕」読了</a></li>
+        href="/blog/2012/11/23/review-softwaredesign-2012-12/" title="Previous Post:
+        「Software Design 2012年 12月号」読了">&laquo; 「Software Design 2012年 12月号」読了</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/09/15/review-h5n1/"
-        title="Next Post: 「H5N1―強毒性新型インフルエンザウイルス日本上陸のシナリオ」読了">「H5N1―強毒性新型インフルエンザウイルス日本上陸のシナリオ」読了
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -343,8 +358,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.com/blog/2012/09/14/review-tajima-soccer/';
-        var disqus_url = 'http://yagays.github.com/blog/2012/09/14/review-tajima-soccer/';
+        var disqus_identifier = 'http://yagays.github.com/blog/2012/11/24/mcmc-n-dimentional-unit-ball/';
+        var disqus_url = 'http://yagays.github.com/blog/2012/11/24/mcmc-n-dimentional-unit-ball/';
         var disqus_script = 'embed.js';
       
     (function () {
