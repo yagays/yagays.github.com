@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Wolfeyes Bioinformatics beta</title>
+  <title>「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その2 - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.com">
+  <link rel="canonical" href="http://yagays.github.com/blog/2012/11/25/imcmr-6-3">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -105,15 +105,13 @@
 </nav>
   <div class="container">
     <div class="row-fluid">
-      <div class="span9">
-  
-  
-  
-    <article>
       
+<article class="hentry span9" role="article">
+
+  
   <header class="page-header">
     
-      <h1 class="entry-title"><a href="/blog/2012/11/25/imcmr-6-3/">「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その2</a></h1>
+      <h1 class="entry-title">「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その2</h1>
     
     
       <p class="meta">
@@ -136,7 +134,7 @@
   </header>
 
 
-  <div class="entry-content"><ul>
+<div class="entry-content"><ul>
 <li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
 </ul>
 
@@ -428,89 +426,16 @@
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/24/mcmc-n-dimentional-unit-ball/">「N次元の単位球の体積は5次元で最大になる」をRで試してみた</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">yag_ays</span></span>
 
-<time datetime="2012-11-24T00:20:00+09:00" pubdate data-updated="true">Nov 24<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>先日の<a href="http://live.nicovideo.jp/watch/lv115119412">伊庭さんのニコ生MCMC講義</a>の中で出てきた「N次元の単位球の体積は5次元で最大になる」というのをRで試してみた．</p>
-
-<h3>体積</h3>
-
-<p>N次元の単位球の体積は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=V_n+%3D+%5Cfrac%7B%5Cpi%5E%7Bn%2F2%7D%7D%7B%5CGamma%281%2Bn%2F2%29%7D+" alt="V_n = \frac{\pi^{n/2}}{\Gamma(1+n/2)} " />で表される．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>plot<span class="p">(</span>apply<span class="p">(</span>matrix<span class="p">(</span>seq<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">15</span><span class="p">)),</span><span class="m">1</span><span class="p">,</span><span class="kr">function</span><span class="p">(</span>n<span class="p">){</span>pi<span class="o">^</span><span class="p">(</span>n<span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">/</span>gamma<span class="p">(</span>n<span class="o">/</span><span class="m">2</span><span class="o">+</span><span class="m">1</span><span class="p">)}),</span>type<span class="o">=</span><span class="s">&quot;b&quot;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&quot;N dimension&quot;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&quot;V&quot;</span><span class="p">,</span>main<span class="o">=</span><span class="s">&quot;Volume of the unit ball in N dimensions&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/iba_1.png" alt="" /></p>
-
-<p>たしかに5次元で最大になっている．もはや想像が出来無い…．</p>
-
-<h3>表面積</h3>
-
-<p>ちなみに，単位球の表面積は7次元で最大になる．（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=A_n+%3D+nV_n+%3D+%5Cfrac%7B2%5Cpi%5E%7Bn%2F2%7D%7D%7B%5CGamma%28n%2F2%29%7D+" alt="A_n = nV_n = \frac{2\pi^{n/2}}{\Gamma(n/2)} " />）</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>plot<span class="p">(</span>apply<span class="p">(</span>matrix<span class="p">(</span>seq<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">15</span><span class="p">)),</span><span class="m">1</span><span class="p">,</span><span class="kr">function</span><span class="p">(</span>n<span class="p">){</span><span class="m">2</span><span class="o">*</span>pi<span class="o">^</span><span class="p">(</span>n<span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">/</span>gamma<span class="p">(</span>n<span class="o">/</span><span class="m">2</span><span class="p">)}),</span>type<span class="o">=</span><span class="s">&quot;b&quot;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&quot;N dimension&quot;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&quot;A&quot;</span><span class="p">,</span>main<span class="o">=</span><span class="s">&quot;Surface area of the unit ball in N dimensions&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/iba_2.png" alt="" /></p>
-
-<h3>参考</h3>
-
-<ul>
-<li><a href="http://en.wikipedia.org/wiki/Unit_sphere">Unit sphere - Wikipedia, the free encyclopedia</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/23/review-softwaredesign-2012-12/">「Software Design 2012年 12月号」読了</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -522,216 +447,51 @@
   
 
 
-<time datetime="2012-11-23T02:32:00+09:00" pubdate data-updated="true">Nov 23<span>rd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B009YK3U3Q" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>最近Blogで継続的に記事を書くようになって，自分の書く文章について特に意識するようになった．書評なり読書ノートを1つの記事をしてまとめるにあたり，とにかく文章を書いては読みを繰り返し，記事を公開したあとも電車の中で読み返すなどして誤字脱字を訂正したり推敲を重ねている．自分のBlogの一番の読者は，まぎれもなく自分だ．いったい誰のために/何のために書いているかという問題は自分の中でもハッキリしていないが，色んなことを差し置いても，結局まわりまわって自分のために書き貯めている部分は大きい．</p>
-
-<p>文章の書き方は今でもよくわからない．ある程度まとまった記事を書くのに慣れてきた面もあり，逆にあまり代わり映えしない表現力に萎えることもある．色々と本を読んで参考にしたり，尊敬する人物の書いた文章を写経したこともあったけれども，結局血肉となったかはよくわからない．本来ならば人に添削してもらうのが一番良いのだが，特に独創性であったり主義主張があるわけではないただのBlog記事にそこまでできるはずもなく，今のところ自分でなんとか改善を繰り返している．</p>
-
-<p>ということで，今月のSoftware Designの特集はエンジニアのための文章力養成講座だ．製品の紹介文やマニュアルなどの文章の書き方であったり，情報をいかに整理して文章を構成していくかといったテクニックが載っている．エンジニア出身のブロガーが文章力について書いているコラムでは，文章を書く人間が普段どういうことを思いながら書いているのかということが色々と書かれていて，なかなかに興味深かった．何かを主張したり情報を広めたり布教をしたりと，アウトプットの質を高めていくにはとにかく書き続けるしかないということで，これからも引き続きblogを続けていこうというモチベーションに繋がる記事だった．</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
+<time datetime="2012-11-25T01:28:00+09:00" pubdate data-updated="true">Nov 25<span>th</span>, 2012</time>
       
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/22/imcmr-6-2/">「Rによるモンテカルロ法入門」読書ノート：6章 マルコフ連鎖とランダム・ウォーク</a></h1>
-    
-    
-      <p class="meta">
-        
 
-
-
-
-
-
-
-
+<span class="categories">
   
+    <a class='category' href='/blog/categories/reading/'>Reading</a>, <a class='category' href='/blog/categories/imcmr/'>imcmr</a>
+  
+</span>
 
 
-<time datetime="2012-11-22T12:14:00+09:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2012</time>
-        
-      </p>
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>練習問題 6.1 自己回帰モデルAR(1)が定常分布を持つことを実験的に示す</h3>
-
-<p>本問題の設定の詳細は<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">MCMC-UseR.pdf</a>のP.130を参照．この問題はいわゆるAR(1)というもの．</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X%5E%7B%28t%2B1%29%7D+%3D+%5Crho+X%5E%7B%28t%29%7D%2B%5Cvarepsilon_t+" alt="X^{(t+1)} = \rho X^{(t)}+\varepsilon_t " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cvarepsilon_t+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+" alt="\varepsilon_t \sim \mathcal{N}(0,1) " />で定義されるマルコフ連鎖において，系列<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5C%7BX%5E%7B%28t%29%7D%5C%7D+" alt="{X^{(t)}} " />の定常分布は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BN%7D%280%2C+%5Cfrac%7B%5Csigma%5E2%7D%7B1-%5Crho%5E2%7D%29+" alt="\mathcal{N}(0, \frac{\sigma^2}{1-\rho^2}) " />で表される．今回は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D10%5E4+" alt="t=10^4 " />までのシミュレーション結果をヒストグラムとしてプロットし，定常分布を赤い曲線で示した．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>rho <span class="o">&lt;-</span> <span class="m">0.9</span>
-</span><span class='line'>x <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">)</span>
-</span><span class='line'><span class="kr">for</span><span class="p">(</span>t in <span class="m">2</span>:<span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">){</span>
-</span><span class='line'>  x<span class="p">[</span>t<span class="p">]</span> <span class="o">&lt;-</span> x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="o">*</span>rho <span class="o">+</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>hist<span class="p">(</span>x<span class="p">,</span> nclass<span class="o">=</span><span class="m">150</span><span class="p">,</span> freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">)</span>
-</span><span class='line'>curve<span class="p">(</span>dnorm<span class="p">(</span>x<span class="p">,</span> mean<span class="o">=</span><span class="m">0</span><span class="p">,</span> sd<span class="o">=</span><span class="p">(</span><span class="m">1</span><span class="o">/</span>sqrt<span class="p">(</span><span class="m">1</span><span class="o">-</span>rho<span class="o">^</span><span class="m">2</span><span class="p">))),</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6_1.png" alt="" /></p>
-
-<h3>練習問題 6.2 ランダム・ウォークが定常分布を持たないことを実験的に示す</h3>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X%5E%7B%28t%2B1%29%7D%3DX%5E%7B%28t%29%7D%2B%5Cvarepsilon_t+" alt="X^{(t+1)}=X^{(t)}+\varepsilon_t " />で表されるランダム・ウォークが，シミュレーション回数を増やしても定常分布に収束しないことを実験的に確かめる．今回は初期値<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X%5E%7B%280%29%7D%3D0+" alt="X^{(0)}=0 " />として，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D10%5E4+" alt="t=10^4 " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D10%5E6+" alt="t=10^6 " />までマルコフ連鎖をシミュレートする．
-この問題は練習問題6.1における<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho+%3D+1" alt="\rho = 1" />の場合と同じになるので，上で書いたコードのパラメータを変更するだけで再現できる．ただ，今回は別の書き方としてcumsum()関数を用いてランダム・ウォークの系列を計算している．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>init <span class="o">&lt;-</span> <span class="m">0</span>
-</span><span class='line'>x1 <span class="o">&lt;-</span> cumsum<span class="p">(</span>rnorm<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="o">-</span><span class="m">1</span><span class="p">))</span>
-</span><span class='line'>x2 <span class="o">&lt;-</span> cumsum<span class="p">(</span>rnorm<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">6</span><span class="o">-</span><span class="m">1</span><span class="p">))</span>
-</span><span class='line'>
-</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-</span><span class='line'>hist<span class="p">(</span>x1<span class="p">,</span> nclass<span class="o">=</span><span class="m">150</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;t=10^4&quot;</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span><span class="m">1</span>:<span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">,</span> c<span class="p">(</span>init<span class="p">,</span>x1<span class="p">),</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;t&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;t=10^4&quot;</span><span class="p">)</span>
-</span><span class='line'>hist<span class="p">(</span>x2<span class="p">,</span> nclass<span class="o">=</span><span class="m">150</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;t=10^6&quot;</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span><span class="m">1</span>:<span class="m">10</span><span class="o">^</span><span class="m">6</span><span class="p">,</span> c<span class="p">(</span>init<span class="p">,</span>x2<span class="p">),</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;t&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;t=10^6&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6_2.png" alt="" /></p>
-
-<p>シミュレーション回数を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D10%5E4+" alt="t=10^4 " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D10%5E6+" alt="t=10^6 " />としてランダム・ウォークを実行した結果が上図である．左図に系列のヒストグラム，右図に試行回数を横軸に取った系列をプロットしている．上のように図示すると，たとえ10<sup>6</sup> 回試行したとしても何らかの分布に収束しないことがわかる．</p>
-
-<h3>雑感</h3>
-
-<p>練習問題 6.1と練習問題6.2を比較すると，ランダム・ウォークにおいて先行する状態に<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=0+%5Cleq+%5Crho+%3C+1+" alt="0 \leq \rho &lt; 1 " />のような値を掛け合わせるだけで定常分布を取るというのは，なんとも面白い結果となっている．</p>
-
-<h3>補足：<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">MCMC-UseR.pdf</a>のP.132</h3>
-
-<ul>
-<li>練習問題の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho+" alt="\rho " />と以下図の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta+" alt="\theta " />は同じ</li>
-<li>pdfにも書いてあるがスケール（x軸とy軸の描写範囲）に注意．いかに<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta+" alt="\theta " />が効いているかがわかる</li>
-<li>左上はマルコフ連鎖ではない</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-</span><span class='line'><span class="kr">for</span><span class="p">(</span>rho in c<span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0.4</span><span class="p">,</span> <span class="m">0.8</span><span class="p">,</span> <span class="m">0.95</span><span class="p">)){</span>
-</span><span class='line'>  x <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">)</span>
-</span><span class='line'>  y <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">)</span>
-</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>t in <span class="m">2</span>:<span class="m">1000</span><span class="p">){</span>
-</span><span class='line'>    x<span class="p">[</span>t<span class="p">]</span> <span class="o">&lt;-</span> x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="o">*</span>rho <span class="o">+</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">)</span>
-</span><span class='line'>    y<span class="p">[</span>t<span class="p">]</span> <span class="o">&lt;-</span> y<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="o">*</span>rho <span class="o">+</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  plot<span class="p">(</span>x<span class="p">,</span>y<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;theta=&quot;</span><span class="p">,</span>rho<span class="p">))</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6_extra.png" alt="" /></p>
+      <div class="sharing">
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/11/25/imcmr-6-3/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/11/25/imcmr-6-3/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/11/25/imcmr-6-3/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
 </div>
-  
-  
 
-
-    </article>
-  
-  
-    <article>
+    
+    
+    <section>
+      <h1>Comments</h1>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+    
+    <ul class="pager">
       
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/21/review-apple-matsuhiro/">「僕がアップルで学んだこと 環境を整えれば人が変わる、組織が変わる」読了</a></h1>
-    
-    
-      <p class="meta">
-        
+      <li class="previous"><a class="basic-alignment left"
+        href="/blog/2012/11/24/mcmc-n-dimentional-unit-ball/" title="Previous Post:
+        「N次元の単位球の体積は5次元で最大になる」をRで試してみた">&laquo; 「N次元の単位球の体積は5次元で最大になる」をRで試してみた</a></li>
+      
+      <li><a href="/blog/archives">Blog Archives</a></li>
+      
+    </ul>
+  </footer>
+</article>
 
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-21T18:27:00+09:00" pubdate data-updated="true">Nov 21<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4048865390" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>元 Apple Inc.のシニアマネージャーの松井博氏による， Appleという会社を通して語られる働き方の指南書である．主にスティーブ・ジョブズやジョナサン・アイヴ，ティム・クックといったトップの人間を中心にして語られることが多いAppleだが，実際の会社内部の体制について語られることは意外と少ない．本書では，実際にアップルで働いた著者の体験談を元に，その企業の姿勢であったり価値観が語られる．そして本書での一番ポイントとなる部分は，松井氏がスティーブ・ジョブズが戻る以前の迷走期から復帰後の社内改革，そしてめざましい躍進ぶりを見せる黄金期にまたがって，Appleという会社を内側から眺め続けてきたところにある．めまぐるしく変わりゆく環境の中で，ジョブズの復帰により会社の環境はどのように変わったのか，そしてAppleが革新的な製品やサービスを作り続けられてきた理由はいったいどこにあるのかを，内部の視点からまとめ上げた一冊となっている．</p>
-
-<p>本書は大きく分けて，職場環境の変革について書かれた前半部と，Apple社員の異常なほどまでの社内政治について書かれた後半部から構成される．前半部の職場環境については，著者が実際に肌で体感してきたアップル社内の変貌を織り交ぜつつ，どうやったら社員がパフォーマンスを発揮し組織として成果を上げていくことができるかといった方法論が語られる．その中では，昨今のApple評で良く耳にするシンプル・コンセプト・デザインなどの基本的な要素から，著者が自分の部署内で実施してきた試行錯誤，そしてスティーブ・ジョブズが打ち出した方向性によってどのように会社としての方向性が明確になったかが，臨場感溢れる語り口で述べられる．一方で，後半部の社内政治においては，一見エンジニアの天国として華やかに見えるApple社内での，外部のイメージとは全く違った熾烈な競争から生じる社内政治について，著者のアメリカ勤務時代の経験が語られる．著者自身は社内政治について良い面も悪い面もあるとしながらも，社内での立ち回りの重要性であったり如何にして成果を自分のものにし失敗を被らずに上司にアピールするかといった，すこし敬遠されがちな内容にまで踏み込んでいる．</p>
-
-<p>本書で語られる経営哲学や仕事内容，上司部下の関係，職場の机のレイアウトに至るまでのエピソードはすべて，いい意味で個人の枠を飛び出していない．あくまで著者自身が社員としてとして会社の中で直面し，感じ，そして考えたかが率直に表現されている．そのため読者としては「Appleだから出来ることでしょ」「外資ベンチャーだから」「シリコンバレーだから」といった壁を作らずに済む．そもそもこの本の構成自体が自分でも何かできることはないだろうかという気持ちにさせるような書き方をしているので，Appleについて全く知らない人にとっても，エンジニアの楽園といった現実離れした妄想を抱いている人たちにとっても，数ある大企業の一つとしてのAppleとして，その会社のことを深く知ることができると思う．お酒の席で知り合いの先輩の人生哲学を聞くような感覚で気軽に読めて，それでいて内容も簡潔にまとまっており，なかなかに面白い本だった．</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  <ul class="pager">
-    
-    <li class="previous"><a href="/blog/page/2/">&larr; Older</a></li>
-    
-    <li><a href="/blog/archives">Blog Archives</a></li>
-    
-  </ul>
-</div>
 <aside class="sidebar-nav span3">
   
     <section class="well">
@@ -821,7 +581,7 @@
   <h1>Twitter</h1>
   <ul id="tweets" class="nav">
     <li class="nav-header">Latest Tweets</li>
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   <script type="text/javascript">
     $(document).ready(function(){
@@ -840,6 +600,7 @@
 
   
 </aside>
+
 
     </div>
   </div>
@@ -860,7 +621,10 @@
       var disqus_shortname = 'wolfeyesbioinformaticsbeta';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://yagays.github.com/blog/2012/11/25/imcmr-6-3/';
+        var disqus_url = 'http://yagays.github.com/blog/2012/11/25/imcmr-6-3/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
