@@ -4,7 +4,7 @@
   <title><![CDATA[Category: imcmr | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/imcmr/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-24T01:10:55+09:00</updated>
+  <updated>2012-11-24T10:31:40+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -30,7 +30,7 @@
 
 <p>本問題の設定の詳細は<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">MCMC-UseR.pdf</a>のP.130を参照．この問題はいわゆるAR(1)というもの．</p>
 
-<p>![X<sup>{(t+1)}</sup> = \rho X<sup>{(t)}+\epsilon_t</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=X%3Csup%3E%7B%28t%2B1%29%7D%3C%2Fsup%3E+%3D+%5Crho+X%3Csup%3E%7B%28t%29%7D%2B%5Cepsilon_t%3C%2Fsup%3E+)，![\epsilon_t \sim \mathcal{N}(0,1) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_t+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+)で定義されるマルコフ連鎖において，系列![{X<sup>{(t)}}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%7BX%3Csup%3E%7B%28t%29%7D%7D%3C%2Fsup%3E+)の定常分布は![\mathcal{N}(0, \frac{\sigma<sup>2}{1-\rho<sup>2})</sup></sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%280%2C+%5Cfrac%7B%5Csigma%3Csup%3E2%7D%7B1-%5Crho%3Csup%3E2%7D%29%3C%2Fsup%3E%3C%2Fsup%3E+)で表される．今回は![t=10<sup>4</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%3Csup%3E4%3C%2Fsup%3E+)までのシミュレーション結果をヒストグラムとしてプロットし，定常分布を赤い曲線で示した．</p>
+<p>![X<sup>{(t+1)}</sup> = \rho X<sup>{(t)}+\varepsilon_t</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=X%3Csup%3E%7B%28t%2B1%29%7D%3C%2Fsup%3E+%3D+%5Crho+X%3Csup%3E%7B%28t%29%7D%2B%5Cvarepsilon_t%3C%2Fsup%3E+)，![\varepsilon_t \sim \mathcal{N}(0,1) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cvarepsilon_t+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+)で定義されるマルコフ連鎖において，系列![{X<sup>{(t)}}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%7BX%3Csup%3E%7B%28t%29%7D%7D%3C%2Fsup%3E+)の定常分布は![\mathcal{N}(0, \frac{\sigma<sup>2}{1-\rho<sup>2})</sup></sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%280%2C+%5Cfrac%7B%5Csigma%3Csup%3E2%7D%7B1-%5Crho%3Csup%3E2%7D%29%3C%2Fsup%3E%3C%2Fsup%3E+)で表される．今回は![t=10<sup>4</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%3Csup%3E4%3C%2Fsup%3E+)までのシミュレーション結果をヒストグラムとしてプロットし，定常分布を赤い曲線で示した．</p>
 
 <p>```r
 rho &lt;- 0.9
@@ -47,7 +47,7 @@ curve(dnorm(x, mean=0, sd=(1/sqrt(1-rho<sup>2))),</sup> add=T, col="red")
 
 <h3>練習問題 6.2 ランダム・ウォークが定常分布を持たないことを実験的に示す</h3>
 
-<p>![X<sup>{(t+1)}=X<sup>{(t)}+\epsilon_t</sup></sup> ](http://chart.apis.google.com/chart?cht=tx&chl=X%3Csup%3E%7B%28t%2B1%29%7D%3DX%3Csup%3E%7B%28t%29%7D%2B%5Cepsilon_t%3C%2Fsup%3E%3C%2Fsup%3E+)で表されるランダム・ウォークが，シミュレーション回数を増やしても定常分布に収束しないことを実験的に確かめる．今回は初期値![X<sup>{(0)}=0</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=X%3Csup%3E%7B%280%29%7D%3D0%3C%2Fsup%3E+)として，![t=10<sup>4</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%3Csup%3E4%3C%2Fsup%3E+)と![t=10<sup>6</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%3Csup%3E6%3C%2Fsup%3E+)までマルコフ連鎖をシミュレートする．
+<p>![X<sup>{(t+1)}=X<sup>{(t)}+\varepsilon_t</sup></sup> ](http://chart.apis.google.com/chart?cht=tx&chl=X%3Csup%3E%7B%28t%2B1%29%7D%3DX%3Csup%3E%7B%28t%29%7D%2B%5Cvarepsilon_t%3C%2Fsup%3E%3C%2Fsup%3E+)で表されるランダム・ウォークが，シミュレーション回数を増やしても定常分布に収束しないことを実験的に確かめる．今回は初期値![X<sup>{(0)}=0</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=X%3Csup%3E%7B%280%29%7D%3D0%3C%2Fsup%3E+)として，![t=10<sup>4</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%3Csup%3E4%3C%2Fsup%3E+)と![t=10<sup>6</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=t%3D10%3Csup%3E6%3C%2Fsup%3E+)までマルコフ連鎖をシミュレートする．
 この問題は練習問題6.1における![\rho = 1](http://chart.apis.google.com/chart?cht=tx&chl=%5Crho+%3D+1)の場合と同じになるので，上で書いたコードのパラメータを変更するだけで再現できる．ただ，今回は別の書き方としてcumsum()関数を用いてランダム・ウォークの系列を計算している．</p>
 
 <p>```r
@@ -227,9 +227,9 @@ for(t in 2:Nsim){
 
 <p>目的関数からの直接的なシミュレーションが難しい場合，関数の表面をローカルになぞって最大値を探索するという手法が使える．探索に用いる系列は以下のように表す事ができる．</p>
 
-<p>![\theta_{j+1} = \theta_j +  \epsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_%7Bj%2B1%7D+%3D+%5Ctheta_j+%2B++%5Cepsilon_j+)</p>
+<p>![\theta_{j+1} = \theta_j +  \varepsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_%7Bj%2B1%7D+%3D+%5Ctheta_j+%2B++%5Cvarepsilon_j+)</p>
 
-<p>これは現在のステップに摂動項![\epsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_j+)を加えて次のステップとすることを表している．つまりこれはマルコフ連鎖となるのだが，今回はそれほどマルコフ性は重要にはならない．</p>
+<p>これは現在のステップに摂動項![\varepsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cvarepsilon_j+)を加えて次のステップとすることを表している．つまりこれはマルコフ連鎖となるのだが，今回はそれほどマルコフ性は重要にはならない．</p>
 
 <p>概念的に目的関数の分布を山の斜面と考えるならば，現在の位置からちょっと動いて…を繰り返して山を登っていくような動きをする．ただし，単純に傾斜の上の方に登っていくのではなく，どちらかに進むかはランダムなので，たまに斜面を下ったりもする．その試行を繰り返していくことで，山の頂上を目指すような方法となっている．</p>
 
@@ -239,7 +239,7 @@ for(t in 2:Nsim){
 
 <p>![\nabla h(\theta_j) \approx \frac{h(\theta_j+\beta_j\zeta_j)-h(\theta_j-\beta_j\zeta_j)}{2\beta_j}\zeta_j = \frac{\Delta h(\theta_j,\beta_j\zeta_j)}{2\beta_j}\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cnabla+h%28%5Ctheta_j%29+%5Capprox+%5Cfrac%7Bh%28%5Ctheta_j%2B%5Cbeta_j%5Czeta_j%29-h%28%5Ctheta_j-%5Cbeta_j%5Czeta_j%29%7D%7B2%5Cbeta_j%7D%5Czeta_j+%3D+%5Cfrac%7B%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%7D%7B2%5Cbeta_j%7D%5Czeta_j+)</p>
 
-<p>とし，摂動項![\epsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_j+)を組み込んだ系列の更新は以のようになる．</p>
+<p>とし，摂動項![\varepsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cvarepsilon_j+)を組み込んだ系列の更新は以のようになる．</p>
 
 <p>![\theta_{j+1} = \theta_j +  \frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j)\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_%7Bj%2B1%7D+%3D+%5Ctheta_j+%2B++%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+)</p>
 
@@ -269,7 +269,7 @@ h &lt;- function(x){
 <ol>
 <li>![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)を生成する</li>
 <li>![\theta_{j} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_%7Bj%7D+)を使って勾配![\frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j)\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+)を生成する</li>
-<li>![\theta<em>{j}+\epsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta%3Cem%3E%7Bj%7D%2B%5Cepsilon_j+)を![\theta</em>{j+1} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta%3C%2Fem%3E%7Bj%2B1%7D+)とする</li>
+<li>![\theta<em>{j}+\varepsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta%3Cem%3E%7Bj%7D%2B%5Cvarepsilon_j+)を![\theta</em>{j+1} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta%3C%2Fem%3E%7Bj%2B1%7D+)とする</li>
 <li>![\alpha_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_j+)と![\beta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_j+)を更新する</li>
 </ol>
 </li>
@@ -317,11 +317,11 @@ U
 
 <p>次に，有限差分法における![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)の役割について考えてみる．</p>
 
-<p>そもそも，確率的勾配法はローカルに関数の表面をなぞるように探索して，値の大きいポイントを探す確率的なアプローチだった．概念的には，<a href="http://yagays.github.com/blog/2012/11/06/imcmr-5-3/">前回3Dプロットをした</a>ような山みたいになっている関数の上をあちこち動いて頂上を探し出すということだが，あちこち動きまわるためには，歩く「方向」と「距離」を考えなければならない．今回の有限差分法における勾配は![\epsilon_j = \frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j)\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_j+%3D+%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+)で表されていたが，その「方向」が![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)，「距離」が![\frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29+)に対応している．</p>
+<p>そもそも，確率的勾配法はローカルに関数の表面をなぞるように探索して，値の大きいポイントを探す確率的なアプローチだった．概念的には，<a href="http://yagays.github.com/blog/2012/11/06/imcmr-5-3/">前回3Dプロットをした</a>ような山みたいになっている関数の上をあちこち動いて頂上を探し出すということだが，あちこち動きまわるためには，歩く「方向」と「距離」を考えなければならない．今回の有限差分法における勾配は![\varepsilon_j = \frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j)\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cvarepsilon_j+%3D+%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+)で表されていたが，その「方向」が![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)，「距離」が![\frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29+)に対応している．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-7_3.png" alt="" /></p>
 
-<p>では実際に![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)と勾配![\epsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_j+)を図示して，「方向」と「距離」の意味を確かめてみよう．以下の図は，![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)の取りうる単位円と，赤い矢印![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)，黒い矢印![\epsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cepsilon_j+)を示した図になっている（![j=1 ](http://chart.apis.google.com/chart?cht=tx&chl=j%3D1+)）．この図を見ると，赤い矢印で方向が示され，黒い矢印でどれくらいの距離を進むかが見て取れる．![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)は乱数で生成された値なので，本書の「そのつど方向をランダムに選択する」という勾配の説明の通り，単位円の円周上からどこか一点を選択して進む方向を決めている．</p>
+<p>では実際に![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)と勾配![\varepsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cvarepsilon_j+)を図示して，「方向」と「距離」の意味を確かめてみよう．以下の図は，![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)の取りうる単位円と，赤い矢印![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)，黒い矢印![\varepsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cvarepsilon_j+)を示した図になっている（![j=1 ](http://chart.apis.google.com/chart?cht=tx&chl=j%3D1+)）．この図を見ると，赤い矢印で方向が示され，黒い矢印でどれくらいの距離を進むかが見て取れる．![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)は乱数で生成された値なので，本書の「そのつど方向をランダムに選択する」という勾配の説明の通り，単位円の円周上からどこか一点を選択して進む方向を決めている．</p>
 
 <p>といったように，この有限差分法では関数の山の傾斜を考えて進む方向を決めるのではなく，何も考えずに動いてみるといったアプローチとなっている．ただし，距離に関しては別で，関数を使って傾斜を見つつ調整しているので，その点は注意．</p>
 
