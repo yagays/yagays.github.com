@@ -4,7 +4,7 @@
   <title><![CDATA[Category: imcmr | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/imcmr/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-25T01:47:28+09:00</updated>
+  <updated>2012-11-25T01:51:35+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -26,11 +26,11 @@
 <iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
-<h3>例 6.3 2次モデルの線形回帰におけるパラメータの事後分布から，メトロポリス・ヘイスティング・アルゴリズムを用いてサンプリングする</h3>
+<h3>例 6.3 二次モデルの線形回帰におけるパラメータの事後分布から，メトロポリス・ヘイスティング・アルゴリズムを用いてサンプリングする</h3>
 
 <p>この例題では，carsのデータセットにおいて線形回帰による二次曲線のあてはめをおこない，最尤法で推定したパラメータによる事後分布から複数のサンプリングを行うことを目標にする．今回使用するデータセットは車の速度とその時の制動距離に関するデータで，Rの入門書でよく例に使われるものである．carsのデータセットに関するHelpのExampleには，本問題と似たようなプロットを描写するコード例が載っている．</p>
 
-<p>この問題では，車のスピード![x ](http://chart.apis.google.com/chart?cht=tx&chl=x+)と制動距離![y ](http://chart.apis.google.com/chart?cht=tx&chl=y+)の関係について，以下式で表される2次モデルで線形回帰をおこなう．</p>
+<p>この問題では，車のスピード![x ](http://chart.apis.google.com/chart?cht=tx&chl=x+)と制動距離![y ](http://chart.apis.google.com/chart?cht=tx&chl=y+)の関係について，以下式で表される二次モデルで線形回帰をおこなう．</p>
 
 <p>![y_{ij}=a+bx_i+cx_i<sup>2+\varepsilon_{ij}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=y_%7Bij%7D%3Da%2Bbx_i%2Bcx_i%3Csup%3E2%2B%5Cvarepsilon_%7Bij%7D%3C%2Fsup%3E+)</p>
 
