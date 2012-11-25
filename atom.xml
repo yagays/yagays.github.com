@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-26T07:32:46+09:00</updated>
+  <updated>2012-11-26T07:37:17+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -54,7 +54,7 @@
 
 <h3>他の解決方法</h3>
 
-<p>ちなみに，/usr/local/lib以下にシンボリックリンクを貼って強引に解決する方法もある．自分は最初こちらで対処していたのだが，長期的に見た場合JAGSのバージョンアップなどでdylibの名前が変わる可能性などもあるので，上のようにパッケージのインストールの段階で対処する方が良いだろう．</p>
+<p>ちなみに，/usr/local/lib以下にシンボリックリンクを貼って強引に解決する方法もある．自分は最初こちらで対処していたのだが，長期的に考えた場合にJAGSのバージョンアップによってdylibの名前が変わる可能性などもあるので，上のようにパッケージのインストールの段階で対処する方が良いだろう．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
