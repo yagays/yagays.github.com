@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-25T01:51:35+09:00</updated>
+  <updated>2012-11-25T15:18:11+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -135,8 +135,6 @@
 
 <p>なお，上の推定値や標準誤差は本書に例示されている値と若干異なっているが，今回は自分の計算環境で計算した推定値を用いることにした．</p>
 
-<h4>コードの説明</h4>
-
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -214,7 +212,7 @@
 </span><span class='line'>
 </span><span class='line'>Niter <span class="o">&lt;-</span> <span class="m">4000</span>
 </span><span class='line'>n <span class="o">&lt;-</span> length<span class="p">(</span>x<span class="p">)</span>
-</span><span class='line'>fit.param <span class="o">&lt;-</span> summary<span class="p">(</span>fit<span class="p">)$</span>coefficient
+</span><span class='line'>fit.param <span class="o">&lt;-</span> summary<span class="p">(</span>fit<span class="p">)$</span>coef
 </span><span class='line'>a.est <span class="o">&lt;-</span> fit.param<span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">]</span>
 </span><span class='line'>a.std <span class="o">&lt;-</span> fit.param<span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">]</span>
 </span><span class='line'>b.est <span class="o">&lt;-</span> fit.param<span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">]</span>
@@ -264,9 +262,9 @@
 
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-11_3.png" alt="" /></p>
 
-<h3>b. 各パラメータの収束をモニタリングする</h3>
+<h4>b. 各パラメータの収束をモニタリングする</h4>
 
-<p>先ほどのサンプリング結果を，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x_i%2Ca%2Cb%2Cc%2C%5Csigma%5E2+" alt="x_i,a,b,c,\sigma^2 " />について，4000回のシミュレーションで生成された系列と，そのときの自己相関プロット，そして系列の分布をプロットした．</p>
+<p>先ほどのサンプリング結果を，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=a%2Cb%2Cc%2C%5Csigma%5E2+" alt="a,b,c,\sigma^2 " />について，4000回のシミュレーションで生成された系列と，そのときの自己相関プロット，そして系列の分布をプロットした．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
