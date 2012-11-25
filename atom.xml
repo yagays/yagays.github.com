@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-25T15:18:11+09:00</updated>
+  <updated>2012-11-26T07:32:46+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,104 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mac OS XでJAGS＆rjagsパッケージを動かす]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/26/rjags-on-mac-os-x/"/>
+    <updated>2012-11-26T07:18:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/26/rjags-on-mac-os-x</id>
+    <content type="html"><![CDATA[<h3>MacPortsでJAGSを入れる場合はちょっと注意</h3>
+
+<p>MacでJAGSをインストールする場合，</p>
+
+<ul>
+<li><a href="http://sourceforge.net/projects/mcmc-jags/">SourceForge</a>からパッケージをダウンロードしてインストールする方法</li>
+<li><a href="https://trac.macports.org/browser/trunk/dports/science/jags/Portfile">MacPorts</a>を使ってインストールする方法</li>
+</ul>
+
+
+<p>の2通りがある．どちらで入れてもJAGS自体に違いはないのだが，Rのrjagsパッケージをインストールする際に少し注意しなければいけないポイントがある．1つ目の方法でパッケージからインストールした場合だと，いつも通りに</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1"># パッケージからインストールした場合</span>
+</span><span class='line'><span class="o">&gt;</span> install.packages<span class="p">(</span><span class="s">&quot;rjags&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="o">&gt;</span> library<span class="p">(</span>rjags<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>とすれば良いのだが，MacPortsでインストールした場合では，</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1"># MacPortsからインストールした場合</span>
+</span><span class='line'><span class="o">&gt;</span> install.packages<span class="p">(</span><span class="s">&quot;rjags&quot;</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;source&quot;</span><span class="p">,</span> configure.args <span class="o">=</span> <span class="s">&#39;--with-jags-lib=/opt/local/lib --with-jags-include=/opt/local/include/JAGS --with-jags-modules=/opt/local/lib/JAGS/modules-3&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="o">&gt;</span> library<span class="p">(</span>rjags<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>のように，パッケージのインストールの際に色々とオプションを付ける必要がある．というのも，パッケージからインストールした場合では/usr/local/以下にインストールされるのに対し，MacPortsからインストールした場合では/opt/local/以下にインストールされるからだ．Rでrjagsパッケージをインストールする際には，どうやら/usr/local/以下のモジュールや共有ライブラリを参照するようなので，MacPortsで入れた場合にはそもそもディレクトリが違うためファイルが見つからないといったエラーが出る．</p>
+
+<h3>他の解決方法</h3>
+
+<p>ちなみに，/usr/local/lib以下にシンボリックリンクを貼って強引に解決する方法もある．自分は最初こちらで対処していたのだが，長期的に見た場合JAGSのバージョンアップなどでdylibの名前が変わる可能性などもあるので，上のようにパッケージのインストールの段階で対処する方が良いだろう．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">cd</span> /usr/local/lib
+</span><span class='line'><span class="nv">$ </span>sudo ln -s /opt/local/lib/libjags.3.dylib .
+</span><span class='line'><span class="nv">$ </span>sudo ln -s /opt/local/lib/JAGS .
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>参考：MacPortsの場合でinstall.package(&#8220;rjags&#8221;)で入れてしまったときのrjags読み込み時のエラー</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="o">&gt;</span> library<span class="p">(</span>rjags<span class="p">)</span>
+</span><span class='line'> 要求されたパッケージ coda をロード中です
+</span><span class='line'> 要求されたパッケージ lattice をロード中です
+</span><span class='line'>Error :  <span class="m">.</span>onLoadはloadNamespace<span class="p">()</span>（rjagsに対する）の中で失敗しました、詳細は:
+</span><span class='line'> call: dyn.load<span class="p">(</span>file<span class="p">,</span> DLLpath <span class="o">=</span> DLLpath<span class="p">,</span> <span class="m">...</span><span class="p">)</span>
+</span><span class='line'> error:  共有ライブラリ <span class="s">&#39;/Library/Frameworks/R.framework/Versions/2.15/Resources/library/rjags/libs/x86_64/rjags.so&#39;</span> を読み込めません：
+</span><span class='line'>  dlopen<span class="p">(</span><span class="o">/</span>Library<span class="o">/</span>Frameworks<span class="o">/</span>R.framework<span class="o">/</span>Versions<span class="o">/</span><span class="m">2.15</span><span class="o">/</span>Resources<span class="o">/</span>library<span class="o">/</span>rjags<span class="o">/</span>libs<span class="o">/</span>x86_64<span class="o">/</span>rjags.so<span class="p">,</span> <span class="m">10</span><span class="p">)</span>: Library not loaded: <span class="o">/</span>usr<span class="o">/</span>local<span class="o">/</span>lib<span class="o">/</span>libjags.3.dylib
+</span><span class='line'>  Referenced from: <span class="o">/</span>Library<span class="o">/</span>Frameworks<span class="o">/</span>R.framework<span class="o">/</span>Versions<span class="o">/</span><span class="m">2.15</span><span class="o">/</span>Resources<span class="o">/</span>library<span class="o">/</span>rjags<span class="o">/</span>libs<span class="o">/</span>x86_64<span class="o">/</span>rjags.so
+</span><span class='line'>  Reason: image not found
+</span><span class='line'> エラー：  <span class="s">&#39;‘rjags’&#39;</span> に対するパッケージもしくは名前空間のロードが失敗しました
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>実行環境</h3>
+
+<ul>
+<li>Mac OS X 10.8.2</li>
+<li>R version 2.15.1</li>
+<li>JAGS 3.3.0</li>
+<li>rjags version 3-7</li>
+</ul>
+
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://mcmc-jags.sourceforge.net/">JAGS - Just Another Gibbs Sampler</a></li>
+<li><a href="http://cran.r-project.org/web/packages/rjags/index.html">CRAN - Package rjags</a></li>
+<li><a href="http://eity.que.jp/pukiwiki/index.php?BUGS">Eity&#8217;s Web - BUGS</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その2]]></title>
@@ -1868,147 +1966,6 @@
 <li><a href="http://brevis.exblog.jp/19032748/">書評：　「TN君の伝記」　なだ・いなだ : タイム・コンサルタントの日誌から</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 確率的探索 その2]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/06/imcmr-5-3/"/>
-    <updated>2012-11-06T11:25:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/06/imcmr-5-3</id>
-    <content type="html"><![CDATA[<ul>
-<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>例 5.4 数値的最適化法と確率的探索を比較する</h3>
-
-<p><a href="http://yagays.github.com/blog/2012/10/30/imcmr-5-1/">例5.1</a>の続き．前回は数値的最適化法によって<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta+" alt="\theta " />の値を推定したが，今回は確率的探索による推定を行なって，両者の手法の比較を行う．問題としては，以下の対数尤度を最大化する．</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clog+l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D+%5Clog+%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%5E2%7D+" alt="\log l(\theta| x_1,\ldots,x_n) = \sum_{i=1}^{n} \log \frac{1}{1+(x_i-\theta)^2} " /></p>
-
-<p>この式は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=n+%5Crightarrow+%5Cinfty+" alt="n \rightarrow \infty " />において<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta%5E%2A+%3D0+" alt="\theta^* =0 " />になる．すなわちこれから求める推定値の答えは0ということになる．</p>
-
-<h4>ソースコード</h4>
-
-<p>以下のソースコードにおける変数の対応は以下のようになっている．</p>
-
-<ul>
-<li>数値的最適化法
-
-<ul>
-<li>trul：推定値</li>
-<li>truv：対数尤度</li>
-</ul>
-</li>
-<li>確率的探索
-
-<ul>
-<li>loc：推定値</li>
-<li>maxv：対数尤度</li>
-</ul>
-</li>
-</ul>
-
-
-<p>なお，mcsmパッケージに付随するデモスクリプトでは，数値的最適化法における乱数を正規乱数としていたり対数尤度の関数が微妙に違っているが，今回は例5.1の解法と同様のコーシー乱数と対数尤度の式を用いている．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>ref <span class="o">&lt;-</span> rcauchy<span class="p">(</span><span class="m">5001</span><span class="p">)</span>
-</span><span class='line'>f <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>y<span class="p">){</span><span class="o">-</span>sum<span class="p">(</span>log<span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="p">(</span>x<span class="o">-</span>y<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))}</span>
-</span><span class='line'>
-</span><span class='line'>maxv <span class="o">&lt;-</span> <span class="kc">NULL</span>
-</span><span class='line'>loc <span class="o">&lt;-</span> <span class="kc">NULL</span>
-</span><span class='line'>truv <span class="o">&lt;-</span> <span class="kc">NULL</span>
-</span><span class='line'>trul <span class="o">&lt;-</span> <span class="kc">NULL</span>
-</span><span class='line'>
-</span><span class='line'><span class="kr">for</span> <span class="p">(</span>i in <span class="m">10</span>:length<span class="p">(</span>ref<span class="p">)){</span>
-</span><span class='line'>  <span class="c1"># 数値的最適化</span>
-</span><span class='line'>  x <span class="o">&lt;-</span> ref<span class="p">[</span><span class="m">1</span>:i<span class="p">]</span>
-</span><span class='line'>  tru <span class="o">&lt;-</span> optimize<span class="p">(</span>f<span class="p">,</span>c<span class="p">(</span><span class="m">-5</span><span class="p">,</span><span class="m">5</span><span class="p">),</span>maximum<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
-</span><span class='line'>  trul <span class="o">&lt;-</span> c<span class="p">(</span>trul<span class="p">,</span> tru<span class="p">$</span>max<span class="p">)</span>
-</span><span class='line'>  truv <span class="o">&lt;-</span> c<span class="p">(</span>truv<span class="p">,</span> tru<span class="p">$</span>ob<span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># 確率的探索</span>
-</span><span class='line'>  prop <span class="o">&lt;-</span> runif<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">3</span><span class="p">,</span><span class="m">-5</span><span class="p">,</span><span class="m">5</span><span class="p">)</span>
-</span><span class='line'>  vale <span class="o">&lt;-</span> apply<span class="p">(</span>as.matrix<span class="p">(</span>prop<span class="p">),</span><span class="m">1</span><span class="p">,</span>f<span class="p">)</span>
-</span><span class='line'>  loc <span class="o">&lt;-</span> c<span class="p">(</span>loc<span class="p">,</span> prop<span class="p">[</span>order<span class="p">(</span><span class="o">-</span>vale<span class="p">)[</span><span class="m">1</span><span class="p">]])</span>
-</span><span class='line'>  maxv <span class="o">&lt;-</span> c<span class="p">(</span>maxv<span class="p">,</span> max<span class="p">(</span>vale<span class="p">))</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>par<span class="p">(</span>mar<span class="o">=</span>c<span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
-</span><span class='line'>plot<span class="p">(</span>trul<span class="p">,</span> loc<span class="p">,</span> cex<span class="o">=</span><span class="m">.5</span><span class="p">,</span> pch<span class="o">=</span><span class="m">19</span><span class="p">,</span> xlab<span class="o">=</span>expression<span class="p">(</span>theta<span class="o">^</span><span class="m">0</span><span class="p">),</span> ylab<span class="o">=</span>expression<span class="p">(</span>hat<span class="p">(</span>theta<span class="p">)))</span>
-</span><span class='line'>abline<span class="p">(</span>a<span class="o">=</span><span class="m">0</span><span class="p">,</span> b<span class="o">=</span><span class="m">1</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;grey&quot;</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span><span class="m">10</span>:length<span class="p">(</span>ref<span class="p">),</span> <span class="p">(</span>truv<span class="o">-</span>maxv<span class="p">)</span><span class="o">/</span>abs<span class="p">(</span>truv<span class="p">),</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Sample size&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;Relative error&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0.02</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>まず，上のプロットは，数値的最適化法による推定値を横軸に，確率的探索による推定値を縦軸に取った図となっている．真の値が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta%5E%2A+%3D0+" alt="\theta^* =0 " />なので，当然ながら両者ともに推定値は(0,0)付近に集まっている．また，推定値が外れる場合では，どちらかの値が大きくなればもう片方も大きくなるといった具合に，そのパターンはグレーの線で示した<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta%5E0+%3D+%5Chat%7B%5Ctheta%7D+" alt="\theta^0 = \hat{\theta} " />の線分の上に乗るような形となる．</p>
-
-<p>次に，下のプロットは，横軸にサンプルサイズを取り，縦軸に推定値における対数尤度の差を取った図となっている．今回は相対的誤差なので，(数値的最適化法-確率的探索)/(数値的最適化法)といった形で値を求めている．相対的誤差が大きいということは，数値的最適化法と確率的探索それぞれ求めた対数尤度に差がある，すなわち<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta+" alt="\theta " />に差があるということで，上のプロットにおけるグレーの線分から離れれば離れるほど相対的誤差も大きくなるということになる．なお，図示しているサンプルサイズは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=n%3D10+" alt="n=10 " />から<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=n%3D5001+" alt="n=5001 " />までの値となっており，これは両者の手法がどちらも一定サイズのサンプルサイズを必要とするからである（つまり1から10までは図示していない）．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-4.png" alt="" /></p>
-
-<h3>例 5.6 グローバルミニマムのまわりにローカルミニマムが配置されている関数を可視化する</h3>
-
-<p>以下の関数の最小化を検討する．</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=h%28x%2Cy%29%3D%28x%5Csin%2820y%29%2By%5Csin%2820x%29%29%5E2%5Ccosh%28%5Csin%2810x%29x%29%2B+%28x%5Ccos%2810y%29-y%5Csin%2810x%29%29%5E2%5Ccosh%28%5Ccos%2820y%29y%29+" alt="h(x,y)=(x\sin(20y)+y\sin(20x))^2\cosh(\sin(10x)x)+ (x\cos(10y)-y\sin(10x))^2\cosh(\cos(20y)y) " /></p>
-
-<p>今回は可視化するだけだが，この後の例5.7などで度々登場する関数となる．3Dプロットを描写すると，(0,0)に最小値があり，その周りには山あり谷ありとローカルミニマムがたくさん配置されている関数だとわかる．この図を上から見ると，P.157のプロットのようになる．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>h <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">,</span>y<span class="p">){</span>
-</span><span class='line'>  <span class="p">(</span>x<span class="o">*</span>sin<span class="p">(</span><span class="m">20</span><span class="o">*</span>y<span class="p">)</span> <span class="o">+</span> y<span class="o">*</span>sin<span class="p">(</span><span class="m">20</span><span class="o">*</span>x<span class="p">))</span><span class="o">^</span><span class="m">2</span> <span class="o">*</span> cosh<span class="p">(</span>sin<span class="p">(</span><span class="m">10</span><span class="o">*</span>x<span class="p">)</span><span class="o">*</span>x<span class="p">)</span> <span class="o">+</span>
-</span><span class='line'>    <span class="p">(</span>x<span class="o">*</span>cos<span class="p">(</span><span class="m">10</span><span class="o">*</span>y<span class="p">)</span> <span class="o">-</span> y<span class="o">*</span>sin<span class="p">(</span><span class="m">10</span><span class="o">*</span>x<span class="p">))</span><span class="o">^</span><span class="m">2</span> <span class="o">*</span> cosh<span class="p">(</span>cos<span class="p">(</span><span class="m">20</span><span class="o">*</span>y<span class="p">)</span><span class="o">*</span>y<span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>x <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">-3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> le<span class="o">=</span><span class="m">435</span><span class="p">)</span>
-</span><span class='line'>y <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">-3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> le<span class="o">=</span><span class="m">435</span><span class="p">)</span>
-</span><span class='line'>z <span class="o">&lt;-</span> outer<span class="p">(</span>x<span class="p">,</span> y<span class="p">,</span> h<span class="p">)</span>
-</span><span class='line'>par<span class="p">(</span>bg<span class="o">=</span><span class="s">&quot;wheat&quot;</span><span class="p">,</span> mar<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
-</span><span class='line'>persp<span class="p">(</span>x<span class="p">,</span> y<span class="p">,</span> z<span class="p">,</span> theta<span class="o">=</span><span class="m">155</span><span class="p">,</span> phi<span class="o">=</span><span class="m">30</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;green4&quot;</span><span class="p">,</span>
-</span><span class='line'>      ltheta<span class="o">=</span><span class="m">-120</span><span class="p">,</span> shade<span class="o">=</span><span class="m">0.75</span><span class="p">,</span> border<span class="o">=</span><span class="kc">NA</span><span class="p">,</span> box<span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-6.png" alt="" /></p>
 ]]></content>
   </entry>
   
