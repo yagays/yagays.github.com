@@ -144,7 +144,7 @@
 
 <h3>練習問題 6.1 自己回帰モデルAR(1)が定常分布を持つことを実験的に示す</h3>
 
-<p>本問題の設定の詳細は<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">MCMC-UseR.pdf</a>のP.130を参照．この問題はいわゆるAR(1)というもの．</p>
+<p>この問題はいわゆるAR(1)というもので，本書の1章 P.34に同様のコードおよび作図が載っている．なお，本問題の詳細は<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">MCMC-UseR.pdf</a>のP.130を参照．</p>
 
 <p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X%5E%7B%28t%2B1%29%7D+%3D+%5Crho+X%5E%7B%28t%29%7D%2B%5Cvarepsilon_t+" alt="X^{(t+1)} = \rho X^{(t)}+\varepsilon_t " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cvarepsilon_t+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+" alt="\varepsilon_t \sim \mathcal{N}(0,1) " />で定義されるマルコフ連鎖において，系列<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5C%7BX%5E%7B%28t%29%7D%5C%7D+" alt="{X^{(t)}} " />の定常分布は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BN%7D%280%2C+%5Cfrac%7B%5Csigma%5E2%7D%7B1-%5Crho%5E2%7D%29+" alt="\mathcal{N}(0, \frac{\sigma^2}{1-\rho^2}) " />で表される．今回は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D10%5E4+" alt="t=10^4 " />までのシミュレーション結果をヒストグラムとしてプロットし，定常分布を赤い曲線で示した．</p>
 
@@ -345,6 +345,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/11/27/imcmr-6-4/">「Rによるモンテカルロ法入門」読書ノート：6章 ランダム・ウォーク・メトロポリス・ヘイスティング・アルゴリズム</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/11/26/rjags-on-mac-os-x/">Mac OS XでJAGS＆rjagsパッケージを動かす</a>
       </li>
     
@@ -380,15 +384,11 @@
         <a href="/blog/2012/11/18/imcmr-6-1/">「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その1</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/11/17/sublime-text-2-octopress-package/">Sublime Text 2でRVM環境のOctopressを操作する</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (47)</a></li><li><a href='/blog/categories/clojure'>Clojure (1)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (14)</a></li><li><a href='/blog/categories/jekyll-octopress'>Jekyll/Octopress (3)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/mcmc'>MCMC (3)</a></li><li><a href='/blog/categories/misc'>Misc (3)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (20)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/sublimetext2'>SublimeText2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (47)</a></li><li><a href='/blog/categories/clojure'>Clojure (1)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (15)</a></li><li><a href='/blog/categories/jekyll-octopress'>Jekyll/Octopress (3)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/mcmc'>MCMC (3)</a></li><li><a href='/blog/categories/misc'>Misc (3)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (3)</a></li><li><a href='/blog/categories/reading'>Reading (21)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (2)</a></li><li><a href='/blog/categories/sublimetext2'>SublimeText2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
 </section>
 
 
