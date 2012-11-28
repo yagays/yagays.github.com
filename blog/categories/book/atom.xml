@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Book | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/book/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-28T00:17:48+09:00</updated>
+  <updated>2012-11-29T06:22:55+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Rによる医療統計学」はRの使い方と統計解析の基礎が学べる良書（ただし入手困難）]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/29/review-introductory-statistics-with-r/"/>
+    <updated>2012-11-29T06:18:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/29/review-introductory-statistics-with-r</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621078119" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>一般化線形モデルやロジスティックモデルなどの基本的な線形回帰を復習するために，久しぶりに本書を引っ張りだしてきてひと通り読み返した．自分としては理論や基本的な部分はある程度抑えているつもりだったけれども，検定であったり上手く回帰をするためのデータの条件であったりといった細かな部分に関しては，まだまだ不勉強なところが多い．とにかくデータに対して回帰をかけてこれで良しみたいな部分があったので，そういった部分を補うという意味でも良い復習になった．最近はMCMCにもっぱら専念しているが，基礎であったり古典の部分もしっかり抑えておかなければ…．</p>
+
+<p>タイトルに「医療統計学」と難しそうな名前が付いている本書だが，原書のタイトルが"Introductory statistics with R"であるように，実質的には統計解析ソフトRの入門書である．例題で扱う題材として医療統計のデータが使われているだけで，内容自体に医療分野の専門性は無い．本書前半では，基本的なRの使い方とともに統計解析の基礎が説明され，後半になると，線形回帰や重回帰分析，ロジスティック回帰，生存分析などの具体的な解析手法が紹介される．全体を通して，サンプルデータを用いた豊富な解析実例とRのコード例がセットになっているため，必要ならば解析を再現することも可能である．そのため，Rを勉強するのも良し，解析手法を勉強するも良しと，初心者から中級者にかけての読者向けの非常にバランスの取れた構成となっている．また，理論よりも実戦向きの内容となっており，検定方法やモデル選択の比重が大きいのが本書の特徴でもある．そういえば，私がRを触り始めた頃は「<a href="http://www.amazon.co.jp/gp/product/4274067831/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4274067831&linkCode=as2&tag=yagays-22">The R Tips―データ解析環境Rの基本技・グラフィックス活用集</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274067831" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」がまさにバイブルといった感じだったが，プログラミングとしてのRの解説がメインで統計解析の流れを説明した具体例は少なく，実用的な部分は本書をよく参照していた記憶がある．</p>
+
+<p>ということで本書はR本の中でも結構オススメできる部類なのだが，どうやら<a href="http://www.amazon.co.jp/gp/product/4621078119/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621078119&linkCode=as2&tag=yagays-22">Amazon</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621078119" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />や<a href="http://pub.maruzen.co.jp/book_magazine/book_data/search/9784621078112.html">丸善の公式ページ</a>，<a href="http://www.junkudo.co.jp/detail.jsp?ISBN=9784621078112">丸善&amp;ジュンク堂のネットストア</a>などの主だったネット書店で品切れが相次いでいるようだ．ともなると，本書を手に入れるにはAmazonのマーケットプレイスで高い値段で買うか，大きな書店で売れ残っている本を見つけるかするしか無さそうだ．まあ今となってはRと統計に関する書籍は山ほど出版されているので，本書がこれから増刷などが掛かることは難しかもしれないが，このまま絶版になっていくには実に惜しい本だと思う．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「やっかいな放射線と向き合って暮らしていくための基礎知識 」読了]]></title>
@@ -85,32 +101,6 @@
 
 
 <iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B007K57V1O" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「日経ビジネス Associe (アソシエ) 2012年 12月号」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/14/review-nikkei-associe-2012-12/"/>
-    <updated>2012-11-14T00:24:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/14/review-nikkei-associe-2012-12</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B009W5J4RY" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p><a href="http://yagays.github.com/blog/2012/11/13/review-ultimate-method-for-reaching-the-essentials/">前回の「佐藤可士和の超整理術」</a>を読んでる途中にコンビニで整理術の雑誌を見つけたので読んでみた．相変わらずAssocieは読者ターゲットがブレない記事構成でいつも感心する．自分の手の届く範囲でなんとかやりくりしないといけない新人ビジネスマンも，なかなか大変なご様子．</p>
-
-<p>内容としては，やはり机で働くビジネスマン向けの実践的なテクニックが多め．机の上を片付けたり電子化したり名刺を整理したりと王道は抑えつつ，タクシー運転手やカメラマン，料理人などの少し変わった整理術も紹介される．整理といえばやはりバインダーや手帳などの文房具に自然と話が進むわけで，定番文房具の使い方から最新文房具の紹介までひと通りカバーされているのもいつも通り．</p>
-
-<p>そういった内容がいろんな分野の中堅社員の具体例とともに語られるのだが，前回の佐藤可士和の本を読んだ後に眺めると，それぞれのテクニックは一体何がしたいのかということがクリアに理解できて面白かった．佐藤可士和のように何もモノを置かないというのは現実的に厳しいだろうし，本の中ではあまり語られなかった具体的な方法をこういった雑誌で穴埋めできると思う．ポイントとしては，どうプライオリティをつけて取捨選択するのか，そしていかに整理のための規格を統一するかの2点に集約されるというあたりで，あとは自分に合った方法で実践するのみ．</p>
-
-<p>ちなみに，個人的には針無しホッチキスに非常に興味を惹かれたが，わざわざ買うものだろうかと考えた結果購入は見送りになった．針無しだとシュレッダーにそのまま入れられるメリットはあるが，キチンと書類を留めてくれる方が大事ということで，今のところは物欲を抑えている．ちなみに，ホッチキスの針を簡単に取ることができる「<a href="http://www.amazon.co.jp/gp/product/B001CR5DZM/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B001CR5DZM&linkCode=as2&tag=yagays-22">サンスター文具 はりトルプロ 4765-800</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=B001CR5DZM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」は本当に便利なのでオススメ．ハサミを握る程度の軽い力で簡単に針を抜くことができるので，量が多くても全然疲れない．これのお陰で，針を取る手間をそれほど煩わしく感じていないというのもある．一方，「<a href="http://www.amazon.co.jp/gp/product/B002IJ2BZI/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B002IJ2BZI&linkCode=as2&tag=yagays-22">リムーバー ブルー</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=B002IJ2BZI" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」は，針を抜くときに力をいれなければいけないのでちょっと大変．それに分厚い紙を束ねている針はほとんど取れない．</p>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B001CR5DZM" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B002IJ2BZI" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
 
 ]]></content>
   </entry>

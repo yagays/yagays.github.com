@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Reading | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/reading/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-28T00:17:48+09:00</updated>
+  <updated>2012-11-29T06:22:55+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -28,7 +28,7 @@
 
 <h3>例 6.4 ランダム・ウォークのパラメータ設定によるサンプリングへの影響を，正規分布の乱数生成を例に確かめる</h3>
 
-<p>摂動が![\varepsilon_t \sim \mathcal{U}_{[-\delta,-\delta]} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cvarepsilon_t+%5Csim+%5Cmathcal%7BU%7D_%7B%5B-%5Cdelta%2C-%5Cdelta%5D%7D+)となるようなランダム・ウォークにおいて，正規分布![\mathcal{N}(0,1) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%280%2C1%29+)をサンプリングするときのメトロポリス・ヘイスティング・アルゴリズムの受理確率は</p>
+<p>摂動が![\varepsilon_t \sim \mathcal{U}_{[-\delta,\delta]} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cvarepsilon_t+%5Csim+%5Cmathcal%7BU%7D_%7B%5B-%5Cdelta%2C%5Cdelta%5D%7D+)となるようなランダム・ウォークにおいて，正規分布![\mathcal{N}(0,1) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%280%2C1%29+)をサンプリングするときのメトロポリス・ヘイスティング・アルゴリズムの受理確率は</p>
 
 <p>![\rho(x<sup>{(t)},y_t)</sup> = \min \big[1, \exp{\frac{x<sup>{(t)2}-y_t<sup>2}{2}</sup></sup> } \big] ](http://chart.apis.google.com/chart?cht=tx&chl=%5Crho%28x%3Csup%3E%7B%28t%29%7D%2Cy_t%29%3C%2Fsup%3E+%3D+%5Cmin+%5Cbig%5B1%2C+%5Cexp%7B%5Cfrac%7Bx%3Csup%3E%7B%28t%292%7D-y_t%3Csup%3E2%7D%7B2%7D%3C%2Fsup%3E%3C%2Fsup%3E+%7D+%5Cbig%5D+)</p>
 

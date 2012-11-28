@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-28T00:17:48+09:00</updated>
+  <updated>2012-11-29T06:22:55+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Rによる医療統計学」はRの使い方と統計解析の基礎が学べる良書（ただし入手困難）]]></title>
+    <link href="http://yagays.github.com/blog/2012/11/29/review-introductory-statistics-with-r/"/>
+    <updated>2012-11-29T06:18:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/11/29/review-introductory-statistics-with-r</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621078119" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>一般化線形モデルやロジスティックモデルなどの基本的な線形回帰を復習するために，久しぶりに本書を引っ張りだしてきてひと通り読み返した．自分としては理論や基本的な部分はある程度抑えているつもりだったけれども，検定であったり上手く回帰をするためのデータの条件であったりといった細かな部分に関しては，まだまだ不勉強なところが多い．とにかくデータに対して回帰をかけてこれで良しみたいな部分があったので，そういった部分を補うという意味でも良い復習になった．最近はMCMCにもっぱら専念しているが，基礎であったり古典の部分もしっかり抑えておかなければ…．</p>
+
+<p>タイトルに「医療統計学」と難しそうな名前が付いている本書だが，原書のタイトルが&#8221;Introductory statistics with R&#8221;であるように，実質的には統計解析ソフトRの入門書である．例題で扱う題材として医療統計のデータが使われているだけで，内容自体に医療分野の専門性は無い．本書前半では，基本的なRの使い方とともに統計解析の基礎が説明され，後半になると，線形回帰や重回帰分析，ロジスティック回帰，生存分析などの具体的な解析手法が紹介される．全体を通して，サンプルデータを用いた豊富な解析実例とRのコード例がセットになっているため，必要ならば解析を再現することも可能である．そのため，Rを勉強するのも良し，解析手法を勉強するも良しと，初心者から中級者にかけての読者向けの非常にバランスの取れた構成となっている．また，理論よりも実戦向きの内容となっており，検定方法やモデル選択の比重が大きいのが本書の特徴でもある．そういえば，私がRを触り始めた頃は「<a href="http://www.amazon.co.jp/gp/product/4274067831/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4274067831&linkCode=as2&tag=yagays-22">The R Tips―データ解析環境Rの基本技・グラフィックス活用集</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274067831" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」がまさにバイブルといった感じだったが，プログラミングとしてのRの解説がメインで統計解析の流れを説明した具体例は少なく，実用的な部分は本書をよく参照していた記憶がある．</p>
+
+<p>ということで本書はR本の中でも結構オススメできる部類なのだが，どうやら<a href="http://www.amazon.co.jp/gp/product/4621078119/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621078119&linkCode=as2&tag=yagays-22">Amazon</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621078119" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />や<a href="http://pub.maruzen.co.jp/book_magazine/book_data/search/9784621078112.html">丸善の公式ページ</a>，<a href="http://www.junkudo.co.jp/detail.jsp?ISBN=9784621078112">丸善&amp;ジュンク堂のネットストア</a>などの主だったネット書店で品切れが相次いでいるようだ．ともなると，本書を手に入れるにはAmazonのマーケットプレイスで高い値段で買うか，大きな書店で売れ残っている本を見つけるかするしか無さそうだ．まあ今となってはRと統計に関する書籍は山ほど出版されているので，本書がこれから増刷などが掛かることは難しかもしれないが，このまま絶版になっていくには実に惜しい本だと思う．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「やっかいな放射線と向き合って暮らしていくための基礎知識 」読了]]></title>
@@ -44,7 +60,7 @@
 
 <h3>例 6.4 ランダム・ウォークのパラメータ設定によるサンプリングへの影響を，正規分布の乱数生成を例に確かめる</h3>
 
-<p>摂動が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cvarepsilon_t+%5Csim+%5Cmathcal%7BU%7D_%7B%5B-%5Cdelta%2C-%5Cdelta%5D%7D+" alt="\varepsilon_t \sim \mathcal{U}_{[-\delta,-\delta]} " />となるようなランダム・ウォークにおいて，正規分布<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BN%7D%280%2C1%29+" alt="\mathcal{N}(0,1) " />をサンプリングするときのメトロポリス・ヘイスティング・アルゴリズムの受理確率は</p>
+<p>摂動が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cvarepsilon_t+%5Csim+%5Cmathcal%7BU%7D_%7B%5B-%5Cdelta%2C%5Cdelta%5D%7D+" alt="\varepsilon_t \sim \mathcal{U}_{[-\delta,\delta]} " />となるようなランダム・ウォークにおいて，正規分布<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BN%7D%280%2C1%29+" alt="\mathcal{N}(0,1) " />をサンプリングするときのメトロポリス・ヘイスティング・アルゴリズムの受理確率は</p>
 
 <p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho%28x%5E%7B%28t%29%7D%2Cy_t%29+%3D+%5Cmin+%5Cbig%5B1%2C+%5Cexp%5C%7B%5Cfrac%7Bx%5E%7B%28t%292%7D-y_t%5E2%7D%7B2%7D+%5C%7D+%5Cbig%5D+" alt="\rho(x^{(t)},y_t) = \min \big[1, \exp{\frac{x^{(t)2}-y_t^2}{2} } \big] " /></p>
 
@@ -1922,160 +1938,6 @@
 <p>題材としては研究人生であったりiPS細胞であったりと専門性があり難しい内容でありながら，語り口は非常に軽く，欄外の注釈や写真も充実しているなど，中学生・高校生から一般の人にとっても問題なく読める書き方をされている．例えばiPS細胞の遺伝子と転写因子の関係を本としおりに喩えて説明されているなど，その生物学的な特徴や細胞をリプログラミングする仕組みのみならず，研究する動機となったES細胞の倫理的側面や今後の医療への応用の展望などもあわせて紹介されている．</p>
 
 <p>ノーベル賞受賞を受けて出版というだけあって，ニュースだけの情報に物足なさを感じる人向けの気軽に読める1冊となっている．iPS細胞というトピックに関して，現状としては取り敢えず今は本書を読んでおけば問題ないんじゃないだろうか．ただし，これから問題になるであろう倫理問題や研究を促進するための法的整備などの詳しい話はあまり触れられていないので，そっちが読みたい人はむしろ少し前のES細胞周りの文献を当たった方が良さそうな気がする．個人的な要望としては，もう少し世間が落ち着いてiPS細胞に対する評価がまとまった頃に，今度はもっと詳しい内容で研究競争などの専門的な話を盛り込んだ本を出していただきたいところ．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「データ解析のための統計モデリング入門」読書ノート 7章 無限混合分布の生成過程をアニメーションにした]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/09/glm-mcmc-chp7-2/"/>
-    <updated>2012-11-09T00:25:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/09/glm-mcmc-chp7-2</id>
-    <content type="html"><![CDATA[<ul>
-<li>まとめ：<a href="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート</a></li>
-<li>前回：<a href="http://yagays.github.com/blog/2012/11/02/glm-mcmc-chp7/">「データ解析のための統計モデリング入門」読書ノート 7章 GLMMとGLMを比較する</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=400006973X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>一言で言うと</h3>
-
-<p>「データ解析のための統計モデリング入門」P.157 図7.8とP.158 図7.9の分布を混ぜる過程をアニメーションにした．無限混合分布に関して手元の資料であまり情報が無かったことがあり，検算のためにと計算したときに作ったものだが，意外とうまく作れたんじゃないかと思う．</p>
-
-<h3>GLMMの最尤推定と積分</h3>
-
-<p>個体差<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_i+" alt="r_i " />を考慮に入れた今回のGLMMでは，尤度<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=L_i+" alt="L_i " />を以下の式のように積分をして<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_i+" alt="r_i " />を消す．</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=L_i+%3D+%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7Dp%28y_i%7C%5Cbeta_1%2C%5Cbeta_2%2Cr_i%29p%28r_i%7Cs%29dr_i+" alt="L_i = \int_{-\infty}^{\infty}p(y_i|\beta_1,\beta_2,r_i)p(r_i|s)dr_i " /></p>
-
-<p>これはすなわち，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28y_i%7C%5Cbeta_1%2C%5Cbeta_2%2Cr_i%29" alt="p(y_i|\beta_1,\beta_2,r_i)" />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28r_i%7Cs%29+" alt="p(r_i|s) " />を混ぜあわせた無限混合分布となっている．</p>
-
-<h3>アニメーション作成過程</h3>
-
-<p>今回は，P.157 図7.8とP.158 図7.9の2つの図をアニメーションとして表現してみた．それぞれの実験のパラメータは以下の通り．</p>
-
-<ul>
-<li><p>二項分布と正規分布</p>
-
-<ul>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta+%3D+0+" alt="\beta = 0 " /></li>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=q+%3D+%5Cfrac%7B1%7D%7B1%2B%5Cexp%28-%28%5Cbeta+%2B+r%29%29%7D+" alt="q = \frac{1}{1+\exp(-(\beta + r))} " /></li>
-</ul>
-</li>
-<li><p>ポアソン分布と正規分布</p>
-
-<ul>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta+%3D+0.5+" alt="\beta = 0.5 " /></li>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clambda+%3D+%5Cexp%28%5Cbeta+%2B+r%29+" alt="\lambda = \exp(\beta + r) " /></li>
-</ul>
-</li>
-</ul>
-
-
-<p>ただし，無限混合分布に関しては，きちんと積分をして値を求めているわけではなく，rを細かく分割してそれぞれ計算した後に足しあわせているだけなので，あくまでも模式図ということで．</p>
-
-<h3>結果</h3>
-
-<p>gifアニメーションは少し容量が大きいので，以下のリンク先で公開している．</p>
-
-<ul>
-<li><a href="http://dl.dropbox.com/u/142306/b/glm_mcmc_7_1.gif">図7.8のアニメーション（二項分布と正規分布の無限混合分布）</a></li>
-<li><a href="http://dl.dropbox.com/u/142306/b/glm_mcmc_7_2.gif">図7.9のアニメーション（ポアソン分布と正規分布の無限混合分布）</a></li>
-</ul>
-
-
-<p>以下のプロットは，その中から1枚だけ抜き出した例となっている．左の図は二項分布/ポアソン分布の変化，中央の図は正規分布と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r+" alt="r " />の値，右の図は混合分布の変化を示している．rを小さい値から大きい値にかけて変化させていったときの，二項分布/ポアソン分布の変化と混合分布の形の変化がわかる．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc_7_1.png" alt="" /></p>
-
-<p>以下ソースコード．</p>
-
-<!-- more -->
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>library<span class="p">(</span>animation<span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># 図 7.8</span>
-</span><span class='line'>infinitemix <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(){</span>
-</span><span class='line'>  par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
-</span><span class='line'>  q <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">1</span><span class="p">)</span>
-</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>r in seq<span class="p">(</span><span class="m">-5</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> length<span class="o">=</span><span class="m">100</span><span class="p">)){</span>
-</span><span class='line'>    b <span class="o">&lt;-</span> dbinom<span class="p">(</span><span class="m">0</span>:<span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span>exp<span class="p">(</span><span class="o">-</span>r<span class="p">))))</span>
-</span><span class='line'>    n <span class="o">&lt;-</span> dnorm<span class="p">(</span>r<span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
-</span><span class='line'>    q <span class="o">&lt;-</span> q <span class="o">+</span> b <span class="o">*</span> n
-</span><span class='line'>
-</span><span class='line'>    plot<span class="p">(</span><span class="m">0</span>:<span class="m">8</span><span class="p">,</span> b<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;b&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> xlab<span class="o">=</span><span class="s">&quot;y&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Binom&quot;</span><span class="p">)</span>
-</span><span class='line'>    curve<span class="p">(</span>dnorm<span class="p">(</span>x<span class="p">),</span> from<span class="o">=</span><span class="m">-5</span><span class="p">,</span> to<span class="o">=</span><span class="m">5</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;r&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Normal&quot;</span><span class="p">)</span>
-</span><span class='line'>    points<span class="p">(</span>r<span class="p">,</span> dnorm<span class="p">(</span>r<span class="p">),</span> cex<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>    segments<span class="p">(</span>r<span class="p">,</span> <span class="m">0</span><span class="p">,</span> r<span class="p">,</span> dnorm<span class="p">(</span>r<span class="p">),</span> lty<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>    plot<span class="p">(</span><span class="m">0</span>:<span class="m">8</span><span class="p">,</span> q<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;b&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">2</span><span class="p">),</span> xlab<span class="o">=</span><span class="s">&quot;y&quot;</span><span class="p">,</span>main<span class="o">=</span><span class="s">&quot;Infinite mixture&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>saveMovie<span class="p">(</span>infinitemix<span class="p">(),</span> interval<span class="o">=</span><span class="m">0.1</span><span class="p">,</span> moviename<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>
-</span><span class='line'>          movietype<span class="o">=</span><span class="s">&quot;gif&quot;</span><span class="p">,</span> outdir<span class="o">=</span>getwd<span class="p">())</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># 図 7.9</span>
-</span><span class='line'>infinitemixpois <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(){</span>
-</span><span class='line'>  par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
-</span><span class='line'>  q <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">1</span><span class="p">)</span>
-</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>r in seq<span class="p">(</span><span class="m">-3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> length<span class="o">=</span><span class="m">100</span><span class="p">)){</span>
-</span><span class='line'>    b <span class="o">&lt;-</span> dpois<span class="p">(</span><span class="m">0</span>:<span class="m">10</span><span class="p">,</span> exp<span class="p">(</span><span class="m">0.5</span><span class="o">+</span>r<span class="p">))</span>
-</span><span class='line'>    n <span class="o">&lt;-</span> dnorm<span class="p">(</span>r<span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
-</span><span class='line'>    q <span class="o">&lt;-</span> q <span class="o">+</span> b <span class="o">*</span> n
-</span><span class='line'>
-</span><span class='line'>    plot<span class="p">(</span><span class="m">0</span>:<span class="m">10</span><span class="p">,</span> b<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;b&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> xlab<span class="o">=</span><span class="s">&quot;y&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Poisson&quot;</span><span class="p">)</span>
-</span><span class='line'>    curve<span class="p">(</span>dnorm<span class="p">(</span>x<span class="p">),</span> from<span class="o">=</span><span class="m">-4</span><span class="p">,</span> to<span class="o">=</span><span class="m">4</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;r&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Normal&quot;</span><span class="p">)</span>
-</span><span class='line'>    points<span class="p">(</span>r<span class="p">,</span> dnorm<span class="p">(</span>r<span class="p">),</span> cex<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>    segments<span class="p">(</span>r<span class="p">,</span> <span class="m">0</span><span class="p">,</span> r<span class="p">,</span> dnorm<span class="p">(</span>r<span class="p">),</span> lty<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>    plot<span class="p">(</span><span class="m">0</span>:<span class="m">10</span><span class="p">,</span> q<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;b&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">),</span> xlab<span class="o">=</span><span class="s">&quot;y&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Infinite mixture&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>saveMovie<span class="p">(</span>infinitemixpois<span class="p">(),</span> interval<span class="o">=</span><span class="m">0.1</span><span class="p">,</span> moviename<span class="o">=</span><span class="s">&quot;infinitemixpois&quot;</span><span class="p">,</span>
-</span><span class='line'>          movietype<span class="o">=</span><span class="s">&quot;gif&quot;</span><span class="p">,</span> outdir<span class="o">=</span>getwd<span class="p">())</span>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   
