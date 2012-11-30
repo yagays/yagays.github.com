@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PRML | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/prml/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-11-30T13:28:52+09:00</updated>
+  <updated>2012-12-01T05:24:28+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,91 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「パターン認識と機械学習」1章 多項式曲線フィッティングをRで書いてみた]]></title>
+    <link href="http://yagays.github.com/blog/2012/12/01/prml-1-takousiki/"/>
+    <updated>2012-12-01T05:17:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/12/01/prml-1-takousiki</id>
+    <content type="html"><![CDATA[<h3>事の発端</h3>
+
+<blockquote class="twitter-tweet"><p>これこれ、これですよ / “PRML読書会第一回 - Seeking for my unique color.” <a href="http://t.co/qtGtiKuO" title="http://htn.to/w8bGen">htn.to/w8bGen</a></p>&mdash; Yokoyama T (@wakuteka) <a href="https://twitter.com/wakuteka/status/272995562582835201" data-datetime="2012-11-26T09:29:48+00:00">November 26, 2012</a></blockquote>
+
+
+<script src="http://yagays.github.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>先日「<a href="http://d.hatena.ne.jp/syou6162/20080801/1217528370">PRML読書会第一回 - Seeking for my unique color.</a>」のソースコードが一部界隈で局地的に話題にあがり，やれ</p>
+
+<ul>
+<li>takousikiってなんだよロシア人かよ</li>
+</ul>
+
+
+<p>だとか</p>
+
+<ul>
+<li>evalが多すぎて引いた</li>
+</ul>
+
+
+<p>だのといった罵詈雑言が（主に僕の口から）飛び交っていたわけだけれども，さすがに言うだけではsyou6162先生に申し訳ないと感じ，改めて彼のコードをRで書きなおしてみることにした．</p>
+
+<h3>多項式曲線フィッティングのコードを書き直す</h3>
+
+<p>```r
+f &lt;- function(x){sin(2<em>pi</em>x)}</p>
+
+<p>takousiki &lt;- function(n){
+  x &lt;- numeric(0)
+  z &lt;- numeric(0)
+  for(i in 1:n){</p>
+
+<pre><code>x &lt;- cbind(x, seq(0,1,by=0.1)^i)
+z &lt;- cbind(z, seq(0,1,by=0.01)^i)
+</code></pre>
+
+<p>  }
+  data &lt;- data.frame(f(seq(0,1,by=0.1))+rnorm(11, mean=0, sd=0.5), x)</p>
+
+<p>  colnames(data) &lt;- c("y",paste("x",as.character(1:n),sep=""))
+  colnames(z) &lt;- paste("x",as.character(1:n),sep="")</p>
+
+<p>  # predict
+  fit &lt;- lm(y ~ ., data=data)</p>
+
+<p>  plot(data[,2], data[,1], ylab="", ylim=c(-1.5,1.5), xlab="x", main=paste("M=",n))
+  curve(f(x), add=T, lwd=2)
+  lines(seq(0,1,by=0.01), predict(fit,data.frame(z)), col="red", type="l")
+}
+```</p>
+
+<p>使い方としては，</p>
+
+<p><code>r
+takousiki(1)
+takousiki(3)
+takousiki(8)
+</code></p>
+
+<p>とすると，多項式で曲線フィッティングした結果がプロットされる．ただし切片だけの0次は書けない．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/prml_takousiki.png" alt="" /></p>
+
+<p>サンプルデータの生成と推定した曲線の描写用のデータの生成を同時に行なっているため，コードがちょっと見にくいかもしれない．基本的に![x<sup>2</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=x%3Csup%3E2%3C%2Fsup%3E+)や![x<sup>3</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=x%3Csup%3E3%3C%2Fsup%3E+)などの多項式の各項の値をあらかじめデータフレームとして作っておいて，lm()関数で回帰するときのモデルを簡略化している．あと，関数名はオリジナルを踏襲しているので，あしからず．</p>
+
+<h3>他の方法としては</h3>
+
+<p>lm()関数などに渡すモデルは，as.formula()関数を使うことによって文字列から生成することができる．この方法もかなり簡単に使うことができるので，データフレームの列名を規則的に付けている場合などは使い勝手は良いと思われる．</p>
+
+<p>```r</p>
+
+<blockquote><p>n &lt;- 5
+as.formula(paste("y~",paste("x",1:n,sep="",collapse="+")))
+y ~ x1 + x2 + x3 + x4 + x5
+```</p></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「今度こそわかる!? PRMLの学習の学習」に参加しました]]></title>
