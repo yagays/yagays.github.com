@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-12-01T05:24:28+09:00</updated>
+  <updated>2012-12-02T22:58:01+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Machine Learning Advent Calendar 2012でギブスサンプリングの記事を書きました]]></title>
+    <link href="http://yagays.github.com/blog/2012/12/02/qiita-ml-advent-calendar-day2/"/>
+    <updated>2012-12-02T21:58:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/12/02/qiita-ml-advent-calendar-day2</id>
+    <content type="html"><![CDATA[<ul>
+<li><a href="http://qiita.com/advent-calendar/2012/machinelearning">Machine Learning Advent Calendar 2012 - Qiita</a></li>
+<li><a href="http://qiita.com/items/5bde6addf228b1fe24e6">PRML 11章 二変量正規分布からのギブスサンプリング #PRML #R - Qiita</a></li>
+</ul>
+
+
+<p>今年も残すところあと1ヶ月ということで，毎年恒例になりつつあるAdvent Calendarが各所で盛り上がっているようです．私もQiitaで開催されているMachine Learning Advent Calendar 2012の2日目で，ギブスサンプリングに関する記事を書きました．こんな動画を取って遊んでいます．もしよければ本記事の方も御覧ください．</p>
+
+<iframe width="480" height="360" src="http://www.youtube.com/embed/ZaKwpVgmKTY" frameborder="0" allowfullscreen></iframe>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「パターン認識と機械学習」1章 多項式曲線フィッティングをRで書いてみた]]></title>
@@ -1955,24 +1973,6 @@
 <p>最近では工業デザインやUI/UXが注目されるようになり，外側の形を製品の機能とは別に考えるのではなく設計に組み込んでしまうというデザイン思考という総合的な言葉も出てきているが，本書はまさにその流れを整理という言葉で言い換えているだけで，主張することはほとんど変わらない．実際の手法に関してはそれぞれのスタイルで異なっているが，デザインと機能を両立して製品なりロゴなりを作り上げるという点では同じアプローチだと言える．</p>
 
 <p>少し前の本だと思って軽い気持ちで読み始めたが，中身を開けてみると意外としっかりして現在のデザイン思考と比べても遜色ない内容となっていて驚いた．整理本という括りがもったいないと思えるほど，プロダクトデザインの教科書としても良書だと思う．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「チーズはどこへ消えた?」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/12/review-who-moved-my-cheese/"/>
-    <updated>2012-11-12T16:40:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/12/review-who-moved-my-cheese</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=459403019X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>10年近く前に大ヒットとなった，自己啓発ブームのさきがけのような1冊．2匹のネズミと2人と小人がチーズを探すという寓話を通して，成功を追求することや変化を恐れずに行動を起こすことの重要性が語られる．</p>
-
-<p>本書は寓話を使った切り口でありながら，回りくどい方法で読者に主張したいことを伝えるのではなく，冒頭の文章でまずはじめに私たち自身の単純さと複雑さの象徴が寓話に登場するネズミと小人であることが語られる．そして，元クラスメートだった数人が大人になって久しぶりに会って食事しているというシチュエーションのもとで，そのうちの一人がこの寓話の話をし始める．実際にネズミと小人の寓話が語られた後に，話を聞いた他の参加者が，その寓話をどう読み解くかを議論したり感想を述べたりするという構成となっている．</p>
-
-<p>寓話の内容はとても簡単だ．ネズミと小人はそれぞれチーズを探して迷路をさまよう毎日を過ごしている．チーズはどこにあるかわからない．ひとたび大きなチーズが見つかればしばらくは食いつなぐことができるのだが，それも時間が経つとともに食べてなくなってしまうし，その場所にまたチーズが置かれるかどうかもわからない．そうした環境のなか，ネズミは何も考えずにチーズを探すことに専念し，環境の変化に敏感で常に新しい行動を起こすことに抵抗がない．一方で，小人の方は物事を複雑に考えがちで，単にチーズが無くなることに筋の通らない理屈を結び付けたがったり，今までの成功に囚われて生活を変えることができない．その両者が，それまで同じような生活をしていた中で，ある場所で好みのチーズを発見するところから物語は始まる．そして，その好みのチーズを見つけた後に，ネズミと小人それぞれのチーズ探しに対する態度はがらりと変わってしまうことで話は進んでいく．</p>
-
-<p>古本屋で見つけたので，買って読んでみたという感じ．この本を今更読むのはどうなのと思うけれども，まあ話が陳腐になってるといったわけでもないので，気になる人は読んでみるといいかもしれない．はまる人にとっては教訓を得られるだろうし，はまらない人でも教養程度にはなるだろう．物語が終わった後の解釈の部分も含めて上手くまとまっているし，何よりページ数が少ないので空いた時間にでも読みきれる程度のものだ．自己啓発の本としては，長々と意味不明な理論展開されて読後感が悪いのもあるけれども，この本に関しては物語をどう捉えるにしろ，こんな素晴らしい本を読めてよかったとか意味なかったけどこれくらいの時間の浪費なら別に…といったように，キッパリ割り切れるところがいいのかもしれない．個人的には好きな類の本ではある．</p>
 ]]></content>
   </entry>
   
