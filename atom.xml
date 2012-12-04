@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-12-03T11:05:11+09:00</updated>
+  <updated>2012-12-04T15:22:42+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「系統樹曼荼羅―チェイン・ツリー・ネットワーク」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/12/04/review-phylogeny-mandala/"/>
+    <updated>2012-12-04T15:12:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/12/04/review-phylogeny-mandala</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4757142633" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>久々に，眺めるだけで楽しく好奇心を刺激される本に出会った．まさに大人の図鑑といった趣で，とにかく見ているだけで楽しい．もちろん系統樹の歴史であったり掲載されている図版の説明もしっかりと書かれているので，文章を読んで楽しい本でもある．しかしながら，次々と目に飛び込んでくる古今東西ありとあらゆる種類の系統樹たるや，早く色んな絵を見たいと文字を追うのを忘れてページをめくりたいと思わせるほどである．</p>
+
+<p>本書は「<a href="http://www.amazon.co.jp/gp/product/4061498495/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4061498495&linkCode=as2&tag=yagays-22">系統樹思考の世界 (講談社現代新書)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4061498495" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」や「<a href="http://www.amazon.co.jp/gp/product/4062880148/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4062880148&linkCode=as2&tag=yagays-22">分類思考の世界 (講談社現代新書)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4062880148" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」などの著作で知られる三中信宏氏の著作である．図版に関しては杉山久仁彦氏が別にクレジットされているが，「<a href="http://www.amazon.co.jp/gp/product/4532511852/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4532511852&linkCode=as2&tag=yagays-22">進化が語る 現在・過去・未来(別冊日経サイエンス185) (別冊日経サイエンス 185)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4532511852" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」にある茂木健一郎氏との対談を読む限りでは，三中氏本人も相当のコレクターであると思われる．本書では，三中氏の専門に深いつながりがある系統樹のみならず，人間がこれまで生み出してきた分類にまつわるありとあらゆる図形に焦点をあてることによって，人間がオブジェクトを分類するという行為について体系化しようといった内容となっている．この中で紹介される図版は，大昔にかかれた家系図から始まり，宗教画などのモチーフ，ヘッケルの分類体系以降の科学的な記述，そして現代の複雑ネットワークなどの可視化にまで及ぶ．これはまさに「図形言語」と呼ぶに相応しい自然言語と並ぶ人類の発明であり，人間がどのように考える道具として図形を扱ってきたのかといった歴史を辿るものでもある．そういった系統樹に代表される図形を通して，図形が何を示しているのかといった基本的な読み方から，様々な工夫が加えられていく図形の変移の過程，そして副題にもあるチェイン・ツリー・ネットワークという概念の構築が考察される．</p>
+
+<p>本書はタイトルに系統樹とあって生物学としてのイメージが強いものの，ある程度知識があればどんな分野の人でも楽しく読める内容だと思われる．個人的には，特に情報系の人間であればベン図の表記に慣れ親しんでいるし，デンドログラムはどの段階で見るかでクラスタリング結果が違ってくるといったことはよく知っているわけで，もしかしたら生物学の人間以上に楽しめるんじゃないかと思う．ノードとエッジを基本にしたグラフ理論に繋がる話題でもあるし，最近のインフォグラフィックとしても興味深く見ることができる．そういった意味でも，生物系と情報系の中間にいる私にとっては，非常に満足度の高い1冊だった．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[新しいことを始めるよりも日々の生活の手段を少し変える方が自分には向いている]]></title>
@@ -1959,32 +1975,6 @@
 
 
 <iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B007K57V1O" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「日経ビジネス Associe (アソシエ) 2012年 12月号」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/14/review-nikkei-associe-2012-12/"/>
-    <updated>2012-11-14T00:24:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/14/review-nikkei-associe-2012-12</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B009W5J4RY" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p><a href="http://yagays.github.com/blog/2012/11/13/review-ultimate-method-for-reaching-the-essentials/">前回の「佐藤可士和の超整理術」</a>を読んでる途中にコンビニで整理術の雑誌を見つけたので読んでみた．相変わらずAssocieは読者ターゲットがブレない記事構成でいつも感心する．自分の手の届く範囲でなんとかやりくりしないといけない新人ビジネスマンも，なかなか大変なご様子．</p>
-
-<p>内容としては，やはり机で働くビジネスマン向けの実践的なテクニックが多め．机の上を片付けたり電子化したり名刺を整理したりと王道は抑えつつ，タクシー運転手やカメラマン，料理人などの少し変わった整理術も紹介される．整理といえばやはりバインダーや手帳などの文房具に自然と話が進むわけで，定番文房具の使い方から最新文房具の紹介までひと通りカバーされているのもいつも通り．</p>
-
-<p>そういった内容がいろんな分野の中堅社員の具体例とともに語られるのだが，前回の佐藤可士和の本を読んだ後に眺めると，それぞれのテクニックは一体何がしたいのかということがクリアに理解できて面白かった．佐藤可士和のように何もモノを置かないというのは現実的に厳しいだろうし，本の中ではあまり語られなかった具体的な方法をこういった雑誌で穴埋めできると思う．ポイントとしては，どうプライオリティをつけて取捨選択するのか，そしていかに整理のための規格を統一するかの2点に集約されるというあたりで，あとは自分に合った方法で実践するのみ．</p>
-
-<p>ちなみに，個人的には針無しホッチキスに非常に興味を惹かれたが，わざわざ買うものだろうかと考えた結果購入は見送りになった．針無しだとシュレッダーにそのまま入れられるメリットはあるが，キチンと書類を留めてくれる方が大事ということで，今のところは物欲を抑えている．ちなみに，ホッチキスの針を簡単に取ることができる「<a href="http://www.amazon.co.jp/gp/product/B001CR5DZM/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B001CR5DZM&linkCode=as2&tag=yagays-22">サンスター文具 はりトルプロ 4765-800</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=B001CR5DZM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」は本当に便利なのでオススメ．ハサミを握る程度の軽い力で簡単に針を抜くことができるので，量が多くても全然疲れない．これのお陰で，針を取る手間をそれほど煩わしく感じていないというのもある．一方，「<a href="http://www.amazon.co.jp/gp/product/B002IJ2BZI/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B002IJ2BZI&linkCode=as2&tag=yagays-22">リムーバー ブルー</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=B002IJ2BZI" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」は，針を抜くときに力をいれなければいけないのでちょっと大変．それに分厚い紙を束ねている針はほとんど取れない．</p>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B001CR5DZM" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B002IJ2BZI" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
 
 ]]></content>
   </entry>
