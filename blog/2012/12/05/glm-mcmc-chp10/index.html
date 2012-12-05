@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>「デザインする技術 -よりよいデザインのための基礎知識」読了 - Wolfeyes Bioinformatics beta</title>
+  <title>「データ解析のための統計モデリング入門」読書ノート 10章 階層ベイズモデルの生成過程とグラフィカルモデル - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="ウェブデザイン・インフォグラフィクスを含めたデザイン全般に使えるリファレンス的な1冊 一般の社会人や学生が「デザイン」を意識するのは，プレゼンテーションのスライドを作成するときだろう．エンジニアや研究者などはそれに加えて，ポスターやウェブサイトの作成，そして最近よく言われるようになったUX/ &hellip;">
+  <meta name="description" content="今回は特に図を再現するわけでもなくコードを動かすわけでもないのだが，自学のために10章の階層ベイズモデルの生成過程を丁寧に追ってみて，グラフィカルモデルを描いてみた． 10章の階層ベイズモデルで用いる実験条件  まずは実験条件の確認．今回は，植物から得られる種子数と施肥処理の有無を関係を調べる． &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.com/blog/2012/10/18/review-the-art-of-designing">
+  <link rel="canonical" href="http://yagays.github.com/blog/2012/12/05/glm-mcmc-chp10">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -111,7 +111,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">「デザインする技術 -よりよいデザインのための基礎知識」読了</h1>
+      <h1 class="entry-title">「データ解析のための統計モデリング入門」読書ノート 10章 階層ベイズモデルの生成過程とグラフィカルモデル</h1>
     
     
       <p class="meta">
@@ -127,32 +127,73 @@
   
 
 
-<time datetime="2012-10-18T07:17:00+09:00" pubdate data-updated="true">Oct 18<span>th</span>, 2012</time>
+<time datetime="2012-12-05T13:31:00+09:00" pubdate data-updated="true">Dec 5<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4844358588" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+<div class="entry-content"><p>今回は特に図を再現するわけでもなくコードを動かすわけでもないのだが，自学のために10章の階層ベイズモデルの生成過程を丁寧に追ってみて，グラフィカルモデルを描いてみた．</p>
+
+<h3>10章の階層ベイズモデルで用いる実験条件 </h3>
+
+<p>まずは実験条件の確認．今回は，植物から得られる種子数と施肥処理の有無を関係を調べる．対象となる植物100個体はそれぞれ10個体ずつ植木鉢に植えられており，その植木鉢のうち半分は施肥処理がされている．つまり，植物50個体は無処理で，もう半分の50個体は施肥処理がされた個体である．その植物個体からそれぞれ種子を採取し，施肥処理の有無による種子数の変化をみる．</p>
+
+<p>これだけ見ると無処理と施肥処理の植物個体の種子数の平均を見れば何となく分かりそうだが，今回はしっかりとモデルを組んで，どの要因がどれだけ影響するのかといったことまでも含めて解析を行なう．今回の話の筋としては，単純に平均で考えたりGLMで調べると施肥処理の効果はありそうという結果が出るけれども，場所差・個体差などの擬似反復の要素を取り入れたモデルを組めば施肥処理の効果は無いという結論を導くといった流れになっている．</p>
+
+<h3>潜在変数モデルと生成過程，グラフィカルモデル</h3>
+
+<p>ここからは，本書の内容に自分の知識や人から教わった内容を組み合わせて解釈した内容となっている．そのため，本書に書いていない内容を扱ったり著者の意向に沿わない書き方をしているかもしれないので，その辺りはご注意を．</p>
+
+<p>今回考慮する個体差<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_i+" alt="r_i " />や場所差<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_j+" alt="r_j " />という要素は，本書7章でも定義しているように「人間が測定出来無い・測定できなかった」数量や因子である．こういった要素というのは一般に「潜在変数」と言い，これを組み込んだモデルは「潜在変数モデル」と呼ばれる．ベイズモデルにおいてはパラメータはある真の値を持つ数学的な変数ではなく，何らかの分布をもつ確率変数として扱う．そのため，非ベイズで考えていたパラメータ自体を，潜在変数とハイパーパラメータのような組み合わせで表現することができる．</p>
+
+<p>また，観測データがどのような確率モデルによって生成されたかをモデルとして表現することを，生成モデルまたは生成過程と呼ぶ．そして，モデルを図式的に記述するために用いるのがグラフィカルモデルである．特に今回の場合では確率分布を表すので，確率的グラフィカルモデルとも呼ばれる．</p>
+
+<h3>10章の階層ベイズモデルを生成過程やグラフィカルモデルで記述してみる</h3>
+
+<p>それでは実際に，上で説明した実験条件を生成過程やグラフィカルモデルで表してみる．といっても本書とかけ離れた難しいことをやりたいわけではなくて，下で示す生成過程はBUGS言語を数式に直しただけだし，グラフィカルモデルは基本的に本書P.238の図10.8とほぼ同じような内容となっている．</p>
+
+<h3>生成過程</h3>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/glm_chp10_2.png" alt="" /></p>
+
+<h3>グラフィカルモデル</h3>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/glm_chp10_1.png" alt="" /></p>
+
+<h3>グラフィカルモデルの表記について</h3>
+
+<p>四角で囲っている部分はプレートと呼ばれ，複数のノードをひとつにまとめたものである．今回は例で言えば，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_i+%3D+%5C%7Br_1%2Cr_2%2C%5Cdots%2Cr_%7B100%7D%5C%7D+" alt="r_i = {r_1,r_2,\dots,r_{100}} " />の100個のノードを横一列に並べて全て描き表すかわりに，プレートを使って一つのノードを代表させている．また，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=y_i+" alt="y_i " />を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=y_%7Bji%7D+" alt="y_{ji} " />と書いているのは，生成過程での2つのイテレーションの内側にあるということを強調するためである．その割には場所差を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_%7Bj%28i%29%7D+" alt="r_{j(i)} " />と表記しているが，こちらは本書に準拠した書き方をしている．なお，ここでは施肥処理の有無である<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f_i+" alt="f_i " />は観測値なので一応入れていない</p>
+
+<p>あと，変数やパラメータの書き方に色々と流儀はあるようだが，今回はあまり気にしていない．PRML風に書くならば，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_1%2C%5Cbeta_2%2Cs%2Cs_p+" alt="\beta_1,\beta_2,s,s_p " />を塗りつぶされた小さな点で表現して，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=y_%7Bji%7D+" alt="y_{ji} " />のノードを影付けする感じだろうか．</p>
+
+<h3>グラフィカルモデルから数式への変換</h3>
+
+<p>グラフィカルモデルの何が嬉しいかといえば条件付き独立性が云々という話など色々とあるようだが，個人的な感覚としては，グラフィカルモデルをぱっと見るだけでモデルで考慮すべき事前分布が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=y_%7Bji%7D+" alt="y_{ji} " />にかかるすべての確率変数の積<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28%5Cbeta_1%29p%28%5Cbeta_2%29p%28s%29p%28s_p%29%5Cprod_i%5Cprod_j+p%28r_i%7Cs%29p%28r_j%7Cs_p%29+" alt="p(\beta_1)p(\beta_2)p(s)p(s_p)\prod_i\prod_j p(r_i|s)p(r_j|s_p) " />で書けるということがわかるというのは結構大きい気がする．ちなみに，グラフィカルモデルのプレートで表している部分が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cprod+" alt="\prod " />と対応している</p>
+
+<h3>イテレーションの階層構造について</h3>
+
+<p>本書では個体番号<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=i+" alt="i " />により植木鉢<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=j+" alt="j " />が決まるとしているため，個体番号<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=i+" alt="i " />のイテレーションの中に<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=j+" alt="j " />が入る形となっている．個人的には「個体番号1の植木鉢Aの個体」よりかは「植木鉢Aの個体番号1の個体」のような階層構造にしたほうがイメージしやすいと思うが，今回は場所差と個体差は独立ということなので，どちらにせよ結果は変わらないはず．</p>
+
+<h3>おまけ</h3>
+
+<p>カフェでsyou6162にグラフィカルモデルについて教えを乞う図．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/20121202.jpg" alt="" /></p>
+
+<h3>参考</h3>
+
+<ul>
+<li>(pdf) <a href="http://www.kecl.ntt.co.jp/as/members/ueda/pdf/CVIM-ueda.pdf">http://www.kecl.ntt.co.jp/as/members/ueda/pdf/CVIM-ueda.pdf</a></li>
+</ul>
 
 
-<h3>ウェブデザイン・インフォグラフィクスを含めたデザイン全般に使えるリファレンス的な1冊</h3>
-
-<p>一般の社会人や学生が「デザイン」を意識するのは，プレゼンテーションのスライドを作成するときだろう．エンジニアや研究者などはそれに加えて，ポスターやウェブサイトの作成，そして最近よく言われるようになったUX/UIなどの要素が加わる．そういう人に私が問答無用でお薦めするのが「<strong><a href="http://www.amazon.co.jp/gp/product/4839928401/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4839928401&linkCode=as2&tag=yagays-22">ノンデザイナーズ・デザインブック [フルカラー新装増補版]</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4839928401" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></strong>」なのだが，本書「<strong><a href="http://www.amazon.co.jp/gp/product/4844358588/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4844358588&linkCode=as2&tag=yagays-22">デザインする技術 ~よりよいデザインのための基礎知識</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4844358588" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></strong>」もなかなかの良書だったので紹介してみる．</p>
-
-<p>本書は，デザイナーの仕事としての企画・発案から制作に至るすべての工程におけるデザインの技法を包括的に取り扱った技術書である．それらデザイナーの技法を，5つの要素「考」「図」「文字」「面」「色」に分けて，各要素が含む細かく技法をそれぞれ体系的に解説している．例えば「考」では，アイデアの出し方から組み立て方，そして最終的なカタチに仕上げていく過程に必要な技法が説明される．個人的な創作活動では境界が曖昧になりがちなプロトタイプ・ラフ・カンプにおいて，それぞれの段階で何をすべきでどのような箇所に気をつけなければいけないかが述べられ，それぞれの役割が明確になる．その他にも多人数で知恵を出しあってモノを作っていく方法にも触れられており，ブレインストーミングにおいては相手の1次的な意見に自分の意見を重ねることが大切だといった実践的なテクニックも入っている．そういった形で，本書をひと通り読めばある程度デザイナーの仕事をなぞることができるレベルの内容が詰まっている．</p>
-
-<p>そして本書の最大の特徴は，見開き1ページ単位で各技法が紹介されているところだ．何かデザインしようと思ったら，ペラペラ本をめくりながら自分がやりたいことを探して，そのページの内容をじっくり読むなり他の文献への足がかりにすれば良い．そういったリファレンスとしての使い方ができるというのは，無限の可能性があるデザインの分野において作りたい作品のアタリを付けるために非常に有効である．</p>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4839928401" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621061224" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 
 
-<p>しかし，じゃあそれだけで満足のいくデザインが作れるようになるかといえば，私は必ずしもそれだけでは足りないと考える．そこには，デザインという分野における技法がある程度体系化しながらも，<strong>「やってはいけないこと」という人間の感性に基づいた禁則</strong>があるからだ．デザインは最終的に人間が見て感じて判断するものだから，いくら技法やテクニックが優れていようとも，人間側が受け付けなければ意味がない．色に関して言えば，例えば同系色の背景と文字が重なって読みにくかったりだとか，原色が強すぎて印象が強烈になるだとかいったことは，初心者が陥りがちな部分だ．そういった「やってはいけないこと」という禁則が，デザインには少なからず存在する．そういった部分において，本書はデザインの成功例は豊富に載っているが，失敗例は非常に少ない．</p>
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621061240" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 
-<p>その点，冒頭で私が薦めた「ノンデザイナーズ・デザインブック」は，「やってはいけないこと」に関する情報が充実している．デザインを体系的に学んでいくなかで，ある手法に関してひと通り説明されたあとには必ず，その手法を使った作品の失敗例と，それを改良した成功例が対になって出てくる．そのため，読者は反例を学びながら手法自体の理解を深めていくことができる．そして，自分がいざデザインするというときには，そういった反例と見比べながら自分のデザインを修正することができる．このような真似や反面教師という関係は，初学者にとってはとっつきやすい部分だと思う．</p>
-
-<p>といったように，これ1冊ですべてを網羅できるといったわけではないものの，本書はデザインにおいて網羅的でまとまりのあるリファレンス的な1冊だといえる．プレゼンテーションなどを作る際には，手元に置いておきたい本だ．</p>
 </div>
 
 
@@ -175,22 +216,16 @@
   
 
 
-<time datetime="2012-10-18T07:17:00+09:00" pubdate data-updated="true">Oct 18<span>th</span>, 2012</time>
+<time datetime="2012-12-05T13:31:00+09:00" pubdate data-updated="true">Dec 5<span>th</span>, 2012</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/book/'>Book</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/10/18/review-the-art-of-designing/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/12/05/glm-mcmc-chp10/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/10/18/review-the-art-of-designing/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/10/18/review-the-art-of-designing/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/12/05/glm-mcmc-chp10/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/12/05/glm-mcmc-chp10/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -211,14 +246,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/10/14/review-glm-mcmc/" title="Previous Post:
-        「データ解析のための統計モデリング入門」読書ノート">&laquo; 「データ解析のための統計モデリング入門」読書ノート</a></li>
+        href="/blog/2012/12/04/review-phylogeny-mandala/" title="Previous Post:
+        「系統樹曼荼羅―チェイン・ツリー・ネットワーク」読了">&laquo; 「系統樹曼荼羅―チェイン・ツリー・ネットワーク」読了</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex/"
-        title="Next Post: TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました">TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -354,8 +385,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.com/blog/2012/10/18/review-the-art-of-designing/';
-        var disqus_url = 'http://yagays.github.com/blog/2012/10/18/review-the-art-of-designing/';
+        var disqus_identifier = 'http://yagays.github.com/blog/2012/12/05/glm-mcmc-chp10/';
+        var disqus_url = 'http://yagays.github.com/blog/2012/12/05/glm-mcmc-chp10/';
         var disqus_script = 'embed.js';
       
     (function () {
