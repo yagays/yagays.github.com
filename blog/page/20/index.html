@@ -9,7 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="VelvetKというスクリプトが公開されたらしい．これはVelvetのアセンブルの際にユーザが指定する必要のあるk-merのkの値を，ゲノムサイズとショートリードのサイズから自動推定するスクリプトのようだ． &hellip;">
+  <meta name="description" content="fastaやfastqは馴染みがあっても，fastbというフォーマットは知らない人が多いと思う．これははfastaファイルをバイナリ形式に変換したフォーマットのことで，SAMとBAMの関係と同じようなものである． ALLPATHS-LGにおいて， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -107,6 +107,49 @@
     <div class="row-fluid">
       <div class="span9">
   
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/08/fastb/">Fastaからfastbに変換する</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-08T19:12:00+09:00" pubdate data-updated="true">Jun 8<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>fastaやfastqは馴染みがあっても，fastbというフォーマットは知らない人が多いと思う．これははfastaファイルをバイナリ形式に変換したフォーマットのことで，SAMとBAMの関係と同じようなものである．</p>
+
+<p>ALLPATHS-LGにおいて，アセンブリの評価のためにリファレンスゲノムを入力として与える際には，REFERENCE_DIRにgenome.fastaとgenome.fastbという2つのファイルが必要になる．genome.fastaに関しては，データベースなり自前で用意した配列を使えばいいのだが，genome.fastbに関しては手作業で変換をしなければならない．ということで，今回はfastaとfastbの変換の方法について，メモ程度ではあるが書いてみることにする．</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/06/08/fastb/">続きを読む &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -354,49 +397,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/06/02/allpaths-lg-dataset/">ALLPATHS-LGで使用できるライブラリサイズの制限</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-02T15:52:00+09:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>ALLPATHS-LGは複数のライブラリで読まれたショートリードを組み合わせてゲノムアセンブルをするソフトウェア（パイプライン）である．比較的新しいゲノムアセンブラで性能もかなり良いらしく，<a href="http://www.broadinstitute.org/software/allpaths-lg/blog/">公式ブログ</a>のアセンブル履歴を見ると非モデル生物を中心にかなり使われている印象がある．ただ，その反面かなり癖のあるソフトウェアで，インストールが鬼門・動かすのが難しい・インターネットに資料が少ないという三重苦で，初心者にはかなりハードルの高いソフトウェアと言わざるを得ない．その中でも個人的に一番やっかいだと思うポイントはパイプライン入力に使うデータセットの準備で，折角苦労してALLPATHS-LGが使える環境を整えたとしても，使えるデータが無いとそもそも動かないということになりかねない．</p>
-
-<p>ということで，今回はALLPATHS-LGを動かすために必要なライブラリについて見ていく．私自身も厳密に調べたわけではないので間違い等あるかもしれないが，もし詳しい方がいらっしゃればご指摘頂ければ幸い．</p>
-
-<p> </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/06/02/allpaths-lg-dataset/">続きを読む &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/21/">&larr; Older</a></li>
@@ -445,6 +445,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2012/12/06/review-ninja-slayer/">「ニンジャスレイヤー ネオサイタマ炎上1」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/12/05/glm-mcmc-chp10/">「データ解析のための統計モデリング入門」読書ノート 10章 階層ベイズモデルの生成過程とグラフィカルモデル</a>
       </li>
     
@@ -478,10 +482,6 @@
     
       <li class="post">
         <a href="/blog/2012/11/27/imcmr-6-4/">「Rによるモンテカルロ法入門」読書ノート：6章 ランダム・ウォーク・メトロポリス・ヘイスティング・アルゴリズム</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/26/rjags-on-mac-os-x/">Mac OS XでJAGS＆rjagsパッケージを動かす</a>
       </li>
     
   </ul>

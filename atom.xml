@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-12-05T15:21:48+09:00</updated>
+  <updated>2012-12-06T21:17:00+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「ニンジャスレイヤー ネオサイタマ炎上1」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/12/06/review-ninja-slayer/"/>
+    <updated>2012-12-06T21:07:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/12/06/review-ninja-slayer</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4047283312" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>前々から小説自体も断片的に読んでいたし，流れてくるネット評もちらほら流れてきて，特徴的な言い回しがネットスラングとしても着実に勢力を伸ばしていることも感じていた．今回はそれらの確認という意味でも，書籍化され複数の物語がひとつにまとめられた本書を読んだのだが，何と表現していいのか…ただ，とにかく色んな意味で凄い，そして面白い．これを単純なプロットで構成された似非日本語のSFと言うなかれ，これは文化の融合なのだ．</p>
+
+<p>世の中には，日本というローカルな視点から抜けだせずに，やれ外国でもてはやされているのは間違った日本文化だとか，ちゃんとした日本文化を伝えないといけないだとかいった貧しい考えの人がある程度存在する．そういう人たちは自身の日本の見方に何の疑問も抱かずに外部を批判するわけだけれども，その自分たちの日本文化をそっくりそのまま異文化の人間に理解し受け入れてもらう難しさというのを，全くもって理解していない．異文化は自分たちとは違うからこそ異文化なのだ．インド料理屋にいけばインド人がインド料理食べてるし，トルコ料理屋にいけばトルコ人がトルコ料理食べているわけで，そういった異文化の認識から一歩踏み込んで，自分たちの文化の一つとしてカレーなりケバブなりの食文化であったり，宗教などを含む独自の文化が認識されるには，非常に繊細な文化のすり合わせが必要になる．外国人だって日本料理が食べたければ日本料理屋に行くだろう．じゃあそれで日本文化が認知されて，よく分からない生魚とライスを食べる文化として理解されたら，それで満足だろうか．本当に知ってもらいたいことはそんな事実の羅列ではないだろう．自分たちの様式を変えてまでも，相手の文化の懐に潜り込んで，日本文化の本質を相手に理解してもらいと思わないだろうか．そして相手に自分たちの文化のエッセンスを取り込んでもらい，より新しい文化というものを作って欲しくはないだろうか．</p>
+
+<p>とまあ気が付けば変な講釈を垂れ流してしまったが，結論としてはニンジャスレイヤーは日本人が読んでもエンターテイメント性に優れていて面白いということで．というか，逆に日本人の英語への理解が必要な部分がある．あまり馴染みのない英語のカタカナ表記があって，lesserやgreaterみたいな何となく分かりそうなものから，shrineやcoffinみたいな意味を知らないと理解できない単語もちらほら見られるので，そのあたりはどっちかというと日本人の理解が試されている感がある．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「データ解析のための統計モデリング入門」読書ノート 10章 階層ベイズモデルの生成過程とグラフィカルモデル]]></title>
@@ -1899,129 +1915,6 @@
 <ul>
 <li><a href="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/">sublime text 2 の octopress プラグインを作ってみました - Welcome to the blog of blueplanet</a></li>
 <li><a href="https://github.com/blueplanet/sublime-text-2-octopress">blueplanet/sublime-text-2-octopress</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sublime Text 2のSublimeREPLパッケージでClojureを動かす]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/16/sublimerepl-clojure/"/>
-    <updated>2012-11-16T00:07:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/16/sublimerepl-clojure</id>
-    <content type="html"><![CDATA[<p>最近ローカルの開発環境をEmacsから<a href="http://www.sublimetext.com/">Sublime Text 2</a>に乗り換えたので，長い間.emacsに溜め込んだ環境をSublime Text 2でも再現するために，ちまちまと移行作業をしている．Sublime Text 2の強みというのはPythonで拡張パッケージが書ける上にパッケージ管理が非常に簡単というところにあると思っていて，とりあえずデフォルトの環境をなんとかしたいと思えばパッケージを探せば何とかなる．</p>
-
-<p>ということで，今回はEmacsで構築していたClojureの開発環境を，SublimeREPLパッケージを使ってSublime Text 2で再現してみる．Emacsではswank-clojureとslime-replで書いたコードを逐次実行できる環境を作っていたが，今回もSublime Text 2内でClojureを動かして，エディタ内でコードの編集と実行を両立できるようにする．なお，今回の環境構築ではClojureやLeiningenのインストールはひと通り終えているものとする．</p>
-
-<p>ちなみに，私の過去のEmacs＆Clojure環境は以下のblogにまとめてある．</p>
-
-<ul>
-<li><a href="http://yag-ays.hateblo.jp/entry/2012/01/09/224531">Clojure + Emacs環境のセッティング（MacOSX Lion 10.7） - やぐブロ</a></li>
-</ul>
-
-
-<h3>1. Package Controlをインストールする</h3>
-
-<p>これについては他のサイトでもよく解説されていることなので，簡単に紹介とインストール方法だけ．Sublime Text 2では<a href="http://wbond.net/sublime_packages/package_control">Sublime Package Control</a>というパッケージ管理が定番となっていて，Sublime Text 2内のコマンドから検索・インストール・最新バージョンへの更新などを簡単に行うことができる．</p>
-
-<p>まず，Sublime Text 2のコンソールに以下のコマンドを入力（コピペ）する．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">urllib2</span><span class="o">,</span><span class="nn">os</span><span class="p">;</span><span class="n">pf</span><span class="o">=</span><span class="s">&#39;Package Control.sublime-package&#39;</span><span class="p">;</span><span class="n">ipp</span><span class="o">=</span><span class="n">sublime</span><span class="o">.</span><span class="n">installed_packages_path</span><span class="p">();</span><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span><span class="p">;</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ipp</span><span class="p">,</span><span class="n">pf</span><span class="p">),</span><span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://sublime.wbond.net/&#39;</span><span class="o">+</span><span class="n">pf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="s">&#39;%20&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>インストールが終了したら，Sublime Text 2を再起動する．メニューバーの&#8221;Tools&#8221;からCommand Paletteを開いて「package」と入力して，以下のようにPackage Controlのコマンドが表示されればOK．これでパッケージのインストールが簡単に行えるようになる．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/subl_1.png" alt="" /></p>
-
-<br />
-
-
-<h3>2. SublimeREPLをインストールする</h3>
-
-<p>次に，Clojureをエディタ内で動かすためにSublimeREPLというパッケージをインストールする．ちなみにこのパッケージはClojure専用というわけではないので，RubyやPython，Rなどの他の言語のREPLの機能も兼ね備えている．</p>
-
-<p>まず，先ほどの確認のときのようにCommand Paletteを開いて「install」と入力し，「Package Control: Install Package」を選択する．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/subl_2.png" alt="" /></p>
-
-<p>すると，登録されているパッケージ一覧が表示されるので，「SublimeREPL」と入力してパッケージを選択してインストールを行う．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/subl_3.png" alt="" /></p>
-
-<p>これで，SublimeREPLパッケージのインストールは完了．メニューバーのToolsにSublimeREPLという項目が表示されればOK．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/subl_4.png" alt="" /></p>
-
-<br />
-
-
-<h3>3. SublimeREPLの環境設定にLeiningenのPATHを追記する</h3>
-
-<p>最後に，SublimeREPLの環境設定を行う．具体的にはLeiningenがインストールされているディレクトリにPATHを通すのだが，これをしないと「OSError(2, &#8216;No such file or directory&#8217;)」といったエラーが表示されるので注意．</p>
-
-<p>今回の場合は，パッケージ内の設定ファイルに直接追記することにする．まず，SublimeREPLのパッケージのディレクトリ内にあるClojureのMain.sublime-menuというファイルを開く．これには，Sublime Text 2の&#8221;Preference&#8221;→&#8221;Browse Packages…&#8221;でFinderを表示してディレクトリを辿っても良いが，今回はTerminal.appで以下のコマンドを入力する．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>open <span class="nv">$HOME</span>/Library/Application<span class="se">\ </span>Support/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2/Packages/SublimeREPL/config/Clojure/
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/subl_5.png" alt="" /></p>
-
-<p>そして，Finderで表示された中にあるMain.sublime-menuをエディタで読み込み，29行目のextend_envの行にLeiningenがあるディレクトリのPATHを入力する．今回はMacPortsで入れたLeiningenを使用するために，/opt/local/binを指定する．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="s2">&quot;extend_env&quot;</span>: <span class="o">{</span><span class="s2">&quot;INSIDE_EMACS&quot;</span>: <span class="s2">&quot;1&quot;</span> <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>と書かれている行の末尾に「&#8221;PATH&#8221;: &#8220;{PATH}:/opt/local/bin/&#8221;」を追記する．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="s2">&quot;extend_env&quot;</span>: <span class="o">{</span><span class="s2">&quot;INSIDE_EMACS&quot;</span>: <span class="s2">&quot;1&quot;</span>, <span class="s2">&quot;PATH&quot;</span>: <span class="s2">&quot;{PATH}:/opt/local/bin/&quot;</span><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>4. SublimeREPLの起動</h3>
-
-<p>メニューバーの&#8221;Tools&#8221;から&#8221;SublimeREPL&#8221;→&#8221;Clojure&#8221;→&#8221;Clojure&#8221;を選択して，以下のようにREPLが起動すれば，無事にSublimeREPLの環境設定は終了．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/subl_6.png" alt="" /></p>
-
-<h4>環境</h4>
-
-<ul>
-<li>OS
-
-<ul>
-<li>Mac OS X 10.8.2</li>
-</ul>
-</li>
-<li>Sublime Text 2
-
-<ul>
-<li>Version 2.0.1, Build 2217</li>
-</ul>
-</li>
-<li>Leiningen
-
-<ul>
-<li>Leiningen 1.6.1.1</li>
-</ul>
-</li>
-</ul>
-
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://wbond.net/sublime_packages/package_control">Sublime Package Control – a Sublime Text 2 Package Manager by wbond</a></li>
-<li><a href="http://sublimerepl.readthedocs.org/en/latest/">SublimeREPL — SublimeREPL 1.0.30 documentation</a></li>
-<li><a href="https://github.com/wuub/SublimeREPL/issues/11">Opening clojure REPL fails / Fix PATH problems · Issue #11 · wuub/SublimeREPL</a></li>
-<li><a href="http://dev.clojure.org/display/doc/Getting+Started+With+Sublime+Text+2">Getting Started With Sublime Text 2 - Clojure Documentation - Clojure Development</a></li>
-<li><a href="https://gist.github.com/2407109">Setting Up Clojure on OS X — Gist</a></li>
 </ul>
 
 ]]></content>
