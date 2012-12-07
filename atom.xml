@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-12-06T21:17:00+09:00</updated>
+  <updated>2012-12-07T18:08:14+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「リーダーを目指す人の心得」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/12/07/review-colin-powell/"/>
+    <updated>2012-12-07T17:45:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/12/07/review-colin-powell</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4864101930" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<p>「私は逸話が大好きだ」という言葉から始まる本書は，著者であるコリン・パウエルが国務長官などの数々の職歴のなかで経験してきた逸話を通して，リーダーシップや人生の教訓について語った著作である．タイトルからは自己啓発系のハウツー本のような印象を受けるが，実際に読んでみると，登場する逸話はどれも彼の豊かな人間性を表すようなものばかりで，まるで自伝の一部を読んでるかのような感覚に陥る．文章の端々に見られる責任感の強さや謙虚さ，そしていかに細かなことも見逃さず上司や部下に注意を払うかといった繊細さと思慮深さは，まさに指導者の鑑といって過言ではないだろう．</p>
+
+<p>登場する逸話は，陸軍の軍人であったり国務長官などの役人としての体験が多い．軍部や政府に関する話は普通の人からはかなり縁遠い存在でありながらも，その中で語られる会話や出来事は，そういった特殊な環境であることを忘れさせるほどに人間味あふれている．また，コリン・パウエル自身のリーダーとしての指導経験も数多く紹介され，自分がどのように考えどのように組織を動かすのかといったテクニックも興味深い．特に，彼が新しいスタッフの元で働くときに配るという「べからず集」は，部下に何を期待して成果を挙げるべくチームを動かすかといったエッセンスが含まれている．そこで色々と列挙されるやってはいけない事というのは，ほとんどがコミュニケーションに関することだ．口頭での会話から公式文書まで，いかに効率よく個人が能力を発揮するかについて考えられている．とにかく彼自身，組織が円滑に回ることは車を修理して動かすことと似ていて非常に喜びを覚えるとも書いていることからも，彼の性格を考慮しても，組織のまとめ方に並々ならぬ努力を割いていたことがわかる．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「ニンジャスレイヤー ネオサイタマ炎上1」読了]]></title>
@@ -1847,76 +1861,6 @@
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-2_2.png" alt="" /></p>
 
 <p>黒線が提案分布に標準正規分布を使った場合，黄色の線が提案分布にスチューデントt分布を使った場合となっている．今回シミュレートしているコーシー分布から求めた正確な値は0.896なので，スチューデントt分布はイテレーション回数を重ねるごとに真の値に収束していくことがわかる．一方で標準正規分布においては，今回のイテレーション回数(N=5000)では真の値に収束していないようにみえる．しかし，平均値の傾向を見ると値が徐々に上昇しては一気に下がり&#8230;といった傾向が見られ，理論的にも標準正規分布を提案分布として用いた場合でも真の値に収束することがわかっている．なので，今回の場合はイテレーション回数が少なすぎるために，収束の様子が見られない．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sublime Text 2でRVM環境のOctopressを操作する]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/17/sublime-text-2-octopress-package/"/>
-    <updated>2012-11-17T01:59:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/17/sublime-text-2-octopress-package</id>
-    <content type="html"><![CDATA[<p>Sublime Text 2でOctopressの基本コマンドを実行できるパッケージを使ってみた．</p>
-
-<ul>
-<li><a href="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/">http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/</a></li>
-</ul>
-
-
-<h3>1. sublime-text-2-octopressをインストールする</h3>
-
-<p>Package Controlでsublime-text-2-octopressをインストールする．これは定石通り．</p>
-
-<h3>2. Octopress.sublime-settingsを編集する</h3>
-
-<p>sublime-text-2-octopressの環境設定を行う．Sublime Text 2のメニューバーから&#8221;Sublime Text 2&#8221;→&#8221;Preferences&#8221;→&#8221;Package Settings&#8221;→&#8221;Octopress&#8221;→&#8221;Settings-User&#8221;でOctopress.sublime-settingsを開く．</p>
-
-<p>今回設定するのは&#8221;octopress_path&#8221;と&#8221;octopress_cmd_before_rake&#8221;の2箇所．&#8221;octopress_path&#8221;はOctopressのディレクトリを指定する．そして&#8221;octopress_cmd_before_rake&#8221;にはrubyやrakeのパスを通す設定を読み込むコマンドを指定するのだが，下手に.zshrcなどを読み込むと不要な設定が多すぎてエラーになってしまうので注意が必要になる．自分の環境の場合，RubyはRVMで管理しているため，&#8221;octopress_cmd_before_rake&#8221;にはRVMの設定ファイルである<strong>&#8220;$HOME/rvm/scripts/rvm&#8221;</strong>を読み込むように指定する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>  // path to your octopress
-</span><span class='line'>  "octopress_path": "/Users/yag_ays/Dropbox/octopress",  
-</span><span class='line'>  // command to run before calling rake, eg source ~/.bash_profile to set up your local environment inc paths to ruby, rake etc.
-</span><span class='line'>  "octopress_cmd_before_rake" : "source /Users/yag_ays/.rvm/scripts/rvm",
-</span><span class='line'>  // set to generate, deploy or generate_and_deploy if you wish to have your changes generated into the /public folder and/or deployed upon file save
-</span><span class='line'>  "octopress_onsave_action": "",
-</span><span class='line'>  // true or false
-</span><span class='line'>  "use_bundle": false
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>3. OctopressのNew Postを実行してみる</h3>
-
-<p>それでは試しに新しい記事を書いてみる．Command Paletteで「octopress」と入力すると，sublime-text-2-octopressでサポートされているコマンド一覧が表示される．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_1.png" alt="" /></p>
-
-<p>「Octopress: New Post」を選択すると，画面下にタイトルを入力する欄が表示される．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_2.png" alt="" /></p>
-
-<p>タイトルを入力してEnterを押すと，Octopressのテンプレートが表示され，New Postが実行される．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_3.png" alt="" /></p>
-
-<p>この他にも，既存のPostやPageを編集したり，GenerateやDeployができる仕様となっている．</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/">sublime text 2 の octopress プラグインを作ってみました - Welcome to the blog of blueplanet</a></li>
-<li><a href="https://github.com/blueplanet/sublime-text-2-octopress">blueplanet/sublime-text-2-octopress</a></li>
-</ul>
-
 ]]></content>
   </entry>
   
