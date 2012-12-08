@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Book | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/book/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-12-07T18:08:14+09:00</updated>
+  <updated>2012-12-08T13:39:36+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「スパコンとは何か」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/12/08/review-what-is-a-supercomputer/"/>
+    <updated>2012-12-08T13:29:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/12/08/review-what-is-a-supercomputer</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4863100981" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>スパコン事業仕分けに参加された東京大学情報基盤センター教授の金田先生によるスパコンの総括的な解説書．仕分けの焦点となった処理能力のランキングの問題から，スパコンの基本的な仕組み，スパコンがどのような分野に活用されているのかといった実用面，そして日本の企業が独立して開発を行なってきた歴史とこれからの行く末について書かれている．</p>
+
+<p>本書の主張は一貫して，スパコン開発というものは事業仕分けで論点となった世界一位かどうかが問題なのではなく，国や企業のプロジェクトとして明確な方向性を持たなければ意味がないというもの．本書の中では，日本のスパコン開発の歴史に触れ，黎明期のアメリカとの開発競争であったり，地球シミュレーターという一世代前のスパコンがどのような目標を持って開発が行われ実際に稼働したかといった経緯が紹介される．そして，現在開発が完了し実際に稼働している京コンピューターが，いかに処理能力のランキング云々よりも重要な課題を孕んだまま進行したプロジェクトであるかといった問題点が指摘される．その中で繰り返し述べられるのが，「目標」と「ハード・ソフト」について長期的な視点が欠如しているということであり，実際にスパコンを使って解くべき問題が明確ではなく，その目標のために必要なハードウェアとソフトウェア両者の環境開発整備であったり人材育成体制が一番の問題であると，著者の金田氏は主張する．</p>
+
+<p>金田氏はあくまで事業仕分けに参加した有識者として，そしてスパコンの一研究者として，日本のスパコンの現状に対する見解を述べている．その中にはもちろん外部からはあまり知ることのできない政治的な部分も多く含まれてはいるものの，NECや日立製作所の脱落などの中核の部分に関してはあまり触れられていない．個人的にはその辺りに関して興味があったものの，あまり直接的な表現をされていなかったので少し残念ではあった．一方で，スパコンを取り囲む大規模なプロジェクト全体に関して，何が重要でどういったところを役人や有識者が見ているのかといったポイントは非常に参考になった．計画を立てるというただそれだけのことが，いかにして不確実な未来を予測し確実な案へと落としこみ，それを様々な立場の人間に納得させるかという難しさを持っているということが，本書からはひしひしと伝わってきた．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「リーダーを目指す人の心得」読了]]></title>
@@ -237,22 +253,6 @@ for(t in c(60,50,40)){
 [1] "temp: 50 =&gt; mean= 0.9525 , S.D.= 0.0641"
 [1] "temp: 40 =&gt; mean= 0.9895 , S.D.= 0.0248"
 </code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「Rによる医療統計学」はRの使い方と統計解析の基礎が学べる良書（ただし入手困難）]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/29/review-introductory-statistics-with-r/"/>
-    <updated>2012-11-29T06:18:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/29/review-introductory-statistics-with-r</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621078119" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>一般化線形モデルやロジスティックモデルなどの基本的な線形回帰を復習するために，久しぶりに本書を引っ張りだしてきてひと通り読み返した．自分としては理論や基本的な部分はある程度抑えているつもりだったけれども，検定であったり上手く回帰をするためのデータの条件であったりといった細かな部分に関しては，まだまだ不勉強なところが多い．とにかくデータに対して回帰をかけてこれで良しみたいな部分があったので，そういった部分を補うという意味でも良い復習になった．最近はMCMCにもっぱら専念しているが，基礎であったり古典の部分もしっかり抑えておかなければ…．</p>
-
-<p>タイトルに「医療統計学」と難しそうな名前が付いている本書だが，原書のタイトルが"Introductory statistics with R"であるように，実質的には統計解析ソフトRの入門書である．例題で扱う題材として医療統計のデータが使われているだけで，内容自体に医療分野の専門性は無い．本書前半では，基本的なRの使い方とともに統計解析の基礎が説明され，後半になると，線形回帰や重回帰分析，ロジスティック回帰，生存分析などの具体的な解析手法が紹介される．全体を通して，サンプルデータを用いた豊富な解析実例とRのコード例がセットになっているため，必要ならば解析を再現することも可能である．そのため，Rを勉強するのも良し，解析手法を勉強するも良しと，初心者から中級者にかけての読者向けの非常にバランスの取れた構成となっている．また，理論よりも実戦向きの内容となっており，検定方法やモデル選択の比重が大きいのが本書の特徴でもある．そういえば，私がRを触り始めた頃は「<a href="http://www.amazon.co.jp/gp/product/4274067831/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4274067831&linkCode=as2&tag=yagays-22">The R Tips―データ解析環境Rの基本技・グラフィックス活用集</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274067831" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」がまさにバイブルといった感じだったが，プログラミングとしてのRの解説がメインで統計解析の流れを説明した具体例は少なく，実用的な部分は本書をよく参照していた記憶がある．</p>
-
-<p>ということで本書はR本の中でも結構オススメできる部類なのだが，どうやら<a href="http://www.amazon.co.jp/gp/product/4621078119/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621078119&linkCode=as2&tag=yagays-22">Amazon</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621078119" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />や<a href="http://pub.maruzen.co.jp/book_magazine/book_data/search/9784621078112.html">丸善の公式ページ</a>，<a href="http://www.junkudo.co.jp/detail.jsp?ISBN=9784621078112">丸善&amp;ジュンク堂のネットストア</a>などの主だったネット書店で品切れが相次いでいるようだ．ともなると，本書を手に入れるにはAmazonのマーケットプレイスで高い値段で買うか，大きな書店で売れ残っている本を見つけるかするしか無さそうだ．まあ今となってはRと統計に関する書籍は山ほど出版されているので，本書がこれから増刷などが掛かることは難しかもしれないが，このまま絶版になっていくには実に惜しい本だと思う．</p>
 ]]></content>
   </entry>
   

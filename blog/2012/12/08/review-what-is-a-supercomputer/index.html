@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Dropbox+Sphinxで自分専用の電子書籍リストを作ってみた - Wolfeyes Bioinformatics beta</title>
+  <title>「スパコンとは何か」読了 - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="きっかけ 本を裁断してpdfにする自炊というものをやり始めて1年以上が経ち，自炊したpdfも350冊・35GBを超えてしまった．手持ちのiPadには全部の書籍が入りきらなくなってしまい，終いには自炊した本のことを忘れて中古で買い直す始末．そんなこんなで， &hellip;">
+  <meta name="description" content="スパコン事業仕分けに参加された東京大学情報基盤センター教授の金田先生によるスパコンの総括的な解説書．仕分けの焦点となった処理能力のランキングの問題から，スパコンの基本的な仕組み，スパコンがどのような分野に活用されているのかといった実用面， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.com/blog/2012/09/29/sphinx-dropbox-bookshelf">
+  <link rel="canonical" href="http://yagays.github.com/blog/2012/12/08/review-what-is-a-supercomputer">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -111,7 +111,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">Dropbox+Sphinxで自分専用の電子書籍リストを作ってみた</h1>
+      <h1 class="entry-title">「スパコンとは何か」読了</h1>
     
     
       <p class="meta">
@@ -127,145 +127,21 @@
   
 
 
-<time datetime="2012-09-29T14:05:00+09:00" pubdate data-updated="true">Sep 29<span>th</span>, 2012</time>
+<time datetime="2012-12-08T13:29:00+09:00" pubdate data-updated="true">Dec 8<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p><img src="http://dl.dropbox.com/u/142306/b/bookshelf.png" align="right" hspace="10px"></p>
-
-<h3>きっかけ</h3>
-
-<p>本を裁断してpdfにする自炊というものをやり始めて1年以上が経ち，自炊したpdfも350冊・35GBを超えてしまった．手持ちのiPadには全部の書籍が入りきらなくなってしまい，終いには自炊した本のことを忘れて中古で買い直す始末．そんなこんなで，自炊した書籍のpdfをまとめる本棚みたいなものが欲しくなってきた．手の込んだものはいらないので，表紙をざっと眺めたり，タイトルと著者を検索できる程度のもので簡単に済ませたい．</p>
-
-<p>というわけで，<strong>Sphinxで静的htmlを吐き出してDropboxのPublicフォルダで公開するようなシステム</strong>を簡単に組んでみた．SphinxはPythonで書かれたドキュメンテーションツールで，rst形式のテキストから静的なhtmlを出力できるほか，jsで簡易な検索もできる．バックグラウンドでスクリプトを動かしたりデータベースを置いておく必要がないので，DropboxのPublicフォルダみたいな場所でも公開できる便利さがある．今回はそれをメインにして，付加情報として書籍ファイルのISBNを使ってAmazonのProduct Advertising APIを叩いてメタ情報を入手し，書籍カバーの画像と一緒に表示させるようなSphinxのrstファイルを作成するという目論見．今回やってみた限りだとDropbox+Sphinxは連携が案外簡単だったので，この他にも個人的なメモなどの用途にも最適だと思う．</p>
-
-<p>なお，今回のウェブページはリンクを一般に公開しておらず，また書籍pdfはダウンロードできる状態にはしていない．書籍の電子化に関しては色々難しいところがあるのでスクリプトの公開などは控えるようにする．</p>
-
-<!-- more -->
+<div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4863100981" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
-<h3>できたページ</h3>
+<p>スパコン事業仕分けに参加された東京大学情報基盤センター教授の金田先生によるスパコンの総括的な解説書．仕分けの焦点となった処理能力のランキングの問題から，スパコンの基本的な仕組み，スパコンがどのような分野に活用されているのかといった実用面，そして日本の企業が独立して開発を行なってきた歴史とこれからの行く末について書かれている．</p>
 
-<p>トップページには直近50件の書籍カバーの画像と，その下には書籍タイトル一覧を表示してある．タイトルで検索するだけならこのページでテキスト検索するだけで済む．</p>
+<p>本書の主張は一貫して，スパコン開発というものは事業仕分けで論点となった世界一位かどうかが問題なのではなく，国や企業のプロジェクトとして明確な方向性を持たなければ意味がないというもの．本書の中では，日本のスパコン開発の歴史に触れ，黎明期のアメリカとの開発競争であったり，地球シミュレーターという一世代前のスパコンがどのような目標を持って開発が行われ実際に稼働したかといった経緯が紹介される．そして，現在開発が完了し実際に稼働している京コンピューターが，いかに処理能力のランキング云々よりも重要な課題を孕んだまま進行したプロジェクトであるかといった問題点が指摘される．その中で繰り返し述べられるのが，「目標」と「ハード・ソフト」について長期的な視点が欠如しているということであり，実際にスパコンを使って解くべき問題が明確ではなく，その目標のために必要なハードウェアとソフトウェア両者の環境開発整備であったり人材育成体制が一番の問題であると，著者の金田氏は主張する．</p>
 
-<p>iPhoneとの連携も良好だ．ちなみに今回始めて知ったのだが，iOSのSafariでもテキスト検索ができるらしい．ウェブページを表示した状態で右上の検索ボックスに単語を入力し，出てくる候補の一番下にある&#8221;On This Page&#8221;の候補をクリックすると，Mac OS XのSafariと同様に検索できる．</p>
-
-<h3>作り方</h3>
-
-<p>基本的に書籍pdfに付けているタイトル「#{data}#{title}.pdf」をそのまま使用している．rstを作る部分はRubyで書いており，ファイル名を抜き出してそれぞれのrstファイルを自動生成している．</p>
-
-<p>メインのindex.rstには，画像を並べる部分と</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>.. image:: _book_thumb/20120927自炊本1.jpg
-</span><span class='line'>   :target: _book_rst/20120927自炊本1.html
-</span><span class='line'>   :width: 100px
-</span><span class='line'>
-</span><span class='line'>.. image:: _book_thumb/20120927自炊本2.jpg
-</span><span class='line'>   :target: _book_rst/20120927自炊本2.html
-</span><span class='line'>   :width: 100px
-</span><span class='line'>
-</span><span class='line'>.. image:: _book_thumb/20120927自炊本3.jpg
-</span><span class='line'>   :target: _book_rst/20120927自炊本3.html
-</span><span class='line'>   :width: 100px
-</span><span class='line'>
-</span><span class='line'>〜〜〜続く〜〜〜</span></code></pre></td></tr></table></div></figure>
-
-
-<p>と，toctreeの部分</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>.. toctree::
-</span><span class='line'>   :maxdepth: 2
-</span><span class='line'>
-</span><span class='line'>   _book_rst/20120927自炊本1
-</span><span class='line'>   _book_rst/20120927自炊本2
-</span><span class='line'>   _book_rst/20120927自炊本3
-</span><span class='line'>   _book_rst/20120927自炊本4
-</span><span class='line'>   _book_rst/20120927自炊本5
-</span><span class='line'>   _book_rst/20120927自炊本6
-</span><span class='line'>
-</span><span class='line'>〜〜〜続く〜〜〜</span></code></pre></td></tr></table></div></figure>
-
-
-<p>を上のように並べているだけ．</p>
-
-<p>また，書籍カバーのサムネイル用の画像はMac OS Xのコマンドラインツールであるsipsを使って生成している．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ sips -s format jpeg --resampleWidth 100 --out /path/to/out_dir /path/to/pdf_dir/*.pdf</span></code></pre></td></tr></table></div></figure>
-
-
-<p>とすると，/path/to/pdf_dir/にあるpdfファイルがすべて幅100pxのjpgファイルとなって/path/to/out_dirに保存される．今回始めてsipsを使ってみたのだが，フォーマット変換やリサイズに関してはImageMagickと同様の便利さでなかなか良かった．まあ今回は速度とかは特に気にしていないので手軽に出来ればそれで良い．</p>
-
-<p>そして，最終的なSphinxのビルドはmake htmlで出力する先をDropboxのPublicフォルダに設定する．Makefileの中にあるBUILDDIRを</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>BUILDDIR = /Users/yag_ays/Dropbox/Public/path/to/dir/</span></code></pre></td></tr></table></div></figure>
-
-
-<p>とすると，静的な画像ファイルなども含めてPublicの指定ディレクトリ以下に展開される．</p>
-
-<h3>問題点</h3>
-
-<p>最低限の機能さえあれば十分といいつつも，1つだけ気になる点がある．
-それはSphinxの検索があまりよろしくないことだ．どうやら予めテキストをn-gramに分割したものからパターンマッチで検索しているらしく，クエリとして投げる単語によっては検索できたりできなかったりする．このあたりが改良できると，曖昧な記憶の中から本を探すときに便利になるのだが…．</p>
-
-<h3>参考</h3>
-
-<p>Sphinxの検索まわりの日本語対応と強化．</p>
-
-<ul>
-<li><a href="http://d.hatena.ne.jp/koyudoon/20120126/1327529750">http://d.hatena.ne.jp/koyudoon/20120126/1327529750</a></li>
-<li><a href="http://note.sicafe.net/sphinx_memo/JapaneaseSearch.html">http://note.sicafe.net/sphinx_memo/JapaneaseSearch.html</a></li>
-</ul>
-
-
-<p>Product Advertising APIはRubyのamazon-ecsを使った．</p>
-
-<ul>
-<li><a href="https://github.com/jugend/amazon-ecs">https://github.com/jugend/amazon-ecs</a></li>
-</ul>
-
-
-<p>sipsの詳細</p>
-
-<ul>
-<li><a href="http://d.hatena.ne.jp/toolkit/20060726/p1">http://d.hatena.ne.jp/toolkit/20060726/p1</a></li>
-</ul>
-
-
-<p>iPhoneのSafariでテキスト検索する方法</p>
-
-<ul>
-<li><a href="http://www.lifehacker.jp/2011/05/110521iphonesafarisearch.html">http://www.lifehacker.jp/2011/05/110521iphonesafarisearch.html</a></li>
-</ul>
-
+<p>金田氏はあくまで事業仕分けに参加した有識者として，そしてスパコンの一研究者として，日本のスパコンの現状に対する見解を述べている．その中にはもちろん外部からはあまり知ることのできない政治的な部分も多く含まれてはいるものの，NECや日立製作所の脱落などの中核の部分に関してはあまり触れられていない．個人的にはその辺りに関して興味があったものの，あまり直接的な表現をされていなかったので少し残念ではあった．一方で，スパコンを取り囲む大規模なプロジェクト全体に関して，何が重要でどういったところを役人や有識者が見ているのかといったポイントは非常に参考になった．計画を立てるというただそれだけのことが，いかにして不確実な未来を予測し確実な案へと落としこみ，それを様々な立場の人間に納得させるかという難しさを持っているということが，本書からはひしひしと伝わってきた．</p>
 </div>
 
 
@@ -288,16 +164,22 @@
   
 
 
-<time datetime="2012-09-29T14:05:00+09:00" pubdate data-updated="true">Sep 29<span>th</span>, 2012</time>
+<time datetime="2012-12-08T13:29:00+09:00" pubdate data-updated="true">Dec 8<span>th</span>, 2012</time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/book/'>Book</a>
+  
+</span>
 
 
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/09/29/sphinx-dropbox-bookshelf/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/12/08/review-what-is-a-supercomputer/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/09/29/sphinx-dropbox-bookshelf/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/09/29/sphinx-dropbox-bookshelf/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/12/08/review-what-is-a-supercomputer/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/12/08/review-what-is-a-supercomputer/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -318,14 +200,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/09/25/review-critical-speaking/" title="Previous Post:
-        「外国語を身につけるための日本語レッスン」読了">&laquo; 「外国語を身につけるための日本語レッスン」読了</a></li>
+        href="/blog/2012/12/07/review-colin-powell/" title="Previous Post:
+        「リーダーを目指す人の心得」読了">&laquo; 「リーダーを目指す人の心得」読了</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/10/01/review-reading-skill/"
-        title="Next Post: 「読書力」読了">「読書力」読了
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -461,8 +339,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.com/blog/2012/09/29/sphinx-dropbox-bookshelf/';
-        var disqus_url = 'http://yagays.github.com/blog/2012/09/29/sphinx-dropbox-bookshelf/';
+        var disqus_identifier = 'http://yagays.github.com/blog/2012/12/08/review-what-is-a-supercomputer/';
+        var disqus_url = 'http://yagays.github.com/blog/2012/12/08/review-what-is-a-supercomputer/';
         var disqus_script = 'embed.js';
       
     (function () {
