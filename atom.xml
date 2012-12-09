@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-12-08T20:27:57+09:00</updated>
+  <updated>2012-12-09T15:11:37+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「服従の心理」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/12/09/review-obedience-to-authority/"/>
+    <updated>2012-12-09T15:04:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/12/09/review-obedience-to-authority</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=430946369X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>これほどまでに背筋が凍るほどの恐ろしさを感じながらも同時に文章から目を離さずにはいられないくらい引き込まれるような本を，いまだかつて私は読んだことがない．本書はある心理学の実験についての報告と結果の考察を淡々と述べたものでありがながら，そこから導かれる結論は私たち人間の隠れた性質を暴くものである．それは20世紀のある歴史上の事件と対になって初めて本質をあらわにする．ナチスドイツにおけるユダヤ人虐殺である．</p>
+
+<p>本書は，「アイヒマン実験」または「ミルグラム実験」と呼ばれる心理学実験に基づく実験報告である．この通称は，アドルフ・アイヒマンというナチスドイツによるユダヤ人虐殺に深く関与した人間の名前，またはスタンレー・ミルグラムという本実験を行った心理学者に由来する．アイヒマンとこの実験を深く関連付ける要素は「服従」である．人というものは，何らかの社会構造における上下関係の中で社会的な役割を果たすことにより，その地位であったり家族の生活やアイデンティティを維持する．そのなかで，権威があって立場が上の人間によって命令された倫理を逸脱する非道な指示に対して，それを受け入れ服従するか異を唱えて反発するかといった個人の葛藤が，この実験の中心的な問題である．アイヒマンという人物は，このような命令に服従し実行してしまった張本人として歴史に名を残し，この議論の中核的な存在となった．そのアイヒマンに対して当初は誰もが，通常では考えられないほどの非人道的な行為を行う人間は，常識的な社会生活を行う自分たちとは全く異質のかけ離れた存在であるかのように思っていた．しかし，本書の著者であるスタンレー・ミルグラムは，アイヒマンは特殊な人間ではなく普通の一般人と何ら変わらない人間であり，逆に言えば一般人と認識している人間もまたアイヒマンと同じ境遇に置かれると同じ行為を犯してしまう可能性があることを心理学実験によって示した．</p>
+
+<p>本書はスタンレー・ミルグラムの衝撃的な実験結果を示すものでありがなら，同時に本実験に対する異論や反論を訳者である山形浩生が訳者後書きとして巧みに指摘している．その批判的検討を含め，本書が描き出す権威の服従という問題は状況や立場によって複雑な挙動を示し，一個人の責任や従属関係について改めて提起するものである．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「スパコンとは何か」読了]]></title>
@@ -1542,197 +1558,6 @@
 
 
 <iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「マルコフ連鎖モンテカルロ法」1章のメトロポリス・ヘイスティング・アルゴリズムによるガンベル分布の乱数生成]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/19/mcmc-statlib-chp1-mh/"/>
-    <updated>2012-11-19T07:10:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/19/mcmc-statlib-chp1-mh</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4254126972" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>「<a href="http://www.amazon.co.jp/gp/product/4254126972/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4254126972&linkCode=as2&tag=yagays-22">マルコフ連鎖モンテカルロ法 (統計ライブラリー)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4254126972" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」PP.11-14のメトロポリス・ヘイスティング・アルゴリズムによる二重指数分布からの乱数生成（サンプリング）をやってみた．</p>
-
-<p>この問題は本書にも実験結果が掲載されているので，自分が行った実験結果と見比べることができる．結論から言うと，一応大まかな結果としては同じ傾向を示したが，乱数を用いた実験ということもあって多少の値のズレがでている．また，パラメータによっては結果の値/分布が安定しないものもあるので，何度か実験を行なって結果を吟味している部分もあるが，結果を曲解するためのものではないということを付け加えておく．</p>
-
-<p>なお，この文章ではメトロポリス・ヘイスティング・アルゴリズムを以降MHと表記する．</p>
-
-<h3>問題</h3>
-
-<p>ガンベル分布（二重指数分布）からの乱数生成を考える．今回はガンベル分布からの直接的な乱数生成ができないとしたうえで，MHによる乱数生成を行う．ガンベル分布は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7B2b%7D%5Cexp%28%5Cfrac%7B-%7Cx-%5Cmu%7C%7D%7Bb%7D%29+" alt="\frac{1}{2b}\exp(\frac{-|x-\mu|}{b}) " />で表され，今回は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu%3D0+" alt="\mu=0 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=b%3D+3+" alt="b= 3 " />の分布を考える．なお，ガンベル分布の平均と分散は解析的に得られ，それぞれ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu+" alt="\mu " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=2b%5E2+" alt="2b^2 " />である．</p>
-
-<h3>実験条件</h3>
-
-<p>今回は，MHの中でも酔歩過程/ランダムウォーク（Random walk）と独立連鎖（Independent chain）の2種類の方法を試す．それぞれのMHにおける推移カーネル<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=K+" alt="K " />は</p>
-
-<ul>
-<li>酔歩過程：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=K%28x%5E%7B%28t%29%7D%2Cx%5E%7B%28t%2B1%29%7D%29+%3D+%5Cmathcal%7BN%7D%28x%5E%7B%28t%29%7D%2Cc_%7Bran%7D%5E2%29+" alt="K(x^{(t)},x^{(t+1)}) = \mathcal{N}(x^{(t)},c_{ran}^2) " /></li>
-<li>独立連鎖：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=K%28x%5E%7B%28t%29%7D%2Cx%5E%7B%28t%2B1%29%7D%29+%3D+%5Cmathcal%7BN%7D%280%2Cc_%7Bind%7D%5E2%29+" alt="K(x^{(t)},x^{(t+1)}) = \mathcal{N}(0,c_{ind}^2) " /></li>
-</ul>
-
-
-<p>となる．ここで，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2+" alt="c_{ran}^2 " />および<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2+" alt="c_{ind}^2 " />は調整母数/チューニングパラメータであり，今回はそれぞれ<strong>{0.25, 1, 5, 15, 150}</strong>の5パターンで実験を行った．</p>
-
-<p>また，生成した乱数の系列において，系列初期の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D1%5Cdots+1000+" alt="t=1\dots 1000 " />までの結果は初期値に依存した値となっているため，今回は結果として用いていない．</p>
-
-<h3>結果：以下の図の見方</h3>
-
-<p>以下に示す図は，各行にチューニングパラメータの値，各列に系列のプロット，系列の分布，系列の平均の推移，系列の自己相関プロットを示したものである．図のタイトルに，チューニングパラメータの値，生成した乱数の平均と分散，そして採択率を示している（便宜的にタイトルの部分に情報を書き加えているだけで，タイトルと図は直接的には関連していない）．</p>
-
-<h3>結果：酔歩過程/ランダムウォーク</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
-</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in c<span class="p">(</span><span class="m">0.25</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">150</span><span class="p">)){</span>
-</span><span class='line'>  c.ran <span class="o">&lt;-</span> i<span class="o">^</span><span class="m">2</span>
-</span><span class='line'>  alpha <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">0</span><span class="p">)</span>
-</span><span class='line'>  Niter <span class="o">&lt;-</span> <span class="m">10000</span>
-</span><span class='line'>  x <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span><span class="m">0</span><span class="p">,</span> sd<span class="o">=</span>c.ran<span class="p">)</span>
-</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>t in <span class="m">2</span>:Niter<span class="p">){</span>
-</span><span class='line'>    z <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span><span class="m">0</span><span class="p">,</span> sd<span class="o">=</span>c.ran<span class="p">)</span>
-</span><span class='line'>    alpha<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span> <span class="o">&lt;-</span> min<span class="p">(</span><span class="m">1</span><span class="p">,</span> exp<span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span>abs<span class="p">(</span>x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="o">+</span>z<span class="p">)</span><span class="o">-</span>abs<span class="p">(</span>x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]))))</span>
-</span><span class='line'>    x<span class="p">[</span>t<span class="p">]</span> <span class="o">&lt;-</span> x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span> <span class="o">+</span> z<span class="o">*</span><span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">&lt;</span>alpha<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">])</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  X <span class="o">&lt;-</span> x<span class="p">[</span><span class="m">1001</span>:Niter<span class="p">]</span>
-</span><span class='line'>  stat <span class="o">&lt;-</span> table<span class="p">(</span>alpha<span class="o">==</span><span class="m">1</span><span class="p">)</span>
-</span><span class='line'>  plot<span class="p">(</span><span class="m">1001</span>:Niter<span class="p">,</span> X<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;c_ran=&quot;</span><span class="p">,</span>i<span class="p">),</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>  plot<span class="p">(</span>density<span class="p">(</span>X<span class="p">),</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;mean=&quot;</span><span class="p">,</span>round<span class="p">(</span>mean<span class="p">(</span>X<span class="p">),</span>digit<span class="o">=</span><span class="m">2</span><span class="p">),</span><span class="s">&quot; var=&quot;</span><span class="p">,</span>round<span class="p">(</span>var<span class="p">(</span>X<span class="p">),</span>digit<span class="o">=</span><span class="m">2</span><span class="p">)))</span>
-</span><span class='line'>  plot<span class="p">(</span>cumsum<span class="p">(</span>X<span class="p">)</span><span class="o">/</span><span class="m">1</span>:length<span class="p">(</span>X<span class="p">),</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;accept ratio=&quot;</span><span class="p">,</span>round<span class="p">(</span><span class="m">100</span><span class="o">*</span>stat<span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">/</span>stat<span class="p">[</span><span class="m">1</span><span class="p">]),</span><span class="s">&quot;%&quot;</span><span class="p">))</span>
-</span><span class='line'>  abline<span class="p">(</span>h<span class="o">=</span><span class="m">0</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D0.25+" alt="c_{ran}^2=0.25 " />の場合</h4>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_1.png" alt="" /></p>
-
-<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D1+" alt="c_{ran}^2=1 " />の場合</h4>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_2.png" alt="" /></p>
-
-<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D5+" alt="c_{ran}^2=5 " />の場合</h4>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_3.png" alt="" /></p>
-
-<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D15+" alt="c_{ran}^2=15 " />の場合</h4>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_4.png" alt="" /></p>
-
-<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D150+" alt="c_{ran}^2=150 " />の場合</h4>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_5.png" alt="" /></p>
-
-<h3>結果：独立連鎖の場合</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">4</span><span class="p">))</span>
-</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in c<span class="p">(</span><span class="m">0.25</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">150</span><span class="p">)){</span>
-</span><span class='line'>  c.ind <span class="o">&lt;-</span> i
-</span><span class='line'>  alpha <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">0</span><span class="p">)</span>
-</span><span class='line'>  Niter <span class="o">&lt;-</span> <span class="m">10000</span>
-</span><span class='line'>  x <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span><span class="m">0</span><span class="p">,</span> sd<span class="o">=</span>c.ind<span class="p">)</span>
-</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>t in <span class="m">2</span>:Niter<span class="p">){</span>
-</span><span class='line'>    z <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span><span class="m">0</span><span class="p">,</span> sd<span class="o">=</span>c.ind<span class="p">)</span>
-</span><span class='line'>    alpha<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span> <span class="o">&lt;-</span> min<span class="p">(</span><span class="m">1</span><span class="p">,</span> exp<span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span>abs<span class="p">(</span>z<span class="p">)</span><span class="o">-</span>abs<span class="p">(</span>x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]))</span>
-</span><span class='line'>                             <span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">*</span><span class="p">((</span>x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="o">/</span>c.ind<span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">-</span> <span class="p">(</span>z<span class="o">/</span>c.ind<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>                             <span class="p">)</span>
-</span><span class='line'>                      <span class="p">)</span>
-</span><span class='line'>    <span class="kr">if</span><span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">&lt;</span>alpha<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]){</span>
-</span><span class='line'>      x<span class="p">[</span>t<span class="p">]</span> <span class="o">&lt;-</span> z
-</span><span class='line'>    <span class="p">}</span>else<span class="p">{</span>
-</span><span class='line'>      x<span class="p">[</span>t<span class="p">]</span> <span class="o">&lt;-</span> x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  X <span class="o">&lt;-</span> x<span class="p">[</span><span class="m">1001</span>:Niter<span class="p">]</span>
-</span><span class='line'>  stat <span class="o">&lt;-</span> table<span class="p">(</span>alpha<span class="o">==</span><span class="m">1</span><span class="p">)</span>
-</span><span class='line'>  plot<span class="p">(</span><span class="m">1001</span>:Niter<span class="p">,</span> X<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;c_ind=&quot;</span><span class="p">,</span>i<span class="p">),</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>  plot<span class="p">(</span>density<span class="p">(</span>X<span class="p">),</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;mean=&quot;</span><span class="p">,</span>round<span class="p">(</span>mean<span class="p">(</span>X<span class="p">),</span>digit<span class="o">=</span><span class="m">2</span><span class="p">),</span><span class="s">&quot; var=&quot;</span><span class="p">,</span>round<span class="p">(</span>var<span class="p">(</span>X<span class="p">),</span>digit<span class="o">=</span><span class="m">2</span><span class="p">)))</span>
-</span><span class='line'>  plot<span class="p">(</span>cumsum<span class="p">(</span>X<span class="p">)</span><span class="o">/</span><span class="m">1</span>:length<span class="p">(</span>X<span class="p">),</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;accept ratio=&quot;</span><span class="p">,</span>round<span class="p">(</span><span class="m">100</span><span class="o">*</span>stat<span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">/</span>stat<span class="p">[</span><span class="m">1</span><span class="p">]),</span><span class="s">&quot;%&quot;</span><span class="p">),</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">)</span>
-</span><span class='line'>  abline<span class="p">(</span>h<span class="o">=</span><span class="m">0</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
-</span><span class='line'>  acf<span class="p">(</span>X<span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2%3D0.25+" alt="c_{ind}^2=0.25 " />の場合</h4>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_1.png" alt="" /></p>
-
-<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2%3D1+" alt="c_{ind}^2=1 " />の場合</h4>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_2.png" alt="" /></p>
-
-<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2%3D5+" alt="c_{ind}^2=5 " />の場合</h4>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_3.png" alt="" /></p>
-
-<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2%3D15+" alt="c_{ind}^2=15 " />の場合</h4>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_4.png" alt="" /></p>
-
-<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2%3D150+" alt="c_{ind}^2=150 " />の場合</h4>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_5.png" alt="" /></p>
-
-<h3>解釈</h3>
-
-<p>さて，このように色々とプロットしてみたわけだが，酔歩過程の場合も独立連鎖の場合もチューニングパラメータの値が0.25や150といった非常に小さい/大きい場合においては，乱数の分布や収束速度などに問題があることがわかる．</p>
-
-<p>酔歩過程においては，マルコフ連鎖の候補点の生成は少しずつ値を移動させていくという点で，分布の表面をなぞる形となる．そのため，チューニングパラメータの値である分散が小さい場合では候補点の移動範囲が狭いため，分布全体を探索するのに非常に時間がかかる．<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D0.25+" alt="c_{ran}^2=0.25 " />の図を見ると，系列のプロットではあまり大幅な移動（縦のぶれ）が少なく，生成した乱数の分布もかなりいびつである．また，値があまり変動しないという点で，自己相関係数も非常に大きな値を取っていることがわかる．一方チューニングパラメータの値が大きい場合においては，採択率が非常に小さな値を取り，系列のプロットからも値の変動しない部分が他と比べて多い．</p>
-
-<p>一方，独立連鎖においては，マルコフ連鎖の候補点の生成は現在の状態に依存しない．そのため，酔歩過程のように値を移動させていくということは見られないが，一方で採択確率の部分でチューニングパラメータの値が影響していることがわかる．</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://d.hatena.ne.jp/syou6162/20081214/1229197092">Example of Metropolis Hastings Algorithm - Seeking for my unique color.</a></li>
-</ul>
 
 ]]></content>
   </entry>
