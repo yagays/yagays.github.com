@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-12-09T15:11:37+09:00</updated>
+  <updated>2012-12-10T08:38:18+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「アナタはなぜチェックリストを使わないのか？」読了]]></title>
+    <link href="http://yagays.github.com/blog/2012/12/10/review-checklist-manifesto/"/>
+    <updated>2012-12-10T08:29:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/12/10/review-checklist-manifesto</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4863912803" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>本書は，世界中の病院における手術の安全性を向上させるためのWHO主導のプログラムに参加し，チェックリストを導入するというただそれだけのことでプログラムを大成功に導いた一人の医師による著作である．ここで言うチェックリストとは，箇条書きにしたメモにチェック欄がついているような至って普通のものである．それがなぜ手術における安全性を劇的に改善することができたのか，チェックリストによって何がどう変わったのか，そもそもなぜチェックリストなのか．そういった自然と湧き上がる疑問に対して本書は科学的に検証された実験結果として，建築業界や航空機産業における具体例とともに，チェックリストの有効性を示すものである．</p>
+
+<p>以下では，本書で挙げられたチェックリストの性質についてまとめたものである．</p>
+
+<ul>
+<li><strong>チェックリストは複雑な状況において有効な手段である</strong>
+
+<ul>
+<li>複雑な状況とは，「一個人で知るのは不可能な量の知識を必要とし，不確定要素が多い状況　(P.92)」を指す</li>
+<li>複雑な状況は，一人のエキスパートによる一極集中の指令システムでは対処できない</li>
+</ul>
+</li>
+</ul>
+
+
+<br/>
+
+
+<ul>
+<li><strong>チェックリストは規律である</strong>
+
+<ul>
+<li>規律を忠実に守ることにより，複雑な状況における個人の判断ミスを防ぐことができる</li>
+<li>チェックリストは万能なマニュアルではなく，人間の優れた技能と組み合わせた運用を必要とする</li>
+<li>チェックリストの使用は複雑な問題の中にある個々の単純な問題を解消し，問題をシンプルにする</li>
+</ul>
+</li>
+</ul>
+
+
+<br/>
+
+
+<ul>
+<li><strong>チェックリストの有用性はWHOのプロジェクトにおいて示された</strong>
+
+<ul>
+<li>問題を洗い出しチェックリストの効果を証明するには実験前・実験後のデータ収集が必要である</li>
+<li>現場に合わせた適切なチェックリスト作成と継続的な改良が必要である</li>
+<li>チェックリストの導入は無理に押し付けるのではなく，科学的根拠を示すとともに，自発的参加を促さなければならない</li>
+</ul>
+</li>
+</ul>
+
+
+<p>本書では，これらの事柄が豊富な具体例を織り交ぜて丁寧に解説される．本書を読み終わる頃には，チェックリストのあらゆる側面を見ることができる．それは私たちの生活がより複雑さを増していく状況において，非常に明快かつシンプルで革新的な手段となりうるだろう．</p>
+
+<p>当初は，私自身たかがチェックリストにこれほどまでに説得されるとは思っても見なかった．本書が素晴らしいのは，日頃から見逃されがちな失敗を表に引きずり出し，その対策をチェックリストを使うことで実現し，さらに普及させるといった段階にまで踏み込んでいる点にある．著者自身も，航空機産業における徹底した問題の改善の手腕に感動し，自身の医療の現場における小さなミスの繰り返しがいかに見逃されて改善の手段が広まらないかを懸念するところからスタートしている．そういった教訓から手術現場におけるチェックリストという発想に著者は至ったわけだが，読者としては本書を読めば自然とチェックリストを使いたくなるだろう．恐らくこれからもっと多分野でチェックリストが使われるようになると思われるのだが，まずは自分が問題を発見しそして実践してみないことには始まらない．とりあえず個人で色々試行錯誤してみようと思う．幸い本書の最後には「チェックリスト作成のためのチェックリスト」というものも載っており，<a href="http://www.projectcheck.org/">ウェブページ</a>もあるようだ．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「服従の心理」読了]]></title>
@@ -1392,173 +1451,6 @@
 <p>本書は大きく分けて，職場環境の変革について書かれた前半部と，Apple社員の異常なほどまでの社内政治について書かれた後半部から構成される．前半部の職場環境については，著者が実際に肌で体感してきたアップル社内の変貌を織り交ぜつつ，どうやったら社員がパフォーマンスを発揮し組織として成果を上げていくことができるかといった方法論が語られる．その中では，昨今のApple評で良く耳にするシンプル・コンセプト・デザインなどの基本的な要素から，著者が自分の部署内で実施してきた試行錯誤，そしてスティーブ・ジョブズが打ち出した方向性によってどのように会社としての方向性が明確になったかが，臨場感溢れる語り口で述べられる．一方で，後半部の社内政治においては，一見エンジニアの天国として華やかに見えるApple社内での，外部のイメージとは全く違った熾烈な競争から生じる社内政治について，著者のアメリカ勤務時代の経験が語られる．著者自身は社内政治について良い面も悪い面もあるとしながらも，社内での立ち回りの重要性であったり如何にして成果を自分のものにし失敗を被らずに上司にアピールするかといった，すこし敬遠されがちな内容にまで踏み込んでいる．</p>
 
 <p>本書で語られる経営哲学や仕事内容，上司部下の関係，職場の机のレイアウトに至るまでのエピソードはすべて，いい意味で個人の枠を飛び出していない．あくまで著者自身が社員としてとして会社の中で直面し，感じ，そして考えたかが率直に表現されている．そのため読者としては「Appleだから出来ることでしょ」「外資ベンチャーだから」「シリコンバレーだから」といった壁を作らずに済む．そもそもこの本の構成自体が自分でも何かできることはないだろうかという気持ちにさせるような書き方をしているので，Appleについて全く知らない人にとっても，エンジニアの楽園といった現実離れした妄想を抱いている人たちにとっても，数ある大企業の一つとしてのAppleとして，その会社のことを深く知ることができると思う．お酒の席で知り合いの先輩の人生哲学を聞くような感覚で気軽に読めて，それでいて内容も簡潔にまとまっており，なかなかに面白い本だった．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「データ解析のための統計モデリング入門」読書ノート 8章 MCMCとメトロポリス法]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/20/glm-mcmc-chp8/"/>
-    <updated>2012-11-20T04:46:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/20/glm-mcmc-chp8</id>
-    <content type="html"><![CDATA[<ul>
-<li>まとめ：<a href="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート</a></li>
-<li>前々回：<a href="http://yagays.github.com/blog/2012/11/02/glm-mcmc-chp7/">「データ解析のための統計モデリング入門」読書ノート 7章 GLMMとGLMを比較する</a></li>
-<li>前回　：<a href="http://yagays.github.com/blog/2012/11/09/glm-mcmc-chp7-2/">「データ解析のための統計モデリング入門」読書ノート 7章 無限混合分布の生成過程をアニメーションにした</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=400006973X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>8章の図を再現する</h3>
-
-<p>今回は，本書の8章「マルコフ連鎖モンテカルロ（MCMC）法とベイズ統計モデル」の解析を実際に自分でやってみて，図を再現することを目的とする．基本的に本書の作図を真似するということを目標にして調整しているが，細部で少し違いがあるかもしれないので注意していただきたい．</p>
-
-<h3>問題設定とサンプルデータ</h3>
-
-<p>問題設定は6章と同じく，上限があるカウントデータを用いる．植物個体から8個種子を取ってきた時の種子の生存数が二項分布に従うとした上で，そのときの尤度を最大化し，生存確率であるパラメータqを推定することを目標とする．</p>
-
-<p>まずはサンプルデータと二項分布の対数尤度関数の設定．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>data <span class="o">&lt;-</span> c<span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">)</span>
-</span><span class='line'>loglik <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>q<span class="p">){</span>data<span class="o">*</span>log<span class="p">(</span>q<span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="m">8</span><span class="o">-</span>data<span class="p">)</span><span class="o">*</span>log<span class="p">(</span><span class="m">1</span><span class="o">-</span>q<span class="p">)</span><span class="o">+</span>log<span class="p">(</span>choose<span class="p">(</span><span class="m">8</span><span class="p">,</span>data<span class="p">))}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>図 8.2・8.3</h3>
-
-<p>生存確率qと対数尤度の関係を図示する．8章の解析の大きな特徴としては，この後に出てくるメトロポリス法の説明のために，本来は連続変数である生存確率qを0から1までの0.01刻みの離散値として扱っている点にある．以下の図では，それらの生存確率に対応する対数尤度がマル印で示されてる．</p>
-
-<p>また，解析的に求まる最大対数尤度とその時の生存確率q=0.45625を縦の赤線とバツ印で表示してある．今回は生存確率を離散値として表現しているため，最大対数尤度に対応する対数尤度の値は図示されていない．この図の中では，対数尤度の最大値を取るときの生存確率はq=0.46となっている．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>a <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">0.01</span><span class="p">,</span> <span class="m">0.99</span><span class="p">,</span> by<span class="o">=</span><span class="m">0.01</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span>a<span class="p">,</span> apply<span class="p">(</span>matrix<span class="p">(</span>a<span class="p">),</span><span class="m">1</span><span class="p">,</span><span class="kr">function</span><span class="p">(</span>z<span class="p">){</span>sum<span class="p">(</span>loglik<span class="p">(</span>z<span class="p">))}),</span>
-</span><span class='line'>     xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0.2</span><span class="p">,</span><span class="m">0.7</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">-60</span><span class="p">,</span><span class="m">-35</span><span class="p">),</span> xlab<span class="o">=</span><span class="s">&quot;q&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;log L(q)&quot;</span><span class="p">)</span>
-</span><span class='line'>abline<span class="p">(</span>v<span class="o">=</span><span class="m">0.45625</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lty<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>points<span class="p">(</span><span class="m">0.45625</span><span class="p">,</span> sum<span class="p">(</span>loglik<span class="p">(</span><span class="m">0.45625</span><span class="p">)),</span> pch<span class="o">=</span><span class="m">4</span><span class="p">,</span> <span class="p">,</span>cex<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p> <img src="http://dl.dropbox.com/u/142306/b/glm_mcmc_8_3.png" alt="" /></p>
-
-<h3>図 8.8</h3>
-
-<p>MCMCのアルゴリズムの一つであるメトロポリス法を実際に動かしてサンプリングをしてみる．</p>
-
-<p>メトロポリス法の実装は本書にコード例が無かったので自作している．このコードで使っているアルゴリズムに関しては，本書P.176で述べられている手順を使っているわけではなく，スタンダードなメトロポリス法の手法を用いて先に対数尤度比を求めて条件分岐を作っている．細かい部分で違いはあれど基本的にやっていることは同じで作図もうまくいっているので，たぶん問題はないだろう．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1"># Metropolis method</span>
-</span><span class='line'>niter <span class="o">&lt;-</span> <span class="m">100000</span>
-</span><span class='line'>x <span class="o">&lt;-</span> <span class="m">0.30</span>
-</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in <span class="m">2</span>:niter<span class="p">){</span>
-</span><span class='line'>  z <span class="o">&lt;-</span> sample<span class="p">(</span>c<span class="p">(</span><span class="m">-0.01</span><span class="p">,</span><span class="m">0.01</span><span class="p">),</span><span class="m">1</span><span class="p">)</span>
-</span><span class='line'>  r <span class="o">&lt;-</span> min<span class="p">(</span><span class="m">1</span><span class="p">,</span> exp<span class="p">(</span>loglik<span class="p">(</span>x<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="o">+</span>z<span class="p">)</span><span class="o">-</span>loglik<span class="p">(</span>x<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">])))</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kr">if</span><span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="o">&lt;</span> r<span class="p">){</span>
-</span><span class='line'>    x<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> x<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span> <span class="o">+</span> z
-</span><span class='line'>  <span class="p">}</span>else<span class="p">{</span>
-</span><span class='line'>    x<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> x<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># Fig. 8.8</span>
-</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-</span><span class='line'>plot<span class="p">(</span><span class="m">1</span>:<span class="m">100</span><span class="p">,</span>x<span class="p">[</span><span class="m">1</span>:<span class="m">100</span><span class="p">],</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;100 MC steps&quot;</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span>density<span class="p">(</span>x<span class="p">[</span><span class="m">1</span>:<span class="m">100</span><span class="p">]),</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> main<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span><span class="m">1</span>:<span class="m">1000</span><span class="p">,</span>x<span class="p">[</span><span class="m">1</span>:<span class="m">1000</span><span class="p">],</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;1000 MC steps&quot;</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span>density<span class="p">(</span>x<span class="p">[</span><span class="m">1</span>:<span class="m">1000</span><span class="p">]),</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> main<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span><span class="m">1</span>:niter<span class="p">,</span>x<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;100000 MC steps&quot;</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span>density<span class="p">(</span>x<span class="p">),</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span>  main<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc_8_1.png" alt="" /></p>
-
-<h3>図 8.9</h3>
-
-<p>メトロポリス法では，ステップ数を大きくしていくとサンプリングの値は定常分布に収束する．しかし，ステップ数が小さい段階では初期値に影響されるため，Burn-inとしてある程度のステップまでの結果を捨てるということが行われる．このように初期値が影響する様子を見るために，以下の図では初期値を0.1から0.9までの0.1刻みとした上でメトロポリス法を実行し，その結果を重ねあわせている．</p>
-
-<p>これを見ると，ステップスを重ねる毎に初期値の影響が少なくなっていくことがわかるが，では実際にどのあたりまでを捨てるべきかという疑問については図を見ても判断できない．Burn-inの範囲設定は色々と手法があるものの，ある程度は実験者の裁量に任されているようだ．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>palette <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;#000000&quot;</span><span class="p">,</span><span class="s">&quot;#999999&quot;</span><span class="p">,</span> <span class="s">&quot;#E69F00&quot;</span><span class="p">,</span> <span class="s">&quot;#56B4E9&quot;</span><span class="p">,</span> <span class="s">&quot;#009E73&quot;</span><span class="p">,</span> <span class="s">&quot;#F0E442&quot;</span><span class="p">,</span> <span class="s">&quot;#0072B2&quot;</span><span class="p">,</span> <span class="s">&quot;#D55E00&quot;</span><span class="p">,</span> <span class="s">&quot;#CC79A7&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># http://wiki.stdout.org/rcookbook/Graphs/Colors%20(ggplot2)/</span>
-</span><span class='line'>
-</span><span class='line'>plot<span class="p">(</span><span class="m">1</span>:<span class="m">500</span><span class="p">,</span> rep<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">500</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> type<span class="o">=</span><span class="s">&quot;n&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;q&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;500 MC steps&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="kr">for</span><span class="p">(</span>init in seq<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">9</span><span class="p">)){</span>
-</span><span class='line'>  niter <span class="o">&lt;-</span> <span class="m">500</span>
-</span><span class='line'>  x <span class="o">&lt;-</span> init<span class="o">*</span><span class="m">0.1</span>
-</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>i in <span class="m">2</span>:niter<span class="p">){</span>
-</span><span class='line'>    z <span class="o">&lt;-</span> sample<span class="p">(</span>c<span class="p">(</span><span class="m">-0.01</span><span class="p">,</span><span class="m">0.01</span><span class="p">),</span><span class="m">1</span><span class="p">)</span>
-</span><span class='line'>    r <span class="o">&lt;-</span> min<span class="p">(</span><span class="m">1</span><span class="p">,</span> exp<span class="p">(</span>loglik<span class="p">(</span>x<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="o">+</span>z<span class="p">)</span><span class="o">-</span>loglik<span class="p">(</span>x<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">])))</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kr">if</span><span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="o">&lt;</span> r<span class="p">){</span>
-</span><span class='line'>      x<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> x<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span> <span class="o">+</span> z
-</span><span class='line'>    <span class="p">}</span>else<span class="p">{</span>
-</span><span class='line'>      x<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> x<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  lines<span class="p">(</span>x<span class="p">,</span> col<span class="o">=</span>palette<span class="p">[</span>init<span class="p">],</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc_8_2.png" alt="" /></p>
-
-<h4>参考</h4>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4000068520" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
 ]]></content>
   </entry>
   
