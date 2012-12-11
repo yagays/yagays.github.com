@@ -4,7 +4,7 @@
   <title><![CDATA[Category: imcmr | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/imcmr/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-12-11T15:27:36+09:00</updated>
+  <updated>2012-12-11T20:06:21+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,154 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズムを用いたモデル選択]]></title>
+    <link href="http://yagays.github.com/blog/2012/12/11/imcmr-6-6/"/>
+    <updated>2012-12-11T15:34:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/12/11/imcmr-6-6</id>
+    <content type="html"><![CDATA[<ul>
+<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>例 6.8 モデル選択</h3>
+
+<h4>この問題の目的とデータセットの説明</h4>
+
+<p>線形回帰のモデル選択について考える．data(swiss)はスイスの47地域における出生率と社会経済指標のデータである．社会経済指標には，農業従事率や教育の度合い，特定の宗教の割合，幼児の死亡率など，合計で5つの標準化された観測値が含まれている．今回は，線形回帰によって出生率と社会経済指標の関係を調べることを目標としている．つまり，社会経済指標の中で何が出生率に効いているかを知りたいということだ．そのような線形回帰において一番重要なのが，5つある説明変数をどうやって組み合わせてモデルを作るかという問題である．5つの説明変数から作ることの出来るモデルは2<sup>5</sup> 個なので，今回の場合のモデルの総数はたかだか32個程度だが，たとえば説明変数が20個になると，モデルの総数は2<sup>20</sup> = 1048576個となり，全部のモデルをそれぞれ計算するのは現実的ではなくなってしまう．そこで，モデルの全パターンを試すことなく，もっとも出生率に効いてる社会経済指標だけを選んでモデルを作りたい．そのために，今回は周辺分布の最大化によるモデル選択をランダム・ウォーク・メトロポリス・ヘイスティング・アルゴリズムを使って算出してみる．</p>
+
+<h4>数式の説明</h4>
+
+<p>通常の線形回帰を考えるということで，出生率yと社会経済指標xは以下の式で表される．</p>
+
+<p>![\bold{y} = \beta X + \varepsilon ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbold%7By%7D+%3D+%5Cbeta+X+%2B+%5Cvarepsilon+)，![\varepsilon \sim \mathcal{N}_n(0,\sigma<sup>2</sup> I_n) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cvarepsilon+%5Csim+%5Cmathcal%7BN%7D_n%280%2C%5Csigma%3Csup%3E2%3C%2Fsup%3E+I_n%29+)</p>
+
+<p>このときの![\bold{y}|\beta,\sigma<sup>2,X</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbold%7By%7D%7C%5Cbeta%2C%5Csigma%3Csup%3E2%2CX%3C%2Fsup%3E+)は
+![\bold{y}|\beta,\sigma<sup>2,X</sup> \sim \mathcal{N}_n(X\beta,\sigma<sup>2I_n)</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbold%7By%7D%7C%5Cbeta%2C%5Csigma%3Csup%3E2%2CX%3C%2Fsup%3E+%5Csim+%5Cmathcal%7BN%7D_n%28X%5Cbeta%2C%5Csigma%3Csup%3E2I_n%29%3C%2Fsup%3E+)となる．</p>
+
+<p>ここで，出生率yは47の地域でそれぞれ観測されているため，観測数n=47のベクトルy={y_1..yn}として表される．</p>
+
+<p>そして，このときの尤度関数は</p>
+
+<p>![l(\beta,\sigma<sup>2|\bold{y},X)=\big(\frac{1}{\sqrt{2\pi\sigma<sup>2}}\big)<sup>n</sup></sup></sup> \exp\big[-\frac{1}{2\sigma<sup>2}(\bold{y}-X\beta)<sup>{\mathrm{T}}(\bold{y}-X\beta)\big]</sup></sup> ](http://chart.apis.google.com/chart?cht=tx&chl=l%28%5Cbeta%2C%5Csigma%3Csup%3E2%7C%5Cbold%7By%7D%2CX%29%3D%5Cbig%28%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%5Csigma%3Csup%3E2%7D%7D%5Cbig%29%3Csup%3En%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E+%5Cexp%5Cbig%5B-%5Cfrac%7B1%7D%7B2%5Csigma%3Csup%3E2%7D%28%5Cbold%7By%7D-X%5Cbeta%29%3Csup%3E%7B%5Cmathrm%7BT%7D%7D%28%5Cbold%7By%7D-X%5Cbeta%29%5Cbig%5D%3C%2Fsup%3E%3C%2Fsup%3E+)</p>
+
+<p>である．</p>
+
+<p>このあたりの式変形は練習問題6.5を参照．</p>
+
+<h3>データセットの準備</h3>
+
+<p>swissデータセットを読み込んだあと，応答変数yとして出生率の対数，説明変数Xとして5つの社会経済指標を代入している．説明変数には</p>
+
+<p>```r
+data(swiss)</p>
+
+<p>y &lt;- log(as.vector(swiss[,1]))
+X &lt;- as.matrix(swiss[,2:6])
+```</p>
+
+<p>説明変数である社会経済指標の詳細は以下の通りである．</p>
+
+<p>```r</p>
+
+<blockquote><p>names(swiss)
+[1] "Fertility"        "Agriculture"      "Examination"      "Education"        "Catholic"         "Infant.Mortality"
+```</p></blockquote>
+
+<h4>関数の定義</h4>
+
+<p>```r
+inv &lt;- function(X){
+  EV &lt;- eigen(X)
+  EV$vector %<em>% diag(1/EV$values) %</em>% t(EV$vector)
+}</p>
+
+<p>lpostw &lt;- function(gam, y, X, beta){
+  n &lt;- length(y)
+  qgam &lt;- sum(gam)
+  Xt1 &lt;- cbind(rep(1,n), X[,which(gam==1)])
+  if(qgam != 0){</p>
+
+<pre><code>P1 &lt;- Xt1 %*% inv(t(Xt1) %*% Xt1) %*% t(Xt1)
+</code></pre>
+
+<p>  }else{</p>
+
+<pre><code>P1 &lt;- matrix(0, n, n)
+</code></pre>
+
+<p>  }
+  -(qgam+1)/2 * log(n+1) - n/2 *</p>
+
+<pre><code>log(t(y) %*% y
+    - n/(n+1)
+    * t(y) %*% P1 %*% y-1/(n+1) * t(beta)
+    %*% t(cbind(rep(1,n), X)) %*% P1
+    %*% cbind(rep(1,n), X) %*% beta
+)
+</code></pre>
+
+<p>}</p>
+
+<p>gocho &lt;- function(niter, y, X){
+  lga &lt;- dim(X)[2]
+  beta &lt;- lm(y ~ X)$coeff
+  gamma &lt;- matrix(0, nrow=niter, ncol=lga)
+  gamma[1,] &lt;- sample(c(0,1), lga, rep=T)
+  for(t in 1:(niter-1)){</p>
+
+<pre><code>j &lt;- sample(1:lga,1)
+gam0 &lt;- gamma[t,]
+gam1 &lt;- gamma[t,]
+gam1[j] &lt;- 1 - gam0[j]
+pr &lt;- lpostw(gam0, y, X, beta)
+pr &lt;- c(pr, lpostw(gam1, y, X, beta))
+pr &lt;- exp(pr - max(pr))
+gamma[t+1,] &lt;- gam0
+if(sample(c(0,1), 1, prob=pr)){
+  gamma[t+1,] &lt;- gam1
+}
+</code></pre>
+
+<p>  }
+  gamma
+}</p>
+
+<p>```</p>
+
+<h3>練習問題 6.5</h3>
+
+<h4>a. ![\beta|\sigma<sup>2,X</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta%7C%5Csigma%3Csup%3E2%2CX%3C%2Fsup%3E+)から![X\beta|\sigma<sup>2,X</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=X%5Cbeta%7C%5Csigma%3Csup%3E2%2CX%3C%2Fsup%3E+)と![\bold{y}|\sigma<sup>2,X</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbold%7By%7D%7C%5Csigma%3Csup%3E2%2CX%3C%2Fsup%3E+)を導出する</h4>
+
+<p>1つ目は，正規分布の線形変換を使う．これは，![X \sim \mathcal{N}(\mu,\sigma<sup>2)</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=X+%5Csim+%5Cmathcal%7BN%7D%28%5Cmu%2C%5Csigma%3Csup%3E2%29%3C%2Fsup%3E+)のとき![Y = AX + b ](http://chart.apis.google.com/chart?cht=tx&chl=Y+%3D+AX+%2B+b+)とすると![Y \sim \mathcal{N}(A\mu+b,A\sigma<sup>2</sup> A<sup>\mathrm{T})</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=Y+%5Csim+%5Cmathcal%7BN%7D%28A%5Cmu%2Bb%2CA%5Csigma%3Csup%3E2%3C%2Fsup%3E+A%3Csup%3E%5Cmathrm%7BT%7D%29%3C%2Fsup%3E+)となる．
+この性質により，</p>
+
+<p>![X\beta|\sigma<sup>2,X\sim\mathcal{N}_n(X\tilde{\beta},n\sigma<sup>2X(X<sup>\mathrm{T}X)<sup>{-1}X<sup>\mathrm{T})</sup></sup></sup></sup></sup> ](http://chart.apis.google.com/chart?cht=tx&chl=X%5Cbeta%7C%5Csigma%3Csup%3E2%2CX%5Csim%5Cmathcal%7BN%7D_n%28X%5Ctilde%7B%5Cbeta%7D%2Cn%5Csigma%3Csup%3E2X%28X%3Csup%3E%5Cmathrm%7BT%7DX%29%3Csup%3E%7B-1%7DX%3Csup%3E%5Cmathrm%7BT%7D%29%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E+)</p>
+
+<p>となる．</p>
+
+<p>2つ目は，正規分布の再生性を使う．これは，![X \sim \mathcal{N}(\mu_X,\sigma_X<sup>2)</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=X+%5Csim+%5Cmathcal%7BN%7D%28%5Cmu_X%2C%5Csigma_X%3Csup%3E2%29%3C%2Fsup%3E+)と![Y \sim \mathcal{N}(\mu_Y,\sigma_Y<sup>2)</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=Y+%5Csim+%5Cmathcal%7BN%7D%28%5Cmu_Y%2C%5Csigma_Y%3Csup%3E2%29%3C%2Fsup%3E+)が独立ならば![X+Y \sim \mathcal{N}(\mu_X+\mu_Y,\sigma_X<sup>2+\sigma_Y<sup>2)</sup></sup> ](http://chart.apis.google.com/chart?cht=tx&chl=X%2BY+%5Csim+%5Cmathcal%7BN%7D%28%5Cmu_X%2B%5Cmu_Y%2C%5Csigma_X%3Csup%3E2%2B%5Csigma_Y%3Csup%3E2%29%3C%2Fsup%3E%3C%2Fsup%3E+)が成り立つというものである．いま，![\bold{y}=\beta X+\varepsilon ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbold%7By%7D%3D%5Cbeta+X%2B%5Cvarepsilon+)における![\beta X ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta+X+)と![\varepsilon ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cvarepsilon+)はともに独立の正規分布なので，1つ目で求めた式と合わせて</p>
+
+<p>![\bold{y}|\sigma<sup>2,X</sup> \sim \mathcal{N}_n(X\tilde{\beta},\sigma<sup>2(I_n+n\sigma<sup>2X(X<sup>\mathrm{T}X)<sup>{-1}X<sup>\mathrm{T}))</sup></sup></sup></sup></sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbold%7By%7D%7C%5Csigma%3Csup%3E2%2CX%3C%2Fsup%3E+%5Csim+%5Cmathcal%7BN%7D_n%28X%5Ctilde%7B%5Cbeta%7D%2C%5Csigma%3Csup%3E2%28I_n%2Bn%5Csigma%3Csup%3E2X%28X%3Csup%3E%5Cmathrm%7BT%7DX%29%3Csup%3E%7B-1%7DX%3Csup%3E%5Cmathrm%7BT%7D%29%29%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E%3C%2Fsup%3E+)</p>
+
+<p>となる．</p>
+
+<h4>b. &amp; c.</h4>
+
+<p>まだよく分かっていないので後回し．設問b.に関しては，どうやら「<a href="http://www.amazon.co.jp/gp/product/0387389792/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=0387389792&linkCode=as2&tag=yagays-22">Bayesian Core: A Practical Approach to Computational Bayesian Statistics (Springer Texts in Statistics)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=0387389792" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」に詳しく書いてある(らしい)．該当部分をざっと読んでみたけど，よく分からなかった…．</p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://www.is.titech.ac.jp/~mase/mase/html.jp/temp/swiss.jp.170.html">R: スイスの出生率と社会経済指標データ (1888)</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：6章 ランダム・ウォーク・メトロポリス・ヘイスティング・アルゴリズム]]></title>
@@ -594,262 +742,6 @@ for(t in 2:Nsim){
 <p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-2_2.png" alt="" /></p>
 
 <p>黒線が提案分布に標準正規分布を使った場合，黄色の線が提案分布にスチューデントt分布を使った場合となっている．今回シミュレートしているコーシー分布から求めた正確な値は0.896なので，スチューデントt分布はイテレーション回数を重ねるごとに真の値に収束していくことがわかる．一方で標準正規分布においては，今回のイテレーション回数(N=5000)では真の値に収束していないようにみえる．しかし，平均値の傾向を見ると値が徐々に上昇しては一気に下がり...といった傾向が見られ，理論的にも標準正規分布を提案分布として用いた場合でも真の値に収束することがわかっている．なので，今回の場合はイテレーション回数が少なすぎるために，収束の様子が見られない．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 確率的勾配法]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/11/imcmr-5-4/"/>
-    <updated>2012-11-11T06:17:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/11/imcmr-5-4</id>
-    <content type="html"><![CDATA[<ul>
-<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>内容：確率的勾配法(Stochastic Gradient Methods)で関数の最大値を求める</h3>
-
-<p>目的関数からの直接的なシミュレーションが難しい場合，関数の表面をローカルになぞって最大値を探索するという手法が使える．探索に用いる系列は以下のように表す事ができる．</p>
-
-<p>![\theta_{j+1} = \theta_j +  \varepsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_%7Bj%2B1%7D+%3D+%5Ctheta_j+%2B++%5Cvarepsilon_j+)</p>
-
-<p>これは現在のステップに摂動項![\varepsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cvarepsilon_j+)を加えて次のステップとすることを表している．つまりこれはマルコフ連鎖となるのだが，今回はそれほどマルコフ性は重要にはならない．</p>
-
-<p>概念的に目的関数の分布を山の斜面と考えるならば，現在の位置からちょっと動いて…を繰り返して山を登っていくような動きをする．ただし，単純に傾斜の上の方に登っていくのではなく，どちらかに進むかはランダムなので，たまに斜面を下ったりもする．その試行を繰り返していくことで，山の頂上を目指すような方法となっている．</p>
-
-<h4>有限差分法</h4>
-
-<p>有限差分法では，関数の勾配は</p>
-
-<p>![\nabla h(\theta_j) \approx \frac{h(\theta_j+\beta_j\zeta_j)-h(\theta_j-\beta_j\zeta_j)}{2\beta_j}\zeta_j = \frac{\Delta h(\theta_j,\beta_j\zeta_j)}{2\beta_j}\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cnabla+h%28%5Ctheta_j%29+%5Capprox+%5Cfrac%7Bh%28%5Ctheta_j%2B%5Cbeta_j%5Czeta_j%29-h%28%5Ctheta_j-%5Cbeta_j%5Czeta_j%29%7D%7B2%5Cbeta_j%7D%5Czeta_j+%3D+%5Cfrac%7B%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%7D%7B2%5Cbeta_j%7D%5Czeta_j+)</p>
-
-<p>とし，摂動項![\varepsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cvarepsilon_j+)を組み込んだ系列の更新は以のようになる．</p>
-
-<p>![\theta_{j+1} = \theta_j +  \frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j)\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_%7Bj%2B1%7D+%3D+%5Ctheta_j+%2B++%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+)</p>
-
-<h3>例 5.7 有限差分法による関数の最大化において，複数の勾配パラメータがどのように収束に影響するかを調べる</h3>
-
-<p><a href="http://yagays.github.com/blog/2012/11/06/imcmr-5-3/">例5.6</a>の続き．有限差分法を用いて以下の式を最小化することを目的とする．</p>
-
-<p>![h(x,y)=(x\sin(20y)+y\sin(20x))<sup>2\cosh(\sin(10x)x)+</sup> (x\cos(10y)-y\sin(10x))<sup>2\cosh(\cos(20y)y)</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=h%28x%2Cy%29%3D%28x%5Csin%2820y%29%2By%5Csin%2820x%29%29%3Csup%3E2%5Ccosh%28%5Csin%2810x%29x%29%2B%3C%2Fsup%3E+%28x%5Ccos%2810y%29-y%5Csin%2810x%29%29%3Csup%3E2%5Ccosh%28%5Ccos%2820y%29y%29%3C%2Fsup%3E+)</p>
-
-<p>今回は最大化ではなく最小化することが目的なので，この関数をマイナスにする必要がある．</p>
-
-<p>```r
-h &lt;- function(x){
-  -(x[1]<em>sin(20</em>x[2]) + x[2]<em>sin(20</em>x[1]))<sup>2</sup> * cosh(sin(10<em>x[1])</em>x[1]) -</p>
-
-<pre><code>(x[1]*cos(10*x[2]) - x[2]*sin(10*x[1]))^2 * cosh(cos(20*x[2])*x[2])
-</code></pre>
-
-<p>}
-```</p>
-
-<h4>アルゴリズム</h4>
-
-<ul>
-<li>勾配の値が10<sup>-5</sup> になるまで以下を繰り返す
-
-<ol>
-<li>![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)を生成する</li>
-<li>![\theta_{j} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta_%7Bj%7D+)を使って勾配![\frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j)\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+)を生成する</li>
-<li>![\theta<em>{j}+\varepsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta%3Cem%3E%7Bj%7D%2B%5Cvarepsilon_j+)を![\theta</em>{j+1} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctheta%3C%2Fem%3E%7Bj%2B1%7D+)とする</li>
-<li>![\alpha_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_j+)と![\beta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_j+)を更新する</li>
-</ol>
-</li>
-</ul>
-
-
-<p>なお，実際のソースコードでは勾配の値が発散しないように，scaleが1以上になった場合には内部でループをして値を再計算するようにしている．</p>
-
-<br />
-
-
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4274068307" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h4>![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)の生成方法と有限差分法における役割</h4>
-
-<p>さて，ここで有限差分法のポイントとなる![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)に関して，実際にどうやって値を生成するのか，そしてこの値がどういう意味を持っているかについて考えてみる．</p>
-
-<p>まずは![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)の生成方法について．本文中では<strong>「![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)は単位球![\| \zeta_j \| = 1 ](http://chart.apis.google.com/chart?cht=tx&chl=%5C%7C+%5Czeta_j+%5C%7C+%3D+1+)上に一様に分布しています」</strong>とあるだけで，コードの方を参照してみてもzeta / sqrt(t(zeta) %*% zeta)としか書かれていない．ではこれは一体何をしているのかというと，一言で言うと「球面上の一様分布から乱数を生成する」，つまり今回の場合は単位円の円周の上からある一点を取ってきて![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)の値にするということをしている．</p>
-
-<p>このような球面上の一様分布に関しては「<a href="http://www.amazon.co.jp/gp/product/4274068307/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4274068307&linkCode=as2&tag=yagays-22">Ｒによる計算機統計学</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274068307" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のP.96に詳しく書かれており，この本ではD次元の球面上の一様乱数を生成する方法についてrunif.sphere()関数を定義している．今回の場合はxとyの2次元について考えているので，「<a href="http://www.amazon.co.jp/gp/product/4274068307/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4274068307&linkCode=as2&tag=yagays-22">Ｒによる計算機統計学</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274068307" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」に倣ってrunif.sphere(1,2)とすれば，![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)と同様の値が得られる．</p>
-
-<p>```r</p>
-
-<h1>Ｒによる計算機統計学 P.87より</h1>
-
-<h1>http://personal.bgsu.edu/~mrizzo/SCR/SCRch3.R</h1>
-
-<p>runif.sphere &lt;- function(n, d) {</p>
-
-<pre><code># return a random sample uniformly distributed
-# on the unit sphere in R ^d
-M &lt;- matrix(rnorm(n*d), nrow = n, ncol = d)
-L &lt;- apply(M, MARGIN = 1,
-           FUN = function(x){sqrt(sum(x*x))})
-D &lt;- diag(1 / L)
-U &lt;- D %*% M
-U
-</code></pre>
-
-<p>}
-```</p>
-
-<p>次に，有限差分法における![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)の役割について考えてみる．</p>
-
-<p>そもそも，確率的勾配法はローカルに関数の表面をなぞるように探索して，値の大きいポイントを探す確率的なアプローチだった．概念的には，<a href="http://yagays.github.com/blog/2012/11/06/imcmr-5-3/">前回3Dプロットをした</a>ような山みたいになっている関数の上をあちこち動いて頂上を探し出すということだが，あちこち動きまわるためには，歩く「方向」と「距離」を考えなければならない．今回の有限差分法における勾配は![\varepsilon_j = \frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j)\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cvarepsilon_j+%3D+%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+)で表されていたが，その「方向」が![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)，「距離」が![\frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29+)に対応している．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-7_3.png" alt="" /></p>
-
-<p>では実際に![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)と勾配![\varepsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cvarepsilon_j+)を図示して，「方向」と「距離」の意味を確かめてみよう．以下の図は，![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)の取りうる単位円と，赤い矢印![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)，黒い矢印![\varepsilon_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cvarepsilon_j+)を示した図になっている（![j=1 ](http://chart.apis.google.com/chart?cht=tx&chl=j%3D1+)）．この図を見ると，赤い矢印で方向が示され，黒い矢印でどれくらいの距離を進むかが見て取れる．![\zeta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Czeta_j+)は乱数で生成された値なので，本書の「そのつど方向をランダムに選択する」という勾配の説明の通り，単位円の円周上からどこか一点を選択して進む方向を決めている．</p>
-
-<p>といったように，この有限差分法では関数の山の傾斜を考えて進む方向を決めるのではなく，何も考えずに動いてみるといったアプローチとなっている．ただし，距離に関しては別で，関数を使って傾斜を見つつ調整しているので，その点は注意．</p>
-
-<p><code>r
-plot(runif.sphere(1000,2), xlim=c(-2,2), ylim=c(-2,2), cex=0.1)
-arrows(0,0,grad[1],grad[2], lwd=2)             # 黒の矢印が勾配
-arrows(0,0,zeta[1],zeta[2], lwd=2, col="red")  # 赤の矢印がゼータ
-</code></p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-7_2.png" alt="" /></p>
-
-<h4>今回実験を行う4つのシナリオ</h4>
-
-<p>この有限差分法において，![\alpha_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_j+)と![\beta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_j+)の系列の更新式は任意に設定できる．今回は4つのシナリオを用意して実験を行った．それぞれのシナリオの更新式は以下の通り．</p>
-
-<ul>
-<li>シナリオ1：![1/\log(j+1) ](http://chart.apis.google.com/chart?cht=tx&chl=1%2F%5Clog%28j%2B1%29+)，![1/\log(j+1)<sup>{0.1}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=1%2F%5Clog%28j%2B1%29%3Csup%3E%7B0.1%7D%3C%2Fsup%3E+)</li>
-<li>シナリオ2：![1/100\log(j+1) ](http://chart.apis.google.com/chart?cht=tx&chl=1%2F100%5Clog%28j%2B1%29+)，![1/\log(j+1)<sup>{0.1}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=1%2F%5Clog%28j%2B1%29%3Csup%3E%7B0.1%7D%3C%2Fsup%3E+)</li>
-<li>シナリオ3：![1/(j+1) ](http://chart.apis.google.com/chart?cht=tx&chl=1%2F%28j%2B1%29+)，![1/(j+1)<sup>{0.5}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=1%2F%28j%2B1%29%3Csup%3E%7B0.5%7D%3C%2Fsup%3E+)</li>
-<li>シナリオ4：![1/(j+1) ](http://chart.apis.google.com/chart?cht=tx&chl=1%2F%28j%2B1%29+)，![1/(j+1)<sup>{0.1}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=1%2F%28j%2B1%29%3Csup%3E%7B0.1%7D%3C%2Fsup%3E+)</li>
-</ul>
-
-
-<p>(※シナリオ1と2に関しては後述の「本問題の疑問点」を参考)</p>
-
-<h4>例 5.7のソースコード</h4>
-
-<p>前置きがだいぶ長くなってしまったが，本題のソースコードおよび4つのシナリオにおける確率的勾配法の探索過程を示した図は以下のようになる．</p>
-
-<p>```r
-h &lt;- function(x){
-  -(x[1]<em>sin(20</em>x[2]) + x[2]<em>sin(20</em>x[1]))<sup>2</sup> * cosh(sin(10<em>x[1])</em>x[1]) -</p>
-
-<pre><code>(x[1]*cos(10*x[2]) - x[2]*sin(10*x[1]))^2 * cosh(cos(20*x[2])*x[2])
-</code></pre>
-
-<p>}</p>
-
-<p>start &lt;- c(0.65, 0.8)
-theta &lt;- matrix(start, ncol=2)
-dif &lt;- 1
-iter &lt;- 1
-alpha &lt;- 1
-beta &lt;- 1</p>
-
-<p>while(dif > 10<sup>-5){</sup>
-  zeta &lt;- rnorm(2)
-  zeta &lt;- zeta / sqrt(t(zeta) %<em>% zeta)
-  grad &lt;- alpha[iter]</em>zeta * (h(theta[iter,]+beta[iter]*zeta) -</p>
-
-<pre><code>h(theta[iter,]-beta[iter]*zeta)) / 2*beta[iter]
-</code></pre>
-
-<p>  scale <- sqrt(t(grad) %*% grad)
-  while(scale > 1){</p>
-
-<pre><code>zeta &lt;- rnorm(2)
-zeta &lt;- zeta / sqrt(t(zeta) %*% zeta)
-grad &lt;- alpha[iter]*zeta * (h(theta[iter,]+beta[iter]*zeta) - 
-  h(theta[iter,]-beta[iter]*zeta)) / 2*beta[iter]
-scale &lt;- sqrt(t(grad) %*% grad)
-</code></pre>
-
-<p>  }
-  theta &lt;- rbind(theta, theta[iter,]+grad)
-  dif &lt;- scale
-  iter &lt;- iter + 1</p>
-
-<h1>scenario1</h1>
-
-<p>  alpha &lt;- cbind(alpha, 1/log(iter+1))
-  beta &lt;- cbind(beta, 1/(log(iter+1))<sup>(0.1))</sup>
-}</p>
-
-<p>hcur &lt;- h(start)
-hval &lt;- h(start)
-x &lt;- seq(-1,1,le=435)
-y &lt;- seq(-1,1,le=435)
-z &lt;- matrix(0, nrow=435, ncol=435)
-for (i in 1:435){
-  for (j in 1:435){</p>
-
-<pre><code>z[i,j] &lt;- h(c(x[i], y[j]))
-</code></pre>
-
-<p>  }
-}</p>
-
-<p>image(x, y, z, col=terrain.colors(150))
-lines(theta, lwd=2)
-points(theta[1,1], theta[1,2], col="gold", pch=19)
-title(main="scenario 1")</p>
-
-<p>```</p>
-
-<p>シナリオ2,3,4の場合は，whileループの最後の![\alpha_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_j+)と![\beta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_j+)の更新式を以下の通りにする．</p>
-
-<p>```r</p>
-
-<h1>scenario2</h1>
-
-<p>  alpha &lt;- cbind(alpha, 1/(100*log(iter+1)))
-  beta &lt;- cbind(beta, 1/(log(iter+1))<sup>(0.1))</sup></p>
-
-<h1>scenario3</h1>
-
-<p>  alpha &lt;- cbind(alpha, 1/(iter+1))
-  beta &lt;- cbind(beta, 1/sqrt(iter+1))</p>
-
-<h1>scenario4</h1>
-
-<p>  alpha &lt;- cbind(alpha, 1/(iter+1))
-  beta &lt;- cbind(beta, 1/(iter+1)<sup>(0.1))</sup>
-```</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-7_1.png" alt="" /></p>
-
-<p>上の図の解釈だが，この4つのシナリオの場合において</p>
-
-<ul>
-<li>シナリオ1では，動きまわる距離が大きすぎて（![\alpha_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_j+)が収束するのに時間がかかって）なかなかアルゴリズムが停止しない</li>
-<li>シナリオ2では，動きまわる距離が小さすぎて（![\alpha_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_j+)がすぐ収束してしまって）ローカルミニマムにはまっている</li>
-<li>シナリオ3では，動きまわる距離はシナリオ2より改善しているが，最大値を見つけられていない</li>
-<li>シナリオ4では，上手い具合に最大値を見つけることができている</li>
-</ul>
-
-
-<p>ことが分かる．</p>
-
-<p>なお，この解釈は本書（P.156）に書かれているものとは多少異なっているということを注意していただきたい．それに関しては次の疑問点のところで述べる．</p>
-
-<h3>本問題の疑問点</h3>
-
-<p>さて，この問題を素直に解いてもP.157の図5.7のようにはいかない．色々と試してみた結果，どうやら<strong>本書におけるシナリオ1と2の![\beta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_j+)において，分母にかかっている0.1乗の表記がおかしい気がする．</strong>この0.1乗がlogの中の括弧にかかっていると考えて0.1*log()としてコードを組むと，値が発散しすぎてなかなか収束しなくなる．ということで，ここでは以下のように式を解釈して問題を解いた．正直なところ，これが正しいのかよくわかっていない．</p>
-
-<ul>
-<li>シナリオ1と2の![\beta_j ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbeta_j+)：![\frac{1}{\log(j+1)<sup>{0.1}}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Clog%28j%2B1%29%3Csup%3E%7B0.1%7D%7D%3C%2Fsup%3E+)→![\frac{1}{(\log(j+1))<sup>{0.1}}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%28%5Clog%28j%2B1%29%29%3Csup%3E%7B0.1%7D%7D%3C%2Fsup%3E+)</li>
-</ul>
-
-
-<p>これにともなって，シナリオの図示や解釈にも少し違いが出てきている．そのため，今回は本書の解説（P.156）からは少し外れることになったが，自分がスクリプトを回して得た結果を解釈に用いた．</p>
 ]]></content>
   </entry>
   
