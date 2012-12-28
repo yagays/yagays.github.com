@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>「パターン認識と機械学習の学習」購入 - Wolfeyes Bioinformatics beta</title>
+  <title>SOAPdenovo2がGPLv3を宣言しているにも関わらずソースコードを公開していない件について - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="http://prml.in/
-https://github.com/herumi/prml 「パターン認識と機械学習 上」や「パターン認識と機械学習 下 (ベイズ理論による統計的予測)
-」などで知られるPRMLの副読本を入手．中身は殆ど公開されているものと同じということだが， &hellip;">
+  <meta name="description" content="つい先日SOAPdenovo2というゲノムアセンブリのツールに関する論文が公開されたのだが，このツールのライセンスに関して問題が出ているようだ．というもの，SOAPdenovo2の論文内で宣言されているライセンスがGNU General Public License version 3.0 ( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ https://github.com/herumi/prml 「パターン認識と機械学習 上」や「
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.com/blog/2012/07/07/review-prml-learning">
+  <link rel="canonical" href="http://yagays.github.com/blog/2012/12/28/soapdenovo2-gplv3">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -114,7 +112,7 @@ https://github.com/herumi/prml 「パターン認識と機械学習 上」や「
   
   <header class="page-header">
     
-      <h1 class="entry-title">「パターン認識と機械学習の学習」購入</h1>
+      <h1 class="entry-title">SOAPdenovo2がGPLv3を宣言しているにも関わらずソースコードを公開していない件について</h1>
     
     
       <p class="meta">
@@ -130,23 +128,29 @@ https://github.com/herumi/prml 「パターン認識と機械学習 上」や「
   
 
 
-<time datetime="2012-07-07T08:43:00+09:00" pubdate data-updated="true">Jul 7<span>th</span>, 2012</time>
+<time datetime="2012-12-28T14:48:00+09:00" pubdate data-updated="true">Dec 28<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p><img src="http://dl.dropbox.com/u/142306/b/prml_learning.png" alt="" /></p>
+<div class="entry-content"><p>つい先日<a href="http://www.gigasciencejournal.com/content/1/1/18/abstract">SOAPdenovo2というゲノムアセンブリのツールに関する論文</a>が公開されたのだが，このツールのライセンスに関して問題が出ているようだ．というもの，SOAPdenovo2の論文内で宣言されているライセンスがGNU General Public License version 3.0 (GPLv3)にも関わらず，ツールの配布はバイナリ形式に限定されており，そのソースコードが公開されていない状態になっているからだ．SOAPdenovo2の公開とライセンスに関する問題は，以下のBlogで詳しく取り上げられている．</p>
 
 <ul>
-<li><a href="http://prml.in/">http://prml.in/</a></li>
-<li><a href="https://github.com/herumi/prml">https://github.com/herumi/prml</a></li>
+<li><a href="http://dskernel.blogspot.ca/2012/12/the-source-code-of-soapdenovo2-sits-in.html">The Bioinformatics Adventure: The source code of SOAPdenovo2 sits in the shadows</a></li>
+<li><a href="http://www.homolog.us/blogs/2012/12/27/should-soapdenovo2-source-code-be-made-public/">Should SOAPdenovo2 Source Code be Made Public? « Homologus</a></li>
 </ul>
 
 
-<p>「<a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22">パターン認識と機械学習 上</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」や「<a href="http://www.amazon.co.jp/gp/product/4621061240/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061240&linkCode=as2&tag=yagays-22">パターン認識と機械学習 下 (ベイズ理論による統計的予測)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061240" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-」などで知られるPRMLの副読本を入手．中身は殆ど公開されているものと同じということだが，書きおろしが少しあるということと，あとは記念ということで購入した．既に公開されているpdfについては印刷して至る所にメモを書きまくっているのだが，この本は大事に取っておこうと思う．</p>
+<p>SOAPdenovo2は，<a href="http://soap.genomics.org.cn/soapdenovo.html">SOAPdenovo</a>というアセンブリツールの改良版として開発が進められてきたソフトフェアである．以前からバイナリ形式での配布は行われており，アップデートも度々行われてきたという経緯がある．そして今回SOAPdenovo2の論文がアクセプトされて公開されたわけだが，それでもなおソースコードが未だに手に入らない状態となっている．</p>
+
+<p>この問題に関して，上記Blogでリンクが貼られている<a href="http://www.gigasciencejournal.com/imedia/1713065231860845_comment.pdf">論文のReviewer&#8217;s report</a>に書かれている通り，論文著者は「論文がアクセプトされたらすぐにでもソースコードを公開する予定だ」と言っていたようだが，実際はそうならなかったらしい．これに対し論文誌の中の人が<a href="http://dskernel.blogspot.jp/2012/12/the-source-code-of-soapdenovo2-sits-in.html?showComment=1356635323574#c1974728922130779068">コメント</a>しており，すぐにでもソースコードを公開させるとのことだが，現在のところ(2012/12/28 14:00)，SOAPdenovo2のソースコードは公開されていない．</p>
+
+<ul>
+<li><a href="http://sourceforge.net/projects/soapdenovo2/files/SOAPdenovo2/src/revision223/">http://sourceforge.net/projects/soapdenovo2/files/SOAPdenovo2/src/revision223/</a></li>
+</ul>
+
 </div>
 
 
@@ -169,12 +173,12 @@ https://github.com/herumi/prml 「パターン認識と機械学習 上」や「
   
 
 
-<time datetime="2012-07-07T08:43:00+09:00" pubdate data-updated="true">Jul 7<span>th</span>, 2012</time>
+<time datetime="2012-12-28T14:48:00+09:00" pubdate data-updated="true">Dec 28<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/book/'>Book</a>, <a class='category' href='/blog/categories/prml/'>PRML</a>
+    <a class='category' href='/blog/categories/soapdenovo2/'>SOAPdenovo2</a>
   
 </span>
 
@@ -182,9 +186,9 @@ https://github.com/herumi/prml 「パターン認識と機械学習 上」や「
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/07/07/review-prml-learning/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/12/28/soapdenovo2-gplv3/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/07/07/review-prml-learning/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/07/07/review-prml-learning/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/12/28/soapdenovo2-gplv3/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/12/28/soapdenovo2-gplv3/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -205,14 +209,10 @@ https://github.com/herumi/prml 「パターン認識と機械学習 上」や「
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/07/03/review-numbers/" title="Previous Post:
-        「数学で犯罪を解決する」読了">&laquo; 「数学で犯罪を解決する」読了</a></li>
+        href="/blog/2012/12/23/game-review-2012/" title="Previous Post:
+        2012年に遊んだゲームのレビューまとめ">&laquo; 2012年に遊んだゲームのレビューまとめ</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/07/10/review-problems-of-biology/"
-        title="Next Post: 「生物学のすすめ」読了">「生物学のすすめ」読了
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -357,8 +357,8 @@ https://github.com/herumi/prml 「パターン認識と機械学習 上」や「
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.com/blog/2012/07/07/review-prml-learning/';
-        var disqus_url = 'http://yagays.github.com/blog/2012/07/07/review-prml-learning/';
+        var disqus_identifier = 'http://yagays.github.com/blog/2012/12/28/soapdenovo2-gplv3/';
+        var disqus_url = 'http://yagays.github.com/blog/2012/12/28/soapdenovo2-gplv3/';
         var disqus_script = 'embed.js';
       
     (function () {

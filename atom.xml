@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-12-28T00:20:22+09:00</updated>
+  <updated>2012-12-28T14:53:19+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[SOAPdenovo2がGPLv3を宣言しているにも関わらずソースコードを公開していない件について]]></title>
+    <link href="http://yagays.github.com/blog/2012/12/28/soapdenovo2-gplv3/"/>
+    <updated>2012-12-28T14:48:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2012/12/28/soapdenovo2-gplv3</id>
+    <content type="html"><![CDATA[<p>つい先日<a href="http://www.gigasciencejournal.com/content/1/1/18/abstract">SOAPdenovo2というゲノムアセンブリのツールに関する論文</a>が公開されたのだが，このツールのライセンスに関して問題が出ているようだ．というもの，SOAPdenovo2の論文内で宣言されているライセンスがGNU General Public License version 3.0 (GPLv3)にも関わらず，ツールの配布はバイナリ形式に限定されており，そのソースコードが公開されていない状態になっているからだ．SOAPdenovo2の公開とライセンスに関する問題は，以下のBlogで詳しく取り上げられている．</p>
+
+<ul>
+<li><a href="http://dskernel.blogspot.ca/2012/12/the-source-code-of-soapdenovo2-sits-in.html">The Bioinformatics Adventure: The source code of SOAPdenovo2 sits in the shadows</a></li>
+<li><a href="http://www.homolog.us/blogs/2012/12/27/should-soapdenovo2-source-code-be-made-public/">Should SOAPdenovo2 Source Code be Made Public? « Homologus</a></li>
+</ul>
+
+
+<p>SOAPdenovo2は，<a href="http://soap.genomics.org.cn/soapdenovo.html">SOAPdenovo</a>というアセンブリツールの改良版として開発が進められてきたソフトフェアである．以前からバイナリ形式での配布は行われており，アップデートも度々行われてきたという経緯がある．そして今回SOAPdenovo2の論文がアクセプトされて公開されたわけだが，それでもなおソースコードが未だに手に入らない状態となっている．</p>
+
+<p>この問題に関して，上記Blogでリンクが貼られている<a href="http://www.gigasciencejournal.com/imedia/1713065231860845_comment.pdf">論文のReviewer&#8217;s report</a>に書かれている通り，論文著者は「論文がアクセプトされたらすぐにでもソースコードを公開する予定だ」と言っていたようだが，実際はそうならなかったらしい．これに対し論文誌の中の人が<a href="http://dskernel.blogspot.jp/2012/12/the-source-code-of-soapdenovo2-sits-in.html?showComment=1356635323574#c1974728922130779068">コメント</a>しており，すぐにでもソースコードを公開させるとのことだが，現在のところ(2012/12/28 14:00)，SOAPdenovo2のソースコードは公開されていない．</p>
+
+<ul>
+<li><a href="http://sourceforge.net/projects/soapdenovo2/files/SOAPdenovo2/src/revision223/">http://sourceforge.net/projects/soapdenovo2/files/SOAPdenovo2/src/revision223/</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2012年に遊んだゲームのレビューまとめ]]></title>
@@ -1263,219 +1287,6 @@
 <p>本書はタイトルの通り，原発事故後の日本に暮らす私達が放射線とどう付き合っていけばよいかについて，科学的な知見を紹介する内容となっている．本の中で説明されるのは，放射線の基礎的な性質や放射線が生物にどのように影響を与えるのかといった仕組み，そして国際的に認められた機関が放射線と人間の関係においてどのような基準を作っているのかといった，あくまで判断材料としての基礎的な情報だ．そのため，今の生活が安心なのかそれとも危険なのかといった結論は，直接的には書かれていない．あくまで判断をするのは私達自身だという前提のもとで，できるだけ専門性は排除して初学者にも分かりやすい形で本書は構成されている．</p>
 
 <p>本書を書かれた田崎晴明氏は，個人的には統計力学の先生というイメージが強い．分野が違うのに何故と最初は思っていたのだが，本書を読むにつれ，田崎氏の科学者として正しい情報を普及させたいという真摯な態度が伝わってきて，その理由が納得できた．非専門家でありながらも，放射線の説明は見事としか言いようがない．問題の本質をしっかりと捉え，噛み砕いた形でありながらも正確さを損なっていない．特に，放射線は化学反応とは別の次元の物理現象なのだという前提は，まさに放射線を取り巻く全ての問題のを理解する上で知っておくべき一番重要なことだろう．他にも，不正確な情報の中からいかに上限を見積もって判断材料にするかといったことも述べられており，科学的な考え方のエッセンスが詰まっている．そういった面でも非常に参考になる本であり，啓蒙書としての見本となるような文章だと感じた．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：6章 ランダム・ウォーク・メトロポリス・ヘイスティング・アルゴリズム]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/27/imcmr-6-4/"/>
-    <updated>2012-11-27T06:18:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/27/imcmr-6-4</id>
-    <content type="html"><![CDATA[<ul>
-<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>例 6.4 ランダム・ウォークのパラメータ設定によるサンプリングへの影響を，正規分布の乱数生成を例に確かめる</h3>
-
-<p>摂動が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cvarepsilon_t+%5Csim+%5Cmathcal%7BU%7D_%7B%5B-%5Cdelta%2C%5Cdelta%5D%7D+" alt="\varepsilon_t \sim \mathcal{U}_{[-\delta,\delta]} " />となるようなランダム・ウォークにおいて，正規分布<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BN%7D%280%2C1%29+" alt="\mathcal{N}(0,1) " />をサンプリングするときのメトロポリス・ヘイスティング・アルゴリズムの受理確率は</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho%28x%5E%7B%28t%29%7D%2Cy_t%29+%3D+%5Cmin+%5Cbig%5B1%2C+%5Cexp%5C%7B%5Cfrac%7Bx%5E%7B%28t%292%7D-y_t%5E2%7D%7B2%7D+%5C%7D+%5Cbig%5D+" alt="\rho(x^{(t)},y_t) = \min \big[1, \exp{\frac{x^{(t)2}-y_t^2}{2} } \big] " /></p>
-
-<p>で表される．</p>
-
-<p>今回は，一様候補のパラメータを<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta+%3D+0.1%2C+1%2C+10+" alt="\delta = 0.1, 1, 10 " />と変更して，メトロポリス・ヘイスティング・アルゴリズムによるローカルな探索がどういう挙動を示すのかを調べる．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>par<span class="p">(</span>mfcol<span class="o">=</span>c<span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
-</span><span class='line'><span class="kr">for</span><span class="p">(</span>d in c<span class="p">(</span><span class="m">0.1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">10</span><span class="p">)){</span>
-</span><span class='line'>  Niter <span class="o">&lt;-</span> <span class="m">2500</span>
-</span><span class='line'>  x <span class="o">&lt;-</span> <span class="m">0</span>
-</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>i in <span class="m">2</span>:Niter<span class="p">){</span>
-</span><span class='line'>    y <span class="o">&lt;-</span> x<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span> <span class="o">+</span> runif<span class="p">(</span><span class="m">1</span><span class="p">,</span> min<span class="o">=-</span>d<span class="p">,</span> max<span class="o">=</span>d<span class="p">)</span>
-</span><span class='line'>    <span class="kr">if</span> <span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="o">&lt;</span> min<span class="p">(</span><span class="m">1</span><span class="p">,</span> exp<span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span>y<span class="o">^</span><span class="m">2</span> <span class="o">-</span> x<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="p">))</span> <span class="p">)){</span>
-</span><span class='line'>      x<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> y
-</span><span class='line'>    <span class="p">}</span>else<span class="p">{</span>
-</span><span class='line'>      x<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> x<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  plot<span class="p">(</span><span class="m">1</span>:Niter<span class="p">,</span> x<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;d = &quot;</span><span class="p">,</span>d<span class="p">))</span>
-</span><span class='line'>  hist<span class="p">(</span>x<span class="p">,</span> nclass<span class="o">=</span><span class="m">150</span><span class="p">,</span> freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">-4</span><span class="p">,</span><span class="m">4</span><span class="p">),</span> main<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>  curve<span class="p">(</span>dnorm<span class="p">(</span>x<span class="p">),</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
-</span><span class='line'>  acf<span class="p">(</span>x<span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>それぞれのパラメータにおける系列の変動，分布，自己相関プロットを示したのが以下の図である．それぞれのサンプリング結果を見比べてみると，</p>
-
-<ul>
-<li>一様候補のパラメータが小さい場合（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta+%3D+0.1+" alt="\delta = 0.1 " />）
-
-<ul>
-<li>ランダム・ウォークで移動する幅が狭い</li>
-<li>分布が偏っている</li>
-<li>自己相関が高い（前の値からあまり変わらない）</li>
-</ul>
-</li>
-<li>一様候補のパラメータが大きい場合（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta+%3D+10+" alt="\delta = 10 " />）
-
-<ul>
-<li>ランダム・ウォークで移動する幅が大きい</li>
-<li>これも同様に分布が安定しない</li>
-</ul>
-</li>
-</ul>
-
-
-<p>という結果となり，ランダム・ウォーク・メトロポリス・ヘイスティング・アルゴリズムにおいては摂動（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cvarepsilon_t+" alt="\varepsilon_t " />）のパラメータ設定が重要であることがわかる．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-4.png" alt="" /></p>
-
-<h3>例 6.10 ランダム・ウォーク・メトロポリス・ヘイスティング・アルゴリズムの受理率を調べる</h3>
-
-<p>メトロポリス・ヘイスティング・アルゴリズムにおけるアルゴリズム効率化の調整は，本書の2章で扱った受理・棄却アルゴリズムの時の最大受理率に基づいた調整の場合とは異なる．まず，上の例 6.4で示した正規分布からのサンプリングにおける受理率を見てみる．パラメータごとの受理率は以下のようになった（Rのコードは省略）．</p>
-
-<ul>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta+%3D+0.1+" alt="\delta = 0.1 " />：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r+%3D+0.9792+" alt="r = 0.9792 " /></li>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta+%3D+1+" alt="\delta = 1 " />：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r+%3D+0.8132+" alt="r = 0.8132 " /></li>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta+%3D+10+" alt="\delta = 10 " />：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r+%3D+0.1716+" alt="r = 0.1716 " /></li>
-</ul>
-
-
-<p>この結果から，受理率が高ければサンプリングの結果も良くなるわけではないことがわかる．このことから，ランダム・ウォーク・メトロポリス・ヘイスティング・アルゴリズムにおいては，受理率を高めるようにアルゴリズムを調節してはいけないと判断できる．このアルゴリズムにおいて，どのような受理率を取ればよいかといった疑問に関しては，以下の練習問題6.14のc.で詳しく見ていく．</p>
-
-<br />
-
-
-<h3>練習問題 6.14 ランダム・ウォーク候補がサンプリング結果に与える影響について，複数の候補分布を用いてより詳細に調べる</h3>
-
-<h4>a. P.205の図6.7を再現する</h4>
-
-<p>図6.7の再現と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cdelta+" alt="\delta " />の解釈は，上の例6.4の解答を参考．</p>
-
-<h4>b. コーシー候補とラプラス候補を検討する</h4>
-
-<p>今度は，一様分布の代わりにコーシー分布やラプラス分布を候補分布として使った場合の，ランダム・ウォーク・メトロポリス・ヘイスティング・アルゴリズムの挙動を調べる．</p>
-
-<h4>コーシー候補</h4>
-
-<p>ランダム・ウォーク候補は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cvarepsilon_t+%5Csim+%5Cmathcal%7BC%7D%28x_0%2C%5Cgamma%29+" alt="\varepsilon_t \sim \mathcal{C}(x_0,\gamma) " />とし，コーシー分布のパラメータは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x_0+%3D+0+" alt="x_0 = 0 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cgamma+%3D+0.01%2C%5C+1%2C%5C+10+" alt="\gamma = 0.01,\ 1,\ 10 " />を考える．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1"># Cauchy candidate</span>
-</span><span class='line'>par<span class="p">(</span>mfcol<span class="o">=</span>c<span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
-</span><span class='line'><span class="kr">for</span><span class="p">(</span>g in c<span class="p">(</span><span class="m">0.01</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">10</span><span class="p">)){</span>
-</span><span class='line'>  Niter <span class="o">&lt;-</span> <span class="m">2500</span>
-</span><span class='line'>  x <span class="o">&lt;-</span> <span class="m">0</span>
-</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>i in <span class="m">2</span>:Niter<span class="p">){</span>
-</span><span class='line'>    y <span class="o">&lt;-</span> x<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span> <span class="o">+</span> rcauchy<span class="p">(</span><span class="m">1</span><span class="p">,</span> location<span class="o">=</span><span class="m">0</span><span class="p">,</span> scale<span class="o">=</span>g<span class="p">)</span>
-</span><span class='line'>    <span class="kr">if</span> <span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="o">&lt;</span> min<span class="p">(</span><span class="m">1</span><span class="p">,</span> exp<span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span>y<span class="o">^</span><span class="m">2</span> <span class="o">-</span> x<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="p">))</span> <span class="p">)){</span>
-</span><span class='line'>      x<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> y
-</span><span class='line'>    <span class="p">}</span>else<span class="p">{</span>
-</span><span class='line'>      x<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> x<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  plot<span class="p">(</span><span class="m">1</span>:Niter<span class="p">,</span> x<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;Cauchy candidate,&quot;</span><span class="p">,</span><span class="s">&quot;gamma=&quot;</span><span class="p">,</span>g<span class="p">))</span>
-</span><span class='line'>  hist<span class="p">(</span>x<span class="p">,</span> nclass<span class="o">=</span><span class="m">150</span><span class="p">,</span> freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">-4</span><span class="p">,</span><span class="m">4</span><span class="p">),</span> main<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>  curve<span class="p">(</span>dnorm<span class="p">(</span>x<span class="p">),</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
-</span><span class='line'>  acf<span class="p">(</span>x<span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-14_1.png" alt="" /></p>
-
-<h4>ラプラス候補</h4>
-
-<p>ランダム・ウォーク候補は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cvarepsilon_t+%5Csim+%5Cmathcal%7BL%7D%28%5Cmu%2Cb%29+" alt="\varepsilon_t \sim \mathcal{L}(\mu,b) " />とし，ラプラス分布のパラメータは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu%3D0+" alt="\mu=0 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=b+%3D+0.1%2C%5C+1%2C%5C+10+" alt="b = 0.1,\ 1,\ 10 " />を考える．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1"># Laplace candidate</span>
-</span><span class='line'>par<span class="p">(</span>mfcol<span class="o">=</span>c<span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
-</span><span class='line'><span class="kr">for</span><span class="p">(</span>a in c<span class="p">(</span><span class="m">0.1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">10</span><span class="p">)){</span>
-</span><span class='line'>  Niter <span class="o">&lt;-</span> <span class="m">2500</span>
-</span><span class='line'>  x <span class="o">&lt;-</span> <span class="m">0</span>
-</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>i in <span class="m">2</span>:Niter<span class="p">){</span>
-</span><span class='line'>    y <span class="o">&lt;-</span> x<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span> <span class="o">+</span> ifelse<span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">&gt;</span><span class="m">0.5</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">-1</span><span class="p">)</span><span class="o">*</span>rexp<span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">/</span>a
-</span><span class='line'>    <span class="kr">if</span> <span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="o">&lt;</span> min<span class="p">(</span><span class="m">1</span><span class="p">,</span> exp<span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span>y<span class="o">^</span><span class="m">2</span> <span class="o">-</span> x<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="p">))</span> <span class="p">)){</span>
-</span><span class='line'>      x<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> y
-</span><span class='line'>    <span class="p">}</span>else<span class="p">{</span>
-</span><span class='line'>      x<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> x<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  plot<span class="p">(</span><span class="m">1</span>:Niter<span class="p">,</span> x<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;Laplace candidate,&quot;</span><span class="p">,</span><span class="s">&quot;b=&quot;</span><span class="p">,</span>a<span class="p">))</span>
-</span><span class='line'>  hist<span class="p">(</span>x<span class="p">,</span> nclass<span class="o">=</span><span class="m">150</span><span class="p">,</span> freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">-4</span><span class="p">,</span><span class="m">4</span><span class="p">),</span> main<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>  curve<span class="p">(</span>dnorm<span class="p">(</span>x<span class="p">),</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
-</span><span class='line'>  acf<span class="p">(</span>x<span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-14_2.png" alt="" /></p>
-
-<p>以上の結果から，コーシー候補やラプラス候補においても，ランダム・ウォークの値の取り方によって適切なサンプリングができるかどうかが決まってくることがわかる．また，どちらも自己相関が低い値の時にサンプリング結果が一番良いことが見て取れる．これは例6.4の一様候補の場合とは違う結果となったが，恐らくコーシー分布やラプラス分布はともに一峰型の正規分布のような形であることが効いていて，ランダム・ウォークの移動が適度に調節されているからだろう．</p>
-
-<h4>c. パラメータの調節により受理確率を0.25に近づける</h4>
-
-<p>さて，例6.10で述べたように，ランダム・ウォークを使ったメトロポリス・ヘイスティング・アルゴリズムにおいては，受理率の最大化がアルゴリズムの効率化に繋がらないことがわかった．受理率はどれくらいを目安にすればよいかという疑問に関しては，本書では「高次元では0.25，低次元では0.5程度」というRoberts et al.(2007)の提案を引用している．そこで，先ほどの3つのランダム・ウォーク候補について受理率を0.25に近づけるために，パラメータの値を0から10まで0.1刻みで設定したときの，一様候補・コーシー候補・ラプラス候補を用いたアルゴリズムにおける受理率の変化を以下の図でプロットした．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-14_3.png" alt="" /></p>
-
-<p>赤の点線は受理率0.25を表している．この図を見ると，一様候補とコーシー候補はパラメータの値が大きくなるにつれて受理率も小さくなり，逆にラプラス候補の場合ではパラメータの値が大きくなるにつれて受理率は大きくなることがわかる．いずれの場合においても，受理率を0.25に近づけることは可能である．</p>
 ]]></content>
   </entry>
   
