@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2012-12-29T13:43:45+09:00</updated>
+  <updated>2013-01-01T23:31:35+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -14,11 +14,47 @@
 
   
   <entry>
+    <title type="html"><![CDATA[2012年の締めくくりとして日頃お世話になった方に本を贈った]]></title>
+    <link href="http://yagays.github.com/blog/2013/01/01/2013-new-year/"/>
+    <updated>2013-01-01T22:47:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2013/01/01/2013-new-year</id>
+    <content type="html"><![CDATA[<p>あけましておめでとうございます．今年もyag_aysならびにWolfeyes Bioinformatics Betaをよろしくお願いします．</p>
+
+<p>さて，前の記事でも書いたように2012年は色んな本を読んだということで，ただ自分のためだけに読むのは面白くないと思い，日頃お世話になった方などに本を贈ろうと考えたのが昨年の12月25日前後．その日から年越しまでに忘年会が1つと京都からの来客が1つあるということで，そこで会う方に本をプレゼントするべく色々検討を重ねた結果，以下の本を贈ることとなった．</p>
+
+<ul>
+<li><strong>「なかのとおるの生命科学者の伝記を読む」</strong>仲野徹（<a href="http://yagays.github.com/blog/2012/08/31/review-biography/">書評</a>）</li>
+<li><strong>「バースト! 人間行動を支配するパターン」</strong>アルバート=ラズロ・バラバシ（<a href="http://yagays.github.com/blog/2012/08/07/review-bursts/">書評</a>）</li>
+<li><strong>「アナタはなぜチェックリストを使わないのか？」</strong>アトゥール・ガワンデ（<a href="http://yagays.github.com/blog/2012/12/10/review-checklist-manifesto/">書評</a>）</li>
+<li><strong>「竜の学校は山の上 九井諒子作品集」「九井諒子作品集 竜のかわいい七つの子」</strong>九井諒子</li>
+</ul>
+
+
+<p>選考の際には，まず第一に私が読んで面白かったと感じた本であること，そして出版が2011年以降のなるべく新しい本であることという制約を設けた．渡す相手のプロフィールなどを考慮に入れて，相手に読んでもらいたい，相手に喜んでもらえるような本を選んだので，個人的なランキングとはまた違ったラインナップとなっている．自分のひとりよがりになっていないか心配であるが，取り敢えず渡した時には喜んでもらえたようで良かった．その場での話のタネにもなったし，初めての試みとしては成功したのではないかと思うのだが，果たして&#8230;．</p>
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4780908485" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=414081554X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4863912803" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4781605451" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4047284084" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[2012年の読書を振り返って]]></title>
     <link href="http://yagays.github.com/blog/2012/12/29/2012-review/"/>
     <updated>2012-12-29T12:24:00+09:00</updated>
     <id>http://yagays.github.com/blog/2012/12/29/2012-review</id>
-    <content type="html"><![CDATA[<p>今年は意識的に本を読んだ1年だった．そして本Blogに書評も書いてきた．<strong>今年読んだ本は約80冊，書いた書評は約60記事</strong>ほどになり，よくここまで来たなと，登ってきた山道を見下ろすような気持ちだ．その年を振り返るにあたり，本との向き合い方に関して多少なりとも考えるところがあったので，今年最後のエントリで今までに考えてきたことを纏めてみようと思う．</p>
+    <content type="html"><![CDATA[<p>今年は意識的に本を読んだ1年だった．そしてこのBlogに書評も書いてきた．<strong>今年読んだ本は約80冊，書いた書評は約60記事</strong>ほどになり，よくここまで来たなと，登ってきた山道を見下ろすような気持ちだ．その年を振り返るにあたり，本との向き合い方に関して多少なりとも考えるところがあったので，今年最後のエントリで今までに考えてきたことを纏めてみようと思う．</p>
 
 <h3>今年と向き合うにあたって</h3>
 
@@ -30,7 +66,7 @@
 
 <p>さて，今年の総括はこの辺にして，来年2013年もこのような感じで読書を続けていこうと思う．来年は色々と生活が変わる予定なので，今よりはペースは落ちるかもしれないが，それでもコツコツとやっていければと思う．あとはもう少し読書のスピードを高めるだとか，文章を書く効率を良くするだとかして，クオリティはそのままに自分のスタイルを変えることなく続けられたらと思う．</p>
 
-<p>今年2012年，本Blogを読んで下さった方，コメントやリンクをしてくださった皆様，本当にありがとうございました．来年もよろしくお願いいたします．</p>
+<p>今年2012年，このBlogを読んで下さった方，コメントやリンクをしてくださった皆様，本当にありがとうございました．来年もよろしくお願いいたします．</p>
 
 <p>ちなみに，冬休みの課題図書はもう購入してあるので，あとはひたすらに読むのみ&#8230;．</p>
 
@@ -1289,22 +1325,6 @@
 </span><span class='line'><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="s">&quot;temp: 40 =&gt; mean= 0.9895 , S.D.= 0.0248&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「Rによる医療統計学」はRの使い方と統計解析の基礎が学べる良書（ただし入手困難）]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/29/review-introductory-statistics-with-r/"/>
-    <updated>2012-11-29T06:18:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/29/review-introductory-statistics-with-r</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621078119" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>一般化線形モデルやロジスティックモデルなどの基本的な線形回帰を復習するために，久しぶりに本書を引っ張りだしてきてひと通り読み返した．自分としては理論や基本的な部分はある程度抑えているつもりだったけれども，検定であったり上手く回帰をするためのデータの条件であったりといった細かな部分に関しては，まだまだ不勉強なところが多い．とにかくデータに対して回帰をかけてこれで良しみたいな部分があったので，そういった部分を補うという意味でも良い復習になった．最近はMCMCにもっぱら専念しているが，基礎であったり古典の部分もしっかり抑えておかなければ…．</p>
-
-<p>タイトルに「医療統計学」と難しそうな名前が付いている本書だが，原書のタイトルが&#8221;Introductory statistics with R&#8221;であるように，実質的には統計解析ソフトRの入門書である．例題で扱う題材として医療統計のデータが使われているだけで，内容自体に医療分野の専門性は無い．本書前半では，基本的なRの使い方とともに統計解析の基礎が説明され，後半になると，線形回帰や重回帰分析，ロジスティック回帰，生存分析などの具体的な解析手法が紹介される．全体を通して，サンプルデータを用いた豊富な解析実例とRのコード例がセットになっているため，必要ならば解析を再現することも可能である．そのため，Rを勉強するのも良し，解析手法を勉強するも良しと，初心者から中級者にかけての読者向けの非常にバランスの取れた構成となっている．また，理論よりも実戦向きの内容となっており，検定方法やモデル選択の比重が大きいのが本書の特徴でもある．そういえば，私がRを触り始めた頃は「<a href="http://www.amazon.co.jp/gp/product/4274067831/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4274067831&linkCode=as2&tag=yagays-22">The R Tips―データ解析環境Rの基本技・グラフィックス活用集</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274067831" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」がまさにバイブルといった感じだったが，プログラミングとしてのRの解説がメインで統計解析の流れを説明した具体例は少なく，実用的な部分は本書をよく参照していた記憶がある．</p>
-
-<p>ということで本書はR本の中でも結構オススメできる部類なのだが，どうやら<a href="http://www.amazon.co.jp/gp/product/4621078119/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621078119&linkCode=as2&tag=yagays-22">Amazon</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621078119" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />や<a href="http://pub.maruzen.co.jp/book_magazine/book_data/search/9784621078112.html">丸善の公式ページ</a>，<a href="http://www.junkudo.co.jp/detail.jsp?ISBN=9784621078112">丸善&amp;ジュンク堂のネットストア</a>などの主だったネット書店で品切れが相次いでいるようだ．ともなると，本書を手に入れるにはAmazonのマーケットプレイスで高い値段で買うか，大きな書店で売れ残っている本を見つけるかするしか無さそうだ．まあ今となってはRと統計に関する書籍は山ほど出版されているので，本書がこれから増刷などが掛かることは難しかもしれないが，このまま絶版になっていくには実に惜しい本だと思う．</p>
 ]]></content>
   </entry>
   
