@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2013-01-05T14:01:49+09:00</updated>
+  <updated>2013-01-06T04:17:44+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「20歳の自分に受けさせたい文章講義」読了]]></title>
+    <link href="http://yagays.github.com/blog/2013/01/06/review-koga-writing-techniques/"/>
+    <updated>2013-01-06T04:10:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2013/01/06/review-koga-writing-techniques</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4061385100" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>本書は，フリーライターの古賀史健氏による文章を書く技術を解説した実践的な参考書である．本書の冒頭では，</p>
+
+<blockquote><p>「話せるのに書けない！」を解消すること</p></blockquote>
+
+<p>を目標として，思い通りに文章を書くためには，頭の中の漠然としたイメージを現実の文章として「翻訳」することが大切だということが語られる．ここで言う翻訳には，思考の整理と文章表現の2つのステップが含まれる．まず第一に，頭の中でごちゃごちゃと思い浮かべている乱雑な状態を整理すること，そして第二に，整理した思考を文章として再構築することだ．本書ではこの一連のプロセスを，翻訳と喩えている．文章が書けないという人はこの翻訳が苦手な人であって，そもそも書くという行為を，単に気持ちや思いを素直に表現するといった意味でそもそも誤解しているのだという．文章を書く技術を身につけるためには，その間違った認識を改め，上で述べたような翻訳するという概念を意識する必要がある．そして，この翻訳には様々な技法が存在する．本書では，その抽象的な思考を理論的な文章へと構成するための具体的な技術を，リズムや構成などといった様々な視点から解説したものである．ちなみに，本書タイトルである「20歳の自分に受けさせたい」という謳い文句は，文章を書く上での一つの技術として本書後半で由来が明かされる．</p>
+
+<p>本書を一言で表すと<strong>「完全に同意」</strong>だ．内容や構成はかなり散漫で，細かい部分で違和感が残るところもあるものの，書かれていることは私の考えていることと非常に近い．特に本書で繰り返し述べられる，書く技術を身につけることは考える技術を身につけることであるという主張は，全くその通りだと思う．これは私がかねてからBlogで書評を書き続けていることの一つの理由であり，普段から強く意識していることである．また，個々に語られる文章構成の技術も，かなり実践寄りの要素が散りばめられている．文章を書き始める前の思考の整理段階において，何を書いて何を書かないべきかといった情報の選択から，実際に文章を書く際の論理構成の手法，推敲段階における読者を想定した表現の修正方法など，自分の文章にすぐに適用できるようなトピックばかりである．これらは一見して小手先のテクニックのように見えるかもしれないが，なかなかに文章を書く技術の本質を捉えている．本書ではその意味や裏付けがあまり解説されないため，個々の技術に納得はできないかもしれないが，一度使ってみればその効果が実感できるだろう．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「COURRiER Japon2013年 02月号」読了＆ジェフ・ベゾスのnarrativeと文章を書く能力について]]></title>
@@ -998,114 +1016,6 @@
 <p>今年も残すところあと1ヶ月ということで，毎年恒例になりつつあるAdvent Calendarが各所で盛り上がっているようです．私もQiitaで開催されているMachine Learning Advent Calendar 2012の2日目で，ギブスサンプリングに関する記事を書きました．こんな動画を撮って遊んでいます．もしよければ本記事の方も御覧ください．</p>
 
 <iframe width="480" height="360" src="http://www.youtube.com/embed/ZaKwpVgmKTY" frameborder="0" allowfullscreen></iframe>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「パターン認識と機械学習」1章 多項式曲線フィッティングをRで書いてみた]]></title>
-    <link href="http://yagays.github.com/blog/2012/12/01/prml-1-takousiki/"/>
-    <updated>2012-12-01T05:17:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/12/01/prml-1-takousiki</id>
-    <content type="html"><![CDATA[<h3>事の発端</h3>
-
-<blockquote class="twitter-tweet"><p>これこれ、これですよ / “PRML読書会第一回 - Seeking for my unique color.” <a href="http://t.co/qtGtiKuO" title="http://htn.to/w8bGen">htn.to/w8bGen</a></p>&mdash; Yokoyama T (@wakuteka) <a href="https://twitter.com/wakuteka/status/272995562582835201" data-datetime="2012-11-26T09:29:48+00:00">November 26, 2012</a></blockquote>
-
-
-<script src="http://yagays.github.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-<p>先日「<a href="http://d.hatena.ne.jp/syou6162/20080801/1217528370">PRML読書会第一回 - Seeking for my unique color.</a>」のソースコードが一部界隈で局地的に話題にあがり，やれ</p>
-
-<ul>
-<li>takousikiってなんだよロシア人かよ</li>
-</ul>
-
-
-<p>だとか</p>
-
-<ul>
-<li>evalが多すぎて引いた</li>
-</ul>
-
-
-<p>だのといった罵詈雑言が（主に僕の口から）飛び交っていたわけだけれども，さすがに言うだけではsyou6162先生に申し訳ないと感じ，改めて彼のコードをRで書きなおしてみることにした．</p>
-
-<h3>多項式曲線フィッティングのコードを書き直す</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>f <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">){</span>sin<span class="p">(</span><span class="m">2</span><span class="o">*</span>pi<span class="o">*</span>x<span class="p">)}</span>
-</span><span class='line'>
-</span><span class='line'>takousiki <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>n<span class="p">){</span>
-</span><span class='line'>  x <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">0</span><span class="p">)</span>
-</span><span class='line'>  z <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">0</span><span class="p">)</span>
-</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>i in <span class="m">1</span>:n<span class="p">){</span>
-</span><span class='line'>    x <span class="o">&lt;-</span> cbind<span class="p">(</span>x<span class="p">,</span> seq<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span>by<span class="o">=</span><span class="m">0.1</span><span class="p">)</span><span class="o">^</span>i<span class="p">)</span>
-</span><span class='line'>    z <span class="o">&lt;-</span> cbind<span class="p">(</span>z<span class="p">,</span> seq<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span>by<span class="o">=</span><span class="m">0.01</span><span class="p">)</span><span class="o">^</span>i<span class="p">)</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  data <span class="o">&lt;-</span> data.frame<span class="p">(</span>f<span class="p">(</span>seq<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span>by<span class="o">=</span><span class="m">0.1</span><span class="p">))</span><span class="o">+</span>rnorm<span class="p">(</span><span class="m">11</span><span class="p">,</span> mean<span class="o">=</span><span class="m">0</span><span class="p">,</span> sd<span class="o">=</span><span class="m">0.5</span><span class="p">),</span> x<span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>  colnames<span class="p">(</span>data<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span>paste<span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span>as.character<span class="p">(</span><span class="m">1</span>:n<span class="p">),</span>sep<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">))</span>
-</span><span class='line'>  colnames<span class="p">(</span>z<span class="p">)</span> <span class="o">&lt;-</span> paste<span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span>as.character<span class="p">(</span><span class="m">1</span>:n<span class="p">),</span>sep<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># predict</span>
-</span><span class='line'>  fit <span class="o">&lt;-</span> lm<span class="p">(</span>y ~ <span class="m">.</span><span class="p">,</span> data<span class="o">=</span>data<span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>  plot<span class="p">(</span>data<span class="p">[,</span><span class="m">2</span><span class="p">],</span> data<span class="p">[,</span><span class="m">1</span><span class="p">],</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">-1.5</span><span class="p">,</span><span class="m">1.5</span><span class="p">),</span> xlab<span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;M=&quot;</span><span class="p">,</span>n<span class="p">))</span>
-</span><span class='line'>  curve<span class="p">(</span>f<span class="p">(</span>x<span class="p">),</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>  lines<span class="p">(</span>seq<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span>by<span class="o">=</span><span class="m">0.01</span><span class="p">),</span> predict<span class="p">(</span>fit<span class="p">,</span>data.frame<span class="p">(</span>z<span class="p">)),</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>使い方としては，</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>takousiki<span class="p">(</span><span class="m">1</span><span class="p">)</span>
-</span><span class='line'>takousiki<span class="p">(</span><span class="m">3</span><span class="p">)</span>
-</span><span class='line'>takousiki<span class="p">(</span><span class="m">8</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>とすると，多項式で曲線フィッティングした結果がプロットされる．ただし切片だけの0次は書けない．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/prml_takousiki.png" alt="" /></p>
-
-<p>サンプルデータの生成と推定した曲線の描写用のデータの生成を同時に行なっているため，コードがちょっと見にくいかもしれない．基本的に<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x%5E2+" alt="x^2 " />や<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x%5E3+" alt="x^3 " />などの多項式の各項の値をあらかじめデータフレームとして作っておいて，lm()関数で回帰するときのモデルを簡略化している．あと，関数名はオリジナルを踏襲しているので，あしからず．</p>
-
-<h3>他の方法としては</h3>
-
-<p>lm()関数などに渡すモデルは，as.formula()関数を使うことによって文字列から生成することができる．この方法もかなり簡単に使うことができるので，データフレームの列名を規則的に付けている場合などは使い勝手は良いと思われる．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="o">&gt;</span> n <span class="o">&lt;-</span> <span class="m">5</span>
-</span><span class='line'><span class="o">&gt;</span> as.formula<span class="p">(</span>paste<span class="p">(</span><span class="s">&quot;y~&quot;</span><span class="p">,</span>paste<span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="m">1</span>:n<span class="p">,</span>sep<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>collapse<span class="o">=</span><span class="s">&quot;+&quot;</span><span class="p">)))</span>
-</span><span class='line'>y ~ x1 <span class="o">+</span> x2 <span class="o">+</span> x3 <span class="o">+</span> x4 <span class="o">+</span> x5
-</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
