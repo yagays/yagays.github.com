@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Book | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/blog/categories/book/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2013-01-02T04:21:44+09:00</updated>
+  <updated>2013-01-05T13:17:19+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「COURRiER Japon2013年 02月号」読了＆ジェフ・ベゾスのnarrativeについて]]></title>
+    <link href="http://yagays.github.com/blog/2013/01/05/review-courrier-japon-2013-02/"/>
+    <updated>2013-01-05T12:48:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2013/01/05/review-courrier-japon-2013-02</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B00AM1092Q" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>2013年2月号の「クーリエ・ジャポン」でジェフ・ベゾスの記事の翻訳が載っていたのだが，その冒頭で面白い情報があった．これはおそらく著作「ワンクリック」には書かれていなかった情報だ．それはジェフ・ベゾスが重役会議の始めに必ず行う習慣で，発表する担当者に6ページもの書類を書かせて，それを30分ほどかけて出席者全員が熟読・黙読するというのだ．この会議システムの裏側には，ジェフ・ベゾスが簡潔で綺麗な文章を書かせるということを重視していることが伺える．</p>
+
+<p>この記事を読んで，僕は思わず昔所属していたラボのことを思い出した．というのも，ジェフ・ベゾスの会議のしきたりと同じようなことが，そのラボでも行われていたからだ．そのラボでは月に1回ほど回ってくる論文紹介で発表する際に，必ず論文の要約をA4用紙1枚にまとめて全員に配布することを義務付けられていた．要約といっても，論文のアブストラクトをただコピーしただけでは明らかに分量が足りず，説明にも隙ができる．逆に，論文のストーリーを丁寧になぞろうとすると，背景から実験方法，結果，考察までを含めるには，文章を相当切り詰めなければならなくなる．これをA4用紙1枚に収めるには，論文の要点だけを取り出して簡潔な文章として洗練させなければならない．そして，このようにして書き上げた要約は，論文紹介のプレゼンテーションの最後に全員が熟読し，全体構成から文脈の整合性，専門用語の使い方，句読点の場所に至るまで，文章に関するありとあらゆる箇所をチェックされ訂正される．いわゆる駄目出し，袋叩き，フルボッコにされるというもので，ラボに入りたての学生はこの洗礼によって自分の日本語の文章力の無さに打ちひしがれ，熟練の学生でも完璧な要約を提出するにはかなりの時間を費やして文章を練る必要がある．しまいには，ある程度のレベルに達するまで書き直しを要求され，原稿にひたすら赤を入れる作業が続く．</p>
+
+<p>在籍していた当時は，いつまで経っても成長しない自分の文章力と毎回真っ赤になる原稿とで気が滅入ることが多かったのだが，今から考えると良かったと思える部分もある．当然ながら文章に関しては人一倍気にするようになったし，推敲することの重要性や文章の完成度に自覚的になった．そのラボでの成果が今のBlogで発揮されているかというと疑問が残るところではあるが，今のところはまあ気にせず技術を磨き続けるしかないといった気持ちである．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://yagays.github.com/blog/2012/10/26/review-one-click/">「ワンクリック―ジェフ・ベゾス率いるAmazonの隆盛」読了 - Wolfeyes Bioinformatics beta</a></li>
+<li><a href="http://management.fortune.cnn.com/2012/11/16/jeff-bezos-amazon/">Amazon's Jeff Bezos: The ultimate disrupter - Fortune Management</a>
+
+<ul>
+<li>英語の元記事</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2012年の締めくくりとして日頃お世話になった方に本を贈った]]></title>
@@ -105,292 +134,6 @@
 <p>マッキンゼーの「採用基準」という題が付けられているものの，実際には副題にある「地頭より論理的思考力より大切なもの」として，リーダーであること，つまりリーダーシップが重要であるということが強く強調される．特に本書後半では，リーダーシップに対する日本と欧米の捉え方の違いから，どういう行動がリーダーシップとなるのかといった定義に近い部分までを細かく解説される．本書はあくまでマッキンゼーが欲しいと思う人材像という前提で話がされるものの，必要となる能力に関してそもそも日本の認識がずれているということで，日本企業と外資企業の認識の対立として描かれる部分が多い．その点について，やや自社礼賛や日本の企業体質に関するバッシングのように見える部分もあるが，著者の主張は全体を通してリーダーシップが重要なのだというところに集約される．</p>
 
 <p>個人的な興味としては採用のテクニックよりも採用後に新人をどう教育しているかといったところが気になっていたので，その点本書ではリーダーをどう育てていくのかといった部分にも触れられており興味深い．また，特に著者個人の体験談を通して語られるリーダーシップの技術や重要性は，コンサルタントとしての知的生産におけるスタンスを垣間見ることができるような内容だった．なかでも，会議などで何時間も常に考え続けられるだけの知的体力が必要なのだという主張はまさにその通りだと思う．著者はそれが足りなかったのでコンサルとしてより採用担当としてのキャリアに進んだと書かれていたが，これができるかできないかは相当大きなポイントなのだろう．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[今年の読了・その他]]></title>
-    <link href="http://yagays.github.com/blog/2012/12/12/review-2012-etc/"/>
-    <updated>2012-12-12T00:31:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/12/12/review-2012-etc</id>
-    <content type="html"><![CDATA[<p>このBlogで取り上げなかったけど今年読んだ本をまとめて記録しておく．</p>
-
-<p><a href="http://yag-ays.hatenablog.com/">他のblog</a>などに纏めていたものから，分野外過ぎてある程度の分量の感想が書けなかったもの，あまり真剣に読まなかったもの，などなど．漫画と雑誌は含まれてない．</p>
-
-<!-- more -->
-
-
-<h3>「バイオパンク―ＤＩＹ科学者たちのＤＮＡハック！」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4140815329" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/04/14/174033">http://yag-ays.hatenablog.com/entry/2012/04/14/174033</a></li>
-</ul>
-
-
-<p>3Dプリンタまわりはクリス・アンダーソンの「<a href="http://www.amazon.co.jp/gp/product/4140815760/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4140815760&linkCode=as2&tag=yagays-22">MAKERS―21世紀の産業革命が始まる</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4140815760" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」なども出版されてかなり盛り上がりを見せているけれども，バイオの方は本書以降あまり後続が出てきていない感じなのかな．「<a href="http://www.amazon.co.jp/gp/product/B007K57V1O/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B007K57V1O&linkCode=as2&tag=yagays-22">WIRED (ワイアード) VOL.4 (GQ JAPAN2012年6月号増刊) [雑誌]</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=B007K57V1O" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」もそれほどインパクトがあったわけでもないし．アメリカのMAKER系の雑誌の方を漁れば色々ありそうだけれども，全然フォローしきれていない．</p>
-
-<h3>「遺伝子の川」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4794206720" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/01/24/125839">http://yag-ays.hatenablog.com/entry/2012/01/24/125839</a></li>
-</ul>
-
-
-<p>ドーキンスは今年はこれ1冊．まだ読んでない本も多くて，「<a href="http://www.amazon.co.jp/gp/product/4152088265/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4152088265&linkCode=as2&tag=yagays-22">神は妄想である―宗教との決別</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4152088265" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」とか，それに関連してフランシス・コリンズの「<a href="http://www.amazon.co.jp/gp/product/4757160194/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4757160194&linkCode=as2&tag=yagays-22">ゲノムと聖書:科学者、〈神〉について考える</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4757160194" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」とか読みたい．</p>
-
-<h3>「ライフゲイムの宇宙」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4535783837" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/01/18/202221">http://yag-ays.hatenablog.com/entry/2012/01/18/202221</a></li>
-</ul>
-
-
-<p>ウィリアム・パウンドストーンは最近「<a href="http://www.amazon.co.jp/gp/product/479176661X/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=479176661X&linkCode=as2&tag=yagays-22">Googleがほしがるスマート脳のつくり方 ニューエコノミーを生き抜くために知っておきたい入社試験の回答のコツ</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=479176661X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」なんて本を出してたけど，立ち読みした限りではあんまり面白そうな感じではなかった．「<a href="http://www.amazon.co.jp/gp/product/4791753607/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4791753607&linkCode=as2&tag=yagays-22">囚人のジレンマ―フォン・ノイマンとゲームの理論</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4791753607" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」の方を先に読みたい．</p>
-
-<h3>「非線形科学」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4087204081" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/09/25/002711">http://yag-ays.hatenablog.com/entry/2012/09/25/002711</a></li>
-</ul>
-
-
-<p>あまりちゃんと読めなかったので，いつか再読したい．内容はしっかりしてるんだけれども，新書として単体で読むには重かった．</p>
-
-<h3>「鏡の中の物理学」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4061580310" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/08/27/093415">http://yag-ays.hatenablog.com/entry/2012/08/27/093415</a></li>
-</ul>
-
-
-<p>朝永先生の本で現在書店に並んでいるのはもっぱら「<a href="http://www.amazon.co.jp/gp/product/462208354X/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=462208354X&linkCode=as2&tag=yagays-22">プロメテウスの火 (始まりの本)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=462208354X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」なのだけれども，原子力方面の著作は現状では全く手を付けられていない．</p>
-
-<h3>「ヴィクトリア朝時代のインターネット」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4757102992" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<p>本書でトム・スタンデージにハマり，現在出版されている日本語訳3冊は全部読んだ．翻訳されていない作品にはまだ手を出していないので，来年こそは手を出したいところ．そういえば，円城塔の「屍者の帝国」の参考文献に本書が並んでいるのを見つけたときは，思わずニヤけてしまった．</p>
-
-<h3>「謎のチェス指し人形「ターク」」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4757142846" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<p>上と同じくトム・スタンデージの著作．「ヴィクトリア朝時代のインターネット」よりは面白みや驚きに欠けるものの，それでもなお19世紀のからくり人形から20世紀のDeep Blueまでに繋がる歴史の流れには圧倒される．</p>
-
-<h3>「デザイン思考が世界を変える―イノベーションを導く新しい考え方」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4153200123" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/04/03/092211">http://yag-ays.hatenablog.com/entry/2012/04/03/092211</a></li>
-</ul>
-
-
-<p>読んだ時の印象は強かったけれども，あまり実生活に活かせていない感じがある．思考プロセスは非常に参考になったけれども，実際に問題に適用しようとすると色々と難しい．再読したい．</p>
-
-<h3>「ゲームストーミング ―会議、チーム、プロジェクトを成功へと導く87のゲーム」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873115051" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/04/03/092211">http://yag-ays.hatenablog.com/entry/2012/04/03/092211</a></li>
-</ul>
-
-
-<p>ホワイトボードと付箋紙を使った方法はある程度定着したけど他はさっぱりなので再読したい．</p>
-
-<h3>「コンピュータの名著・古典100冊」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4844318284" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<p>掲載されている推薦書籍のうち，最初から最後まで読み通した本はなかった．SICPやProgramming Pearlなどはちょっと読んだことがある程度というのは，何ともまあ悲しい感じ．本書が出版された2003年の時点で機械学習やパターン認識，NLPなどの書籍も含まれているというのは少し驚いた．</p>
-
-<h3>「アルファブロガー 11人の人気ブロガーが語る成功するウェブログの秘訣とインターネットのこれから」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4798110205" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<p>今もアルファブロガーとして最前線で戦っている人から，あの人は今みたいな感じの人まで色々．</p>
-
-<h3>「ウェブ進化論 本当の大変化はこれから始まる」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4480062858" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<p>望夫君，どこいってもうたんや...．</p>
-
-<h3>「読書について」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4003363221" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<p>哲学の皆様は大変ですね．自然科学系はとにかく人の書いた文章を読むのが仕事なので...．</p>
-
-<h3>「「空気」の研究」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4167306034" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/09/25/002711">http://yag-ays.hatenablog.com/entry/2012/09/25/002711</a></li>
-</ul>
-
-
-<p>後半読んでない．日本人の精神のルーツだとか根底にあるものを「空気」だとか「水」といった概念で説明するのは非常に面白いし納得がいく．</p>
-
-<h3>「アーキテクチャの生態系――情報環境はいかに設計されてきたか」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4757102453" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<p>最新作がえらい不評を買っているらしいけれども，本書は至って普通，というか当時は結構的を得た解釈で今読み返しても結構良くまとまっていると思う．ただ，書いてある未来予想は結構外れてて，今読み返すとちょっと面白いのだけれども．</p>
-
-<h3>「映画は父を殺すためにある: 通過儀礼という見方」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4480429409" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/05/30/121958">http://yag-ays.hatenablog.com/entry/2012/05/30/121958</a></li>
-</ul>
-
-
-<p>イニシエーションを軸にした映画評論．ただ成長するというだけでなく，通過儀礼のための舞台がどのように構築されているかも興味深い．</p>
-
-<h3>「ベスト・オブ・映画欠席裁判 」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4167801701" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/09/25/002711">http://yag-ays.hatenablog.com/entry/2012/09/25/002711</a></li>
-</ul>
-
-
-<p>まだ見てない映画が多い．おまけに俳優の名前とかも全然覚えられなくて，こういう本を読むときはちょっと大変．ある程度基礎知識を蓄えて，こういうエッセイを多方面から楽しめるくらいになりたい．</p>
-
-<h3>「映像の原則　改訂版」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873767369" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<p>富野御大の映像制作の解説書．書いてあることはマトモなんだろうけど，話がぶつ切り＆飛びすぎて素人には読み通すのはキツイ．</p>
-
-<h3>「不思議の町 根津―ひっそりした都市空間」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4480032673" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/09/25/002711">http://yag-ays.hatenablog.com/entry/2012/09/25/002711</a></li>
-</ul>
-
-
-<p>根津に遊郭があったという話は面白かった．</p>
-
-<h3>「瞑想空間 ― meditative spaces」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4309906656" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/03/28/032759">http://yag-ays.hatenablog.com/entry/2012/03/28/032759</a></li>
-</ul>
-
-
-<p>瞑想，色々試したけど定着しなかった．そもそも，本書を参考にするならば場所を見つけるまでが一番大変だと思う．</p>
-
-<h3>「生半可な学者―エッセイの小径」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4560073333" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/09/04/115123">http://yag-ays.hatenablog.com/entry/2012/09/04/115123</a></li>
-</ul>
-
-
-<p>本書とは関係ないけど，いつか菊地成孔がラジオで話していた柴田先生のゼミに呼ばれた時の話は面白かった．</p>
-
-<h3>「決断力」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4047100080" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/08/27/093415">http://yag-ays.hatenablog.com/entry/2012/08/27/093415</a></li>
-</ul>
-
-
-<p>今年はハッシーの「羽生さん？強いよね」の印象が強い．</p>
-
-<h3>「栗村修の気楽にはじめるスポーツバイクライフ」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4862488978" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/08/27/093415">http://yag-ays.hatenablog.com/entry/2012/08/27/093415</a></li>
-</ul>
-
-
-<p>自転車には最近あんまり乗れてないけど，ぼちぼち楽しんでる．</p>
-
-<h3>「お前なんかもう死んでいる プロ一発屋に学ぶ「生き残りの法則５０」」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4575713864" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/08/27/093415">http://yag-ays.hatenablog.com/entry/2012/08/27/093415</a></li>
-</ul>
-
-
-<p>TVあんまり見ないけど，「マツコ&amp;有吉の怒り新党」は毎週録画して見てる．</p>
-
-<h3>「屍者の帝国」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4309021263" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/08/31/151535">http://yag-ays.hatenablog.com/entry/2012/08/31/151535</a></li>
-</ul>
-
-
-<p>細かいネタの落穂ひろいをしたいと思いつつ時間が無くてそのままになっているので，ちょっとずつでも元ネタを回収していきたい．</p>
-
-<h3>「アルケミスト―夢を旅した少年」</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=404275001X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2012/08/04/235301">http://yag-ays.hatenablog.com/entry/2012/08/04/235301</a></li>
-</ul>
-
-
-<p>「<a href="http://www.amazon.co.jp/gp/product/4150200696/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4150200696&linkCode=as2&tag=yagays-22">ボアズ=ヤキンのライオン (ハヤカワ文庫 FT (69))</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4150200696" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」という本が童話テイストで人生を象徴するといった似たような作品っぽいので，これもいつか読んでみたい．</p>
 ]]></content>
   </entry>
   
