@@ -5,18 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>pigzを使ったgzip並列圧縮 - Wolfeyes Bioinformatics beta</title>
+  <title>Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="pigzという並列でgzip圧縮を行うプログラムがあったので試してみた． インストール 1
-2
-3
-4
-$ wget http://zlib.net/pigz/pigz-2.2.4.tar.gz
-$ tar zxvf pigz-2.2.4.tar.gz
-$ cd pigz-2.2.4
-$ make &hellip;">
+  <meta name="description" content="お久しぶりです，yag_aysです． さくらVPSの解約に伴い，Wordpressで立てていたblogをGithub Pagesで立て直すことにしました． ということで，また懲りずに技術系記事をひっそりと書いていく予定です．よろしくお願いします． 以下メモ Githubのレポジトリを作成する &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -25,7 +18,7 @@ $ make &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.com/blog/2012/06/15/pigz">
+  <link rel="canonical" href="http://yagays.github.com/blog/page/25">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -113,13 +106,15 @@ $ make &hellip;">
 </nav>
   <div class="container">
     <div class="row-fluid">
-      
-<article class="hentry span9" role="article">
-
+      <div class="span9">
   
+  
+  
+    <article>
+      
   <header class="page-header">
     
-      <h1 class="entry-title">Pigzを使ったgzip並列圧縮</h1>
+      <h1 class="entry-title"><a href="/blog/2012/05/23/new-post/">Github Pages + Octopressでブログを作ってみた</a></h1>
     
     
       <p class="meta">
@@ -135,140 +130,70 @@ $ make &hellip;">
   
 
 
-<time datetime="2012-06-15T19:39:00+09:00" pubdate data-updated="true">Jun 15<span>th</span>, 2012</time>
+<time datetime="2012-05-23T15:52:00+09:00" pubdate data-updated="true">May 23<span>rd</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>pigzという並列でgzip圧縮を行うプログラムがあったので試してみた．</p>
+  <div class="entry-content"><p>お久しぶりです，yag_aysです．</p>
 
-<!-- more -->
+<p>さくらVPSの解約に伴い，Wordpressで立てていたblogをGithub Pagesで立て直すことにしました．</p>
+
+<p>ということで，また懲りずに技術系記事をひっそりと書いていく予定です．よろしくお願いします．</p>
+
+<h2>以下メモ</h2>
+
+<ul>
+<li>Githubのレポジトリを作成する</li>
+</ul>
 
 
-<h2>インストール</h2>
+<p><img src="http://dl.dropbox.com/u/142306/b/github_accountsetting.png" alt="アカウント登録" /></p>
+
+<ul>
+<li>ページを作成してindex.htmlを作成すると，以下のようにNotificationが来る．</li>
+</ul>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/github_notify.png" alt="Notification" /></p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ wget http://zlib.net/pigz/pigz-2.2.4.tar.gz
-</span><span class='line'>$ tar zxvf pigz-2.2.4.tar.gz
-</span><span class='line'>$ cd pigz-2.2.4
-</span><span class='line'>$ make</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'> cd octopress
+</span><span class='line'> gem install bundler
+</span><span class='line'> bundle install
+</span><span class='line'>
+</span><span class='line'> rake setup_github_pages
+</span><span class='line'> rake generate
+</span><span class='line'> rake deploy
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p><a href="http://zlib.net/pigz/">公式サイト</a>からソースを落としてきてコンパイルする．これでpigzとunpigzが生成される．</p>
-
-<h2>使い方</h2>
-
-<p>圧縮する対象が単一ファイルかディレクトリかで使い方を分ける必要がある．今回の例ではスレッド数を4とし，圧縮するファイル/ディレクトリをFILE/DIRという名前にしている．</p>
-
-<h3>単一ファイルの場合</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ pigz -p 4  FILE</span></code></pre></td></tr></table></div></figure>
-
-
-<p>とするとpigzで圧縮することができる．この場合にはFILEがそのままFILE.gzとなる．圧縮するファイル自体を残しておきたい場合には，-kのオプションを付けることで別途圧縮ファイルを作成することができる．</p>
-
-<h3>ディレクトリの場合</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ tar c DIR | pigz -p 4 &gt; DIR.tar.gz</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ディレクトリをそのまま圧縮する場合は，<strong>tarで一度ディレクトリを固めてからpigzに渡して圧縮する</strong>．なお，tarで固めずにpigz -r DIRなどとしてしまうと，ディレクトリ内の全部のファイルがそれぞれ個別に圧縮されるので注意が必要．</p>
-
-<h2>動いている様子</h2>
-
-<p>スレッド数を16にしてpigzを動かしているところをhtopで見ている．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/pigz.png" alt="" /></p>
-
-<p>ここでは，上で紹介した基本機能以外に圧縮時のブロックサイズを-bで指定している．圧縮効率/速度に影響してくるパラメータに関しては色々と試してみたのだが，あまりハッキリとした結果が得られなかったので調整を諦めた部分がある．実際に圧縮しているところを監視していると，全コア使って圧縮処理をしている場合や，待機(S)が長く続く場合など，一概にスレッド数を重ねるほど圧縮効率が良くなるわけでもなさそうな印象を受ける．この辺りに関しては，HDDのI/Oや圧縮するファイルのサイズに大きく依存するところなので，あまり厳密に調べたりしても意味がないとは思うが&#8230;．まあ，gzipよりかは確実に早くなるとは思うので，圧縮の際にはデフォルトでpigzを使うというくらいの感じで良いと思う．</p>
-
-<h3>Muninを使ったCPU使用率の可視化</h3>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/pigz_munin.png" alt="" /></p>
-
-<p>Muninを使って300GBくらいのディレクトリを圧縮している様子．スレッド数を6程度で様子見していたのだが，なかなか終わらない&#8230;．</p>
-
-<h2>参考資料</h2>
-
-<ul>
-<li>(pdf) <a href="http://zlib.net/pigz/pigz.pdf">http://zlib.net/pigz/pigz.pdf</a></li>
-<li><a href="http://serverfault.com/questions/321273/why-does-tar-c-dir-pigz-mnt-nfs-dir-tgz-use-network-then-cpu-in-cycles-in">http://serverfault.com/questions/321273/why-does-tar-c-dir-pigz-mnt-nfs-dir-tgz-use-network-then-cpu-in-cycles-in</a></li>
-<li><a href="http://arcoleo.org/dsawiki/Wiki.jsp?page=Compressing%20and%20Extracting%20Files">http://arcoleo.org/dsawiki/Wiki.jsp?page=Compressing%20and%20Extracting%20Files</a></li>
-<li><a href="http://codeascraft.etsy.com/2012/01/23/solr-bittorrent-index-replication/">http://codeascraft.etsy.com/2012/01/23/solr-bittorrent-index-replication/</a></li>
-</ul>
-
+<p>まだMarkdownがよくわかってない&#8230;</p>
 </div>
-
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">yag_ays</span></span>
-
-      
-
-
-
-
-
-
-
-
   
 
 
-<time datetime="2012-06-15T19:39:00+09:00" pubdate data-updated="true">Jun 15<span>th</span>, 2012</time>
-      
-
-
-    </p>
+    </article>
+  
+  <ul class="pager">
     
-      <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.com/blog/2012/06/15/pigz/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.com/blog/2012/06/15/pigz/" data-via="yag_ays" data-counturl="http://yagays.github.com/blog/2012/06/15/pigz/" >Tweet</a>
-  
-  
-  <div class="g-plusone" data-size="medium"></div>
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
+    <li><a href="/blog/archives">Blog Archives</a></li>
+    
+    <li class="next"><a href="/blog/page/24/">Newer &rarr;</a></li>
+    
+  </ul>
 </div>
-
-    
-    
-    <section>
-      <h1>Comments</h1>
-      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-    </section>
-    
-    <ul class="pager">
-      
-      <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/06/14/review-finch/" title="Previous Post:
-        「フィンチの嘴―ガラパゴスで起きている種の変貌」読了">&laquo; 「フィンチの嘴―ガラパゴスで起きている種の変貌」読了</a></li>
-      
-      <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/06/18/review-origin-of-species/"
-        title="Next Post: 「超訳 種の起源」読了">「超訳 種の起源」読了
-        &raquo;</a></li>
-      
-    </ul>
-  </footer>
-</article>
-
 <aside class="sidebar-nav span3">
   
     <section class="well">
@@ -366,7 +291,7 @@ $ make &hellip;">
   <h2>Twitter</h2>
   <ul id="tweets" class="nav">
     <li class="nav-header">Latest Tweets</li>
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   <script type="text/javascript">
     $(document).ready(function(){
@@ -385,7 +310,6 @@ $ make &hellip;">
 
   
 </aside>
-
 
     </div>
   </div>
@@ -406,10 +330,7 @@ $ make &hellip;">
       var disqus_shortname = 'wolfeyesbioinformaticsbeta';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.com/blog/2012/06/15/pigz/';
-        var disqus_url = 'http://yagays.github.com/blog/2012/06/15/pigz/';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
