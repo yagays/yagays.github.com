@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2013-04-20T15:34:57+09:00</updated>
+  <updated>2013-04-20T15:48:48+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -18,7 +18,7 @@
     <link href="http://yagays.github.com/blog/2013/04/20/install-biopython/"/>
     <updated>2013-04-20T15:09:00+09:00</updated>
     <id>http://yagays.github.com/blog/2013/04/20/install-biopython</id>
-    <content type="html"><![CDATA[<p>新しい環境でBiopythonをセットアップしたので，そのときのメモ．Pythonのバージョン/パッケージ管理はvirtualenvやらvirtualenvwrapperやらpipやらsetuptoolsやらで発狂する可能性が高いので，手っ取り早く使いたい人は以下のおまじないだけ実行して使えるようにしておくと良さそう．sudoする必要もないので非常に簡単にインストールできる．以下のリンク先にしたがって，ポチポチと5行程度のコマンドを実行すれば完了．</p>
+    <content type="html"><![CDATA[<p>新しい環境でBiopythonをセットアップしたので，そのときのメモ．Pythonのバージョン/パッケージ管理はvirtualenvやらvirtualenvwrapperやらpipやらsetuptoolsやらで発狂する可能性が高いので，手っ取り早く使いたい人は以下のおまじないだけ実行して使えるようにしておくと良さそう．sudoする必要もないし知らないディレクトリを汚すこともないので，非常に簡単にインストールできる．以下のリンク先にしたがって，ポチポチと5行程度のコマンドを実行すれば完了．</p>
 
 <ul>
 <li><a href="http://biopython.org/wiki/Talk:Download">Talk:Download - Biopython</a></li>
