@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Biopython | Wolfeyes Bioinformatics beta]]></title>
+  <link href="http://yagays.github.com/blog/categories/biopython/atom.xml" rel="self"/>
+  <link href="http://yagays.github.com/"/>
+  <updated>2013-04-20T15:28:22+09:00</updated>
+  <id>http://yagays.github.com/</id>
+  <author>
+    <name><![CDATA[yag_ays]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする]]></title>
+    <link href="http://yagays.github.com/blog/2013/04/20/install-biopython/"/>
+    <updated>2013-04-20T15:09:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2013/04/20/install-biopython</id>
+    <content type="html"><![CDATA[<p>新しい環境でBiopythonをセットアップしたので，そのときのメモ．Pythonのバージョン/パッケージ管理はvirtualenvやらvirtualenvwrapperやらpipやらsetuptoolsやらで発狂する可能性が高いので，手っ取り早く使いたい人は以下のおまじないだけ実行して使えるようにしておくと良さそう．sudoする必要もないので非常に簡単にインストールできる．以下のリンク先にしたがって，ポチポチと5行程度のコマンドを実行すれば完了．</p>
+
+<ul>
+<li><a href="http://biopython.org/wiki/Talk:Download">Talk:Download - Biopython</a></li>
+</ul>
+
+
+<p>ディレクトリ作成も含めて，ちょっと改変したものが以下の6行．</p>
+
+<p><code>bash
+$ mkdir biopython
+$ wget --no-check-certificate https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+$ python virtualenv.py .
+$ source bin/activate
+$ pip install numpy
+$ pip install Biopython
+</code></p>
+
+<p>環境によってはnumpyやBiopythonのインストールがコケるかもしれないので，インストールの最後に「Successfully installed numpy/Biopython」が表示されることを確認したほうが良いだろう．</p>
+
+<p>```bash
+$ pip install numpy
+Downloading/unpacking numpy
+  Downloading numpy-1.7.1.zip (3.1MB): 3.1MB downloaded
+  Running setup.py egg_info for package numpy</p>
+
+<pre><code>Running from numpy source directory.
+</code></pre>
+
+<p><del>(略)</del></p>
+
+<p>Successfully installed numpy
+Cleaning up...
+$
+```</p>
+
+<p>最後に，きちんとBiopythonが使えるようになっているか確認する．</p>
+
+<p>```python
+$ python
+Python 2.7.2 (default, Oct 11 2012, 20:14:37)
+[GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.</p>
+
+<blockquote><blockquote><blockquote><p>from Bio.Seq import Seq
+Seq("ATGC").complement()
+Seq('TACG', Alphabet())</p>
+
+<p>```</p></blockquote></blockquote></blockquote>
+
+<p>なお，一度シェルを閉じるとPythonまわりの読み込みは消えてしまうので，その時は再度インストールしたディレクトリで<code>source bin/activate</code>を実行する必要がある．</p>
+
+<h4>実行環境</h4>
+
+<ul>
+<li>Mac OS X 10.8.3</li>
+<li>Python 2.7.2</li>
+</ul>
+
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://biopython.org/DIST/docs/tutorial/Tutorial.html">Biopython Tutorial and Cookbook</a></li>
+<li><a href="http://biopython.org/wiki/Talk:Download">Talk:Download - Biopython</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
