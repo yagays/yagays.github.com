@@ -9,7 +9,7 @@
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="読書ノート アーカイブ：http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/ 例 6.1 メトロポリス・ヘイスティング・アルゴリズムでベータ分布の乱数を生成する 例2. &hellip;">
+  <meta name="description" content="「マルコフ連鎖モンテカルロ法 (統計ライブラリー)」PP.11-14のメトロポリス・ヘイスティング・アルゴリズムによる二重指数分布からの乱数生成（サンプリング）をやってみた． この問題は本書にも実験結果が掲載されているので，自分が行った実験結果と見比べることができる．結論から言うと， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -110,6 +110,224 @@
     <div class="row-fluid">
       <div class="span9">
   
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/19/mcmc-statlib-chp1-mh/">「マルコフ連鎖モンテカルロ法」1章のメトロポリス・ヘイスティング・アルゴリズムによるガンベル分布の乱数生成</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-19T07:10:00+09:00" pubdate data-updated="true">Nov 19<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4254126972" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>「<a href="http://www.amazon.co.jp/gp/product/4254126972/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4254126972&linkCode=as2&tag=yagays-22">マルコフ連鎖モンテカルロ法 (統計ライブラリー)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4254126972" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」PP.11-14のメトロポリス・ヘイスティング・アルゴリズムによる二重指数分布からの乱数生成（サンプリング）をやってみた．</p>
+
+<p>この問題は本書にも実験結果が掲載されているので，自分が行った実験結果と見比べることができる．結論から言うと，一応大まかな結果としては同じ傾向を示したが，乱数を用いた実験ということもあって多少の値のズレがでている．また，パラメータによっては結果の値/分布が安定しないものもあるので，何度か実験を行なって結果を吟味している部分もあるが，結果を曲解するためのものではないということを付け加えておく．</p>
+
+<p>なお，この文章ではメトロポリス・ヘイスティング・アルゴリズムを以降MHと表記する．</p>
+
+<h3>問題</h3>
+
+<p>ガンベル分布（二重指数分布）からの乱数生成を考える．今回はガンベル分布からの直接的な乱数生成ができないとしたうえで，MHによる乱数生成を行う．ガンベル分布は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7B2b%7D%5Cexp%28%5Cfrac%7B-%7Cx-%5Cmu%7C%7D%7Bb%7D%29+" alt="\frac{1}{2b}\exp(\frac{-|x-\mu|}{b}) " />で表され，今回は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu%3D0+" alt="\mu=0 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=b%3D+3+" alt="b= 3 " />の分布を考える．なお，ガンベル分布の平均と分散は解析的に得られ，それぞれ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu+" alt="\mu " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=2b%5E2+" alt="2b^2 " />である．</p>
+
+<h3>実験条件</h3>
+
+<p>今回は，MHの中でも酔歩過程/ランダムウォーク（Random walk）と独立連鎖（Independent chain）の2種類の方法を試す．それぞれのMHにおける推移カーネル<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=K+" alt="K " />は</p>
+
+<ul>
+<li>酔歩過程：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=K%28x%5E%7B%28t%29%7D%2Cx%5E%7B%28t%2B1%29%7D%29+%3D+%5Cmathcal%7BN%7D%28x%5E%7B%28t%29%7D%2Cc_%7Bran%7D%5E2%29+" alt="K(x^{(t)},x^{(t+1)}) = \mathcal{N}(x^{(t)},c_{ran}^2) " /></li>
+<li>独立連鎖：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=K%28x%5E%7B%28t%29%7D%2Cx%5E%7B%28t%2B1%29%7D%29+%3D+%5Cmathcal%7BN%7D%280%2Cc_%7Bind%7D%5E2%29+" alt="K(x^{(t)},x^{(t+1)}) = \mathcal{N}(0,c_{ind}^2) " /></li>
+</ul>
+
+
+<p>となる．ここで，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2+" alt="c_{ran}^2 " />および<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2+" alt="c_{ind}^2 " />は調整母数/チューニングパラメータであり，今回はそれぞれ<strong>{0.25, 1, 5, 15, 150}</strong>の5パターンで実験を行った．</p>
+
+<p>また，生成した乱数の系列において，系列初期の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D1%5Cdots+1000+" alt="t=1\dots 1000 " />までの結果は初期値に依存した値となっているため，今回は結果として用いていない．</p>
+
+<h3>結果：以下の図の見方</h3>
+
+<p>以下に示す図は，各行にチューニングパラメータの値，各列に系列のプロット，系列の分布，系列の平均の推移，系列の自己相関プロットを示したものである．図のタイトルに，チューニングパラメータの値，生成した乱数の平均と分散，そして採択率を示している（便宜的にタイトルの部分に情報を書き加えているだけで，タイトルと図は直接的には関連していない）．</p>
+
+<h3>結果：酔歩過程/ランダムウォーク</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in c<span class="p">(</span><span class="m">0.25</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">150</span><span class="p">)){</span>
+</span><span class='line'>  c.ran <span class="o">&lt;-</span> i<span class="o">^</span><span class="m">2</span>
+</span><span class='line'>  alpha <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">0</span><span class="p">)</span>
+</span><span class='line'>  Niter <span class="o">&lt;-</span> <span class="m">10000</span>
+</span><span class='line'>  x <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span><span class="m">0</span><span class="p">,</span> sd<span class="o">=</span>c.ran<span class="p">)</span>
+</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>t in <span class="m">2</span>:Niter<span class="p">){</span>
+</span><span class='line'>    z <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span><span class="m">0</span><span class="p">,</span> sd<span class="o">=</span>c.ran<span class="p">)</span>
+</span><span class='line'>    alpha<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span> <span class="o">&lt;-</span> min<span class="p">(</span><span class="m">1</span><span class="p">,</span> exp<span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span>abs<span class="p">(</span>x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="o">+</span>z<span class="p">)</span><span class="o">-</span>abs<span class="p">(</span>x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]))))</span>
+</span><span class='line'>    x<span class="p">[</span>t<span class="p">]</span> <span class="o">&lt;-</span> x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span> <span class="o">+</span> z<span class="o">*</span><span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">&lt;</span>alpha<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">])</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  X <span class="o">&lt;-</span> x<span class="p">[</span><span class="m">1001</span>:Niter<span class="p">]</span>
+</span><span class='line'>  stat <span class="o">&lt;-</span> table<span class="p">(</span>alpha<span class="o">==</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>  plot<span class="p">(</span><span class="m">1001</span>:Niter<span class="p">,</span> X<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;c_ran=&quot;</span><span class="p">,</span>i<span class="p">),</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>  plot<span class="p">(</span>density<span class="p">(</span>X<span class="p">),</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;mean=&quot;</span><span class="p">,</span>round<span class="p">(</span>mean<span class="p">(</span>X<span class="p">),</span>digit<span class="o">=</span><span class="m">2</span><span class="p">),</span><span class="s">&quot; var=&quot;</span><span class="p">,</span>round<span class="p">(</span>var<span class="p">(</span>X<span class="p">),</span>digit<span class="o">=</span><span class="m">2</span><span class="p">)))</span>
+</span><span class='line'>  plot<span class="p">(</span>cumsum<span class="p">(</span>X<span class="p">)</span><span class="o">/</span><span class="m">1</span>:length<span class="p">(</span>X<span class="p">),</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;accept ratio=&quot;</span><span class="p">,</span>round<span class="p">(</span><span class="m">100</span><span class="o">*</span>stat<span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">/</span>stat<span class="p">[</span><span class="m">1</span><span class="p">]),</span><span class="s">&quot;%&quot;</span><span class="p">))</span>
+</span><span class='line'>  abline<span class="p">(</span>h<span class="o">=</span><span class="m">0</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D0.25+" alt="c_{ran}^2=0.25 " />の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_1.png" alt="" /></p>
+
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D1+" alt="c_{ran}^2=1 " />の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_2.png" alt="" /></p>
+
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D5+" alt="c_{ran}^2=5 " />の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_3.png" alt="" /></p>
+
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D15+" alt="c_{ran}^2=15 " />の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_4.png" alt="" /></p>
+
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D150+" alt="c_{ran}^2=150 " />の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/rand_5.png" alt="" /></p>
+
+<h3>結果：独立連鎖の場合</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">4</span><span class="p">))</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in c<span class="p">(</span><span class="m">0.25</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">150</span><span class="p">)){</span>
+</span><span class='line'>  c.ind <span class="o">&lt;-</span> i
+</span><span class='line'>  alpha <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">0</span><span class="p">)</span>
+</span><span class='line'>  Niter <span class="o">&lt;-</span> <span class="m">10000</span>
+</span><span class='line'>  x <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span><span class="m">0</span><span class="p">,</span> sd<span class="o">=</span>c.ind<span class="p">)</span>
+</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>t in <span class="m">2</span>:Niter<span class="p">){</span>
+</span><span class='line'>    z <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span><span class="m">0</span><span class="p">,</span> sd<span class="o">=</span>c.ind<span class="p">)</span>
+</span><span class='line'>    alpha<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span> <span class="o">&lt;-</span> min<span class="p">(</span><span class="m">1</span><span class="p">,</span> exp<span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span>abs<span class="p">(</span>z<span class="p">)</span><span class="o">-</span>abs<span class="p">(</span>x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]))</span>
+</span><span class='line'>                             <span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">*</span><span class="p">((</span>x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="o">/</span>c.ind<span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">-</span> <span class="p">(</span>z<span class="o">/</span>c.ind<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>                             <span class="p">)</span>
+</span><span class='line'>                      <span class="p">)</span>
+</span><span class='line'>    <span class="kr">if</span><span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">&lt;</span>alpha<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]){</span>
+</span><span class='line'>      x<span class="p">[</span>t<span class="p">]</span> <span class="o">&lt;-</span> z
+</span><span class='line'>    <span class="p">}</span>else<span class="p">{</span>
+</span><span class='line'>      x<span class="p">[</span>t<span class="p">]</span> <span class="o">&lt;-</span> x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  X <span class="o">&lt;-</span> x<span class="p">[</span><span class="m">1001</span>:Niter<span class="p">]</span>
+</span><span class='line'>  stat <span class="o">&lt;-</span> table<span class="p">(</span>alpha<span class="o">==</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>  plot<span class="p">(</span><span class="m">1001</span>:Niter<span class="p">,</span> X<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;c_ind=&quot;</span><span class="p">,</span>i<span class="p">),</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>  plot<span class="p">(</span>density<span class="p">(</span>X<span class="p">),</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;mean=&quot;</span><span class="p">,</span>round<span class="p">(</span>mean<span class="p">(</span>X<span class="p">),</span>digit<span class="o">=</span><span class="m">2</span><span class="p">),</span><span class="s">&quot; var=&quot;</span><span class="p">,</span>round<span class="p">(</span>var<span class="p">(</span>X<span class="p">),</span>digit<span class="o">=</span><span class="m">2</span><span class="p">)))</span>
+</span><span class='line'>  plot<span class="p">(</span>cumsum<span class="p">(</span>X<span class="p">)</span><span class="o">/</span><span class="m">1</span>:length<span class="p">(</span>X<span class="p">),</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;accept ratio=&quot;</span><span class="p">,</span>round<span class="p">(</span><span class="m">100</span><span class="o">*</span>stat<span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">/</span>stat<span class="p">[</span><span class="m">1</span><span class="p">]),</span><span class="s">&quot;%&quot;</span><span class="p">),</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">)</span>
+</span><span class='line'>  abline<span class="p">(</span>h<span class="o">=</span><span class="m">0</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</span><span class='line'>  acf<span class="p">(</span>X<span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2%3D0.25+" alt="c_{ind}^2=0.25 " />の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_1.png" alt="" /></p>
+
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2%3D1+" alt="c_{ind}^2=1 " />の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_2.png" alt="" /></p>
+
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2%3D5+" alt="c_{ind}^2=5 " />の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_3.png" alt="" /></p>
+
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2%3D15+" alt="c_{ind}^2=15 " />の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_4.png" alt="" /></p>
+
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bind%7D%5E2%3D150+" alt="c_{ind}^2=150 " />の場合</h4>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/mcmc_statlib/ind_5.png" alt="" /></p>
+
+<h3>解釈</h3>
+
+<p>さて，このように色々とプロットしてみたわけだが，酔歩過程の場合も独立連鎖の場合もチューニングパラメータの値が0.25や150といった非常に小さい/大きい場合においては，乱数の分布や収束速度などに問題があることがわかる．</p>
+
+<p>酔歩過程においては，マルコフ連鎖の候補点の生成は少しずつ値を移動させていくという点で，分布の表面をなぞる形となる．そのため，チューニングパラメータの値である分散が小さい場合では候補点の移動範囲が狭いため，分布全体を探索するのに非常に時間がかかる．<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c_%7Bran%7D%5E2%3D0.25+" alt="c_{ran}^2=0.25 " />の図を見ると，系列のプロットではあまり大幅な移動（縦のぶれ）が少なく，生成した乱数の分布もかなりいびつである．また，値があまり変動しないという点で，自己相関係数も非常に大きな値を取っていることがわかる．一方チューニングパラメータの値が大きい場合においては，採択率が非常に小さな値を取り，系列のプロットからも値の変動しない部分が他と比べて多い．</p>
+
+<p>一方，独立連鎖においては，マルコフ連鎖の候補点の生成は現在の状態に依存しない．そのため，酔歩過程のように値を移動させていくということは見られないが，一方で採択確率の部分でチューニングパラメータの値が影響していることがわかる．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/syou6162/20081214/1229197092">Example of Metropolis Hastings Algorithm - Seeking for my unique color.</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -583,59 +801,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/14/review-nikkei-associe-2012-12/">「日経ビジネス Associe (アソシエ) 2012年 12月号」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-14T00:24:00+09:00" pubdate data-updated="true">Nov 14<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B009W5J4RY" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p><a href="http://yagays.github.com/blog/2012/11/13/review-ultimate-method-for-reaching-the-essentials/">前回の「佐藤可士和の超整理術」</a>を読んでる途中にコンビニで整理術の雑誌を見つけたので読んでみた．相変わらずAssocieは読者ターゲットがブレない記事構成でいつも感心する．自分の手の届く範囲でなんとかやりくりしないといけない新人ビジネスマンも，なかなか大変なご様子．</p>
-
-<p>内容としては，やはり机で働くビジネスマン向けの実践的なテクニックが多め．机の上を片付けたり電子化したり名刺を整理したりと王道は抑えつつ，タクシー運転手やカメラマン，料理人などの少し変わった整理術も紹介される．整理といえばやはりバインダーや手帳などの文房具に自然と話が進むわけで，定番文房具の使い方から最新文房具の紹介までひと通りカバーされているのもいつも通り．</p>
-
-<p>そういった内容がいろんな分野の中堅社員の具体例とともに語られるのだが，前回の佐藤可士和の本を読んだ後に眺めると，それぞれのテクニックは一体何がしたいのかということがクリアに理解できて面白かった．佐藤可士和のように何もモノを置かないというのは現実的に厳しいだろうし，本の中ではあまり語られなかった具体的な方法をこういった雑誌で穴埋めできると思う．ポイントとしては，どうプライオリティをつけて取捨選択するのか，そしていかに整理のための規格を統一するかの2点に集約されるというあたりで，あとは自分に合った方法で実践するのみ．</p>
-
-<p>ちなみに，個人的には針無しホッチキスに非常に興味を惹かれたが，わざわざ買うものだろうかと考えた結果購入は見送りになった．針無しだとシュレッダーにそのまま入れられるメリットはあるが，キチンと書類を留めてくれる方が大事ということで，今のところは物欲を抑えている．ちなみに，ホッチキスの針を簡単に取ることができる「<a href="http://www.amazon.co.jp/gp/product/B001CR5DZM/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B001CR5DZM&linkCode=as2&tag=yagays-22">サンスター文具 はりトルプロ 4765-800</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=B001CR5DZM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」は本当に便利なのでオススメ．ハサミを握る程度の軽い力で簡単に針を抜くことができるので，量が多くても全然疲れない．これのお陰で，針を取る手間をそれほど煩わしく感じていないというのもある．一方，「<a href="http://www.amazon.co.jp/gp/product/B002IJ2BZI/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B002IJ2BZI&linkCode=as2&tag=yagays-22">リムーバー ブルー</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=B002IJ2BZI" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」は，針を抜くときに力をいれなければいけないのでちょっと大変．それに分厚い紙を束ねている針はほとんど取れない．</p>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B001CR5DZM" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B002IJ2BZI" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/10/">&larr; Older</a></li>
@@ -684,6 +849,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2013/04/20/install-biopython/">手っ取り早くBiopythonをインストールして使えるようにする</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/04/14/review-math-writing/">「数学文章作法 基礎編」読了</a>
       </li>
     
@@ -719,15 +888,11 @@
         <a href="/blog/2013/01/05/review-courrier-japon-2013-02/">「COURRiER Japon2013年 02月号」読了＆ジェフ・ベゾスのnarrativeと文章を書く能力について</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/01/01/2013-new-year/">2012年の締めくくりとして日頃お世話になった方に本を贈った</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
   <h2>Categories</h2>
-    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (64)</a></li><li><a href='/blog/categories/clojure'>Clojure (1)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (16)</a></li><li><a href='/blog/categories/jekyll-octopress'>Jekyll/Octopress (3)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/mcmc'>MCMC (3)</a></li><li><a href='/blog/categories/misc'>Misc (10)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (5)</a></li><li><a href='/blog/categories/reading'>Reading (21)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (3)</a></li><li><a href='/blog/categories/sublimetext2'>SublimeText2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/allpaths-lg'>ALLPATHS-LG (3)</a></li><li><a href='/blog/categories/assembly'>Assembly (4)</a></li><li><a href='/blog/categories/book'>Book (64)</a></li><li><a href='/blog/categories/clojure'>Clojure (1)</a></li><li><a href='/blog/categories/genesinconflicts'>GenesInConflicts (4)</a></li><li><a href='/blog/categories/imcmr'>imcmr (16)</a></li><li><a href='/blog/categories/jekyll-octopress'>Jekyll/Octopress (3)</a></li><li><a href='/blog/categories/k-mer'>k-mer (1)</a></li><li><a href='/blog/categories/mcmc'>MCMC (3)</a></li><li><a href='/blog/categories/misc'>Misc (10)</a></li><li><a href='/blog/categories/presentation'>Presentation (1)</a></li><li><a href='/blog/categories/prml'>PRML (5)</a></li><li><a href='/blog/categories/python-biopython'>Python,Biopython (1)</a></li><li><a href='/blog/categories/reading'>Reading (21)</a></li><li><a href='/blog/categories/soapdenovo2'>SOAPdenovo2 (3)</a></li><li><a href='/blog/categories/sublimetext2'>SublimeText2 (2)</a></li><li><a href='/blog/categories/velvet'>Velvet (1)</a></li></ul>
 </section>
 <section class="well">
   <h2>Translate</h2>

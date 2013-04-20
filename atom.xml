@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.com/atom.xml" rel="self"/>
   <link href="http://yagays.github.com/"/>
-  <updated>2013-04-19T13:56:25+09:00</updated>
+  <updated>2013-04-20T15:19:24+09:00</updated>
   <id>http://yagays.github.com/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,103 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[手っ取り早くBiopythonをインストールして使えるようにする]]></title>
+    <link href="http://yagays.github.com/blog/2013/04/20/install-biopython/"/>
+    <updated>2013-04-20T15:09:00+09:00</updated>
+    <id>http://yagays.github.com/blog/2013/04/20/install-biopython</id>
+    <content type="html"><![CDATA[<p>新しい環境でBiopythonをセットアップしたので，そのときのメモ．Pythonのバージョン/パッケージ管理はvirtualenvやらvirtualenvwrapperやらpipやらsetuptoolsやらで発狂する可能性が高いので，手っ取り早く使いたい人は以下のおまじないだけ実行して使えるようにしておくと良さそう．sudoする必要もないので非常に簡単にインストールできる．以下のリンク先にしたがって，ポチポチと5行程度のコマンドを実行すれば完了．</p>
+
+<ul>
+<li><a href="http://biopython.org/wiki/Talk:Download">Talk:Download - Biopython</a></li>
+</ul>
+
+
+<p>ディレクトリ作成も含めて，ちょっと改変したものが以下の6行．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>mkdir biopython
+</span><span class='line'><span class="nv">$ </span>wget --no-check-certificate https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+</span><span class='line'><span class="nv">$ </span>python virtualenv.py .
+</span><span class='line'><span class="nv">$ </span><span class="nb">source </span>bin/activate
+</span><span class='line'><span class="nv">$ </span>pip install numpy
+</span><span class='line'><span class="nv">$ </span>pip install Biopython
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>環境によってはnumpyやBiopythonのインストールがコケるかもしれないので，インストールの最後に「Successfully installed numpy/Biopython」が表示されることを確認したほうが良いだろう．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>pip install numpy
+</span><span class='line'>Downloading/unpacking numpy
+</span><span class='line'>  Downloading numpy-1.7.1.zip <span class="o">(</span>3.1MB<span class="o">)</span>: 3.1MB downloaded
+</span><span class='line'>  Running setup.py egg_info <span class="k">for </span>package numpy
+</span><span class='line'>    Running from numpy <span class="nb">source </span>directory.
+</span><span class='line'>
+</span><span class='line'>~~~<span class="o">(</span>略<span class="o">)</span>~~~
+</span><span class='line'>
+</span><span class='line'>Successfully installed numpy
+</span><span class='line'>Cleaning up...
+</span><span class='line'><span class="nv">$ </span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最後に，きちんとBiopythonが使えるようになっているか確認する．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="err">$</span> <span class="n">python</span>
+</span><span class='line'><span class="n">Python</span> <span class="mf">2.7</span><span class="o">.</span><span class="mi">2</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Oct</span> <span class="mi">11</span> <span class="mi">2012</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">37</span><span class="p">)</span>
+</span><span class='line'><span class="p">[</span><span class="n">GCC</span> <span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span> <span class="n">Compatible</span> <span class="n">Apple</span> <span class="n">Clang</span> <span class="mf">4.0</span> <span class="p">(</span><span class="n">tags</span><span class="o">/</span><span class="n">Apple</span><span class="o">/</span><span class="n">clang</span><span class="o">-</span><span class="mf">418.0</span><span class="o">.</span><span class="mi">60</span><span class="p">)]</span> <span class="n">on</span> <span class="n">darwin</span>
+</span><span class='line'><span class="n">Type</span> <span class="s">&quot;help&quot;</span><span class="p">,</span> <span class="s">&quot;copyright&quot;</span><span class="p">,</span> <span class="s">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">Seq</span><span class="p">(</span><span class="s">&quot;ATGC&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">complement</span><span class="p">()</span>
+</span><span class='line'><span class="n">Seq</span><span class="p">(</span><span class="s">&#39;TACG&#39;</span><span class="p">,</span> <span class="n">Alphabet</span><span class="p">())</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>なお，一度シェルを閉じるとPythonまわりの読み込みは消えてしまうので，その時は再度インストールしたディレクトリで<code>source bin/activate</code>を実行する必要がある．</p>
+
+<h4>実行環境</h4>
+
+<ul>
+<li>Mac OS X 10.8.3</li>
+<li>Python 2.7.2</li>
+</ul>
+
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://biopython.org/DIST/docs/tutorial/Tutorial.html">Biopython Tutorial and Cookbook</a></li>
+<li><a href="http://biopython.org/wiki/Talk:Download">Talk:Download - Biopython</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「数学文章作法 基礎編」読了]]></title>
@@ -1038,22 +1135,6 @@
 <p>本書では，これらの事柄が豊富な具体例を織り交ぜて丁寧に解説される．本書を読み終わる頃には，チェックリストのあらゆる側面を見ることができる．それは私たちの生活がより複雑さを増していく状況において，非常に明快かつシンプルで革新的な手段となりうるだろう．</p>
 
 <p>当初は，私自身たかがチェックリストにこれほどまでに説得されるとは思っても見なかった．本書が素晴らしいのは，日頃から見逃されがちな失敗を表に引きずり出し，その対策をチェックリストを使うことで実現し，さらに普及させるといった段階にまで踏み込んでいる点にある．著者自身も，航空機産業における徹底した問題の改善の手腕に感動し，自身の医療の現場における小さなミスの繰り返しがいかに見逃されて改善の手段が広まらないかを懸念するところからスタートしている．そういった教訓から手術現場におけるチェックリストという発想に著者は至ったわけだが，読者としては本書を読めば自然とチェックリストを使いたくなるだろう．恐らくこれからもっと多分野でチェックリストが使われるようになると思われるのだが，まずは自分が問題を発見しそして実践してみないことには始まらない．とりあえず個人で色々試行錯誤してみようと思う．幸い本書の最後には「チェックリスト作成のためのチェックリスト」というものも載っており，<a href="http://www.projectcheck.org/">ウェブページ</a>もあるようだ．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「服従の心理」読了]]></title>
-    <link href="http://yagays.github.com/blog/2012/12/09/review-obedience-to-authority/"/>
-    <updated>2012-12-09T15:04:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/12/09/review-obedience-to-authority</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=430946369X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>これほどまでに背筋が凍るほどの恐ろしさを感じながらも同時に文章から目を離さずにはいられないくらい引き込まれるような本を，いまだかつて私は読んだことがない．本書はある心理学の実験についての報告と結果の考察を淡々と述べたものでありがながら，そこから導かれる結論は私たち人間の隠れた性質を暴くものである．それは20世紀のある歴史上の事件と対になって初めて本質をあらわにする．ナチスドイツにおけるユダヤ人虐殺である．</p>
-
-<p>本書は，「アイヒマン実験」または「ミルグラム実験」と呼ばれる心理学実験に基づく実験報告である．この通称は，アドルフ・アイヒマンというナチスドイツによるユダヤ人虐殺に深く関与した人間の名前，またはスタンレー・ミルグラムという本実験を行った心理学者に由来する．アイヒマンとこの実験を深く関連付ける要素は「服従」である．人というものは，何らかの社会構造における上下関係の中で社会的な役割を果たすことにより，その地位であったり家族の生活やアイデンティティを維持する．そのなかで，権威があって立場が上の人間によって命令された倫理を逸脱する非道な指示に対して，それを受け入れ服従するか異を唱えて反発するかといった個人の葛藤が，この実験の中心的な問題である．アイヒマンという人物は，このような命令に服従し実行してしまった張本人として歴史に名を残し，この議論の中核的な存在となった．そのアイヒマンに対して当初は誰もが，通常では考えられないほどの非人道的な行為を行う人間は，常識的な社会生活を行う自分たちとは全く異質のかけ離れた存在であるかのように思っていた．しかし，本書の著者であるスタンレー・ミルグラムは，アイヒマンは特殊な人間ではなく普通の一般人と何ら変わらない人間であり，逆に言えば一般人と認識している人間もまたアイヒマンと同じ境遇に置かれると同じ行為を犯してしまう可能性があることを心理学実験によって示した．</p>
-
-<p>本書はスタンレー・ミルグラムの衝撃的な実験結果を示すものでありがなら，同時に本実験に対する異論や反論を訳者である山形浩生が訳者後書きとして巧みに指摘している．その批判的検討を含め，本書が描き出す権威の服従という問題は状況や立場によって複雑な挙動を示し，一個人の責任や従属関係について改めて提起するものである．</p>
 ]]></content>
   </entry>
   
