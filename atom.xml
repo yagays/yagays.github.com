@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-04-21T23:01:13+09:00</updated>
+  <updated>2013-04-21T23:07:50+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -66,7 +66,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>もしRubyのバージョンの更新をしていない人はbundle update rakeすればOK．</p>
+<p>もしRubyのバージョンの更新をしていない人はbundle updateすればOK．</p>
 
 <p>あとは，rake generateなどを実行してみて，キチンとOctopressが動作するかを確かめれば終了．</p>
 
