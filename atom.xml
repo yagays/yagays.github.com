@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-04-21T21:34:20+09:00</updated>
+  <updated>2013-04-21T22:57:22+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RVM環境でのOctopressの更新]]></title>
+    <link href="http://yagays.github.io/blog/2013/04/21/octopress-update/"/>
+    <updated>2013-04-21T22:50:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/04/21/octopress-update</id>
+    <content type="html"><![CDATA[<p>前々から計画していたOctopressの更新がやっと終わったので，その作業メモ．本当は色々と難航して面倒だったのだけれども，細かいところは割愛して必要最小限の部分だけをまとめてみた．</p>
+
+<h3>バックアップを取る</h3>
+
+<p>これは必須．以下のコマンドでは，Octopressのディレクトリを丸々デスクトップにコピーしている．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>cp -R octopress ~/Desktop
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Octopressをアップデートする</h3>
+
+<p>Git経由でOctorpessをアップデートする．_config.ymlなど自分で変更しているファイルがあるとgit pullできないので，あらかじめgit statusで変更されているファイルを調べてgit checkoutで除外しておく．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git fetch octopress
+</span><span class='line'><span class="nv">$ </span>git checkout -- Rakefile _config.yml
+</span><span class='line'><span class="nv">$ </span>git pull octopress master
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>そして<em>config.ymlとRakefileを元通りにする．</em>config.ymlはそれほど更新が無いのでそのままバックアップのコピーを持ってきても大丈夫だが，Rakefileは細かい箇所で更新が入っているので，diffなどを見つつ必要な変更点だけを書き換える．</p>
+
+<h3>RVMでRubyを1.9.3に更新する（必要な人だけ）</h3>
+
+<p>Octopressを更新するとRuby-1.9.3を使うように言われるので，こちらも更新しておく．RVM自体の更新もついでにやっておく．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rvm get stable
+</span><span class='line'><span class="nv">$ </span>rvm autolibs <span class="nb">enable</span>
+</span><span class='line'><span class="nv">$ </span>rvm install ruby-1.9.3
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Bundleでパッケージを更新する</h3>
+
+<p>最後にBundleでOctopressを動かすために必要なパッケージをひと通りインストールすれば，長かった更新作業も一段落．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>bundle install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>もしRubyのバージョンの更新をしていない人はbundle update rakeすればOK．</p>
+
+<p>あとは，rake generateなどを実行してみて，キチンとOctopressが動作するかを確かめれば終了．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://octopress.org/docs/updating/">Updating Octopress - Octopress</a></li>
+<li><a href="http://tokkonopapa.github.io/blog/2011/12/30/octopress-on-github-and-bitbucket/">Octopressのインストールから運用管理まで - T.I.D.</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする]]></title>
@@ -1078,65 +1145,6 @@
 <li><a href="http://www.is.titech.ac.jp/~mase/mase/html.jp/temp/swiss.jp.170.html">R: スイスの出生率と社会経済指標データ (1888)</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「アナタはなぜチェックリストを使わないのか？」読了]]></title>
-    <link href="http://yagays.github.io/blog/2012/12/10/review-checklist-manifesto/"/>
-    <updated>2012-12-10T08:29:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2012/12/10/review-checklist-manifesto</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4863912803" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>本書は，世界中の病院における手術の安全性を向上させるためのWHO主導のプログラムに参加し，チェックリストを導入するというただそれだけのことでプログラムを大成功に導いた一人の医師による著作である．ここで言うチェックリストとは，箇条書きにしたメモにチェック欄がついているような至って普通のものである．それがなぜ手術における安全性を劇的に改善することができたのか，チェックリストによって何がどう変わったのか，そもそもなぜチェックリストなのか．そういった自然と湧き上がる疑問に対して本書は科学的に検証された実験結果として，建築業界や航空機産業における具体例とともに，チェックリストの有効性を示すものである．</p>
-
-<p>以下では，本書で挙げられたチェックリストの性質について個人的にまとめてみた．</p>
-
-<ul>
-<li><strong>チェックリストは複雑な状況において有効な手段である</strong>
-
-<ul>
-<li>複雑な状況とは，「一個人で知るのは不可能な量の知識を必要とし，不確定要素が多い状況 (P.92)」を指す</li>
-<li>複雑な状況は，一人のエキスパートによる一極集中の指令システムでは対処できない</li>
-</ul>
-</li>
-</ul>
-
-
-<br/>
-
-
-<ul>
-<li><strong>チェックリストは規律である</strong>
-
-<ul>
-<li>規律を忠実に守ることにより，複雑な状況における個人の判断ミスを防ぐことができる</li>
-<li>チェックリストは万能なマニュアルではなく，人間の優れた技能と組み合わせた運用を必要とする</li>
-<li>チェックリストの使用は複雑な問題の中にある個々の単純な問題を解消し，問題をシンプルにする</li>
-</ul>
-</li>
-</ul>
-
-
-<br/>
-
-
-<ul>
-<li><strong>チェックリストの有用性はWHOのプロジェクトにおいて示された</strong>
-
-<ul>
-<li>問題を洗い出しチェックリストの効果を証明するには，実験前・実験後のデータ収集が必要である</li>
-<li>現場に合わせた適切なチェックリスト作成と継続的な改良が必要である</li>
-<li>チェックリストの導入は無理に押し付けるのではなく，科学的根拠を示すとともに自発的な参加を促さなければならない</li>
-</ul>
-</li>
-</ul>
-
-
-<p>本書では，これらの事柄が豊富な具体例を織り交ぜて丁寧に解説される．本書を読み終わる頃には，チェックリストのあらゆる側面を見ることができる．それは私たちの生活がより複雑さを増していく状況において，非常に明快かつシンプルで革新的な手段となりうるだろう．</p>
-
-<p>当初は，私自身たかがチェックリストにこれほどまでに説得されるとは思っても見なかった．本書が素晴らしいのは，日頃から見逃されがちな失敗を表に引きずり出し，その対策をチェックリストを使うことで実現し，さらに普及させるといった段階にまで踏み込んでいる点にある．著者自身も，航空機産業における徹底した問題の改善の手腕に感動し，自身の医療の現場における小さなミスの繰り返しがいかに見逃されて改善の手段が広まらないかを懸念するところからスタートしている．そういった教訓から手術現場におけるチェックリストという発想に著者は至ったわけだが，読者としては本書を読めば自然とチェックリストを使いたくなるだろう．恐らくこれからもっと多分野でチェックリストが使われるようになると思われるのだが，まずは自分が問題を発見しそして実践してみないことには始まらない．とりあえず個人で色々試行錯誤してみようと思う．幸い本書の最後には「チェックリスト作成のためのチェックリスト」というものも載っており，<a href="http://www.projectcheck.org/">ウェブページ</a>もあるようだ．</p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Jekyll/Octopress | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/jekyll-slash-octopress/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-04-21T21:34:20+09:00</updated>
+  <updated>2013-04-21T22:57:22+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RVM環境でのOctopressの更新]]></title>
+    <link href="http://yagays.github.io/blog/2013/04/21/octopress-update/"/>
+    <updated>2013-04-21T22:50:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/04/21/octopress-update</id>
+    <content type="html"><![CDATA[<p>前々から計画していたOctopressの更新がやっと終わったので，その作業メモ．本当は色々と難航して面倒だったのだけれども，細かいところは割愛して必要最小限の部分だけをまとめてみた．</p>
+
+<h3>バックアップを取る</h3>
+
+<p>これは必須．以下のコマンドでは，Octopressのディレクトリを丸々デスクトップにコピーしている．</p>
+
+<p><code>bash
+$ cp -R octopress ~/Desktop
+</code></p>
+
+<h3>Octopressをアップデートする</h3>
+
+<p>Git経由でOctorpessをアップデートする．_config.ymlなど自分で変更しているファイルがあるとgit pullできないので，あらかじめgit statusで変更されているファイルを調べてgit checkoutで除外しておく．</p>
+
+<p><code>
+$ git fetch octopress
+$ git checkout -- Rakefile _config.yml
+$ git pull octopress master
+</code></p>
+
+<p>そして<em>config.ymlとRakefileを元通りにする．</em>config.ymlはそれほど更新が無いのでそのままバックアップのコピーを持ってきても大丈夫だが，Rakefileは細かい箇所で更新が入っているので，diffなどを見つつ必要な変更点だけを書き換える．</p>
+
+<h3>RVMでRubyを1.9.3に更新する（必要な人だけ）</h3>
+
+<p>Octopressを更新するとRuby-1.9.3を使うように言われるので，こちらも更新しておく．RVM自体の更新もついでにやっておく．</p>
+
+<p><code>
+$ rvm get stable
+$ rvm autolibs enable
+$ rvm install ruby-1.9.3
+</code></p>
+
+<h3>Bundleでパッケージを更新する</h3>
+
+<p>最後にBundleでOctopressを動かすために必要なパッケージをひと通りインストールすれば，長かった更新作業も一段落．</p>
+
+<p><code>
+$ bundle install
+</code></p>
+
+<p>もしRubyのバージョンの更新をしていない人はbundle update rakeすればOK．</p>
+
+<p>あとは，rake generateなどを実行してみて，キチンとOctopressが動作するかを確かめれば終了．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://octopress.org/docs/updating/">Updating Octopress - Octopress</a></li>
+<li><a href="http://tokkonopapa.github.io/blog/2011/12/30/octopress-on-github-and-bitbucket/">Octopressのインストールから運用管理まで - T.I.D.</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sublime Text 2でRVM環境のOctopressを操作する]]></title>

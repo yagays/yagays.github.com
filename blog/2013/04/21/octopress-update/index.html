@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>「佐藤可士和の超整理術」読了 - Wolfeyes Bioinformatics beta</title>
+  <title>RVM環境でのOctopressの更新 - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="デザイナーである佐藤可士和の仕事術を，「整理」というキーワードを軸にまとめあげた1冊．整理といっても，ただ単純に部屋や机の上の小綺麗に整理するということだけではない．そういった空間の整理方法を，情報や思考といった考え方にも当てはめることで，仕事における問題解決や効率化を目指すという形となっている &hellip;">
+  <meta name="description" content="前々から計画していたOctopressの更新がやっと終わったので，その作業メモ．本当は色々と難航して面倒だったのだけれども，細かいところは割愛して必要最小限の部分だけをまとめてみた． バックアップを取る これは必須．以下のコマンドでは， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.io/blog/2012/11/13/review-ultimate-method-for-reaching-the-essentials">
+  <link rel="canonical" href="http://yagays.github.io/blog/2013/04/21/octopress-update">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -114,7 +114,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">「佐藤可士和の超整理術」読了</h1>
+      <h1 class="entry-title">RVM環境でのOctopressの更新</h1>
     
     
       <p class="meta">
@@ -130,23 +130,72 @@
   
 
 
-<time datetime="2012-11-13T23:05:00+09:00" pubdate data-updated="true">Nov 13<span>th</span>, 2012</time>
+<time datetime="2013-04-21T22:50:00+09:00" pubdate data-updated="true">Apr 21<span>st</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4532165946" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+<div class="entry-content"><p>前々から計画していたOctopressの更新がやっと終わったので，その作業メモ．本当は色々と難航して面倒だったのだけれども，細かいところは割愛して必要最小限の部分だけをまとめてみた．</p>
+
+<h3>バックアップを取る</h3>
+
+<p>これは必須．以下のコマンドでは，Octopressのディレクトリを丸々デスクトップにコピーしている．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>cp -R octopress ~/Desktop
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>デザイナーである佐藤可士和の仕事術を，「整理」というキーワードを軸にまとめあげた1冊．整理といっても，ただ単純に部屋や机の上の小綺麗に整理するということだけではない．そういった空間の整理方法を，情報や思考といった考え方にも当てはめることで，仕事における問題解決や効率化を目指すという形となっている．この話の流れからすると，部屋の整理術を無理矢理当てはめているんだろうと感じるかもしれないが，佐藤可士和の考える整理というものは，実は空間・情報・思考が互いに深く関係したものであることが読み進めるうちに判明してくる．机の整理をするには情報の整理が必要であり，情報の整理をするには思考の整理をする必要があるといったように，それぞれのレイヤーで何をすべきか，そしてどういった整理法がポイントになってくるかが，佐藤可士和の代表的な仕事を例に挙げながら詳しく語られる．</p>
+<h3>Octopressをアップデートする</h3>
 
-<p>本書の内容は，デザイナーや整理という単語から連想するイメージとは全く違ったものになっている．それは自分の性格や審美眼のような右脳的な能力に頼るのではなく，突き詰めて合理的に考えて細かな部分にもきちっと論理的な解釈を加えるという左脳的な能力を重視している点にある．奇抜なアイデアや突拍子もない行動の裏にある，徹底的に言語化された理論武装があることを知ると，佐藤可士和のデザインがなぜ広告の消費者である私たちに驚きや深い印象を与えたり，デザイナーが意図したイメージをそのままに伝えることができるのかが分かるだろう．デザインの制作過程で語られる試行錯誤の跡であったり情報の整理方法は，最終的に出来上がったものと見比べながら解釈することができて，非常に興味深いものになっている．</p>
+<p>Git経由でOctorpessをアップデートする．_config.ymlなど自分で変更しているファイルがあるとgit pullできないので，あらかじめgit statusで変更されているファイルを調べてgit checkoutで除外しておく．</p>
 
-<p>最近では工業デザインやUI/UXが注目されるようになり，外側の形を製品の機能とは別に考えるのではなく設計に組み込んでしまうというデザイン思考という総合的な言葉も出てきているが，本書はまさにその流れを整理という言葉で言い換えているだけで，主張することはほとんど変わらない．実際の手法に関してはそれぞれのスタイルで異なっているが，デザインと機能を両立して製品なりロゴなりを作り上げるという点では同じアプローチだと言える．</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git fetch octopress
+</span><span class='line'><span class="nv">$ </span>git checkout -- Rakefile _config.yml
+</span><span class='line'><span class="nv">$ </span>git pull octopress master
+</span></code></pre></td></tr></table></div></figure>
 
-<p>少し前の本だと思って軽い気持ちで読み始めたが，中身を開けてみると意外としっかりして現在のデザイン思考と比べても遜色ない内容となっていて驚いた．整理本という括りがもったいないと思えるほど，プロダクトデザインの教科書としても良書だと思う．</p>
+
+<p>そして<em>config.ymlとRakefileを元通りにする．</em>config.ymlはそれほど更新が無いのでそのままバックアップのコピーを持ってきても大丈夫だが，Rakefileは細かい箇所で更新が入っているので，diffなどを見つつ必要な変更点だけを書き換える．</p>
+
+<h3>RVMでRubyを1.9.3に更新する（必要な人だけ）</h3>
+
+<p>Octopressを更新するとRuby-1.9.3を使うように言われるので，こちらも更新しておく．RVM自体の更新もついでにやっておく．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rvm get stable
+</span><span class='line'><span class="nv">$ </span>rvm autolibs <span class="nb">enable</span>
+</span><span class='line'><span class="nv">$ </span>rvm install ruby-1.9.3
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Bundleでパッケージを更新する</h3>
+
+<p>最後にBundleでOctopressを動かすために必要なパッケージをひと通りインストールすれば，長かった更新作業も一段落．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>bundle install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>もしRubyのバージョンの更新をしていない人はbundle update rakeすればOK．</p>
+
+<p>あとは，rake generateなどを実行してみて，キチンとOctopressが動作するかを確かめれば終了．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://octopress.org/docs/updating/">Updating Octopress - Octopress</a></li>
+<li><a href="http://tokkonopapa.github.io/blog/2011/12/30/octopress-on-github-and-bitbucket/">Octopressのインストールから運用管理まで - T.I.D.</a></li>
+</ul>
+
 </div>
 
 
@@ -169,12 +218,12 @@
   
 
 
-<time datetime="2012-11-13T23:05:00+09:00" pubdate data-updated="true">Nov 13<span>th</span>, 2012</time>
+<time datetime="2013-04-21T22:50:00+09:00" pubdate data-updated="true">Apr 21<span>st</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/book/'>Book</a>
+    <a class='category' href='/blog/categories/jekyll-slash-octopress/'>Jekyll/Octopress</a>
   
 </span>
 
@@ -182,9 +231,9 @@
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2012/11/13/review-ultimate-method-for-reaching-the-essentials/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2013/04/21/octopress-update/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2012/11/13/review-ultimate-method-for-reaching-the-essentials/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2012/11/13/review-ultimate-method-for-reaching-the-essentials/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/04/21/octopress-update/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/04/21/octopress-update/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -205,14 +254,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/11/12/review-who-moved-my-cheese/" title="Previous Post:
-        「チーズはどこへ消えた?」読了">&laquo; 「チーズはどこへ消えた?」読了</a></li>
+        href="/blog/2013/04/20/install-biopython/" title="Previous Post:
+        Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする">&laquo; Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/11/14/review-nikkei-associe-2012-12/"
-        title="Next Post: 「日経ビジネス Associe (アソシエ) 2012年 12月号」読了">「日経ビジネス Associe (アソシエ) 2012年 12月号」読了
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -352,8 +397,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.io/blog/2012/11/13/review-ultimate-method-for-reaching-the-essentials/';
-        var disqus_url = 'http://yagays.github.io/blog/2012/11/13/review-ultimate-method-for-reaching-the-essentials/';
+        var disqus_identifier = 'http://yagays.github.io/blog/2013/04/21/octopress-update/';
+        var disqus_url = 'http://yagays.github.io/blog/2013/04/21/octopress-update/';
         var disqus_script = 'embed.js';
       
     (function () {
