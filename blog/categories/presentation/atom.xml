@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Presentation | Wolfeyes Bioinformatics beta]]></title>
-  <link href="http://yagays.github.com/blog/categories/presentation/atom.xml" rel="self"/>
-  <link href="http://yagays.github.com/"/>
-  <updated>2013-04-20T15:48:48+09:00</updated>
-  <id>http://yagays.github.com/</id>
+  <link href="http://yagays.github.io/blog/categories/presentation/atom.xml" rel="self"/>
+  <link href="http://yagays.github.io/"/>
+  <updated>2013-04-21T20:36:40+09:00</updated>
+  <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[PRML復々習レーン#3で発表しました]]></title>
-    <link href="http://yagays.github.com/blog/2012/07/18/re-revenge-prml-3/"/>
+    <link href="http://yagays.github.io/blog/2012/07/18/re-revenge-prml-3/"/>
     <updated>2012-07-18T10:12:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/07/18/re-revenge-prml-3</id>
+    <id>http://yagays.github.io/blog/2012/07/18/re-revenge-prml-3</id>
     <content type="html"><![CDATA[<p>「パターン認識と機械学習」勉強会の復々習レーン#3で，3章の頭を担当しました．資料はslideshareにアップロードしています．</p>
 
 <div style="width:427px" id="__ss_13661580"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/yag_ays/re-revenge-chap031" title="Re revenge chap03-1" target="_blank">Re revenge chap03-1</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/13661580" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0" allowfullscreen></iframe> <div style="padding:5px 0 12px"> View more presentations from <a href="http://www.slideshare.net/yag_ays" target="_blank">yag ays</a> </div> </div>

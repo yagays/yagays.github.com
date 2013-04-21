@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Jekyll/Octopress | Wolfeyes Bioinformatics beta]]></title>
-  <link href="http://yagays.github.com/blog/categories/jekyll-octopress/atom.xml" rel="self"/>
-  <link href="http://yagays.github.com/"/>
-  <updated>2013-04-20T15:48:48+09:00</updated>
-  <id>http://yagays.github.com/</id>
+  <link href="http://yagays.github.io/blog/categories/jekyll-slash-octopress/atom.xml" rel="self"/>
+  <link href="http://yagays.github.io/"/>
+  <updated>2013-04-21T20:36:40+09:00</updated>
+  <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Sublime Text 2でRVM環境のOctopressを操作する]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/17/sublime-text-2-octopress-package/"/>
+    <link href="http://yagays.github.io/blog/2012/11/17/sublime-text-2-octopress-package/"/>
     <updated>2012-11-17T01:59:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/17/sublime-text-2-octopress-package</id>
+    <id>http://yagays.github.io/blog/2012/11/17/sublime-text-2-octopress-package</id>
     <content type="html"><![CDATA[<p>Sublime Text 2でOctopressの基本コマンドを実行できるパッケージを使ってみた．</p>
 
 <ul>
@@ -76,9 +76,9 @@
   
   <entry>
     <title type="html"><![CDATA[Jekyll/Octopressのフッターにクリエイティブ・コモンズ・ライセンスを書き加える]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/08/creative-commons-jekyll-octopress-footer/"/>
+    <link href="http://yagays.github.io/blog/2012/11/08/creative-commons-jekyll-octopress-footer/"/>
     <updated>2012-11-08T06:35:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/08/creative-commons-jekyll-octopress-footer</id>
+    <id>http://yagays.github.io/blog/2012/11/08/creative-commons-jekyll-octopress-footer</id>
     <content type="html"><![CDATA[<p>このBlogも書き始めてから半年ほど経ち投稿した記事も増えてきたので，前々からやろうと思っていたクリエイティブ・コモンズのライセンスを付けることにした．ライセンスはもう既に貼り終えていて，個別記事すべてをカバーできる場所に配置するように，ページ一番下のフッターに記述している．</p>
 
 <p>今回は，クリエイティブ・コモンズの公式ウェブサイトからテンプレートを作成し，それをJekyll/Octopress用に少し変更した上でfooter.htmlを書き換えるという一連の作業を，メモとしてまとめてみた．</p>
@@ -161,9 +161,9 @@ Wolfeyes Bioinformatics beta by yag_ays
   
   <entry>
     <title type="html"><![CDATA[TeXの数式をGoogle Chart APIのURL形式に変換するJekyll/Octopressプラグインを作りました]]></title>
-    <link href="http://yagays.github.com/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex/"/>
+    <link href="http://yagays.github.io/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex/"/>
     <updated>2012-10-19T12:14:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex</id>
+    <id>http://yagays.github.io/blog/2012/10/19/jekyll-octopress-plugin-googlechart-tex</id>
     <content type="html"><![CDATA[<h3>概要</h3>
 
 <p>Jekyll/Octopressで数式を使った記事の作成を簡単にします．</p>
@@ -223,7 +223,7 @@ Wolfeyes Bioinformatics beta by yag_ays
 
 <p>以下のgooglechart_tex.rbをダウンロードして，プラグインのコードがあるディレクトリに入れるだけです（Jekyllの場合は_plugins，Octopressの場合はplugins）．</p>
 
-<p><div><script src='https://gist.github.com/3915940.js?file='></script>
+<p><div><script src='https://gist.github.com/3915940.js'></script>
 <noscript><pre><code># Convert tex formula into google chart API format (Jekyll/Octopress plugin)
 #
 # Usage: {% gctex tex_formula %}

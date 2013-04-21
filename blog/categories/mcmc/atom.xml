@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: MCMC | Wolfeyes Bioinformatics beta]]></title>
-  <link href="http://yagays.github.com/blog/categories/mcmc/atom.xml" rel="self"/>
-  <link href="http://yagays.github.com/"/>
-  <updated>2013-04-20T15:48:48+09:00</updated>
-  <id>http://yagays.github.com/</id>
+  <link href="http://yagays.github.io/blog/categories/mcmc/atom.xml" rel="self"/>
+  <link href="http://yagays.github.io/"/>
+  <updated>2013-04-21T20:36:40+09:00</updated>
+  <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[「データ解析のための統計モデリング入門」読書ノート 8章 MCMCとメトロポリス法]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/20/glm-mcmc-chp8/"/>
+    <link href="http://yagays.github.io/blog/2012/11/20/glm-mcmc-chp8/"/>
     <updated>2012-11-20T04:46:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/20/glm-mcmc-chp8</id>
+    <id>http://yagays.github.io/blog/2012/11/20/glm-mcmc-chp8</id>
     <content type="html"><![CDATA[<ul>
 <li>まとめ：<a href="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート</a></li>
 <li>前々回：<a href="http://yagays.github.com/blog/2012/11/02/glm-mcmc-chp7/">「データ解析のための統計モデリング入門」読書ノート 7章 GLMMとGLMを比較する</a></li>
@@ -149,9 +149,9 @@ if(runif(1) &lt; r){
   
   <entry>
     <title type="html"><![CDATA[「マルコフ連鎖モンテカルロ法」1章のメトロポリス・ヘイスティング・アルゴリズムによるガンベル分布の乱数生成]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/19/mcmc-statlib-chp1-mh/"/>
+    <link href="http://yagays.github.io/blog/2012/11/19/mcmc-statlib-chp1-mh/"/>
     <updated>2012-11-19T07:10:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/19/mcmc-statlib-chp1-mh</id>
+    <id>http://yagays.github.io/blog/2012/11/19/mcmc-statlib-chp1-mh</id>
     <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4254126972" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
@@ -303,9 +303,9 @@ if(runif(1)&lt;alpha[t-1]){
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その1]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/18/imcmr-6-1/"/>
+    <link href="http://yagays.github.io/blog/2012/11/18/imcmr-6-1/"/>
     <updated>2012-11-18T14:37:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/18/imcmr-6-1</id>
+    <id>http://yagays.github.io/blog/2012/11/18/imcmr-6-1</id>
     <content type="html"><![CDATA[<ul>
 <li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
 </ul>

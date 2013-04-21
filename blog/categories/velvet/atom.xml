@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Velvet | Wolfeyes Bioinformatics beta]]></title>
-  <link href="http://yagays.github.com/blog/categories/velvet/atom.xml" rel="self"/>
-  <link href="http://yagays.github.com/"/>
-  <updated>2013-04-20T15:48:48+09:00</updated>
-  <id>http://yagays.github.com/</id>
+  <link href="http://yagays.github.io/blog/categories/velvet/atom.xml" rel="self"/>
+  <link href="http://yagays.github.io/"/>
+  <updated>2013-04-21T20:36:40+09:00</updated>
+  <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[VelvetKを使ってVelvetを用いたアセンブルに最適なk-merサイズを推定する]]></title>
-    <link href="http://yagays.github.com/blog/2012/06/06/velvetk/"/>
+    <link href="http://yagays.github.io/blog/2012/06/06/velvetk/"/>
     <updated>2012-06-06T17:12:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/06/06/velvetk</id>
+    <id>http://yagays.github.io/blog/2012/06/06/velvetk</id>
     <content type="html"><![CDATA[<p>VelvetKというスクリプトが公開されたらしい．これはVelvetのアセンブルの際にユーザが指定する必要のあるk-merのkの値を，ゲノムサイズとショートリードのサイズから自動推定するスクリプトのようだ．普通ならばkの値を細かく変えてVelvetを大量に走らせてアセンブル結果を評価するというのが定石だと思うが，もしkの値が自動推定できるなら，そのkの値付近だけを重点的に調べるといったことが出来るので大幅に労力を削減できる．私自身あまりVelvet/Oasesを使った経験が無いのだが，取り敢えず一通り使ってみた．</p>
 
 <!-- more -->

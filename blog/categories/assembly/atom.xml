@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Assembly | Wolfeyes Bioinformatics beta]]></title>
-  <link href="http://yagays.github.com/blog/categories/assembly/atom.xml" rel="self"/>
-  <link href="http://yagays.github.com/"/>
-  <updated>2013-04-20T15:48:48+09:00</updated>
-  <id>http://yagays.github.com/</id>
+  <link href="http://yagays.github.io/blog/categories/assembly/atom.xml" rel="self"/>
+  <link href="http://yagays.github.io/"/>
+  <updated>2013-04-21T20:36:40+09:00</updated>
+  <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SOAPdenovo2のアセンブル情報を集計するスクリプト]]></title>
-    <link href="http://yagays.github.com/blog/2012/10/11/soapdenovo2-stats/"/>
+    <link href="http://yagays.github.io/blog/2012/10/11/soapdenovo2-stats/"/>
     <updated>2012-10-11T16:08:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/10/11/soapdenovo2-stats</id>
+    <id>http://yagays.github.io/blog/2012/10/11/soapdenovo2-stats</id>
     <content type="html"><![CDATA[<p>SOAPdenovo2になって，アセンブリで得られた配列の統計情報がscafStatisticsというファイルに出力されるようになった．そのため，自分でアセンブリ結果を解析しなくとも，コンティグ数やN50などの基本情報をチェックすることができる……のだが，scafStatisticsは項目を並べただけのテキストファイルなので，複数のアセンブリ結果を比較しようと思った場合，いちいちファイルを開いて統計情報を集計するのが非常に面倒になる．</p>
 
 <p>ということで，SOAPdenovo2のアセンブルで出力される情報を一つにまとめるスクリプトを簡単に書いてみた．タブ区切りテキストで出力されるので，Excelなどでも見やすいようにしてある．</p>
@@ -153,7 +153,7 @@ q2=/home/yag_ays/tmp/soapdenovo2_testrun/SRR001665_2.fastq
 <!-- more -->
 
 
-<p><div><script src='https://gist.github.com/3870629.js?file='></script>
+<p><div><script src='https://gist.github.com/3870629.js'></script>
 <noscript><pre><code>#/usr/bin/env ruby
 
 require &quot;optparse&quot;
@@ -269,9 +269,9 @@ end
   
   <entry>
     <title type="html"><![CDATA[VelvetKを使ってVelvetを用いたアセンブルに最適なk-merサイズを推定する]]></title>
-    <link href="http://yagays.github.com/blog/2012/06/06/velvetk/"/>
+    <link href="http://yagays.github.io/blog/2012/06/06/velvetk/"/>
     <updated>2012-06-06T17:12:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/06/06/velvetk</id>
+    <id>http://yagays.github.io/blog/2012/06/06/velvetk</id>
     <content type="html"><![CDATA[<p>VelvetKというスクリプトが公開されたらしい．これはVelvetのアセンブルの際にユーザが指定する必要のあるk-merのkの値を，ゲノムサイズとショートリードのサイズから自動推定するスクリプトのようだ．普通ならばkの値を細かく変えてVelvetを大量に走らせてアセンブル結果を評価するというのが定石だと思うが，もしkの値が自動推定できるなら，そのkの値付近だけを重点的に調べるといったことが出来るので大幅に労力を削減できる．私自身あまりVelvet/Oasesを使った経験が無いのだが，取り敢えず一通り使ってみた．</p>
 
 <!-- more -->
@@ -401,9 +401,9 @@ Considered 1000000 reads with lengths 100..100 bp
   
   <entry>
     <title type="html"><![CDATA[ALLPATHS-LGを最小構成で実行する]]></title>
-    <link href="http://yagays.github.com/blog/2012/06/04/allpaths-lg-introduction/"/>
+    <link href="http://yagays.github.io/blog/2012/06/04/allpaths-lg-introduction/"/>
     <updated>2012-06-04T13:08:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/06/04/allpaths-lg-introduction</id>
+    <id>http://yagays.github.io/blog/2012/06/04/allpaths-lg-introduction</id>
     <content type="html"><![CDATA[<p><a href="http://yagays.github.com/blog/2012/06/02/allpaths-lg-dataset/">前回</a>は，ALLPATHS-LGの入力データの制約についてFragment LibraryとJumping Libraryの2つが最低でも必要ということを書いたが，今回は実際にALLPATHS-LGを動かすところを見ていく．ただし，複雑で込み入った細かい部分は分からないので，最小構成でとにかくアセンブル結果を得るということだけを解説していこうと思う．</p>
 
 <!-- more -->
@@ -494,9 +494,9 @@ RunAllPathsLG PRE=. REFERENCE_NAME=. DATA_SUBDIR=. RUN=allpaths SUBDIR=run
   
   <entry>
     <title type="html"><![CDATA[ALLPATHS-LGで使用できるライブラリサイズの制限]]></title>
-    <link href="http://yagays.github.com/blog/2012/06/02/allpaths-lg-dataset/"/>
+    <link href="http://yagays.github.io/blog/2012/06/02/allpaths-lg-dataset/"/>
     <updated>2012-06-02T15:52:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/06/02/allpaths-lg-dataset</id>
+    <id>http://yagays.github.io/blog/2012/06/02/allpaths-lg-dataset</id>
     <content type="html"><![CDATA[<p>ALLPATHS-LGは複数のライブラリで読まれたショートリードを組み合わせてゲノムアセンブルをするソフトウェア（パイプライン）である．比較的新しいゲノムアセンブラで性能もかなり良いらしく，<a href="http://www.broadinstitute.org/software/allpaths-lg/blog/">公式ブログ</a>のアセンブル履歴を見ると非モデル生物を中心にかなり使われている印象がある．ただ，その反面かなり癖のあるソフトウェアで，インストールが鬼門・動かすのが難しい・インターネットに資料が少ないという三重苦で，初心者にはかなりハードルの高いソフトウェアと言わざるを得ない．その中でも個人的に一番やっかいだと思うポイントはパイプライン入力に使うデータセットの準備で，折角苦労してALLPATHS-LGが使える環境を整えたとしても，使えるデータが無いとそもそも動かないということになりかねない．</p>
 
 <p>ということで，今回はALLPATHS-LGを動かすために必要なライブラリについて見ていく．私自身も厳密に調べたわけではないので間違い等あるかもしれないが，もし詳しい方がいらっしゃればご指摘頂ければ幸い．</p>

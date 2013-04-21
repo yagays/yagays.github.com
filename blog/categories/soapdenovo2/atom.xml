@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: SOAPdenovo2 | Wolfeyes Bioinformatics beta]]></title>
-  <link href="http://yagays.github.com/blog/categories/soapdenovo2/atom.xml" rel="self"/>
-  <link href="http://yagays.github.com/"/>
-  <updated>2013-04-20T15:48:48+09:00</updated>
-  <id>http://yagays.github.com/</id>
+  <link href="http://yagays.github.io/blog/categories/soapdenovo2/atom.xml" rel="self"/>
+  <link href="http://yagays.github.io/"/>
+  <updated>2013-04-21T20:36:40+09:00</updated>
+  <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SOAPdenovo2がGPLv3を宣言しているにも関わらずソースコードを公開していない件について]]></title>
-    <link href="http://yagays.github.com/blog/2012/12/28/soapdenovo2-gplv3/"/>
+    <link href="http://yagays.github.io/blog/2012/12/28/soapdenovo2-gplv3/"/>
     <updated>2012-12-28T14:48:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/12/28/soapdenovo2-gplv3</id>
+    <id>http://yagays.github.io/blog/2012/12/28/soapdenovo2-gplv3</id>
     <content type="html"><![CDATA[<p>つい先日<a href="http://www.gigasciencejournal.com/content/1/1/18/abstract">SOAPdenovo2というゲノムアセンブリのツールに関する論文</a>が公開されたのだが，このツールのライセンスに関して問題が出ているようだ．というもの，SOAPdenovo2の論文内で宣言されているライセンスがGNU General Public License version 3.0 (GPLv3)にも関わらず，ツールの配布はバイナリ形式に限定されており，そのソースコードが公開されていない状態になっているからだ．SOAPdenovo2の公開とライセンスに関する問題は，以下のBlogで詳しく取り上げられている．</p>
 
 <ul>
@@ -48,9 +48,9 @@
   
   <entry>
     <title type="html"><![CDATA[SOAPdenovo2のインストール方法]]></title>
-    <link href="http://yagays.github.com/blog/2012/10/13/soapdenovo2-install/"/>
+    <link href="http://yagays.github.io/blog/2012/10/13/soapdenovo2-install/"/>
     <updated>2012-10-13T07:30:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/10/13/soapdenovo2-install</id>
+    <id>http://yagays.github.io/blog/2012/10/13/soapdenovo2-install</id>
     <content type="html"><![CDATA[<p>前回<a href="bhttp://yagays.github.com/blog/2012/10/11/soapdenovo2-stats/">SOAPdenovo2の話</a>を書いたが，そういえばSOAPdenovo2といえばインストールまわりが不親切だったので，ちょっと解説みたいなものを書いてみる．</p>
 
 <h3>ダウンロード</h3>
@@ -147,9 +147,9 @@ all          do all the above in turn
   
   <entry>
     <title type="html"><![CDATA[SOAPdenovo2のアセンブル情報を集計するスクリプト]]></title>
-    <link href="http://yagays.github.com/blog/2012/10/11/soapdenovo2-stats/"/>
+    <link href="http://yagays.github.io/blog/2012/10/11/soapdenovo2-stats/"/>
     <updated>2012-10-11T16:08:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/10/11/soapdenovo2-stats</id>
+    <id>http://yagays.github.io/blog/2012/10/11/soapdenovo2-stats</id>
     <content type="html"><![CDATA[<p>SOAPdenovo2になって，アセンブリで得られた配列の統計情報がscafStatisticsというファイルに出力されるようになった．そのため，自分でアセンブリ結果を解析しなくとも，コンティグ数やN50などの基本情報をチェックすることができる……のだが，scafStatisticsは項目を並べただけのテキストファイルなので，複数のアセンブリ結果を比較しようと思った場合，いちいちファイルを開いて統計情報を集計するのが非常に面倒になる．</p>
 
 <p>ということで，SOAPdenovo2のアセンブルで出力される情報を一つにまとめるスクリプトを簡単に書いてみた．タブ区切りテキストで出力されるので，Excelなどでも見やすいようにしてある．</p>
@@ -285,7 +285,7 @@ q2=/home/yag_ays/tmp/soapdenovo2_testrun/SRR001665_2.fastq
 <!-- more -->
 
 
-<p><div><script src='https://gist.github.com/3870629.js?file='></script>
+<p><div><script src='https://gist.github.com/3870629.js'></script>
 <noscript><pre><code>#/usr/bin/env ruby
 
 require &quot;optparse&quot;

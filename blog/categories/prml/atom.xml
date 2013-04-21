@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: PRML | Wolfeyes Bioinformatics beta]]></title>
-  <link href="http://yagays.github.com/blog/categories/prml/atom.xml" rel="self"/>
-  <link href="http://yagays.github.com/"/>
-  <updated>2013-04-20T15:48:48+09:00</updated>
-  <id>http://yagays.github.com/</id>
+  <link href="http://yagays.github.io/blog/categories/prml/atom.xml" rel="self"/>
+  <link href="http://yagays.github.io/"/>
+  <updated>2013-04-21T20:36:40+09:00</updated>
+  <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Machine Learning Advent Calendar 2012でギブスサンプリングの記事を書きました]]></title>
-    <link href="http://yagays.github.com/blog/2012/12/02/qiita-ml-advent-calendar-day2/"/>
+    <link href="http://yagays.github.io/blog/2012/12/02/qiita-ml-advent-calendar-day2/"/>
     <updated>2012-12-02T21:58:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/12/02/qiita-ml-advent-calendar-day2</id>
+    <id>http://yagays.github.io/blog/2012/12/02/qiita-ml-advent-calendar-day2</id>
     <content type="html"><![CDATA[<ul>
 <li><a href="http://qiita.com/advent-calendar/2012/machinelearning">Machine Learning Advent Calendar 2012 - Qiita</a></li>
 <li><a href="http://qiita.com/items/5bde6addf228b1fe24e6">PRML 11章 二変量正規分布からのギブスサンプリング #PRML #R - Qiita</a></li>
@@ -33,15 +33,15 @@
   
   <entry>
     <title type="html"><![CDATA[「パターン認識と機械学習」1章 多項式曲線フィッティングをRで書いてみた]]></title>
-    <link href="http://yagays.github.com/blog/2012/12/01/prml-1-takousiki/"/>
+    <link href="http://yagays.github.io/blog/2012/12/01/prml-1-takousiki/"/>
     <updated>2012-12-01T05:17:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/12/01/prml-1-takousiki</id>
+    <id>http://yagays.github.io/blog/2012/12/01/prml-1-takousiki</id>
     <content type="html"><![CDATA[<h3>事の発端</h3>
 
 <blockquote class="twitter-tweet"><p>これこれ、これですよ / “PRML読書会第一回 - Seeking for my unique color.” <a href="http://t.co/qtGtiKuO" title="http://htn.to/w8bGen">htn.to/w8bGen</a></p>&mdash; Yokoyama T (@wakuteka) <a href="https://twitter.com/wakuteka/status/272995562582835201" data-datetime="2012-11-26T09:29:48+00:00">November 26, 2012</a></blockquote>
 
 
-<script src="http://yagays.github.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 <p>先日「<a href="http://d.hatena.ne.jp/syou6162/20080801/1217528370">PRML読書会第一回 - Seeking for my unique color.</a>」のソースコードが一部界隈で局地的に話題にあがり，やれ</p>
@@ -118,9 +118,9 @@ y ~ x1 + x2 + x3 + x4 + x5
   
   <entry>
     <title type="html"><![CDATA[「今度こそわかる!? PRMLの学習の学習」に参加しました]]></title>
-    <link href="http://yagays.github.com/blog/2012/10/12/prml-talksession/"/>
+    <link href="http://yagays.github.io/blog/2012/10/12/prml-talksession/"/>
     <updated>2012-10-12T10:03:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/10/12/prml-talksession</id>
+    <id>http://yagays.github.io/blog/2012/10/12/prml-talksession</id>
     <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621061240" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
@@ -183,9 +183,9 @@ y ~ x1 + x2 + x3 + x4 + x5
   
   <entry>
     <title type="html"><![CDATA[PRML復々習レーン#3で発表しました]]></title>
-    <link href="http://yagays.github.com/blog/2012/07/18/re-revenge-prml-3/"/>
+    <link href="http://yagays.github.io/blog/2012/07/18/re-revenge-prml-3/"/>
     <updated>2012-07-18T10:12:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/07/18/re-revenge-prml-3</id>
+    <id>http://yagays.github.io/blog/2012/07/18/re-revenge-prml-3</id>
     <content type="html"><![CDATA[<p>「パターン認識と機械学習」勉強会の復々習レーン#3で，3章の頭を担当しました．資料はslideshareにアップロードしています．</p>
 
 <div style="width:427px" id="__ss_13661580"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/yag_ays/re-revenge-chap031" title="Re revenge chap03-1" target="_blank">Re revenge chap03-1</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/13661580" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0" allowfullscreen></iframe> <div style="padding:5px 0 12px"> View more presentations from <a href="http://www.slideshare.net/yag_ays" target="_blank">yag ays</a> </div> </div>
@@ -204,9 +204,9 @@ y ~ x1 + x2 + x3 + x4 + x5
   
   <entry>
     <title type="html"><![CDATA[「パターン認識と機械学習の学習」購入]]></title>
-    <link href="http://yagays.github.com/blog/2012/07/07/review-prml-learning/"/>
+    <link href="http://yagays.github.io/blog/2012/07/07/review-prml-learning/"/>
     <updated>2012-07-07T08:43:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/07/07/review-prml-learning</id>
+    <id>http://yagays.github.io/blog/2012/07/07/review-prml-learning</id>
     <content type="html"><![CDATA[<p><img src="http://dl.dropbox.com/u/142306/b/prml_learning.png" alt="" /></p>
 
 <ul>

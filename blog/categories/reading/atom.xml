@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Reading | Wolfeyes Bioinformatics beta]]></title>
-  <link href="http://yagays.github.com/blog/categories/reading/atom.xml" rel="self"/>
-  <link href="http://yagays.github.com/"/>
-  <updated>2013-04-20T15:48:48+09:00</updated>
-  <id>http://yagays.github.com/</id>
+  <link href="http://yagays.github.io/blog/categories/reading/atom.xml" rel="self"/>
+  <link href="http://yagays.github.io/"/>
+  <updated>2013-04-21T20:36:40+09:00</updated>
+  <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：6章 ランダム・ウォーク・メトロポリス・ヘイスティング・アルゴリズム]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/27/imcmr-6-4/"/>
+    <link href="http://yagays.github.io/blog/2012/11/27/imcmr-6-4/"/>
     <updated>2012-11-27T06:18:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/27/imcmr-6-4</id>
+    <id>http://yagays.github.io/blog/2012/11/27/imcmr-6-4</id>
     <content type="html"><![CDATA[<ul>
 <li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
 </ul>
@@ -188,9 +188,9 @@ if (runif(1) &lt; min(1, exp(-(1/2)*(y^2 - x[i-1]^2)) )){
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その2]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/25/imcmr-6-3/"/>
+    <link href="http://yagays.github.io/blog/2012/11/25/imcmr-6-3/"/>
     <updated>2012-11-25T01:28:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/25/imcmr-6-3</id>
+    <id>http://yagays.github.io/blog/2012/11/25/imcmr-6-3</id>
     <content type="html"><![CDATA[<ul>
 <li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
 </ul>
@@ -402,9 +402,9 @@ plot(density(sig), main="")
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：6章 マルコフ連鎖とランダム・ウォーク]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/22/imcmr-6-2/"/>
+    <link href="http://yagays.github.io/blog/2012/11/22/imcmr-6-2/"/>
     <updated>2012-11-22T12:14:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/22/imcmr-6-2</id>
+    <id>http://yagays.github.io/blog/2012/11/22/imcmr-6-2</id>
     <content type="html"><![CDATA[<ul>
 <li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
 </ul>
@@ -488,9 +488,9 @@ y[t] &lt;- y[t-1]*rho + rnorm(1)
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その1]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/18/imcmr-6-1/"/>
+    <link href="http://yagays.github.io/blog/2012/11/18/imcmr-6-1/"/>
     <updated>2012-11-18T14:37:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/18/imcmr-6-1</id>
+    <id>http://yagays.github.io/blog/2012/11/18/imcmr-6-1</id>
     <content type="html"><![CDATA[<ul>
 <li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
 </ul>
@@ -599,9 +599,9 @@ for(t in 2:Nsim){
   
   <entry>
     <title type="html"><![CDATA[「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 確率的勾配法]]></title>
-    <link href="http://yagays.github.com/blog/2012/11/11/imcmr-5-4/"/>
+    <link href="http://yagays.github.io/blog/2012/11/11/imcmr-5-4/"/>
     <updated>2012-11-11T06:17:00+09:00</updated>
-    <id>http://yagays.github.com/blog/2012/11/11/imcmr-5-4</id>
+    <id>http://yagays.github.io/blog/2012/11/11/imcmr-5-4</id>
     <content type="html"><![CDATA[<ul>
 <li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
 </ul>
