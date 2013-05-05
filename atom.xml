@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-05-04T12:18:48+09:00</updated>
+  <updated>2013-05-05T23:45:49+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「ヒックとドラゴン」における耳を使った感情表現]]></title>
+    <link href="http://yagays.github.io/blog/2013/05/05/toothless-ears/"/>
+    <updated>2013-05-05T23:35:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/05/05/toothless-ears</id>
+    <content type="html"><![CDATA[<p>この「ヒックとドラゴン」を観たあとの多幸感たるや，人に話さずにはいっれなかったほどだ．ひとしきり知り合いに薦めまくった後，その興奮冷めやらぬままにiTunesでサウンドトラックを購入し，Amazonで「<a href="http://www.amazon.co.jp/gp/product/1557048630/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=1557048630&linkCode=as2&tag=yagays-22">The Art of How to Train Your Dragon</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=1557048630" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」をポチってしまった．</p>
+
+<p>「ヒックとドラゴン」（原題:&#8221;How to Train Your Dragon&#8221;）は2010年に公開されたドリームワークス製作の3Dアニメーションだ．ストーリーや見どころなどの解説はWikipediaやAmazonを観ていただくとしてココでは割愛するが，個人的に感動した点を1つだけ書いておきたい．それはブルーレイの特典映像で語られているドラゴンのキャラデザインについてだ．主人公との友情を深めていく「トゥース（英語ではToothless）」と呼ばれるドラゴンは，他に登場するオリジナリティあふれるドラゴンとは違い，人間との交流で生ずる感情の機微を表現する必要があった．動きは哺乳類であるネコをモチーフにしていたり，肌は無機質な爬虫類の質感に加えて黒豹をイメージしたりしているのだが，表情を作る上で重要視したのがドラゴンの「耳」だという（正確には角という設定のようだが）．トゥースの頭についている耳を自在に動かし，喜びや興味を示す時には耳を立て，威嚇や不快感を示す際には耳を倒すという動作をすることで，より感情を表現することができたのだという．それが一番如実に表れているのは，トゥースが地面に描いた絵をヒックが足で踏んだりして遊ぶシーンだ．表情が交互に示されるこの場面では，目の開き具合の他に，耳をひょこひょこさせる姿が印象的で，感情の変化がハッキリとわかるようになっている．この後に二人が初めて心を開くシーンがあるのだが，その展開を予感させるような印象深いシーンであり，耳の表現が非常に効果的に表れている．</p>
+
+<p>これと似た手法は，日本のアニメーションで言えば「アホ毛」だろうか．元々は画一的な髪型に変化を持たせるため付け加えられたであろうアホ毛に動きを付けることで，本人の感情の変化を表現することができたという意味で，非常に似通ったところがある気がした．最近では長いアホ毛で記号を描いたり文字を書いたりという直接的な表現もあるようだが，髪の毛のかすかな動きが感じさせる効果は侮れないものがある．髪と感情が連動しているなんて&#8230;と思う部分もあるけれども，アニメーションの作り込みに様々な制限があるなかで発明された表現なのだと考えると，なかなかに興味深い．こういった現実離れした表現方法が許される部分においても，アニメーションを見る楽しさがある．</p>
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0051DPN6M" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B00386EZJU" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=1557048630" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「チェスの話――ツヴァイク短篇選」読了]]></title>
@@ -690,75 +716,6 @@
 <ul>
 <li><a href="http://sourceforge.net/projects/soapdenovo2/files/SOAPdenovo2/src/r223/">http://sourceforge.net/projects/soapdenovo2/files/SOAPdenovo2/src/r223/</a></li>
 </ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[2012年に遊んだゲームのレビューまとめ]]></title>
-    <link href="http://yagays.github.io/blog/2012/12/23/game-review-2012/"/>
-    <updated>2012-12-23T13:38:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2012/12/23/game-review-2012</id>
-    <content type="html"><![CDATA[<p>今年に入ってiPadを買ったりPS3を買ったりしたこともあり，ちょくちょくゲームをやるようになった．その中から印象に残ったものを幾つかピックアップして振り返ってみる．</p>
-
-<h3>風ノ旅ビト（PS3）</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B008CP6RWU" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>とにかく今年一番良かった＆影響を受けた．ひと通りクリアしてトロフィーを全部集めた後も，なんだかんだで結局10週くらいはしている．といっても1時間程度で終わるようなゲームなので，疲れた時とか辛いときに考え事しながらやるという感じ．風景を見つつ民族風の音楽をバックに風の音を聞きながら歩くというただそれだけのことなのだけれども，ただそれだけで癒される．</p>
-
-<p>以下は，別のBlogで以前書いた記事．</p>
-
-<blockquote><p>PS3を買って「風ノ旅ビト」というゲームをプレイしたのだが，これが非常に素晴らしいゲームで，ラストには感極まって号泣してしまった．物語やゲームの内容に関してはネタバレになってしまうのでここでは避けるが，とにかく操作して楽しいゲームだった．
-それで，PS3のゲームにはトロフィーシステムというやりこみ要素があるのだが，これを集めるの難しく幾つか集めるだけでもかなり大変だった．トロフィーの条件として普通に遊んでいて取れるものから隠し要素を含んだものまで様々あり，条件を達成するためにアレをやったりコレをやったりと，ゲームの中を果てしなく彷徨うことになる．ひたすら無意味なことを続けたり来た道を戻ってみたり，とにかくただひたすらに何かを探しまわる．旅に同行している仲間も，さぞかし変なことしてる奴がいると思われていただろうと思う．
-そんな感じでぼんやりとゲームをしていると，たまに自分のプレイしているキャラクターを客観視しだすことがある．「何やってるんだろうコイツ」とか「もうちょっと頑張れよ」とか，自分がプレイしているくせにあたかも人事のように考えてしまって笑いそうになる．ただ，そうやって一通り考えた後，ため息をついて「まあこういう奴がいてもいいよな」と，毎度のことながら変に納得してしまう．ただひたすらに出口に向かう必要はないのだ．時には迷ったり意味のないことをしたり，ただただ絶望して立ち尽くしたりしても良いのだと，肯定とも慰めともつかないような気持ちになる．
-ゲームそのものもを遊ぶことも楽しいのだけれども，やはり自分の頭で色々と考えることの方が楽しい．そういう意味でも，考えるキッカケ，考える時間，考える雰囲気を作ってくれるような良いゲームだったと思う．</p>
-
-<p>（<a href="http://yag-ays.hatenablog.com/entry/2012/03/31/205225">http://yag-ays.hatenablog.com/entry/2012/03/31/205225</a>）</p></blockquote>
-
-<iframe width="640" height="360" src="http://www.youtube.com/embed/E6XAhalsY5g" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<br /><br />
-
-
-<h3>スキタイのムスメ：音響的冒剣劇（iPad）</h3>
-
-<div class="sticky-itslink"><a href="https://itunes.apple.com/jp/app/sukitainomusume-yin-xiang/id424912055?mt=8&uo=4" rel="nofollow" target="_blank"><img src="http://a1459.phobos.apple.com/us/r1000/119/Purple/v4/27/1d/82/271d8222-82b0-6494-eda6-cfb34d0d64f2/Icon.png" style="border-style:none;float:left;margin:5px;" alt="スキタイのムスメ：音響的冒剣劇（ユニバーサルバージョン）" title="スキタイのムスメ：音響的冒剣劇（ユニバーサルバージョン）" /></a><div class="sticky-itslinktext"><a href="https://itunes.apple.com/jp/app/sukitainomusume-yin-xiang/id424912055?mt=8&uo=4" rel="nofollow" target="_blank">スキタイのムスメ：音響的冒剣劇（ユニバーサルバージョン）</a><br />Capybara Games Inc.<br />価格： 170円 <a href="https://itunes.apple.com/jp/app/sukitainomusume-yin-xiang/id424912055?mt=8&uo=4" rel="nofollow" target="_blank"><img src="http://ax.phobos.apple.com.edgesuite.net/ja_jp/images/web/linkmaker/badge_appstore-sm.gif" alt ="iTunesで見る" style="border-style:none;" /></a><br /><span style="font-size:xx-small;">posted with <a href="http://sticky.linclip.com/linkmaker/" target="_blank">sticky</a> on 2012.12.23</span><br style="clear:left;" /></div></div>
-
-
-<p>
-確かゲームの翻訳の記事を何処かで読んだのがキッカケでプレイしたゲーム．iPadなどでプレイするのに特化したゲームシステムが面白かったり，自分のゲーム進捗をTwitterで報告できたりと，色々と実験的なゲームだった．全体的に面白かったのだけれども，マップの移動がダルかったり先頭が単調だったりと，少し作業感があった．</p>
-
-<p>以下は，別のBlogで以前書いた記事．</p>
-
-<blockquote><p>体調が悪くて家で寝込んでいるときに，「スキタイのムスメ」というゲームをiPadで遊んだ．
-<a href="http://itunes.apple.com/jp/app/sukitainomusume-yin-xiang/id424912055?mt=8">http://itunes.apple.com/jp/app/sukitainomusume-yin-xiang/id424912055?mt=8</a></p>
-
-<p>ゲームとしては謎解き+アクション少しという感じで，それほど時間のかかる分量ではない．ドット絵や音楽など個人的に好みな雰囲気で，システム面や物語など全般的に荒削りな部分はあるけれども，それはまたそれで味を出しており，全体的な印象としてはそれほど悪くなかった．というよりも，クリエーターのドット絵と音楽の世界観への溢れんばかりの愛で，そんな些細なものは全部吹っ飛んでしまうようなそんな迫力があった．</p>
-
-<p>個人的には，こういうゲームはサクサク進んでくれないと途中で飽きて中だるみしてしまって面白く無いと思う．なので個人的なオススメとしては，もし途中で詰まるようなら，素直に人に訊くなり攻略サイトを見るなりすれば良い．「Sword &amp; Sworcery guide」みたいな感じでググれば，英語だが攻略情報は出てくる(日本語の攻略情報はまだ出揃ってないみたい)．もしくは，日本語版オフィシャルページの紹介動画を注意深く見れば，実はどこで何をすればいいか大体想像がつく．ゲーム途中でこの動画を見返して「これは明らかにネタバレだろう」と思ったが，まあそんなことはこのゲームの楽しみの前では些細なものだし，別に目くじら立てることでもないだろう．それくらい音楽聞きながらゲームするのは楽しかった．</p>
-
-<p><a href="http://sworcery.jp/">http://sworcery.jp/</a></p>
-
-<p>（<a href="http://yag-ays.hatenablog.com/entry/2012/06/28/111430">http://yag-ays.hatenablog.com/entry/2012/06/28/111430</a>）</p></blockquote>
-
-<iframe src="http://player.vimeo.com/video/44400022" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-
-
-<p> <p><a href="http://vimeo.com/44400022">スキタイのムスメ：音響的冒剣劇 [発売ムービー]</a> from <a href="http://vimeo.com/sworcery">Superbrothers: Sword &amp; Sworcery</a> on <a href="http://vimeo.com">Vimeo</a>.</p></p>
-
-<br /><br />
-
-
-<h3>アンフィニッシュド・スワン（PS3）</h3>
-
-<p>前評判はかなり良かったのだけれども，実際やってみると意外に新鮮さとか驚きが無くひたすら作業という感じで，期待が大きく外れてしまった．ゲームのシステム自体はとても面白く創意工夫が至る所に見られるんだけど，どこか融通が利かなかったり不親切なところがみられたりと，いまいち感動がうまく伝わってこなかった．あと，自分としては珍しく途中で3D酔いしてしまい，途中でだいぶしんどかった覚えがある．</p>
-
-<iframe width="640" height="360" src="http://www.youtube.com/embed/JKhenchMcaE" frameborder="0" allowfullscreen></iframe>
 
 ]]></content>
   </entry>
