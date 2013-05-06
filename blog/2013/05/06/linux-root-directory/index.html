@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Linuxのルートディレクトリ構成まとめ - Wolfeyes Bioinformatics beta</title>
+  <meta name="author" content="yag_ays">
+
+  
+  <meta name="description" content="Tips and hacks about Bioinformatics on Ruby and R.">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yagays.github.io/blog/2013/05/06/linux-root-directory">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <script src="/javascripts/libs/jquery.js"></script>
+  <script src="/javascripts/libs/modernizr-2.0.js"></script>
+  <script src="/javascripts/libs/bootstrap.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Wolfeyes Bioinformatics beta" type="application/atom+xml">
+  <meta name="author" content="yag_ays">
+
+<meta name="description" content="Tips and hacks about Bioinformatics on Ruby and R.">
+<meta name="keywords" content="Bioinformatics,NGS,バイオインフォマティクス,機械学習,統計学,Ruby,R,Mac OS X,Linux">
+<meta name="google-translate-customization" content="f0d6fb1813054f83-93b90cf46465830f-g289228b826edcf56-12"></meta>
+<meta name="msvalidate.01" content="7B572D9F165B6C1C1D644708FF738704" />
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17620484-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <a class="brand" href="/">Wolfeyes Bioinformatics beta</a>
+
+      <div class="nav-collapse">
+        <ul class="nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+        <ul class="nav pull-right" data-subscription="rss">
+          <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+          
+        </ul>
+
+        
+          <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <fieldset role="search">
+              <input type="hidden" name="q" value="site:yagays.github.io" />
+              <input class="search-query" type="text" name="q" results="0" placeholder="Search"/>
+            </fieldset>
+          </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</nav>
+  <div class="container">
+    <div class="row-fluid">
+      
+<article class="hentry span9" role="article">
+
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">Linuxのルートディレクトリ構成まとめ</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-06T09:27:00+09:00" pubdate data-updated="true">May 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><ul>
+<li><strong>/</strong> # ルートディレクトリ</li>
+<li>**vmlinuz # /bootに置かれているLinuxカーネルにシンボリックリンクが貼られている</li>
+<li><strong>/bin/</strong> # バイナリ形式の実行ファイル</li>
+<li><strong>/boot/</strong> # Linuxカーネルやブート処理に必要なファイル</li>
+<li><strong>/dev/</strong> # デバイスファイル
+
+<ul>
+<li><strong>/tty*</strong> # 制御端末．&#8221;Teletype&#8221;が由来</li>
+<li><strong>/null</strong> # nullデバイス．出力の破棄先に使う</li>
+<li><strong>/zero</strong> # zeroデバイス．Nullが延々返ってくる</li>
+</ul>
+</li>
+<li><strong>/etc/</strong> # 設定ファイル
+
+<ul>
+<li><strong>/hosts</strong> # ホストとIPの対応付けを行う</li>
+<li><strong>/hosts.allow</strong> # 接続を許可するホスト一覧</li>
+<li><strong>/hosts.deny</strong> # 接続を拒否するホスト一覧</li>
+<li><strong>/passwd</strong> # ユーザの名前やホームディレクトリ</li>
+<li><strong>/resolv.conf</strong> # 名前解決のためのDNSサーバ一覧</li>
+<li><strong>/shadow</strong> # ユーザのパスワード（暗号化されている）</li>
+<li><strong>/rc.local</strong> Linuxの起動時に実行されるシェルスクリプト</li>
+<li><strong>/rc?.d/</strong> # 起動用ファイルが置かれるディレクトリ（各ランレベルごとに番号が振られている）</li>
+</ul>
+</li>
+<li><strong>/home/</strong> # ユーザのホームディレクトリ</li>
+<li><strong>/lib/</strong> # 共有ライブラリ</li>
+<li><strong>/lost+found/</strong> # システム障害時の不明ファイル避難先</li>
+<li><strong>/proc/</strong> # プロセスファイスシステム（procfs）の置き場．CPUやメモリの情報などが含まれている．
+
+<ul>
+<li><strong>/cpuinfo</strong> # CPU情報</li>
+<li><strong>/meminfo</strong> # メモリ情報</li>
+<li><strong>/loadavg</strong> # ロードアベレージ(uptimeやtopに表示される)</li>
+</ul>
+</li>
+<li><strong>/root/</strong> # スーパーユーザのホームディレクトリ</li>
+<li><strong>/sbin/</strong> # システム管理者が使用する実行ファイル置き場</li>
+<li><strong>/tmp/</strong> # 一時ファイル置き場．リブートすると消える</li>
+<li><strong>/usr/</strong> # 複数マシンで共有可能なファイル
+
+<ul>
+<li><strong>/src/</strong> # システムコマンドのソースコード</li>
+<li><strong>/include/</strong> # システムのヘッダファイル</li>
+<li><strong>/share/</strong> # 複数マシンで共有可能なファイル（特にドキュメント系）
+
+<ul>
+<li><strong>/man/</strong> # manページ
+
+<ul>
+<li><strong>/man*/</strong> セクションごとにディレクトリが分かれている</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>/info/</strong> # infoファイル</li>
+<li><strong>/local/</strong> # システムの管理者が管理するファイル</li>
+</ul>
+</li>
+<li><strong>/var/</strong> #
+
+<ul>
+<li><strong>/log/</strong> # ログファイル</li>
+<li><strong>/spool/</strong> # 一時的に保存するファイル</li>
+<li><strong>/tmp/</strong> # /tmpと似ているが，リブートしても消えない</li>
+<li><strong>/run/</strong> # 起動中のプロセスのPIDが保存される．Ubuntu12.04ではルートディレクトリの/runにシンボリックリンクが貼られている</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>環境</h4>
+
+<p>なるべく一般的なLinuxの情報を参考にしつつ，手元のUbuntu12.04と照らし合わせながら作成している．環境によっては違う部分があると思うので注意．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/ait/articles/0108/07/news002.html">Windowsユーザーに教えるLinuxの常識（2）：各ディレクトリの役割を知ろう（ルートディレクトリ編） (1/2) - ＠IT</a></li>
+<li><p><a href="http://www.usupi.org/sysad/239.html">ハードウェアの情報を収集する - いますぐ実践! Linuxシステム管理 / Vol.239</a></p></li>
+<li><p>「<a href="http://www.amazon.co.jp/gp/product/4839938717/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4839938717&linkCode=as2&tag=yagays-22">Linuxの教科書　改訂版 （マイコミムック） (MYCOMムック)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4839938717" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」は，ルートディレクトリ構成および中身のファイルに至るまで，基礎の部分について網羅的に書かれている．また，/etcと/varの概要をRed Had系とDebian系でそれぞれリストアップしている．</p></li>
+<li><p>「<a href="http://www.amazon.co.jp/gp/product/4797328355/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4797328355&linkCode=as2&tag=yagays-22">ふつうのLinuxプログラミング Linuxの仕組みから学べるgccプログラミングの王道</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4797328355" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」は，ルートディレクトリの基本的な構造とその役割について書かれている．特に/usrと/varを使い分ける基準が解説されている点は参考になった．</p></li>
+<li><p>「<a href="http://www.amazon.co.jp/gp/product/4774151432/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4774151432&linkCode=as2&tag=yagays-22">プロのための Linuxシステム・10年効く技術 (Software Design plus)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4774151432" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+」は，/dev/nullおよび/dev/zeroの使い方について参考にした．他にもプロセスまわりやメモリ管理について詳細に書かれている．</p></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4839938717" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4797328355" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774151432" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">yag_ays</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-06T09:27:00+09:00" pubdate data-updated="true">May 6<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/05/06/linux-root-directory/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/05/06/linux-root-directory/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    
+    <section>
+      <h1>Comments</h1>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+    
+    <ul class="pager">
+      
+      <li class="previous"><a class="basic-alignment left"
+        href="/blog/2013/05/05/toothless-ears/" title="Previous Post:
+        「ヒックとドラゴン」における耳を使った感情表現">&laquo; 「ヒックとドラゴン」における耳を使った感情表現</a></li>
+      
+      <li><a href="/blog/archives">Blog Archives</a></li>
+      
+    </ul>
+  </footer>
+</article>
+
+<aside class="sidebar-nav span3">
+  
+    <section class="well">
+  <h2>About Me</h2>
+  <p>id: yag_ays</p>
+  <p>E-mail: yanagi.ayase [at] gmail.com</p>
+  <br />
+  <ul>
+    <li>Bioinformatics / NGS</li>
+    <li>Machine Learning / Statistics</li>
+    <li>Ruby / R / Clojure</li>
+    <li>MacOSX / Linux</li>
+    <li>Book Review</li>
+  </ul>
+  <br />
+  <ul>
+    <li><a href="https://twitter.com/#!/yag_ays" target="_blank">Twitter</a></li>
+    <li><a href="https://github.com/yagays" target="_blank">Github</a> </li>
+    <li><a href="https://gist.github.com/yagays" target="_blank">Gist</a></li>
+    <li><a href="http://b.hatena.ne.jp/yag_ays/" target="_blank">Bookmark</a></li>
+    <li><a href="http://slideshare.net/yag_ays/" target="_blank">Slideshare</a></li>
+    <li><a href="http://yan-ase.tumblr.com/" target="_blank">Tumblr</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="http://yag-ays.hateblo.jp/" target="_blank">Hatena Blog (Technical)</a> </li>
+    <li><a href="http://yag-ays.hatenablog.com/" target="_blank">Hatena Blog (Personal)</a></li>
+    <li><a href="http://g86.dbcls.jp/~yag/wordpress/" target="_blank">Wordpress Blog (Technical, <i>old</i>)</a></li>
+    <li><a href="http://d.hatena.ne.jp/yag_ays/" target="_blank">Hatena Diary (<i>old</i>)</a></li>
+  </ul>
+</section>
+<section class="well">
+  <h2>Recent Post</h2>
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/06/linux-root-directory/">Linuxのルートディレクトリ構成まとめ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/05/toothless-ears/">「ヒックとドラゴン」における耳を使った感情表現</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/04/review-zweig-chess/">「チェスの話――ツヴァイク短篇選」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/03/review-dead-body/">「死体入門」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/01/review-complications/">「コード・ブルー―外科研修医救急コール」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/29/mau-natural-history/">思わずReblogしたくなるような博物画が見られるiPhone/iPadアプリ「MAU M&L 博物図譜」</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/25/2777-suppl-pdf/">PDF形式で2777ページにわたってFASTA配列が貼られ続けている論文のsupplementary</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/21/octopress-update/">RVM環境でのOctopressの更新</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/20/install-biopython/">Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/14/review-math-writing/">「数学文章作法 基礎編」読了</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="well">
+  <h2>Categories</h2>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
+<li class='category'><a href='/blog/categories/assembly/'>Assembly (4)</a></li>
+<li class='category'><a href='/blog/categories/biopython/'>Biopython (1)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (67)</a></li>
+<li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
+<li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
+<li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>Linux (1)</a></li>
+<li class='category'><a href='/blog/categories/mcmc/'>MCMC (3)</a></li>
+<li class='category'><a href='/blog/categories/misc/'>Misc (10)</a></li>
+<li class='category'><a href='/blog/categories/prml/'>PRML (5)</a></li>
+<li class='category'><a href='/blog/categories/presentation/'>Presentation (1)</a></li>
+<li class='category'><a href='/blog/categories/python/'>Python (1)</a></li>
+<li class='category'><a href='/blog/categories/reading/'>Reading (21)</a></li>
+<li class='category'><a href='/blog/categories/soapdenovo2/'>SOAPdenovo2 (3)</a></li>
+<li class='category'><a href='/blog/categories/sublimetext2/'>SublimeText2 (2)</a></li>
+<li class='category'><a href='/blog/categories/velvet/'>Velvet (1)</a></li>
+<li class='category'><a href='/blog/categories/ipad/'>iPad (1)</a></li>
+<li class='category'><a href='/blog/categories/imcmr/'>imcmr (16)</a></li>
+<li class='category'><a href='/blog/categories/k-mer/'>k-mer (1)</a></li>
+
+  </ul>
+</section>
+<section class="well">
+  <h2>Translate</h2>
+  <div id="google_translate_element"></div><script type="text/javascript">
+    function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'ja', autoDisplay: false, gaTrack: true, gaId: 'UA-17620484-4'}, 'google_translate_element');
+    }
+  </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</section>
+
+
+<section class="well">
+  <h2>Twitter</h2>
+  <ul id="tweets" class="nav">
+    <li class="nav-header">Latest Tweets</li>
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      getTwitterFeed("yag_ays", 10, true);
+    });
+  </script>
+  <script src="/javascripts/asides/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/yag_ays" class="twitter-follow-button" data-show-count="false">Follow @yag_ays</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
+  <br />
+  <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Wolfeyes Bioinformatics beta</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">yag_ays</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+  <br />
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wolfeyesbioinformaticsbeta';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://yagays.github.io/blog/2013/05/06/linux-root-directory/';
+        var disqus_url = 'http://yagays.github.io/blog/2013/05/06/linux-root-directory/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

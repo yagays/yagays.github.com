@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-05-05T23:49:38+09:00</updated>
+  <updated>2013-05-06T10:50:32+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,110 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Linuxのルートディレクトリ構成まとめ]]></title>
+    <link href="http://yagays.github.io/blog/2013/05/06/linux-root-directory/"/>
+    <updated>2013-05-06T09:27:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/05/06/linux-root-directory</id>
+    <content type="html"><![CDATA[<ul>
+<li><strong>/</strong> # ルートディレクトリ</li>
+<li>**vmlinuz # /bootに置かれているLinuxカーネルにシンボリックリンクが貼られている</li>
+<li><strong>/bin/</strong> # バイナリ形式の実行ファイル</li>
+<li><strong>/boot/</strong> # Linuxカーネルやブート処理に必要なファイル</li>
+<li><strong>/dev/</strong> # デバイスファイル
+
+<ul>
+<li><strong>/tty*</strong> # 制御端末．&#8221;Teletype&#8221;が由来</li>
+<li><strong>/null</strong> # nullデバイス．出力の破棄先に使う</li>
+<li><strong>/zero</strong> # zeroデバイス．Nullが延々返ってくる</li>
+</ul>
+</li>
+<li><strong>/etc/</strong> # 設定ファイル
+
+<ul>
+<li><strong>/hosts</strong> # ホストとIPの対応付けを行う</li>
+<li><strong>/hosts.allow</strong> # 接続を許可するホスト一覧</li>
+<li><strong>/hosts.deny</strong> # 接続を拒否するホスト一覧</li>
+<li><strong>/passwd</strong> # ユーザの名前やホームディレクトリ</li>
+<li><strong>/resolv.conf</strong> # 名前解決のためのDNSサーバ一覧</li>
+<li><strong>/shadow</strong> # ユーザのパスワード（暗号化されている）</li>
+<li><strong>/rc.local</strong> Linuxの起動時に実行されるシェルスクリプト</li>
+<li><strong>/rc?.d/</strong> # 起動用ファイルが置かれるディレクトリ（各ランレベルごとに番号が振られている）</li>
+</ul>
+</li>
+<li><strong>/home/</strong> # ユーザのホームディレクトリ</li>
+<li><strong>/lib/</strong> # 共有ライブラリ</li>
+<li><strong>/lost+found/</strong> # システム障害時の不明ファイル避難先</li>
+<li><strong>/proc/</strong> # プロセスファイスシステム（procfs）の置き場．CPUやメモリの情報などが含まれている．
+
+<ul>
+<li><strong>/cpuinfo</strong> # CPU情報</li>
+<li><strong>/meminfo</strong> # メモリ情報</li>
+<li><strong>/loadavg</strong> # ロードアベレージ(uptimeやtopに表示される)</li>
+</ul>
+</li>
+<li><strong>/root/</strong> # スーパーユーザのホームディレクトリ</li>
+<li><strong>/sbin/</strong> # システム管理者が使用する実行ファイル置き場</li>
+<li><strong>/tmp/</strong> # 一時ファイル置き場．リブートすると消える</li>
+<li><strong>/usr/</strong> # 複数マシンで共有可能なファイル
+
+<ul>
+<li><strong>/src/</strong> # システムコマンドのソースコード</li>
+<li><strong>/include/</strong> # システムのヘッダファイル</li>
+<li><strong>/share/</strong> # 複数マシンで共有可能なファイル（特にドキュメント系）
+
+<ul>
+<li><strong>/man/</strong> # manページ
+
+<ul>
+<li><strong>/man*/</strong> セクションごとにディレクトリが分かれている</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>/info/</strong> # infoファイル</li>
+<li><strong>/local/</strong> # システムの管理者が管理するファイル</li>
+</ul>
+</li>
+<li><strong>/var/</strong> #
+
+<ul>
+<li><strong>/log/</strong> # ログファイル</li>
+<li><strong>/spool/</strong> # 一時的に保存するファイル</li>
+<li><strong>/tmp/</strong> # /tmpと似ているが，リブートしても消えない</li>
+<li><strong>/run/</strong> # 起動中のプロセスのPIDが保存される．Ubuntu12.04ではルートディレクトリの/runにシンボリックリンクが貼られている</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>環境</h4>
+
+<p>なるべく一般的なLinuxの情報を参考にしつつ，手元のUbuntu12.04と照らし合わせながら作成している．環境によっては違う部分があると思うので注意．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/ait/articles/0108/07/news002.html">Windowsユーザーに教えるLinuxの常識（2）：各ディレクトリの役割を知ろう（ルートディレクトリ編） (1/2) - ＠IT</a></li>
+<li><p><a href="http://www.usupi.org/sysad/239.html">ハードウェアの情報を収集する - いますぐ実践! Linuxシステム管理 / Vol.239</a></p></li>
+<li><p>「<a href="http://www.amazon.co.jp/gp/product/4839938717/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4839938717&linkCode=as2&tag=yagays-22">Linuxの教科書　改訂版 （マイコミムック） (MYCOMムック)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4839938717" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」は，ルートディレクトリ構成および中身のファイルに至るまで，基礎の部分について網羅的に書かれている．また，/etcと/varの概要をRed Had系とDebian系でそれぞれリストアップしている．</p></li>
+<li><p>「<a href="http://www.amazon.co.jp/gp/product/4797328355/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4797328355&linkCode=as2&tag=yagays-22">ふつうのLinuxプログラミング Linuxの仕組みから学べるgccプログラミングの王道</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4797328355" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」は，ルートディレクトリの基本的な構造とその役割について書かれている．特に/usrと/varを使い分ける基準が解説されている点は参考になった．</p></li>
+<li><p>「<a href="http://www.amazon.co.jp/gp/product/4774151432/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4774151432&linkCode=as2&tag=yagays-22">プロのための Linuxシステム・10年効く技術 (Software Design plus)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4774151432" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+」は，/dev/nullおよび/dev/zeroの使い方について参考にした．他にもプロセスまわりやメモリ管理について詳細に書かれている．</p></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4839938717" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4797328355" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774151432" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「ヒックとドラゴン」における耳を使った感情表現]]></title>
@@ -684,39 +788,6 @@
 <p>ちなみに，冬休みの課題図書はもう購入してあるので，あとはひたすらに読むのみ&#8230;．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/2012-12-25.jpg" alt="" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[SOAPdenovo2がGPLv3を宣言しているにも関わらずソースコードを公開していない件について]]></title>
-    <link href="http://yagays.github.io/blog/2012/12/28/soapdenovo2-gplv3/"/>
-    <updated>2012-12-28T14:48:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2012/12/28/soapdenovo2-gplv3</id>
-    <content type="html"><![CDATA[<p>つい先日<a href="http://www.gigasciencejournal.com/content/1/1/18/abstract">SOAPdenovo2というゲノムアセンブリのツールに関する論文</a>が公開されたのだが，このツールのライセンスに関して問題が出ているようだ．というもの，SOAPdenovo2の論文内で宣言されているライセンスがGNU General Public License version 3.0 (GPLv3)にも関わらず，ツールの配布はバイナリ形式に限定されており，そのソースコードが公開されていない状態になっているからだ．SOAPdenovo2の公開とライセンスに関する問題は，以下のBlogで詳しく取り上げられている．</p>
-
-<ul>
-<li><a href="http://dskernel.blogspot.ca/2012/12/the-source-code-of-soapdenovo2-sits-in.html">The Bioinformatics Adventure: The source code of SOAPdenovo2 sits in the shadows</a></li>
-<li><a href="http://www.homolog.us/blogs/2012/12/27/should-soapdenovo2-source-code-be-made-public/">Should SOAPdenovo2 Source Code be Made Public? « Homologus</a></li>
-</ul>
-
-
-<p>SOAPdenovo2は，<a href="http://soap.genomics.org.cn/soapdenovo.html">SOAPdenovo</a>というアセンブリツールの改良版として開発が進められてきたソフトフェアである．以前からバイナリ形式での配布は行われており，アップデートも度々行われてきたという経緯がある．そして今回SOAPdenovo2の論文がアクセプトされて公開されたわけだが，それでもなおソースコードが未だに手に入らない状態となっている．</p>
-
-<p>この問題に関して，上記Blogでリンクが貼られている<a href="http://www.gigasciencejournal.com/imedia/1713065231860845_comment.pdf">論文のReviewer&#8217;s report</a>に書かれている通り，論文著者は「論文がアクセプトされたらすぐにでもソースコードを公開する予定だ」と言っていたようだが，実際はそうならなかったらしい．これに対し論文誌の中の人が<a href="http://dskernel.blogspot.jp/2012/12/the-source-code-of-soapdenovo2-sits-in.html?showComment=1356635323574#c1974728922130779068">コメント</a>しており，すぐにでもソースコードを公開させるとのことだが，現在のところ(2012/12/28 14:00)SOAPdenovo2のソースコードは公開されていない．</p>
-
-<ul>
-<li><a href="http://sourceforge.net/projects/soapdenovo2/files/SOAPdenovo2/src/revision223/">http://sourceforge.net/projects/soapdenovo2/files/SOAPdenovo2/src/revision223/</a></li>
-</ul>
-
-
-<h3>追記(2012/12/28 18:30)</h3>
-
-<p>どうやら公開されたようだ．</p>
-
-<ul>
-<li><a href="http://sourceforge.net/projects/soapdenovo2/files/SOAPdenovo2/src/r223/">http://sourceforge.net/projects/soapdenovo2/files/SOAPdenovo2/src/r223/</a></li>
-</ul>
-
 ]]></content>
   </entry>
   
