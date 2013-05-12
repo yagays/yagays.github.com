@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-05-09T21:34:54+09:00</updated>
+  <updated>2013-05-12T09:54:56+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「村上式シンプル英語勉強法」読了]]></title>
+    <link href="http://yagays.github.io/blog/2013/05/12/review-murakami-english/"/>
+    <updated>2013-05-12T09:47:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/05/12/review-murakami-english</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0081MAET6" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>英語の勉強法なんてものは王道無しというか，みんながみんな自分の方法を一般論のように語ったり，適当なことを言いふらしてはお金にしようと画策していたり，かく言う僕自身もあまり英語が得意ではない方で勉強法についてもよく分かっていない．だから，勉強しようとすると誰かの意見を盲信するか自分の流儀を貫き通すしかない．本書も結局は巷にあふれる英語勉強本の中の一つにすぎず，Googleだとか外資社長だとかいった箔が付いている程度のものだ．</p>
+
+<p>本書の主張は非常にシンプルで，英語のスキルを上達させたいなら</p>
+
+<ul>
+<li>300万語読む</li>
+<li>1万語眺める（覚える）</li>
+<li>1000時間聞く</li>
+<li>文章を書くときは人の英文を借りてくる</li>
+<li>パターンを暗記する</li>
+</ul>
+
+
+<p>をクリアすればいいというもの．あとは，これを実現するために具体的にどうやれば効率が良いかといった方法が，著者自身の経験とともに語られる．例えば，英文を読むときは後戻りをせずに一気に読みきるとか，リスニングは筋トレと同じだから聞き取れないくらいのレベルを聴き続けるとか，英語のメールを書くときは人の文章から借りてくるとか，ちょっとしたコツが幾つも載っている．分量としても，1時間あれば読みきれるくらいなので，軽い気持ちで読み通せる．本書の中では，英語を学習する上で難しいことなんて何も要求されない．</p>
+
+<p>さて，ここまで本書をひと通り読み進めて，あとは内容を信じるか信じないかだ．納得できたかかどうか，信憑性があるかないか，試してみてリスクが大きそうか小さそうか，その辺りが頭のなかを駆け巡ることだろう．僕の場合は，本書の進言をちょっと真面目に聞いてみようかなという気になった．理由なんてものはあってないようなものなのだけれども，著者の英語に対する割り切りの良さが少し気に入ったからかもしれない．</p>
+
+<p>ということで，サクッと読めてアドバイスもそこそこな本書は，意見があう部分が多く個人的にはオススメできる．まあ，英語上達の保証はできないけれども&#8230;．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA["The Art of How to Train Your Dragon"読了]]></title>
@@ -740,44 +769,6 @@
 </ul>
 </li>
 </ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[2012年の締めくくりとして日頃お世話になった方に本を贈った]]></title>
-    <link href="http://yagays.github.io/blog/2013/01/01/2013-new-year/"/>
-    <updated>2013-01-01T22:47:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/01/01/2013-new-year</id>
-    <content type="html"><![CDATA[<p>あけましておめでとうございます．今年もyag_aysならびにWolfeyes Bioinformatics Betaをよろしくお願いします．</p>
-
-<p>さて，前の記事でも書いたように2012年は色んな本を読んだということで，ただ自分のためだけに読むのは面白くないと思い，日頃お世話になった方などに本を贈ろうと考えたのが昨年の12月25日前後．その日から年越しまでに忘年会が1つと京都からの来客が1つあるということで，そこで会う方に本をプレゼントするべく色々検討を重ねた結果，以下の本を贈ることとなった．</p>
-
-<ul>
-<li><strong>「なかのとおるの生命科学者の伝記を読む」</strong>仲野徹（<a href="http://yagays.github.com/blog/2012/08/31/review-biography/">書評</a>）</li>
-<li><strong>「バースト! 人間行動を支配するパターン」</strong>アルバート=ラズロ・バラバシ（<a href="http://yagays.github.com/blog/2012/08/07/review-bursts/">書評</a>）</li>
-<li><strong>「アナタはなぜチェックリストを使わないのか？」</strong>アトゥール・ガワンデ（<a href="http://yagays.github.com/blog/2012/12/10/review-checklist-manifesto/">書評</a>）</li>
-<li><strong>「竜の学校は山の上」「竜のかわいい七つの子」</strong>九井諒子</li>
-</ul>
-
-
-<p>選考の際には，まず第一に私が読んで面白いと感じた本であること，そして出版が2011年以降のなるべく新しい本であることという制約を設けた．渡す相手のプロフィールなどを考慮に入れて，相手に読んでもらいたい，相手に喜んでもらえるような本を選んだので，個人的な2012年のランキングとはまた違ったラインナップとなっている．自分のひとりよがりになっていないか心配であるが，取り敢えず渡した時には喜んでもらえたようで良かった．その場での話のタネにもなったし，初めての試みとしては成功したのではないかと思うのだが，果たして&#8230;．</p>
-
-<p>これらの本は私が自信をもってオススメできる本なので，気になるタイトルがあればぜひ手にとってみて下さい．</p>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4780908485" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=414081554X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4863912803" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4781605451" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4047284084" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 
 ]]></content>
   </entry>
