@@ -4,7 +4,7 @@
   <title><![CDATA[Category: SOAPdenovo2 | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/soapdenovo2/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-05-12T09:54:56+09:00</updated>
+  <updated>2013-05-12T10:18:48+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -51,7 +51,7 @@
     <link href="http://yagays.github.io/blog/2012/10/13/soapdenovo2-install/"/>
     <updated>2012-10-13T07:30:00+09:00</updated>
     <id>http://yagays.github.io/blog/2012/10/13/soapdenovo2-install</id>
-    <content type="html"><![CDATA[<p>前回<a href="bhttp://yagays.github.com/blog/2012/10/11/soapdenovo2-stats/">SOAPdenovo2の話</a>を書いたが，そういえばSOAPdenovo2といえばインストールまわりが不親切だったので，ちょっと解説みたいなものを書いてみる．</p>
+    <content type="html"><![CDATA[<p>前回<a href="http://yagays.github.com/blog/2012/10/11/soapdenovo2-stats/">SOAPdenovo2の話</a>を書いたが，そういえばSOAPdenovo2といえばインストールまわりが不親切だったので，ちょっと解説みたいなものを書いてみる．</p>
 
 <h3>ダウンロード</h3>
 
