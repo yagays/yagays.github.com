@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Trinity | Wolfeyes Bioinformatics beta]]></title>
+  <link href="http://yagays.github.io/blog/categories/trinity/atom.xml" rel="self"/>
+  <link href="http://yagays.github.io/"/>
+  <updated>2013-05-14T21:28:21+09:00</updated>
+  <id>http://yagays.github.io/</id>
+  <author>
+    <name><![CDATA[yag_ays]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Trinityのインストールとサンプルデータのアセンブル]]></title>
+    <link href="http://yagays.github.io/blog/2013/05/14/trinity-install/"/>
+    <updated>2013-05-14T21:25:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/05/14/trinity-install</id>
+    <content type="html"><![CDATA[<p>久しぶりに<a href="http://trinityrnaseq.sourceforge.net/">Trinity</a>を触ろうと思ってインストールしたら，実行に<a href="http://bowtie-bio.sourceforge.net/index.shtml">Bowtie</a>が必要になっていた．de novo transcriptome assemblyの後の解析で使う程度かと思いきや，どうやらChrysalis（2段階目）で必要になるらしい．そのため，Bowtieにパスを通していないとTrinity.pl実行時に以下のようなエラーが出る．</p>
+
+<p><code>
+Error, cannot find path to bowtie, which is now needed as part of Chrysalis' read scaffolding step at ../../Trinity.pl line 622.
+</code></p>
+
+<p>というわけで，TrinityのインストールをしつつBowtieも用意して，試しにソースコードに含まれているテストデータの実行をしてみる．</p>
+
+<h3>Trinityのインストール</h3>
+
+<p>SourceForgeからソースコードをダウンロードしてインストールする．解凍したディレクトリでmakeをすればよい．</p>
+
+<p><a href="http://sourceforge.net/projects/trinityrnaseq/files/">Trinity RNA-Seq Assembly - Browse Files at SourceForge.net</a></p>
+
+<p><code>
+$ wget http://downloads.sourceforge.net/project/trinityrnaseq/trinityrnaseq_r2013-02-25.tgz
+$ tar zxvf trinityrnaseq_r2013-02-25.tgz
+$ cd trinityrnaseq_r2013-02-25
+$ make
+</code></p>
+
+<h3>Bowtieのインストール</h3>
+
+<p>こちらも同様にSourceForgeからダウンロードするが，コンパイル済みのバイナリが配布されているので，makeをせずにそのまま利用できる．OSごとに32bit版と64bit版が用意されているので，環境に合わせてダウンロードする．</p>
+
+<p><a href="http://bowtie-bio.sourceforge.net/index.shtml">Bowtie: An ultrafast, memory-efficient short read aligner</a></p>
+
+<p><a href="http://sourceforge.net/projects/bowtie-bio/files/bowtie/1.0.0/">Bowtie - Browse /bowtie/1.0.0 at SourceForge.net</a></p>
+
+<h3>Bowtieのバイナリがあるディレクトリにパスを通す．</h3>
+
+<p>今回はとりあえずシェルの設定ファイルをいじらずに，コマンドでbowtieがあるディレクトリをパスに指定する．</p>
+
+<p><code>
+$ export PATH=/Users/yag_ays/Downloads/bowtie-1.0.0:$PATH
+</code></p>
+
+<p>もし頻繁に使用するなら，bowtieのバイナリをパスが通っている場所に移動させたほうがいいだろう．</p>
+
+<h3>サンプルデータのアセンブル</h3>
+
+<p>ひと通り動くことを確認するために，ソースコードの中に含まれているサンプルデータの解析を動かしてみる．</p>
+
+<p>今回実行するのはsample_data/test_Trinity_Assembly．ディレクトリ内にrunMe.shがあるので，単純にそれを実行すればよい．初回は配列ファイルの解凍が実行されるため，Trinityが実行されるまでに少し時間がかかる．</p>
+
+<p><code>
+$ cd sample_data/test_Trinity_Assembly
+$ ./runMe.sh
+</code></p>
+
+<p>もしきちんとパスを通せていれば，標準出力に以下のようなテキストが表示され，解析が始まる．</p>
+
+<p>```
+$ ../../Trinity.pl --seqType fq --JM 2G --left reads.left.fq --right reads.right.fq --SS_lib_type RF --CPU 4 --no_cleanup --monitoring --output test
+WARNING, --monitoring can only be used on linux. Turning it off.</p>
+
+<p>Current settings:
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+file size               (blocks, -f) unlimited
+max locked memory       (kbytes, -l) unlimited
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 256
+pipe size            (512 bytes, -p) 1
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 709
+virtual memory          (kbytes, -v) unlimited</p>
+
+<p>Paired mode requires bowtie. Found bowtie at: /Users/yag_ays/Downloads/bowtie-1.0.0/bowtie</p>
+
+<p>...
+```</p>
+]]></content>
+  </entry>
+  
+</feed>
