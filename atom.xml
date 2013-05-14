@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-05-14T21:28:21+09:00</updated>
+  <updated>2013-05-14T21:32:00+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -26,7 +26,7 @@
 
 <p>というわけで，TrinityのインストールをしつつBowtieも用意して，試しにソースコードに含まれているテストデータの実行をしてみる．</p>
 
-<h3>Trinityのインストール</h3>
+<h3>1. Trinityのインストール</h3>
 
 <p>SourceForgeからソースコードをダウンロードしてインストールする．解凍したディレクトリでmakeをすればよい．</p>
 
@@ -42,7 +42,7 @@
 </span><span class='line'>$ make</span></code></pre></td></tr></table></div></figure>
 
 
-<h3>Bowtieのインストール</h3>
+<h3>2. Bowtieのインストール</h3>
 
 <p>こちらも同様にSourceForgeからダウンロードするが，コンパイル済みのバイナリが配布されているので，makeをせずにそのまま利用できる．OSごとに32bit版と64bit版が用意されているので，環境に合わせてダウンロードする．</p>
 
@@ -50,7 +50,7 @@
 
 <p><a href="http://sourceforge.net/projects/bowtie-bio/files/bowtie/1.0.0/">Bowtie - Browse /bowtie/1.0.0 at SourceForge.net</a></p>
 
-<h3>Bowtieのバイナリがあるディレクトリにパスを通す．</h3>
+<h3>3. Bowtieのバイナリがあるディレクトリにパスを通す</h3>
 
 <p>今回はとりあえずシェルの設定ファイルをいじらずに，コマンドでbowtieがあるディレクトリをパスに指定する．</p>
 
