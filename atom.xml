@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-05-15T12:49:38+09:00</updated>
+  <updated>2013-05-15T12:53:45+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -46,7 +46,10 @@
 
 <h3>参考</h3>
 
-<h2>- (pdf) <a href="http://korflab.ucdavis.edu/datasets/Assemblathon/Assemblathon1/assemblathon_talk.pdf">http://korflab.ucdavis.edu/datasets/Assemblathon/Assemblathon1/assemblathon_talk.pdf</a></h2>
+<ul>
+<li>(pdf) <a href="http://korflab.ucdavis.edu/datasets/Assemblathon/Assemblathon1/assemblathon_talk.pdf">http://korflab.ucdavis.edu/datasets/Assemblathon/Assemblathon1/assemblathon_talk.pdf</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
