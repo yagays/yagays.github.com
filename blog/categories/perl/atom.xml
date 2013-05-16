@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Perl | Wolfeyes Bioinformatics beta]]></title>
+  <link href="http://yagays.github.io/blog/categories/perl/atom.xml" rel="self"/>
+  <link href="http://yagays.github.io/"/>
+  <updated>2013-05-16T12:25:37+09:00</updated>
+  <id>http://yagays.github.io/</id>
+  <author>
+    <name><![CDATA[yag_ays]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[cpanmのセッティング]]></title>
+    <link href="http://yagays.github.io/blog/2013/05/16/cpanm/"/>
+    <updated>2013-05-16T12:19:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/05/16/cpanm</id>
+    <content type="html"><![CDATA[<p>PerlでCPANを使うなら，cpanmが便利．ライブラリはすべてホームディレクトリ以下に展開されるので，管理者権限が無くても気軽に使用できる．</p>
+
+<ul>
+<li><a href="http://search.cpan.org/~miyagawa/App-cpanminus-1.6914/bin/cpanm">cpanm - search.cpan.org</a></li>
+</ul>
+
+
+<h3>パスの通ったディレクトリにインストールする</h3>
+
+<p><code>
+$ cd local/bin
+$ curl -LOk http://xrl.us/cpanm
+$ chmod +x cpanm
+</code></p>
+
+<h3>.zshrcに設定を書き込む</h3>
+
+<p><code>
+export PERL_CPANM_OPT="--local-lib=~/.cpanm/"
+export PERL5LIB="$HOME/.cpanm/lib/perl5:$PERL5LIB"
+</code></p>
+
+<h3>例）ライブラリを入れる</h3>
+
+<p><code>
+$ cpanm local::lib
+$ cpanm JSON
+$ cpanm Cairo
+</code></p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://www.omakase.org/perl/cpanm.html">perlモジュールのinstallにcpanmを使う｜perl｜@OMAKASE</a></li>
+<li><a href="http://g86.dbcls.jp/~yag/wordpress/archives/1400">Wolf Ears » cpanmでBioPerlを入れる</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
