@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-05-16T12:25:37+09:00</updated>
+  <updated>2013-05-20T01:49:11+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,80 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[zaw.zshを使って移動したことのあるディレクトリに一発で飛ぶ]]></title>
+    <link href="http://yagays.github.io/blog/2013/05/20/zaw-zsh/"/>
+    <updated>2013-05-20T01:47:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/05/20/zaw-zsh</id>
+    <content type="html"><![CDATA[<p>zaw.zshは「zsh anything.el-like widget」という略称らしく，Emacsのanything.elみたいなインターフェイスでzshを操作できるという拡張プラグインだ．本来は様々な操作に対応しているのだが，とりあえずディレクトリ操作だけでも恐ろしいほどに便利なので，anything.elを知らない人でも導入して損はないと思う．ここでは以下の記事を参考に，zaw.zshの設定をしてみた．</p>
+
+<ul>
+<li><a href="https://github.com/zsh-users/zaw">zsh-users/zaw · GitHub</a></li>
+<li><a href="http://u7fa9.org/memo/HEAD/archives/2011-02/2011-02-22_1.rst">zsh でも anything.el っぽいの - memo</a></li>
+<li><a href="http://shibayu36.hatenablog.com/entry/20120130/1327937835">zaw.zshで最近移動したディレクトリに移動する - $shibayu36->blog;</a></li>
+</ul>
+
+
+<h3>1. zawをダウンロードする</h3>
+
+<p>今回は.zshというディレクトリを$HOME以下に作成して，そこでgit cloneを実行する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ mkdir .zsh
+</span><span class='line'>$ cd .zsh
+</span><span class='line'>$ git clone git://github.com/zsh-users/zaw.git</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>2. .zshrcを設定する</h3>
+
+<p>以下の内容を.zshrcに書き込む．sourceでzaw.zshを読み込む部分は，先ほどダウンロードしたzawディレクトリを指定する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># zaw.zsh
+</span><span class='line'># http://shibayu36.hatenablog.com/entry/20120130/1327937835
+</span><span class='line'>autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+</span><span class='line'>add-zsh-hook chpwd chpwd_recent_dirs
+</span><span class='line'>zstyle ':chpwd:*' recent-dirs-max 5000
+</span><span class='line'>zstyle ':chpwd:*' recent-dirs-default yes
+</span><span class='line'>zstyle ':completion:*' recent-dirs-insert both
+</span><span class='line'>
+</span><span class='line'>source /home/yag_ays/.zsh/zaw/zaw.zsh
+</span><span class='line'>zstyle ':filter-select' case-insensitive yes # 絞り込みをcase-insensitiveに
+</span><span class='line'>bindkey '^@' zaw-cdr # zaw-cdrをbindkey</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>3. .zshrcを読み込む</h3>
+
+<p>最後に.zshrcを再度読み込んでエラーがでなければ完了．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ source .zshrc</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>使い方</h3>
+
+<p>C-@（Control-@）を押すと以下のように，直近で移動したディレクトリの一覧が表示される．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/zaw1.png" alt="" /></p>
+
+<p>この状態でキーワードを入力すると，マッチしたディレクトリだけを選ぶこともできる．深い階層のディレクトリでも名前さえ覚えていれば一発で飛ぶことができるので，非常に便利だ．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/zaw2.png" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[cpanmのセッティング]]></title>
@@ -865,32 +939,6 @@
 <p> <p><a href="http://vimeo.com/27244727">LEARN</a> from <a href="http://vimeo.com/rickmereki">Rick Mereki</a> on <a href="http://vimeo.com">Vimeo</a>.</p></p>
 
 <p>そう，まさにこんな感じ．それにしてもこの動画は編集のおかげですっごい楽しく見えるんだけど，実際やってる最中とか未加工の動画を見ると案外つまんないんだろうなーと思うと，余計に習い事とか人に教わることが面白く感じてくる．実際やってみると何だこりゃってなるのがまあ普通だし，そのほうが色々と印象に残るし，やり終えた後の景色もさぞ違って見えることだろう．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「映画時評2009-2011」読了]]></title>
-    <link href="http://yagays.github.io/blog/2013/01/09/review-hasumi-movie-critique/"/>
-    <updated>2013-01-09T09:09:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/01/09/review-hasumi-movie-critique</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4062174944" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>フランス文学者であり元東大総長または映画評論家である蓮實重彦による，2009年から2011年までの映画評および映画関係の文章をまとめた本．映画評は主に「群像」に掲載されていたものであり，その他の映画にまつわる文章は新聞や雑誌，パンフレットなどの媒体に掲載されていたものである．</p>
-
-<p>今回は自分が見たことのある映画の時評をひと通り読んだのだが，本書にまとめられている36ある映画時評のうちの10本くらいしか読むことができなかった．つまりは，内容に関する書評を書けるだけの分量に目を通せていない．最近映画をよく見るようになったとはいえ，それでもまだまだ足りないのだと思い知らされるばかりだ．もちろん本書で扱っている全ての映画に目を通して時評を読みたいという気持ちはあるものの，残り26の映画に関してはこれからの宿題ということで，少しずつ埋めいこうと思う．当初の狙いとしては映画を観る眼を養いたいということで時評を読み始めたので，書評のために映画を観るという本末転倒な状態にならないよう，まずはとにかく映画を観るということを優先していきたい．</p>
-
-<p>それにしても蓮實重彦で思い出されるのは，だいぶ昔に山形浩生が書いていた「知性のために」という蓮實重彦のスピーチ集にまつわる逸話だろう．東大入学式での蓮實重彦の式辞は，留学生が泣き出しおばあさんが倒れそうなくらい長くてとらえどころのない話が延々続くのだという下りは，なんというか強烈に印象に残っている．もちろん理由もなしにだらだら喋っているというわけではないということは後の文書で書かれているのだが，この文章を読んだ時は，それにしても酷い言われようだと思った記憶がある．まあ，今回初めて蓮實重彦の文章を読んで「ああそういうことか」と納得してしまったのだが，さすがは文学者というか評論家というか，普段インターネットや雑誌では目にしないような類の文学的でいて，なおかつ美しい文章であることには間違い無かった．</p>
-
-<ul>
-<li><a href="http://cruel.org/cut/cut199812.html">CUT 1998/12</a>
-
-<ul>
-<li>山形浩生「いつものお説教を別のかたちで読み直すこと。」</li>
-</ul>
-</li>
-</ul>
-
 ]]></content>
   </entry>
   
