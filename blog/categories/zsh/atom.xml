@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Zsh | Wolfeyes Bioinformatics beta]]></title>
+  <link href="http://yagays.github.io/blog/categories/zsh/atom.xml" rel="self"/>
+  <link href="http://yagays.github.io/"/>
+  <updated>2013-05-20T01:54:02+09:00</updated>
+  <id>http://yagays.github.io/</id>
+  <author>
+    <name><![CDATA[yag_ays]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[zaw.zshを使って移動したことのあるディレクトリに一発で飛ぶ]]></title>
+    <link href="http://yagays.github.io/blog/2013/05/20/zaw-zsh/"/>
+    <updated>2013-05-20T01:47:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/05/20/zaw-zsh</id>
+    <content type="html"><![CDATA[<p>zaw.zshは「zsh anything.el-like widget」という略称らしく，Emacsのanything.elみたいなインターフェイスでzshを操作できるという拡張プラグインだ．本来は様々な操作に対応しているのだが，とりあえずディレクトリ操作だけでも恐ろしいほどに便利なので，anything.elを知らない人でも導入して損はないと思う．ここでは以下の記事を参考に，zaw.zshの設定をしてみた．</p>
+
+<ul>
+<li><a href="https://github.com/zsh-users/zaw">zsh-users/zaw · GitHub</a></li>
+<li><a href="http://u7fa9.org/memo/HEAD/archives/2011-02/2011-02-22_1.rst">zsh でも anything.el っぽいの - memo</a></li>
+<li><a href="http://shibayu36.hatenablog.com/entry/20120130/1327937835">zaw.zshで最近移動したディレクトリに移動する - $shibayu36->blog;</a></li>
+</ul>
+
+
+<h3>1. zawをダウンロードする</h3>
+
+<p>今回は.zshというディレクトリを$HOME以下に作成して，そこでgit cloneを実行する．</p>
+
+<p><code>
+$ mkdir .zsh
+$ cd .zsh
+$ git clone git://github.com/zsh-users/zaw.git
+</code></p>
+
+<h3>2. .zshrcを設定する</h3>
+
+<p>以下の内容を.zshrcに書き込む．sourceでzaw.zshを読み込む部分は，先ほどダウンロードしたzawディレクトリを指定する．</p>
+
+<p>```</p>
+
+<h1>zaw.zsh</h1>
+
+<h1>http://shibayu36.hatenablog.com/entry/20120130/1327937835</h1>
+
+<p>autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':chpwd:<em>' recent-dirs-max 5000
+zstyle ':chpwd:</em>' recent-dirs-default yes
+zstyle ':completion:*' recent-dirs-insert both</p>
+
+<p>source /home/yag_ays/.zsh/zaw/zaw.zsh
+zstyle ':filter-select' case-insensitive yes # 絞り込みをcase-insensitiveに
+bindkey '<sup>@'</sup> zaw-cdr # zaw-cdrをbindkey
+```</p>
+
+<h3>3. .zshrcを読み込む</h3>
+
+<p>最後に.zshrcを再度読み込んでエラーがでなければ完了．</p>
+
+<p><code>
+$ source .zshrc
+</code></p>
+
+<h3>使い方</h3>
+
+<p>C-@（Control-@）を押すと以下のように，直近で移動したディレクトリの一覧が表示される．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/zaw1.png" alt="" /></p>
+
+<p>この状態でキーワードを入力すると，マッチしたディレクトリだけを選ぶこともできる．深い階層のディレクトリでも名前さえ覚えていれば一発で飛ぶことができるので，非常に便利だ．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/zaw2.png" alt="" /></p>
+]]></content>
+  </entry>
+  
+</feed>
