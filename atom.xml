@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-05-20T01:54:02+09:00</updated>
+  <updated>2013-05-21T14:31:33+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -14,11 +14,120 @@
 
   
   <entry>
+    <title type="html"><![CDATA[treeでディレクトリ構造を可視化する]]></title>
+    <link href="http://yagays.github.io/blog/2013/05/21/tree/"/>
+    <updated>2013-05-21T14:30:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/05/21/tree</id>
+    <content type="html"><![CDATA[<p>最近は色々と忙しくネタが無いわけではないが，書けるだけの内容にまとまりきれていないのが現状．というわけで今回もLinxuの環境周りの話ということで，ディレクトリ構造をターミナル上で可視化するtreeというコマンドの話．ああ，これ以上何も言うことがない…．</p>
+
+<p><a href="http://mama.indstate.edu/users/ice/tree/">The Tree Command for Linux Homepage</a></p>
+
+<h3>インストール</h3>
+
+<p>ソースを取ってきてコンパイルする．以上．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ wget ftp://mama.indstate.edu/linux/tree/tree-1.6.0.tgz
+</span><span class='line'>$ tar zxvf lftp-4.4.6.tar.gz
+</span><span class='line'>$ cd tree-1.6.0
+</span><span class='line'>$ make</span></code></pre></td></tr></table></div></figure>
+
+
+<p>あとは，treeをパスの通ったところに移動させれば完了．以上．</p>
+
+<h3>使い方</h3>
+
+<p>何もオプションを指定しないと，以下のようにファイルとディレクトリが表示される．以上．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ tree
+</span><span class='line'>.
+</span><span class='line'>├── CHANGES
+</span><span class='line'>├── INSTALL
+</span><span class='line'>├── LICENSE
+</span><span class='line'>├── Makefile
+</span><span class='line'>├── README
+</span><span class='line'>├── TODO
+</span><span class='line'>├── color.c
+</span><span class='line'>├── color.o
+</span><span class='line'>├── doc
+</span><span class='line'>│   ├── tree.1
+</span><span class='line'>│   ├── tree.1.fr
+</span><span class='line'>│   └── xml.dtd
+</span><span class='line'>├── hash.c
+</span><span class='line'>├── hash.o
+</span><span class='line'>├── html.c
+</span><span class='line'>├── html.o
+</span><span class='line'>├── strverscmp.c
+</span><span class='line'>├── tree
+</span><span class='line'>├── tree.c
+</span><span class='line'>├── tree.h
+</span><span class='line'>├── tree.o
+</span><span class='line'>├── unix.c
+</span><span class='line'>├── unix.o
+</span><span class='line'>├── xml.c
+</span><span class='line'>└── xml.o
+</span><span class='line'>
+</span><span class='line'>1 directory, 24 files</span></code></pre></td></tr></table></div></figure>
+
+
+<p>-dオプションをつけると，ディレクトリだけを表示することができる．以上．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ tree -d
+</span><span class='line'>.
+</span><span class='line'>└── doc
+</span><span class='line'>
+</span><span class='line'>1 directory</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ちなみに，色も付きます（ディレクトリと実行ファイル）．以上．お疲れ様でした．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/tree.png" alt="" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[zaw.zshを使って移動したことのあるディレクトリに一発で飛ぶ]]></title>
     <link href="http://yagays.github.io/blog/2013/05/20/zaw-zsh/"/>
     <updated>2013-05-20T01:47:00+09:00</updated>
     <id>http://yagays.github.io/blog/2013/05/20/zaw-zsh</id>
-    <content type="html"><![CDATA[<p>zaw.zshは「zsh anything.el-like widget」という略称らしく，Emacsのanything.elみたいなインターフェイスでzshを操作できるという拡張プラグインだ．本来は様々な操作に対応しているのだが，とりあえずディレクトリ操作だけでも恐ろしいほどに便利なので，anything.elを知らない人でも導入して損はないと思う．ここでは以下の記事を参考に，zaw.zshの設定をしてみた．</p>
+    <content type="html"><![CDATA[<p>「zsh anything.el-like widget」通称zshは，Emacsのanything.elみたいなインターフェイスでzshを操作できるという拡張プラグインだ．本来は様々な操作に対応しているのだが，とりあえずディレクトリ操作だけでも恐ろしいほどに便利なので，anything.elを知らない人でも導入して損はないと思う．ここでは以下の記事を参考に，zaw.zshの設定をしてみた．</p>
 
 <ul>
 <li><a href="https://github.com/zsh-users/zaw">zsh-users/zaw · GitHub</a></li>
@@ -914,31 +1023,6 @@
 <p>たとえば私の場合，日頃使っているペンは全て同じメーカーの同じ型番に統一している．どこの文具屋にも売っているような安い三色ボールペンだ．それが家のペン立てにも職場のペン立てにも，カバンの中のペンケースにも入っている．そうしていると，いかなる状況においても常に同じ書き心地で文字を書くことができる．これは人に教えてもらって実践していることだが，これが結構便利で気に入っている．そういう理由があるからこそ，私が次に買うペンも今までと同じモノを買うことになるだろう．これはもちろん後付けだから最初から意識していたわけではないし，最初は私も意識せずに使ってた単なるボールペンだった．でもそれは今では愛用品になっている．これが私が持っている逸話であり，私の一部として自然と取り込まれている．</p>
 
 <p>だから，あなたが次に買い物をするときには，まず第一に慎重に選ぶ．次に，あなたがそれを選んだ理由として必ず逸話を作ろう．そしてそれをしっかり記憶しておくのだ．そうすれば，いつか身の回りにはあなただけのオリジナルあふれるモノでいっぱいになっていることだろう．個性なんて考える必要は無い．ただ逸話をいっぱい集めればいいのだ．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[2013年にやりたいこと(Hatena Blog記事版)]]></title>
-    <link href="http://yagays.github.io/blog/2013/01/11/2013-target/"/>
-    <updated>2013-01-11T08:15:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/01/11/2013-target</id>
-    <content type="html"><![CDATA[<p>以下の記事は，<a href="http://blog.hatena.ne.jp/-/campaign/newyear2013">Hatena Blogのキャンペーン</a>に投稿するために書いた文章の転載だ．せっかくなので，このBlogにも貼り付けておく．何度も見返したほうが日頃から意識できるしね．</p>
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2013/01/11/065830">http://yag-ays.hatenablog.com/entry/2013/01/11/065830</a></li>
-</ul>
-
-
-<h2>お金を払って人に教えてもらいにいく</h2>
-
-<p>これが実に難しい．何かをしようとしたらまずはインターネットで検索して無料の情報を集めるような時代だから，わざわざ時間とお金を掛けて実際に人に習いに行くということは難しくなってきている．特に現状で不便なくこなせていく事に関して一歩踏み込んだことをやろうと考えたときに，プロに直接的に指導を仰ぐということをしなくなってきていると感じている．今のスキルでもなんとかなるんだから後は自分でどうにかやるよという気持ちでいると，どうしても自己流の要領の悪いままでいることになりがちだ．それを自己流に突き詰めていくという方向もあるのだが，そこまで独自性を出せる人はなかなかいない．それに労力をかけるだけの時間もない．だからまずは手っ取り早く人に教わることで，ある程度の水準まで一気に持ち上げてもらい，同時に型を経験することで目標や学び方を知ることができると思うのだ．そして今の僕には，そのモチベーションが欠けている．</p>
-
-<iframe src="http://player.vimeo.com/video/27244727?color=ffffff" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-
-
-<p> <p><a href="http://vimeo.com/27244727">LEARN</a> from <a href="http://vimeo.com/rickmereki">Rick Mereki</a> on <a href="http://vimeo.com">Vimeo</a>.</p></p>
-
-<p>そう，まさにこんな感じ．それにしてもこの動画は編集のおかげですっごい楽しく見えるんだけど，実際やってる最中とか未加工の動画を見ると案外つまんないんだろうなーと思うと，余計に習い事とか人に教わることが面白く感じてくる．実際やってみると何だこりゃってなるのがまあ普通だし，そのほうが色々と印象に残るし，やり終えた後の景色もさぞ違って見えることだろう．</p>
 ]]></content>
   </entry>
   
