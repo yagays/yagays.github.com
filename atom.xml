@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-05-22T09:36:49+09:00</updated>
+  <updated>2013-05-22T09:54:04+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -29,7 +29,7 @@
 
 <h3>brissで余白をトリミングする</h3>
 
-<p>今回は「briss」というJaavaアプリケーションを使ってみる．</p>
+<p>今回は「briss」というJavaアプリケーションを使ってみる．</p>
 
 <p><a href="http://appdrill.net/61580/briss.html">[Mac] 自炊に！PDFのページを重ねて一発で余白を切り取る「briss」 « Appdrill</a></p>
 
