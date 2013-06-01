@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Misc | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/misc/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-06-01T11:10:51+09:00</updated>
+  <updated>2013-06-01T11:15:26+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[段落の冒頭に強い接続語を使ってはいけない…?]]></title>
+    <link href="http://yagays.github.io/blog/2013/06/01/paragraph-heading/"/>
+    <updated>2013-06-01T10:57:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/06/01/paragraph-heading</id>
+    <content type="html"><![CDATA[<p>ここ1週間ほどご無沙汰だったので，最近考えているをちょっと書きだしてみる．</p>
+
+<p>最近は同じ研究室の院生の学振書類を手伝ったり，大学院入学希望者の小論文にアドバイスしたりと，人の書いた文書にひたすら赤を入れる日々だったのだが，やはり添削というのは難しい．まず第一には文章を書いた人間の意図を最大限汲み取り，一方では段落や文章の流れを整え単語の使い方を統一するためにバッサバッサとメスを入れ，原形をとどめつつも改善策を提示していかなければならない．ハッキリと論理的に指摘できる部分もあれば，「この言葉の使い方はなんかダサい」みたいな主観的な意見が入ることもある．個人的には徹底して型にはめて形式化された文章にすべきだというスタンスなのだが，逆に書き手の意図さえ伝われば，たとえ文章が全部ひとつなぎになっていようが口語的口調であったり文学的口調になっていようがそれでもいいという人も中にはいるわけで，あまり押し付けがましいのも良くないかなと思う．そして何より，添削しているお前の書く文章はどうなんだと言い返されそうで，自分のやっていることが本当に正しいのかどうか怪しいのが一番怖い．</p>
+
+<p>まあこんなコトを思いつつも，やってくれと言われれば無慈悲に赤を入れるわけだけれども，たまたま見つけた修論の指導を目的とした配布資料にナルホドと思いつつも少し引っかかることが書いてあったので，ここで紹介する．</p>
+
+<p><a href="http://www-utheal.phys.s.u-tokyo.ac.jp/~maxima/NetEd/To_M2/To_M2.pdf">http://www-utheal.phys.s.u-tokyo.ac.jp/~maxima/NetEd/To_M2/To_M2.pdf</a></p>
+
+<p>この中の「2.2 段落（paragraph）」は非常によくまとまっている．英語では特にパラグラフ・リーディングなどで紹介されることが多い段落の構成法は，文章を書く上で何より意識しなければいけない「決まり事」だ．私も文章をあらかた書いたあとに形を整える作業をする際には，このような体裁に特に気をつけている．</p>
+
+<p>この資料では段落を作る上でやって良いこと悪いことといった約束がいくつか紹介されており，それらは納得のいくものばかりなのだが，その中で一つ気になる項目があった．それは「段落の冒頭に強い接続語を使ってはいけない」という部分で，前後の文章を強く結ぶ言葉は段落の冒頭に使うにはふさわしくないということらしい．これに関しては確かに納得のいく部分もある反面，本当に使ってはいけないと断言してしまっていいのだろうかという感覚もある．特に逆接は禁止するほど悪い方法ではないと個人的に思っていて，個人的には前の話題にかぶせる形で議論の対象を変えるのに便利に使っている節がある．おそらくこの使い方は段落をひとまとまりとしてみた時の列挙に近い感覚なので，それは確かに段落に分けるべきではないかもしれない．しかしながら，あまりに膨らんだ内容を無理矢理一つに詰め込むのも良くないので，何かしらの方法で分けるべきだとは思う．やはりそこは，逆接を使わずにいきなり新しい話題でスタートしつつ，ところどころに前の段落との関連をいれていくべきなのだろうか．その方法もできなくはないけど，別に逆接を使ってもいいんじゃない？と思ってしまう．具体例が無い状態でアレコレ言うのは生産性が無いというのは分かっていても，なんとなく気になっている．</p>
+
+<p>以上のようなことをこの1週間の間ぼやーっと考えていたわけだけれども，いまだに結論は出ていない．型にはまった文章を書くというのは，読み手が想定する文章を提示することであって，それは論理構造や正確さ以上に読みやすさという重要な役割を果たしていると思っているのだが，読みやすさの感覚は人それぞれなので，なかなかに統一が難しい．</p>
+
+<br/>
+
+
+<p><strong>余談）</strong>それにしても，ここの文章はどういうアレで書けばいいのか未だによく分からない．表現の境界線を行ったり来たりという感じで，まあ実験場のようなイメージなので，ここで下手糞な文章を書いてても勘弁して欲しい…．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「すべての買い物に逸話をつけよう」― 個性を身に付けるための単純な習慣]]></title>
@@ -114,75 +140,6 @@
 <p>ちなみに，冬休みの課題図書はもう購入してあるので，あとはひたすらに読むのみ...．</p>
 
 <p><img src="http://dl.dropbox.com/u/142306/b/2012-12-25.jpg" alt="" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[2012年に遊んだゲームのレビューまとめ]]></title>
-    <link href="http://yagays.github.io/blog/2012/12/23/game-review-2012/"/>
-    <updated>2012-12-23T13:38:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2012/12/23/game-review-2012</id>
-    <content type="html"><![CDATA[<p>今年に入ってiPadを買ったりPS3を買ったりしたこともあり，ちょくちょくゲームをやるようになった．その中から印象に残ったものを幾つかピックアップして振り返ってみる．</p>
-
-<h3>風ノ旅ビト（PS3）</h3>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B008CP6RWU" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>とにかく今年一番良かった＆影響を受けた．ひと通りクリアしてトロフィーを全部集めた後も，なんだかんだで結局10週くらいはしている．といっても1時間程度で終わるようなゲームなので，疲れた時とか辛いときに考え事しながらやるという感じ．風景を見つつ民族風の音楽をバックに風の音を聞きながら歩くというただそれだけのことなのだけれども，ただそれだけで癒される．</p>
-
-<p>以下は，別のBlogで以前書いた記事．</p>
-
-<blockquote><p>PS3を買って「風ノ旅ビト」というゲームをプレイしたのだが，これが非常に素晴らしいゲームで，ラストには感極まって号泣してしまった．物語やゲームの内容に関してはネタバレになってしまうのでここでは避けるが，とにかく操作して楽しいゲームだった．
-それで，PS3のゲームにはトロフィーシステムというやりこみ要素があるのだが，これを集めるの難しく幾つか集めるだけでもかなり大変だった．トロフィーの条件として普通に遊んでいて取れるものから隠し要素を含んだものまで様々あり，条件を達成するためにアレをやったりコレをやったりと，ゲームの中を果てしなく彷徨うことになる．ひたすら無意味なことを続けたり来た道を戻ってみたり，とにかくただひたすらに何かを探しまわる．旅に同行している仲間も，さぞかし変なことしてる奴がいると思われていただろうと思う．
-そんな感じでぼんやりとゲームをしていると，たまに自分のプレイしているキャラクターを客観視しだすことがある．「何やってるんだろうコイツ」とか「もうちょっと頑張れよ」とか，自分がプレイしているくせにあたかも人事のように考えてしまって笑いそうになる．ただ，そうやって一通り考えた後，ため息をついて「まあこういう奴がいてもいいよな」と，毎度のことながら変に納得してしまう．ただひたすらに出口に向かう必要はないのだ．時には迷ったり意味のないことをしたり，ただただ絶望して立ち尽くしたりしても良いのだと，肯定とも慰めともつかないような気持ちになる．
-ゲームそのものもを遊ぶことも楽しいのだけれども，やはり自分の頭で色々と考えることの方が楽しい．そういう意味でも，考えるキッカケ，考える時間，考える雰囲気を作ってくれるような良いゲームだったと思う．</p>
-
-<p>（<a href="http://yag-ays.hatenablog.com/entry/2012/03/31/205225">http://yag-ays.hatenablog.com/entry/2012/03/31/205225</a>）</p></blockquote>
-
-<iframe width="640" height="360" src="http://www.youtube.com/embed/E6XAhalsY5g" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<br /><br />
-
-
-<h3>スキタイのムスメ：音響的冒剣劇（iPad）</h3>
-
-<div class="sticky-itslink"><a href="https://itunes.apple.com/jp/app/sukitainomusume-yin-xiang/id424912055?mt=8&uo=4" rel="nofollow" target="_blank"><img src="http://a1459.phobos.apple.com/us/r1000/119/Purple/v4/27/1d/82/271d8222-82b0-6494-eda6-cfb34d0d64f2/Icon.png" style="border-style:none;float:left;margin:5px;" alt="スキタイのムスメ：音響的冒剣劇（ユニバーサルバージョン）" title="スキタイのムスメ：音響的冒剣劇（ユニバーサルバージョン）" /></a><div class="sticky-itslinktext"><a href="https://itunes.apple.com/jp/app/sukitainomusume-yin-xiang/id424912055?mt=8&uo=4" rel="nofollow" target="_blank">スキタイのムスメ：音響的冒剣劇（ユニバーサルバージョン）</a><br />Capybara Games Inc.<br />価格： 170円 <a href="https://itunes.apple.com/jp/app/sukitainomusume-yin-xiang/id424912055?mt=8&uo=4" rel="nofollow" target="_blank"><img src="http://ax.phobos.apple.com.edgesuite.net/ja_jp/images/web/linkmaker/badge_appstore-sm.gif" alt ="iTunesで見る" style="border-style:none;" /></a><br /><span style="font-size:xx-small;">posted with <a href="http://sticky.linclip.com/linkmaker/" target="_blank">sticky</a> on 2012.12.23</span><br style="clear:left;" /></div></div>
-
-
-<p>
-確かゲームの翻訳の記事を何処かで読んだのがキッカケでプレイしたゲーム．iPadなどでプレイするのに特化したゲームシステムが面白かったり，自分のゲーム進捗をTwitterで報告できたりと，色々と実験的なゲームだった．全体的に面白かったのだけれども，マップの移動がダルかったり先頭が単調だったりと，少し作業感があった．</p>
-
-<p>以下は，別のBlogで以前書いた記事．</p>
-
-<blockquote><p>体調が悪くて家で寝込んでいるときに，「スキタイのムスメ」というゲームをiPadで遊んだ．
-<a href="http://itunes.apple.com/jp/app/sukitainomusume-yin-xiang/id424912055?mt=8">http://itunes.apple.com/jp/app/sukitainomusume-yin-xiang/id424912055?mt=8</a></p>
-
-<p>ゲームとしては謎解き+アクション少しという感じで，それほど時間のかかる分量ではない．ドット絵や音楽など個人的に好みな雰囲気で，システム面や物語など全般的に荒削りな部分はあるけれども，それはまたそれで味を出しており，全体的な印象としてはそれほど悪くなかった．というよりも，クリエーターのドット絵と音楽の世界観への溢れんばかりの愛で，そんな些細なものは全部吹っ飛んでしまうようなそんな迫力があった．</p>
-
-<p>個人的には，こういうゲームはサクサク進んでくれないと途中で飽きて中だるみしてしまって面白く無いと思う．なので個人的なオススメとしては，もし途中で詰まるようなら，素直に人に訊くなり攻略サイトを見るなりすれば良い．「Sword &amp; Sworcery guide」みたいな感じでググれば，英語だが攻略情報は出てくる(日本語の攻略情報はまだ出揃ってないみたい)．もしくは，日本語版オフィシャルページの紹介動画を注意深く見れば，実はどこで何をすればいいか大体想像がつく．ゲーム途中でこの動画を見返して「これは明らかにネタバレだろう」と思ったが，まあそんなことはこのゲームの楽しみの前では些細なものだし，別に目くじら立てることでもないだろう．それくらい音楽聞きながらゲームするのは楽しかった．</p>
-
-<p><a href="http://sworcery.jp/">http://sworcery.jp/</a></p>
-
-<p>（<a href="http://yag-ays.hatenablog.com/entry/2012/06/28/111430">http://yag-ays.hatenablog.com/entry/2012/06/28/111430</a>）</p></blockquote>
-
-<iframe src="http://player.vimeo.com/video/44400022" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-
-
-<p> <p><a href="http://vimeo.com/44400022">スキタイのムスメ：音響的冒剣劇 [発売ムービー]</a> from <a href="http://vimeo.com/sworcery">Superbrothers: Sword &amp; Sworcery</a> on <a href="http://vimeo.com">Vimeo</a>.</p></p>
-
-<br /><br />
-
-
-<h3>アンフィニッシュド・スワン（PS3）</h3>
-
-<p>前評判はかなり良かったのだけれども，実際やってみると意外に新鮮さとか驚きが無くひたすら作業という感じで，期待が大きく外れてしまった．ゲームのシステム自体はとても面白く創意工夫が至る所に見られるんだけど，どこか融通が利かなかったり不親切なところがみられたりと，いまいち感動がうまく伝わってこなかった．あと，自分としては珍しく途中で3D酔いしてしまい，途中でだいぶしんどかった覚えがある．</p>
-
-<iframe width="640" height="360" src="http://www.youtube.com/embed/JKhenchMcaE" frameborder="0" allowfullscreen></iframe>
-
 ]]></content>
   </entry>
   
