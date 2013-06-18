@@ -1,0 +1,593 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>スライドメモ："Differential expression analysis of de novo assembled transcriptomes - Nadia Davidson" - Wolfeyes Bioinformatics beta</title>
+  <meta name="author" content="yag_ays">
+
+  
+  <meta name="description" content="Tips and hacks about Bioinformatics on Ruby and R.">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yagays.github.io/blog/2013/06/18/slide-diffexp-denovo-assembled-transcriptomes">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <script src="/javascripts/libs/jquery.js"></script>
+  <script src="/javascripts/libs/modernizr-2.0.js"></script>
+  <script src="/javascripts/libs/bootstrap.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Wolfeyes Bioinformatics beta" type="application/atom+xml">
+  <meta name="author" content="yag_ays">
+
+<meta name="description" content="Tips and hacks about Bioinformatics on Ruby and R.">
+<meta name="keywords" content="Bioinformatics,NGS,バイオインフォマティクス,機械学習,統計学,Ruby,R,Mac OS X,Linux">
+<meta name="google-translate-customization" content="f0d6fb1813054f83-93b90cf46465830f-g289228b826edcf56-12"></meta>
+<meta name="msvalidate.01" content="7B572D9F165B6C1C1D644708FF738704" />
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17620484-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <a class="brand" href="/">Wolfeyes Bioinformatics beta</a>
+
+      <div class="nav-collapse">
+        <ul class="nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+        <ul class="nav pull-right" data-subscription="rss">
+          <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+          
+        </ul>
+
+        
+          <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <fieldset role="search">
+              <input type="hidden" name="q" value="site:yagays.github.io" />
+              <input class="search-query" type="text" name="q" results="0" placeholder="Search"/>
+            </fieldset>
+          </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</nav>
+  <div class="container">
+    <div class="row-fluid">
+      
+<article class="hentry span9" role="article">
+
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">スライドメモ："Differential Expression Analysis of De Novo Assembled Transcriptomes - Nadia Davidson"</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-18T13:43:00+09:00" pubdate data-updated="true">Jun 18<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>de novoトランスクリプトームアセンブリに関して配列クラスタリングを解説しているスライドがあったので，ちょっと読んで大まかな流れを追ってみた．ただし後半のクラスタリングの具体的な部分は少し割愛しているほか，内容の正確性は保証できないので注意．</p>
+
+<h2>de novoトランスクリプトームの発現量解析</h2>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/18507979?rel=0" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe>
+
+
+<p> <div style="margin-bottom:5px"> <strong> <a href="http://www.slideshare.net/AustralianBioinformatics/differential-expression-analysis-of-de-novo-assembled-transcriptomes" title="Differential expression analysis of de novo assembled transcriptomes - Nadia Davidson" target="_blank">Differential expression analysis of de novo assembled transcriptomes - Nadia Davidson</a> </strong> from <strong><a href="http://www.slideshare.net/AustralianBioinformatics" target="_blank">Australian Bioinformatics Network</a></strong> </div></p>
+
+<h4>非モデル生物におけるRNA-Seq</h4>
+
+<ul>
+<li>非モデル生物におけるRNA-Seq；トランスクリプトームのde novoアセンブル
+
+<ul>
+<li>ゲノムアノテーションやゲノム配列が無い状態での解析</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>トランスクリプトームアセンブラ</h4>
+
+<p>ゲノムアセンブリにおいてはカバレッジに合わせてk-merの長さを最適化していたが，トランスクリプトームアセンブルでは遺伝子ごとに発現量が違うためカバレッジに大きな幅がある</p>
+
+<ul>
+<li>解決方法1：ゲノムアセンブラを使って異なるk-merのアセンブル結果を組み合わせる
+
+<ul>
+<li><a href="http://www.bcgsc.ca/platform/bioinfo/software/trans-abyss">Trans-abyss</a>や<a href="http://www.ebi.ac.uk/~zerbino/oases/">Oases</a></li>
+</ul>
+</li>
+<li>解決方法2：トランスクリプトームに特化したアセンブラで単一のk-merでアセンブルする
+
+<ul>
+<li><a href="http://trinityrnaseq.sourceforge.net/">Trinity</a></li>
+</ul>
+</li>
+</ul>
+
+
+<h4>リード数の増加によるアセンブル配列の増加</h4>
+
+<p>横軸がNGSで得られたリード数，縦軸がアセンブルされた配列数を表しており，データ数が増加するにしたがってアセンブルされる配列数も線形に増加する．</p>
+
+<p>スライドでは著者名が間違っているが，ここで引用している図は以下の論文のもの．</p>
+
+<blockquote><p>Francis, W. R. et al. A comparison across non-model animals suggests an optimal sequencing depth for de novo transcriptome assembly. BMC Genomics 14, 167 (2013).</p>
+
+<p><a href="http://www.biomedcentral.com/1471-2164/14/167">http://www.biomedcentral.com/1471-2164/14/167</a></p></blockquote>
+
+<p>余談だが，この論文によるとデータ数が増加するとアセンブルされた配列数が増えるものの，アセンブルされた配列の平均長やN50は途中でサチることが確認されている．この論文の結論としてはデータ数は20M〜30M付近で十分だよねという感じらしい．</p>
+
+<h4>De Bruijn Graphの複雑性</h4>
+
+<p>シーケンスエラーやヘテロ接合箇所などの僅かな配列の違いも異なる配列として出力</p>
+
+<h4>カバレッジの変動</h4>
+
+<p>単一遺伝子内でNGSのショートリードのカバレッジに差があると，複数本の細切れの配列になってしまうことがある</p>
+
+<h4>アイソフォーム単位で発現解析するかゲノム単位で発現解析するか？</h4>
+
+<ul>
+<li>アイソフォーム単位
+
+<ul>
+<li>扱う配列が多くなるので大変</li>
+<li>発現量解析のときに複数箇所にマッピングされる配列が生じるので発現量推定が大変</li>
+<li>全ての転写物に関してアイソフォームがあるわけではない</li>
+</ul>
+</li>
+<li>ゲノム単位
+
+<ul>
+<li>スプライシングなどを無視することになる</li>
+<li>どうやって複数の転写物を幾つかの遺伝子にまとめるのか？</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>どうやってアセンブルされた転写物を遺伝子単位にクラスタリングするのか</h4>
+
+<p>アセンブルされた転写物のクラスタリングにおいて決定打は無いものの，幾つか方法はある（配列で共通している箇所を見つけてクラスタリングするとか）</p>
+
+<h4>クラスタリングする際に使える情報</h4>
+
+<ul>
+<li>アセンブルする際に出力されるlocus/componentの情報</li>
+<li>CD-HITやBlastclustなどの配列相同性によるクラスタリングツール</li>
+</ul>
+
+
+<h4>クラスタリングにはTP・TN・FP・FNを数えて適合率Precisionや再現率Recallを見る</h4>
+
+<p>どうやらTrinityのクラスタリングは良くて，OasesとCD-HIT-ESTの組み合わせは良くないらしい（Trinity&#8217;s clusteringはRSEMのこと？）</p>
+
+<ul>
+<li>CD-HIT-ESTは適合率は高いが再現率は低い
+
+<ul>
+<li>配列情報しか使用しないので精度が低い</li>
+</ul>
+</li>
+<li>考えられる他の方法
+
+<ul>
+<li>発現量が低い領域は重みを軽くしたい</li>
+<li>サンプル間で発現量の違う配列は区別したい</li>
+<li>ペアエンドリードを考慮したい</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>(クラスタリングの具体的な部分は省略)</h4>
+
+<h4>どのようにしてリード数から発現量に変換するのか</h4>
+
+<ul>
+<li>TrinityやOasesが推奨する方法
+
+<ul>
+<li>アセンブルされた配列に対してマッピング（複数箇所にマップされてもいい）</li>
+<li>複数箇所にマップされた配列も考慮して発現量を求めるプログラムを使う(RSEMとか)</li>
+</ul>
+</li>
+</ul>
+
+
+<p>実際に行われている方法としてよくあるのは，一番長くアセンブルされた配列に代表させてマッピングして発現量を推定するというもの</p>
+
+<h4>まとめ</h4>
+
+<ul>
+<li><strong>Q1. なんでそんなにアセンブルされた転写物が出てくるの？</strong>
+
+<ul>
+<li>既にアノテーションされている転写物よりも多くアセンブルされるから</li>
+<li>de novoトランスクリプトームアセンブリはそもそも難しいから（完全長のアセンブリは目指しているのだけれども）</li>
+<li>インタージェニックやノンコーティングの転写物も多くでてくるから</li>
+</ul>
+</li>
+<li><strong>Q2. アイソフォーム単位か遺伝子単位か</strong>
+
+<ul>
+<li>遺伝子単位の方がアイソフォーム単位より良さそう</li>
+</ul>
+</li>
+<li><strong>Q3. どうやってアセンブルされた転写物から遺伝子にクラスタリングするか</strong>
+
+<ul>
+<li>Trinityのクラスタリングは良くて，OasesとCD-HIT-ESTの組み合わせは良くない</li>
+</ul>
+</li>
+<li><strong>Q4. どのようにしてリード数から発現量に変換するのか</strong>
+
+<ul>
+<li>3つの異なる方法で検証したが似た結果を示した</li>
+<li>正確なクラスタリングによる結果を得るほうが他のパイプラインを使って発現量差異を見るほうがインパクトがある（と主張している）</li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">yag_ays</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-18T13:43:00+09:00" pubdate data-updated="true">Jun 18<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/assembly/'>Assembly,</a>, <a class='category' href='/blog/categories/slide/'>Slide</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/06/18/slide-diffexp-denovo-assembled-transcriptomes/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/06/18/slide-diffexp-denovo-assembled-transcriptomes/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    
+    <section>
+      <h1>Comments</h1>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+    
+    <ul class="pager">
+      
+      <li class="previous"><a class="basic-alignment left"
+        href="/blog/2013/06/02/review-interview-and-intelligence/" title="Previous Post:
+        「知の逆転」読了">&laquo; 「知の逆転」読了</a></li>
+      
+      <li><a href="/blog/archives">Blog Archives</a></li>
+      
+    </ul>
+  </footer>
+</article>
+
+<aside class="sidebar-nav span3">
+  
+    <section class="well">
+  <h2>About Me</h2>
+  <p>id: yag_ays</p>
+  <p>E-mail: yanagi.ayase [at] gmail.com</p>
+  <br />
+  <ul>
+    <li>Bioinformatics / NGS</li>
+    <li>Machine Learning / Statistics</li>
+    <li>Ruby / R / Clojure</li>
+    <li>MacOSX / Linux</li>
+    <li>Book Review</li>
+  </ul>
+  <br />
+  <ul>
+    <li><a href="https://twitter.com/#!/yag_ays" target="_blank">Twitter</a></li>
+    <li><a href="https://github.com/yagays" target="_blank">Github</a> </li>
+    <li><a href="https://gist.github.com/yagays" target="_blank">Gist</a></li>
+    <li><a href="http://b.hatena.ne.jp/yag_ays/" target="_blank">Bookmark</a></li>
+    <li><a href="http://slideshare.net/yag_ays/" target="_blank">Slideshare</a></li>
+    <li><a href="http://yan-ase.tumblr.com/" target="_blank">Tumblr</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="http://yag-ays.hateblo.jp/" target="_blank">Hatena Blog (Technical)</a> </li>
+    <li><a href="http://yag-ays.hatenablog.com/" target="_blank">Hatena Blog (Personal)</a></li>
+    <li><a href="http://g86.dbcls.jp/~yag/wordpress/" target="_blank">Wordpress Blog (Technical, <i>old</i>)</a></li>
+    <li><a href="http://d.hatena.ne.jp/yag_ays/" target="_blank">Hatena Diary (<i>old</i>)</a></li>
+  </ul>
+</section>
+<section class="well">
+  <h2>Recent Post</h2>
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/18/slide-diffexp-denovo-assembled-transcriptomes/">スライドメモ："Differential expression analysis of de novo assembled transcriptomes - Nadia Davidson"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/02/review-interview-and-intelligence/">「知の逆転」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/01/paragraph-heading/">段落の冒頭に強い接続語を使ってはいけない…?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/22/esl-pdf-trimming/">"The Elements of Statistical Learning"のpdfの余白を削る</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/21/tree/">treeを使ってディレクトリ構造をターミナル上で可視化する</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/20/zaw-zsh/">zaw.zshを使って移動したことのあるディレクトリに一発で飛ぶ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/16/cpanm/">cpanmのセッティング</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/15/n50-ng50/">アセンブルの指標であるN50とNG50の違い</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/14/trinity-install/">Trinityのインストールとサンプルデータのアセンブル</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/12/review-murakami-english/">「村上式シンプル英語勉強法」読了</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="well">
+  <h2>Categories</h2>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
+<li class='category'><a href='/blog/categories/assembly/'>Assembly (5)</a></li>
+<li class='category'><a href='/blog/categories/assembly-/'>Assembly, (1)</a></li>
+<li class='category'><a href='/blog/categories/biopython/'>Biopython (1)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (70)</a></li>
+<li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
+<li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
+<li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>Linux (2)</a></li>
+<li class='category'><a href='/blog/categories/mcmc/'>MCMC (3)</a></li>
+<li class='category'><a href='/blog/categories/misc/'>Misc (11)</a></li>
+<li class='category'><a href='/blog/categories/prml/'>PRML (5)</a></li>
+<li class='category'><a href='/blog/categories/perl/'>Perl (1)</a></li>
+<li class='category'><a href='/blog/categories/presentation/'>Presentation (1)</a></li>
+<li class='category'><a href='/blog/categories/python/'>Python (1)</a></li>
+<li class='category'><a href='/blog/categories/reading/'>Reading (21)</a></li>
+<li class='category'><a href='/blog/categories/soapdenovo2/'>SOAPdenovo2 (3)</a></li>
+<li class='category'><a href='/blog/categories/slide/'>Slide (1)</a></li>
+<li class='category'><a href='/blog/categories/sublimetext2/'>SublimeText2 (2)</a></li>
+<li class='category'><a href='/blog/categories/trinity/'>Trinity (1)</a></li>
+<li class='category'><a href='/blog/categories/velvet/'>Velvet (1)</a></li>
+<li class='category'><a href='/blog/categories/zsh/'>Zsh (1)</a></li>
+<li class='category'><a href='/blog/categories/ipad/'>iPad (1)</a></li>
+<li class='category'><a href='/blog/categories/imcmr/'>imcmr (16)</a></li>
+<li class='category'><a href='/blog/categories/k-mer/'>k-mer (1)</a></li>
+
+  </ul>
+</section>
+<section class="well">
+  <h2>Translate</h2>
+  <div id="google_translate_element"></div><script type="text/javascript">
+    function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'ja', autoDisplay: false, gaTrack: true, gaId: 'UA-17620484-4'}, 'google_translate_element');
+    }
+  </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</section>
+
+
+<section class="well">
+  <h2>Twitter</h2>
+  <ul id="tweets" class="nav">
+    <li class="nav-header">Latest Tweets</li>
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      getTwitterFeed("yag_ays", 10, true);
+    });
+  </script>
+  <script src="/javascripts/asides/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/yag_ays" class="twitter-follow-button" data-show-count="false">Follow @yag_ays</a>
+  
+</section>
+
+<section class="well">
+  <h2>Recommend Books</h2>
+  <a href="http://www.amazon.co.jp/gp/product/4274067939/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4274067939&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4274067939&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274067939" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4863912803/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4863912803&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4863912803&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4863912803" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4560027870/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4560027870&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4560027870&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4560027870" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4862381502/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4862381502&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4862381502&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4862381502" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4621061224&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4621061240/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061240&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4621061240&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061240" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/400006973X/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=400006973X&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=400006973X&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=400006973X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4140815329/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4140815329&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4140815329&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4140815329" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4780908485/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4780908485&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4780908485&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4780908485" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4781605451/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4781605451&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4781605451&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4781605451" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4047284084/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4047284084&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4047284084&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4047284084" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4781609481/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4781609481&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4781609481&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4781609481" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <br/>
+  <iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yagays-22&o=9&p=9&l=ez&f=ifr&f=ifr" width="180" height="150" scrolling="no" marginwidth="0" marginheight="0" border="0" frameborder="0" style="border:none;"></iframe>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
+  <br />
+  <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Wolfeyes Bioinformatics beta</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">yag_ays</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+  <br />
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wolfeyesbioinformaticsbeta';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://yagays.github.io/blog/2013/06/18/slide-diffexp-denovo-assembled-transcriptomes/';
+        var disqus_url = 'http://yagays.github.io/blog/2013/06/18/slide-diffexp-denovo-assembled-transcriptomes/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
