@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-06-18T15:09:11+09:00</updated>
+  <updated>2013-06-19T04:31:27+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,54 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[MacPortsで使用していない過去のバージョンのパッケージを消す＆ちょっと可視化]]></title>
+    <link href="http://yagays.github.io/blog/2013/06/19/macports-distfile-clean/"/>
+    <updated>2013-06-19T04:29:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/06/19/macports-distfile-clean</id>
+    <content type="html"><![CDATA[<p>MacBook Airの128GBしかない非力なSSDもそろそろ満杯になってきた．最近ではスワップが溜まっては再起動するということを繰り返していたので，色々と容量の食っているファイルをちまちま消していた．そういった地道な努力をしつつ無駄なキャッシュや不必要なファイルなどをちゃんと調べてみると，どうやらMacPortsが10GB近く占めていることがわかり，しかもバージョンアップによって使用されなくなったgccやllvm，boostなどの古いバージョンのせいだとわかったので，思い切って消してみることにした．</p>
+
+<h3>古いバージョンのパッケージを消す</h3>
+
+<p>MacPortsでは，バージョンが上がってアップデートする際に，インストールされているバージョンのパッケージをInactiveとし最新バージョンをActiveにするという方法で，過去のバージョンのパッケージが残される仕組みになっている．ということで，Inactiveなパッケージを全て消去するために，以下のコマンドを使用する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port -u uninstall</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これでInactiveなパッケージを全て消去することができる．なお，古いバージョンとして残っていたパッケージを消すということは気軽にバージョンを変更したりできなくなるということなので，もしバージョンアップによる不具合に対応する必要が出てくると後々面倒になることを注意しておきたい．</p>
+
+<h3>結果</h3>
+
+<p><strong>/opt/localが10GBが5GB</strong>になり，かなりのダイエットに成功した！容量の少ないMacBook Airでも，これでもうちょっと耐えられそう．</p>
+
+<h3>DaisyDiskによる可視化</h3>
+
+<p>さて，ここからは完全に蛇足なのだが，最近使用しているのDaisyDiskという可視化ソフトウェアがなかなか気に入っているので，今回のファイル消去の前後で/opt/localがどれだけ変化するかを確かめてみた．DaisyDiskは本来はインタラクティブに操作することができて，気になる箇所をクリックしたりして拡大することができるのだが，今回は前後の画像比較だけとなっている．使い心地が気になる人は以下のリンクから公式ページに飛んで紹介動画を見ていただきたい．</p>
+
+<p><a href="http://www.daisydiskapp.com/">DaisyDisk - Analyze disk usage and free up disk space on Mac</a></p>
+
+<h4>Before</h4>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/macports_before.png" alt="" /></p>
+
+<h4>After</h4>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/macports_after.png" alt="" /></p>
+
+<p>まず全体の容量が10GBから5GBに変わっており，それぞれの面積は単純に割合を示していることに注意．Inactiveなパッケージを消去する前は少数の比較的大きな領域がいくつも見られる．具体的には，左側の外縁から2つ目のピンクの領域がgccやllvm，boost，emacsなどのパッケージのディレクトリを表しており，一番外縁にある灰色がそれぞれのパッケージのファイルになっている．一つのパッケージに複数の灰色で区切られた細かいディレクトリが含まれているのは，それだけアップデートして古いバージョンのパッケージが溜まっていったからだ．そしてInactiveなパッケージを消去した後は，複数の小さな領域が組み合わさっていることがわかり，それぞれのパッケージに含まれるファイルの容量が小さくなったことを示している．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://guide.macports.org/">MacPorts Guide</a></li>
+<li><a href="http://d.hatena.ne.jp/kanonji/20091025/1256495516">MacPortsをちゃんと使うために調べてみた - kanonjiの日記</a></li>
+<li><a href="http://d.hatena.ne.jp/t_mimori/20101020/1287568644">Macでディスク容量が足りなくなってきたら1【portをcleanしよう】 - En blanc et noir</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[スライドメモ："Differential expression analysis of de novo assembled transcriptomes - Nadia Davidson"]]></title>
@@ -1039,105 +1087,6 @@
 <ul>
 <li><a href="http://octopress.org/docs/updating/">Updating Octopress - Octopress</a></li>
 <li><a href="http://tokkonopapa.github.io/blog/2011/12/30/octopress-on-github-and-bitbucket/">Octopressのインストールから運用管理まで - T.I.D.</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする]]></title>
-    <link href="http://yagays.github.io/blog/2013/04/20/install-biopython/"/>
-    <updated>2013-04-20T15:09:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/04/20/install-biopython</id>
-    <content type="html"><![CDATA[<p>新しい環境でBiopythonをセットアップしたので，そのときのメモ．Pythonのバージョン/パッケージ管理はvirtualenvやらvirtualenvwrapperやらpipやらsetuptoolsやらで発狂する可能性が高いので，手っ取り早く使いたい人は以下のおまじないだけ実行して使えるようにしておくと良さそう．sudoする必要もないし知らないディレクトリを汚すこともないので，非常に簡単にインストールできる．以下のリンク先にしたがって，ポチポチと5行程度のコマンドを実行すれば完了．</p>
-
-<ul>
-<li><a href="http://biopython.org/wiki/Talk:Download">Talk:Download - Biopython</a></li>
-</ul>
-
-
-<p>ディレクトリ作成も含めて，ちょっと改変したものが以下の7行．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>mkdir biopython
-</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>biopython
-</span><span class='line'><span class="nv">$ </span>wget --no-check-certificate https://raw.github.com/pypa/virtualenv/master/virtualenv.py
-</span><span class='line'><span class="nv">$ </span>python virtualenv.py .
-</span><span class='line'><span class="nv">$ </span><span class="nb">source </span>bin/activate
-</span><span class='line'><span class="nv">$ </span>pip install numpy
-</span><span class='line'><span class="nv">$ </span>pip install Biopython
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>環境によってはnumpyやBiopythonのインストールがコケるかもしれないので，インストールの最後に「Successfully installed numpy/Biopython」が表示されることを確認したほうが良いだろう．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>pip install numpy
-</span><span class='line'>Downloading/unpacking numpy
-</span><span class='line'>  Downloading numpy-1.7.1.zip <span class="o">(</span>3.1MB<span class="o">)</span>: 3.1MB downloaded
-</span><span class='line'>  Running setup.py egg_info <span class="k">for </span>package numpy
-</span><span class='line'>    Running from numpy <span class="nb">source </span>directory.
-</span><span class='line'>
-</span><span class='line'>~~~<span class="o">(</span>略<span class="o">)</span>~~~
-</span><span class='line'>
-</span><span class='line'>Successfully installed numpy
-</span><span class='line'>Cleaning up...
-</span><span class='line'><span class="nv">$ </span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>最後に，きちんとBiopythonが使えるようになっているか確認する．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="err">$</span> <span class="n">python</span>
-</span><span class='line'><span class="n">Python</span> <span class="mf">2.7</span><span class="o">.</span><span class="mi">2</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Oct</span> <span class="mi">11</span> <span class="mi">2012</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">37</span><span class="p">)</span>
-</span><span class='line'><span class="p">[</span><span class="n">GCC</span> <span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span> <span class="n">Compatible</span> <span class="n">Apple</span> <span class="n">Clang</span> <span class="mf">4.0</span> <span class="p">(</span><span class="n">tags</span><span class="o">/</span><span class="n">Apple</span><span class="o">/</span><span class="n">clang</span><span class="o">-</span><span class="mf">418.0</span><span class="o">.</span><span class="mi">60</span><span class="p">)]</span> <span class="n">on</span> <span class="n">darwin</span>
-</span><span class='line'><span class="n">Type</span> <span class="s">&quot;help&quot;</span><span class="p">,</span> <span class="s">&quot;copyright&quot;</span><span class="p">,</span> <span class="s">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">Seq</span><span class="p">(</span><span class="s">&quot;ATGC&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">complement</span><span class="p">()</span>
-</span><span class='line'><span class="n">Seq</span><span class="p">(</span><span class="s">&#39;TACG&#39;</span><span class="p">,</span> <span class="n">Alphabet</span><span class="p">())</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>なお，一度シェルを閉じるとPythonまわりの読み込みは消えてしまうので，その時は再度インストールしたディレクトリで<code>source bin/activate</code>を実行する必要がある．</p>
-
-<h4>実行環境</h4>
-
-<ul>
-<li>Mac OS X 10.8.3</li>
-<li>Python 2.7.2</li>
-</ul>
-
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://biopython.org/DIST/docs/tutorial/Tutorial.html">Biopython Tutorial and Cookbook</a></li>
-<li><a href="http://biopython.org/wiki/Talk:Download">Talk:Download - Biopython</a></li>
 </ul>
 
 ]]></content>
