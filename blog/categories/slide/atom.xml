@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Slide | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/slide/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-06-19T08:03:46+09:00</updated>
+  <updated>2013-06-19T09:22:38+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -47,7 +47,7 @@
 <li>解決方法1：ゲノムアセンブラを使って異なるk-merのアセンブル結果を組み合わせる
 
 <ul>
-<li><a href="http://www.bcgsc.ca/platform/bioinfo/software/trans-abyss">Trans-abyss</a>や<a href="http://www.ebi.ac.uk/~zerbino/oases/">Oases</a></li>
+<li><a href="http://www.bcgsc.ca/platform/bioinfo/software/trans-abyss">Trans-ABySS</a>や<a href="http://www.ebi.ac.uk/~zerbino/oases/">Oases</a></li>
 </ul>
 </li>
 <li>解決方法2：トランスクリプトームに特化したアセンブラで単一のk-merでアセンブルする
