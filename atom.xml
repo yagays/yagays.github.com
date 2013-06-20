@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-06-20T12:37:48+09:00</updated>
+  <updated>2013-06-20T12:39:28+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -147,7 +147,7 @@
 <br/>
 
 
-<p>また，他のオプションなどの情報などはfastq-dumpのhelpから見ることができる．</p>
+<p>また，他のオプションなどの情報はfastq-dumpのhelpから見ることができる．</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -191,8 +191,8 @@
 
 <ul>
 <li><a href="http://www.ncbi.nlm.nih.gov/sra/?term=DRR002191">Whole genome resequencing of Masaru Tomita - SRA - NCBI</a></li>
-<li><p><a href="http://trace.ddbj.nig.ac.jp/DRASearch/run?acc=DRR002191">DRR002191 - DRA Search</a></p></li>
-<li><p><a href="ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/fastq/DRA000/DRA000583/DRX001619">/ddbj_database/dra/fastq/DRA000/DRA000583/DRX001619 のインデックス</a> (こちらではまだfastq.bz2で配布されている)</p></li>
+<li><a href="http://trace.ddbj.nig.ac.jp/DRASearch/run?acc=DRR002191">DRR002191 - DRA Search</a></li>
+<li><a href="ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/fastq/DRA000/DRA000583/DRX001619">/ddbj_database/dra/fastq/DRA000/DRA000583/DRX001619 のインデックス</a> (こちらではまだfastq.bz2で配布されている)</li>
 </ul>
 
 ]]></content>
