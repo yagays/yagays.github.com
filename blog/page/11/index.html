@@ -115,6 +115,282 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/11/30/imcmr-6-5/">「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その3</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-30T05:04:00+09:00" pubdate data-updated="true">Nov 30<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>練習問題 6.13</h3>
+
+<p>この問題は<a href="http://yagays.github.com/blog/2012/11/25/imcmr-6-3/">例6.3</a>と同じく，線形回帰におけるパラメータの事後分布からメトロポリス・ヘイスティング・アルゴリズムを用いてサンプリングを行うことを目標とする．線形回帰の対象はmcsmパッケージに収められているchallengerデータセットで，過去に打ち上げられたスペースシャトルにおけるOリングの破損の有無と，その時の気温に関するものである．</p>
+
+<h3>a. glm()関数を使ってロジスティック回帰を行う</h3>
+
+<p>打ち上げられたスペースシャトルのOリングは破損しているかしていないかの2値で表されるため，今回はロジスティック回帰を用いた当てはめを行う．Oリングが破損している場合は1を，破損していない場合には0が割り当てられており，ある気温<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x_i+" alt="x_i " />におけるOリングの破損確率は</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=P%28x_i%29+%3D+%5Cfrac%7B%5Cexp%28%5Calpha%2B%5Cbeta_i%29%7D%7B1%2B%5Cexp%28%5Calpha%2B%5Cbeta_i%29%7D+" alt="P(x_i) = \frac{\exp(\alpha+\beta_i)}{1+\exp(\alpha+\beta_i)} " /></p>
+
+<p>で表される．今回はこの<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha+" alt="\alpha " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta+" alt="\beta " />をglm()関数を使って推定する．</p>
+
+<p>なお，以下のコードではロジスティック関数を式変形して<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7B1%2B%5Cexp%28-%28%5Calpha%2B%5Cbeta_i%29%29%7D+" alt="\frac{1}{1+\exp(-(\alpha+\beta_i))} " />として計算している．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>library<span class="p">(</span>mcsm<span class="p">)</span>
+</span><span class='line'>data<span class="p">(</span>challenger<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>fit <span class="o">&lt;-</span> glm<span class="p">(</span>oring ~ temp<span class="p">,</span> data<span class="o">=</span>challenger<span class="p">,</span> family<span class="o">=</span>binomial<span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span>challenger<span class="p">$</span>temp<span class="p">,</span> challenger<span class="p">$</span>oring<span class="p">,</span> pch<span class="o">=</span><span class="m">19</span><span class="p">)</span>
+</span><span class='line'>curve<span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span>exp<span class="p">(</span><span class="o">-</span><span class="p">(</span>fit<span class="p">$</span>coef<span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">+</span>fit<span class="p">$</span>coef<span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">*</span>x<span class="p">))),</span> from<span class="o">=</span><span class="m">53</span><span class="p">,</span> to<span class="o">=</span><span class="m">81</span><span class="p">,</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;orange&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">4</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-13_1.png" alt="" /></p>
+
+<p>この図は，横軸に気温（華氏），縦軸にOリングの破損の有無をプロットしたものである．また，glm()関数で推定したロジスティック曲線をオレンジ色で示しており，任意の気温における破損する確率と対応している．この図を見ると，華氏65前後で破損確率が50%となり，気温が高い場合は破損確率が低く，逆に気温が低い時には破損確率が高いことがわかる．</p>
+
+<p>glm()関数のパラメータ推定の詳細は以下の通り．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="o">&gt;</span> summary<span class="p">(</span>fit<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>Call:
+</span><span class='line'>glm<span class="p">(</span>formula <span class="o">=</span> oring ~ temp<span class="p">,</span> family <span class="o">=</span> binomial<span class="p">,</span> data <span class="o">=</span> challenger<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>Deviance Residuals:
+</span><span class='line'>    Min       <span class="m">1</span>Q   Median       <span class="m">3</span>Q      Max
+</span><span class='line'><span class="m">-1.0611</span>  <span class="m">-0.7613</span>  <span class="m">-0.3783</span>   <span class="m">0.4524</span>   <span class="m">2.2175</span>
+</span><span class='line'>
+</span><span class='line'>Coefficients:
+</span><span class='line'>            Estimate Std. Error z value Pr<span class="p">(</span><span class="o">&gt;|</span>z<span class="o">|</span><span class="p">)</span>
+</span><span class='line'><span class="p">(</span>Intercept<span class="p">)</span>  <span class="m">15.0429</span>     <span class="m">7.3786</span>   <span class="m">2.039</span>   <span class="m">0.0415</span> <span class="o">*</span>
+</span><span class='line'>temp         <span class="m">-0.2322</span>     <span class="m">0.1082</span>  <span class="m">-2.145</span>   <span class="m">0.0320</span> <span class="o">*</span>
+</span><span class='line'><span class="o">---</span>
+</span><span class='line'>Signif. codes:  <span class="m">0</span> ‘<span class="o">***</span>’ <span class="m">0.001</span> ‘<span class="o">**</span>’ <span class="m">0.01</span> ‘<span class="o">*</span>’ <span class="m">0.05</span> ‘<span class="m">.</span>’ <span class="m">0.1</span> ‘ ’ <span class="m">1</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span>Dispersion parameter for binomial family taken to be <span class="m">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    Null deviance: <span class="m">28.267</span>  on <span class="m">22</span>  degrees of freedom
+</span><span class='line'>Residual deviance: <span class="m">20.315</span>  on <span class="m">21</span>  degrees of freedom
+</span><span class='line'>AIC: <span class="m">24.315</span>
+</span><span class='line'>
+</span><span class='line'>Number of Fisher Scoring iterations: <span class="m">5</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>b. ロジスティック回帰で推定したパラメータの値を用いて，メトロポリス・ヘイスティング・アルゴリズムでサンプリングを行う</h4>
+
+<p>これは<a href="http://yagays.github.com/blog/2012/11/25/imcmr-6-3/">前回</a>と殆ど変わらず．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>y <span class="o">&lt;-</span> challenger<span class="p">$</span>oring
+</span><span class='line'>x <span class="o">&lt;-</span> challenger<span class="p">$</span>temp
+</span><span class='line'>
+</span><span class='line'>loglik <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>a<span class="p">,</span>b<span class="p">){</span>sum<span class="p">(</span>y<span class="o">*</span><span class="p">(</span>a<span class="o">+</span>b<span class="o">*</span>x<span class="p">)</span> <span class="o">-</span> log<span class="p">(</span><span class="m">1</span><span class="o">+</span>exp<span class="p">(</span>a<span class="o">+</span>b<span class="o">*</span>x<span class="p">)))}</span>
+</span><span class='line'>logq <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>a<span class="p">,</span>b<span class="p">){</span>
+</span><span class='line'>  dnorm<span class="p">(</span>a<span class="p">,</span>mean<span class="o">=</span>a.est<span class="p">[</span><span class="m">1</span><span class="p">],</span>sd<span class="o">=</span>a.std<span class="p">,</span>log<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+</span><span class='line'>  <span class="o">+</span> dnorm<span class="p">(</span>b<span class="p">,</span>mean<span class="o">=</span>b.est<span class="p">[</span><span class="m">1</span><span class="p">],</span>sd<span class="o">=</span>b.std<span class="p">,</span>log<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>Niter <span class="o">&lt;-</span> <span class="m">5000</span>
+</span><span class='line'>n <span class="o">&lt;-</span> length<span class="p">(</span>challenger<span class="p">$</span>temp<span class="p">)</span>
+</span><span class='line'>fit.param <span class="o">&lt;-</span> summary<span class="p">(</span>fit<span class="p">)$</span>coef
+</span><span class='line'>a.est <span class="o">&lt;-</span> fit.param<span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">]</span>
+</span><span class='line'>a.std <span class="o">&lt;-</span> fit.param<span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">]</span>
+</span><span class='line'>b.est <span class="o">&lt;-</span> fit.param<span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">]</span>
+</span><span class='line'>b.std <span class="o">&lt;-</span> fit.param<span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in <span class="m">2</span>:Niter<span class="p">){</span>
+</span><span class='line'>  candidate <span class="o">&lt;-</span> c<span class="p">(</span>rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span>a.est<span class="p">[</span><span class="m">1</span><span class="p">],</span> sd<span class="o">=</span>a.std<span class="p">),</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span>b.est<span class="p">[</span><span class="m">1</span><span class="p">],</span> sd<span class="o">=</span>b.std<span class="p">))</span>
+</span><span class='line'>  fy <span class="o">&lt;-</span> loglik<span class="p">(</span>candidate<span class="p">[</span><span class="m">1</span><span class="p">],</span> candidate<span class="p">[</span><span class="m">2</span><span class="p">])</span>
+</span><span class='line'>  fx <span class="o">&lt;-</span> loglik<span class="p">(</span>a.est<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">],</span> b.est<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">])</span>
+</span><span class='line'>  qxy <span class="o">&lt;-</span> logq<span class="p">(</span>a.est<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">],</span> b.est<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">])</span>
+</span><span class='line'>  qyx <span class="o">&lt;-</span> logq<span class="p">(</span>candidate<span class="p">[</span><span class="m">1</span><span class="p">],</span> candidate<span class="p">[</span><span class="m">2</span><span class="p">])</span>
+</span><span class='line'>  rho <span class="o">&lt;-</span> min<span class="p">(</span><span class="m">1</span><span class="p">,</span> exp<span class="p">(</span>fy<span class="o">-</span>fx<span class="o">+</span>qxy<span class="o">-</span>qyx<span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kr">if</span> <span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">&lt;</span>rho<span class="p">){</span>
+</span><span class='line'>    a.est<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> candidate<span class="p">[</span><span class="m">1</span><span class="p">]</span>
+</span><span class='line'>    b.est<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> candidate<span class="p">[</span><span class="m">2</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">}</span>else<span class="p">{</span>
+</span><span class='line'>    a.est<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> a.est<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span>
+</span><span class='line'>    b.est<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> b.est<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>plot<span class="p">(</span>x<span class="p">,</span> y<span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;temp&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;oring&quot;</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;n&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in <span class="p">(</span>Niter<span class="o">-</span><span class="m">500</span><span class="p">)</span>:Niter<span class="p">){</span>
+</span><span class='line'>  lines<span class="p">(</span>x<span class="p">,</span> <span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span>exp<span class="p">(</span><span class="o">-</span><span class="p">(</span>a.est<span class="p">[</span>i<span class="p">]</span><span class="o">+</span>b.est<span class="p">[</span>i<span class="p">]</span><span class="o">*</span>x<span class="p">))),</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;grey&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>curve<span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span>exp<span class="p">(</span><span class="o">-</span><span class="p">(</span>fit<span class="p">$</span>coef<span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">+</span>fit<span class="p">$</span>coef<span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">*</span>x<span class="p">))),</span> from<span class="o">=</span><span class="m">53</span><span class="p">,</span> to<span class="o">=</span><span class="m">81</span><span class="p">,</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;orange&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">4</span><span class="p">)</span>
+</span><span class='line'>points<span class="p">(</span>x<span class="p">,</span> y<span class="p">,</span> pch<span class="o">=</span><span class="m">19</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>c. 5000回のマルコフ連鎖によるサンプル列を生成し，サンプリングで得られた推定値を使ったロジスティック曲線を図示する</h4>
+
+<p>実際に上で書いたコードを動かして，事後分布からのサンプリングを行い，得られたサンプルのうち4500回から5000回までの反復で生成した当てはめ曲線を灰色の曲線で表している．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-13_2.png" alt="" /></p>
+
+<p>また，パラメータ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha+" alt="\alpha " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta+" alt="\beta " />の系列の変動，自己相関プロット，系列の分布を以下の図で示している．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+</span><span class='line'>plot<span class="p">(</span><span class="m">1</span>:Niter<span class="p">,</span> a.est<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> main<span class="o">=</span>expression<span class="p">(</span>alpha<span class="p">))</span>
+</span><span class='line'>acf<span class="p">(</span>a.est<span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span>density<span class="p">(</span>a.est<span class="p">))</span>
+</span><span class='line'>plot<span class="p">(</span><span class="m">1</span>:Niter<span class="p">,</span> b.est<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> main<span class="o">=</span>expression<span class="p">(</span>beta<span class="p">))</span>
+</span><span class='line'>acf<span class="p">(</span>b.est<span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span>density<span class="p">(</span>b.est<span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-13_3.png" alt="" /></p>
+
+<p>そして最後に，サンプリング推定値差の変動を示したのが以下の図である．glm()関数で推定した値を赤線で表示しており，そこからどれだけ離れているかを見ることができる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>plot<span class="p">(</span><span class="m">1</span>:Niter<span class="p">,</span> apply<span class="p">(</span>cbind<span class="p">(</span>a.est<span class="p">,</span>b.est<span class="p">),</span><span class="m">1</span><span class="p">,</span><span class="kr">function</span><span class="p">(</span>x<span class="p">){</span>loglik<span class="p">(</span>x<span class="p">[</span><span class="m">1</span><span class="p">],</span>x<span class="p">[</span><span class="m">2</span><span class="p">])</span><span class="o">+</span>logq<span class="p">(</span>x<span class="p">[</span><span class="m">1</span><span class="p">],</span>x<span class="p">[</span><span class="m">2</span><span class="p">])}),</span>
+</span><span class='line'>     type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iteration&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>abline<span class="p">(</span>h<span class="o">=</span><span class="p">(</span>loglik<span class="p">(</span>fit.param<span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">],</span>fit.param<span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">])</span><span class="o">+</span>logq<span class="p">(</span>fit.param<span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">],</span>fit.param<span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">])),</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-13_4.png" alt="" /></p>
+
+<h4>d. サンプリングで得られたパラメータの分布から，華氏60,50,40度のときの故障の確率と標準誤差を推定する</h4>
+
+<p>サンプリングで得られた値を用いて，ある温度における故障の確率と標準誤差を求める．なお，今回はBurn-inによる推定値の切り捨てを行なっておらず，サンプリング回数5000回で得られた推定値を全て使っている．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="kr">for</span><span class="p">(</span>t in c<span class="p">(</span><span class="m">60</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">40</span><span class="p">)){</span>
+</span><span class='line'>  p <span class="o">&lt;-</span> <span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span>exp<span class="p">(</span><span class="o">-</span><span class="p">(</span>a.est<span class="o">+</span>b.est<span class="o">*</span>t<span class="p">)))</span>
+</span><span class='line'>  print<span class="p">(</span>paste<span class="p">(</span><span class="s">&quot;temp:&quot;</span><span class="p">,</span> t<span class="p">,</span> <span class="s">&quot;=&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;mean=&quot;</span><span class="p">,</span> round<span class="p">(</span>mean<span class="p">(</span>p<span class="p">),</span>digit<span class="o">=</span><span class="m">4</span><span class="p">),</span> <span class="s">&quot;, S.D.=&quot;</span><span class="p">,</span> round<span class="p">(</span>sd<span class="p">(</span>p<span class="p">),</span>digit<span class="o">=</span><span class="m">4</span><span class="p">)</span> <span class="p">))</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="s">&quot;temp: 60 =&gt; mean= 0.7476 , S.D.= 0.1282&quot;</span>
+</span><span class='line'><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="s">&quot;temp: 50 =&gt; mean= 0.9525 , S.D.= 0.0641&quot;</span>
+</span><span class='line'><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="s">&quot;temp: 40 =&gt; mean= 0.9895 , S.D.= 0.0248&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/11/29/review-introductory-statistics-with-r/">「Rによる医療統計学」はRの使い方と統計解析の基礎が学べる良書（ただし入手困難）</a></h1>
     
     
@@ -561,330 +837,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/25/imcmr-6-3/">「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その2</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-25T01:28:00+09:00" pubdate data-updated="true">Nov 25<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>例 6.3 二次モデルの線形回帰におけるパラメータの事後分布から，メトロポリス・ヘイスティング・アルゴリズムを用いてサンプリングする</h3>
-
-<p>この例題では，carsのデータセットにおいて線形回帰による二次曲線のあてはめをおこない，最尤法で推定したパラメータによる事後分布から複数のサンプリングを行うことを目標にする．今回使用するデータセットは車の速度とその時の制動距離に関するデータで，Rの入門書でよく例に使われるものである．carsのデータセットに関するHelpのExampleには，本問題と似たようなプロットを描写するコード例が載っている．</p>
-
-<p>この問題では，車のスピード<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+" alt="x " />と制動距離<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=y+" alt="y " />の関係について，以下式で表される二次モデルで線形回帰をおこなう．</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=y_%7Bij%7D%3Da%2Bbx_i%2Bcx_i%5E2%2B%5Cvarepsilon_%7Bij%7D+" alt="y_{ij}=a+bx_i+cx_i^2+\varepsilon_{ij} " /></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>data<span class="p">(</span>cars<span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>y <span class="o">&lt;-</span> cars<span class="p">$</span>dist
-</span><span class='line'>x <span class="o">&lt;-</span> cars<span class="p">$</span>speed
-</span><span class='line'>x2 <span class="o">&lt;-</span> x<span class="o">^</span><span class="m">2</span>
-</span><span class='line'>fit <span class="o">&lt;-</span> lm<span class="p">(</span>y ~ x <span class="o">+</span> x2<span class="p">)</span>
-</span><span class='line'>s <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">25</span><span class="p">,</span>by<span class="o">=</span><span class="m">0.1</span><span class="p">)</span>
-</span><span class='line'>yhat <span class="o">&lt;-</span> fit<span class="p">$</span>coef<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="o">+</span> fit<span class="p">$</span>coef<span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">*</span>s <span class="o">+</span> fit<span class="p">$</span>coef<span class="p">[</span><span class="m">3</span><span class="p">]</span><span class="o">*</span>s<span class="o">^</span><span class="m">2</span>
-</span><span class='line'>
-</span><span class='line'>plot<span class="p">(</span>x<span class="p">,</span>y<span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">120</span><span class="p">),</span> xlab<span class="o">=</span><span class="s">&quot;speed&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;dist&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;data(cars)&quot;</span><span class="p">)</span>
-</span><span class='line'>lines<span class="p">(</span>s<span class="p">,</span> yhat<span class="p">,</span> lwd<span class="o">=</span><span class="m">4</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>以下の図は，車のスピードをx軸に，制動距離をy軸に取って，carsに含まれる50個のデータをプロットし，オレンジの線で回帰直線を表示している．また，この時の線形回帰で求められた各パラメータの推定値をsummary()関数を用いて表示している．この情報から，それぞれのパラメータの推定値は</p>
-
-<ul>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=a+%3D+2.47014+" alt="a = 2.47014 " /></li>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=b+%3D+0.91329+" alt="b = 0.91329 " /></li>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c+%3D+0.09996+" alt="c = 0.09996 " /></li>
-</ul>
-
-
-<p>ということがわかる．次の練習問題 6.11では，この推定値を元に，事後分布のサンプリングをメトロポリス・ヘイスティング・アルゴリズムで行う．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-11_1.png" alt="" /></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="o">&gt;</span> summary<span class="p">(</span>fit<span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>Call:
-</span><span class='line'>lm<span class="p">(</span>formula <span class="o">=</span> y ~ x <span class="o">+</span> x2<span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>Residuals:
-</span><span class='line'>    Min      <span class="m">1</span>Q  Median      <span class="m">3</span>Q     Max
-</span><span class='line'><span class="m">-28.720</span>  <span class="m">-9.184</span>  <span class="m">-3.188</span>   <span class="m">4.628</span>  <span class="m">45.152</span>
-</span><span class='line'>
-</span><span class='line'>Coefficients:
-</span><span class='line'>            Estimate Std. Error t value Pr<span class="p">(</span><span class="o">&gt;|</span>t<span class="o">|</span><span class="p">)</span>
-</span><span class='line'><span class="p">(</span>Intercept<span class="p">)</span>  <span class="m">2.47014</span>   <span class="m">14.81716</span>   <span class="m">0.167</span>    <span class="m">0.868</span>
-</span><span class='line'>x            <span class="m">0.91329</span>    <span class="m">2.03422</span>   <span class="m">0.449</span>    <span class="m">0.656</span>
-</span><span class='line'>x2           <span class="m">0.09996</span>    <span class="m">0.06597</span>   <span class="m">1.515</span>    <span class="m">0.136</span>
-</span><span class='line'>
-</span><span class='line'>Residual standard error: <span class="m">15.18</span> on <span class="m">47</span> degrees of freedom
-</span><span class='line'>Multiple R<span class="o">-</span>squared: <span class="m">0.6673</span><span class="p">,</span>  Adjusted R<span class="o">-</span>squared: <span class="m">0.6532</span>
-</span><span class='line'><span class="k-Variable">F</span><span class="o">-</span>statistic: <span class="m">47.14</span> on <span class="m">2</span> and <span class="m">47</span> DF<span class="p">,</span>  p<span class="o">-</span>value: <span class="m">5.852</span>e<span class="o">-</span><span class="m">12</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>練習問題 6.11 メトロポリス・ヘイスティング・アルゴリズムを用いて事後分布からのサンプリングをする（例6.3の続き）</h3>
-
-<h4>a. P.202の図6.6を描写する</h4>
-
-<p>ここで<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cvarepsilon_%7Bij%7D+%5Csim+%5Cmathcal%7BN%7D%280%2C%5Csigma%5E2%29+" alt="\varepsilon_{ij} \sim \mathcal{N}(0,\sigma^2) " />とすると，この時の尤度関数は以下式のように表される．</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28y_%7Bij%7D%7Cx_i%2Ca%2Cb%2Cc%2C%5Csigma%5E2%29+%3D+%5Cprod_%7Bij%7D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%5Csigma%5E2%7D%7D%5Cexp%28-%5Cfrac%7B%28y_%7Bij%7D-a-bx_i-cx_i%5E2%29%5E2%7D%7B2%5Csigma%5E2%7D%29+" alt="p(y_{ij}|x_i,a,b,c,\sigma^2) = \prod_{ij} \frac{1}{\sqrt{2\pi\sigma^2}}\exp(-\frac{(y_{ij}-a-bx_i-cx_i^2)^2}{2\sigma^2}) " /></p>
-
-<p>これを整理すると．</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28y_%7Bij%7D%7Cx_i%2Ca%2Cb%2Cc%2C%5Csigma%5E2%29+%5Csim+%5Cbigg%28+%5Cfrac%7B1%7D%7B%5Csqrt%7B%5Csigma%5E2%7D%7D+%5Cbigg%29%5EN+%5Cexp%7B%28-%5Cfrac%7B-1%7D%7B2%5Csigma%5E2%7D+%5Csum_%7Bij%7D%28y_%7Bij%7D-a-bx_i-cx_%7Bij%7D%29%5E2+%29%7D+" alt="p(y_{ij}|x_i,a,b,c,\sigma^2) \sim \bigg( \frac{1}{\sqrt{\sigma^2}} \bigg)^N \exp{(-\frac{-1}{2\sigma^2} \sum_{ij}(y_{ij}-a-bx_i-cx_{ij})^2 )} " /></p>
-
-<p>となる．この尤度関数を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x_i%2Ca%2Cb%2Cc%2C%5Csigma%5E2+" alt="x_i,a,b,c,\sigma^2 " />による事後分布とみなす．それぞれのパラメータの分布は，先ほどの線形回帰で求めた推定値と標準誤差を用いる．</p>
-
-<ul>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=a+%5Csim+%5Cmathcal%7BN%7D%282.47%2C+%2814.8%29%5E2%29+" alt="a \sim \mathcal{N}(2.47, (14.8)^2) " /></li>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=b+%5Csim+%5Cmathcal%7BN%7D%280.913%2C+%282.03%29%5E2%29+" alt="b \sim \mathcal{N}(0.913, (2.03)^2) " /></li>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=c+%5Csim+%5Cmathcal%7BN%7D%280.100%2C+%281.52%29%5E2%29+" alt="c \sim \mathcal{N}(0.100, (1.52)^2) " /></li>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Csigma%5E%7B-2%7D+%5Csim+%5Cmathcal%7BG%7D%28n%2F2%2C+%28n-3%29%2815.18%29%5E2%29+" alt="\sigma^{-2} \sim \mathcal{G}(n/2, (n-3)(15.18)^2) " /></li>
-</ul>
-
-
-<p>なお，上の推定値や標準誤差は本書に例示されている値と若干異なっているが，今回は自分の計算環境で計算した推定値を用いることにした．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1"># 例6.3での線形回帰</span>
-</span><span class='line'>data<span class="p">(</span>cars<span class="p">)</span>
-</span><span class='line'>y <span class="o">&lt;-</span> cars<span class="p">$</span>dist
-</span><span class='line'>x <span class="o">&lt;-</span> cars<span class="p">$</span>speed
-</span><span class='line'>x2 <span class="o">&lt;-</span> x<span class="o">^</span><span class="m">2</span>
-</span><span class='line'>fit <span class="o">&lt;-</span> lm<span class="p">(</span>y ~ x <span class="o">+</span> x2<span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>loglik <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>a<span class="p">,</span>b<span class="p">,</span>c<span class="p">,</span>sigma<span class="p">){</span><span class="o">-</span><span class="p">(</span>n<span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">*</span>log<span class="p">(</span>sigma<span class="p">)</span><span class="o">-</span>sum<span class="p">((</span>y<span class="o">-</span>a<span class="o">-</span>b<span class="o">*</span>x<span class="o">-</span>c<span class="o">*</span>x2<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">2</span><span class="o">*</span>sigma<span class="p">)}</span>
-</span><span class='line'>logq <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>a<span class="p">,</span>b<span class="p">,</span>c<span class="p">,</span>sigma<span class="p">){</span>
-</span><span class='line'>  dnorm<span class="p">(</span>a<span class="p">,</span>mean<span class="o">=</span>a.est<span class="p">[</span><span class="m">1</span><span class="p">],</span>sd<span class="o">=</span>a.std<span class="p">,</span>log<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
-</span><span class='line'>  <span class="o">+</span> dnorm<span class="p">(</span>b<span class="p">,</span>mean<span class="o">=</span>b.est<span class="p">[</span><span class="m">1</span><span class="p">],</span>sd<span class="o">=</span>b.std<span class="p">,</span>log<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
-</span><span class='line'>  <span class="o">+</span> dnorm<span class="p">(</span>c<span class="p">,</span>mean<span class="o">=</span>c.est<span class="p">[</span><span class="m">1</span><span class="p">],</span>sd<span class="o">=</span>c.std<span class="p">,</span>log<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
-</span><span class='line'>  <span class="o">-</span> <span class="p">(</span>n<span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">*</span>log<span class="p">(</span>sigma<span class="p">)</span> <span class="o">-</span> <span class="p">(</span>n<span class="o">-</span><span class="m">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="m">15.18</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="p">(</span><span class="m">2</span><span class="o">*</span>sigma<span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>Niter <span class="o">&lt;-</span> <span class="m">4000</span>
-</span><span class='line'>n <span class="o">&lt;-</span> length<span class="p">(</span>x<span class="p">)</span>
-</span><span class='line'>fit.param <span class="o">&lt;-</span> summary<span class="p">(</span>fit<span class="p">)$</span>coef
-</span><span class='line'>a.est <span class="o">&lt;-</span> fit.param<span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">]</span>
-</span><span class='line'>a.std <span class="o">&lt;-</span> fit.param<span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">]</span>
-</span><span class='line'>b.est <span class="o">&lt;-</span> fit.param<span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">]</span>
-</span><span class='line'>b.std <span class="o">&lt;-</span> fit.param<span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">]</span>
-</span><span class='line'>c.est <span class="o">&lt;-</span> fit.param<span class="p">[</span><span class="m">3</span><span class="p">,</span><span class="m">1</span><span class="p">]</span>
-</span><span class='line'>c.std <span class="o">&lt;-</span> fit.param<span class="p">[</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">]</span>
-</span><span class='line'>sig <span class="o">&lt;-</span> <span class="m">1</span><span class="o">/</span>rgamma<span class="p">(</span><span class="m">1</span><span class="p">,</span> n<span class="o">/</span><span class="m">2</span><span class="p">,</span> rate<span class="o">=</span><span class="p">(</span>n<span class="o">-</span><span class="m">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="m">15.18</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in <span class="m">2</span>:Niter<span class="p">){</span>
-</span><span class='line'>  candidate <span class="o">&lt;-</span> c<span class="p">(</span>rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span>a.est<span class="p">[</span><span class="m">1</span><span class="p">],</span> sd<span class="o">=</span>a.std<span class="p">),</span>
-</span><span class='line'>                 rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span>b.est<span class="p">[</span><span class="m">1</span><span class="p">],</span> sd<span class="o">=</span>b.std<span class="p">),</span>
-</span><span class='line'>                 rnorm<span class="p">(</span><span class="m">1</span><span class="p">,</span> mean<span class="o">=</span>c.est<span class="p">[</span><span class="m">1</span><span class="p">],</span> sd<span class="o">=</span>c.std<span class="p">),</span>
-</span><span class='line'>                 <span class="m">1</span><span class="o">/</span>rgamma<span class="p">(</span><span class="m">1</span><span class="p">,</span> n<span class="o">/</span><span class="m">2</span><span class="p">,</span> rate<span class="o">=</span><span class="p">(</span>n<span class="o">-</span><span class="m">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="m">15.18</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>                 <span class="p">)</span>
-</span><span class='line'>  fy <span class="o">&lt;-</span> loglik<span class="p">(</span>candidate<span class="p">[</span><span class="m">1</span><span class="p">],</span> candidate<span class="p">[</span><span class="m">2</span><span class="p">],</span> candidate<span class="p">[</span><span class="m">3</span><span class="p">],</span> candidate<span class="p">[</span><span class="m">4</span><span class="p">])</span>
-</span><span class='line'>  fx <span class="o">&lt;-</span> loglik<span class="p">(</span>a.est<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">],</span> b.est<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">],</span> c.est<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">],</span> sig<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">])</span>
-</span><span class='line'>  qxy <span class="o">&lt;-</span> logq<span class="p">(</span>a.est<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">],</span> b.est<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">],</span> c.est<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">],</span> sig<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">])</span>
-</span><span class='line'>  qyx <span class="o">&lt;-</span> logq<span class="p">(</span>candidate<span class="p">[</span><span class="m">1</span><span class="p">],</span> candidate<span class="p">[</span><span class="m">2</span><span class="p">],</span> candidate<span class="p">[</span><span class="m">3</span><span class="p">],</span> candidate<span class="p">[</span><span class="m">4</span><span class="p">])</span>
-</span><span class='line'>  rho <span class="o">&lt;-</span> min<span class="p">(</span><span class="m">1</span><span class="p">,</span> exp<span class="p">(</span>fy<span class="o">-</span>fx<span class="o">+</span>qxy<span class="o">-</span>qyx<span class="p">))</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kr">if</span> <span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">&lt;</span>rho<span class="p">){</span>
-</span><span class='line'>    a.est<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> candidate<span class="p">[</span><span class="m">1</span><span class="p">]</span>
-</span><span class='line'>    b.est<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> candidate<span class="p">[</span><span class="m">2</span><span class="p">]</span>
-</span><span class='line'>    c.est<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> candidate<span class="p">[</span><span class="m">3</span><span class="p">]</span>
-</span><span class='line'>    sig<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> candidate<span class="p">[</span><span class="m">4</span><span class="p">]</span>
-</span><span class='line'>  <span class="p">}</span>else<span class="p">{</span>
-</span><span class='line'>    a.est<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> a.est<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span>
-</span><span class='line'>    b.est<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> b.est<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span>
-</span><span class='line'>    c.est<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> c.est<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span>
-</span><span class='line'>    sig<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> sig<span class="p">[</span>i<span class="o">-</span><span class="m">1</span><span class="p">]</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>s <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">25</span><span class="p">,</span>by<span class="o">=</span><span class="m">0.1</span><span class="p">)</span>
-</span><span class='line'>yhat <span class="o">&lt;-</span> fit<span class="p">$</span>coef<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="o">+</span> fit<span class="p">$</span>coef<span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">*</span>s <span class="o">+</span> fit<span class="p">$</span>coef<span class="p">[</span><span class="m">3</span><span class="p">]</span><span class="o">*</span>s<span class="o">^</span><span class="m">2</span>
-</span><span class='line'>
-</span><span class='line'>plot<span class="p">(</span>x<span class="p">,</span>y<span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">120</span><span class="p">),</span> xlab<span class="o">=</span><span class="s">&quot;speed&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;dist&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;data(cars)&quot;</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;n&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in <span class="p">(</span>Niter<span class="o">-</span><span class="m">500</span><span class="p">)</span>:Niter<span class="p">){</span>
-</span><span class='line'>  lines<span class="p">(</span>x<span class="p">,</span> a.est<span class="p">[</span>i<span class="p">]</span><span class="o">+</span>b.est<span class="p">[</span>i<span class="p">]</span><span class="o">*</span>x<span class="o">+</span>c.est<span class="p">[</span>i<span class="p">]</span><span class="o">*</span>x2<span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;grey&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>lines<span class="p">(</span>s<span class="p">,</span> yhat<span class="p">,</span> lwd<span class="o">=</span><span class="m">4</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;orange&quot;</span><span class="p">)</span>
-</span><span class='line'>points<span class="p">(</span>x<span class="p">,</span> y<span class="p">,</span> pch<span class="o">=</span><span class="m">19</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>以下の図は，先ほどの線形回帰のプロットに加えて，サンプリングから得られた値を用いて回帰曲線を灰色の曲線として描写したものである．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-11_3.png" alt="" /></p>
-
-<h4>b. 各パラメータの収束をモニタリングする</h4>
-
-<p>先ほどのサンプリング結果を，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=a%2Cb%2Cc%2C%5Csigma%5E2+" alt="a,b,c,\sigma^2 " />について，4000回のシミュレーションで生成された系列と，そのときの自己相関プロット，そして系列の分布をプロットした．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
-</span><span class='line'>plot<span class="p">(</span><span class="m">1</span>:Niter<span class="p">,</span> a.est<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;a&quot;</span><span class="p">)</span>
-</span><span class='line'>acf<span class="p">(</span>a.est<span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span>density<span class="p">(</span>a.est<span class="p">),</span> main<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span><span class="m">1</span>:Niter<span class="p">,</span> b.est<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;b&quot;</span><span class="p">)</span>
-</span><span class='line'>acf<span class="p">(</span>b.est<span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span>density<span class="p">(</span>b.est<span class="p">),</span> main<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span><span class="m">1</span>:Niter<span class="p">,</span> c.est<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;c&quot;</span><span class="p">)</span>
-</span><span class='line'>acf<span class="p">(</span>c.est<span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span>density<span class="p">(</span>c.est<span class="p">),</span> main<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span><span class="m">1</span>:Niter<span class="p">,</span> sig<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Iterations&quot;</span><span class="p">,</span> main<span class="o">=</span>expression<span class="p">(</span>sigma<span class="o">^</span><span class="m">2</span><span class="p">))</span>
-</span><span class='line'>acf<span class="p">(</span>sig<span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span>density<span class="p">(</span>sig<span class="p">),</span> main<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6-11_2.png" alt="" /></p>
-
-<h4>c. 95%信用区間を求める</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="o">&gt;</span> quantile<span class="p">(</span>a.est<span class="p">,</span> c<span class="p">(</span><span class="m">0.025</span><span class="p">,</span><span class="m">0.975</span><span class="p">))</span>
-</span><span class='line'>     <span class="m">2.5</span><span class="o">%</span>     <span class="m">97.5</span><span class="o">%</span>
-</span><span class='line'><span class="m">-14.90933</span>  <span class="m">18.98784</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/12/">&larr; Older</a></li>
@@ -932,6 +884,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2013/06/20/fastq-dump-sratoolkit/">SRA Toolkitを使ってsraファイルからfastqファイルに変換する(更新版)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/06/19/macports-distfile-clean/">MacPortsで使用していない過去のバージョンのパッケージを消す＆ちょっと可視化</a>
       </li>
     
@@ -965,10 +921,6 @@
     
       <li class="post">
         <a href="/blog/2013/05/15/n50-ng50/">アセンブルの指標であるN50とNG50の違い</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/05/14/trinity-install/">Trinityのインストールとサンプルデータのアセンブル</a>
       </li>
     
   </ul>

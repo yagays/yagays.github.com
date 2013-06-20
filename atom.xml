@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-06-19T11:57:59+09:00</updated>
+  <updated>2013-06-20T11:26:47+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,189 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[SRA Toolkitを使ってsraファイルからfastqファイルに変換する(更新版)]]></title>
+    <link href="http://yagays.github.io/blog/2013/06/20/fastq-dump-sratoolkit/"/>
+    <updated>2013-06-20T11:26:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/06/20/fastq-dump-sratoolkit</id>
+    <content type="html"><![CDATA[<p>久しぶりにfastq-dumpを使ったら少し仕様が変わっていたのでメモ．だいぶ前に別の場所で書いた記事は，既に古くなってしまっている．何もせず記事を放置しておくのも申し訳ないし，どうやらfastq-dumpでググると上位にくるようなので，ここいらで更新しておかないと…．</p>
+
+<p>(deprecated) <a href="http://g86.dbcls.jp/~yag/wordpress/archives/959">Wolf Ears » SRA Toolkitを使ってsraファイルからfastqファイルに変換する</a></p>
+
+<h3>SRA Toolkitのインストール</h3>
+
+<p>sraからfastqに変換するプログラムは，SRA Toolkitの中にあるfastq-dumpを使う．まずはNCBIのサイトからOS環境に合わせてコンパイルされたSRA Toolkitをダウンロードしてインストールする．</p>
+
+<p><a href="http://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software">Software : Software : Sequence Read Archive : NCBI/NLM/NIH</a></p>
+
+<p>コンパイルされたバイナリとしては，Linux系列のCentOSやUbuntu，MacOSやMS Windowsに合わせたものが用意されている．私の環境はRed Hat Enterpriseなので，とりあえず「CentOS Linux 64 bit architecture」を選択する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ wget http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.3.2-5/sratoolkit.2.3.2-5-centos_linux64.tar.gz
+</span><span class='line'>$ tar zxvf sratoolkit.2.3.2-5-centos_linux64.tar.gz </span></code></pre></td></tr></table></div></figure>
+
+
+<p>今回使用するfastq-dumpは展開したディレクトリのbin以下に入っている．以下のように実行して動作するか確認する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump
+</span><span class='line'>
+</span><span class='line'>Usage:
+</span><span class='line'>  sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump [options] &lt;path [path...]&gt;
+</span><span class='line'>  sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump [options] [ -A ] &lt;accession&gt;
+</span><span class='line'>
+</span><span class='line'>Use option --help for more information
+</span><span class='line'>
+</span><span class='line'>sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump : 2.3.2</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>fastq-dumpの使い方</h3>
+
+<p>基本的な使い方としては，以下のようにfastq-dumpにsraファイルを指定すればよい&#8230;</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump ./DRR002191.sra</span></code></pre></td></tr></table></div></figure>
+
+
+<p>…のだが，ここでひとつ注意が必要になる．上のコマンドを指定すると，データがシングルエンドでもペアエンドでも同様に一つのファイルとして出力されてしまう．シングルエンドの場合は問題ないのだが，上のDRR002191.sraは本当は90bpのペアエンドなのだが，sraから何も考えずに変換すると以下のように結合された配列として出力されてしまう．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ head -n 4 DRR002191.fastq
+</span><span class='line'>@DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=180
+</span><span class='line'>NCAATGGCAATAGCAATGCATTGAAATGAAAAGGCATTTACCAGGAGCAGGAAAGCCAGAAAGAGGAGCAGTGNNCNNGGAGTTGCNNNNTGCTTGGCTTCATCTTTTGCAATTCTGCATCTTTTGCATTTCCCTTCTCGCTCTGCTGCTCGCTCGCCTTTCTTNNNCGNCCTTTTCCCC
+</span><span class='line'>+DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=180
+</span><span class='line'>#1=DDFFFHFFHHIIJJJIJJIJJIJBCHHIHGCC&gt;FGIGIHDH?HJIEGEGI@FEHIJIIE@HI9=EH=CDD#################B@CFFDDDDFHHHGIJJIJJGGIGJIIHGHIGIJIHIJIEIIHIJJIGGHHEGI@DGCGEFHHIGIEFEFFBCB################</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ということで，きちんとペアエンドを2つのfastqファイルに変換するには，&#8211;split-filesというオプションを使用する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump --split-files ./DRR002191.sra</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで，きちんと2つのfastqファイルが出力される．個別のfastqファイルを見ると，やはり先程の変換はペアエンドの配列を結合して出力されていることがわかる．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ls *.fastq.orig
+</span><span class='line'>DRR002191_1.fastq  DRR002191_2.fastq
+</span><span class='line'>
+</span><span class='line'>$ head -n 4 DRR002191_1.fastq DRR002191_2.fastq
+</span><span class='line'>==&gt; DRR002191_1.fastq.orig &lt;==
+</span><span class='line'>@DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=90
+</span><span class='line'>NCAATGGCAATAGCAATGCATTGAAATGAAAAGGCATTTACCAGGAGCAGGAAAGCCAGAAAGAGGAGCAGTGNNCNNGGAGTTGCNNNN
+</span><span class='line'>+DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=90
+</span><span class='line'>#1=DDFFFHFFHHIIJJJIJJIJJIJBCHHIHGCC&gt;FGIGIHDH?HJIEGEGI@FEHIJIIE@HI9=EH=CDD#################
+</span><span class='line'>
+</span><span class='line'>==&gt; DRR002191_2.fastq.orig &lt;==
+</span><span class='line'>@DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=90
+</span><span class='line'>TGCTTGGCTTCATCTTTTGCAATTCTGCATCTTTTGCATTTCCCTTCTCGCTCTGCTGCTCGCTCGCCTTTCTTNNNCGNCCTTTTCCCC
+</span><span class='line'>+DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=90
+</span><span class='line'>B@CFFDDDDFHHHGIJJIJJGGIGJIIHGHIGIJIHIJIEIIHIJJIGGHHEGI@DGCGEFHHIGIEFEFFBCB################</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>その他の注意点</h3>
+
+<p>fastq-dumpに指定するsraファイルは，きちんとパスを指定しないといけないようだ．以下のようなエラーが出る場合は，絶対パスを指定するか，カレントディレクトリにsraファイルがある場合にはファイル名の前に「<strong>./</strong>」を付け加える．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump DRR002191.sra  # これは間違い
+</span><span class='line'>2013-06-20T02:11:42 fastq-dump.2.3.2 err: name not found while resolving tree within virtual file system module - failed to open 'DRR002191.sra'
+</span><span class='line'>Written 0 spots total</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump /path/to/DRR002191.sra  # これなら大丈夫
+</span><span class='line'>$ fastq-dump ./DRR002191.sra  # これなら大丈夫</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<br/>
+
+
+<p>また，他のオプションなどの情報などはfastq-dumpのhelpから見ることができる．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump --help
+</span><span class='line'>
+</span><span class='line'>Usage:
+</span><span class='line'>  /home/is/yuki-ok/biolocal/src/sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump [options] &lt;path [path...]&gt;
+</span><span class='line'>  /home/is/yuki-ok/biolocal/src/sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump [options] [ -A ] &lt;accession&gt;
+</span><span class='line'>
+</span><span class='line'>INPUT
+</span><span class='line'>  -A|--accession &lt;accession&gt;       Replaces accession derived from &lt;path&gt; in
+</span><span class='line'>                                   filename(s) and deflines (only for single
+</span><span class='line'>                                   table dump)
+</span><span class='line'>  --table &lt;table-name&gt;             Table name within cSRA object, default is
+</span><span class='line'>                                   "SEQUENCE"
+</span><span class='line'>
+</span><span class='line'>[...]</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>環境</h4>
+
+<ul>
+<li>NCBI SRA Toolkit : May 9 2013, version 2.3.2-5 release</li>
+<li>fastq-dump : 2.3.2</li>
+</ul>
+
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://www.ncbi.nlm.nih.gov/sra/?term=DRR002191">Whole genome resequencing of Masaru Tomita - SRA - NCBI</a></li>
+<li><p><a href="http://trace.ddbj.nig.ac.jp/DRASearch/run?acc=DRR002191">DRR002191 - DRA Search</a></p></li>
+<li><p><a href="ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/fastq/DRA000/DRA000583/DRX001619">/ddbj_database/dra/fastq/DRA000/DRA000583/DRX001619 のインデックス</a> (こちらではまだfastq.bz2で配布されている)</p></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[MacPortsで使用していない過去のバージョンのパッケージを消す＆ちょっと可視化]]></title>
@@ -1020,73 +1203,6 @@
 
 <ul>
 <li><a href="http://www.natureasia.com/ja-jp/info/press-releases/detail/61">Scientific Reportsでの論文掲載が始まる | Nature Publishing Group</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[RVM環境でのOctopressの更新]]></title>
-    <link href="http://yagays.github.io/blog/2013/04/21/octopress-update/"/>
-    <updated>2013-04-21T22:50:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/04/21/octopress-update</id>
-    <content type="html"><![CDATA[<p>前々から計画していたOctopressの更新がやっと終わったので，その作業メモ．本当は色々と難航して面倒だったのだけれども，細かいところは割愛して必要最小限の部分だけをまとめてみた．</p>
-
-<h3>バックアップを取る</h3>
-
-<p>これは必須．以下のコマンドでは，Octopressのディレクトリを丸々デスクトップにコピーしている．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>cp -R octopress ~/Desktop
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Octopressをアップデートする</h3>
-
-<p>Git経由でOctorpessをアップデートする．_config.ymlなど自分で変更しているファイルがあるとgit pullできないので，あらかじめgit statusで変更されているファイルを調べてgit checkoutで除外しておく．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git fetch octopress
-</span><span class='line'><span class="nv">$ </span>git checkout -- Rakefile _config.yml
-</span><span class='line'><span class="nv">$ </span>git pull octopress master
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>そして_config.ymlとRakefileを元通りにする．_config.ymlはそれほど更新が無いのでそのままバックアップのコピーを持ってきても大丈夫だが，Rakefileは細かい箇所で更新が入っているので，diffなどを見つつ必要な変更点だけを書き換える．</p>
-
-<h3>RVMでRubyを1.9.3に更新する（必要な人だけ）</h3>
-
-<p>Octopressを更新するとRuby-1.9.3を使うように言われるので，こちらも更新しておく．RVM自体の更新もついでにやっておく．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rvm get stable
-</span><span class='line'><span class="nv">$ </span>rvm autolibs <span class="nb">enable</span>
-</span><span class='line'><span class="nv">$ </span>rvm install ruby-1.9.3
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Bundleでパッケージを更新する</h3>
-
-<p>最後にBundleでOctopressを動かすために必要なパッケージをひと通りインストールすれば，長かった更新作業も一段落．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>bundle install
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>もしRubyのバージョンの更新をしていない人はbundle updateすればOK．</p>
-
-<p>あとは，rake generateなどを実行してみて，キチンとOctopressが動作するかを確かめれば終了．</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://octopress.org/docs/updating/">Updating Octopress - Octopress</a></li>
-<li><a href="http://tokkonopapa.github.io/blog/2011/12/30/octopress-on-github-and-bitbucket/">Octopressのインストールから運用管理まで - T.I.D.</a></li>
 </ul>
 
 ]]></content>
