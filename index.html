@@ -186,7 +186,7 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump ./DRR002191.sra</span></code></pre></td></tr></table></div></figure>
 
 
-<p>…のだが，ここでひとつ注意が必要になる．上のコマンドを指定すると，データがシングルエンドでもペアエンドでも同様に一つのファイルとして出力されてしまう．シングルエンドの場合は問題ないのだが，上のDRR002191.sraは本当は90bpのペアエンドなのだが，sraから何も考えずに変換すると以下のように結合された配列として出力されてしまう．</p>
+<p>…のだが，ここでひとつ注意が必要になる．上のコマンドを指定すると，データがシングルエンドでもペアエンドでも同様に一つのファイルとして出力されてしまう．実際に変換されたfastqファイルの中身を見てみると，上のDRR002191.sraは本当は90bpのペアエンドなのだが，以下のように結合された配列として出力される．</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -242,17 +242,19 @@
 
 <h3>その他の注意点</h3>
 
-<p>fastq-dumpに指定するsraファイルは，きちんとパスを指定しないといけないようだ．以下のようなエラーが出る場合は，絶対パスを指定するか，カレントディレクトリにsraファイルがある場合にはファイル名の前に「<strong>./</strong>」を付け加える．</p>
+<p>fastq-dumpに指定するsraファイルは，きちんとパスを指定しないといけないようだ．以下のようなエラーが出る場合は，絶対パスを指定するか，カレントディレクトリにsraファイルがある場合にはファイル名の前に&#8221;<strong>./</strong>&#8220;を付け加える．</p>
+
+<h4>これは間違い</h4>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump DRR002191.sra  # これは間違い
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump DRR002191.sra
 </span><span class='line'>2013-06-20T02:11:42 fastq-dump.2.3.2 err: name not found while resolving tree within virtual file system module - failed to open 'DRR002191.sra'
 </span><span class='line'>Written 0 spots total</span></code></pre></td></tr></table></div></figure>
 
 
-
+<h4>絶対パスを指定するか&#8221;./&#8221;を付け加える</h4>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
