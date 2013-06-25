@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-06-25T10:10:46+09:00</updated>
+  <updated>2013-06-25T10:13:23+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[BioPythonで塩基配列をアミノ酸配列にする]]></title>
+    <title type="html"><![CDATA[Biopythonで塩基配列をアミノ酸配列にする]]></title>
     <link href="http://yagays.github.io/blog/2013/06/25/biopython-translation/"/>
     <updated>2013-06-25T09:59:00+09:00</updated>
     <id>http://yagays.github.io/blog/2013/06/25/biopython-translation</id>
