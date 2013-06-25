@@ -115,6 +115,107 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/05/20/zaw-zsh/">zaw.zshを使って移動したことのあるディレクトリに一発で飛ぶ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-20T01:47:00+09:00" pubdate data-updated="true">May 20<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>「zsh anything.el-like widget」通称zawは，Emacsのanything.elみたいなインターフェイスでzshを操作できるという拡張プラグインだ．本来は様々な操作に対応しているのだが，とりあえずディレクトリ操作だけでも恐ろしいほどに便利なので，anything.elを知らない人でも導入して損はないと思う．ここでは以下の記事を参考に，zaw.zshの設定をしてみた．</p>
+
+<ul>
+<li><a href="https://github.com/zsh-users/zaw">zsh-users/zaw · GitHub</a></li>
+<li><a href="http://u7fa9.org/memo/HEAD/archives/2011-02/2011-02-22_1.rst">zsh でも anything.el っぽいの - memo</a></li>
+<li><a href="http://shibayu36.hatenablog.com/entry/20120130/1327937835">zaw.zshで最近移動したディレクトリに移動する - $shibayu36->blog;</a></li>
+</ul>
+
+
+<h3>1. zawをダウンロードする</h3>
+
+<p>今回は.zshというディレクトリを$HOME以下に作成して，そこでgit cloneを実行する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ mkdir .zsh
+</span><span class='line'>$ cd .zsh
+</span><span class='line'>$ git clone git://github.com/zsh-users/zaw.git</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>2. .zshrcを設定する</h3>
+
+<p>以下の内容を.zshrcに書き込む．sourceでzaw.zshを読み込む部分は，先ほどダウンロードしたzawディレクトリを指定する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># zaw.zsh
+</span><span class='line'># http://shibayu36.hatenablog.com/entry/20120130/1327937835
+</span><span class='line'>autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+</span><span class='line'>add-zsh-hook chpwd chpwd_recent_dirs
+</span><span class='line'>zstyle ':chpwd:*' recent-dirs-max 5000
+</span><span class='line'>zstyle ':chpwd:*' recent-dirs-default yes
+</span><span class='line'>zstyle ':completion:*' recent-dirs-insert both
+</span><span class='line'>
+</span><span class='line'>source /home/yag_ays/.zsh/zaw/zaw.zsh
+</span><span class='line'>zstyle ':filter-select' case-insensitive yes # 絞り込みをcase-insensitiveに
+</span><span class='line'>bindkey '^@' zaw-cdr # zaw-cdrをbindkey</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>3. .zshrcを読み込む</h3>
+
+<p>最後に.zshrcを再度読み込んでエラーがでなければ完了．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ source .zshrc</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>使い方</h3>
+
+<p>C-@（Control-@）を押すと以下のように，直近で移動したディレクトリの一覧が表示される．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/zaw1.png" alt="" /></p>
+
+<p>この状態でキーワードを入力すると，マッチしたディレクトリだけを選ぶこともできる．深い階層のディレクトリでも名前さえ覚えていれば一発で飛ぶことができるので，非常に便利だ．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/zaw2.png" alt="" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/05/16/cpanm/">Cpanmのセッティング</a></h1>
     
     
@@ -444,49 +545,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/09/review-the-art-of-how-to-train-your-dragon/">&#8220;The Art of How to Train Your Dragon&#8221;読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-09T21:09:00+09:00" pubdate data-updated="true">May 9<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=1557048630" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>映画「ヒックとドラゴン」の設定資料集「The Art of How to Train Your Dragon」がようやく届いた！先日書いた<a href="http://yagays.github.io/blog/2013/05/05/toothless-ears/">日記</a>でこの映画に対するテンションの上がり具合は明らかだとは思うが，本書も非常に素晴らしい内容だったので，ここで少し紹介したい．この感動を伝えるには写真で紹介できれば一番なのだが，そこはやはり実際に買ってもらって全編余すところなく楽しんで頂きたい．</p>
-
-<p>マット仕上げのカバーを取ると，黒地に赤いドラゴンのロゴの入ったハードカバーが現れる．全編カラーの本書は，約160ページ程度ながら手に持つと少し重い．本書は映画&#8221;How to Train Your Dragon&#8221;(邦題：『ヒックとドラゴン』)の設定資料集だ．映画の世界観であるヴァイキングとドラゴンが共存する神話的かつ幻想的な世界を，豊富なスケッチとコンセプト画で魅せてくれる．本書は主に，個性豊かなドラゴンのキャラクター画，同じくヴァイキングのキャラクター画，映画の世界観を表現する背景や風景画，そして最後に幾つかの絵コンテと3D画により構成されている．ドラゴンやヴァイキングの設定資料では，映画で登場するキャラクターから映画では見られないボツ作品まで，これでもかというくらい大量の絵やCG作品が収録されている．ちなみに，初期設定ではアスティ(Astrid)のキャラクターはそばかす＆三つ編みだったようだ．コンセプト画からCGモデリングまで，本書では別バージョンのアスティの資料が掲載されている．次に背景や風景画では，バーク島周辺の切り立った山々や深い森の中にある入り江などの壮大な自然が描かれるほか，ヴァイキングの村の細かなディテールも見ることができる．そして最後に絵コンテと3D画の部分では，アーティストが積み上げてきた世界観を3D映画として表現するための，カット割りや一連の動きが紹介される．ここでは3Dのモデリングに関して特に深入りしないものの，ドラゴンの吐く炎の表現であったり3Dにおける光の表現について触れられている．これらの話題はDVDの特典映像でも同様に語られている内容なので，そちらも参考にして頂きたい．</p>
-
-<p>といったように，本書は「ヒックとドラゴン」好きなら必見の内容だろう．たっぷりと収録されているコンセプト画や背景を眺めることで，新たな発見があり，世界観を堪能でき，映画の裏側を覗き見ることができ，そして想像力をかき立てられる素晴らしい設定資料集となっている．</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/4/">&larr; Older</a></li>
@@ -534,6 +592,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2013/06/25/biopython-translation/">BioPythonで塩基配列をアミノ酸配列にする</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/06/24/nar-web-server-issue-2013/">2013 Web Server issue</a>
       </li>
     
@@ -569,10 +631,6 @@
         <a href="/blog/2013/05/21/tree/">treeを使ってディレクトリ構造をターミナル上で可視化する</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/05/20/zaw-zsh/">zaw.zshを使って移動したことのあるディレクトリに一発で飛ぶ</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -591,7 +649,7 @@
 <li class='category'><a href='/blog/categories/prml/'>PRML (5)</a></li>
 <li class='category'><a href='/blog/categories/perl/'>Perl (1)</a></li>
 <li class='category'><a href='/blog/categories/presentation/'>Presentation (1)</a></li>
-<li class='category'><a href='/blog/categories/python/'>Python (1)</a></li>
+<li class='category'><a href='/blog/categories/python/'>Python (2)</a></li>
 <li class='category'><a href='/blog/categories/reading/'>Reading (21)</a></li>
 <li class='category'><a href='/blog/categories/soapdenovo2/'>SOAPdenovo2 (3)</a></li>
 <li class='category'><a href='/blog/categories/slide/'>Slide (1)</a></li>

@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>「小さなチーム、大きな仕事〔完全版〕」読了 - Wolfeyes Bioinformatics beta</title>
+  <title>BioPythonで塩基配列をアミノ酸配列にする - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.io/blog/2012/09/13/review-rework">
+  <link rel="canonical" href="http://yagays.github.io/blog/2013/06/25/biopython-translation">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -113,7 +113,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">「小さなチーム、大きな仕事〔完全版〕」読了</h1>
+      <h1 class="entry-title">BioPythonで塩基配列をアミノ酸配列にする</h1>
     
     
       <p class="meta">
@@ -129,24 +129,36 @@
   
 
 
-<time datetime="2012-09-13T08:25:00+09:00" pubdate data-updated="true">Sep 13<span>th</span>, 2012</time>
+<time datetime="2013-06-25T09:59:00+09:00" pubdate data-updated="true">Jun 25<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=415209267X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+<div class="entry-content"><h3>BioPython</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">mRNA</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s">&quot;TATGAAAGT&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">mRNA</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span>
+</span><span class='line'><span class="n">Seq</span><span class="p">(</span><span class="s">&#39;YES&#39;</span><span class="p">,</span> <span class="n">ExtendedIUPACProtein</span><span class="p">())</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Ruby on Railsなどで知られる37signalsのJason FriedとDHHの著作．ハヤカワ新書juiceで既に書籍化されていたが，完全版となるにあたって原書付属のイラストが加わり，ハードカバーになっているほか，訳者あとがきが削除されている．</p>
+<h3>Why Biopython?</h3>
 
-<p>私はハヤカワ新書の時に一度読んでいるので今回改めて読み返したのだけれども，口調はぶっきらぼうながらも極限まで突き詰めたシンプルさと合理性で，非常に痛快だ．まさに彼ららしいやり方だと感じる．これを異端と捉えるか革新と捉えるかは最終的に読者に委ねられるが，一つだけ確かなことは，彼らはこの方法で収益を上げて成功している．そういう意味で，この企業はビジネスの世界では絶対的に正しい．</p>
+<p><a href="http://xkcd.com/353/">xkcd: Python</a>
+<img src="http://imgs.xkcd.com/comics/python.png" alt="" /></p>
 
-<p>あと，はてブが全くついてないので意外だったのだが，37signalsの本書公式ページで旧体制の大企業を痛烈に批判したプロモーションビデオがあるので，本書を読まれた方はぜひ一度見て見ることをお薦めする．</p>
+<h3>Ref.</h3>
 
 <ul>
-<li><a href="http://37signals.com/rework">http://37signals.com/rework</a></li>
+<li><a href="http://biopython.org/DIST/docs/tutorial/Tutorial.html">Biopython Tutorial and Cookbook</a></li>
+<li><a href="http://yagays.github.io/blog/2013/04/20/install-biopython/">Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする - Wolfeyes Bioinformatics beta</a></li>
 </ul>
 
 </div>
@@ -171,12 +183,12 @@
   
 
 
-<time datetime="2012-09-13T08:25:00+09:00" pubdate data-updated="true">Sep 13<span>th</span>, 2012</time>
+<time datetime="2013-06-25T09:59:00+09:00" pubdate data-updated="true">Jun 25<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/book/'>Book</a>
+    <a class='category' href='/blog/categories/python/'>Python</a>
   
 </span>
 
@@ -184,9 +196,9 @@
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2012/09/13/review-rework/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2013/06/25/biopython-translation/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2012/09/13/review-rework/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2012/09/13/review-rework/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/06/25/biopython-translation/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/06/25/biopython-translation/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -207,14 +219,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/09/12/review-little-bets/" title="Previous Post:
-        「小さく賭けろ！―世界を変えた人と組織の成功の秘密」読了">&laquo; 「小さく賭けろ！―世界を変えた人と組織の成功の秘密」読了</a></li>
+        href="/blog/2013/06/24/nar-web-server-issue-2013/" title="Previous Post:
+        2013 Web Server issue">&laquo; 2013 Web Server issue</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/09/14/review-tajima-soccer/"
-        title="Next Post: 「『言語技術』が日本のサッカーを変える」読了">「『言語技術』が日本のサッカーを変える」読了
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -393,8 +401,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.io/blog/2012/09/13/review-rework/';
-        var disqus_url = 'http://yagays.github.io/blog/2012/09/13/review-rework/';
+        var disqus_identifier = 'http://yagays.github.io/blog/2013/06/25/biopython-translation/';
+        var disqus_url = 'http://yagays.github.io/blog/2013/06/25/biopython-translation/';
         var disqus_script = 'embed.js';
       
     (function () {

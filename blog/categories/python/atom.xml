@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-06-24T16:45:52+09:00</updated>
+  <updated>2013-06-25T10:00:35+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[BioPythonで塩基配列をアミノ酸配列にする]]></title>
+    <link href="http://yagays.github.io/blog/2013/06/25/biopython-translation/"/>
+    <updated>2013-06-25T09:59:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/06/25/biopython-translation</id>
+    <content type="html"><![CDATA[<h3>BioPython</h3>
+
+<p>```python</p>
+
+<blockquote><blockquote><blockquote><p>from Bio.Seq import Seq
+mRNA = Seq("TATGAAAGT")
+mRNA.translate()
+Seq('YES', ExtendedIUPACProtein())
+```</p></blockquote></blockquote></blockquote>
+
+<h3>Why Biopython?</h3>
+
+<p><a href="http://xkcd.com/353/">xkcd: Python</a>
+<img src="http://imgs.xkcd.com/comics/python.png" alt="" /></p>
+
+<h3>Ref.</h3>
+
+<ul>
+<li><a href="http://biopython.org/DIST/docs/tutorial/Tutorial.html">Biopython Tutorial and Cookbook</a></li>
+<li><a href="http://yagays.github.io/blog/2013/04/20/install-biopython/">Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする - Wolfeyes Bioinformatics beta</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする]]></title>
