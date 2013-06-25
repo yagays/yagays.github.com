@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-06-25T10:05:38+09:00</updated>
+  <updated>2013-06-25T10:10:46+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -18,7 +18,12 @@
     <link href="http://yagays.github.io/blog/2013/06/25/biopython-translation/"/>
     <updated>2013-06-25T09:59:00+09:00</updated>
     <id>http://yagays.github.io/blog/2013/06/25/biopython-translation</id>
-    <content type="html"><![CDATA[<h3>BioPython</h3>
+    <content type="html"><![CDATA[<ul>
+<li><a href="http://insectcell.exblog.jp/20703555/">awkとsedで塩基配列をアミノ酸配列にする : したっぱ昆虫細胞研究者のメモ</a></li>
+<li><a href="https://twitter.com/chalkless/status/349052297982132225">Twitter / chalkless: @n0rr $ perl -MBio::Seq -le &#8230;</a></li>
+<li><a href="https://twitter.com/dritoshi/status/349056205160841216">Twitter / dritoshi: @chalkless @n0rr &#8230;</a></li>
+</ul>
+
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -33,17 +38,15 @@
 
 <h3>Why Biopython?</h3>
 
-<p><a href="http://xkcd.com/353/">xkcd: Python</a>
-<img src="http://imgs.xkcd.com/comics/python.png" alt="" /></p>
+<p><a href="http://xkcd.com/353/">xkcd: Python</a></p>
+
+<p><img src="http://imgs.xkcd.com/comics/python.png" alt="http://xkcd.com/353/" /></p>
 
 <h3>Ref.</h3>
 
 <ul>
 <li><a href="http://biopython.org/DIST/docs/tutorial/Tutorial.html">Biopython Tutorial and Cookbook</a></li>
-<li><p><a href="http://yagays.github.io/blog/2013/04/20/install-biopython/">Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする - Wolfeyes Bioinformatics beta</a></p></li>
-<li><p><a href="http://insectcell.exblog.jp/20703555/">awkとsedで塩基配列をアミノ酸配列にする : したっぱ昆虫細胞研究者のメモ</a></p></li>
-<li><a href="https://twitter.com/chalkless/status/349052297982132225">Twitter / chalkless: @n0rr $ perl -MBio::Seq -le &#8230;</a></li>
-<li><a href="https://twitter.com/dritoshi/status/349056205160841216">Twitter / dritoshi: @chalkless @n0rr &#8230;</a></li>
+<li><a href="http://yagays.github.io/blog/2013/04/20/install-biopython/">Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする - Wolfeyes Bioinformatics beta</a></li>
 </ul>
 
 ]]></content>
