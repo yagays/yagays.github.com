@@ -115,6 +115,228 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/10/22/imcmr-2-2/">「Rによるモンテカルロ法入門」読書ノート：2章 受理・棄却法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-22T21:38:00+09:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>内容：逆変換法や一般変換法で生成できない分布から乱数を生成する</h3>
+
+<p>逆変換法や一般変換法では，一様分布から生成される乱数に何らかの関数を通すことで任意の乱数を生成してきた．しかし，このような直接的な方法で乱数を生成できない分布の場合には，間接的な方法によって乱数を生成する必要がある．そのような場合には，本来求めたい乱数の分布とは違った分布から乱数を生成し，それが受理できる値か棄却できる値かを選り分けることで，間接的に求めたい分布から生成された乱数を表現する．</p>
+
+<ul>
+<li>目標密度（target）: <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f+" alt="f " /></li>
+<li>手段密度・候補密度（candidate）: <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=g+" alt="g " /></li>
+</ul>
+
+
+<p>この受理・棄却法では1つの乱数の値<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X+" alt="X " />につき，2つの乱数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=Y+%5Csim+g+" alt="Y \sim g " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2C1%5D%7D+" alt="U \sim \mathcal{U}_{[0,1]} " />を考える．前者は候補密度から乱数を生成したもの，後者は受理・棄却に用いる一様乱数．この2つの乱数を，以下の式にあてはめて受理するか棄却するかを判断する．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=U+%5Cleq+%5Cfrac%7Bf%28Y%29%7D%7BM+%5Ctimes+g%28Y%29%7D+" alt="U \leq \frac{f(Y)}{M \times g(Y)} " /></p>
+
+<p>ここで登場するMは提案分布と候補密度から見積もった定数で，候補密度の制約の中で登場する値．基本的にある値より大きければ何でも良いのだが，シミュレーションの効率に関わってくる．これが小さい値であればあるほど，シミュレーションで棄却される乱数の候補が少なくて済むので，結果として効率が良くなる．最適なMは以下の式で与えられる（<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">UserR!資料pdf</a> p.51）．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=M+%3D+%5Csup_x+%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D+" alt="M = \sup_x \frac{f(x)}{g(x)} " /></p>
+
+<br />
+
+
+<h3>例 2.7, 例2.8 ベータ分布の乱数を生成する(2通り)</h3>
+
+<p>黒の点が一様分布/ベータ分布から生成した乱数，赤の点がアルゴリズムで受理された乱数（今回求めたかった乱数），青の線が極限<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=M+g%28x%29+" alt="M g(x) " />．</p>
+
+<p>受理・棄却の条件</p>
+
+<ul>
+<li>例2.7: <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=U+%3C+f%28Y%29+" alt="U &lt; f(Y) " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2CM%5D%7D+" alt="U \sim \mathcal{U}_{[0,M]} " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f+%5Csim+%5Cmathcal%7BBe%282.7%2C6.3%29%7D+" alt="f \sim \mathcal{Be(2.7,6.3)} " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=g+%3A+1+" alt="g : 1 " />
+
+<ul>
+<li>ここでgは何らかの分布ではなく「gは1に等しい」としているので，上式の1つ目の式の中にgが含まれていない．この場合，gで生成される乱数は一様乱数．</li>
+<li>一様分布のグラフを考えてみるとわかりやすい．区間[0,1]の間で常に値1を取る関数なので，上では1に等しいと表している．</li>
+</ul>
+</li>
+<li>例2.8: <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=Ug%28Y%29+%3C+f%28Y%29+" alt="Ug(Y) &lt; f(Y) " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2CM%5D%7D+" alt="U \sim \mathcal{U}_{[0,M]} " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f+%5Csim+%5Cmathcal%7BBe%282.7%2C6.3%29%7D+" alt="f \sim \mathcal{Be(2.7,6.3)} " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=g+%5Csim+%5Cmathcal%7BBe%282%2C6%29%7D+" alt="g \sim \mathcal{Be(2,6)} " /></li>
+</ul>
+
+
+<p>例2.8における「提案分布」という言葉は，新しく設定した候補分布のこと．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1"># 例2.7</span>
+</span><span class='line'>Nsim <span class="o">&lt;-</span> <span class="m">2500</span>
+</span><span class='line'>a <span class="o">&lt;-</span> <span class="m">2.7</span>
+</span><span class='line'>b <span class="o">&lt;-</span> <span class="m">6.3</span>
+</span><span class='line'>M <span class="o">&lt;-</span> <span class="m">2.67</span>
+</span><span class='line'>u <span class="o">&lt;-</span> runif<span class="p">(</span>Nsim<span class="p">,</span> max<span class="o">=</span>M<span class="p">)</span>
+</span><span class='line'>y <span class="o">&lt;-</span> runif<span class="p">(</span>Nsim<span class="p">)</span>
+</span><span class='line'>x <span class="o">&lt;-</span> y<span class="p">[</span>u <span class="o">&lt;</span> dbeta<span class="p">(</span>y<span class="p">,</span>a<span class="p">,</span>b<span class="p">)]</span>
+</span><span class='line'>
+</span><span class='line'>y2 <span class="o">&lt;-</span> rbeta<span class="p">(</span>Nsim<span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">6</span><span class="p">)</span>
+</span><span class='line'>u2 <span class="o">&lt;-</span> runif<span class="p">(</span>Nsim<span class="p">,</span> max<span class="o">=</span><span class="m">1.67</span><span class="p">)</span> <span class="o">*</span> dbeta<span class="p">(</span>y2<span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">6</span><span class="p">)</span>
+</span><span class='line'>x2 <span class="o">&lt;-</span> y2<span class="p">[</span>u2 <span class="o">&lt;</span> dbeta<span class="p">(</span>y2<span class="p">,</span><span class="m">2.7</span><span class="p">,</span><span class="m">6.3</span><span class="p">)]</span>
+</span><span class='line'>
+</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+</span><span class='line'>plot<span class="p">(</span>y<span class="p">,</span> u<span class="p">,</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1.0</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">2.8</span><span class="p">),</span> cex<span class="o">=</span><span class="m">0.5</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;y&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;u.g(y)&quot;</span><span class="p">)</span>
+</span><span class='line'>par<span class="p">(</span>new<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span>x<span class="p">,</span> u<span class="p">[</span>u <span class="o">&lt;</span> dbeta<span class="p">(</span>y<span class="p">,</span>a<span class="p">,</span>b<span class="p">)],</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1.0</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">2.8</span><span class="p">),</span> cex<span class="o">=</span><span class="m">0.5</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;y&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;u.g(y)&quot;</span><span class="p">)</span>
+</span><span class='line'>curve<span class="p">(</span>dbeta<span class="p">(</span>x<span class="p">,</span>a<span class="p">,</span>b<span class="p">),</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>abline<span class="p">(</span>h<span class="o">=</span>M<span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>plot<span class="p">(</span>y2<span class="p">,</span> u2<span class="p">,</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1.0</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">),</span> cex<span class="o">=</span><span class="m">0.5</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;y&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;u.g(y)&quot;</span><span class="p">)</span>
+</span><span class='line'>par<span class="p">(</span>new<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span>x2<span class="p">,</span> u2<span class="p">[</span>u2 <span class="o">&lt;</span> dbeta<span class="p">(</span>y2<span class="p">,</span><span class="m">2.7</span><span class="p">,</span><span class="m">6.3</span><span class="p">)],</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1.0</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">),</span> cex<span class="o">=</span><span class="m">0.5</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;y&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;u.g(y)&quot;</span><span class="p">)</span>
+</span><span class='line'>curve<span class="p">(</span>dbeta<span class="p">(</span>x<span class="p">,</span><span class="m">2.7</span><span class="p">,</span><span class="m">6.3</span><span class="p">),</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>curve<span class="p">(</span>dbeta<span class="p">(</span>x<span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">6</span><span class="p">)</span><span class="o">*</span><span class="m">1.67</span><span class="p">,</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp2_6.png" alt="" /></p>
+
+<h4>上の図の解釈</h4>
+
+<p>乱数の値が赤の分布の線より中に入れば受理となる．候補として生成される乱数は青の分布の線の中でランダムに生成されるので，赤と青の線の間の部分が棄却された乱数になる．この赤と青の線の間の部分が少なければ少ないほど，この受理・棄却法の効率も良くなる．じゃあ効率を良くするにはどうすればいいかというと，いじることのできるポイントは2つ</p>
+
+<ul>
+<li>提案分布gを良い感じにする（青の線の形を決める）</li>
+<li>定数Mを出来るだけ小さくする（青の線の高さを決める，fとgの間の幅を決める）</li>
+</ul>
+
+
+<p>この受理・棄却法の前提として<strong>目標分布（赤の線）から乱数は生成できない</strong>のだから，100％受理されるようなシミュレーションは理論上不可能．だから，乱数が生成できるような候補分布を使って，定数Mを定めて，間接的に乱数を発生させようということ．</p>
+
+<br />
+
+
+<h3>練習問題 2.7 目標分布fと候補密度gがともにベータ分布だった場合に，どのような制約があるのか</h3>
+
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=a+%5Cleq+%5Calpha%2C+b+%5Cleq+%5Cbeta+" alt="a \leq \alpha, b \leq \beta " />が必要なことの証明</h4>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f%28x%29++%3D+%5Cfrac%7B%5CGamma%28%5Calpha%2B%5Cbeta%29%7D%7B%5CGamma%28%5Calpha%29%5CGamma%28%5Cbeta%29%7D+x%5E%7B%5Calpha-1%7D+%281-x%29%5E%7B%5Cbeta-1%7D+" alt="f(x)  = \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)} x^{\alpha-1} (1-x)^{\beta-1} " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=g%28x%29++%3D+%5Cfrac%7B%5CGamma%28a%2Bb%29%7D%7B%5CGamma%28a%29%5CGamma%28b%29%7D+x%5E%7Ba-1%7D+%281-x%29%5E%7Bb-1%7D+" alt="g(x)  = \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)} x^{a-1} (1-x)^{b-1} " />
+より</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D++%3D+%5Cfrac%7B%5CGamma%28%5Calpha%2B%5Cbeta%29%5CGamma%28a%29%5CGamma%28b%29%7D%7B%5CGamma%28a%2Bb%29%5CGamma%28%5Calpha%29%5CGamma%28%5Cbeta%29%7D+x%5E%7B%5Calpha-a%7D+%281-x%29%5E%7B%5Cbeta-b%7D+" alt="\frac{f(x)}{g(x)}  = \frac{\Gamma(\alpha+\beta)\Gamma(a)\Gamma(b)}{\Gamma(a+b)\Gamma(\alpha)\Gamma(\beta)} x^{\alpha-a} (1-x)^{\beta-b} " /></p>
+
+<p>となり，比<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f%2Fg+" alt="f/g " />が有界になる（どっかのxの値が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cinf+" alt="\inf " />になったりしない）には，xや(1-x)のベキ数の部分が0以上でである必要がある．よって<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=a+%5Cleq+%5Calpha%2C+b+%5Cleq+%5Cbeta+" alt="a \leq \alpha, b \leq \beta " />が必要．</p>
+
+<p>上の細かい証明は省略するが，要するにベータ分布<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BBe%7D%28a%2Cb%29+" alt="\mathcal{Be}(a,b) " />において，aとbが1未満の時には0と1の両端で値が跳ね上がる．以下の図は，「<a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22">パターン認識と機械学習 上</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のP.70を参考にベータ分布を作図したもの．これを見ると，aとbが1のときにちょうど一様分布のような形をとり，それより小さいと下に凸，それより大きいと上に凸のような分布の形になることがわかる．なので，ベータ分布が有界であるにはxや(1-x)のベキ数の部分がポイントになってくる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1"># 練習問題 2.7 ベータ関数の分布を図示してみる</span>
+</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+</span><span class='line'>curve<span class="p">(</span>dbeta<span class="p">(</span>x<span class="p">,</span><span class="m">0.1</span><span class="p">,</span><span class="m">0.1</span><span class="p">),</span>col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span>lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span>ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">3</span><span class="p">),</span>main<span class="o">=</span><span class="s">&quot;Be(0.1,0.1)&quot;</span><span class="p">)</span>
+</span><span class='line'>curve<span class="p">(</span>dbeta<span class="p">(</span>x<span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">),</span>col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span>lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span>ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">3</span><span class="p">),</span>main<span class="o">=</span><span class="s">&quot;Be(1,1)&quot;</span><span class="p">)</span>
+</span><span class='line'>curve<span class="p">(</span>dbeta<span class="p">(</span>x<span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">),</span>col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span>lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span>ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">3</span><span class="p">),</span>main<span class="o">=</span><span class="s">&quot;Be(2,3)&quot;</span><span class="p">)</span>
+</span><span class='line'>curve<span class="p">(</span>dbeta<span class="p">(</span>x<span class="p">,</span><span class="m">8</span><span class="p">,</span><span class="m">4</span><span class="p">),</span>col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span>lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span>ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">3</span><span class="p">),</span>main<span class="o">=</span><span class="s">&quot;Be(8,4)&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp2_beta.png" alt="" /></p>
+
+<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=a+%3D+%5Cleft%5Clfloor+%5Calpha+%5Cright%5Crfloor+" alt="a = \left\lfloor \alpha \right\rfloor " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=b+%3D+%5Cleft%5Clfloor+%5Cbeta+%5Cright%5Crfloor+" alt="b = \left\lfloor \beta \right\rfloor " />の証明</h4>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f%28x%29%2Fg%28x%29+" alt="f(x)/g(x) " />を微分して最大値を取る時のxを求めると，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x_%7Bmax%7D+%3D+%5Cfrac%7B%5Calpha-a%7D%7B%5Calpha-a%2B%5Cbeta-b%7D+" alt="x_{max} = \frac{\alpha-a}{\alpha-a+\beta-b} " />となる．よって，上で証明した<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=a+%5Cleq+%5Calpha%2C+b+%5Cleq+%5Cbeta+" alt="a \leq \alpha, b \leq \beta " />を満たしつつ自然数aとbが最適な値を取るには，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=a+%3D+%5Cleft%5Clfloor+%5Calpha+%5Cright%5Crfloor+%2C+b+%3D+%5Cleft%5Clfloor+%5Cbeta+%5Cright%5Crfloor+" alt="a = \left\lfloor \alpha \right\rfloor , b = \left\lfloor \beta \right\rfloor " />となる．これもまあ厳密な証明はできなくても直感的に考えれば明らかだろう．</p>
+
+<br />
+
+
+<h3>練習問題 2.8 二重指数分布から正規乱数を生成する</h3>
+
+<ul>
+<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f%28x%29+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D%5Cexp%28-%5Cfrac%7Bx%5E2%7D%7B2%7D%29+" alt="f(x) = \frac{1}{\sqrt{2\pi}}\exp(-\frac{x^2}{2}) " /></li>
+<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=g%28x%7C%5Calpha%29+%3D+%5Cfrac%7B%5Calpha%7D%7B2%7D%7D%5Cexp%28-%5Calpha+%7Cx%7C%29+" alt="g(x|\alpha) = \frac{\alpha}{2}}\exp(-\alpha |x|) " /></li>
+</ul>
+
+
+<h4>a. 定数Mの取りうる範囲と最小値を求める</h4>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7Bf%28x%29%7D%7Bg%28x%7C%5Calpha%29%7D+%3D+%5Csqrt%7B%5Cfrac%7B2%7D%7B%5Cpi%7D%7D%5Calpha%5E%7B-1%7D%5Cexp%28-%5Cfrac%7Bx%5E2%7D%7B2%7D+%2B+%5Calpha%7Cx%7C%29+" alt="\frac{f(x)}{g(x|\alpha)} = \sqrt{\frac{2}{\pi}}\alpha^{-1}\exp(-\frac{x^2}{2} + \alpha|x|) " /></p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+%3D+%5Calpha+" alt="x = \alpha " />のとき，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7Bf%28%5Calpha%29%7D%7Bg%28%5Calpha%29%7D+%3D+%5Csqrt%7B%5Cfrac%7B2%7D%7B%5Cpi%7D%7D%5Calpha%5E%7B-1%7D%5Cexp%28-%5Cfrac%7B%5Calpha%5E2%7D%7B2%7D+%2B+%5Calpha%5E2%29+%3D+%5Csqrt%7B%5Cfrac%7B2%7D%7B%5Cpi%7D%7D%5Calpha%5E%7B-1%7De%5E%7B%5Calpha%5E2%2F2%7D+" alt="\frac{f(\alpha)}{g(\alpha)} = \sqrt{\frac{2}{\pi}}\alpha^{-1}\exp(-\frac{\alpha^2}{2} + \alpha^2) = \sqrt{\frac{2}{\pi}}\alpha^{-1}e^{\alpha^2/2} " />となり，与式を満たす．</p>
+
+<p>Mの最小値は，上式を微分すると<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%28-%5Calpha%5E2%2B1%29%5Cexp%28-%5Cfrac%7B%5Calpha%5E2%7D%7B2%7D%29+" alt="(-\alpha^2+1)\exp(-\frac{\alpha^2}{2}) " />が出てくるので，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha+%3D+%5Cpm+1+" alt="\alpha = \pm 1 " />となる．候補分布に課された制約(P.59)より，fとgどちらか一方だけ負になることは無いので，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha+%3D+1+" alt="\alpha = 1 " />が正解．（二階微分すれば-1のとき最小値，1のとき最大値だとわかる）</p>
+
+<h4>b. 受理確率を求める</h4>
+
+<p>受理確率は1/Mで表される．最適なMの値は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=M+%3D+%5Csqrt%7B%5Cfrac%7B2%7D%7B%5Cpi%7D%7De%5E%7B1%2F2%7D+" alt="M = \sqrt{\frac{2}{\pi}}e^{1/2} " />となるので，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1%2FM+%3D+%5Csqrt%7B%5Cpi%2F2e%7D+%3D+1%2F0.76+%5Csimeq+1.3+" alt="1/M = \sqrt{\pi/2e} = 1/0.76 \simeq 1.3 " />となる．</p>
+
+<h4>c. 候補分布から乱数を生成するために逆変換をする</h4>
+
+<p>受理・棄却法を使うには，当然候補分布から乱数が生成できなければいけない．今回は二重指数分布から乱数を生成して間接的に正規乱数を求めているので，二重指数分布から乱数を生成するために，2章前半で行った逆変換を行う．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=G%28x%29+%3D+%5Cint_%7B-%5Cinfty%7D%5E%7Bx%7D+g%28y%7C%5Calpha%29+dy+%3D+%5Cbegin%7Bcases%7D+%5Cfrac%7B1%7D%7B2%7De%5E%7B%5Calpha+x%7D+%26+%28x+%3C+0%29+%5C%5C+1+-+%5Cfrac%7B1%7D%7B2%7De%5E%7B%5Calpha+x%7D+%26+%28x+%3E+0%29+%5Cend%7Bcases%7D+" alt="G(x) = \int_{-\infty}^{x} g(y|\alpha) dy = \begin{cases} \frac{1}{2}e^{\alpha x} &amp; (x &lt; 0) \ 1 - \frac{1}{2}e^{\alpha x} &amp; (x &gt; 0) \end{cases} " /></p>
+
+<p>より，</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbegin%7Bcases%7D+x+%3D+%5Cfrac%7B1%7D%7B%5Calpha%7D%5Clog%282u%29+%26+%28u+%3C+%5Cfrac%7B1%7D%7B2%7D%29+%5C%5C+x+%3D+-%5Cfrac%7B1%7D%7B%5Calpha%7D%5Clog%282%281-u%29%29+%26+%28%5Cfrac%7B1%7D%7B2%7D+%3C+u+%3C+1+%29%5Cend%7Bcases%7D+" alt="\begin{cases} x = \frac{1}{\alpha}\log(2u) &amp; (u &lt; \frac{1}{2}) \ x = -\frac{1}{\alpha}\log(2(1-u)) &amp; (\frac{1}{2} &lt; u &lt; 1 )\end{cases} " /></p>
+
+<p>となる．あとは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2C1%5D%7D+" alt="U \sim \mathcal{U}_{[0,1]} " />で生成される乱数を上式に当てはめて計算すればよい．</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/10/21/imcmr-2-1/">「Rによるモンテカルロ法入門」読書ノート：2章 逆変換・一般変換法</a></h1>
     
     
@@ -789,61 +1011,6 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-14T04:40:00+09:00" pubdate data-updated="true">Oct 14<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=400006973X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p><strong>「データ解析のための統計モデリング入門」</strong>をひと通り読んだ．本書はGLMからMCMCによる分布推定までの一連の統計モデリングの流れを，生態学における研究の問題に即したテストデータやRを使った解析例とともに解説した本である．本書を書かれた久保さんの講義資料は前々から拝見していたのだが，今回はそれが全体を通して非常によくまとまっている印象を受けた．やはり実例に沿った例題があって，それを解決するためのストーリーが組まれていると，何が問題で何をすべきなのか，そしてその評価方法を含めてハッキリとしていて読みやすい．Rのコードに関しても，コマンドの実行方法からその解釈の仕方まで丁寧に解説が組まれており，数式とのつながりもわかりやすい．個人的には，後半のMCMCの実験に関しては大部分をWinBUGSにお任せで，シミュレーションの過程が少し不明瞭だった感じもするのだが，限られた紙面でMCMCの細かい実装方法を説明するよりかは既存のツールを使ったほうが全体の流れとしても良かったのだろう．</p>
-
-<br />
-
-
-<p>さて，本書を読み始める前に必ず目に通すべきなのが，<a href="http://hosho.ees.hokudai.ac.jp/~kubo/ce/IwanamiBook.html">公式ページ</a>にも貼られている各章のつながりや線形モデルの発展の図だ．全体の流れを俯瞰できるほか，実際に中を読みながら今ある問題と図とを照らし合わても，自分が今どういった位置づけの中で何を解いているのかということを把握することができる．</p>
-
-<p>これが非常に参考になったので，個人的にも自分の読書ノートに書きなぐったまとめ図を清書して作ってみた．ほとんど久保さんの図を真似ただけだが，2つの図を組み合わせ感じでストーリーに沿った形で線形モデルの発展をなぞっている．基本的に章の間をつなぐような自問自答の形を取っており，各章には推定するパラメータと手法の代表的なものを付け加えている．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc.png" alt="" /></p>
-
-<p>以下に簡単な読書ノートを載せておく．Rのコードを使った実験はまだできていないが，とりあえずはMCMCの実装くらいまではやりたいと思う．<strong>なお，このまとめには多分に間違いが含まれている可能性があるので，もし参考にされる際には注意していただきたい．</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/10/14/review-glm-mcmc/">続きを読む &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/20/">&larr; Older</a></li>
@@ -891,6 +1058,10 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2013/06/26/rna-seq-unleashed-trinity/">&#8220;RNA-Seq unleashed&#8221;によるTrinityのワークフローの解説</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/06/25/biopython-translation/">Biopythonで塩基配列をアミノ酸配列にする</a>
       </li>
     
@@ -926,10 +1097,6 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
         <a href="/blog/2013/05/22/esl-pdf-trimming/">&#8220;The Elements of Statistical Learning&#8221;のpdfの余白を削る</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/05/21/tree/">treeを使ってディレクトリ構造をターミナル上で可視化する</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -953,7 +1120,7 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
 <li class='category'><a href='/blog/categories/soapdenovo2/'>SOAPdenovo2 (3)</a></li>
 <li class='category'><a href='/blog/categories/slide/'>Slide (1)</a></li>
 <li class='category'><a href='/blog/categories/sublimetext2/'>SublimeText2 (2)</a></li>
-<li class='category'><a href='/blog/categories/trinity/'>Trinity (1)</a></li>
+<li class='category'><a href='/blog/categories/trinity/'>Trinity (2)</a></li>
 <li class='category'><a href='/blog/categories/velvet/'>Velvet (1)</a></li>
 <li class='category'><a href='/blog/categories/zsh/'>Zsh (1)</a></li>
 <li class='category'><a href='/blog/categories/ipad/'>iPad (1)</a></li>
