@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>学会・勉強会のUstream配信＆録画環境 on MacOSX - Wolfeyes Bioinformatics beta</title>
+  <title>"Zero Dark Thirty"のBlu-rayを買った - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.io/blog/2012/11/04/ustream-setting-on-macosx">
+  <link rel="canonical" href="http://yagays.github.io/blog/2013/07/02/blu-ray-zero-dark-thirty">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -113,7 +113,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">学会・勉強会のUstream配信＆録画環境 on MacOSX</h1>
+      <h1 class="entry-title">"Zero Dark Thirty"のBlu-rayを買った</h1>
     
     
       <p class="meta">
@@ -129,265 +129,25 @@
   
 
 
-<time datetime="2012-11-04T18:43:00+09:00" pubdate data-updated="true">Nov 4<span>th</span>, 2012</time>
+<time datetime="2013-07-02T00:36:00+09:00" pubdate data-updated="true">Jul 2<span>nd</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>「ダダ漏れ」というバズワードを聞かなくなって久しいですが，それでも勉強会などのプレゼンテーションにおいてネット配信や録画の公開などの需要は高まっており，もはやあって当然という感じもあります．また，最近では学会などの基調講演なども録画してYouTubeで後日公開という話もよく耳にするようになりました．しかし，いざUstreamなどで配信を行おうと思っても，そもそもどうすればいいかわからない，手持ちの環境ではマトモに配信ができない，もっとクオリティを上げたい，といったように，技術的な知識を要求されたり高価な機器に依存する部分があるなど，色々なレベルで難しいところがあります．</p>
+<div class="entry-content"><iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B00B1E6FF8" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
-<p>そこで今回は，ある程度マシな配信&amp;録画環境を作ろうということで，僕が以前勉強会で配信を担当したときに構築した環境についてまとめてみました．今回の目標としては，</p>
 
-<h3>コンセプト：ちょっとお金を掛けて比較的マシな配信/録画環境を作ろう</h3>
+<p>映画&#8221;Zero Dark Thirty&#8221;の北米版Blu-rayを買った．映画として完成度が高いというのは言うまでもないものの，個人的な思い入れが強い作品でもある．この映画で描かれるCIAの女性捜査官には，何かを追い求める執念であったり不屈の精神に強く惹かれるところがある．それをもう一度確かめたくて，9月の日本版の発売を待たず海外版を購入してしまったというわけだ．当然ながら日本語字幕は無い．</p>
 
-<p>という感じで，高価な機器でいきなりプロ並の配信を目指すのではなく，ちょっとお金と労力をかけることである程度マトモな配信環境を目指そうじゃないかといったスタンスになっています．ただし，この記事を書いた人間は映像/音声関係に全く素人であり，もっと良い環境構築法やテクニックなどあるとは思うので，より詳細に知りたい場合には専門家などが公開している情報を参考にしてもらえればと思います．</p>
+<p>今回購入したBlu-ray/DVD Comboには，Blu-rayとDVDが1枚ずつ入っている．Blu-rayは日本と北米ともに同じリージョンなのでPS3などのプレイヤーで普通に観ることができる．DVDはリージョンが違うため日本のプレイヤーでは通常は見ることができないため，PCなどの環境を別途用意する必要がある．(<a href="http://www.amazon.com/gp/help/customer/display.html?ie=UTF8&amp;nodeId=3193231">参考</a>)</p>
 
-<h4>この記事はこんな人向け</h4>
+<p>さて，今回初めて北米版のDVDを買って色々知ったのだが，映画の音声に通常の英語版に加えて，Descriptive Serviceというモードが付いている．これはどうやら視覚障害者の方向けのサービスのようだ．</p>
 
-<ul>
-<li>今までMacBookのFaceTimeカメラを講演者に向けてUstしてたけど，もうちょっとマシな配信がしたい</li>
-<li>とりあえず音を何とかしたい</li>
-<li>配信しつつ録画もしときたい．Ustの録画しょぼい</li>
-</ul>
+<p><a href="http://en.wikipedia.org/wiki/Descriptive_Video_Service">Descriptive Video Service - Wikipedia, the free encyclopedia</a></p>
 
-
-<h4>他にはこんな使い方も</h4>
-
-<ul>
-<li>ニコニコ生放送でも配信したい
-
-<ul>
-<li>ニコ生でもUstreamと同様のセッティングで配信ができます</li>
-</ul>
-</li>
-<li>Skypeの会話をそのままUstに流したい or Ustで喋ってる裏でPCに入ってる音楽を流したい
-
-<ul>
-<li>USBオーディオ機器によってはMacBookの音を拾って流せます</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<h3>用意する機材（ハードウェア編）</h3>
-
-<p>MacBookを中心にして，そこから音声を取ってくる部分と映像を取ってくる部分を外部のハードウェアで行う．それぞれ高画質/高音質を目指すとキリがないが，スタンダードモデルくらいのものを買えば大体は事が足りる．</p>
-
-<ul>
-<li><p><strong>MacBook</strong></p>
-
-<ul>
-<li>配信用/録画用として1台個別に用意する</li>
-<li>配信と録画をしている間はCPU使用率が高くなるので，熱が出る＆ファンが回りっぱなしになる</li>
-</ul>
-</li>
-<li><p><strong>USBオーディオ機器</strong></p>
-
-<ul>
-<li>マイクとMacBookを繋げる機器</li>
-<li>ハードウェアから音量調整やミュートができるので便利</li>
-<li>マイクからの音声を会場のスピーカーに流すこともできる（ハウリング注意）</li>
-</ul>
-</li>
-<li><p><strong>マイク</strong></p>
-
-<ul>
-<li>いわゆるカラオケにあるような奴</li>
-<li>ICレコーダーに付けるような小さいマイクは駄目</li>
-<li>基本は講演者の近くに置くか持ってもらう．集音性の高い専用のマイクを使う手もある</li>
-<li>マイクを講演者近くの壇上に置いておく場合には，マイクスタンドは必須</li>
-</ul>
-</li>
-<li><p><strong>USBカメラまたはデジカメ</strong></p>
-
-<ul>
-<li>要はMacBookに繋いで映像を入力できればよい</li>
-<li>三脚が付けられるタイプだと場所を選ばず安定して配置できるので良い</li>
-<li>外部接続のカメラ無ければ最悪MacBookのFaceTimeカメラでも良いが，中継している間はMacBookで調整などの操作ができないので注意</li>
-</ul>
-</li>
-<li><p><strong>各種ケーブルと変換アダプター</strong></p>
-
-<ul>
-<li>マイクやイヤホンの端子をUSBオーディオ機器の差し込み口に合わせないといけない
-
-<ul>
-<li>イヤホンだと6.3mmと3.5mm</li>
-<li>マイクだと6.3mmとXLR</li>
-</ul>
-</li>
-<li>この辺は変換アダプターが売られているので，それを購入すれば良い</li>
-<li><p>向きとかややこしい部分があるので，分からなかったら家電量販店の売り場の人に訊く</p></li>
-<li><p>講演者がいる壇上と中継する位置が遠い場合は，マイクのケーブルを延長する必要がある</p></li>
-</ul>
-</li>
-</ul>
-
-
-<h4>以下あれば嬉しいもの</h4>
-
-<ul>
-<li>イーモバイルなどのネット回線
-
-<ul>
-<li>会場にネットが無い場合は，中継用に1つ占有できる回線があると良い</li>
-</ul>
-</li>
-<li>Ustream確認用のPC端末
-
-<ul>
-<li>中継/録画している機器とは別に，実際に流れているUstreamの画像や音声を確認できるPCがあると状況を把握しやすい</li>
-</ul>
-</li>
-</ul>
-
-
-<h4>自分の場合の構成</h4>
-
-<ul>
-<li>MacBook Early2008（いわゆる白MacBook）</li>
-<li>USBオーディオ機器：ROLAND TRI-CAPTURE UA-33</li>
-<li>マイク：SONY F-V420</li>
-<li>USBカメラ：Logicool HD Webcam C615</li>
-<li>卓上に置けるマイクスタンド</li>
-<li>その他各種ケーブル・アダプター類</li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B004MP8AGA" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B005LFFE7I" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B00009VT6P" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B001O1116G" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B006HLUJPC" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-
-
-<br />
-
-
-<h3>MacBookにFlash Media Live Encoderをインストールする (ソフトウェア編)</h3>
-
-<ul>
-<li>Flash Media Live Encoder
-
-<ul>
-<li>このソフトウェアだけで配信と録画を同時に行う</li>
-<li>無料（要アカウント作成）</li>
-<li><a href="http://www.adobe.com/jp/products/flash-media-encoder.html">http://www.adobe.com/jp/products/flash-media-encoder.html</a></li>
-<li>画面全景：</li>
-</ul>
-</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/ustream_4.png" alt="" /></p>
-
-<h4>設定</h4>
-
-<ul>
-<li>VideoとAudioのデバイス設定だけは絶対に配信前に確認すること</li>
-<li>せっかく専用の機材を買ったのに，じつは音声はMacBookのスピーカーで録音してましたということになりかねないので注意</li>
-<li>Videoに外部接続カメラ，AudioにUSBオーディオ機器の名前が選択されていることを確認する</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/ustream_1.png" alt="" /></p>
-
-<ul>
-<li>映像や音声の設定は，要求されるクオリティや配信のネットワーク環境に合わせてチューニングする</li>
-</ul>
-
-
-<h4>配信</h4>
-
-<ul>
-<li>Ustreamで配信する場合は，配信用のプロファイルをUstreamのウェブサイトから入手する</li>
-<li>Ustreamのウェブサイトのダッシュボードから「番組設定」→「(番組名)」→「リモート」にある「Flash Media Encoder XML ファイル」をダウンロードする</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/ustream_3.png" alt="" /></p>
-
-<ul>
-<li>Flash Media Live Encoderのメニューバー「File」→「Open Profile」から，先ほどダウンロードしたXMLファイルを読み込む</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/ustream_2.jpg" alt="" /></p>
-
-<ul>
-<li>上のように画面右の「Stream to Flash Media Server」にFMS URLとStreamが表示されればOK</li>
-<li>あとは画面下のスタートを押せば，配信が開始される</li>
-</ul>
-
-
-<h4>録画</h4>
-
-<ul>
-<li>配信を録画するには，画面右下の「Save to File」にチェックを入れて保存する設定にしておく</li>
-</ul>
-
-
-<br />
-
-
-<h3>要するに</h3>
-
-<p>MacBook＋各種機材＋FlashMediaLiveEncoderで何とかなる！！！</p>
-
-<h3>という感じで，まとめ</h3>
-
-<p>だいぶ大雑把に環境構築についてまとめてみたが，実際には配信環境なり会場の様子なりシチュエーションによって必要な機材や技術が左右されるだろう．最初は何がなんだか分からず取っ付きにくい部分があるが，一度実際に勉強して機材を組んで配信してみると，何が必要でどこが重要なのかといったことが見えてくると思う．もし配信などに興味がある場合は，あれこれやりたいことは沢山あるとは思うが，まずはそこそこの機材からスタートしてだんだん慣れていくという感じが一番いいんじゃないだろうか．要点だけ掴めばあとは部分部分を改良していくだけなので，比較的スムーズに上達すると思う．</p>
-
-<h3>ちなみに：このまとめ記事ではできないこと</h3>
-
-<ul>
-<li>技術も知識もないけど手っ取り早くお金で解決したい
-
-<ul>
-<li>CEREVOのLiveSHellなどの専用機器を買って下さい</li>
-</ul>
-</li>
-<li>講演者のPCから映像をダイレクトに取ってきて配信に流す
-
-<ul>
-<li>TwinPactみたいな機器を買って下さい（ちょっと高い）</li>
-</ul>
-</li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0065G4GH6" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B005XDFD4M" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0000YTMVE" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://mascalade.blog89.fc2.com/blog-entry-296.html">http://mascalade.blog89.fc2.com/blog-entry-296.html</a></li>
-<li><a href="http://vad.seesaa.net/article/149852007.html">http://vad.seesaa.net/article/149852007.html</a></li>
-<li><a href="http://d.hatena.ne.jp/i_ogi/20080326/1206516540">http://d.hatena.ne.jp/i_ogi/20080326/1206516540</a></li>
-</ul>
-
+<p>実際に聞いてみるとわかりやすいのだが，Descriptive Serviceはいわゆるオーディオブックのようなものだ．映画オリジナルのセリフの間に，情景の説明や誰が何をしたといったことがナレーションとして入っている．画面に表示される文字や暗転したといったことも含めて，セリフでカバーできない画面の内容が英語音声で説明されるので，画面を観ることができない人でも映画を楽しめるようになっている．本来はそのような用途で使用されるものなのだが，このナレーションは聞き取りやすい声で口調もそれほど速くないため，最近はこれを流しながら英語を聞く耳を鍛えている．Descriptive Serviceは当然ながら字幕に出すことができないので，英語学習に向いているとは言えないものの，好きな映画を見ながらセリフ以外のところで英語の学習ができるので，個人的に気に入っている．</p>
 </div>
 
 
@@ -410,16 +170,16 @@
   
 
 
-<time datetime="2012-11-04T18:43:00+09:00" pubdate data-updated="true">Nov 4<span>th</span>, 2012</time>
+<time datetime="2013-07-02T00:36:00+09:00" pubdate data-updated="true">Jul 2<span>nd</span>, 2013</time>
       
 
 
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2012/11/04/ustream-setting-on-macosx/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2013/07/02/blu-ray-zero-dark-thirty/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2012/11/04/ustream-setting-on-macosx/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2012/11/04/ustream-setting-on-macosx/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/07/02/blu-ray-zero-dark-thirty/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/07/02/blu-ray-zero-dark-thirty/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -440,14 +200,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/11/02/glm-mcmc-chp7/" title="Previous Post:
-        「データ解析のための統計モデリング入門」読書ノート 7章 GLMMとGLMを比較する">&laquo; 「データ解析のための統計モデリング入門」読書ノート 7章 GLMMとGLMを比較する</a></li>
+        href="/blog/2013/07/01/review-kitagawa-be-yourself-and-carry-on/" title="Previous Post:
+        「世界基準で夢をかなえる私の勉強法」読了">&laquo; 「世界基準で夢をかなえる私の勉強法」読了</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/11/05/review-mac-kung-fu/"
-        title="Next Post: 「カンフーマック ―猛獣を飼いならす310の技」読了">「カンフーマック ―猛獣を飼いならす310の技」読了
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -626,8 +382,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.io/blog/2012/11/04/ustream-setting-on-macosx/';
-        var disqus_url = 'http://yagays.github.io/blog/2012/11/04/ustream-setting-on-macosx/';
+        var disqus_identifier = 'http://yagays.github.io/blog/2013/07/02/blu-ray-zero-dark-thirty/';
+        var disqus_url = 'http://yagays.github.io/blog/2013/07/02/blu-ray-zero-dark-thirty/';
         var disqus_script = 'embed.js';
       
     (function () {
