@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Assembly | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/assembly/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-07-03T19:56:21+09:00</updated>
+  <updated>2013-07-05T09:37:18+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -215,7 +215,7 @@
 
 <h3>まとめ</h3>
 
-<p>以上で，ざっとN50とNG50についてまとめてみた．実はこの議論にも続きがあって，NG50だけでは不十分でNG1からNG99までを検討しないといけないという話もある．今回はそこまでは踏み込まないが，気になる人はAssemblathon2の評価手法に関するページを見ていただきたい（<a href="http://assemblathon.org/post/44431933387/assemblathon-2-basic-assembly-metrics">The Assemblathon • Assemblathon 2 basic assembly metrics</a>）．結論としては一概にどの指標がいいかを決めるのは非常に難しいということで，色々と試して見る必要がある．</p>
+<p>以上で，ざっとN50とNG50についてまとめてみた．実はこの議論にも続きがあって，NG50だけでは不十分でNG1からNG99までを検討しないといけないという話もある．今回はそこまでは踏み込まないが，気になる人はAssemblathon2の評価手法に関するページを見ていただきたい（<a href="http://assemblathon.org/post/44431933387/assemblathon-2-basic-assembly-metrics">The Assemblathon • Assemblathon 2 basic assembly metrics</a>）．結論としては一概にどの指標がいいかを決めるのは非常に難しいということで，色々と試してみる必要がある．</p>
 
 <h3>参考</h3>
 
