@@ -115,6 +115,206 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/06/18/slide-diffexp-denovo-assembled-transcriptomes/">スライドメモ：&#8221;Differential Expression Analysis of De Novo Assembled Transcriptomes - Nadia Davidson&#8221;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-18T13:43:00+09:00" pubdate data-updated="true">Jun 18<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>de novoトランスクリプトームアセンブリに関して配列クラスタリングを解説しているスライドがあったので，ちょっと読んで大まかな流れを追ってみた．ただし後半のクラスタリングの具体的な部分は少し割愛しているほか，内容の正確性は保証できないので注意．</p>
+
+<h2>de novoトランスクリプトームアセンブリの発現差異解析</h2>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/18507979?rel=0" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen webkitallowfullscreen mozallowfullscreen> </iframe>
+
+
+<p> <div style="margin-bottom:5px"> <strong> <a href="http://www.slideshare.net/AustralianBioinformatics/differential-expression-analysis-of-de-novo-assembled-transcriptomes" title="Differential expression analysis of de novo assembled transcriptomes - Nadia Davidson" target="_blank">Differential expression analysis of de novo assembled transcriptomes - Nadia Davidson</a> </strong> from <strong><a href="http://www.slideshare.net/AustralianBioinformatics" target="_blank">Australian Bioinformatics Network</a></strong> </div></p>
+
+<h4>非モデル生物におけるRNA-Seq</h4>
+
+<ul>
+<li>非モデル生物におけるRNA-Seq；トランスクリプトームのde novoアセンブル
+
+<ul>
+<li>ゲノムアノテーションやゲノム配列が無い状態での解析</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>トランスクリプトームアセンブラ</h4>
+
+<p>ゲノムアセンブリにおいてはカバレッジに合わせてk-merの長さを最適化していたが，トランスクリプトームアセンブリでは遺伝子ごとに発現量が違うためカバレッジに大きな幅がある</p>
+
+<ul>
+<li>解決方法1：ゲノムアセンブラを使って異なるk-merのアセンブル結果を組み合わせる
+
+<ul>
+<li><a href="http://www.bcgsc.ca/platform/bioinfo/software/trans-abyss">Trans-ABySS</a>や<a href="http://www.ebi.ac.uk/~zerbino/oases/">Oases</a></li>
+</ul>
+</li>
+<li>解決方法2：トランスクリプトームに特化したアセンブラで単一のk-merでアセンブルする
+
+<ul>
+<li><a href="http://trinityrnaseq.sourceforge.net/">Trinity</a></li>
+</ul>
+</li>
+</ul>
+
+
+<h4>リード数の増加によるアセンブル配列の増加</h4>
+
+<p>横軸がNGSで得られたリード数，縦軸がアセンブルされた配列数を表しており，データ数が増加するにしたがってアセンブルされる配列数も線形に増加する．</p>
+
+<p>スライドでは著者名が間違っているが，ここで引用している図は以下の論文のもの．</p>
+
+<blockquote><p>Francis, W. R. et al. A comparison across non-model animals suggests an optimal sequencing depth for de novo transcriptome assembly. BMC Genomics 14, 167 (2013).</p>
+
+<p><a href="http://www.biomedcentral.com/1471-2164/14/167">http://www.biomedcentral.com/1471-2164/14/167</a></p></blockquote>
+
+<p>余談だが，この論文によるとデータ数が増加するとアセンブルされた配列数が増えるものの，アセンブルされた配列の平均長やN50は途中でサチることが確認されている．この論文の結論としてはデータ数は20M〜30M付近で十分だよねという感じらしい．</p>
+
+<h4>De Bruijn Graphの複雑性</h4>
+
+<p>シーケンスエラーやヘテロ接合箇所などの僅かな配列の違いも異なる配列として出力</p>
+
+<h4>カバレッジの変動</h4>
+
+<p>単一遺伝子内でNGSのショートリードのカバレッジに差があると，複数本の細切れの配列になってしまうことがある</p>
+
+<h4>アイソフォーム単位で発現解析するか遺伝子単位で発現解析するか？</h4>
+
+<ul>
+<li>アイソフォーム単位
+
+<ul>
+<li>扱う配列が多くなるので大変</li>
+<li>発現量解析のときに複数箇所にマッピングされる配列が生じるので発現量推定が大変</li>
+<li>全ての転写物に関してアイソフォームがあるわけではない</li>
+</ul>
+</li>
+<li>遺伝子単位
+
+<ul>
+<li>スプライシングなどを無視することになる</li>
+<li>どうやって複数の転写物を幾つかの遺伝子にまとめるのか？</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>どうやってアセンブルされた転写物を遺伝子単位にクラスタリングするのか</h4>
+
+<p>アセンブルされた転写物のクラスタリングにおいて決定打は無いものの，幾つか方法はある（配列で共通している箇所を見つけてクラスタリングするとか）</p>
+
+<h4>クラスタリングする際に使える情報</h4>
+
+<ul>
+<li>アセンブルする際に出力されるlocus/componentの情報</li>
+<li>CD-HITやBlastclustなどの配列相同性によるクラスタリングツール</li>
+</ul>
+
+
+<h4>クラスタリングにはTP・TN・FP・FNを数えて適合率Precisionや再現率Recallを見る</h4>
+
+<p>どうやらTrinityのクラスタリングは良くて，OasesとCD-HIT-ESTの組み合わせは良くないらしい（Trinity&#8217;s clusteringはRSEMのこと？）</p>
+
+<ul>
+<li>CD-HIT-ESTは適合率は高いが再現率は低い
+
+<ul>
+<li>配列情報しか使用しないので精度が低い</li>
+</ul>
+</li>
+<li>考えられる他の方法
+
+<ul>
+<li>発現量が低い領域は重みを軽くしたい</li>
+<li>サンプル間で発現量の違う配列は区別したい</li>
+<li>ペアエンドリードを考慮したい</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>(クラスタリングの具体的な部分は省略)</h4>
+
+<h4>どのようにしてリード数から発現量に変換するのか</h4>
+
+<ul>
+<li>TrinityやOasesが推奨する方法
+
+<ul>
+<li>アセンブルされた配列に対してマッピング（複数箇所にマップされてもいい）</li>
+<li>複数箇所にマップされた配列も考慮して発現量を求めるプログラムを使う(RSEMとか)</li>
+</ul>
+</li>
+</ul>
+
+
+<p>実際に行われている方法としてよくあるのは，一番長くアセンブルされた配列に代表させてマッピングして発現量を推定するというもの</p>
+
+<h4>まとめ</h4>
+
+<ul>
+<li><strong>Q1. なんでそんなにアセンブルされた転写物が出てくるの？</strong>
+
+<ul>
+<li>既にアノテーションされている転写物よりも多くアセンブルされるから</li>
+<li>de novoトランスクリプトームアセンブリはそもそも難しいから（完全長のアセンブリは目指しているのだけれども）</li>
+<li>インタージェニックやノンコーティングの転写物も多くでてくるから</li>
+</ul>
+</li>
+<li><strong>Q2. アイソフォーム単位か遺伝子単位か</strong>
+
+<ul>
+<li>遺伝子単位の方がアイソフォーム単位より良さそう</li>
+</ul>
+</li>
+<li><strong>Q3. どうやってアセンブルされた転写物から遺伝子にクラスタリングするか</strong>
+
+<ul>
+<li>Trinityのクラスタリングは良くて，OasesとCD-HIT-ESTの組み合わせは良くない</li>
+</ul>
+</li>
+<li><strong>Q4. どのようにしてリード数から発現量に変換するのか</strong>
+
+<ul>
+<li>3つの異なる方法で検証したが似た結果を示した</li>
+<li>正確なクラスタリングによる結果を得るほうが他のパイプラインを使って発現量差異を見るほうがインパクトがある（と主張している）</li>
+</ul>
+</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/06/02/review-interview-and-intelligence/">「知の逆転」読了</a></h1>
     
     
@@ -415,107 +615,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/20/zaw-zsh/">zaw.zshを使って移動したことのあるディレクトリに一発で飛ぶ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-20T01:47:00+09:00" pubdate data-updated="true">May 20<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>「zsh anything.el-like widget」通称zawは，Emacsのanything.elみたいなインターフェイスでzshを操作できるという拡張プラグインだ．本来は様々な操作に対応しているのだが，とりあえずディレクトリ操作だけでも恐ろしいほどに便利なので，anything.elを知らない人でも導入して損はないと思う．ここでは以下の記事を参考に，zaw.zshの設定をしてみた．</p>
-
-<ul>
-<li><a href="https://github.com/zsh-users/zaw">zsh-users/zaw · GitHub</a></li>
-<li><a href="http://u7fa9.org/memo/HEAD/archives/2011-02/2011-02-22_1.rst">zsh でも anything.el っぽいの - memo</a></li>
-<li><a href="http://shibayu36.hatenablog.com/entry/20120130/1327937835">zaw.zshで最近移動したディレクトリに移動する - $shibayu36->blog;</a></li>
-</ul>
-
-
-<h3>1. zawをダウンロードする</h3>
-
-<p>今回は.zshというディレクトリを$HOME以下に作成して，そこでgit cloneを実行する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ mkdir .zsh
-</span><span class='line'>$ cd .zsh
-</span><span class='line'>$ git clone git://github.com/zsh-users/zaw.git</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>2. .zshrcを設定する</h3>
-
-<p>以下の内容を.zshrcに書き込む．sourceでzaw.zshを読み込む部分は，先ほどダウンロードしたzawディレクトリを指定する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># zaw.zsh
-</span><span class='line'># http://shibayu36.hatenablog.com/entry/20120130/1327937835
-</span><span class='line'>autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-</span><span class='line'>add-zsh-hook chpwd chpwd_recent_dirs
-</span><span class='line'>zstyle ':chpwd:*' recent-dirs-max 5000
-</span><span class='line'>zstyle ':chpwd:*' recent-dirs-default yes
-</span><span class='line'>zstyle ':completion:*' recent-dirs-insert both
-</span><span class='line'>
-</span><span class='line'>source /home/yag_ays/.zsh/zaw/zaw.zsh
-</span><span class='line'>zstyle ':filter-select' case-insensitive yes # 絞り込みをcase-insensitiveに
-</span><span class='line'>bindkey '^@' zaw-cdr # zaw-cdrをbindkey</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>3. .zshrcを読み込む</h3>
-
-<p>最後に.zshrcを再度読み込んでエラーがでなければ完了．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ source .zshrc</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>使い方</h3>
-
-<p>C-@（Control-@）を押すと以下のように，直近で移動したディレクトリの一覧が表示される．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/zaw1.png" alt="" /></p>
-
-<p>この状態でキーワードを入力すると，マッチしたディレクトリだけを選ぶこともできる．深い階層のディレクトリでも名前さえ覚えていれば一発で飛ぶことができるので，非常に便利だ．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/zaw2.png" alt="" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/4/">&larr; Older</a></li>
@@ -563,6 +662,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2013/07/06/icanhazpdf/">だれかicanhazpdfできる？？？</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/07/03/zenith-stapler/">Zenithのホッチキスを買った</a>
       </li>
     
@@ -596,10 +699,6 @@
     
       <li class="post">
         <a href="/blog/2013/06/19/macports-distfile-clean/">MacPortsで使用していない過去のバージョンのパッケージを消す＆ちょっと可視化</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/18/slide-diffexp-denovo-assembled-transcriptomes/">スライドメモ：&#8221;Differential expression analysis of de novo assembled transcriptomes - Nadia Davidson&#8221;</a>
       </li>
     
   </ul>

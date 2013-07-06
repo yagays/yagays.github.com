@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-07-05T09:37:18+09:00</updated>
+  <updated>2013-07-06T17:08:44+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[だれかicanhazpdfできる？？？]]></title>
+    <link href="http://yagays.github.io/blog/2013/07/06/icanhazpdf/"/>
+    <updated>2013-07-06T17:02:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/07/06/icanhazpdf</id>
+    <content type="html"><![CDATA[<p>#icanhazpdfというTwitterのハッシュタグがある．これが何を意味しているかは，実際に使われている例を見てもらったほうが早いだろう．</p>
+
+<p><a href="https://twitter.com/search/%23icanhazpdf">Twitter / Search - #icanhazpdf</a></p>
+
+<p>つまり，読みたい論文があるのに所属している大学/研究所/企業がライセンスを契約していないからpdfが取れない！という時に，</p>
+
+<ul>
+<li><p>&#8220;<strong>この論文のPDF取れる人いますか？ &#8220;hoge et al. piyopiyo&#8221; http://xxxxxx… #icanhazpdf</strong>&#8221;</p></li>
+<li><p>&#8220;<strong>だれか#icanhazpdf できる？ http://xxxxx…</strong>&#8221;</p></li>
+</ul>
+
+
+<p>といった感じでTwitterに投稿するというわけだ．これを見た知り合いか誰かがpdfをメールで送ってさえくれれば，気になる論文がチェックできる！</p>
+
+<p>とまあ，これはヤバいだろというのは誰が見ても明らかで，Twitterで検索した結果を見ても，実際にこのハッシュタグに疑問を投げかけている人も多数存在する．ここでは法やモラルの問題に踏み込みたくないので判断は各自に任せるとして，近年の論文誌の購読価格の上昇であったりオープンアクセスの流れなどが影響しているのは確かだろう．まあ，Twitterの登場によって今まで内輪で行われてきた行為が表面化してきているだけというのが一番大きいのだろうけれども．</p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://eurekajournals.org/eureka/index.php?title=Icanhazpdf">Icanhazpdf - Eureka Journal Watch</a></li>
+<li><a href="http://www.samuelpean.com/icanhazpdf-reddit-scholar-pirateuniversity-org-aaaaarg-org-how-scientist-community-bypasses-journals-paywalls/">#ICanHazPDF, Reddit Scholar, PirateUniversity.org &amp; AAAAARG.org: How scientific community bypasses journals paywalls | Samuel PÉAN</a></li>
+<li><a href="http://neuroconscience.com/2013/01/16/join-papester-collective-1-0-how-to-reply-to-icanhazpdf-in-3-seconds/">How to reply to #icanhazpdf in 3 seconds | Neuroconscience</a></li>
+<li><a href="http://current.ndl.go.jp/node/20709">ハーバード大学、価格高騰する学術雑誌の購読中止を視野に入れた対策案を教員等に提示 | カレントアウェアネス・ポータル</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Zenithのホッチキスを買った]]></title>
@@ -1285,22 +1318,6 @@
 <p>さて，ここまで本書をひと通り読み進めて，あとは内容を信じるか信じないかだ．納得できたかかどうか，信憑性があるかないか，試してみてリスクが大きそうか小さそうか，その辺りが頭のなかを駆け巡ることだろう．僕の場合は，本書の進言をちょっと真面目に聞いてみようかなという気になった．理由なんてものはあってないようなものなのだけれども，著者の英語に対する割り切りの良さが少し気に入ったからかもしれない．</p>
 
 <p>ということで，サクッと読めてアドバイスもそこそこな本書は，意見が合う部分が多く個人的にはオススメできる．まあ，英語上達の保証はできないけれども&#8230;．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA["The Art of How to Train Your Dragon"読了]]></title>
-    <link href="http://yagays.github.io/blog/2013/05/09/review-the-art-of-how-to-train-your-dragon/"/>
-    <updated>2013-05-09T21:09:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/05/09/review-the-art-of-how-to-train-your-dragon</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=1557048630" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>映画「ヒックとドラゴン」の設定資料集「The Art of How to Train Your Dragon」がようやく届いた！先日書いた<a href="http://yagays.github.io/blog/2013/05/05/toothless-ears/">日記</a>でこの映画に対するテンションの上がり具合は明らかだとは思うが，本書も非常に素晴らしい内容だったので，ここで少し紹介したい．この感動を伝えるには写真で紹介できれば一番なのだが，そこはやはり実際に買ってもらって全編余すところなく楽しんで頂きたい．</p>
-
-<p>マット仕上げのカバーを取ると，黒地に赤いドラゴンのロゴの入ったハードカバーが現れる．全編カラーの本書は，約160ページ程度ながら手に持つと少し重い．本書は映画&#8221;How to Train Your Dragon&#8221;(邦題：『ヒックとドラゴン』)の設定資料集だ．映画の世界観であるヴァイキングとドラゴンが共存する神話的かつ幻想的な世界を，豊富なスケッチとコンセプト画で魅せてくれる．本書は主に，個性豊かなドラゴンのキャラクター画，同じくヴァイキングのキャラクター画，映画の世界観を表現する背景や風景画，そして最後に幾つかの絵コンテと3D画により構成されている．ドラゴンやヴァイキングの設定資料では，映画で登場するキャラクターから映画では見られないボツ作品まで，これでもかというくらい大量の絵やCG作品が収録されている．ちなみに，初期設定ではアスティ(Astrid)のキャラクターはそばかす＆三つ編みだったようだ．コンセプト画からCGモデリングまで，本書では別バージョンのアスティの資料が掲載されている．次に背景や風景画では，バーク島周辺の切り立った山々や深い森の中にある入り江などの壮大な自然が描かれるほか，ヴァイキングの村の細かなディテールも見ることができる．そして最後に絵コンテと3D画の部分では，アーティストが積み上げてきた世界観を3D映画として表現するための，カット割りや一連の動きが紹介される．ここでは3Dのモデリングに関して特に深入りしないものの，ドラゴンの吐く炎の表現であったり3Dにおける光の表現について触れられている．これらの話題はDVDの特典映像でも同様に語られている内容なので，そちらも参考にして頂きたい．</p>
-
-<p>といったように，本書は「ヒックとドラゴン」好きなら必見の内容だろう．たっぷりと収録されているコンセプト画や背景を眺めることで，新たな発見があり，世界観を堪能でき，映画の裏側を覗き見ることができ，そして想像力をかき立てられる素晴らしい設定資料集となっている．</p>
 ]]></content>
   </entry>
   
