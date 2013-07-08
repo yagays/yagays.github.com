@@ -4,7 +4,7 @@
   <title><![CDATA[Category: k-mer | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/k-mer/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-07-08T00:09:08+09:00</updated>
+  <updated>2013-07-09T02:41:23+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -22,7 +22,7 @@
 
 <p><a href="http://kmergenie.bx.psu.edu/">KmerGenie</a></p>
 
-<p>そういえば以前<a href="http://yagays.github.io/blog/2012/06/06/velvetk/">VelvetK</a>という，これも同じようにk-merパラメータをデータセットから推定するツールについて書いたが，これは名前の通りVelvetに特化したソフトウェアだった．2007年くらいに公開され使われ始めたVelvetは，NGSの普及と相まってかなり長い間ゲノムアセンブラとして広く使われてきた印象がある．その後ABySSやMIRA，ALLPATHS-LG，Rayなどの様々なゲノムアセンブラ出てきたが，それらに対してVelvetKのようなk-mer最適化のようなツールは無かったようで，そのあたりアセンブラに非依存というのがKmerGenieの売りのようだ．</p>
+<p>そういえば以前<a href="http://yagays.github.io/blog/2012/06/06/velvetk/">VelvetK</a>という，これも同じようにk-merパラメータをデータセットから推定するツールについて書いたが，これは名前の通りVelvetに特化したソフトウェアだった．2007年くらいに公開され使われ始めたVelvetは，NGSの普及と相まってかなり長い間ゲノムアセンブラとして広く使われてきた印象がある．その後ABySSやMIRA，ALLPATHS-LG，Rayなどの様々なゲノムアセンブラが出てきたが，それらに対してVelvetKのようなk-mer最適化のようなツールは無かったようで，そのあたりアセンブラに非依存というのがKmerGenieの売りのようだ．</p>
 
 <h3>KmerGenieの仕組み</h3>
 
@@ -34,7 +34,7 @@
 </ul>
 
 
-<p>これによると，単純に言ってしまえば最適なk-merの出現頻度というものはきれいな正規分布に従うと仮定した上でk-merの値を色々変えて出現頻度のヒストグラムを作成し，生成モデルを立ててフィッティングをした上で最適なk-merの値を推定しているようだ．実際には，正規分布を仮定したゲノム配列の分布と，パレート分布を仮定したエラーの配列の分布が混ざった混合分布を考えて，その混合の重みなども考慮したパラメータ最適化をしているらしい．</p>
+<p>これによると，単純に言ってしまえば最適なk-merの出現頻度というものはきれいな正規分布に従うと仮定した上で，k-merの値を色々変えて出現頻度のヒストグラムを作成し，生成モデルを立ててフィッティングをして最適なk-merの値を推定しているようだ．実際には，正規分布を仮定したゲノム配列の分布とパレート分布を仮定したエラーの配列の分布が混ざった混合分布を考えて，その混合の重みなども考慮したパラメータ最適化をしているらしい．</p>
 
 <h3>KmerGenieのインストール</h3>
 
@@ -61,7 +61,7 @@ $ curl -O https://s3.amazonaws.com/public.ged.msu.edu/ecoli_ref-5m-trim.fastq.gz
 $ gunzip ecoli_ref-5m-trim.fastq.gz
 </code></p>
 
-<p>それではecoli_ref-5m-trim.fastqに対してKmerGenieを実行する．実行後に出力される各k-merでのカウントデータや分布をプロットしたpdfはカレントディレクトリにそのまま出力されるので，もし必要ならディレクトリを別途作ってそこで実行したほうが良いだろう．</p>
+<p>それではecoli_ref-5m-trim.fastqに対してKmerGenieを実行する．実行後に作られる各k-merでのカウントデータや分布をプロットしたpdfはカレントディレクトリにそのまま出力されるので，もし必要ならディレクトリを別途作ってそこで実行したほうが良いだろう．</p>
 
 <p><code>
 $ kmergenie ecoli_ref-5m-trim.fastq
@@ -105,7 +105,7 @@ best k: 55
 
 <p><img src="http://dl.dropboxusercontent.com/u/142306/b/kmergenie1.png" alt="" /></p>
 
-<p>ただ，このサンプルーデータを解析しているチュートリアルでは，k-merを31〜35にしてvelvetでアセンブルしていることから，今回の55という推定値は少し大きめのような気がする．</p>
+<p>ただ，このサンプルーデータを解析しているチュートリアルではk-merを31〜35にしてvelvetでアセンブルしていることから，今回の55という推定値は少し大きめのような気がする．</p>
 
 <h3>2. Assemblathon2で使用されたセキセイインコのゲノムシーケンス</h3>
 
