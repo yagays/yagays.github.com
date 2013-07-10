@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-07-09T02:41:23+09:00</updated>
+  <updated>2013-07-10T14:21:12+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,45 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[TimeTreeで生物種間の分岐年代を調べる]]></title>
+    <link href="http://yagays.github.io/blog/2013/07/10/timetree/"/>
+    <updated>2013-07-10T14:03:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/07/10/timetree</id>
+    <content type="html"><![CDATA[<p>2種類の生物がどれくらい系統的に近いか遠いかといった情報は，生物の分類をWikipediaで確認したり系統樹を眺めたりと色々と確認する方法があるが，ではどれくらい前に2種類の生物が分岐したかという情報は意外と確認するのが難しい．そういった分岐年代を簡単に確認，比較することができるのがTimeTreeというサイトだ．</p>
+
+<p><a href="http://www.timetree.org/">TimeTree :: The Timescale of Life</a></p>
+
+<h3>生物種を入力する</h3>
+
+<p>TimeTreeウェブサイトの左上にある検索ボックスに，分岐年代を辿りたい生物種を入力する．通常は<em>Canis lupus</em>と<em>Felis catus</em>のような学名を入力するのだけれども，一般的な名称であるdogやcatも自動で変換してくれるようだ．もし学名がハッキリ分かっているのなら，そちらを入力したほうが確実だろう．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/timetree1.png" alt="" /></p>
+
+<h3>結果</h3>
+
+<p>今回のような検索クエリを入力した結果，イヌ(<em>Canis lupus familiaris</em>)とネコ(<em>Felis catus</em>)の分岐年代は55.1 Million Years Agoと推定された．ただしこの値というのは，様々な分岐年代の研究に関してイヌとネコが当てはまるものを複数集めてきて，最終的に平均を取った値となっている．個別の研究の推定結果というのは，図の左側の時系列の箇所に黒の点で表示されているように，実際には42Myaから67Myaまで幅があるようだ．このように複数のソースから分岐年代を確認できるのもTimeTreeの大きな特徴となっている．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/timetree2.png" alt="" /></p>
+
+<p>上図の黒の点で示した個別の研究というのは，下のリストからそれぞれ確認することができる．Taxon Aがイヌ，Taxon Bがネコの検索クエリにそれぞれ対応しており，研究によってはイヌ亜目Caniformiaやネコ亜目Feliformiaのような目レベルで確認されているものや，クマ科Ursidaeやアザラシ科Phocidaeといった少し系統的に離れた分類群との比較も列挙されている（クマやアザラシはどちらもネコ目）．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/timetree4.png" alt="" /></p>
+
+<p>このように，ウェブページに表示されているリストから詳細なページに飛ぶことができるほか，「Molecular Time Estimates」にある「Download as CSV」をクリックすると，根拠となる論文や出版年のリストをコンマ区切りテキストとしてダウンロードすることができる．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/timetree3.png" alt="" /></p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://www.timetree.org/">TimeTree :: The Timescale of Life</a></li>
+<li>(TimeTreeプロジェクトに関して)<a href="http://www.evolutionsbiologie.uni-konstanz.de/genombaum/Kuraku-ElasmoReview-Japanese.pdf">http://www.evolutionsbiologie.uni-konstanz.de/genombaum/Kuraku-ElasmoReview-Japanese.pdf</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ゲノムアセンブリにおいて最適なk-merを推定するKmerGenieを試してみた]]></title>
@@ -1469,113 +1508,6 @@
 <ul>
 <li>(pdf) <a href="http://korflab.ucdavis.edu/datasets/Assemblathon/Assemblathon1/assemblathon_talk.pdf">http://korflab.ucdavis.edu/datasets/Assemblathon/Assemblathon1/assemblathon_talk.pdf</a></li>
 </ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Trinityのインストールとサンプルデータのアセンブル]]></title>
-    <link href="http://yagays.github.io/blog/2013/05/14/trinity-install/"/>
-    <updated>2013-05-14T21:25:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/05/14/trinity-install</id>
-    <content type="html"><![CDATA[<p>久しぶりに<a href="http://trinityrnaseq.sourceforge.net/">Trinity</a>を触ろうと思ってインストールしたら，実行に<a href="http://bowtie-bio.sourceforge.net/index.shtml">Bowtie</a>が必要になっていた．de novo transcriptome assemblyの後の解析で使う程度かと思いきや，どうやらChrysalis（2段階目）で必要になるらしい．そのため，Bowtieにパスを通していないとTrinity.pl実行時に以下のようなエラーが出る．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Error, cannot find path to bowtie, which is now needed as part of Chrysalis' read scaffolding step at ../../Trinity.pl line 622.</span></code></pre></td></tr></table></div></figure>
-
-
-<p>というわけで，TrinityのインストールをしつつBowtieも用意して，試しにソースコードに含まれているテストデータの実行をしてみる．</p>
-
-<h3>1. Trinityのインストール</h3>
-
-<p>SourceForgeからソースコードをダウンロードしてインストールする．解凍したディレクトリでmakeをすればよい．</p>
-
-<p><a href="http://sourceforge.net/projects/trinityrnaseq/files/">Trinity RNA-Seq Assembly - Browse Files at SourceForge.net</a></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ wget http://downloads.sourceforge.net/project/trinityrnaseq/trinityrnaseq_r2013-02-25.tgz 
-</span><span class='line'>$ tar zxvf trinityrnaseq_r2013-02-25.tgz 
-</span><span class='line'>$ cd trinityrnaseq_r2013-02-25
-</span><span class='line'>$ make</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>2. Bowtieのインストール</h3>
-
-<p>こちらも同様にSourceForgeからダウンロードするが，コンパイル済みのバイナリが配布されているので，makeをせずにそのまま利用できる．OSごとに32bit版と64bit版が用意されているので，環境に合わせてダウンロードする．</p>
-
-<p><a href="http://bowtie-bio.sourceforge.net/index.shtml">Bowtie: An ultrafast, memory-efficient short read aligner</a></p>
-
-<p><a href="http://sourceforge.net/projects/bowtie-bio/files/bowtie/1.0.0/">Bowtie - Browse /bowtie/1.0.0 at SourceForge.net</a></p>
-
-<h3>3. Bowtieのバイナリがあるディレクトリにパスを通す</h3>
-
-<p>今回はとりあえずシェルの設定ファイルをいじらずに，コマンドでbowtieがあるディレクトリをパスに指定する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ export PATH=/Users/yag_ays/Downloads/bowtie-1.0.0:$PATH</span></code></pre></td></tr></table></div></figure>
-
-
-<p>もし頻繁に使用するなら，bowtieのバイナリをパスが通っている場所に移動させたほうがいいだろう．</p>
-
-<h3>サンプルデータのアセンブル</h3>
-
-<p>ひと通り動くことを確認するために，ソースコードの中に含まれているサンプルデータの解析を動かしてみる．</p>
-
-<p>今回実行するのはsample_data/test_Trinity_Assembly．ディレクトリ内にrunMe.shがあるので，単純にそれを実行すればよい．初回は配列ファイルの解凍が実行されるため，Trinityが実行されるまでに少し時間がかかる．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd sample_data/test_Trinity_Assembly
-</span><span class='line'>$ ./runMe.sh</span></code></pre></td></tr></table></div></figure>
-
-
-<p>もしきちんとパスを通せていれば，標準出力に以下のようなテキストが表示され，解析が始まる．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ ../../Trinity.pl --seqType fq --JM 2G --left reads.left.fq --right reads.right.fq --SS_lib_type RF --CPU 4 --no_cleanup --monitoring --output test
-</span><span class='line'>WARNING, --monitoring can only be used on linux. Turning it off.
-</span><span class='line'>
-</span><span class='line'>Current settings:
-</span><span class='line'>core file size          (blocks, -c) 0
-</span><span class='line'>data seg size           (kbytes, -d) unlimited
-</span><span class='line'>file size               (blocks, -f) unlimited
-</span><span class='line'>max locked memory       (kbytes, -l) unlimited
-</span><span class='line'>max memory size         (kbytes, -m) unlimited
-</span><span class='line'>open files                      (-n) 256
-</span><span class='line'>pipe size            (512 bytes, -p) 1
-</span><span class='line'>stack size              (kbytes, -s) 8192
-</span><span class='line'>cpu time               (seconds, -t) unlimited
-</span><span class='line'>max user processes              (-u) 709
-</span><span class='line'>virtual memory          (kbytes, -v) unlimited
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>Paired mode requires bowtie. Found bowtie at: /Users/yag_ays/Downloads/bowtie-1.0.0/bowtie
-</span><span class='line'>
-</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
-
-
 
 ]]></content>
   </entry>
