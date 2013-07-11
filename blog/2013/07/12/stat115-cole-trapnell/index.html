@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Linux - Wolfeyes Bioinformatics beta</title>
+  <title>Tophat/Cufflinksなどの開発者であるCole TrapnellによるRNA-Seqの遺伝子発現解析に関する講義動画 - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
-  <meta name="description" content="Category: Linux">
+  <meta name="description" content="Tips and hacks about Bioinformatics on Ruby and R.">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.ioblog/categories/linux">
+  <link rel="canonical" href="http://yagays.github.io/blog/2013/07/12/stat115-cole-trapnell">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -47,7 +47,7 @@
   <link href="/atom.xml" rel="alternate" title="Wolfeyes Bioinformatics beta" type="application/atom+xml">
   <meta name="author" content="yag_ays">
 
-<meta name="description" content="Category: Linux">
+<meta name="description" content="Tips and hacks about Bioinformatics on Ruby and R.">
 <meta name="keywords" content="Bioinformatics,NGS,バイオインフォマティクス,機械学習,統計学,Ruby,R,Mac OS X,Linux">
 <meta name="google-translate-customization" content="f0d6fb1813054f83-93b90cf46465830f-g289228b826edcf56-12"></meta>
 <meta name="msvalidate.01" content="7B572D9F165B6C1C1D644708FF738704" />
@@ -108,54 +108,123 @@
   <div class="container">
     <div class="row-fluid">
       
-<article role="article" class="span9">
+<article class="hentry span9" role="article">
 
   
   <header class="page-header">
-    <h1 class="entry-title">Category: Linux</h1>
+    
+      <h1 class="entry-title">Tophat/Cufflinksなどの開発者であるCole TrapnellによるRNA-Seqの遺伝子発現解析に関する講義動画</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-12T03:49:00+09:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>非常に良い講義資料およびその講義ビデオを見つけたので紹介する．これはハーバードの大学院およびハーバード公衆衛生大学院のComputational Biologyの講義で，マイクロアレイ/次世代シーケンサの発現解析に始まり，ChIP-Seqやモチーフ検索，GWAやSNP解析に至るまで，Computational Biologyにおける様々な研究対象に関する講義が行われている．</p>
 
-  
-  <h1>2013</h1>
+<p><a href="http://www.stat115.org/index.html">STAT115 Introduction to Computational Biology</a></p>
 
-<article>
-  <div class="well">
+<blockquote><p>This course is an introduction to state-of-the-arts concepts, methodologies and practices in computational biology. After taking this course, you should be able to:</p>
 
-<h2><a href="/blog/2013/05/21/tree/">treeを使ってディレクトリ構造をターミナル上で可視化する</a></h2>
-<time datetime="2013-05-21T14:30:00+09:00" pubdate><span class='month'>May</span> <span class='day'>21</span> <span class='year'>2013</span></time>
+<ul>
+<li><p>Use appropriate commands or write your own scripts to manipulate your own genomic data</p></li>
+<li><p>Exploit appropriate pipeline or software to analyze your own high-throughput gene expression microarray and/or RNA-Seq data and high-throughput sequencing transcriptional regulation data</p></li>
+<li><p>Apply statistical or mathematical models to your own population/human genetics data</p></li>
+<li><p>Criticize and/or extend the computational analysis or statistical models in the literature</p></li>
+<li><p>Use R, Python, and/or Shell scripts and basic concepts in genomics and genetics to perform your own bioinformatics and computational biology research</p></li>
+</ul>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/linux/'>Linux</a></span>
-</footer>
 
+<p><a href="http://www.stat115.org/syllabus.html">http://www.stat115.org/syllabus.html</a></p></blockquote>
+
+<p>このなかで，Cole TrapnellがRNA-Seqの遺伝子発現解析に関してレクチャーしている動画がある．Cole Trapnellといえば，<a href="http://tophat.cbcb.umd.edu/">TopHat</a>や<a href="http://cufflinks.cbcb.umd.edu/">Cufflinks</a>の開発者の中心人物のひとりだ．これらのツールに関する論文の第一著者でもある．そのCole Trapnellが，RNA-Seqの定量化や発現量推定，発現差異解析などの一連の流れを，自身が開発に参加した&#8221;Tuxedo Tools&#8221;（Bowtie, Tophat, Cufflinks, CummeRbundの総称）を例に紹介しているのがこの動画だ．主にマッピング後の発現量推定に関して，基本的なFPKMの求め方であったり，Cufflinksのisoformの取り扱いであったりを，少し数式も交えながら詳しく解説している．</p>
+
+<p>講義資料：<a href="http://www.stat115.org/lectures/stat115_rnaseq.pdf">http://www.stat115.org/lectures/stat115_rnaseq.pdf</a></p>
+
+<iframe src="http://player.vimeo.com/video/60609764" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+<p> <p><a href="http://vimeo.com/60609764">lecture9-I</a> from <a href="http://vimeo.com/stat115">stat115</a> on <a href="https://vimeo.com">Vimeo</a>.</p></p>
+
+<iframe src="http://player.vimeo.com/video/60609783" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+<p> <p><a href="http://vimeo.com/60609783">lecture9-II</a> from <a href="http://vimeo.com/stat115">stat115</a> on <a href="https://vimeo.com">Vimeo</a>.</p></p>
 </div>
 
-</article>
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">yag_ays</span></span>
+
+      
 
 
 
-<article>
-  <div class="well">
 
-<h2><a href="/blog/2013/05/06/linux-root-directory/">Linuxのルートディレクトリ構成まとめ</a></h2>
-<time datetime="2013-05-06T09:27:00+09:00" pubdate><span class='month'>May</span> <span class='day'>06</span> <span class='year'>2013</span></time>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/linux/'>Linux</a></span>
-</footer>
 
-</div>
 
-</article>
-
-</div>
 
   
+
+
+<time datetime="2013-07-12T03:49:00+09:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2013/07/12/stat115-cole-trapnell/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/07/12/stat115-cole-trapnell/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/07/12/stat115-cole-trapnell/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    
+    <section>
+      <h1>Comments</h1>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+    
+    <ul class="pager">
+      
+      <li class="previous"><a class="basic-alignment left"
+        href="/blog/2013/07/10/timetree/" title="Previous Post:
+        TimeTreeで生物種間の分岐年代を調べる">&laquo; TimeTreeで生物種間の分岐年代を調べる</a></li>
+      
+      <li><a href="/blog/archives">Blog Archives</a></li>
+      
+    </ul>
+  </footer>
 </article>
 
 <aside class="sidebar-nav span3">
@@ -330,7 +399,10 @@
       var disqus_shortname = 'wolfeyesbioinformaticsbeta';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://yagays.github.io/blog/2013/07/12/stat115-cole-trapnell/';
+        var disqus_url = 'http://yagays.github.io/blog/2013/07/12/stat115-cole-trapnell/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

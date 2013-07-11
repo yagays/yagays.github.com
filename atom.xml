@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-07-10T14:21:12+09:00</updated>
+  <updated>2013-07-12T03:53:30+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Tophat/Cufflinksなどの開発者であるCole TrapnellによるRNA-Seqの遺伝子発現解析に関する講義動画]]></title>
+    <link href="http://yagays.github.io/blog/2013/07/12/stat115-cole-trapnell/"/>
+    <updated>2013-07-12T03:49:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/07/12/stat115-cole-trapnell</id>
+    <content type="html"><![CDATA[<p>非常に良い講義資料およびその講義ビデオを見つけたので紹介する．これはハーバードの大学院およびハーバード公衆衛生大学院のComputational Biologyの講義で，マイクロアレイ/次世代シーケンサの発現解析に始まり，ChIP-Seqやモチーフ検索，GWAやSNP解析に至るまで，Computational Biologyにおける様々な研究対象に関する講義が行われている．</p>
+
+<p><a href="http://www.stat115.org/index.html">STAT115 Introduction to Computational Biology</a></p>
+
+<blockquote><p>This course is an introduction to state-of-the-arts concepts, methodologies and practices in computational biology. After taking this course, you should be able to:</p>
+
+<ul>
+<li><p>Use appropriate commands or write your own scripts to manipulate your own genomic data</p></li>
+<li><p>Exploit appropriate pipeline or software to analyze your own high-throughput gene expression microarray and/or RNA-Seq data and high-throughput sequencing transcriptional regulation data</p></li>
+<li><p>Apply statistical or mathematical models to your own population/human genetics data</p></li>
+<li><p>Criticize and/or extend the computational analysis or statistical models in the literature</p></li>
+<li><p>Use R, Python, and/or Shell scripts and basic concepts in genomics and genetics to perform your own bioinformatics and computational biology research</p></li>
+</ul>
+
+
+<p><a href="http://www.stat115.org/syllabus.html">http://www.stat115.org/syllabus.html</a></p></blockquote>
+
+<p>このなかで，Cole TrapnellがRNA-Seqの遺伝子発現解析に関してレクチャーしている動画がある．Cole Trapnellといえば，<a href="http://tophat.cbcb.umd.edu/">TopHat</a>や<a href="http://cufflinks.cbcb.umd.edu/">Cufflinks</a>の開発者の中心人物のひとりだ．これらのツールに関する論文の第一著者でもある．そのCole Trapnellが，RNA-Seqの定量化や発現量推定，発現差異解析などの一連の流れを，自身が開発に参加した&#8221;Tuxedo Tools&#8221;（Bowtie, Tophat, Cufflinks, CummeRbundの総称）を例に紹介しているのがこの動画だ．主にマッピング後の発現量推定に関して，基本的なFPKMの求め方であったり，Cufflinksのisoformの取り扱いであったりを，少し数式も交えながら詳しく解説している．</p>
+
+<p>講義資料：<a href="http://www.stat115.org/lectures/stat115_rnaseq.pdf">http://www.stat115.org/lectures/stat115_rnaseq.pdf</a></p>
+
+<iframe src="http://player.vimeo.com/video/60609764" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+<p> <p><a href="http://vimeo.com/60609764">lecture9-I</a> from <a href="http://vimeo.com/stat115">stat115</a> on <a href="https://vimeo.com">Vimeo</a>.</p></p>
+
+<iframe src="http://player.vimeo.com/video/60609783" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+<p> <p><a href="http://vimeo.com/60609783">lecture9-II</a> from <a href="http://vimeo.com/stat115">stat115</a> on <a href="https://vimeo.com">Vimeo</a>.</p></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[TimeTreeで生物種間の分岐年代を調べる]]></title>
@@ -1467,46 +1505,6 @@
 <ul>
 <li><a href="http://www.omakase.org/perl/cpanm.html">perlモジュールのinstallにcpanmを使う｜perl｜@OMAKASE</a></li>
 <li><a href="http://g86.dbcls.jp/~yag/wordpress/archives/1400">Wolf Ears » cpanmでBioPerlを入れる</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[アセンブルの指標であるN50とNG50の違い]]></title>
-    <link href="http://yagays.github.io/blog/2013/05/15/n50-ng50/"/>
-    <updated>2013-05-15T09:42:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/05/15/n50-ng50</id>
-    <content type="html"><![CDATA[<p>今回は配列をアセンブルするときの指標に使うN50とNG50について少しまとめてみようと思う．</p>
-
-<h3>前置き</h3>
-
-<p>アセンブリというのはシーケンサで得られる短い配列から元のゲノム配列を復元する作業のことで，例えるならば膨大な数のジグソーパズルを形を頼りに完成させるとか，シュレッダーに掛けられて短冊になった書類を元に戻す作業といえる．これだけ聞くと頑張ればできそうな気がするが，実際には使える情報はATGCの配列だけと非常に限られており，場所によっては同じ文字が延々と続く箇所があったり，時々文字が間違っていたりと，手作業では不可能に近いし何より計算機を使ったとしても非常に難しい．それに加えて，そもそも元あった状態である解答を誰も知らないので，結果が合っているかどうかも分からず，答え合わせ（評価）がしづらいということがある．</p>
-
-<p>このアセンブリの評価に関しては，Assemblathonというゲノムアセンブラの精度を争うコンペティションで活発に議論されている．というのも，各研究室で開発されたアセンブラの性能に順位を付けるためという以前に，未知のゲノムに対して今までに誰もアセンブル結果の配列だけで評価してこなかったからだ．もう少し正確に言えば，今までのモデル生物のゲノム配列解読は，過去に実験で確かめられてきた膨大な知見のもとで大量の人材と資金を投入して一歩ずつ進められてきた研究であり，現在のスタイルであるNGSを使った非モデル生物のゲノム配列解読のアプローチとはほとんど別物だと言っても過言ではない．そういった経緯があり，現在のAssemblathonではこれからのゲノム配列解読の基準となるような評価手法について，コンペティションを通して試行錯誤が繰り返されている（この話題に関しては<a href="http://www.slideshare.net/kbradnam/assemblathon-2-talk">Assemblathon2のスライド</a>が詳しい）．</p>
-
-<p>ちなみに，Assemblathonは現在，擬似データでアセンブルを競った第1回は終了し論文も出ており，実際の生物データを使った第2回が終了して論文が出るのを待つだけで（<a href="http://arxiv.org/abs/1301.5406">既にArXivに上がっている</a>），第3回も企画されている．</p>
-
-<p>というわけで，ゲノムを読むといっても今までのようにはいかないし，新しい評価も考えつつやっていかないとねという話．その中でスタンダードな評価指標が今回紹介するN50とNG50になる．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/n50.png" align="right"></p>
-
-<h3>N50</h3>
-
-<p>N50とは一言でいえば配列長の加重平均なのだが，それでは誰も理解してくれないのでもうちょっと噛み砕こう．簡単に言えば，配列を長い順に並べて上から順に足していった時に，全体の長さの半分に達した時の配列の長さ(単位はbp)のことをN50という．イメージだと右図のように，半分の面積になるときの配列の長さがN50となる．得られた配列の分布を見つつ中間くらいの長さを表しているので，長い配列が多いとN50は大きくなるし，逆に長い配列が少なく短い配列が大量にあるとN50は小さくなる．アセンブルの際には復元したいゲノムに少しでも近づけるよう長い配列がたくさん得られると嬉しいので，N50はアセンブルの結果の良し悪しを判断する指標となっている．</p>
-
-<h3>NG50</h3>
-
-<p>とは言うものの，長けりゃそれでいいのかという疑問から出てきたのがNG50という指標だ．アセンブルで得られた配列全体の長さの代わりに，推定されるゲノム配列の長さを使って配列長の平均を計算している．つまり，予想では100Mbpだと推定された生物のゲノムならば，配列を長い順に並べて上から順に足していって100Mbpに達したときの配列の長さをNG50としている．考え方としては，理想となるゲノム配列の長さに近づけるために，長い配列だけじゃなくてある程度短い配列も評価しようということだろう．また，アセンブラの性能を異なるゲノムサイズの生物間で比較する際にも，NG50を用いることで公平に判断することができる．ただし，ゲノムサイズに関しては実験的に求めるかK-merから推定する必要があるので，必ずしも正確かどうかは難しいところがある．</p>
-
-<h3>まとめ</h3>
-
-<p>以上で，ざっとN50とNG50についてまとめてみた．実はこの議論にも続きがあって，NG50だけでは不十分でNG1からNG99までを検討しないといけないという話もある．今回はそこまでは踏み込まないが，気になる人はAssemblathon2の評価手法に関するページを見ていただきたい（<a href="http://assemblathon.org/post/44431933387/assemblathon-2-basic-assembly-metrics">The Assemblathon • Assemblathon 2 basic assembly metrics</a>）．結論としては一概にどの指標がいいかを決めるのは非常に難しいということで，色々と試してみる必要がある．</p>
-
-<h3>参考</h3>
-
-<ul>
-<li>(pdf) <a href="http://korflab.ucdavis.edu/datasets/Assemblathon/Assemblathon1/assemblathon_talk.pdf">http://korflab.ucdavis.edu/datasets/Assemblathon/Assemblathon1/assemblathon_talk.pdf</a></li>
 </ul>
 
 ]]></content>
