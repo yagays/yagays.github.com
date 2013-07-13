@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-07-12T04:28:47+09:00</updated>
+  <updated>2013-07-13T15:47:55+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ディレクトリの書き込み権限が無いとファイルの消去ができない]]></title>
+    <link href="http://yagays.github.io/blog/2013/07/13/directory-permission/"/>
+    <updated>2013-07-13T15:40:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/07/13/directory-permission</id>
+    <content type="html"><![CDATA[<p>久しぶりに初歩的なところでハマったのでメモ．多人数が使用するサーバ上で，何故かrmすることのできないファイルがあった．そのファイルのパーミッションも所有者もグループも特に変なところは見当たらず，ファイルが壊れているわけでもGUIで他のプログラムが使用中というわけでもない．なのに，rmしようとすると以下のようなエラーが出てしまう（例示しているコマンドラインは手元で再現した状況）．</p>
+
+<p><code>
+$ rm hehehe
+remove hehehe? y
+rm: hehehe: Permission denied
+</code></p>
+
+<p>sudo権限を持っていないのでなんともしがたいなーと思いつつ，適当にディレクトリ名を"fuga_broken"に変更して放置していたのだけれども，たまたま機会があって人に相談したら「ディレクトリの書き込み権限が無いんじゃない？」と言われて，そこでようやく気がついた．</p>
+
+<p><code>
+$ ls -l
+合計 0
+dr-xr-xr-x 3 yag_ays staff 102  7 13 15:27 fuga/
+</code>
+というわけで，ディレクトリの書き込み権限がなかったせいで，そのディレクトリ内のファイルの消去ができなかっただけだった．なぜ書き込み権限が無くなっていたのかはいまだに不明だ．対象となるディレクトリをchmodで書き込み権限を付加したら，あっさりファイルを削除することができた．</p>
+
+<p><code>
+$ chmod +w fuga
+$ rm fuga/hehehe
+remove fuga/hehehe? y
+$
+</code></p>
+
+<p>なんともまあ呆気なく解決してしまった．普段からディレクトリのパーミッションはまったく変えないので，問題解決の際にディレクトリにまで考えが及ばなく，久々に自分の経験の浅さを実感した．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[treeを使ってディレクトリ構造をターミナル上で可視化する]]></title>

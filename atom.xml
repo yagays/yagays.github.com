@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-07-12T04:28:47+09:00</updated>
+  <updated>2013-07-13T15:47:55+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,47 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ディレクトリの書き込み権限が無いとファイルの消去ができない]]></title>
+    <link href="http://yagays.github.io/blog/2013/07/13/directory-permission/"/>
+    <updated>2013-07-13T15:40:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/07/13/directory-permission</id>
+    <content type="html"><![CDATA[<p>久しぶりに初歩的なところでハマったのでメモ．多人数が使用するサーバ上で，何故かrmすることのできないファイルがあった．そのファイルのパーミッションも所有者もグループも特に変なところは見当たらず，ファイルが壊れているわけでもGUIで他のプログラムが使用中というわけでもない．なのに，rmしようとすると以下のようなエラーが出てしまう（例示しているコマンドラインは手元で再現した状況）．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rm hehehe
+</span><span class='line'>remove hehehe? y
+</span><span class='line'>rm: hehehe: Permission denied</span></code></pre></td></tr></table></div></figure>
+
+
+<p>sudo権限を持っていないのでなんともしがたいなーと思いつつ，適当にディレクトリ名を&#8221;fuga_broken&#8221;に変更して放置していたのだけれども，たまたま機会があって人に相談したら「ディレクトリの書き込み権限が無いんじゃない？」と言われて，そこでようやく気がついた．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ls -l
+</span><span class='line'>合計 0
+</span><span class='line'>dr-xr-xr-x 3 yag_ays staff 102  7 13 15:27 fuga/</span></code></pre></td></tr></table></div></figure>
+
+
+<p>というわけで，ディレクトリの書き込み権限がなかったせいで，そのディレクトリ内のファイルの消去ができなかっただけだった．なぜ書き込み権限が無くなっていたのかはいまだに不明だ．対象となるディレクトリをchmodで書き込み権限を付加したら，あっさりファイルを削除することができた．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ chmod +w fuga
+</span><span class='line'>$ rm fuga/hehehe
+</span><span class='line'>remove fuga/hehehe? y
+</span><span class='line'>$ </span></code></pre></td></tr></table></div></figure>
+
+
+<p>なんともまあ呆気なく解決してしまった．普段からディレクトリのパーミッションはまったく変えないので，問題解決の際にディレクトリにまで考えが及ばなく，久々に自分の経験の浅さを実感した．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Tophat/Cufflinksなどの開発者であるCole TrapnellによるRNA-Seqの遺伝子発現解析に関する講義動画]]></title>
@@ -1457,56 +1498,6 @@
 <p>この状態でキーワードを入力すると，マッチしたディレクトリだけを選ぶこともできる．深い階層のディレクトリでも名前さえ覚えていれば一発で飛ぶことができるので，非常に便利だ．</p>
 
 <p><img src="http://dl.dropboxusercontent.com/u/142306/b/zaw2.png" alt="" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[cpanmのセッティング]]></title>
-    <link href="http://yagays.github.io/blog/2013/05/16/cpanm/"/>
-    <updated>2013-05-16T12:19:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/05/16/cpanm</id>
-    <content type="html"><![CDATA[<p>PerlでCPANを使うなら，cpanmが便利．ライブラリはすべてホームディレクトリ以下に展開されるので，管理者権限が無くても気軽に使用できる．</p>
-
-<ul>
-<li><a href="http://search.cpan.org/~miyagawa/App-cpanminus-1.6914/bin/cpanm">cpanm - search.cpan.org</a></li>
-</ul>
-
-
-<h3>パスの通ったディレクトリにインストールする</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd local/bin
-</span><span class='line'>$ curl -LOk http://xrl.us/cpanm
-</span><span class='line'>$ chmod +x cpanm</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>.zshrcに設定を書き込む</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>export PERL_CPANM_OPT="--local-lib=~/.cpanm/"
-</span><span class='line'>export PERL5LIB="$HOME/.cpanm/lib/perl5:$PERL5LIB"</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>例）ライブラリを入れる</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cpanm local::lib
-</span><span class='line'>$ cpanm JSON
-</span><span class='line'>$ cpanm Cairo</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://www.omakase.org/perl/cpanm.html">perlモジュールのinstallにcpanmを使う｜perl｜@OMAKASE</a></li>
-<li><a href="http://g86.dbcls.jp/~yag/wordpress/archives/1400">Wolf Ears » cpanmでBioPerlを入れる</a></li>
-</ul>
-
 ]]></content>
   </entry>
   
