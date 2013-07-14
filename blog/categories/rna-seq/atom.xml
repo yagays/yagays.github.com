@@ -4,7 +4,7 @@
   <title><![CDATA[Category: RNA-Seq | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/rna-seq/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-07-14T10:58:17+09:00</updated>
+  <updated>2013-07-14T11:36:28+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ]]></title>
-    <link href="http://yagays.github.io/blog/2013/07/14/mathematical-model-for-transcriptome-quantification-0/"/>
+    <link href="http://yagays.github.io/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/"/>
     <updated>2013-07-14T10:43:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/07/14/mathematical-model-for-transcriptome-quantification-0</id>
+    <id>http://yagays.github.io/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0</id>
     <content type="html"><![CDATA[<p>この「RNA-Seqの数理」シリーズでは，次世代シーケンサを用いたRNA-Seqにおける発現量推定の数理モデルを理解することを目的とする．</p>
 
 <p>副題にある「生成モデル」とは，観測データの生成過程を確率的にモデル化し，データが与えられたときの事後確率を用いて分類したいクラスや予測したい値を推定する方法のことを指す．今回のRNA-Seqにおける生成モデルでは，次世代シーケンサで読み取られた配列が，どのようにして細胞内の数あるトランスクリプトームから実験によって読み取られて観測されたかという一連の流れを，生成モデルとして表現する．そこから確率的なもっともらしさやパラメータの推定によって，トランスクリプトームの発現量を求める．</p>
