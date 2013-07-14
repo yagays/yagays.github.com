@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-07-14T11:36:28+09:00</updated>
+  <updated>2013-07-15T08:45:34+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -14,23 +14,78 @@
 
   
   <entry>
+    <title type="html"><![CDATA[RNA-Seqの数理―生成モデルによる発現量推定（1）RNA-Seqの発現量推定とRPKM]]></title>
+    <link href="http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/"/>
+    <updated>2013-07-15T00:06:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1</id>
+    <content type="html"><![CDATA[<p>まとめ：<a href="http://yagays.github.io/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/">RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ - Wolfeyes Bioinformatics beta</a></p>
+
+<p>生成モデルの話を始める前に，まずはRNA-Seqの発現量としてよく知られているRPKMという指標からスタートし，生成モデルの話へと繋げていこう．</p>
+
+<h3>RNA-Seqの発現量推定の基本</h3>
+
+<p>RNA-Seqで得られるデータは，ある長さの配列（ショートリード）とクオリティスコアのセットして表現される．それをリファレンスとなるゲノム配列の中から探しだして，読まれた配列が何の転写物由来かを見つける作業をマッピングという．このマッピングをNGSから出力された数千万本/数億本のショートリードに対して行い，ある遺伝子の部位にどのくらい貼り付いたかをカウントすることで特定の転写物がどれくらい発現していたかを推定するという方法が，RNA-Seqの発現量推定では基本となる．</p>
+
+<p><a href="http://www.nature.com/nrg/journal/v10/n1/fig_tab/nrg2484_F1.html" target="_blank"><img src="http://dl.dropboxusercontent.com/u/142306/b/nrg2484-f1.jpg" alt="CCC License Number: 3187871036736 "></a></p>
+
+<p>この図はRNA-Seqの実験の流れを模式的に表している．まず対象となるトランスクリプトームであるmRNAを取り出し，断片化やアダプターの付与を経てシーケンスライブラリを作成する．次にNGSによって断片が大量にシーケンスされ，いわゆるATCGからなる文字列で構成されたショートリードが得られる．そしてゲノム配列にマッピングすることによって，RNAの発現量が推定される．この図では，ゲノム配列の各塩基ごとにどれくらいの本数のショートリードが貼り付いたかをカウントすることによって，RNA expression levelを図示している．Nucleotide positionによって特定の領域の発現量が欠損していたり遺伝子の末端で発現量が少なくなっているのには，マッピングの際に生じる幾つかの理由がある．まず，図中のJunction readsで示されている点線の箇所は，イントロンのスプライシングが起きた領域であり，mRNAの配列をゲノム配列にマッピングするために起こる現象である．そのため，イントロンの領域だけ発現量が無いように見える．また，Poly-A tailが配列の一部として混入することでショートリード自体がゲノム配列にマッピングできない場合もあり，末端の発現量が落ちる原因の一つになっている．</p>
+
+<p>では，このようにして求められた値を転写物ごとの発現量として一つの値で表現するには，どうすれば良いのか．ここで，RPKMという考え方が登場する．</p>
+
+<h3>RPKMの考え方</h3>
+
+<p>RNA-Seqの発現量の値として最初に考えられ今でも広く使われているRPKMという指標は，配列の本数を数えるという方法で転写物ごとの発現量を求めている．RPKMはreads per kilobase of exon per million mapped sequence readsの略称で，マッピングされたショートリードの数をエキソンの長さとシーケンサで読まれた配列の総数で正規化した値である．RPKMの計算方法を式で表すと以下のようになる．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=RPKM+%5C++for+%5C++transcript+%5C+t+%3D+10%5E9+%5Ctimes%5Cfrac%7BX_t%7D%7Bl_t+N%7D" alt="RPKM \  for \  transcript \ t = 10^9 \times\frac{X_t}{l_t N}" /></p>
+
+<p>ここで，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X_t+" alt="X_t " />は転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />にマッピングされたショートリードの本数，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />は転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />の長さ(bp)，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=N+" alt="N " />はマッピングされたショートリードの総数を表している．</p>
+
+<p>さて，このRPKMという発現量の考え方の裏には以下のような仮定がある．</p>
+
+<ul>
+<li>配列数が長い転写物からはショートリードが多く読まれる</li>
+<li>全体で読まれるショートリードの数が多いと，マッピングされるショートリードも多くなる</li>
+</ul>
+
+
+<p>NGSによるRNA-Seqでは，特定の量のサンプルの中に含まれるトランスクリプトームをランダムにシーケンスするため，出てくるデータというのはあくまでも相対的な量となってしまう．そのため，このような仮定を置くことで転写物の発現や実験サンプルなどの違いを補正している．RPKMはある遺伝子の領域内に含まれるショートリードの本数を数え，転写物の長さと全体のデータ数で割って10<sup>9</sup> を掛けることによって簡単に求められるため，計算のしやすさと直感的な分かりやすさがある．</p>
+
+<h3>RPKMと生成モデルとの関係</h3>
+
+<p>このように，RPKMはマッピングされた配列の本数を数えるという単純な方法で発現量を推定している．一方で，これから考えていくことになる生成モデルによる発現量推定は，データが観測される事象を確率的に推定することでデータが与えられたときのトランスクリプトームの発現量というものを求める．これらは一見して全く違うもののように見えるのだが，<strong>実際には最も単純な生成モデルはRPKMと基本的な考え方が同じになる</strong>．つまり，RPKMも生成モデルによる推定方法も，発現量はマッピングされたショートリードの本数と，転写物の長さおよびショートリードの総数の逆数によって決まるということだ．</p>
+
+<p>それを確かめるために，次回はCount Based Modelと呼ばれる生成モデルを作って発現量推定を定式化し，それがRPKMの計算式と同じ意味を持つということを示してみよう．</p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://www.nature.com/nmeth/journal/v5/n7/full/nmeth.1226.html">Mapping and quantifying mammalian transcriptomes by RNA-Seq - Nature Methods</a></li>
+<li><a href="http://www.nature.com/nrg/journal/v10/n1/full/nrg2484.html">RNA-Seq: a revolutionary tool for transcriptomics : Article : Nature Reviews Genetics</a></li>
+<li><a href="http://arxiv.org/abs/1104.3889v2">[1104.3889v2] Models for transcript quantification from RNA-Seq</a></li>
+<li><a href="http://fgcz-intranet.uzh.ch/publish/BiostatLecture/RNA-seq-quantification.pdf">http://fgcz-intranet.uzh.ch/publish/BiostatLecture/RNA-seq-quantification.pdf</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ]]></title>
     <link href="http://yagays.github.io/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/"/>
     <updated>2013-07-14T10:43:00+09:00</updated>
     <id>http://yagays.github.io/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0</id>
     <content type="html"><![CDATA[<p>この「RNA-Seqの数理」シリーズでは，次世代シーケンサを用いたRNA-Seqにおける発現量推定の数理モデルを理解することを目的とする．</p>
 
-<p>副題にある「生成モデル」とは，観測データの生成過程を確率的にモデル化し，データが与えられたときの事後確率を用いて分類したいクラスや予測したい値を推定する方法のことを指す．今回のRNA-Seqにおける生成モデルでは，次世代シーケンサで読み取られた配列が，どのようにして細胞内の数あるトランスクリプトームから実験によって読み取られて観測されたかという一連の流れを，生成モデルとして表現する．そこから確率的なもっともらしさやパラメータの推定によって，トランスクリプトームの発現量を求める．</p>
+<p>副題にある「生成モデル」とは，観測データの生成過程を確率的にモデル化し，データが与えられたときの事後確率を用いて分類したいクラスや予測したい値を推定する方法のことを指す．今回のRNA-Seqにおける生成モデルでは，次世代シーケンサで読み取られた配列が，どのようにして細胞内のトランスクリプトームから実験によって読み取られて観測されたかという一連の流れを，生成モデルとして表現する．そして確率的なもっともらしさやパラメータの推定をおこない，トランスクリプトームの発現量を求める．</p>
 
 <h3>このシリーズについて</h3>
 
-<p>次世代シーケンサによるRNA-Seqの発現量推定といっても，実験対象は大腸菌レベルから人に至るまでゲノムサイズや遺伝子数は多種多様であり，実験機器も各メーカーごとに独自に発展させてきた．しかしながら，RNA-Seqはトランスクリプトームの配列を超並列に大量に解読するという点で，基本的な原理は生物種やプラットフォームに依存しない．まずはこの共通部分に関して単純なモデルを作成し，そこから個別の生物の特性や実験方法に合わせた複雑なモデルを構築していく．</p>
+<p>次世代シーケンサによるRNA-Seqの発現量推定といっても，実験対象は大腸菌レベルから人に至るまでゲノムサイズや遺伝子数は多種多様であり，実験機器も各メーカーごとに独自に改良が加えられてきた．しかしながら，RNA-Seqはトランスクリプトームの配列を超並列に大量に解読するという点で，基本的な原理は生物種やプラットフォームに依存しない．まずはこの共通部分に関して単純なモデルを作成し，そこから個別の生物の特性や実験方法に合わせた複雑なモデルを構築していく．</p>
 
-<p>今回のシリーズは前提条件として，発現量推定の対象とする種をゲノム既知なモデル生物に限定する．つまり，ヒトやマウス，シロイヌナズナ，線虫など，すでにゲノム配列が解読されていて，なおかつ遺伝子の配列や機能がよく研究されている種について取り扱っていくということだ．この仮定をおかないと，そもそもデータ処理の時点でショートリードのマッピングができなかったり，モデルが立てられないということになりかねない．とはいうものの，仮定を立てたからといってマッピングの曖昧さは解消されないし，アイソフォームの存在や選択的スプライシングなど複雑な転写メカニズムはいくらでも考えられるので，それらは追々モデルに組み込んでいく．</p>
+<p>今回のシリーズは前提条件として，発現量推定の対象とする種をゲノム既知なモデル生物に限定する．つまり，ヒトやマウス，シロイヌナズナ，線虫など，すでにゲノム配列が解読されていて，なおかつ遺伝子の配列や機能がよく研究されている種を対象にするということだ．この仮定をおかないと，そもそもデータ処理の時点でショートリードのマッピングができなかったり，モデルが立てられないということになりかねない．とはいうものの，仮定を立てたからといってマッピングの曖昧さは解消されないし，アイソフォームの存在や選択的スプライシングなど複雑な転写メカニズムはいくらでも考えられるので，それらは追々モデルに組み込んでいく．</p>
 
 <h3>注意</h3>
 
-<p>このシリーズの記事で書かれていることはすべて個人的な勉強記録であって，数理的な解釈や導出の厳密性を保証するものではない．勘違いや間違いなどが多分に含まれている可能性があるので，参考にされる際には十分に注意していただきたい．</p>
+<p>このシリーズの記事で書かれていることはすべて個人的な勉強記録であって，数理的な解釈や導出の厳密性を保証するものではない．勘違いや間違いなどが多分に含まれている可能性があるので，参考にされる際には十分に注意していただきたい．もし間違いや誤字脱字等見つけられた方は，コメント欄などで指摘していただければ幸い．</p>
 
 <h3>このシリーズの目標</h3>
 
@@ -42,7 +97,7 @@
 </ul>
 
 
-<p>ことを目標にする．</p>
+<p>ことを考えている．基本的には論文に記載されている内容をベースに進めていくので，論文のmethodの理解が最終的な目標となるだろう．</p>
 
 <h3>記事まとめ</h3>
 
@@ -1374,115 +1429,6 @@
 <p><img src="http://dl.dropboxusercontent.com/u/142306/b/briss2.png" alt="" /></p>
 
 <p>今回の場合は本当に文字ぎりぎりという感じだが，iPadで眺めたり印刷する際にはちょうどくらいだ．これでストレス無くESLを読む事ができる．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[treeを使ってディレクトリ構造をターミナル上で可視化する]]></title>
-    <link href="http://yagays.github.io/blog/2013/05/21/tree/"/>
-    <updated>2013-05-21T14:30:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/05/21/tree</id>
-    <content type="html"><![CDATA[<p>最近は色々と忙しくネタが無いわけではないが，書けるだけの内容にまとまりきれていないのが現状．というわけで今回もLinxuの環境周りの話ということで，ディレクトリ構造をターミナル上で可視化するtreeというコマンドについて．ああ，これ以上何も言うことがない…．</p>
-
-<p><a href="http://mama.indstate.edu/users/ice/tree/">The Tree Command for Linux Homepage</a></p>
-
-<h3>インストール</h3>
-
-<p>ソースを取ってきてコンパイルする．以上．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ wget ftp://mama.indstate.edu/linux/tree/tree-1.6.0.tgz
-</span><span class='line'>$ tar zxvf lftp-4.4.6.tar.gz
-</span><span class='line'>$ cd tree-1.6.0
-</span><span class='line'>$ make</span></code></pre></td></tr></table></div></figure>
-
-
-<p>あとは，treeをパスの通ったところに移動させれば完了．以上．</p>
-
-<h3>使い方</h3>
-
-<p>何もオプションを指定しないと，以下のようにファイルとディレクトリが表示される．以上．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ tree
-</span><span class='line'>.
-</span><span class='line'>├── CHANGES
-</span><span class='line'>├── INSTALL
-</span><span class='line'>├── LICENSE
-</span><span class='line'>├── Makefile
-</span><span class='line'>├── README
-</span><span class='line'>├── TODO
-</span><span class='line'>├── color.c
-</span><span class='line'>├── color.o
-</span><span class='line'>├── doc
-</span><span class='line'>│   ├── tree.1
-</span><span class='line'>│   ├── tree.1.fr
-</span><span class='line'>│   └── xml.dtd
-</span><span class='line'>├── hash.c
-</span><span class='line'>├── hash.o
-</span><span class='line'>├── html.c
-</span><span class='line'>├── html.o
-</span><span class='line'>├── strverscmp.c
-</span><span class='line'>├── tree
-</span><span class='line'>├── tree.c
-</span><span class='line'>├── tree.h
-</span><span class='line'>├── tree.o
-</span><span class='line'>├── unix.c
-</span><span class='line'>├── unix.o
-</span><span class='line'>├── xml.c
-</span><span class='line'>└── xml.o
-</span><span class='line'>
-</span><span class='line'>1 directory, 24 files</span></code></pre></td></tr></table></div></figure>
-
-
-<p>-dオプションをつけると，ディレクトリだけを表示することができる．詳しくはmanで．以上．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ tree -d
-</span><span class='line'>.
-</span><span class='line'>└── doc
-</span><span class='line'>
-</span><span class='line'>1 directory</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ちなみに，色も付きます（ディレクトリと実行ファイル）．以上．お疲れ様でした．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/tree.png" alt="" /></p>
 ]]></content>
   </entry>
   

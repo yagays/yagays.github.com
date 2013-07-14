@@ -115,6 +115,132 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/04/20/install-biopython/">Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-20T15:09:00+09:00" pubdate data-updated="true">Apr 20<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>新しい環境でBiopythonをセットアップしたので，そのときのメモ．Pythonのバージョン/パッケージ管理はvirtualenvやらvirtualenvwrapperやらpipやらsetuptoolsやらで発狂する可能性が高いので，手っ取り早く使いたい人は以下のおまじないだけ実行して使えるようにしておくと良さそう．sudoする必要もないし知らないディレクトリを汚すこともないので，非常に簡単にインストールできる．以下のリンク先にしたがって，ポチポチと5行程度のコマンドを実行すれば完了．</p>
+
+<ul>
+<li><a href="http://biopython.org/wiki/Talk:Download">Talk:Download - Biopython</a></li>
+</ul>
+
+
+<p>ディレクトリ作成も含めて，ちょっと改変したものが以下の7行．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>mkdir biopython
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>biopython
+</span><span class='line'><span class="nv">$ </span>wget --no-check-certificate https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+</span><span class='line'><span class="nv">$ </span>python virtualenv.py .
+</span><span class='line'><span class="nv">$ </span><span class="nb">source </span>bin/activate
+</span><span class='line'><span class="nv">$ </span>pip install numpy
+</span><span class='line'><span class="nv">$ </span>pip install Biopython
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>環境によってはnumpyやBiopythonのインストールがコケるかもしれないので，インストールの最後に「Successfully installed numpy/Biopython」が表示されることを確認したほうが良いだろう．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>pip install numpy
+</span><span class='line'>Downloading/unpacking numpy
+</span><span class='line'>  Downloading numpy-1.7.1.zip <span class="o">(</span>3.1MB<span class="o">)</span>: 3.1MB downloaded
+</span><span class='line'>  Running setup.py egg_info <span class="k">for </span>package numpy
+</span><span class='line'>    Running from numpy <span class="nb">source </span>directory.
+</span><span class='line'>
+</span><span class='line'>~~~<span class="o">(</span>略<span class="o">)</span>~~~
+</span><span class='line'>
+</span><span class='line'>Successfully installed numpy
+</span><span class='line'>Cleaning up...
+</span><span class='line'><span class="nv">$ </span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最後に，きちんとBiopythonが使えるようになっているか確認する．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="err">$</span> <span class="n">python</span>
+</span><span class='line'><span class="n">Python</span> <span class="mf">2.7</span><span class="o">.</span><span class="mi">2</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Oct</span> <span class="mi">11</span> <span class="mi">2012</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">37</span><span class="p">)</span>
+</span><span class='line'><span class="p">[</span><span class="n">GCC</span> <span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span> <span class="n">Compatible</span> <span class="n">Apple</span> <span class="n">Clang</span> <span class="mf">4.0</span> <span class="p">(</span><span class="n">tags</span><span class="o">/</span><span class="n">Apple</span><span class="o">/</span><span class="n">clang</span><span class="o">-</span><span class="mf">418.0</span><span class="o">.</span><span class="mi">60</span><span class="p">)]</span> <span class="n">on</span> <span class="n">darwin</span>
+</span><span class='line'><span class="n">Type</span> <span class="s">&quot;help&quot;</span><span class="p">,</span> <span class="s">&quot;copyright&quot;</span><span class="p">,</span> <span class="s">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">Seq</span><span class="p">(</span><span class="s">&quot;ATGC&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">complement</span><span class="p">()</span>
+</span><span class='line'><span class="n">Seq</span><span class="p">(</span><span class="s">&#39;TACG&#39;</span><span class="p">,</span> <span class="n">Alphabet</span><span class="p">())</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>なお，一度シェルを閉じるとPythonまわりの読み込みは消えてしまうので，その時は再度インストールしたディレクトリで<code>source bin/activate</code>を実行する必要がある．</p>
+
+<h4>実行環境</h4>
+
+<ul>
+<li>Mac OS X 10.8.3</li>
+<li>Python 2.7.2</li>
+</ul>
+
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://biopython.org/DIST/docs/tutorial/Tutorial.html">Biopython Tutorial and Cookbook</a></li>
+<li><a href="http://biopython.org/wiki/Talk:Download">Talk:Download - Biopython</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/04/14/review-math-writing/">「数学文章作法 基礎編」読了</a></h1>
     
     
@@ -362,58 +488,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/01/11/2013-target/">2013年にやりたいこと(Hatena Blog記事版)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-11T08:15:00+09:00" pubdate data-updated="true">Jan 11<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>以下の記事は，<a href="http://blog.hatena.ne.jp/-/campaign/newyear2013">Hatena Blogのキャンペーン</a>に投稿するために書いた文章の転載だ．せっかくなので，このBlogにも貼り付けておく．何度も見返したほうが日頃から意識できるしね．</p>
-
-<ul>
-<li><a href="http://yag-ays.hatenablog.com/entry/2013/01/11/065830">http://yag-ays.hatenablog.com/entry/2013/01/11/065830</a></li>
-</ul>
-
-
-<h2>お金を払って人に教えてもらいにいく</h2>
-
-<p>これが実に難しい．何かをしようとしたらまずはインターネットで検索して無料の情報を集めるような時代だから，わざわざ時間とお金を掛けて実際に人に習いに行くということは難しくなってきている．特に現状で不便なくこなせていく事に関して一歩踏み込んだことをやろうと考えたときに，プロに直接的に指導を仰ぐということをしなくなってきていると感じている．今のスキルでもなんとかなるんだから後は自分でどうにかやるよという気持ちでいると，どうしても自己流の要領の悪いままでいることになりがちだ．それを自己流に突き詰めていくという方向もあるのだが，そこまで独自性を出せる人はなかなかいない．それに労力をかけるだけの時間もない．だからまずは手っ取り早く人に教わることで，ある程度の水準まで一気に持ち上げてもらい，同時に型を経験することで目標や学び方を知ることができると思うのだ．そして今の僕には，そのモチベーションが欠けている．</p>
-
-<iframe src="http://player.vimeo.com/video/27244727?color=ffffff" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-
-
-<p> <p><a href="http://vimeo.com/27244727">LEARN</a> from <a href="http://vimeo.com/rickmereki">Rick Mereki</a> on <a href="http://vimeo.com">Vimeo</a>.</p></p>
-
-<p>そう，まさにこんな感じ．それにしてもこの動画は編集のおかげですっごい楽しく見えるんだけど，実際やってる最中とか未加工の動画を見ると案外つまんないんだろうなーと思うと，余計に習い事とか人に教わることが面白く感じてくる．実際やってみると何だこりゃってなるのがまあ普通だし，そのほうが色々と印象に残るし，やり終えた後の景色もさぞ違って見えることだろう．</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/9/">&larr; Older</a></li>
@@ -461,6 +535,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/">RNA-Seqの数理―生成モデルによる発現量推定（1）RNA-Seqの発現量推定とRPKM</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/">RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ</a>
       </li>
     
@@ -496,10 +574,6 @@
         <a href="/blog/2013/07/01/review-kitagawa-be-yourself-and-carry-on/">「世界基準で夢をかなえる私の勉強法」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/06/26/rna-seq-unleashed-trinity/">&#8220;RNA-Seq unleashed&#8221;によるTrinityのワークフローの解説</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -519,7 +593,7 @@
 <li class='category'><a href='/blog/categories/perl/'>Perl (1)</a></li>
 <li class='category'><a href='/blog/categories/presentation/'>Presentation (1)</a></li>
 <li class='category'><a href='/blog/categories/python/'>Python (2)</a></li>
-<li class='category'><a href='/blog/categories/rna-seq/'>RNA-Seq (2)</a></li>
+<li class='category'><a href='/blog/categories/rna-seq/'>RNA-Seq (3)</a></li>
 <li class='category'><a href='/blog/categories/reading/'>Reading (21)</a></li>
 <li class='category'><a href='/blog/categories/soapdenovo2/'>SOAPdenovo2 (3)</a></li>
 <li class='category'><a href='/blog/categories/slide/'>Slide (1)</a></li>
