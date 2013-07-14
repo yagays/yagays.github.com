@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-07-13T16:43:15+09:00</updated>
+  <updated>2013-07-14T10:58:17+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ]]></title>
+    <link href="http://yagays.github.io/blog/2013/07/14/mathematical-model-for-transcriptome-quantification-0/"/>
+    <updated>2013-07-14T10:43:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/07/14/mathematical-model-for-transcriptome-quantification-0</id>
+    <content type="html"><![CDATA[<p>この「RNA-Seqの数理」シリーズでは，次世代シーケンサを用いたRNA-Seqにおける発現量推定の数理モデルを理解することを目的とする．</p>
+
+<p>副題にある「生成モデル」とは，観測データの生成過程を確率的にモデル化し，データが与えられたときの事後確率を用いて分類したいクラスや予測したい値を推定する方法のことを指す．今回のRNA-Seqにおける生成モデルでは，次世代シーケンサで読み取られた配列が，どのようにして細胞内の数あるトランスクリプトームから実験によって読み取られて観測されたかという一連の流れを，生成モデルとして表現する．そこから確率的なもっともらしさやパラメータの推定によって，トランスクリプトームの発現量を求める．</p>
+
+<h3>このシリーズについて</h3>
+
+<p>次世代シーケンサによるRNA-Seqの発現量推定といっても，実験対象は大腸菌レベルから人に至るまでゲノムサイズや遺伝子数は多種多様であり，実験機器も各メーカーごとに独自に発展させてきた．しかしながら，RNA-Seqはトランスクリプトームの配列を超並列に大量に解読するという点で，基本的な原理は生物種やプラットフォームに依存しない．まずはこの共通部分に関して単純なモデルを作成し，そこから個別の生物の特性や実験方法に合わせた複雑なモデルを構築していく．</p>
+
+<p>今回のシリーズは前提条件として，発現量推定の対象とする種をゲノム既知なモデル生物に限定する．つまり，ヒトやマウス，シロイヌナズナ，線虫など，すでにゲノム配列が解読されていて，なおかつ遺伝子の配列や機能がよく研究されている種について取り扱っていくということだ．この仮定をおかないと，そもそもデータ処理の時点でショートリードのマッピングができなかったり，モデルが立てられないということになりかねない．とはいうものの，仮定を立てたからといってマッピングの曖昧さは解消されないし，アイソフォームの存在や選択的スプライシングなど複雑な転写メカニズムはいくらでも考えられるので，それらは追々モデルに組み込んでいく．</p>
+
+<h3>注意</h3>
+
+<p>このシリーズの記事で書かれていることはすべて個人的な勉強記録であって，数理的な解釈や導出の厳密性を保証するものではない．勘違いや間違いなどが多分に含まれている可能性があるので，参考にされる際には十分に注意していただきたい．</p>
+
+<h3>このシリーズの目標</h3>
+
+<p>このシリーズの目標（そして個人的な勉強の目標）としては，</p>
+
+<ul>
+<li>CufflinksやRSEMなどのスタンダードとなっている発現量推定の数理的背景を理解する</li>
+<li>発現差異解析(DE)などの複数サンプルにまたがる発現量比較の手法の理解につなげる</li>
+</ul>
+
+
+<p>ことを目標にする．</p>
+
+<h3>記事まとめ</h3>
+
+<ul>
+<li>RNA-Seqの数理―生成モデルによる発現量推定（1）（まだ）
+
+<ul>
+<li>Count Based ModelからRPKMを導出する</li>
+</ul>
+</li>
+<li>RNA-Seqの数理―生成モデルによる発現量推定（2）（まだ）
+
+<ul>
+<li>有効配列長とフラグメント長の分布の関係</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>参考</h3>
+
+<ul>
+<li>(Cufflinksの論文)<a href="http://www.nature.com/nbt/journal/v28/n5/full/nbt.1621.html">Transcript assembly and quantification by RNA-Seq reveals unannotated transcripts and isoform switching during cell differentiation : Nature Biotechnology : Nature Publishing Group</a></li>
+<li>(RSEMの論文)<a href="http://www.biomedcentral.com/1471-2105/12/323">BMC Bioinformatics | Full text | RSEM: accurate transcript quantification from RNA-Seq data with or without a reference genome</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ディレクトリの書き込み権限が無いとファイルの消去ができない]]></title>
@@ -1424,80 +1483,6 @@
 <p>ちなみに，色も付きます（ディレクトリと実行ファイル）．以上．お疲れ様でした．</p>
 
 <p><img src="http://dl.dropboxusercontent.com/u/142306/b/tree.png" alt="" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[zaw.zshを使って移動したことのあるディレクトリに一発で飛ぶ]]></title>
-    <link href="http://yagays.github.io/blog/2013/05/20/zaw-zsh/"/>
-    <updated>2013-05-20T01:47:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/05/20/zaw-zsh</id>
-    <content type="html"><![CDATA[<p>「zsh anything.el-like widget」通称zawは，Emacsのanything.elみたいなインターフェイスでzshを操作できるという拡張プラグインだ．本来は様々な操作に対応しているのだが，とりあえずディレクトリ操作だけでも恐ろしいほどに便利なので，anything.elを知らない人でも導入して損はないと思う．ここでは以下の記事を参考に，zaw.zshの設定をしてみた．</p>
-
-<ul>
-<li><a href="https://github.com/zsh-users/zaw">zsh-users/zaw · GitHub</a></li>
-<li><a href="http://u7fa9.org/memo/HEAD/archives/2011-02/2011-02-22_1.rst">zsh でも anything.el っぽいの - memo</a></li>
-<li><a href="http://shibayu36.hatenablog.com/entry/20120130/1327937835">zaw.zshで最近移動したディレクトリに移動する - $shibayu36->blog;</a></li>
-</ul>
-
-
-<h3>1. zawをダウンロードする</h3>
-
-<p>今回は.zshというディレクトリを$HOME以下に作成して，そこでgit cloneを実行する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ mkdir .zsh
-</span><span class='line'>$ cd .zsh
-</span><span class='line'>$ git clone git://github.com/zsh-users/zaw.git</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>2. .zshrcを設定する</h3>
-
-<p>以下の内容を.zshrcに書き込む．sourceでzaw.zshを読み込む部分は，先ほどダウンロードしたzawディレクトリを指定する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># zaw.zsh
-</span><span class='line'># http://shibayu36.hatenablog.com/entry/20120130/1327937835
-</span><span class='line'>autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-</span><span class='line'>add-zsh-hook chpwd chpwd_recent_dirs
-</span><span class='line'>zstyle ':chpwd:*' recent-dirs-max 5000
-</span><span class='line'>zstyle ':chpwd:*' recent-dirs-default yes
-</span><span class='line'>zstyle ':completion:*' recent-dirs-insert both
-</span><span class='line'>
-</span><span class='line'>source /home/yag_ays/.zsh/zaw/zaw.zsh
-</span><span class='line'>zstyle ':filter-select' case-insensitive yes # 絞り込みをcase-insensitiveに
-</span><span class='line'>bindkey '^@' zaw-cdr # zaw-cdrをbindkey</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>3. .zshrcを読み込む</h3>
-
-<p>最後に.zshrcを再度読み込んでエラーがでなければ完了．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ source .zshrc</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>使い方</h3>
-
-<p>C-@（Control-@）を押すと以下のように，直近で移動したディレクトリの一覧が表示される．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/zaw1.png" alt="" /></p>
-
-<p>この状態でキーワードを入力すると，マッチしたディレクトリだけを選ぶこともできる．深い階層のディレクトリでも名前さえ覚えていれば一発で飛ぶことができるので，非常に便利だ．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/zaw2.png" alt="" /></p>
 ]]></content>
   </entry>
   

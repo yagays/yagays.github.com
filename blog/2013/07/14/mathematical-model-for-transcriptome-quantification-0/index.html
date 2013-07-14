@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>思わずReblogしたくなるような博物画が見られるiPhone/iPadアプリ「MAU M&L 博物図譜」 - Wolfeyes Bioinformatics beta</title>
+  <title>RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.io/blog/2013/04/29/mau-natural-history">
+  <link rel="canonical" href="http://yagays.github.io/blog/2013/07/14/mathematical-model-for-transcriptome-quantification-0">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -113,7 +113,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">思わずReblogしたくなるような博物画が見られるiPhone/iPadアプリ「MAU M&L 博物図譜」</h1>
+      <h1 class="entry-title">RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ</h1>
     
     
       <p class="meta">
@@ -129,36 +129,62 @@
   
 
 
-<time datetime="2013-04-29T09:51:00+09:00" pubdate data-updated="true">Apr 29<span>th</span>, 2013</time>
+<time datetime="2013-07-14T10:43:00+09:00" pubdate data-updated="true">Jul 14<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><div class="sticky-itslink"><a href="https://itunes.apple.com/jp/app/mau-m-l-bo-wu-tu-pu/id545593250?mt=8&uo=4" rel="nofollow" target="_blank"><img src="http://a883.phobos.apple.com/us/r1000/094/Purple/v4/d5/d6/e1/d5d6e1d8-a47a-c2b0-1137-967ef7e98572/mzl.qqyzntlx.100x100-75.png" style="border-style:none;float:left;margin:5px;" alt="MAU M&amp;L 博物図譜" title="MAU M&amp;L 博物図譜" /></a><div class="sticky-itslinktext"><a href="https://itunes.apple.com/jp/app/mau-m-l-bo-wu-tu-pu/id545593250?mt=8&uo=4" rel="nofollow" target="_blank">MAU M&amp;L 博物図譜</a><br />Musashino Art University<br />価格： 0円<br /> <a href="https://itunes.apple.com/jp/app/mau-m-l-bo-wu-tu-pu/id545593250?mt=8&uo=4" rel="nofollow" target="_blank"><img src="http://ax.phobos.apple.com.edgesuite.net/ja_jp/images/web/linkmaker/badge_appstore-sm.gif" alt ="iTunesで見る" style="border-style:none;" /></a><br /><span style="font-size:xx-small;">posted with <a href="http://sticky.linclip.com/linkmaker/" target="_blank">sticky</a> on 2013.4.29</span><br style="clear:left;" /></div></div>
+<div class="entry-content"><p>この「RNA-Seqの数理」シリーズでは，次世代シーケンサを用いたRNA-Seqにおける発現量推定の数理モデルを理解することを目的とする．</p>
 
+<p>副題にある「生成モデル」とは，観測データの生成過程を確率的にモデル化し，データが与えられたときの事後確率を用いて分類したいクラスや予測したい値を推定する方法のことを指す．今回のRNA-Seqにおける生成モデルでは，次世代シーケンサで読み取られた配列が，どのようにして細胞内の数あるトランスクリプトームから実験によって読み取られて観測されたかという一連の流れを，生成モデルとして表現する．そこから確率的なもっともらしさやパラメータの推定によって，トランスクリプトームの発現量を求める．</p>
 
-<p></p>
+<h3>このシリーズについて</h3>
 
-<p>久しぶりに面白いiPad Appで遊んだので，ここで少し紹介したいと思う．前々からiPadには入れてたものの，じっくり見る機会が無くて今の今まで放置していたのが非常に悔やまれるくらい，とても良い作品だった．</p>
+<p>次世代シーケンサによるRNA-Seqの発現量推定といっても，実験対象は大腸菌レベルから人に至るまでゲノムサイズや遺伝子数は多種多様であり，実験機器も各メーカーごとに独自に発展させてきた．しかしながら，RNA-Seqはトランスクリプトームの配列を超並列に大量に解読するという点で，基本的な原理は生物種やプラットフォームに依存しない．まずはこの共通部分に関して単純なモデルを作成し，そこから個別の生物の特性や実験方法に合わせた複雑なモデルを構築していく．</p>
 
-<p>この「MAU M&amp;L 博物図譜」は，武蔵野美術大学 美術館・図書館が所蔵する博物図譜の貴重な資料を，iPadで自由に鑑賞することのできるアプリケーションだ．収録されている図譜は主に17世紀から19世紀に描かれたものであり，これは西洋で航海技術が発達して任務を受けた探検家やナチュラリストなどの博物学者が世界中に進出していった時代に，未開の地に生きる動植物や自然の景観を観察・記録したものである．描かれる対象は花や果物などの植物に始まり，昆虫，鳥，哺乳類，はたまた海に漂うクラゲや無脊椎動物に至るまで，実に多岐にわたる．その形や色，質感までもが細部に至るまで非常に緻密に描かれ，学術的価値とともに芸術的価値をも持つのが，この中に収録されている博物図譜の数々である．</p>
+<p>今回のシリーズは前提条件として，発現量推定の対象とする種をゲノム既知なモデル生物に限定する．つまり，ヒトやマウス，シロイヌナズナ，線虫など，すでにゲノム配列が解読されていて，なおかつ遺伝子の配列や機能がよく研究されている種について取り扱っていくということだ．この仮定をおかないと，そもそもデータ処理の時点でショートリードのマッピングができなかったり，モデルが立てられないということになりかねない．とはいうものの，仮定を立てたからといってマッピングの曖昧さは解消されないし，アイソフォームの存在や選択的スプライシングなど複雑な転写メカニズムはいくらでも考えられるので，それらは追々モデルに組み込んでいく．</p>
 
-<p>このアプリの優れた点の一つに，武蔵野美術大学の客員教授である荒俣宏氏による博物図譜の見方や楽しみ方が解説された映像を見ることができるということがある．荒俣氏の解説によれば，博物図譜を眺めるということは，美術的にも優れた名画を鑑賞するといったことだけではなく，過去の学者や画家たちがいかに自然を観察し，工夫を凝らして図譜として表現してきたかといった歴史的な背景までも読み取ることができるということである．そこには，博物学の歩んできた道のりに加えて，東洋と西洋の自然観の違いや時代ごとの絵画への要請などが含まれている．荒俣氏はこれを「視覚の冒険」であると表現する．</p>
+<h3>注意</h3>
 
-<p>実際にこのアプリを操作して博物図譜を眺めていると，本当に未知の世界を冒険しているかのような感覚になる．この驚きや喜びは，TVやYouTubeなどで鮮明な映像を見ることのできる現代においても，まったく色褪せていない．それはまさに，過去の探検家や画家の目を通して自然を見ることの興奮なのだ．彼らの「ものの見方」を借りて，動物や植物を観察する．そこには，現在では味わうことのできない様々な発見と知的興奮に満ちあふれている．</p>
+<p>このシリーズの記事で書かれていることはすべて個人的な勉強記録であって，数理的な解釈や導出の厳密性を保証するものではない．勘違いや間違いなどが多分に含まれている可能性があるので，参考にされる際には十分に注意していただきたい．</p>
 
-<br/>
+<h3>このシリーズの目標</h3>
 
-
-<p>最後に，<strong>iPhoneやiPadを持っている方は，ぜひ一度インストールして博物図譜の数々を眺めてみてほしい．そして，何でもいいので収録されている図譜を画面に表示させたら，めいっぱいピンチアウトして画面を拡大してほしい．</strong>この博物図譜のアーカイブの高解像度に驚くと同時に，信じられないほど高精細で書き込まれた生物画に圧倒されることだろう．鳥の羽毛の1本1本から，イカの斑点模様，クラゲの触手の細かな描写など，例を挙げればキリがない．とにもかくにも一度やってみないと分からない楽しさなので，ぜひ実際に手にとって体験していただきたい．</p>
-
-<h4>参考</h4>
+<p>このシリーズの目標（そして個人的な勉強の目標）としては，</p>
 
 <ul>
-<li><a href="http://www.musabi.ac.jp/exhibit/10_hakubutsu/">博物図譜とデジタルアーカイブ: top</a></li>
-<li><a href="http://mauml.musabi.ac.jp/museum/archives/1459">博物図譜とデジタルアーカイブ V | 武蔵野美術大学 美術館</a></li>
+<li>CufflinksやRSEMなどのスタンダードとなっている発現量推定の数理的背景を理解する</li>
+<li>発現差異解析(DE)などの複数サンプルにまたがる発現量比較の手法の理解につなげる</li>
+</ul>
+
+
+<p>ことを目標にする．</p>
+
+<h3>記事まとめ</h3>
+
+<ul>
+<li>RNA-Seqの数理―生成モデルによる発現量推定（1）（まだ）
+
+<ul>
+<li>Count Based ModelからRPKMを導出する</li>
+</ul>
+</li>
+<li>RNA-Seqの数理―生成モデルによる発現量推定（2）（まだ）
+
+<ul>
+<li>有効配列長とフラグメント長の分布の関係</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>参考</h3>
+
+<ul>
+<li>(Cufflinksの論文)<a href="http://www.nature.com/nbt/journal/v28/n5/full/nbt.1621.html">Transcript assembly and quantification by RNA-Seq reveals unannotated transcripts and isoform switching during cell differentiation : Nature Biotechnology : Nature Publishing Group</a></li>
+<li>(RSEMの論文)<a href="http://www.biomedcentral.com/1471-2105/12/323">BMC Bioinformatics | Full text | RSEM: accurate transcript quantification from RNA-Seq data with or without a reference genome</a></li>
 </ul>
 
 </div>
@@ -183,12 +209,12 @@
   
 
 
-<time datetime="2013-04-29T09:51:00+09:00" pubdate data-updated="true">Apr 29<span>th</span>, 2013</time>
+<time datetime="2013-07-14T10:43:00+09:00" pubdate data-updated="true">Jul 14<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/ipad/'>iPad</a>
+    <a class='category' href='/blog/categories/rna-seq/'>RNA-Seq</a>
   
 </span>
 
@@ -196,9 +222,9 @@
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2013/04/29/mau-natural-history/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2013/07/14/mathematical-model-for-transcriptome-quantification-0/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/04/29/mau-natural-history/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/04/29/mau-natural-history/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/07/14/mathematical-model-for-transcriptome-quantification-0/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/07/14/mathematical-model-for-transcriptome-quantification-0/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -219,14 +245,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2013/04/25/2777-suppl-pdf/" title="Previous Post:
-        PDF形式で2777ページにわたってFASTA配列が貼られ続けている論文のsupplementary">&laquo; PDF形式で2777ページにわたってFASTA配列が貼られ続けている論文のsupplementary</a></li>
+        href="/blog/2013/07/13/directory-permission/" title="Previous Post:
+        ディレクトリの書き込み権限が無いとファイルの消去ができない">&laquo; ディレクトリの書き込み権限が無いとファイルの消去ができない</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2013/05/01/review-complications/"
-        title="Next Post: 「コード・ブルー―外科研修医救急コール」読了">「コード・ブルー―外科研修医救急コール」読了
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -406,8 +428,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.io/blog/2013/04/29/mau-natural-history/';
-        var disqus_url = 'http://yagays.github.io/blog/2013/04/29/mau-natural-history/';
+        var disqus_identifier = 'http://yagays.github.io/blog/2013/07/14/mathematical-model-for-transcriptome-quantification-0/';
+        var disqus_url = 'http://yagays.github.io/blog/2013/07/14/mathematical-model-for-transcriptome-quantification-0/';
         var disqus_script = 'embed.js';
       
     (function () {
