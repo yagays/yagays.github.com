@@ -84,6 +84,7 @@
         <ul class="nav">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
+<!--   <li><a href="/about">About</a></li> -->
 </ul>
 
 
@@ -170,7 +171,7 @@
 
 <h3>RPKMと生成モデルとの関係</h3>
 
-<p>このように，RPKMはマッピングされた配列の本数を数えるという単純な方法で発現量を推定している．一方で，これから考えていくことになる生成モデルによる発現量推定は，データが観測される事象を確率的に推定することでデータが与えられたときのトランスクリプトームの発現量というものを求める．これらは一見して全く違うもののように見えるのだが，<strong>実際には最も単純な生成モデルはRPKMと基本的な考え方が同じになる</strong>．つまり，RPKMも生成モデルによる推定方法も，発現量はマッピングされたショートリードの本数と，転写物の長さおよびショートリードの総数の逆数によって決まるということだ．</p>
+<p>このように，RPKMはマッピングされた配列の本数を数えるという単純な方法で発現量を推定している．一方で，これから考えていくことになる生成モデルによる発現量推定は，データが観測される事象を確率的に推定することでデータが与えられたときのトランスクリプトームの発現量というものを求める．これらは一見して全く違うもののように見えるのだが，<strong>実際には最も単純な生成モデルはRPKMと基本的な考え方が同じになる</strong>．つまり，RPKMも単純な生成モデルによる推定方法も，発現量はマッピングされたショートリードの本数と，転写物の長さおよびマッピングされたショートリードの総数の逆数によって決まるということだ．</p>
 
 <p>それを確かめるために，次回はCount Based Modelと呼ばれる生成モデルを作って発現量推定を定式化し，それがRPKMの計算式と同じ意味を持つということを示してみよう．</p>
 
@@ -246,6 +247,10 @@
       
       <li><a href="/blog/archives">Blog Archives</a></li>
       
+      <li class="next"><a class="basic-alignment right" href="/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/"
+        title="Next Post: RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM">RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM
+        &raquo;</a></li>
+      
     </ul>
   </footer>
 </article>
@@ -287,6 +292,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/">RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/">RNA-Seqの数理―生成モデルによる発現量推定（1）RNA-Seqの発現量推定とRPKM</a>
       </li>
     
@@ -322,10 +331,6 @@
         <a href="/blog/2013/07/02/blu-ray-zero-dark-thirty/">"Zero Dark Thirty"のBlu-rayを買った</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/07/01/review-kitagawa-be-yourself-and-carry-on/">「世界基準で夢をかなえる私の勉強法」読了</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -345,7 +350,7 @@
 <li class='category'><a href='/blog/categories/perl/'>Perl (1)</a></li>
 <li class='category'><a href='/blog/categories/presentation/'>Presentation (1)</a></li>
 <li class='category'><a href='/blog/categories/python/'>Python (2)</a></li>
-<li class='category'><a href='/blog/categories/rna-seq/'>RNA-Seq (3)</a></li>
+<li class='category'><a href='/blog/categories/rna-seq/'>RNA-Seq (4)</a></li>
 <li class='category'><a href='/blog/categories/reading/'>Reading (21)</a></li>
 <li class='category'><a href='/blog/categories/soapdenovo2/'>SOAPdenovo2 (3)</a></li>
 <li class='category'><a href='/blog/categories/slide/'>Slide (1)</a></li>

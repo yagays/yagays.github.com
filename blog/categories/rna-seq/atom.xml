@@ -4,7 +4,7 @@
   <title><![CDATA[Category: RNA-Seq | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/rna-seq/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-07-15T08:45:34+09:00</updated>
+  <updated>2013-07-15T22:42:11+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,142 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM]]></title>
+    <link href="http://yagays.github.io/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/"/>
+    <updated>2013-07-16T00:00:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2</id>
+    <content type="html"><![CDATA[<p>まとめ：<a href="http://yagays.github.io/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/">RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ - Wolfeyes Bioinformatics beta</a></p>
+
+<p>前回：<a href="http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/">RNA-Seqの数理―生成モデルによる発現量推定（1）RNA-Seqの発現量推定とRPKM - Wolfeyes Bioinformatics beta</a></p>
+
+<h3>Count Based Model</h3>
+
+<p>今回はCount Based Modelと呼ばれる最も基本的な生成モデルを作って発現量推定を定式化し，それがRPKMの計算式と同じことを示してみよう．なお，以降の内容はPachter 2011をベースにしている．</p>
+
+<blockquote><p>Models for transcript quantification from RNA-Seq. q-bio.GN, (2011).</p>
+
+<p><a href="http://arxiv.org/abs/1104.3889v2">http://arxiv.org/abs/1104.3889v2</a></p></blockquote>
+
+<h3>Count Based Modelにおける仮定</h3>
+
+<p>Count based Modelは非常にシンプルなモデルだ．単純化のために以下のような条件を置いて，RNA-Seqの発現量推定をモデル化している．</p>
+
+<ul>
+<li>NGSで得られるショートリードはシングルエンド</li>
+<li>ショートリードはただ1箇所だけにマッピングされる</li>
+<li>すべての転写物はただ1つのアイソフォームを持つ</li>
+</ul>
+
+
+<p>簡単に言えば，遺伝子の構造が単純な生物において初期のNGS解析をしていると思えばいいだろう．現実的にはこのような状態というのはあり得ないが，転写物からショートリードが生成されるという核となる部分はしっかりと残っている．</p>
+
+<h3>Count Based Modelの生成過程</h3>
+
+<p>生成モデルというものは，まず初めに観測データであるショートリードの生成過程を立てる．今回のCount Based Modelでは</p>
+
+<blockquote><p><strong>トランスクリプトーム全体からある転写物が選ばれ，任意の開始点からショートリードがシーケンスされた</strong></p></blockquote>
+
+<p>と考える．<a href="http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/">前回の記事で概要を示した</a>ように，RNA-Seqの実験プロトコルは幾つかの複雑な段階を踏んでショートリードをシーケンスしていた．しかしながら，その多くの段階は偶然の連続によって，たまたま転写物がフラグメントとしてある部分から断片化され，たまたまシーケンスされて配列として出力されたとみなすことができる．これらを確率的な事象としてみなすことによって，生成モデルとして確率的な視点からシーケンスデータが生じた背景にあるRNA-Seqの発現量というものを推定することができる．</p>
+
+<br/>
+
+
+<p>さて，長ったらしい文章での前置きはここまでにして，ここから具体的に生成過程を数式に落としこんでいく．まず最初にこれまで言葉で説明してきたものを変数や集合として定義をし，事象の起こりやすさを尤度として表現する．概念と数式の対応関係が少し分かりにくいかもしれないが，もし要領が掴めないようならこの後に書いてある具体例のところの図も参照しつつ丁寧に追ってほしい．</p>
+
+<h3>尤度の定式化</h3>
+
+<p>転写物の集合![T ](http://chart.apis.google.com/chart?cht=tx&chl=T+)に含まれる転写物![t ](http://chart.apis.google.com/chart?cht=tx&chl=t+)は，![\tilde{l_t} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctilde%7Bl_t%7D+)の有効配列長を持ち，![\sum_{t\in T} \rho_t = 1 ](http://chart.apis.google.com/chart?cht=tx&chl=%5Csum_%7Bt%5Cin+T%7D+%5Crho_t+%3D+1+)となるような![\rho_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Crho_t+)という相対的な発現量を持つ．RNA-Seqによって得られたショートリードを![f ](http://chart.apis.google.com/chart?cht=tx&chl=f+)，その全体を![F ](http://chart.apis.google.com/chart?cht=tx&chl=F+)とし，転写物![t ](http://chart.apis.google.com/chart?cht=tx&chl=t+)にマッピングされたショートリードの集合を![F_t ](http://chart.apis.google.com/chart?cht=tx&chl=F_t+)とする．</p>
+
+<p>このとき，ショートリード![f ](http://chart.apis.google.com/chart?cht=tx&chl=f+)が転写物![t ](http://chart.apis.google.com/chart?cht=tx&chl=t+)から生じる確率は，以下の式で表すことができる．</p>
+
+<p>![p(f\in t)= \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_t}} ](http://chart.apis.google.com/chart?cht=tx&chl=p%28f%5Cin+t%29%3D+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_t%7D%7D+)</p>
+
+<p>次に，選ばれた転写物のどの位置から配列がシーケンスされるかはランダムに選ばれるため，この確率![p(f\in t) ](http://chart.apis.google.com/chart?cht=tx&chl=p%28f%5Cin+t%29+)に![\frac{1}{\tilde{l_t}} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+)を掛けあわせた値が，ショートリード![f ](http://chart.apis.google.com/chart?cht=tx&chl=f+)が転写物![t ](http://chart.apis.google.com/chart?cht=tx&chl=t+)のある開始点から生成される確率となる．</p>
+
+<p>このとき，観測されたショートリード全体![F ](http://chart.apis.google.com/chart?cht=tx&chl=F+)の尤度は，![\rho_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Crho_t+)の関数として以下のように表される．</p>
+
+<p>![\mathcal{L}(\rho)= \prod<em>{t\in T}\prod</em>{f\in F_t} \bigg( \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_r}}\frac{1}{\tilde{l_t}} \bigg) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod%3Cem%3E%7Bt%5Cin+T%7D%5Cprod%3C%2Fem%3E%7Bf%5Cin+F_t%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29+)</p>
+
+<p>そして，転写物![t ](http://chart.apis.google.com/chart?cht=tx&chl=t+)にマッピングされたショートリードの本数![X_t ](http://chart.apis.google.com/chart?cht=tx&chl=X_t+)を使って，以下のように書き換えられる．</p>
+
+<p>![\mathcal{L}(\rho)= \prod<em>{t\in T} \bigg( \frac{\rho_t \tilde{l_t}}{\sum</em>{r\in T}\rho_r \tilde{l_r}}\frac{1}{\tilde{l_t}} \bigg)<sup>{X_t}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod%3Cem%3E%7Bt%5Cin+T%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum%3C%2Fem%3E%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29%3Csup%3E%7BX_t%7D%3C%2Fsup%3E+)</p>
+
+<p>これが，Count Based Modelにおける尤度である．</p>
+
+<h3>具体例を用いて尤度を導出する</h3>
+
+<h4>確率の考え方</h4>
+
+<p>といっても，これだけでは何のことか分からないので，具体例を使って詳しく解説していこう．単純化のために，3つの転写物![t_1, t_2, t_3 ](http://chart.apis.google.com/chart?cht=tx&chl=t_1%2C+t_2%2C+t_3+)と6本のショートリード![f_1,f_2\dots,f_6 ](http://chart.apis.google.com/chart?cht=tx&chl=f_1%2Cf_2%5Cdots%2Cf_6+)が以下のようにマッピングされたという状態を想定する．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/generative-models_1.png" alt="" /></p>
+
+<p>3つの転写物にはそれぞれ発現量を持っている．例えば，![t_1 ](http://chart.apis.google.com/chart?cht=tx&chl=t_1+)は20，![t_2 ](http://chart.apis.google.com/chart?cht=tx&chl=t_2+)は5，![t_3 ](http://chart.apis.google.com/chart?cht=tx&chl=t_3+)は15という具合だ．今回は発現量を確率値として考えるため，![\frac{20}{40},\frac{5}{40},\frac{15}{40}, ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B20%7D%7B40%7D%2C%5Cfrac%7B5%7D%7B40%7D%2C%5Cfrac%7B15%7D%7B40%7D%2C+)のように相対値として表す．これが![\rho_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Crho_t+)であり，総和が1になる理由だ．この![\rho_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Crho_t+)は今回の最尤推定法で最終的に求めたい値である．</p>
+
+<p>さて，ショートリード![f_1 ](http://chart.apis.google.com/chart?cht=tx&chl=f_1+)が転写物![t_1 ](http://chart.apis.google.com/chart?cht=tx&chl=t_1+)から生成される確率は![p(f\in t)= \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_t}} ](http://chart.apis.google.com/chart?cht=tx&chl=p%28f%5Cin+t%29%3D+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_t%7D%7D+)である．これはある転写物![t ](http://chart.apis.google.com/chart?cht=tx&chl=t+)の長さと相対的な発現量を掛けあわせたものを，全体で足しあわせた値で割っており，ただの発現量の比率だけでなく転写物の長さも関係しているということを表している．ランダムに一つ選んでシーケンスするということを考えれば，長い転写物のほうが選ばれやすいのは明らかだろう．この式は，そういった意味を数式として厳密に表現しているだけなのだ．</p>
+
+<p>次に，転写物![t ](http://chart.apis.google.com/chart?cht=tx&chl=t+)が選ばれた後に，今度はその転写物のどの位置の配列が読まれたかということを考える．これは端っこの方の配列が読まれたのか真ん中の方の配列が読まれたのかといった情報だ．今回のモデルでは，シーケンスされる場所は場所に依存せず一様なランダムで決まるとしているので，単純に配列の長さ（有効配列長）で割り算をしている．ちなみに，このモデル全体で使用されている有効配列長![\tilde{l_t} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctilde%7Bl_t%7D+)に関しては，詳しく話すと長くなるので別の機会に詳しく解説する．ショートリードの長さを![m ](http://chart.apis.google.com/chart?cht=tx&chl=m+)としたときの![\tilde{l_t}=l_t - m + 1 ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctilde%7Bl_t%7D%3Dl_t+-+m+%2B+1+)で表されるのだが，今のところ転写物の配列の長さだと考えてもらって構わない．</p>
+
+<p>そして，これを![f_1 ](http://chart.apis.google.com/chart?cht=tx&chl=f_1+)から![f_6 ](http://chart.apis.google.com/chart?cht=tx&chl=f_6+)まですべて掛けあわせることで，今回得られたショートリードが生成される確率というものを求めることができる．</p>
+
+<p>![\mathcal{L}(\rho)=\frac{p(f_1\in t_1)}{\tilde{l_1}}\times\frac{p(f_2\in t_1)}{\tilde{l_1}}\times\frac{p(f_3\in t_1)}{\tilde{l_1}} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D%5Cfrac%7Bp%28f_1%5Cin+t_1%29%7D%7B%5Ctilde%7Bl_1%7D%7D%5Ctimes%5Cfrac%7Bp%28f_2%5Cin+t_1%29%7D%7B%5Ctilde%7Bl_1%7D%7D%5Ctimes%5Cfrac%7Bp%28f_3%5Cin+t_1%29%7D%7B%5Ctilde%7Bl_1%7D%7D+)![\times\frac{p(f_4\in t_2)}{\tilde{l_2}}\times\frac{p(f_5\in t_2)}{\tilde{l_2}}\times\frac{p(f_6\in t_3)}{\tilde{l_3}} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctimes%5Cfrac%7Bp%28f_4%5Cin+t_2%29%7D%7B%5Ctilde%7Bl_2%7D%7D%5Ctimes%5Cfrac%7Bp%28f_5%5Cin+t_2%29%7D%7B%5Ctilde%7Bl_2%7D%7D%5Ctimes%5Cfrac%7Bp%28f_6%5Cin+t_3%29%7D%7B%5Ctilde%7Bl_3%7D%7D+)</p>
+
+<p>この確率![\mathcal{L}(\rho) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D%28%5Crho%29+)が尤度と呼ばれる．尤度とは「もっともらしさ」という意味だ．上で仮定したような![f_1,f_2\dots,f_6 ](http://chart.apis.google.com/chart?cht=tx&chl=f_1%2Cf_2%5Cdots%2Cf_6+)のショートリードのデータが実際に手元に得られたのだから，それが起こる確率が高かったに違いない，ということを尤度では考えている．</p>
+
+<h4>尤度式の展開</h4>
+
+<p>では次に，この式をもう少し綺麗にしていこう．まずは2行目で転写物ごとに式をまとめ，3行目ですべての転写物を一つの式で表している．そして最後に![p(f\in t) ](http://chart.apis.google.com/chart?cht=tx&chl=p%28f%5Cin+t%29+)を置き換えると，先ほどの![\mathcal{L}(\rho)= \prod<em>{t\in T}\prod</em>{f\in F_t} \bigg( \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_r}}\frac{1}{\tilde{l_t}} \bigg) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod%3Cem%3E%7Bt%5Cin+T%7D%5Cprod%3C%2Fem%3E%7Bf%5Cin+F_t%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29+)まで導出することができる．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/generative-models_2.png" alt="" /></p>
+
+<p>そして最後のまとめとして，転写物ごとにマッピングされた配列の生成確率というのは同じであることを利用して，![X_t ](http://chart.apis.google.com/chart?cht=tx&chl=X_t+)でまとめる．
+つまり，![p(f_1\in t_1) =  p(f_2\in t_1) =  p(f_3\in t_1)](http://chart.apis.google.com/chart?cht=tx&chl=p%28f_1%5Cin+t_1%29+%3D++p%28f_2%5Cin+t_1%29+%3D++p%28f_3%5Cin+t_1%29)なので，![p(f_1\in t_1) \times p(f_2\in t_1) \times p(f_3\in t_1) = (p(f\in t_1))<sup>{X_1}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=p%28f_1%5Cin+t_1%29+%5Ctimes+p%28f_2%5Cin+t_1%29+%5Ctimes+p%28f_3%5Cin+t_1%29+%3D+%28p%28f%5Cin+t_1%29%29%3Csup%3E%7BX_1%7D%3C%2Fsup%3E+)と変形している．こうすることにより，![\mathcal{L}(\rho)= \prod<em>{t\in T} \bigg( \frac{\rho_t \tilde{l_t}}{\sum</em>{r\in T}\rho_r \tilde{l_r}}\frac{1}{\tilde{l_t}} \bigg)<sup>{X_t}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod%3Cem%3E%7Bt%5Cin+T%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum%3C%2Fem%3E%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29%3Csup%3E%7BX_t%7D%3C%2Fsup%3E+)となる．</p>
+
+<h3>尤度を最大にするパラメータを解析的に求める(最尤推定)</h3>
+
+<p>では，数式として表された尤度を最大化する値を求めよう．まずは上の式を少し整理するところから始める．![\alpha_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_t+)という新たな変数を用意して![\rho_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Crho_t+)を![\alpha_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_t+)に置き換える．</p>
+
+<p>![\alpha_t = p(f\in t)= \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_t}} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_t+%3D+p%28f%5Cin+t%29%3D+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_t%7D%7D+)</p>
+
+<p>この![\alpha_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_t+)を用いて，先ほどの尤度式を書き換えると</p>
+
+<p>![\mathcal{L}(\alpha_t)=\prod<em>{t\in T}\bigg( \frac{\alpha_t}{\tilde{l_t}}\bigg)<sup>{X_t}</sup> \propto \prod</em>{t\in T} {\alpha_t}<sup>{X_t}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D%28%5Calpha_t%29%3D%5Cprod%3Cem%3E%7Bt%5Cin+T%7D%5Cbigg%28+%5Cfrac%7B%5Calpha_t%7D%7B%5Ctilde%7Bl_t%7D%7D%5Cbigg%29%3Csup%3E%7BX_t%7D%3C%2Fsup%3E+%5Cpropto+%5Cprod%3C%2Fem%3E%7Bt%5Cin+T%7D+%7B%5Calpha_t%7D%3Csup%3E%7BX_t%7D%3C%2Fsup%3E+)</p>
+
+<p>となる．ここで，尤度式の変数が![\alpha_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_t+)になっていることに注意．最尤推定の目的としては尤度を最大化する![\alpha_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_t+)を求めたいだけなので，関係ない![l_t ](http://chart.apis.google.com/chart?cht=tx&chl=l_t+)は消している．</p>
+
+<p>そして，この尤度を最大にする![\alpha_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_t+)をラグランジュの未定乗数法を用いて求めると，![\hat{\alpha_t} = \frac{X_t}{N} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Chat%7B%5Calpha_t%7D+%3D+%5Cfrac%7BX_t%7D%7BN%7D+)となる．</p>
+
+<p>このときの![\rho_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Crho_t+)は![\rho_t = \frac{\alpha_t / \tilde{l_t}}{\sum_{r\in T} \alpha_t / \tilde{l_t}} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Crho_t+%3D+%5Cfrac%7B%5Calpha_t+%2F+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D+%5Calpha_t+%2F+%5Ctilde%7Bl_t%7D%7D+)で表されるので，先ほど求めた![\hat{\alpha_t} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Chat%7B%5Calpha_t%7D+)を代入して，</p>
+
+<p>![\hat{\rho_t} = \frac{X_t}{N} \cdot \frac{1}{\tilde{l_t}} \cdot \bigg( \frac{1}{\sum_{r\in T}\frac{X_r}{N l_r}} \bigg) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Chat%7B%5Crho_t%7D+%3D+%5Cfrac%7BX_t%7D%7BN%7D+%5Ccdot+%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Ccdot+%5Cbigg%28+%5Cfrac%7B1%7D%7B%5Csum_%7Br%5Cin+T%7D%5Cfrac%7BX_r%7D%7BN+l_r%7D%7D+%5Cbigg%29+)</p>
+
+<p>と表すことができる．これが，Count Based Modelによって求められた発現量![\rho_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Crho_t+)の推定値である．</p>
+
+<h3>Count Based Modelの解析解とRPKMとの関係</h3>
+
+<p>さて，ようやくRPKMとの関連の話に入ることができる．上で求めた![\hat{\rho_t} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Chat%7B%5Crho_t%7D+)の式を少し式変形する．</p>
+
+<p>![\hat{\rho_t} = \frac{X_t}{N} \cdot \frac{1}{\tilde{l_t}} \cdot \bigg( \frac{1}{\sum_{r\in T}\frac{X_r}{N l_r}} \bigg) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Chat%7B%5Crho_t%7D+%3D+%5Cfrac%7BX_t%7D%7BN%7D+%5Ccdot+%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Ccdot+%5Cbigg%28+%5Cfrac%7B1%7D%7B%5Csum_%7Br%5Cin+T%7D%5Cfrac%7BX_r%7D%7BN+l_r%7D%7D+%5Cbigg%29+)</p>
+
+<p>この式をよく見ると，後半の![\bigg( \frac{1}{\sum_{r\in T}\frac{X_r}{N l_r}} \bigg) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cbigg%28+%5Cfrac%7B1%7D%7B%5Csum_%7Br%5Cin+T%7D%5Cfrac%7BX_r%7D%7BN+l_r%7D%7D+%5Cbigg%29+)は全ての転写物に関して計算しているだけなので，ただの定数である．ということで，![\hat{\rho_t} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Chat%7B%5Crho_t%7D+)に関係してくる転写物![t ](http://chart.apis.google.com/chart?cht=tx&chl=t+)の変数だけを抜き出すと，</p>
+
+<p>![\hat{\rho_t} \propto \frac{X_t}{\tilde{l_t} N} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Chat%7B%5Crho_t%7D+%5Cpropto+%5Cfrac%7BX_t%7D%7B%5Ctilde%7Bl_t%7D+N%7D+)</p>
+
+<p>ここに![10<sup>9</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=10%3Csup%3E9%3C%2Fsup%3E+)を掛ければ，まさにRPKMの式![RPKM \  for \  transcript \ t = 10<sup>9</sup> \times\frac{X_t}{l_t N}](http://chart.apis.google.com/chart?cht=tx&chl=RPKM+%5C++for+%5C++transcript+%5C+t+%3D+10%3Csup%3E9%3C%2Fsup%3E+%5Ctimes%5Cfrac%7BX_t%7D%7Bl_t+N%7D)と全く同じ式になっている！！！</p>
+
+<p>ということで，Count Based Modelにおける最尤推定によって求められた解析解から推定される発現量と，マッピングされたショートリードの数だけで計算されたRPKMの発現量は，基本的には同じ計算式によって求められていることがわかった．</p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://arxiv.org/abs/1104.3889v2">[1104.3889v2] Models for transcript quantification from RNA-Seq</a></li>
+<li><a href="http://fgcz-intranet.uzh.ch/publish/BiostatLecture/RNA-seq-quantification.pdf">http://fgcz-intranet.uzh.ch/publish/BiostatLecture/RNA-seq-quantification.pdf</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RNA-Seqの数理―生成モデルによる発現量推定（1）RNA-Seqの発現量推定とRPKM]]></title>
@@ -52,7 +188,7 @@
 
 <h3>RPKMと生成モデルとの関係</h3>
 
-<p>このように，RPKMはマッピングされた配列の本数を数えるという単純な方法で発現量を推定している．一方で，これから考えていくことになる生成モデルによる発現量推定は，データが観測される事象を確率的に推定することでデータが与えられたときのトランスクリプトームの発現量というものを求める．これらは一見して全く違うもののように見えるのだが，<strong>実際には最も単純な生成モデルはRPKMと基本的な考え方が同じになる</strong>．つまり，RPKMも生成モデルによる推定方法も，発現量はマッピングされたショートリードの本数と，転写物の長さおよびショートリードの総数の逆数によって決まるということだ．</p>
+<p>このように，RPKMはマッピングされた配列の本数を数えるという単純な方法で発現量を推定している．一方で，これから考えていくことになる生成モデルによる発現量推定は，データが観測される事象を確率的に推定することでデータが与えられたときのトランスクリプトームの発現量というものを求める．これらは一見して全く違うもののように見えるのだが，<strong>実際には最も単純な生成モデルはRPKMと基本的な考え方が同じになる</strong>．つまり，RPKMも単純な生成モデルによる推定方法も，発現量はマッピングされたショートリードの本数と，転写物の長さおよびマッピングされたショートリードの総数の逆数によって決まるということだ．</p>
 
 <p>それを確かめるために，次回はCount Based Modelと呼ばれる生成モデルを作って発現量推定を定式化し，それがRPKMの計算式と同じ意味を持つということを示してみよう．</p>
 
@@ -102,12 +238,7 @@
 <h3>記事まとめ</h3>
 
 <ul>
-<li>RNA-Seqの数理―生成モデルによる発現量推定（1）（まだ）
-
-<ul>
-<li>Count Based ModelからRPKMを導出する</li>
-</ul>
-</li>
+<li><a href="http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/">RNA-Seqの数理―生成モデルによる発現量推定（1）RNA-Seqの発現量推定とRPKM - Wolfeyes Bioinformatics beta</a></li>
 <li>RNA-Seqの数理―生成モデルによる発現量推定（2）（まだ）
 
 <ul>
