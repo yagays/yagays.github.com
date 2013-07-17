@@ -4,7 +4,7 @@
   <title><![CDATA[Category: RNA-Seq | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/rna-seq/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-07-16T12:05:27+09:00</updated>
+  <updated>2013-07-18T08:39:08+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -117,7 +117,7 @@
 
 <p>![\mathcal{L}(\alpha_t)=\prod<em>{t\in T}\bigg( \frac{\alpha_t}{\tilde{l_t}}\bigg)<sup>{X_t}</sup> \propto \prod</em>{t\in T} {\alpha_t}<sup>{X_t}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D%28%5Calpha_t%29%3D%5Cprod%3Cem%3E%7Bt%5Cin+T%7D%5Cbigg%28+%5Cfrac%7B%5Calpha_t%7D%7B%5Ctilde%7Bl_t%7D%7D%5Cbigg%29%3Csup%3E%7BX_t%7D%3C%2Fsup%3E+%5Cpropto+%5Cprod%3C%2Fem%3E%7Bt%5Cin+T%7D+%7B%5Calpha_t%7D%3Csup%3E%7BX_t%7D%3C%2Fsup%3E+)</p>
 
-<p>となる．ここで，尤度![\mathcal{L} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D+)の変数が![\alpha_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_t+)になっていることに注意．最尤推定の目的としては尤度![\mathcal{L} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D+)を最大化する![\alpha_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_t+)を求めたいだけなので，関係ない![l_t ](http://chart.apis.google.com/chart?cht=tx&chl=l_t+)は消している．</p>
+<p>となる．ここで，尤度![\mathcal{L} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D+)の変数が![\alpha_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_t+)になっていることに注意．最尤推定の目的としては尤度![\mathcal{L} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D+)を最大化する![\alpha_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_t+)を求めたいだけなので，関係ない![\tilde{l_t} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Ctilde%7Bl_t%7D+)は消している．</p>
 
 <p>そして，この尤度を最大にする![\alpha_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_t+)をラグランジュの未定乗数法を用いて求めると，![\hat{\alpha_t} = \frac{X_t}{N} ](http://chart.apis.google.com/chart?cht=tx&chl=%5Chat%7B%5Calpha_t%7D+%3D+%5Cfrac%7BX_t%7D%7BN%7D+)となる．以下の図は，ラグランジュの未定乗数法の導出部分の詳細．</p>
 
@@ -141,7 +141,7 @@
 
 <p>ここに![10<sup>9</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=10%3Csup%3E9%3C%2Fsup%3E+)を掛ければ，まさにRPKMの式![RPKM \  for \  transcript \ t = 10<sup>9</sup> \times\frac{X_t}{l_t N}](http://chart.apis.google.com/chart?cht=tx&chl=RPKM+%5C++for+%5C++transcript+%5C+t+%3D+10%3Csup%3E9%3C%2Fsup%3E+%5Ctimes%5Cfrac%7BX_t%7D%7Bl_t+N%7D)と全く同じ式になっている！！！</p>
 
-<p>ということで，Count Based Modelにおける最尤推定によって求められた解析解から推定される発現量と，マッピングされたショートリードの数だけで計算されたRPKMの発現量は，基本的には同じ計算式によって求められていることが求められた．</p>
+<p>ということで，Count Based Modelにおける最尤推定によって推定される発現量と，マッピングされたショートリードの数だけで計算されたRPKMの発現量は，基本的には同じ計算式によって求めることができることがわかった．</p>
 
 <h3>まとめ</h3>
 
