@@ -4,7 +4,7 @@
   <title><![CDATA[Category: k-mer | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/k-mer/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-07-18T08:39:08+09:00</updated>
+  <updated>2013-07-19T11:48:55+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -212,12 +212,14 @@ KmerGenie</p>
     <link href="http://yagays.github.io/blog/2012/06/06/velvetk/"/>
     <updated>2012-06-06T17:12:00+09:00</updated>
     <id>http://yagays.github.io/blog/2012/06/06/velvetk</id>
-    <content type="html"><![CDATA[<p>VelvetKというスクリプトが公開されたらしい．これはVelvetのアセンブルの際にユーザが指定する必要のあるk-merのkの値を，ゲノムサイズとショートリードのサイズから自動推定するスクリプトのようだ．普通ならばkの値を細かく変えてVelvetを大量に走らせてアセンブル結果を評価するというのが定石だと思うが，もしkの値が自動推定できるなら，そのkの値付近だけを重点的に調べるといったことが出来るので大幅に労力を削減できる．私自身あまりVelvet/Oasesを使った経験が無いのだが，取り敢えず一通り使ってみた．</p>
+    <content type="html"><![CDATA[<p>(追記, 2013/07/18,  Velvetに依らないk-mer推定の記事：<a href="http://yagays.github.io/blog/2013/07/07/genome-assembly-kmergenie/">ゲノムアセンブリにおいて最適なk-merを推定するKmerGenieを試してみた - Wolfeyes Bioinformatics beta</a>)</p>
+
+<p>VelvetKというスクリプトが公開されたらしい．これはVelvetのアセンブルの際にユーザが指定する必要のあるk-merのkの値を，ゲノムサイズとショートリードのサイズから自動推定するスクリプトのようだ．普通ならばkの値を細かく変えてVelvetを大量に走らせてアセンブル結果を評価するというのが定石だと思うが，もしkの値が自動推定できるなら，そのkの値付近だけを重点的に調べるといったことが出来るので大幅に労力を削減できる．私自身あまりVelvet/Oasesを使った経験が無いのだが，取り敢えず一通り使ってみた．</p>
 
 <!-- more -->
 
 
-<h2>インストール</h2>
+<h3>インストール</h3>
 
 <p>インストールは簡単で，Perlスクリプトを落としてくるだけで実行出来る．外部ライブラリの依存が無いのでお手軽．</p>
 
@@ -225,7 +227,7 @@ KmerGenie</p>
 $ wget http://bioinformatics.net.au/velvetk.pl
 </code></p>
 
-<h2>使い方</h2>
+<h3>使い方</h3>
 
 <p>VelvetKでkの推定値を算出するには，</p>
 
@@ -248,7 +250,7 @@ $ perl velvetk.pl --size=1M chr.fasta R1.fastq R2.fastq
 </code>
 とする．</p>
 
-<h2>擬似データで試してみる</h2>
+<h3>擬似データで試してみる</h3>
 
 <p>今回はお手製の擬似データで試してみることにする．</p>
 
@@ -318,17 +320,17 @@ Considered 1000000 reads with lengths 100..100 bp
 <p>```
  上の場合では，k=81が最適とおもわれるkの推定結果となる．</p>
 
-<h2>実はWeb版もある</h2>
+<h3>実はWeb版もある</h3>
 
 <p>ちなみに，ここまで書いておいて難だが，実はVelvetKと同作者が作った簡易版「Velvet Advisor」がWebアプリケーションとして既に存在している．ただ，この簡易版は複数の入力ファイルに対応していないので，使えるケースが制限されている．普通は複数のライブラリを読んでアセンブルするとと思うので，まあ今回のVelvetKで使いやすくなったという感じだろうか．</p>
 
 <p><a href="http://dna.med.monash.edu.au/~torsten/velvet_advisor/">http://dna.med.monash.edu.au/~torsten/velvet_advisor/</a></p>
 
-<h2>まとめ</h2>
+<h3>まとめ</h3>
 
 <p>今回は擬似データを使ってVelvetKを動かしてみたが，これからアセンブルをするという人にとってはパラメータの大雑把な目安となって良いと思う．どれだけの精度で当たるのか不安なところもあるので，実際にVelvetを使ったアセンブルのプロジェクトでVelvetKの推定値がどれだけ当たっているかが知りたいところだけれども，結局目安としてしか使わないのだから，まあ適当でいいんだろう．</p>
 
-<h2>参考資料</h2>
+<h3>参考資料</h3>
 
 <ul>
 <li><a href="http://bioinformatics.net.au/software.velvetk.shtml">http://bioinformatics.net.au/software.velvetk.shtml</a></li>
