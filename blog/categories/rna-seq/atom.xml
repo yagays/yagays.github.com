@@ -4,7 +4,7 @@
   <title><![CDATA[Category: RNA-Seq | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/rna-seq/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-07-22T14:03:55+09:00</updated>
+  <updated>2013-07-22T16:25:39+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -147,11 +147,11 @@
 
 <p>このとき，観測されたショートリード全体![F ](http://chart.apis.google.com/chart?cht=tx&chl=F+)の尤度は，![\rho_t ](http://chart.apis.google.com/chart?cht=tx&chl=%5Crho_t+)の関数として以下のように表される．</p>
 
-<p>![\mathcal{L}(\rho)= \prod<em>{t\in T}\prod</em>{f\in F_t} \bigg( \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_r}}\frac{1}{\tilde{l_t}} \bigg) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod%3Cem%3E%7Bt%5Cin+T%7D%5Cprod%3C%2Fem%3E%7Bf%5Cin+F_t%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29+)</p>
+<p>![\mathcal{L}(\rho)= \prod<em>{t\in T}\prod</em>{f\in F_t} \bigg( \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_r}}\cdot\frac{1}{\tilde{l_t}} \bigg) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod%3Cem%3E%7Bt%5Cin+T%7D%5Cprod%3C%2Fem%3E%7Bf%5Cin+F_t%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Ccdot%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29+)</p>
 
 <p>そして，転写物![t ](http://chart.apis.google.com/chart?cht=tx&chl=t+)にマッピングされたショートリードの本数![X_t ](http://chart.apis.google.com/chart?cht=tx&chl=X_t+)を使って，以下のように書き換えられる．</p>
 
-<p>![\mathcal{L}(\rho)= \prod<em>{t\in T} \bigg( \frac{\rho_t \tilde{l_t}}{\sum</em>{r\in T}\rho_r \tilde{l_r}}\frac{1}{\tilde{l_t}} \bigg)<sup>{X_t}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod%3Cem%3E%7Bt%5Cin+T%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum%3C%2Fem%3E%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29%3Csup%3E%7BX_t%7D%3C%2Fsup%3E+)</p>
+<p>![\mathcal{L}(\rho)= \prod<em>{t\in T} \bigg( \frac{\rho_t \tilde{l_t}}{\sum</em>{r\in T}\rho_r \tilde{l_r}}\cdot\frac{1}{\tilde{l_t}} \bigg)<sup>{X_t}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod%3Cem%3E%7Bt%5Cin+T%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum%3C%2Fem%3E%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Ccdot%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29%3Csup%3E%7BX_t%7D%3C%2Fsup%3E+)</p>
 
 <p>これがCount Based Modelにおける尤度である．</p>
 
@@ -177,12 +177,12 @@
 
 <h4>尤度式の展開</h4>
 
-<p>では次に，この式をもう少し綺麗にしていこう．まずは2行目で転写物ごとに式をまとめ，3行目ですべての転写物を一つの式で表している．そして最後に![p(f\in t) ](http://chart.apis.google.com/chart?cht=tx&chl=p%28f%5Cin+t%29+)を置き換えると，先ほどの![\mathcal{L}(\rho)= \prod<em>{t\in T}\prod</em>{f\in F_t} \bigg( \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_r}}\frac{1}{\tilde{l_t}} \bigg) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod%3Cem%3E%7Bt%5Cin+T%7D%5Cprod%3C%2Fem%3E%7Bf%5Cin+F_t%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29+)まで導出することができる．</p>
+<p>では次に，この式をもう少し綺麗にしていこう．まずは2行目で転写物ごとに式をまとめ，3行目ですべての転写物を一つの式で表している．そして最後に![p(f\in t) ](http://chart.apis.google.com/chart?cht=tx&chl=p%28f%5Cin+t%29+)を置き換えると，先ほどの![\mathcal{L}(\rho)= \prod<em>{t\in T}\prod</em>{f\in F_t} \bigg( \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_r}}\cdot\frac{1}{\tilde{l_t}} \bigg) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod%3Cem%3E%7Bt%5Cin+T%7D%5Cprod%3C%2Fem%3E%7Bf%5Cin+F_t%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Ccdot%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29+)まで導出することができる．</p>
 
 <p><img src="http://dl.dropboxusercontent.com/u/142306/b/generative-models_2.png" alt="" /></p>
 
 <p>そして最後のまとめとして，転写物ごとにマッピングされたショートリードの生成確率というのは同じであることを利用して，![X_t ](http://chart.apis.google.com/chart?cht=tx&chl=X_t+)でまとめる．
-つまり，ショートリードの配列は生成確率に依存せず![p(f_1\in t_1) =  p(f_2\in t_1) =  p(f_3\in t_1)](http://chart.apis.google.com/chart?cht=tx&chl=p%28f_1%5Cin+t_1%29+%3D++p%28f_2%5Cin+t_1%29+%3D++p%28f_3%5Cin+t_1%29)なので，![p(f_1\in t_1) \times p(f_2\in t_1) \times p(f_3\in t_1) = (p(f\in t_1))<sup>{X_1}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=p%28f_1%5Cin+t_1%29+%5Ctimes+p%28f_2%5Cin+t_1%29+%5Ctimes+p%28f_3%5Cin+t_1%29+%3D+%28p%28f%5Cin+t_1%29%29%3Csup%3E%7BX_1%7D%3C%2Fsup%3E+)と変形している．こうすることにより，![\mathcal{L}(\rho)= \prod<em>{t\in T} \bigg( \frac{\rho_t \tilde{l_t}}{\sum</em>{r\in T}\rho_r \tilde{l_r}}\frac{1}{\tilde{l_t}} \bigg)<sup>{X_t}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod%3Cem%3E%7Bt%5Cin+T%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum%3C%2Fem%3E%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29%3Csup%3E%7BX_t%7D%3C%2Fsup%3E+)となる．</p>
+つまり，ショートリードの配列は生成確率に依存せず![p(f_1\in t_1) =  p(f_2\in t_1) =  p(f_3\in t_1)](http://chart.apis.google.com/chart?cht=tx&chl=p%28f_1%5Cin+t_1%29+%3D++p%28f_2%5Cin+t_1%29+%3D++p%28f_3%5Cin+t_1%29)なので，![p(f_1\in t_1) \times p(f_2\in t_1) \times p(f_3\in t_1) = (p(f\in t_1))<sup>{X_1}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=p%28f_1%5Cin+t_1%29+%5Ctimes+p%28f_2%5Cin+t_1%29+%5Ctimes+p%28f_3%5Cin+t_1%29+%3D+%28p%28f%5Cin+t_1%29%29%3Csup%3E%7BX_1%7D%3C%2Fsup%3E+)と変形している．こうすることにより，![\mathcal{L}(\rho)= \prod<em>{t\in T} \bigg( \frac{\rho_t \tilde{l_t}}{\sum</em>{r\in T}\rho_r \tilde{l_r}}\cdot\frac{1}{\tilde{l_t}} \bigg)<sup>{X_t}</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod%3Cem%3E%7Bt%5Cin+T%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum%3C%2Fem%3E%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Ccdot%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29%3Csup%3E%7BX_t%7D%3C%2Fsup%3E+)となる．</p>
 
 <h3>尤度を最大にするパラメータを解析的に求める</h3>
 
