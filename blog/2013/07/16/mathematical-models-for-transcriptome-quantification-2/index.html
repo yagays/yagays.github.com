@@ -144,7 +144,7 @@
 
 <h3>Count Based Model</h3>
 
-<p>今回はCount Based Modelと呼ばれる最も基本的な生成モデルを作って発現量推定を定式化し，それがRPKMの計算式と同じことを示してみよう．なお，以降の内容はPachter 2011をベースにしている．</p>
+<p>今回はCount Based Modelと呼ばれる最も基本的な生成モデルを作って発現量推定を定式化し，それがRPKMの計算式と同じ意味を持つことを示してみよう．なお，以降の内容はPachter 2011をベースにしている．</p>
 
 <blockquote><p>Models for transcript quantification from RNA-Seq. q-bio.GN, (2011).</p>
 
@@ -152,16 +152,16 @@
 
 <h3>Count Based Modelにおける仮定</h3>
 
-<p>Count based Modelは非常にシンプルなモデルだ．単純化のために以下のような条件を置いて，RNA-Seqの発現量推定をモデル化している．</p>
+<p>Count based Modelは非常にシンプルな生成モデルだ．単純化のために3つの前提条件を置いて，RNA-Seqをモデル化している．</p>
 
 <ul>
-<li>NGSで得られるショートリードはシングルエンド</li>
+<li>NGSのシーケンスはシングルエンド</li>
 <li>ショートリードはただ1箇所だけにマッピングされる</li>
 <li>すべての転写物はただ1つのアイソフォームを持つ</li>
 </ul>
 
 
-<p>遺伝子の構造が単純な生物において初期のNGS解析をしていると思えばいいだろう．現実的にはこのような状態というのはあり得ないが，転写物からショートリードが生成されるという核の部分はしっかりと残している．</p>
+<p>NGSのシーケンスに関しても，トランスクリプトームに関しても，かなり限定して考えていることがわかる．遺伝子の構造が単純な生物において初期のNGS解析をしていると思えばいいだろう．現実的にはこのような状態というのはあり得ないが，転写物からショートリードが生成されるという核の部分は残しつつ単純化をしている．</p>
 
 <h3>Count Based Modelの生成過程</h3>
 
@@ -169,12 +169,12 @@
 
 <blockquote><p><strong>トランスクリプトーム全体からある転写物が選ばれ，ある開始点からショートリードがシーケンスされた</strong></p></blockquote>
 
-<p>と考える．<a href="http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/">前回の記事で概要を示した</a>ように，RNA-Seqの実験プロトコルは幾つかの複雑な段階を踏んでショートリードをシーケンスしていた．しかしながら，その多くの段階は偶然の連続によって，たまたま転写物がフラグメントとしてある部分から断片化され，たまたまシーケンスされてショートリードとして出力されたとみなすことができる．これらを確率的な事象としてみなすことによって，生成モデルとして確率的な視点からシーケンスデータが生じた背景にあるRNA-Seqの発現量というものを推定することができる．</p>
+<p>と考える．<a href="http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/">前回の記事で概要を示した</a>ように，RNA-Seqの実験プロトコルは幾つかの複雑な段階を踏んでショートリードをシーケンスしていた．その多くの段階は偶然の連続によって，たまたま転写物がフラグメントとしてある部分から断片化され，たまたまシーケンスされてショートリードとして出力されたとみなすことができる．これらを確率的な事象として扱うことによって，確率的な視点からシーケンスデータが生じた背景にあるRNA-Seqの発現量というものを推定することができる．</p>
 
 <br/>
 
 
-<p>さて，長ったらしい文章での前置きはここまでにして，ここから具体的に生成過程を数式に落としこんでいく．まず最初にこれまで言葉で説明してきたものを変数や集合として定義をし，事象の起こりやすさを尤度として表現する．概念と数式の対応関係が少し分かりにくいかもしれないが，もし要領が掴めないようならこの後に書いてある具体例のところの図も参照しつつ丁寧に追ってほしい．</p>
+<p>さて，長ったらしい文章の前置きはここまでにして，次からは実際に生成過程を数式に落としこんでいく．まず最初にこれまで言葉で説明してきたものを変数や集合として定義をし，事象の起こりやすさを尤度として表現する．概念と数式の対応関係が少し分かりにくいかもしれないが，もし要領が掴めないようならこの後に書いてある具体例の図も参照しつつ，どの変数が何を表しているかを丁寧に追ってほしい．</p>
 
 <h3>尤度の定式化</h3>
 
@@ -184,7 +184,7 @@
 
 <p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28f%5Cin+t%29%3D+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_t%7D%7D+" alt="p(f\in t)= \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_t}} " /></p>
 
-<p>次に，選ばれた転写物のどの位置からショートリードがシーケンスされるかはランダムに選ばれるため，この確率<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28f%5Cin+t%29+" alt="p(f\in t) " />に<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+" alt="\frac{1}{\tilde{l_t}} " />を掛けあわせた値が，ショートリード<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f+" alt="f " />が転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />のある開始点から生成される確率となる．</p>
+<p>次に，選ばれた転写物のどの位置からショートリードがシーケンスされるかはランダムに選ばれるため，この確率<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28f%5Cin+t%29+" alt="p(f\in t) " />に有効配列長の逆数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+" alt="\frac{1}{\tilde{l_t}} " />を掛けあわせた値が，ショートリード<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f+" alt="f " />が転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />のある開始点から生成される確率となる．</p>
 
 <p>このとき，観測されたショートリード全体<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F+" alt="F " />の尤度は，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho_t+" alt="\rho_t " />の関数として以下のように表される．</p>
 
@@ -200,13 +200,13 @@
 
 <h4>確率の考え方</h4>
 
-<p>といっても，これだけでは何のことか分からないので，具体例を使って詳しく解説していこう．単純化のために，以下の図のような3つの転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t_1%2C+t_2%2C+t_3+" alt="t_1, t_2, t_3 " />と6本のショートリード<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f_1%2Cf_2%5Cdots%2Cf_6+" alt="f_1,f_2\dots,f_6 " />が以下のようにマッピングされたという状態を想定する．</p>
+<p>といっても，これだけでは何のことか分からないので，具体例を使って詳しく解説していこう．単純化のために，以下の図のような3つの転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t_1%2C+t_2%2C+t_3+" alt="t_1, t_2, t_3 " />と6本のショートリード<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f_1%2Cf_2%5Cdots%2Cf_6+" alt="f_1,f_2\dots,f_6 " />が次のようにマッピングされたという状態を想定する．</p>
 
 <p><img src="http://dl.dropboxusercontent.com/u/142306/b/generative-models_1.png" alt="" /></p>
 
-<p>3つの転写物にはそれぞれ発現量を持っている．例えば，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t_1+" alt="t_1 " />は20，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t_2+" alt="t_2 " />は5，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t_3+" alt="t_3 " />は15という具合だ．今回は発現量を確率値として考えるため，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B20%7D%7B40%7D%2C%5Cfrac%7B5%7D%7B40%7D%2C%5Cfrac%7B15%7D%7B40%7D%2C+" alt="\frac{20}{40},\frac{5}{40},\frac{15}{40}, " />のように相対値として表す．これが<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho_t+" alt="\rho_t " />であり，総和が1になる理由だ．この<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho_t+" alt="\rho_t " />は今回の最尤推定法で最終的に求めたい値である．</p>
+<p>3つの転写物にはそれぞれ発現量を持っている．例えば，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t_1+" alt="t_1 " />は20，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t_2+" alt="t_2 " />は5，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t_3+" alt="t_3 " />は15という具合だ．今回は発現量を確率値として考えるため，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B20%7D%7B40%7D%2C%5Cfrac%7B5%7D%7B40%7D%2C%5Cfrac%7B15%7D%7B40%7D+" alt="\frac{20}{40},\frac{5}{40},\frac{15}{40} " />のように相対値として表す．これが<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho_t+" alt="\rho_t " />であり，総和が1になる理由だ．この<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho_t+" alt="\rho_t " />が今回の生成モデルで最終的に求めたい値である．</p>
 
-<p>さて，ショートリード<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f_1+" alt="f_1 " />が転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t_1+" alt="t_1 " />から生成される確率は，先ほどの定式化で<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28f%5Cin+t%29%3D+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_t%7D%7D+" alt="p(f\in t)= \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_t}} " />としていた．これはある転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />の長さと相対的な発現量を掛けあわせたものを，全体で足しあわせた値で割っており，ただの発現量の比率だけでなく転写物の長さも関係しているということを表している．ランダムに一つ選んでシーケンスするということを考えれば，多く転写されていてなおかつ長い転写物のほうが選ばれやすいのは明らかだろう．この式は，そういった意味を数式として厳密に表現しているだけなのだ．</p>
+<p>さて，ショートリード<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f_1+" alt="f_1 " />が転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t_1+" alt="t_1 " />から生成される確率は，先ほどの定式化で<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28f%5Cin+t%29%3D+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_t%7D%7D+" alt="p(f\in t)= \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_t}} " />としていた．これはある転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />の長さと相対的な発現量を掛けあわせたものと，その全体との比率を求めており，ただの発現量の比率だけでなく転写物の長さも関係しているということを表している．ランダムに一つ選んでシーケンスするということを考えれば，多く転写されていてなおかつ長い転写物のほうが選ばれやすいのは明らかだろう．この式は，そういった意味を数式として厳密に表現しているだけなのだ．</p>
 
 <p>次に，転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />が選ばれた後に，今度はその転写物のどの位置の配列が読まれたかということを考える．これは端っこの方の配列が読まれたのか真ん中の方の配列が読まれたのかといった情報だ．このときに出てくるのが有効配列長Effective lengthと呼ばれる値で，ショートリードの長さを<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=m+" alt="m " />としたときの<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D%3Dl_t+-+m+%2B+1+" alt="\tilde{l_t}=l_t - m + 1 " />で表される．これは単純に長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />から長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=m+" alt="m " />の配列を取ってくる時の場合の数である．今回のモデルでは，シーケンスされる場所は場所に依存せず一様なランダムで決まるとしているので，有効配列長で割り算をしている．</p>
 
@@ -223,7 +223,7 @@
 <p><img src="http://dl.dropboxusercontent.com/u/142306/b/generative-models_2.png" alt="" /></p>
 
 <p>そして最後のまとめとして，転写物ごとにマッピングされたショートリードの生成確率というのは同じであることを利用して，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X_t+" alt="X_t " />でまとめる．
-つまり，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28f_1%5Cin+t_1%29+%3D++p%28f_2%5Cin+t_1%29+%3D++p%28f_3%5Cin+t_1%29" alt="p(f_1\in t_1) =  p(f_2\in t_1) =  p(f_3\in t_1)" />なので，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28f_1%5Cin+t_1%29+%5Ctimes+p%28f_2%5Cin+t_1%29+%5Ctimes+p%28f_3%5Cin+t_1%29+%3D+%28p%28f%5Cin+t_1%29%29%5E%7BX_1%7D+" alt="p(f_1\in t_1) \times p(f_2\in t_1) \times p(f_3\in t_1) = (p(f\in t_1))^{X_1} " />と変形している．こうすることにより，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod_%7Bt%5Cin+T%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29%5E%7BX_t%7D+" alt="\mathcal{L}(\rho)= \prod_{t\in T} \bigg( \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_r}}\frac{1}{\tilde{l_t}} \bigg)^{X_t} " />となる．</p>
+つまり，ショートリードの配列は生成確率に依存せず<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28f_1%5Cin+t_1%29+%3D++p%28f_2%5Cin+t_1%29+%3D++p%28f_3%5Cin+t_1%29" alt="p(f_1\in t_1) =  p(f_2\in t_1) =  p(f_3\in t_1)" />なので，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28f_1%5Cin+t_1%29+%5Ctimes+p%28f_2%5Cin+t_1%29+%5Ctimes+p%28f_3%5Cin+t_1%29+%3D+%28p%28f%5Cin+t_1%29%29%5E%7BX_1%7D+" alt="p(f_1\in t_1) \times p(f_2\in t_1) \times p(f_3\in t_1) = (p(f\in t_1))^{X_1} " />と変形している．こうすることにより，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod_%7Bt%5Cin+T%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29%5E%7BX_t%7D+" alt="\mathcal{L}(\rho)= \prod_{t\in T} \bigg( \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_r}}\frac{1}{\tilde{l_t}} \bigg)^{X_t} " />となる．</p>
 
 <h3>尤度を最大にするパラメータを解析的に求める</h3>
 
@@ -249,21 +249,21 @@
 
 <h3>Count Based Modelの解析解とRPKMとの関係</h3>
 
-<p>さて，ようやくRPKMとの関連の話に入ることができる．上で求めた<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Chat%7B%5Crho_t%7D+" alt="\hat{\rho_t} " />の式を少し式変形する．</p>
+<p>さて，ようやくRPKMとの関連の話に入ることができる．上で求めた<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Chat%7B%5Crho_t%7D+" alt="\hat{\rho_t} " />を，次のように式変形する．</p>
 
 <p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Chat%7B%5Crho_t%7D+%3D+%5Cfrac%7BX_t%7D%7BN%7D+%5Ccdot+%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Ccdot+%5Cbigg%28+%5Cfrac%7B1%7D%7B%5Csum_%7Br%5Cin+T%7D%5Cfrac%7BX_r%7D%7BN+l_r%7D%7D+%5Cbigg%29+" alt="\hat{\rho_t} = \frac{X_t}{N} \cdot \frac{1}{\tilde{l_t}} \cdot \bigg( \frac{1}{\sum_{r\in T}\frac{X_r}{N l_r}} \bigg) " /></p>
 
-<p>この式をよく見ると，後半の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbigg%28+%5Cfrac%7B1%7D%7B%5Csum_%7Br%5Cin+T%7D%5Cfrac%7BX_r%7D%7BN+l_r%7D%7D+%5Cbigg%29+" alt="\bigg( \frac{1}{\sum_{r\in T}\frac{X_r}{N l_r}} \bigg) " />は全ての転写物に関して計算しているだけなので，ただの定数である．ということで，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Chat%7B%5Crho_t%7D+" alt="\hat{\rho_t} " />に関係してくる転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />の変数だけを抜き出すと，</p>
+<p>この式をよく見ると，後半の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbigg%28+%5Cfrac%7B1%7D%7B%5Csum_%7Br%5Cin+T%7D%5Cfrac%7BX_r%7D%7BN+l_r%7D%7D+%5Cbigg%29+" alt="\bigg( \frac{1}{\sum_{r\in T}\frac{X_r}{N l_r}} \bigg) " />は全ての転写物に関して計算しているだけなので，ただの定数である．ということで，特定の転写物の発現量<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Chat%7B%5Crho_t%7D+" alt="\hat{\rho_t} " />に関係してくる変数だけを抜き出すと，</p>
 
 <p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Chat%7B%5Crho_t%7D+%5Cpropto+%5Cfrac%7BX_t%7D%7B%5Ctilde%7Bl_t%7D+N%7D+" alt="\hat{\rho_t} \propto \frac{X_t}{\tilde{l_t} N} " /></p>
 
-<p>ここに<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=10%5E9+" alt="10^9 " />を掛ければ，まさにRPKMの式<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=RPKM+%5C++for+%5C++transcript+%5C+t+%3D+10%5E9+%5Ctimes%5Cfrac%7BX_t%7D%7Bl_t+N%7D" alt="RPKM \  for \  transcript \ t = 10^9 \times\frac{X_t}{l_t N}" />と全く同じ式になっている！！！</p>
+<p>ここに<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=10%5E9+" alt="10^9 " />を掛ければ，<strong>生成モデルにおける発現量の推定式はRPKMの式<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=RPKM+%5C++for+%5C++transcript+%5C+t+%3D+10%5E9+%5Ctimes%5Cfrac%7BX_t%7D%7Bl_t+N%7D" alt="RPKM \  for \  transcript \ t = 10^9 \times\frac{X_t}{l_t N}" />と全く同じ式になることがわかる！！！</strong></p>
 
 <p>ということで，Count Based Modelにおける最尤推定によって推定される発現量と，マッピングされたショートリードの数だけで計算されたRPKMの発現量は，基本的には同じ計算式によって求めることができることがわかった．</p>
 
 <h3>まとめ</h3>
 
-<p>後半はだいぶ駆け足になってしまったが，Count Based Modelの導出とRPKMとの関係を解説してみた．生成モデルというややこしい数式を立てておいて結局RPKMと同じかよと思うかもしれないが，生成モデルはここから様々な仮定をモデルに組み込むことによって，より複雑かつ現実に則した一般的なモデルへと改良していくことができる．今回のCount Based Modelはその枠組みとして，非常に基本的な考え方である．しかしながら，実際にはこの方法だけを使ってソフトウェアが作られたり論文として出ているわけでもなく，あまり詳しい解説が無い部分だと思われる．今回はLior Pachter氏のarXiv.orgに投稿されたレビューをもとに具体例をはさみながらモデルを読み解いていったが，次回以降はもう少しCufflinksで使われているような技術も導入しつつ，より複雑なモデルへと進んでいきたい．</p>
+<p>後半はだいぶ駆け足になってしまったが，Count Based Modelの導出とRPKMとの関係を解説してみた．生成モデルというややこしい数式を立てておいて結局RPKMと同じかよと思うかもしれないが，生成モデルはここから様々な仮定をモデルに組み込むことによって，より複雑かつ現実に則した一般的なモデルへと改良していくことができる．今回のCount Based Modelはその枠組みとして，非常に基本的な考え方である．しかしながら，実際にはこの方法だけを使ってソフトウェアが作られたり論文として出ているわけでもなく，あまり詳しい解説が無い部分だと思われる．今回はLior Pachter氏のレビューをもとに具体例をはさみながらモデルを読み解いていったが，次回以降はもう少しCufflinksで使われているような技術も導入しつつ，より複雑なモデルへと進んでいきたい．</p>
 
 <h3>参考</h3>
 
