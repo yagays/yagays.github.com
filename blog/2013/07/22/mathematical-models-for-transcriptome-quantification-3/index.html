@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>「『言語技術』が日本のサッカーを変える」読了 - Wolfeyes Bioinformatics beta</title>
+  <title>RNA-Seqの数理―生成モデルによる発現量推定（3）ペアエンドリードとフラグメント長の分布関数 - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.io/blog/2012/09/14/review-tajima-soccer">
+  <link rel="canonical" href="http://yagays.github.io/blog/2013/07/22/mathematical-models-for-transcriptome-quantification-3">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -114,7 +114,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">「『言語技術』が日本のサッカーを変える」読了</h1>
+      <h1 class="entry-title">RNA-Seqの数理―生成モデルによる発現量推定（3）ペアエンドリードとフラグメント長の分布関数</h1>
     
     
       <p class="meta">
@@ -130,21 +130,84 @@
   
 
 
-<time datetime="2012-09-14T01:03:00+09:00" pubdate data-updated="true">Sep 14<span>th</span>, 2012</time>
+<time datetime="2013-07-22T09:59:00+09:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4334034268" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+<div class="entry-content"><ul>
+<li>まとめ：<a href="http://yagays.github.io/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/">RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ - Wolfeyes Bioinformatics beta</a></li>
+<li>前回：<a href="http://yagays.github.io/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/">RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM - Wolfeyes Bioinformatics beta</a></li>
+</ul>
 
 
-<p><a href="http://yagays.github.com/blog/2012/09/05/review-critical-reading/">前回の「外国語で発想するための日本語レッスン」の記事</a>で，三森氏の言語技術に関連した書籍としてnext49さんに教えていただいた新書を読んだ（参考：<a href="http://d.hatena.ne.jp/next49/20120906/p1">next49氏のblog記事</a>）．</p>
+<p>前回はCount Based Modelの基礎やRPKMとの関連を解説したが，これらはすべてシングルエンドを前提とした発現量推定の方法だった．そこで今回は，現在主流となっているペアエンドに対応できるようモデルの一部を拡張し，その際に必要になるフラグメント長の分布を考慮した有効配列長の考え方について紹介する．</p>
 
-<p>本書は，海外のサッカー指導法に影響を受けた田嶋幸三氏が，日本のサッカー選手/指導者の育成に言語技術などを取り入れ実践している現場を紹介したものとなっている．田嶋氏は個人的な指導にとどまらず，指導者のライセンス制度の改革や全寮制のエリート育成学校を立ち上げるなど，精力的に活動されている．その中で教えている内容というのが，本書のキーワードである「言語技術」である．どのようにして選手に考える力を付け自己決定力の能力を育てるか，そういう選手に育てるようなサッカー指導者自体をどう育てるか，そういった選手と指導者の両者にわたる指導法が非常に詳しく具体的に書かれている．それに加え，現在の活躍に至る過程にあった，田嶋氏自身の留学の苦い経験や海外勢の根本的に違う価値観や考え方，そして日本サッカー自体の不振と再興への思いも盛り込まれている．</p>
+<h3>ペアエンドリード</h3>
 
-<p>三森ゆりか氏の著作では言語技術の基礎や背景などの理論的な部分が多かったが，本書ではより応用・実践的な部分について，じゃあどうやって子供に教えればいいのか，どういう段階を踏むべきなのか，目指すところはどこなのかといった疑問をひと通り網羅している．ただ，かなり多岐にわたるトピックが新書1冊に詰め込まれているため，始めにいきなり服装や態度の話から入ったり，論理とは別の話として偉人の言葉のリスペクトといった本題から脇にそれる話が挟まったりと，少し論理的な思考技術から外れる部分もあるが，言語技術に関しては実例とともに分かりやすく整理されている．そして何よりもまず実践に基づいた語り口ほど説得力のあるものは無いと言える．三森氏の「外国語で発想するための日本語レッスン」と合わせてお薦めできる1冊だ．</p>
+<p>ペアエンドによるシーケンスは，illuminaなどで現在もっとも広く使われているNGSの手法だ．ペアエンドのショートリードは，ゲノムやmRNAを特定の長さのフラグメントに細かく分割したあと，その両端にアダプターを付けて左右同時にシーケンスすることによって得られる．この方法によって，単純にシーケンスのデータ量が2倍になるだけでなく，ある程度離れた距離の2つの配列の関係性も同時に得られる．つまり，元々ひとつの同じフラグメントからシーケンスされたのだから，そのフラグメントの長さの範囲内で2つのショートリードは必ず存在していたはずだという情報である．これらは発現量推定において転写物のアイソフォームを確認するために用いられるほか，主にゲノムアセンブリやトランスクリプトームアセンブリにおいて，コンティグと呼ばれるアセンブルされた断片をつなぎ合わせるスキャフォールディングにおいて有効な実験手法になっている．</p>
+
+<h3>RPKMからFPKMへ</h3>
+
+<p>シングルエンドではRPKMとして計算していた発現量の指標をペアエンドに拡張するのはとても簡単で，2本のマッピングされたショートリードのペアを1本のフラグメントの本数として見なし，転写物ごとにその本数数えるだけで良い．これをFPKM（Fragments per kilobase of exon per million mapped sequence reads）という．RPKMのReadsの部分をFragments，すなわちペアエンドの2つのショートリードに置き換えただけで，全体のデータ量と転写物の配列長で正規化する部分は変わっていない．ただし，マッピングする配列が実質2本になったということで，両方ともマッピングされるという以外にも，片方だけマッピングされたといった特殊な場合が出てくる．このような特殊なケースはマッピングするソフトウェアの設定やFPKMの計算方法に依存するものの，基本的には2本の配列がフラグメント長の間を置いてマッピングされるかどうかによってFPKMの値を求める．</p>
+
+<h3>Count Based Modelにおける変更点</h3>
+
+<p>ではCount Based Modelにペアエンドのショートリードを対応させよう．RPKMからFPKMに拡張したときと同様に発現量の導出部分に手を加える必要はないのだが，一つだけペアエンドを考慮する必要のある変数がある．それが転写物の有効配列長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D+" alt="\tilde{l_t} " />だ．</p>
+
+<p>転写物の有効配列長Effective length of a transcriptsは，ある転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />から長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=m+" alt="m " />のショートリードが得られるときの開始点の場合の数であり，シングルエンドの場合は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D+%3D+l_t+-+m+%2B+1+" alt="\tilde{l_t} = l_t - m + 1 " />で表される．これはショートリードに長さがあるぶんだけフラグメントが生じる開始点として考慮できる長さは短くなるということだ．</p>
+
+<p>では，今回のペアエンドリードの場合はどう考えればいいだろうか．基本的にはシングルエンドの場合と同様に，長さぶんだけ差し引いた値が有効配列長となる．長さといっても，ペアエンドは元々一つのフラグメントからシーケンスされたショートリードなので，フラグメントの長さを用いる．</p>
+
+<p>しかしここで一つ問題点が出てくる．それは，フラグメントの長さが実は一定ではないということだ．mRNAなどを断片化してある長さのフラグメントに選定する作業は実験的に行なわれるため，どうしてもフラグメントの長さに幅ができてしまう．そのため，ショートリードによって，ペアエンドの間の距離が短いものや長いものが出てくる．この現象は実際にゲノムにペアエンドリードを貼り付けて間の距離を測れば確認することができる．以下の図は，Cufflinksの論文中で実際に求められたフラグメント長の分布を表している．この場合では，200bpを中心にしてフラグメント長にばらつきがあり，おおよそ正規分布の形をしていることがわかる．山の左側が途中で切断されているのは，ショートリードの長さが75bpのためである．</p>
+
+<p><a href="http://www.nature.com/nbt/journal/v28/n5/full/nbt.1621.html" target="_blank"><img src="http://dl.dropboxusercontent.com/u/142306/b/generative-models_4.png" alt="CCC License Number:3192890152232"></a></p>
+
+<p>この図からわかるように，フラグメント長はショートリードによってばらつきがあるため，有効配列長を求める際に一意に値を決めることができない．</p>
+
+<h3>フラグメント長の分布関数を使って有効配列長を求める</h3>
+
+<p>この問題を解消するための手段として，フラグメント長の分布関数を使うという方法がある．</p>
+
+<p>転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />の長さを<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />とする．ショートリードのフラグメントの長さを<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=i+" alt="i " />としたときのフラグメント長の分布関数を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F%28i%29+" alt="F(i) " />とし，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Csum_%7Bi%3D1%7D%5E%7B%5Cinfty%7DF%28i%29%3D1+" alt="\sum_{i=1}^{\infty}F(i)=1 " />となるように確率分布に近似する．このときの転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />の有効配列長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D+" alt="\tilde{l_t} " />は，以下のように表される．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D+%3D+%5Csum_%7Bi%3D1%7D%5E%7Bl_t%7DF%28i%29%28l_t-i%2B1%29+" alt="\tilde{l_t} = \sum_{i=1}^{l_t}F(i)(l_t-i+1) " /></p>
+
+<p>この式の解釈としては，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%28l_t-i%2B1%29+" alt="(l_t-i+1) " />の部分はシングルエンドの有効配列長の求め方と同じ方法で，ショートリードの長さがフラグメントの長さに変わっただけである．そこに<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F%28i%29+" alt="F(i) " />という分布関数を掛けあわせ，長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1+" alt="1 " />から転写物の長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />まで足しあわせた値が，ペアエンドの有効配列長となる．つまり，分布の重み付きの配列長として表現しているということだ．</p>
+
+<p>この考え方を模式的に表した図を，以下に示した．ここでは青色の直線で表した転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />に黒色の直線で表したショートリードをマッピングしている．太い部分が実際にシーケンスされたショートリード，細い部分がシーケンスされていないフラグメントの部分で，全体で一つのフラグメントを表している．フラグメント長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=i+" alt="i " />を長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1+" alt="1 " />から<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />までずらしたときのそれぞれの分布は，右に示したような正規分布のような形をとり，これを<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F%28i%29+" alt="F(i) " />としている（実際は離散的）．そして，それぞれのフラグメント長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=i+" alt="i " />における有効配列長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%28l_t-i%2B1%29+" alt="(l_t-i+1) " />に分布関数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F%28i%29+" alt="F(i) " />を掛けあわせたものを全て足し合わせることにより，長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />の転写物における有効配列長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />を求めることができる．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/generative-models_5.png" alt="" /></p>
+
+<h3>Cufflinksとの関連</h3>
+
+<p>さて，今回示した数式<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D+%3D+%5Csum_%7Bi%3D1%7D%5E%7Bl_t%7DF%28i%29%28l_t-i%2B1%29+" alt="\tilde{l_t} = \sum_{i=1}^{l_t}F(i)(l_t-i+1) " />は，<a href="http://www.nature.com/nbt/journal/v28/n5/full/nbt.1621.html">Cufflinksの論文</a>のOnline Methodsに出てくる数式だ．ただしそちらの方では<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l%28t%29+" alt="l(t) " />となっているが，表記を<a href="http://yagays.github.io/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/">前回の記事</a>と統一しているだけで表していることは変わりない．</p>
+
+<p>また，Cufflinksのソフトウェアの実行においても，このフラグメント長の分布の種類やパラメータを具体的に指定することができる．</p>
+
+<p><a href="http://cufflinks.cbcb.umd.edu/manual.html">Cufflinks RNA-Seq analysis tools - User&#8217;s Manual</a></p>
+
+<p>例えば，&#8211;frag-len-meanはフラグメント長の分布の平均，&#8211;frag-len-std-devではフラグメント長の分布の標準偏差を指定することができる．ただし，現在のバージョンでは，</p>
+
+<blockquote><p>Note: Cufflinks now learns the fragment length mean for each SAM file, so using this option is no longer recommended with paired-end reads.</p>
+
+<p><a href="http://cufflinks.cbcb.umd.edu/manual.html">http://cufflinks.cbcb.umd.edu/manual.html</a></p></blockquote>
+
+<p>のように自動的に推定されるようになっており，ユーザが特に意識することなく実行できるようになっている．</p>
+
+<h3>まとめ</h3>
+
+<p>このように，ペアエンドにおいてはフラグメント長の分布を考慮することによって，有効配列長をより正確に記述した．今回のペアエンドリードの導入ではモデル自体は変更しなかったものの，きちんと実験環境やシーケンスの癖を数式としてモデルに反映することができている．</p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://www.nature.com/nbt/journal/v28/n5/full/nbt.1621.html">Transcript assembly and quantification by RNA-Seq reveals unannotated transcripts and isoform switching during cell differentiation : Nature Biotechnology : Nature Publishing Group</a></li>
+<li><a href="http://www.stat115.org/lectures/stat115_rnaseq.pdf">http://www.stat115.org/lectures/stat115_rnaseq.pdf</a></li>
+</ul>
+
 </div>
 
 
@@ -167,12 +230,12 @@
   
 
 
-<time datetime="2012-09-14T01:03:00+09:00" pubdate data-updated="true">Sep 14<span>th</span>, 2012</time>
+<time datetime="2013-07-22T09:59:00+09:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/book/'>Book</a>
+    <a class='category' href='/blog/categories/rna-seq/'>RNA-Seq</a>
   
 </span>
 
@@ -180,9 +243,9 @@
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2012/09/14/review-tajima-soccer/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2013/07/22/mathematical-models-for-transcriptome-quantification-3/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2012/09/14/review-tajima-soccer/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2012/09/14/review-tajima-soccer/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/07/22/mathematical-models-for-transcriptome-quantification-3/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/07/22/mathematical-models-for-transcriptome-quantification-3/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -203,14 +266,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/09/13/review-rework/" title="Previous Post:
-        「小さなチーム、大きな仕事〔完全版〕」読了">&laquo; 「小さなチーム、大きな仕事〔完全版〕」読了</a></li>
+        href="/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/" title="Previous Post:
+        RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM">&laquo; RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/09/15/review-h5n1/"
-        title="Next Post: 「H5N1―強毒性新型インフルエンザウイルス日本上陸のシナリオ」読了">「H5N1―強毒性新型インフルエンザウイルス日本上陸のシナリオ」読了
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -390,8 +449,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.io/blog/2012/09/14/review-tajima-soccer/';
-        var disqus_url = 'http://yagays.github.io/blog/2012/09/14/review-tajima-soccer/';
+        var disqus_identifier = 'http://yagays.github.io/blog/2013/07/22/mathematical-models-for-transcriptome-quantification-3/';
+        var disqus_url = 'http://yagays.github.io/blog/2013/07/22/mathematical-models-for-transcriptome-quantification-3/';
         var disqus_script = 'embed.js';
       
     (function () {

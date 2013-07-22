@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-07-19T11:48:55+09:00</updated>
+  <updated>2013-07-22T13:20:20+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,85 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RNA-Seqの数理―生成モデルによる発現量推定（3）ペアエンドリードとフラグメント長の分布関数]]></title>
+    <link href="http://yagays.github.io/blog/2013/07/22/mathematical-models-for-transcriptome-quantification-3/"/>
+    <updated>2013-07-22T09:59:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/07/22/mathematical-models-for-transcriptome-quantification-3</id>
+    <content type="html"><![CDATA[<ul>
+<li>まとめ：<a href="http://yagays.github.io/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/">RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ - Wolfeyes Bioinformatics beta</a></li>
+<li>前回：<a href="http://yagays.github.io/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/">RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM - Wolfeyes Bioinformatics beta</a></li>
+</ul>
+
+
+<p>前回はCount Based Modelの基礎やRPKMとの関連を解説したが，これらはすべてシングルエンドを前提とした発現量推定の方法だった．そこで今回は，現在主流となっているペアエンドに対応できるようモデルの一部を拡張し，その際に必要になるフラグメント長の分布を考慮した有効配列長の考え方について紹介する．</p>
+
+<h3>ペアエンドリード</h3>
+
+<p>ペアエンドによるシーケンスは，illuminaなどで現在もっとも広く使われているNGSの手法だ．ペアエンドのショートリードは，ゲノムやmRNAを特定の長さのフラグメントに細かく分割したあと，その両端にアダプターを付けて左右同時にシーケンスすることによって得られる．この方法によって，単純にシーケンスのデータ量が2倍になるだけでなく，ある程度離れた距離の2つの配列の関係性も同時に得られる．つまり，元々ひとつの同じフラグメントからシーケンスされたのだから，そのフラグメントの長さの範囲内で2つのショートリードは必ず存在していたはずだという情報である．これらは発現量推定において転写物のアイソフォームを確認するために用いられるほか，主にゲノムアセンブリやトランスクリプトームアセンブリにおいて，コンティグと呼ばれるアセンブルされた断片をつなぎ合わせるスキャフォールディングにおいて有効な実験手法になっている．</p>
+
+<h3>RPKMからFPKMへ</h3>
+
+<p>シングルエンドではRPKMとして計算していた発現量の指標をペアエンドに拡張するのはとても簡単で，2本のマッピングされたショートリードのペアを1本のフラグメントの本数として見なし，転写物ごとにその本数数えるだけで良い．これをFPKM（Fragments per kilobase of exon per million mapped sequence reads）という．RPKMのReadsの部分をFragments，すなわちペアエンドの2つのショートリードに置き換えただけで，全体のデータ量と転写物の配列長で正規化する部分は変わっていない．ただし，マッピングする配列が実質2本になったということで，両方ともマッピングされるという以外にも，片方だけマッピングされたといった特殊な場合が出てくる．このような特殊なケースはマッピングするソフトウェアの設定やFPKMの計算方法に依存するものの，基本的には2本の配列がフラグメント長の間を置いてマッピングされるかどうかによってFPKMの値を求める．</p>
+
+<h3>Count Based Modelにおける変更点</h3>
+
+<p>ではCount Based Modelにペアエンドのショートリードを対応させよう．RPKMからFPKMに拡張したときと同様に発現量の導出部分に手を加える必要はないのだが，一つだけペアエンドを考慮する必要のある変数がある．それが転写物の有効配列長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D+" alt="\tilde{l_t} " />だ．</p>
+
+<p>転写物の有効配列長Effective length of a transcriptsは，ある転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />から長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=m+" alt="m " />のショートリードが得られるときの開始点の場合の数であり，シングルエンドの場合は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D+%3D+l_t+-+m+%2B+1+" alt="\tilde{l_t} = l_t - m + 1 " />で表される．これはショートリードに長さがあるぶんだけフラグメントが生じる開始点として考慮できる長さは短くなるということだ．</p>
+
+<p>では，今回のペアエンドリードの場合はどう考えればいいだろうか．基本的にはシングルエンドの場合と同様に，長さぶんだけ差し引いた値が有効配列長となる．長さといっても，ペアエンドは元々一つのフラグメントからシーケンスされたショートリードなので，フラグメントの長さを用いる．</p>
+
+<p>しかしここで一つ問題点が出てくる．それは，フラグメントの長さが実は一定ではないということだ．mRNAなどを断片化してある長さのフラグメントに選定する作業は実験的に行なわれるため，どうしてもフラグメントの長さに幅ができてしまう．そのため，ショートリードによって，ペアエンドの間の距離が短いものや長いものが出てくる．この現象は実際にゲノムにペアエンドリードを貼り付けて間の距離を測れば確認することができる．以下の図は，Cufflinksの論文中で実際に求められたフラグメント長の分布を表している．この場合では，200bpを中心にしてフラグメント長にばらつきがあり，おおよそ正規分布の形をしていることがわかる．山の左側が途中で切断されているのは，ショートリードの長さが75bpのためである．</p>
+
+<p><a href="http://www.nature.com/nbt/journal/v28/n5/full/nbt.1621.html" target="_blank"><img src="http://dl.dropboxusercontent.com/u/142306/b/generative-models_4.png" alt="CCC License Number:3192890152232"></a></p>
+
+<p>この図からわかるように，フラグメント長はショートリードによってばらつきがあるため，有効配列長を求める際に一意に値を決めることができない．</p>
+
+<h3>フラグメント長の分布関数を使って有効配列長を求める</h3>
+
+<p>この問題を解消するための手段として，フラグメント長の分布関数を使うという方法がある．</p>
+
+<p>転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />の長さを<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />とする．ショートリードのフラグメントの長さを<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=i+" alt="i " />としたときのフラグメント長の分布関数を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F%28i%29+" alt="F(i) " />とし，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Csum_%7Bi%3D1%7D%5E%7B%5Cinfty%7DF%28i%29%3D1+" alt="\sum_{i=1}^{\infty}F(i)=1 " />となるように確率分布に近似する．このときの転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />の有効配列長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D+" alt="\tilde{l_t} " />は，以下のように表される．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D+%3D+%5Csum_%7Bi%3D1%7D%5E%7Bl_t%7DF%28i%29%28l_t-i%2B1%29+" alt="\tilde{l_t} = \sum_{i=1}^{l_t}F(i)(l_t-i+1) " /></p>
+
+<p>この式の解釈としては，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%28l_t-i%2B1%29+" alt="(l_t-i+1) " />の部分はシングルエンドの有効配列長の求め方と同じ方法で，ショートリードの長さがフラグメントの長さに変わっただけである．そこに<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F%28i%29+" alt="F(i) " />という分布関数を掛けあわせ，長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1+" alt="1 " />から転写物の長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />まで足しあわせた値が，ペアエンドの有効配列長となる．つまり，分布の重み付きの配列長として表現しているということだ．</p>
+
+<p>この考え方を模式的に表した図を，以下に示した．ここでは青色の直線で表した転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />に黒色の直線で表したショートリードをマッピングしている．太い部分が実際にシーケンスされたショートリード，細い部分がシーケンスされていないフラグメントの部分で，全体で一つのフラグメントを表している．フラグメント長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=i+" alt="i " />を長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1+" alt="1 " />から<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />までずらしたときのそれぞれの分布は，右に示したような正規分布のような形をとり，これを<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F%28i%29+" alt="F(i) " />としている（実際は離散的）．そして，それぞれのフラグメント長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=i+" alt="i " />における有効配列長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%28l_t-i%2B1%29+" alt="(l_t-i+1) " />に分布関数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F%28i%29+" alt="F(i) " />を掛けあわせたものを全て足し合わせることにより，長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />の転写物における有効配列長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />を求めることができる．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/generative-models_5.png" alt="" /></p>
+
+<h3>Cufflinksとの関連</h3>
+
+<p>さて，今回示した数式<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D+%3D+%5Csum_%7Bi%3D1%7D%5E%7Bl_t%7DF%28i%29%28l_t-i%2B1%29+" alt="\tilde{l_t} = \sum_{i=1}^{l_t}F(i)(l_t-i+1) " />は，<a href="http://www.nature.com/nbt/journal/v28/n5/full/nbt.1621.html">Cufflinksの論文</a>のOnline Methodsに出てくる数式だ．ただしそちらの方では<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l%28t%29+" alt="l(t) " />となっているが，表記を<a href="http://yagays.github.io/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/">前回の記事</a>と統一しているだけで表していることは変わりない．</p>
+
+<p>また，Cufflinksのソフトウェアの実行においても，このフラグメント長の分布の種類やパラメータを具体的に指定することができる．</p>
+
+<p><a href="http://cufflinks.cbcb.umd.edu/manual.html">Cufflinks RNA-Seq analysis tools - User&#8217;s Manual</a></p>
+
+<p>例えば，&#8211;frag-len-meanはフラグメント長の分布の平均，&#8211;frag-len-std-devではフラグメント長の分布の標準偏差を指定することができる．ただし，現在のバージョンでは，</p>
+
+<blockquote><p>Note: Cufflinks now learns the fragment length mean for each SAM file, so using this option is no longer recommended with paired-end reads.</p>
+
+<p><a href="http://cufflinks.cbcb.umd.edu/manual.html">http://cufflinks.cbcb.umd.edu/manual.html</a></p></blockquote>
+
+<p>のように自動的に推定されるようになっており，ユーザが特に意識することなく実行できるようになっている．</p>
+
+<h3>まとめ</h3>
+
+<p>このように，ペアエンドにおいてはフラグメント長の分布を考慮することによって，有効配列長をより正確に記述した．今回のペアエンドリードの導入ではモデル自体は変更しなかったものの，きちんと実験環境やシーケンスの癖を数式としてモデルに反映することができている．</p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://www.nature.com/nbt/journal/v28/n5/full/nbt.1621.html">Transcript assembly and quantification by RNA-Seq reveals unannotated transcripts and isoform switching during cell differentiation : Nature Biotechnology : Nature Publishing Group</a></li>
+<li><a href="http://www.stat115.org/lectures/stat115_rnaseq.pdf">http://www.stat115.org/lectures/stat115_rnaseq.pdf</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM]]></title>
@@ -256,6 +335,7 @@
 <ul>
 <li><a href="http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/">RNA-Seqの数理―生成モデルによる発現量推定（1）RNA-Seqの発現量推定とRPKM - Wolfeyes Bioinformatics beta</a></li>
 <li><a href="http://yagays.github.io/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/">RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM - Wolfeyes Bioinformatics beta</a></li>
+<li><a href="http://yagays.github.io/blog/2013/07/22/mathematical-models-for-transcriptome-quantification-3/">RNA-Seqの数理―生成モデルによる発現量推定（3）ペアエンドリードとフラグメント長の分布関数</a></li>
 </ul>
 
 
@@ -1511,32 +1591,6 @@
 <p>と，知っている人ならばこちらが萎縮してしまうなほどの豪華な面々だ．それぞれが自分の研究分野を開拓し，その後の著作や起業，数々の科学への貢献を経て一般にも認識されうる人物ばかりである．その彼らがインタビューを通して語るのは，もちろん今まで積み上げてきた研究成果でありながら，同時にこれからの未来を予想し「今現在」の世界に向けた提言でもある．</p>
 
 <p>本書は，そのような彼らを知らない人にピッタリの入門書でもあると同時に，たとえ著作を読んだことのある人にとっても十分に興味深い内容となっている．とにかく上で述べた名前に心当たりがあるなら，本書はまさにオススメだ．自分から見てもかなりミーハーな精神だとは思うが，それに足る並びではないだろうか．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[段落の冒頭に強い接続語を使ってはいけない…?]]></title>
-    <link href="http://yagays.github.io/blog/2013/06/01/paragraph-heading/"/>
-    <updated>2013-06-01T10:57:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/06/01/paragraph-heading</id>
-    <content type="html"><![CDATA[<p>ここ1週間ほどご無沙汰だったので，最近考えているをちょっと書きだしてみる．</p>
-
-<p>最近は同じ研究室の院生の学振書類を手伝ったり，大学院入学希望者の小論文にアドバイスしたりと，人の書いた文書にひたすら赤を入れる日々だったのだが，やはり添削というのは難しい．まず第一には文章を書いた人間の意図を最大限汲み取り，一方では段落や文章の流れを整え単語の使い方を統一するためにバッサバッサとメスを入れ，原形をとどめつつも改善策を提示していかなければならない．ハッキリと論理的に指摘できる部分もあれば，「この言葉の使い方はなんかダサい」みたいな主観的な意見が入ることもある．個人的には徹底して型にはめて形式化された文章にすべきだというスタンスなのだが，逆に書き手の意図さえ伝われば，たとえ文章が全部ひとつなぎになっていようが口語的口調であったり文学的口調になっていようがそれでもいいという人も中にはいるわけで，あまり押し付けがましいのも良くないかなと思う．そして何より，添削しているお前の書く文章はどうなんだと言い返されそうで，自分のやっていることが本当に正しいのかどうか怪しいのが一番怖い．</p>
-
-<p>まあこんなコトを思いつつも，やってくれと言われれば無慈悲に赤を入れるわけだけれども，たまたま見つけた修論の指導を目的とした配布資料にナルホドと思いつつも少し引っかかることが書いてあったので，ここで紹介する．</p>
-
-<p><a href="http://www-utheal.phys.s.u-tokyo.ac.jp/~maxima/NetEd/To_M2/To_M2.pdf">http://www-utheal.phys.s.u-tokyo.ac.jp/~maxima/NetEd/To_M2/To_M2.pdf</a></p>
-
-<p>この中の「2.2 段落（paragraph）」は非常によくまとまっている．英語では特にパラグラフ・リーディングなどで紹介されることが多い段落の構成法は，文章を書く上で何より意識しなければいけない「決まり事」だ．私も文章をあらかた書いたあとに形を整える作業をする際には，このような体裁に特に気をつけている．</p>
-
-<p>この資料では段落を作る上でやって良いこと悪いことといった約束がいくつか紹介されており，それらは納得のいくものばかりなのだが，その中で一つ気になる項目があった．それは「段落の冒頭に強い接続語を使ってはいけない」という部分で，前後の文章を強く結ぶ言葉は段落の冒頭に使うにはふさわしくないということらしい．これに関しては確かに納得のいく部分もある反面，本当に使ってはいけないと断言してしまっていいのだろうかという感覚もある．特に逆接は禁止するほど悪い方法ではないと個人的に思っていて，前の話題にかぶせる形で議論の対象を変えるのに便利に使っている節がある．おそらくこの使い方は段落をひとまとまりとしてみた時の列挙に近い感覚なので，それは確かに段落に分けるべきではないかもしれない．しかしながら，あまりに膨らんだ内容を無理矢理一つに詰め込むのも良くないので，何かしらの方法で分けるべきだとは思う．やはりそこは，逆接を使わずにいきなり新しい話題でスタートしつつ，ところどころに前の段落との関連をいれていくべきなのだろうか．その方法もできなくはないけど，別に逆接を使ってもいいんじゃない？と思ってしまう．具体例が無い状態でアレコレ言うのは生産性が無いというのは分かっていても，なんとなく気になっている．</p>
-
-<p>以上のようなことをこの1週間の間ぼやーっと考えていたわけだけれども，いまだに結論は出ていない．型にはまった文章を書くというのは，読み手が想定する文章を提示することであって，それは論理構造や正確さ以上に読みやすさという重要な役割を果たしていると思っているのだが，読みやすさの感覚は人それぞれなので，なかなかに統一が難しい．</p>
-
-<br/>
-
-
-<p>（余談）それにしても，ここの文章はどういうアレで書けばいいのか未だによく分からない．表現の境界線を行ったり来たりという感じで，まあ実験場のようなイメージなので，ここで下手糞な文章を書いてても勘弁して欲しい…．</p>
 ]]></content>
   </entry>
   
