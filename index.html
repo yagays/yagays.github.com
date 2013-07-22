@@ -141,7 +141,6 @@
 
   <div class="entry-content"><ul>
 <li>まとめ：<a href="http://yagays.github.io/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/">RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ - Wolfeyes Bioinformatics beta</a></li>
-<li>前回：<a href="http://yagays.github.io/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/">RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM - Wolfeyes Bioinformatics beta</a></li>
 </ul>
 
 
@@ -163,7 +162,7 @@
 
 <p>では，今回のペアエンドリードの場合はどう考えればいいだろうか．基本的にはシングルエンドの場合と同様に，長さぶんだけ差し引いた値が有効配列長となる．長さといっても，ペアエンドは元々一つのフラグメントからシーケンスされたショートリードなので，フラグメントの長さを用いる．</p>
 
-<p>しかしここで一つ問題点が出てくる．それは，フラグメントの長さが実は一定ではないということだ．mRNAなどを断片化してある長さのフラグメントに選定する作業は実験的に行なわれるため，どうしてもフラグメントの長さに幅ができてしまう．そのため，ショートリードによって，ペアエンドの間の距離が短いものや長いものが出てくる．この現象は実際にゲノムにペアエンドリードを貼り付けて間の距離を測れば確認することができる．以下の図は，Cufflinksの論文中で実際に求められたフラグメント長の分布を表している．この場合では，200bpを中心にしてフラグメント長にばらつきがあり，おおよそ正規分布の形をしていることがわかる．山の左側が途中で切断されているのは，ショートリードの長さが75bpのためである．</p>
+<p>しかしここで一つ問題点が出てくる．それは，フラグメントの長さが実は一定ではないということだ．mRNAなどを断片化してある長さのフラグメントに選定する作業は実験的に行なわれるため，どうしてもフラグメントの長さに幅ができてしまう．そのため，ショートリードによって，ペアエンドの間の距離が短いものや長いものが出てくる．この現象は実際にゲノムにペアエンドリードを貼り付けて間の距離を測れば確認することができる．以下の図は，Cufflinksの論文中で実際に求められたフラグメント長の分布を表している（Supplementary Figure 1.）．この場合では，200bpを中心にしてフラグメント長にばらつきがあり，おおよそ正規分布の形をしていることがわかる．山の左側が途中で切断されているのは，ショートリードの長さが75bpのためである．</p>
 
 <p><a href="http://www.nature.com/nbt/journal/v28/n5/full/nbt.1621.html" target="_blank"><img src="http://dl.dropboxusercontent.com/u/142306/b/generative-models_4.png" alt="CCC License Number:3192890152232"></a></p>
 
@@ -247,7 +246,6 @@
 
   <div class="entry-content"><ul>
 <li>まとめ：<a href="http://yagays.github.io/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/">RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ - Wolfeyes Bioinformatics beta</a></li>
-<li>前回：<a href="http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/">RNA-Seqの数理―生成モデルによる発現量推定（1）RNA-Seqの発現量推定とRPKM - Wolfeyes Bioinformatics beta</a></li>
 </ul>
 
 
@@ -537,7 +535,7 @@
 <ul>
 <li><a href="http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/">RNA-Seqの数理―生成モデルによる発現量推定（1）RNA-Seqの発現量推定とRPKM - Wolfeyes Bioinformatics beta</a></li>
 <li><a href="http://yagays.github.io/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/">RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM - Wolfeyes Bioinformatics beta</a></li>
-<li><a href="http://yagays.github.io/blog/2013/07/22/mathematical-models-for-transcriptome-quantification-3/">RNA-Seqの数理―生成モデルによる発現量推定（3）ペアエンドリードとフラグメント長の分布関数</a></li>
+<li><a href="http://yagays.github.io/blog/2013/07/22/mathematical-models-for-transcriptome-quantification-3/">RNA-Seqの数理―生成モデルによる発現量推定（3）ペアエンドリードとフラグメント長の分布関数 - Wolfeyes Bioinformatics beta</a></li>
 </ul>
 
 
