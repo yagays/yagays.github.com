@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-07-26T23:27:08+09:00</updated>
+  <updated>2013-08-01T21:45:47+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,50 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA["de Bruijn"はどう発音する？]]></title>
+    <link href="http://yagays.github.io/blog/2013/08/01/de-bruijn-pronounce/"/>
+    <updated>2013-08-01T21:43:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/08/01/de-bruijn-pronounce</id>
+    <content type="html"><![CDATA[<p>アセンブリ界隈ではすっかりスタンダートな手法になったde Bruijn graphによるアセンブルだが，正直言ってこの単語の発音はよく分からない！私自身も人が発音しているのを聞いて参考にしたり色々調べたりして確認してはいるものの，いまだに自信を持って口に出して言えない．Blogに書くときもカタカナで書くのを避けているのが現状だ．</p>
+
+<p><a href="http://thegenomefactory.blogspot.jp/2013/08/how-to-pronounce-de-bruijn.html">The Genome Factory: How to pronounce &#8220;de Bruijn&#8221;</a></p>
+
+<p>さて，この発音問題は英語圏でもかなり混乱があるようだ．上記のBlog記事によると，今年のISMB 2013という学会でも様々な発音の仕方を耳にしたという．例えば</p>
+
+<blockquote><p>-broon
+-broo-en, brewin&#8217;
+-bra-jen, brar-djen
+-brin
+-brun
+-bruggin, bruggen
+-broin, broyn</p></blockquote>
+
+<p>といった具合だ．要するに&#8221;ijn&#8221;付近がやっかいで，発音するのかしないのかがよくわからないといったところだろう．似たような単語が英語にほとんど無いというのも影響していると思われる</p>
+
+<p>さて，このBlog記事によるとBruijnは”BROWN&#8221;と読むようだ．ということで，日本語表記するならば<strong>正しくはde Bruijnはデュブランと読む</strong>ということだろうか．</p>
+
+<ul>
+<li>実際に発音している音声：<a href="http://ja.forvo.com/search/bruijn/">http://ja.forvo.com/search/bruijn/</a></li>
+</ul>
+
+
+<p>ただし，Bruijnをブルーインと表記する日本語記事も見られるため，過去の翻訳との兼ね合いも悩ましいところ．昔の日本語読み的なカタカナ表記ではブルーインなのだろうが，本来の読みをそのままカタカナにする最近の表記方法ではデュブランだろう．</p>
+
+<p>ということで，個人的にはデュブランの方がしっくりくる．今後もBlogに記事を書く際には英語表記のままde Bruijn graphとするが，書くとしたらデュブラングラフかな&#8230;．</p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://ejje.weblio.jp/content/Inge+de+Bruijn">Inge de Bruijnの意味 - 英和辞典 Weblio辞書</a>(Bruijnでデブルーイン派)</li>
+<li><a href="http://d.hatena.ne.jp/m-hiyama-memo/20110423/1303547574">de Bruijn - 檜山正幸のキマイラ飼育記 メモ編</a>(bruijnでデュブラン派)</li>
+<li><a href="http://www.ccr.gunma-u.ac.jp/4u/Seeds/Pdf/2009/Gunma/Vol02_P049_050_G_Computer_Shibata_Itoh.pdf">http://www.ccr.gunma-u.ac.jp/4u/Seeds/Pdf/2009/Gunma/Vol02_P049_050_G_Computer_Shibata_Itoh.pdf</a>(de Brujinでド・ブルーイン派)</li>
+<li><a href="http://staff.aist.go.jp/t-fukatsu/CATNewsVol1No5-8.pdf">http://staff.aist.go.jp/t-fukatsu/CATNewsVol1No5-8.pdf</a>(de Brujinでド・ブロイ派)</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Life Technologiesによる研究者応援ソング （Ph.Diddyシリーズ）]]></title>
@@ -1431,54 +1475,6 @@
 <li><a href="http://www.ncbi.nlm.nih.gov/sra/?term=DRR002191">Whole genome resequencing of Masaru Tomita - SRA - NCBI</a></li>
 <li><a href="http://trace.ddbj.nig.ac.jp/DRASearch/run?acc=DRR002191">DRR002191 - DRA Search</a></li>
 <li><a href="ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/fastq/DRA000/DRA000583/DRX001619">/ddbj_database/dra/fastq/DRA000/DRA000583/DRX001619 のインデックス</a> (こちらではまだfastq.bz2で配布されている)</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[MacPortsで使用していない過去のバージョンのパッケージを消す＆ちょっと可視化]]></title>
-    <link href="http://yagays.github.io/blog/2013/06/19/macports-distfile-clean/"/>
-    <updated>2013-06-19T04:29:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/06/19/macports-distfile-clean</id>
-    <content type="html"><![CDATA[<p>MacBook Airの128GBしかない非力なSSDもそろそろ満杯になってきた．最近ではスワップが溜まっては再起動するということを繰り返していたので，色々と容量の食っているファイルをちまちま消していた．そういった地道な努力をしつつ無駄なキャッシュや不必要なファイルなどをちゃんと調べてみると，どうやらMacPortsが10GB近く占めていることがわかり，しかもバージョンアップによって使用されなくなったgccやllvm，boostなどの古いバージョンのせいだとわかったので，思い切って消してみることにした．</p>
-
-<h3>古いバージョンのパッケージを消す</h3>
-
-<p>MacPortsでは，バージョンが上がってアップデートする際に，インストールされているバージョンのパッケージをInactiveとし最新バージョンをActiveにするという方法で，過去のバージョンのパッケージが残される仕組みになっている．ということで，Inactiveなパッケージを全て消去するために，以下のコマンドを使用する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port -u uninstall</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これでInactiveなパッケージを全て消去することができる．なお，古いバージョンとして残っていたパッケージを消すということは気軽にバージョンを変更したりできなくなるということなので，もしバージョンアップによる不具合に対応する必要が出てくると後々面倒になることを注意しておきたい．</p>
-
-<h3>結果</h3>
-
-<p><strong>/opt/localが10GBから5GB</strong>になり，かなりのダイエットに成功した！容量の少ないMacBook Airでも，これでもうちょっと耐えられそう．</p>
-
-<h3>DaisyDiskによる可視化</h3>
-
-<p>さて，ここからは完全に蛇足なのだが，最近使用しているのDaisyDiskという可視化ソフトウェアがなかなか気に入っているので，今回のファイル消去の前後で/opt/localがどれだけ変化するかを確かめてみた．DaisyDiskは本来はインタラクティブに操作することができて，気になる箇所をクリックしたりして拡大することができるのだが，今回は前後の画像比較だけとなっている．使い心地が気になる人は以下のリンクから公式ページに飛んで紹介動画を見ていただきたい．</p>
-
-<p><a href="http://www.daisydiskapp.com/">DaisyDisk - Analyze disk usage and free up disk space on Mac</a></p>
-
-<h4>Before</h4>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/macports_before.png" alt="" /></p>
-
-<h4>After</h4>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/macports_after.png" alt="" /></p>
-
-<p>まず全体の容量が10GBから5GBに変わっており，それぞれの面積は単純に割合を示していることに注意．Inactiveなパッケージを消去する前は少数の比較的大きな領域がいくつも見られる．具体的には，左側の外縁から2つ目のピンクの領域がgccやllvm，boost，emacsなどのパッケージのディレクトリを表しており，一番外縁にある灰色がそれぞれのパッケージのファイルになっている．一つのパッケージに複数の灰色で区切られた細かいディレクトリが含まれているのは，それだけアップデートして古いバージョンのパッケージが溜まっていったからだ．そしてInactiveなパッケージを消去した後は，複数の小さな領域が組み合わさっていることがわかり，それぞれのパッケージに含まれるファイルの容量が小さくなったことを示している．</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://guide.macports.org/">MacPorts Guide</a></li>
-<li><a href="http://d.hatena.ne.jp/kanonji/20091025/1256495516">MacPortsをちゃんと使うために調べてみた - kanonjiの日記</a></li>
-<li><a href="http://d.hatena.ne.jp/t_mimori/20101020/1287568644">Macでディスク容量が足りなくなってきたら1【portをcleanしよう】 - En blanc et noir</a></li>
 </ul>
 
 ]]></content>
