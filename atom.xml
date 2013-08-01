@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-08-01T21:55:12+09:00</updated>
+  <updated>2013-08-02T07:58:59+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -18,7 +18,7 @@
     <link href="http://yagays.github.io/blog/2013/08/01/de-bruijn-pronounce/"/>
     <updated>2013-08-01T21:43:00+09:00</updated>
     <id>http://yagays.github.io/blog/2013/08/01/de-bruijn-pronounce</id>
-    <content type="html"><![CDATA[<p>アセンブリ界隈ではすっかりスタンダートな手法になったde Bruijn graphによるアセンブルだが，正直言ってこの単語の発音はよく分からない！私自身も人が発音しているのを聞いて参考にしたり色々調べたりして確認してはいるものの，いまだに自信を持って口に出して言えないトコロがある．Blogに書くときもカタカナで書くのを避けているのが現状だ．</p>
+    <content type="html"><![CDATA[<p>アセンブリ界隈ではすっかりスタンダートな手法になったde Bruijn graphによるアセンブルだが，正直言ってこの単語の発音はよく分からない！私自身も人が発音しているのを聞いて参考にしたり色々調べたりして確認してはいるものの，いまだに自信を持って口に出して言えないトコロがある．Blogに書くときもカタカナ表記を避けているのが現状だ．</p>
 
 <p><a href="http://thegenomefactory.blogspot.jp/2013/08/how-to-pronounce-de-bruijn.html">The Genome Factory: How to pronounce &#8220;de Bruijn&#8221;</a></p>
 
@@ -38,7 +38,7 @@
 
 <p>-broin, broyn</p></blockquote>
 
-<p>といった具合だ．要するに&#8221;ijn&#8221;付近がやっかいで，発音するのかしないのかがよくわからないといったところだろう．似たような単語が英語にほとんど無いというのも影響していると思われる</p>
+<p>といった具合だ．要するに&#8221;ijn&#8221;付近がやっかいで，発音するのかしないのかがよくわからないといったところだろう．似たような単語が英語にほとんど無いというのも影響していると思われる．</p>
 
 <p>さて，このBlog記事によるとBruijnの部分は&#8221;BROWN&#8221;と読むようだ．ということで，日本語表記するならば<strong>正しくはde Bruijnはデュブランと読む</strong>ということだろうか．ただし，Bruijnをブルーインと表記する日本語記事も見られるため，過去の翻訳との兼ね合いも悩ましいところ．昔の日本語読み的なカタカナ表記ではブルーインなのだろうが，本来の読みをそのままカタカナにする最近の表記方法ではデュブランだろう．</p>
 
