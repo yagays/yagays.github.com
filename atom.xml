@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-08-02T07:58:59+09:00</updated>
+  <updated>2013-08-04T00:47:19+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「日本人の知らないワンランク上のビジネス英語術 エール大学厳選３０講」読了]]></title>
+    <link href="http://yagays.github.io/blog/2013/08/04/review-english-communication-skills/"/>
+    <updated>2013-08-04T00:40:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/08/04/review-english-communication-skills</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4484112078" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>文法が正しければそれでいい，意味が通じればそれでいい，謝罪や感謝の言葉さえ言っておけばそれでいい…，といったある種の割り切りのようなものは，完璧な英語を目指すあまりに何も話せないような日本人にとっては効果のある心がけなのかもしれないが，一方で適切でない言葉遣いや非礼な態度はコミュニケーションにおける誤解を招きかねない．とは言うものの，微妙なニュアンスや行間を読むようなことはネイティブスピーカーじゃないとできないと思うかもれない．まだ基礎もできていないのに高度なことは到底無理だと，始めから匙を投げがちだ．しかし，大人になった私たちには論理があり経験があり文化がある．礼儀や習慣の必要性を論理的に理解し，それが必要になる場を経験から感じ取り，文化的な振る舞いを心がけることができる．これは決してネイティブやバイリンガルが自然とできるようになることではない．大人になった今だからこそ，理論的に系統立てて学べる技術である．しかも，必要になるのはとても簡単な単語と文法だけとなれば，あとは身に付けるかどうかの違いだけだ．</p>
+
+<p>本書は主に日本のビジネスマンや学生に向けて書かれた英語のコミュニケーション術の解説書である．英語を必要とする日常会話やメール，プレゼンテーションなどの場において，どういう決まり事があってどういう間違いをしがちかといった気をつけるべきポイントが多数収録されている．特に，どんな場合でも&#8221;I&#8217;m sorry&#8221;と言わないと気がすまなかったり，質問に&#8221;Yes, I do / No, I don&#8217;t&#8221;といった決まり文句で返事しがちであったり，質問の意味がわからずに適当に返事してしまったりと，誰しも一度は体験したことのあるようなケースが多数登場する．当然ながら，それらの巧い返し方にも決まったフレーズがあり，言葉の使い方をちょっと変えるだけでぐっとネイティブに近づくことができる．また，日米のメールの構成の違いや発音を改善する方法など，知っていて当然/知っておくべき知識も豊富に含まれている．個人的には，</p>
+
+<ul>
+<li>canとcan&#8217;tの発音方法の違い</li>
+<li>相手の質問に不躾にNoと言わない方法</li>
+<li>マジックナンバー3</li>
+</ul>
+
+
+<p>あたりが非常に参考になった．どのトピックも難しいことは何一つ要求されない．ただそのことを知っていて体に染み付いているかどうかの問題なのだ．この程度ならもしかしたら感覚的に理解して実践している人もいるかもしれない．しかし，今は頭でっかちになって理屈から理解しようとしているのだから，気後れすることなく1つずつ覚えていけばいい．そういった意味で本書は，英語の作法や技術をじっくり学んでいくための足がかりになる1冊である．</p>
+
+<br/>
+
+
+<p>それにしても外国語は本当に難しい，なんでこんなに英語が喋れない/聞き取れない/書けない/読めないのかと，悔しくてたまらない時がある．もしバイリンガルだったならどれほど楽だったかと誰しも一度は思うはずだ．そういう時には決まってスヌーピーのこの言葉を思い出すようにしている．</p>
+
+<blockquote><p>YOU PLAY WITH THE CARDS YOU&#8217;RE DEALT&#8230;WHATEVER THAT MEANS.</p></blockquote>
+
+<p>そして，だったらとことん理詰めで攻めてやろうじゃないかと，すこしばかり自分を奮いたたせることができる．先はまだまだ長いが，本書のような英語の技術書を読むと，少しばかり前に進んでいる実感が得られる．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA["de Bruijn"はどう発音する？]]></title>
@@ -1290,191 +1322,6 @@
 <li>Tophat：v2.0.8b</li>
 <li>Bowtie：version 2.1.0</li>
 <li>Samtools：0.1.19.0</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[SRA Toolkitを使ってsraファイルからfastqファイルに変換する(更新版)]]></title>
-    <link href="http://yagays.github.io/blog/2013/06/20/fastq-dump-sratoolkit/"/>
-    <updated>2013-06-20T11:26:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/06/20/fastq-dump-sratoolkit</id>
-    <content type="html"><![CDATA[<p>久しぶりにfastq-dumpを使ったら少し仕様が変わっていたのでメモ．だいぶ前に別の場所で書いた記事は，既に古くなってしまっている．何もせず記事を放置しておくのも申し訳ないし，どうやらfastq-dumpでググると上位にくるようなので，ここいらで更新しておかないと…．</p>
-
-<p>(deprecated) <a href="http://g86.dbcls.jp/~yag/wordpress/archives/959">Wolf Ears » SRA Toolkitを使ってsraファイルからfastqファイルに変換する</a></p>
-
-<h3>SRA Toolkitのインストール</h3>
-
-<p>sraからfastqに変換するプログラムは，SRA Toolkitの中にあるfastq-dumpを使う．まずはNCBIのサイトからOS環境に合わせてコンパイルされたSRA Toolkitをダウンロードしてインストールする．</p>
-
-<p><a href="http://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software">Software : Software : Sequence Read Archive : NCBI/NLM/NIH</a></p>
-
-<p>コンパイルされたバイナリとしては，Linux系列のCentOSやUbuntu，MacOSやMS Windowsに合わせたものが用意されている．私の環境はRed Hat Enterpriseなので，とりあえず「CentOS Linux 64 bit architecture」を選択する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ wget http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.3.2-5/sratoolkit.2.3.2-5-centos_linux64.tar.gz
-</span><span class='line'>$ tar zxvf sratoolkit.2.3.2-5-centos_linux64.tar.gz </span></code></pre></td></tr></table></div></figure>
-
-
-<p>今回使用するfastq-dumpは展開したディレクトリのbin以下に入っている．以下のように実行して動作するか確認する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump
-</span><span class='line'>
-</span><span class='line'>Usage:
-</span><span class='line'>  sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump [options] &lt;path [path...]&gt;
-</span><span class='line'>  sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump [options] [ -A ] &lt;accession&gt;
-</span><span class='line'>
-</span><span class='line'>Use option --help for more information
-</span><span class='line'>
-</span><span class='line'>sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump : 2.3.2</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>fastq-dumpの使い方</h3>
-
-<p>基本的な使い方としては，以下のようにfastq-dumpにsraファイルを指定すればよい&#8230;</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump ./DRR002191.sra</span></code></pre></td></tr></table></div></figure>
-
-
-<p>…のだが，ここでひとつ注意が必要になる．上のコマンドを指定すると，データがシングルエンドでもペアエンドでも同様に一つのファイルとして出力されてしまう．実際に変換されたfastqファイルの中身を見てみると，上のDRR002191.sraは本当は90bpのペアエンドなのだが，以下のように結合された配列として出力される．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ head -n 4 DRR002191.fastq
-</span><span class='line'>@DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=180
-</span><span class='line'>NCAATGGCAATAGCAATGCATTGAAATGAAAAGGCATTTACCAGGAGCAGGAAAGCCAGAAAGAGGAGCAGTGNNCNNGGAGTTGCNNNNTGCTTGGCTTCATCTTTTGCAATTCTGCATCTTTTGCATTTCCCTTCTCGCTCTGCTGCTCGCTCGCCTTTCTTNNNCGNCCTTTTCCCC
-</span><span class='line'>+DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=180
-</span><span class='line'>#1=DDFFFHFFHHIIJJJIJJIJJIJBCHHIHGCC&gt;FGIGIHDH?HJIEGEGI@FEHIJIIE@HI9=EH=CDD#################B@CFFDDDDFHHHGIJJIJJGGIGJIIHGHIGIJIHIJIEIIHIJJIGGHHEGI@DGCGEFHHIGIEFEFFBCB################</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ということで，きちんとペアエンドを2つのfastqファイルに変換するには，&#8211;split-filesというオプションを使用する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump --split-files ./DRR002191.sra</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これで，きちんと2つのfastqファイルが出力される．個別のfastqファイルを見ると，やはり先程の変換はペアエンドの配列を結合して出力されていることがわかる．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ ls *.fastq
-</span><span class='line'>DRR002191_1.fastq  DRR002191_2.fastq
-</span><span class='line'>
-</span><span class='line'>$ head -n 4 DRR002191_1.fastq DRR002191_2.fastq
-</span><span class='line'>==&gt; DRR002191_1.fastq &lt;==
-</span><span class='line'>@DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=90
-</span><span class='line'>NCAATGGCAATAGCAATGCATTGAAATGAAAAGGCATTTACCAGGAGCAGGAAAGCCAGAAAGAGGAGCAGTGNNCNNGGAGTTGCNNNN
-</span><span class='line'>+DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=90
-</span><span class='line'>#1=DDFFFHFFHHIIJJJIJJIJJIJBCHHIHGCC&gt;FGIGIHDH?HJIEGEGI@FEHIJIIE@HI9=EH=CDD#################
-</span><span class='line'>
-</span><span class='line'>==&gt; DRR002191_2.fastq &lt;==
-</span><span class='line'>@DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=90
-</span><span class='line'>TGCTTGGCTTCATCTTTTGCAATTCTGCATCTTTTGCATTTCCCTTCTCGCTCTGCTGCTCGCTCGCCTTTCTTNNNCGNCCTTTTCCCC
-</span><span class='line'>+DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=90
-</span><span class='line'>B@CFFDDDDFHHHGIJJIJJGGIGJIIHGHIGIJIHIJIEIIHIJJIGGHHEGI@DGCGEFHHIGIEFEFFBCB################</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>その他の注意点</h3>
-
-<p>fastq-dumpに指定するsraファイルは，きちんとパスを指定しないといけないようだ．以下のようなエラーが出る場合は，絶対パスを指定するか，カレントディレクトリにsraファイルがある場合にはファイル名の前に「<strong>./</strong>」を付け加える．</p>
-
-<h4>パスが解決できなくて実行できない例</h4>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump DRR002191.sra
-</span><span class='line'>2013-06-20T02:11:42 fastq-dump.2.3.2 err: name not found while resolving tree within virtual file system module - failed to open 'DRR002191.sra'
-</span><span class='line'>Written 0 spots total</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>絶対パスを指定するか./を付け加える</h4>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump /path/to/DRR002191.sra
-</span><span class='line'>$ fastq-dump ./DRR002191.sra</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<br/>
-
-
-<p>また，他のオプションなどの情報はfastq-dumpのhelpから見ることができる．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump --help
-</span><span class='line'>
-</span><span class='line'>Usage:
-</span><span class='line'>  /home/is/yuki-ok/biolocal/src/sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump [options] &lt;path [path...]&gt;
-</span><span class='line'>  /home/is/yuki-ok/biolocal/src/sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump [options] [ -A ] &lt;accession&gt;
-</span><span class='line'>
-</span><span class='line'>INPUT
-</span><span class='line'>  -A|--accession &lt;accession&gt;       Replaces accession derived from &lt;path&gt; in
-</span><span class='line'>                                   filename(s) and deflines (only for single
-</span><span class='line'>                                   table dump)
-</span><span class='line'>  --table &lt;table-name&gt;             Table name within cSRA object, default is
-</span><span class='line'>                                   "SEQUENCE"
-</span><span class='line'>
-</span><span class='line'>[...]</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>環境</h4>
-
-<ul>
-<li>NCBI SRA Toolkit : May 9 2013, version 2.3.2-5 release</li>
-<li>fastq-dump : 2.3.2</li>
-</ul>
-
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://www.ncbi.nlm.nih.gov/sra/?term=DRR002191">Whole genome resequencing of Masaru Tomita - SRA - NCBI</a></li>
-<li><a href="http://trace.ddbj.nig.ac.jp/DRASearch/run?acc=DRR002191">DRR002191 - DRA Search</a></li>
-<li><a href="ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/fastq/DRA000/DRA000583/DRX001619">/ddbj_database/dra/fastq/DRA000/DRA000583/DRX001619 のインデックス</a> (こちらではまだfastq.bz2で配布されている)</li>
 </ul>
 
 ]]></content>
