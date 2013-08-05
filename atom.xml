@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-08-04T01:01:24+09:00</updated>
+  <updated>2013-08-05T21:27:43+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「葬式は、要らない」読了]]></title>
+    <link href="http://yagays.github.io/blog/2013/08/05/review-no-funeral-required/"/>
+    <updated>2013-08-05T21:18:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/08/05/review-no-funeral-required</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4344981588" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>宗教学者の島田裕巳氏による葬式論．タイトルは少々誇張が含まれており，実際に本書の中で述べられている主張はもう少し穏やかな口調でいて同時に強烈なメッセージを含んでいる．それは，現代日本の葬式は贅沢だということである．ただし，贅沢という語感だけで判断してはいけない．贅沢とは本書冒頭で定義されている言葉を借りるならば，</p>
+
+<blockquote><p>贅沢とは何か．それは，必要限度を超えて，金銭やものなどを惜しみなく消費することである．</p>
+
+<p><a href="http://www.amazon.co.jp/gp/product/4344981588/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4344981588&linkCode=as2&tag=yagays-22">葬式は、要らない (幻冬舎新書)</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4344981588" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> (P.15)</p></blockquote>
+
+<p>である．決して他人に対して羨望や僻みを含んだ意味ではないことを強調しておきたい．この定義から考えれば，葬式は必要限度以上に金銭やものを惜しみなく消費しており，だからそういった葬式は要らないということになる．ここで言う必要限度を超えているものは，葬式費用であり，檀家と僧侶との関係であり，戒名である．そして，これらの度を超えた豪華さを作り上げてきたのは，日本的な世間体と日本における仏教の変遷である．本書では以上のような主張を軸に，日本の葬式の現状や近年急速に変化しつつある業界基準を概観した上で，日本の葬式の歴史を紐解きつつ，これから向かう日本人と宗教の関係について論じている．</p>
+
+<p>葬式論の具体的な内容は実際に本を読んでいただくとして，そこから本書の締めとして抽象化へと一気に駆け上がっていくところが個人的に非常に印象に残った．それは著者の死生観というべきものだ．本書の最後の章において，氏は「葬式の先にある理想的な死のあり方」というものを述べている．その冒頭で引き合いに出されるのはアメリカの有名私立大学であるスタンフォード大学の由来だ．スタンフォード大学は正式名称リーランド・スタンフォード・ジュニア大学と言い，一個人の名前を冠している．これはアメリカ大陸横断鉄道の生みの親であったリーランド・スタンフォード夫妻の子供の名だ．もうこの辺であらかた察しがつくだろう．夫妻の子供は若くで腸チフスで亡くなり，夫妻はその子供の名前を残すために，これまでに築き上げた資産を使い大学を創立した．それが今のスタンフォード大学である．つまりスタンフォードとは名前であり，ある一人の人間が生きた証なのだ．そして島田裕巳氏は言う．動物の中で人間だけが個人の死の後に何か残すことができる，それは個人の願望または遺族の希望である．本人と遺族に悔いの残らない死に方をすれば，それでいいじゃないか．それが目指すべき生き方であり死に方であるなら，葬式なんてどのようなものであってもいい．だから，葬式は要らない，と．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「日本人の知らないワンランク上のビジネス英語術 エール大学厳選３０講」読了]]></title>
@@ -1093,237 +1113,6 @@
 
 
 <p>来年のWeb Server Issue 2014の締め切りは今年いっぱいまで(31 Dec. 2013)となっている．それまでに完全に動くウェブサービスと1ページのproposalを書いて投稿し，そこで通れば1ヶ月でmanuscriptを書いて7月に掲載という流れのようだ．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Tophatにおいて使用するスレッド数を上げすぎるとファイルディスクリプタの上限でエラーになる]]></title>
-    <link href="http://yagays.github.io/blog/2013/06/23/tophat-too-many-open-files/"/>
-    <updated>2013-06-23T10:33:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/06/23/tophat-too-many-open-files</id>
-    <content type="html"><![CDATA[<p>久しぶりにTophatをいじったら一発目でエラーで落ちてしまい，出鼻をくじかれてしまった…．原因を調べてみると，どうやらTophatのコマンド実行時に指定する-pオプションの数字を調子に乗って上げすぎたのが良くなかったらしい．といっても計算機のリソースに問題があったわけではなく，ユーザが使えるシステムリソースの制限を超えてしまったために，Tophatが停止してしまったようだ．この問題はTophatの公式サイトのFAQでも取り上げられているが，このBlogでもエラーメッセージとともに原因と対策を書いておこうと思う．</p>
-
-<h3>Tophatの標準エラー出力のメッセージ</h3>
-
-<p>今回の場合は，Tophatのログの最後で以下のようなエラーメッセージが表示される．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[...]
-</span><span class='line'>[2013-06-23 00:22:33] Mapping right_kept_reads_seg3 to genome chlamydomonas_236 with Bowtie2 (3/4)
-</span><span class='line'>[2013-06-23 00:33:09] Mapping right_kept_reads_seg4 to genome chlamydomonas_236 with Bowtie2 (4/4)
-</span><span class='line'>[2013-06-23 00:44:57] Searching for junctions via segment mapping
-</span><span class='line'>        [FAILED]
-</span><span class='line'>Error: segment-based junction search failed with err =1
-</span><span class='line'>Error opening SAM file output/tmp/right_kept_reads_seg1.bam</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これだけでは何のことだかよくわからないが，Tophatが出力するログのlogs/segment_juncs.logを見ると，このエラーに関してもう少し詳細な記述が出力されている．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>    Loading scaffold_53...done
-</span><span class='line'>    Loading scaffold_54...done
-</span><span class='line'>    Loading ...done
-</span><span class='line'>&gt;&gt; Performing segment-search:
-</span><span class='line'>Loading left segment hits...
-</span><span class='line'>done.
-</span><span class='line'>Loading right segment hits...
-</span><span class='line'>open: Too many open files
-</span><span class='line'>Error opening SAM file output/tmp/right_kept_reads_seg2.bam</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これを見ると，どうやらsegment_juncsの実行中に「open: Too many open files」が原因で実行が落ちたようだ．</p>
-
-<h3>原因と対策</h3>
-
-<p>このエラーに関しては，実はTophatの公式サイトのFAQに「What should I do if I see a message like &#8220;Too many open files&#8221;?」という，まさに先ほどのエラーメッセージの内容そのままの項がある．</p>
-
-<blockquote><p>This usually happens when using &#8220;-p&#8221; option with a large value (many threads). TopHat may produce many intermediate files, the number of which is proportional to this value; sometimes the number of the files may go over the maximum number of files a process is allowed to open. The solution is to raise the limit to a higher number (e.g. 10000). For Mac, you can change this using a command, &#8220;sudo sysctl -w kern.maxfiles=10240&#8221;.</p>
-
-<p><a href="http://tophat.cbcb.umd.edu/faq.shtml#many_file">TopHat :: Center for Bioinformatics and Computational Biology</a></p></blockquote>
-
-<p>ざっと要約すると「Tophatは中間ファイルを大量に作るから時々許容数超えちゃうんだよね．扱えるファイル数の上限上げるか，Macなら次のコマンドで対処してね」ということになる．さすがにこれだけではよく分からないと思うので，SEQanswersの以下のスレッドも参考にしつつ，もう少し詳しく見ていこうと思う．</p>
-
-<p><a href="http://seqanswers.com/forums/showthread.php?t=21316">Tophat segment junction error 1, invalid BAM binary header - SEQanswers</a></p>
-
-<h3>limitとファイルディスクリプタ数の制限</h3>
-
-<p>さて，公式サイトのFAQにおいてファイル数の上限といった言葉が出てきたように，LinuxやMacではユーザごとに使用することのできる各種システムリソースに制限が設けられている．具体的にはユーザが使用できるCPU数やメモリの容量，プロセスの数などがそれに該当するのだが，その中に<strong>「ファイルディスクリプタ数」</strong>という項目があり，1プロセスが同時に開くことのできるファイル数の上限を定めている．これは主にひとつの計算機を複数人が使用するマルチユーザシステムにおいて，一人がリソースを独占するのを防いだりアプリケーションの暴走を止めたりするのに役立つのだが，今回のような大規模な計算を実行する際にはこれが邪魔になってしまう．</p>
-
-<p>システムリソースの制限を確認したい場合には，「ulimit -a」または「limit」というコマンドを使う．例えば，私の環境では以下のようになる．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># ソフトリミット
-</span><span class='line'>$ ulimit -a
-</span><span class='line'>-t: cpu time (seconds)              unlimited
-</span><span class='line'>-f: file size (blocks)              unlimited
-</span><span class='line'>-d: data seg size (kbytes)          unlimited
-</span><span class='line'>-s: stack size (kbytes)             8192
-</span><span class='line'>-c: core file size (blocks)         0
-</span><span class='line'>-m: resident set size (kbytes)      unlimited
-</span><span class='line'>-u: processes                       1024
-</span><span class='line'>-n: file descriptors                1024
-</span><span class='line'>-l: locked-in-memory size (kbytes)  64
-</span><span class='line'>-v: address space (kbytes)          unlimited
-</span><span class='line'>-x: file locks                      unlimited
-</span><span class='line'>-i: pending signals                 127413
-</span><span class='line'>-q: bytes in POSIX msg queues       819200
-</span><span class='line'>-e: max nice                        0
-</span><span class='line'>-r: max rt priority                 0</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ここで表示されるのは厳密にはソフトリミットと呼ばれ，ユーザごとに設定されている制限である．一方でハードリミットと呼ばれる制限もあり，これは管理者(root)が定める制限となっている．ソフトリミットは，このハードリミットの範囲内でしか自由に制限値を変更することはできない．ハードリミットを確認したい場合には，-Hオプションを付ける．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># ハードリミット
-</span><span class='line'>$ ulimit -aH
-</span><span class='line'>-t: cpu time (seconds)              unlimited
-</span><span class='line'>-f: file size (blocks)              unlimited
-</span><span class='line'>-d: data seg size (kbytes)          unlimited
-</span><span class='line'>-s: stack size (kbytes)             unlimited
-</span><span class='line'>-c: core file size (blocks)         unlimited
-</span><span class='line'>-m: resident set size (kbytes)      unlimited
-</span><span class='line'>-u: processes                       127413
-</span><span class='line'>-n: file descriptors                4096
-</span><span class='line'>-l: locked-in-memory size (kbytes)  64
-</span><span class='line'>-v: address space (kbytes)          unlimited
-</span><span class='line'>-x: file locks                      unlimited
-</span><span class='line'>-i: pending signals                 127413
-</span><span class='line'>-q: bytes in POSIX msg queues       819200
-</span><span class='line'>-e: max nice                        0
-</span><span class='line'>-r: max rt priority                 0</span></code></pre></td></tr></table></div></figure>
-
-
-<p>さて，今回問題になっているファイルディスクリプタ数は「-n: file descriptors」で表示されている．上の例の場合，ソフトリミットでは1024，ハードリミットでは4096となっている．つまり，Tophatは1024個以上のファイルを1スレッドで開こうとしたために，このソフトリミットに引っかかってしまったようだ．</p>
-
-<h3>フィアルディスクリプタ数の制限への対策</h3>
-
-<p>この問題を回避するには主に2つの方法がある．</p>
-
-<p>1．Tophatの-pオプションの値を小さくする</p>
-
-<p>2．ソフトリミットのファイルディスクリプタの値を大きくする</p>
-
-<p>まず1.では，Tophatが使用するスレッド数を少なくすることで，ファイルディスクリプタ数の上限に引っかからなくするというもの．一度-pオプションを無くして実行してみれば，おそらく今回のエラーには引っかからなくなるだろう．一度に開くファイル数が少なくなりほぼ確実に実行できるようにはなるが，並列処理数が減ってしまうのでTophatの実行時間は長くなってしまう．</p>
-
-<p>そこで2.のようにの制限を無くして，-pオプションはそのままにファイルディスクリプタの上限を回避するという方法もある．実行コマンドや実行時間はそのままにエラーを回避することができる一方で，上限を上げたからといってもTophatがそれ以上の同時ファイルオープンをしてしまえば同様のエラーに引っかかってしまうほか，制限を上げたことにより計算機に負荷がかかる恐れもある．つまり，時と場合によっては成功するが確証は無いという感じだろうか．</p>
-
-<p>ちなみに，私の場合はファイルディスクリプタ数を上げても以下のような別のエラーが出て実行できなかった．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Error: ReadStream::getRead() called with out-of-order id#!</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ということで，結論としてはTophatの実行時間との兼ね合いを考えて，どちらかを選択したほうが良いだろう．素直に-pオプションの値を下げるほうが無難な気がする．</p>
-
-<p>ちなみに，制限値を引き上げるには，ulimitで以下のように値を変更する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ ulimit -n 2000
-</span><span class='line'>$ limit
-</span><span class='line'>-t: cpu time (seconds)              unlimited
-</span><span class='line'>-f: file size (blocks)              unlimited
-</span><span class='line'>-d: data seg size (kbytes)          unlimited
-</span><span class='line'>-s: stack size (kbytes)             8192
-</span><span class='line'>-c: core file size (blocks)         0
-</span><span class='line'>-m: resident set size (kbytes)      unlimited
-</span><span class='line'>-u: processes                       1024
-</span><span class='line'>-n: file descriptors                2000
-</span><span class='line'>-l: locked-in-memory size (kbytes)  unlimited
-</span><span class='line'>-v: address space (kbytes)          unlimited
-</span><span class='line'>-x: file locks                      unlimited
-</span><span class='line'>-i: pending signals                 16545839
-</span><span class='line'>-q: bytes in POSIX msg queues       819200
-</span><span class='line'>-e: max nice                        0
-</span><span class='line'>-r: max rt priority                 0</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ulimitの後ろに該当するパラメータの値を指定することによって，上限を引き上げることができる．ただし，先ほど述べたようにハードリミットより上は指定することができないので注意が必要になる．</p>
-
-<h3>まとめ</h3>
-
-<p>Tophatのエラー「open: Too many open files」は，スレッドが一度に開くことのできるファイルディスクリプタ数がソフトリミットの上限に引っかかってしまったために起こる．-pオプションの値を下げて実行するか，ソフトリミットのファイルディスクリプタの上限を引き上げることによって回避することができる．まずは，-pオプションを指定せずに実行してみよう．</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://tophat.cbcb.umd.edu/faq.shtml">TopHat :: Center for Bioinformatics and Computational Biology</a></li>
-<li><a href="http://seqanswers.com/forums/showthread.php?t=21316">Tophat segment junction error 1, invalid BAM binary header - SEQanswers</a></li>
-<li><a href="http://x68000.q-e-d.net/~68user/unix/pickup?limit">UNIXの部屋 コマンド検索:limit (*BSD/Linux)</a></li>
-<li><a href="http://yumewaza.yumemi.co.jp/2010/07/limitsconf.html">ファイルディスクリプタ数の上限変更とlimits.confの罠 (ゆめ技：ゆめみスタッフブログ)</a></li>
-</ul>
-
-
-<h4>実行環境</h4>
-
-<ul>
-<li>OS：RHEL 6.3</li>
-<li>Tophat：v2.0.8b</li>
-<li>Bowtie：version 2.1.0</li>
-<li>Samtools：0.1.19.0</li>
-</ul>
-
 ]]></content>
   </entry>
   
