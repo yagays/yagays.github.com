@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-08-11T11:08:13+09:00</updated>
+  <updated>2013-09-02T22:32:03+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[告知：NGS現場の回第3回研究会でポスター発表します(3-59-B)]]></title>
+    <link href="http://yagays.github.io/blog/2013/09/02/ngs-field-3-poster/"/>
+    <updated>2013-09-02T22:23:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/09/02/ngs-field-3-poster</id>
+    <content type="html"><![CDATA[<p>ご無沙汰しております．前回から1ヶ月近く開いてしましました．色々Blogに書くネタは溜まっているのですが，ちょっと忙しい＆スランプ気味でお休みしておりました．ということでまたボチボチBlogを再開するにあたって，まずは告知です．</p>
+
+<br/>
+
+
+<h4>NGS現場の回第3回研究会ポスター発表</h4>
+
+<p>2013/9/4,5に神戸で行われるNGS現場の回第3回研究会でポスター発表します．</p>
+
+<ul>
+<li>題名<strong>「非モデル生物における遺伝子発現解析のためのde novoトランスクリプトームアセンブリの性能評価」</strong></li>
+<li>場所：<strong>3-59-B</strong></li>
+</ul>
+
+
+<p>内容はタイトルにあるように，非モデル生物のRNA-Seqをする際のde novo Transcriptome Assemblyについて，ソフトウェアやデータサイズを色々変えて評価しましたよという感じの話をします．結局de novo Transcriptome Assemblyはソフトウェア色々あるけど何使えばいいの？どれくらいデータあればいいの？みたいな疑問に少しは答えられるかもしれません．ということで，非モデル生物でRNA-Seq勢の皆様，お待ちしております．情報交換＆議論しましょう．というか色々と教えてくださいよろしくお願いします…!!</p>
+
+<p>その他にもポスターの内容は分かんないけどこのBlogを見てくださってるという方も，良ければ是非いらしてください．Blogの感想・意見・文句などなどお待ちしております．冷やかしでも構いません．「Blog見てます」と声をかけてもらえれば，私が泣いて喜びます．</p>
+
+<p>ではでは，NGS現場の回#3のポスター会場でお待ちしております．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「葬式は、要らない」読了]]></title>
@@ -1094,34 +1122,6 @@
 <li><a href="http://yagays.github.io/blog/2013/04/20/install-biopython/">Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする - Wolfeyes Bioinformatics beta</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[2013 Web Server issue]]></title>
-    <link href="http://yagays.github.io/blog/2013/06/24/nar-web-server-issue-2013/"/>
-    <updated>2013-06-24T14:20:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/06/24/nar-web-server-issue-2013</id>
-    <content type="html"><![CDATA[<p><a href="http://nar.oxfordjournals.org/content/41/W1.toc" target="_blank"><img src="http://dl.dropboxusercontent.com/u/142306/b/W1.cover.gif" align="right" alt="http://nar.oxfordjournals.org/content/41/W1.cover-expansion"></a></p>
-
-<p>今年のWeb Server issue 2013が既に閲覧できるようになっていた．</p>
-
-<p><a href="http://nar.oxfordjournals.org/">Nucleic Acid Research誌</a>は少し特殊な特別号を毎年出していて，1月にはDatabase issueが，7月にはWeb Server issueが発刊されるのが定番になっている．これらの特集号は，他の論文誌では論文になりにくいようなデータベース構築やウェブサービス系を論文として発表する場として，バイオインフォ系にとっては重要な投稿先の一つといえる．特に，ウェブサービスのアップデートなども同様の投稿ができるようになっており，新規性としては少し弱いウェブサービスの保守管理や機能追加に関しても評価されるのが大きな特徴だ（ただし2年間のインターバルが必要）．</p>
-
-<p><strong>今年のWeb Server issue：<a href="http://nar.oxfordjournals.org/content/41/W1.toc">Table of Contents — 1 July 2013, 41 (W1)</a></strong></p>
-
-<p>今年は合計で95本のウェブサービスに関する論文が採択されたようだ．Editorialによると</p>
-
-<blockquote><p>For the 2013 issue, 293 summaries were submitted and 129, or 44%, were approved for manuscript submission. Of those approved, 95, or 73%, were ultimately accepted for publication.</p>
-
-<p><a href="http://nar.oxfordjournals.org/content/41/W1/W1.full">http://nar.oxfordjournals.org/content/41/W1/W1.full</a></p></blockquote>
-
-<p>ということで，293本の投稿のうち最終的に95本が採択され，全体で見れば約32%の採択率となっている．</p>
-
-<br/>
-
-
-<p>来年のWeb Server Issue 2014の締め切りは今年いっぱいまで(31 Dec. 2013)となっている．それまでに完全に動くウェブサービスと1ページのproposalを書いて投稿し，そこで通れば1ヶ月でmanuscriptを書いて7月に掲載という流れのようだ．</p>
 ]]></content>
   </entry>
   
