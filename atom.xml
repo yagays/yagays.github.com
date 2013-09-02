@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-09-02T22:32:03+09:00</updated>
+  <updated>2013-09-02T22:43:59+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -18,7 +18,7 @@
     <link href="http://yagays.github.io/blog/2013/09/02/ngs-field-3-poster/"/>
     <updated>2013-09-02T22:23:00+09:00</updated>
     <id>http://yagays.github.io/blog/2013/09/02/ngs-field-3-poster</id>
-    <content type="html"><![CDATA[<p>ご無沙汰しております．前回から1ヶ月近く開いてしましました．色々Blogに書くネタは溜まっているのですが，ちょっと忙しい＆スランプ気味でお休みしておりました．ということでまたボチボチBlogを再開するにあたって，まずは告知です．</p>
+    <content type="html"><![CDATA[<p>ご無沙汰しております．前回から1ヶ月近く開いてしましました．色々Blogに書くネタは溜まっているのですが，ちょっと忙しい＆スランプ気味でお休みしておりました．ぼちぼちBlogを再開するにあたって，まずは告知です．</p>
 
 <br/>
 
@@ -35,7 +35,7 @@
 
 <p>内容はタイトルにあるように，非モデル生物のRNA-Seqをする際のde novo Transcriptome Assemblyについて，ソフトウェアやデータサイズを色々変えて評価しましたよという感じの話をします．結局de novo Transcriptome Assemblyはソフトウェア色々あるけど何使えばいいの？どれくらいデータあればいいの？みたいな疑問に少しは答えられるかもしれません．ということで，非モデル生物でRNA-Seq勢の皆様，お待ちしております．情報交換＆議論しましょう．というか色々と教えてくださいよろしくお願いします…!!</p>
 
-<p>その他にもポスターの内容は分かんないけどこのBlogを見てくださってるという方も，良ければ是非いらしてください．Blogの感想・意見・文句などなどお待ちしております．冷やかしでも構いません．「Blog見てます」と声をかけてもらえれば，私が泣いて喜びます．</p>
+<p>その他にも，ポスターの内容は分かんないけどこのBlogを見てるよという方も，良ければ是非いらしてください．Blogの感想・意見・文句などなどお待ちしております．冷やかしでも構いません．「Blog見てます」と声をかけてもらえれば，私が泣いて喜びます．</p>
 
 <p>ではでは，NGS現場の回#3のポスター会場でお待ちしております．</p>
 ]]></content>
