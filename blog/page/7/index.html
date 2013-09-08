@@ -116,6 +116,142 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/05/21/tree/">Treeを使ってディレクトリ構造をターミナル上で可視化する</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-21T14:30:00+09:00" pubdate data-updated="true">May 21<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近は色々と忙しくネタが無いわけではないが，書けるだけの内容にまとまりきれていないのが現状．というわけで今回もLinxuの環境周りの話ということで，ディレクトリ構造をターミナル上で可視化するtreeというコマンドについて．ああ，これ以上何も言うことがない…．</p>
+
+<p><a href="http://mama.indstate.edu/users/ice/tree/">The Tree Command for Linux Homepage</a></p>
+
+<h3>インストール</h3>
+
+<p>ソースを取ってきてコンパイルする．以上．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ wget ftp://mama.indstate.edu/linux/tree/tree-1.6.0.tgz
+</span><span class='line'>$ tar zxvf lftp-4.4.6.tar.gz
+</span><span class='line'>$ cd tree-1.6.0
+</span><span class='line'>$ make</span></code></pre></td></tr></table></div></figure>
+
+
+<p>あとは，treeをパスの通ったところに移動させれば完了．以上．</p>
+
+<h3>使い方</h3>
+
+<p>何もオプションを指定しないと，以下のようにファイルとディレクトリが表示される．以上．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ tree
+</span><span class='line'>.
+</span><span class='line'>├── CHANGES
+</span><span class='line'>├── INSTALL
+</span><span class='line'>├── LICENSE
+</span><span class='line'>├── Makefile
+</span><span class='line'>├── README
+</span><span class='line'>├── TODO
+</span><span class='line'>├── color.c
+</span><span class='line'>├── color.o
+</span><span class='line'>├── doc
+</span><span class='line'>│   ├── tree.1
+</span><span class='line'>│   ├── tree.1.fr
+</span><span class='line'>│   └── xml.dtd
+</span><span class='line'>├── hash.c
+</span><span class='line'>├── hash.o
+</span><span class='line'>├── html.c
+</span><span class='line'>├── html.o
+</span><span class='line'>├── strverscmp.c
+</span><span class='line'>├── tree
+</span><span class='line'>├── tree.c
+</span><span class='line'>├── tree.h
+</span><span class='line'>├── tree.o
+</span><span class='line'>├── unix.c
+</span><span class='line'>├── unix.o
+</span><span class='line'>├── xml.c
+</span><span class='line'>└── xml.o
+</span><span class='line'>
+</span><span class='line'>1 directory, 24 files</span></code></pre></td></tr></table></div></figure>
+
+
+<p>-dオプションをつけると，ディレクトリだけを表示することができる．詳しくはmanで．以上．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ tree -d
+</span><span class='line'>.
+</span><span class='line'>└── doc
+</span><span class='line'>
+</span><span class='line'>1 directory</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ちなみに，色も付きます（ディレクトリと実行ファイル）．以上．お疲れ様でした．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/tree.png" alt="" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/05/20/zaw-zsh/">zaw.zshを使って移動したことのあるディレクトリに一発で飛ぶ</a></h1>
     
     
@@ -490,62 +626,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/12/review-murakami-english/">「村上式シンプル英語勉強法」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-12T09:47:00+09:00" pubdate data-updated="true">May 12<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0081MAET6" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>英語の勉強法に王道なんてものは無くて，みんながみんな自分の方法を一般論のように語ったり，適当なことを言いふらしてはお金にしようと画策していたり，かく言う僕自身もあまり英語が得意ではない方で勉強法についてもよく分かっていない．だから，勉強しようとすると誰かの意見を盲信するか，自分の流儀を貫き通すしかない．本書も結局は巷にあふれる英語勉強本の中の一つにすぎず，Googleだとか外資社長だとかいった箔が付いている程度のものだ．</p>
-
-<p>本書の主張は非常にシンプルで，英語のスキルを上達させたいなら</p>
-
-<ul>
-<li>300万語読む</li>
-<li>1万語眺める（覚える）</li>
-<li>1000時間聞く</li>
-<li>文章を書くときは人の英文を借りてくる</li>
-<li>パターンを暗記する</li>
-</ul>
-
-
-<p>をクリアすればいいというもの．あとは，これを実現するために具体的にどうやれば効率が良いかといった方法が，著者自身の経験とともに語られる．例えば，英文を読むときは後戻りをせずに一気に読みきるとか，リスニングは筋トレと同じだから聞き取れないくらいのレベルを聴き続けるとか，英語のメールを書くときは人の文章から借りてくるとか，ちょっとしたコツが幾つも載っている．分量としても，1時間あれば読みきれるくらいなので，軽い気持ちで読み通せる．本書の中では，英語を学習する上で難しいことなんて何も要求されない．</p>
-
-<p>さて，ここまで本書をひと通り読み進めて，あとは内容を信じるか信じないかだ．納得できたかかどうか，信憑性があるかないか，試してみてリスクが大きそうか小さそうか，その辺りが頭のなかを駆け巡ることだろう．僕の場合は，本書の進言をちょっと真面目に聞いてみようかなという気になった．理由なんてものはあってないようなものなのだけれども，著者の英語に対する割り切りの良さが少し気に入ったからかもしれない．</p>
-
-<p>ということで，サクッと読めてアドバイスもそこそこな本書は，意見が合う部分が多く個人的にはオススメできる．まあ，英語上達の保証はできないけれども&#8230;．</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/8/">&larr; Older</a></li>
@@ -593,6 +673,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2013/09/09/poster/">学会ポスターを作る/発表する際の覚書</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/09/08/bose-quietcomfort20i/">BOSE QuietComfort20i購入&使用雑感</a>
       </li>
     
@@ -626,10 +710,6 @@
     
       <li class="post">
         <a href="/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/">RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/">RNA-Seqの数理―生成モデルによる発現量推定（1）RNA-Seqの発現量推定とRPKM</a>
       </li>
     
   </ul>
