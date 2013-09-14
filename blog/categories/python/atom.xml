@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-09-14T13:08:49+09:00</updated>
+  <updated>2013-09-14T13:20:50+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -119,7 +119,7 @@ Seq('TACG', Alphabet())</p>
 
 <p>Mac OS Xの環境ではpipが/usr/local/bin/にデフォルトで入っているので問題ないが，もしLinux系のサーバなどでpipが入っていない場合は，以下のようにvirtualenvで作った環境でpipを入れる必要がある．</p>
 
-<p>```</p>
+<p>```bash</p>
 
 <h1>source bin/activateした後に</h1>
 
