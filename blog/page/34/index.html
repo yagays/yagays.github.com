@@ -116,6 +116,49 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/06/08/fastb/">Fastaからfastbに変換する</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-08T19:12:00+09:00" pubdate data-updated="true">Jun 8<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>fastaやfastqは馴染みがあっても，fastbというフォーマットは知らない人が多いと思う．これははfastaファイルをバイナリ形式に変換したフォーマットのことで，SAMとBAMの関係と同じようなものである．</p>
+
+<p>ALLPATHS-LGにおいて，アセンブリの評価のためにリファレンスゲノムを入力として与える際には，REFERENCE_DIRにgenome.fastaとgenome.fastbという2つのファイルが必要になる．genome.fastaに関しては，データベースなり自前で用意した配列を使えばいいのだが，genome.fastbに関しては手作業で変換をしなければならない．ということで，今回はfastaとfastbの変換の方法について，メモ程度ではあるが書いてみることにする．</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/06/08/fastb/">続きを読む &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/06/06/velvetk/">VelvetKを使ってVelvetを用いたアセンブルに最適なk-merサイズを推定する</a></h1>
     
     
@@ -359,49 +402,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/06/02/allpaths-lg-dataset/">ALLPATHS-LGで使用できるライブラリサイズの制限</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-02T15:52:00+09:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>ALLPATHS-LGは複数のライブラリで読まれたショートリードを組み合わせてゲノムアセンブルをするソフトウェア（パイプライン）である．比較的新しいゲノムアセンブラで性能もかなり良いらしく，<a href="http://www.broadinstitute.org/software/allpaths-lg/blog/">公式ブログ</a>のアセンブル履歴を見ると非モデル生物を中心にかなり使われている印象がある．ただ，その反面かなり癖のあるソフトウェアで，インストールが鬼門・動かすのが難しい・インターネットに資料が少ないという三重苦で，初心者にはかなりハードルの高いソフトウェアと言わざるを得ない．その中でも個人的に一番やっかいだと思うポイントはパイプライン入力に使うデータセットの準備で，折角苦労してALLPATHS-LGが使える環境を整えたとしても，使えるデータが無いとそもそも動かないということになりかねない．</p>
-
-<p>ということで，今回はALLPATHS-LGを動かすために必要なライブラリについて見ていく．私自身も厳密に調べたわけではないので間違い等あるかもしれないが，もし詳しい方がいらっしゃればご指摘頂ければ幸い．</p>
-
-<p> </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/06/02/allpaths-lg-dataset/">続きを読む &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/35/">&larr; Older</a></li>
@@ -449,6 +449,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2013/09/17/review-prml-girl/">「PRMLガール―文芸部のマネージャーが「パターン認識と機械学習」を読んだら」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/09/14/review-anthropic-principle/">「宇宙はなぜこのような宇宙なのか――人間原理と宇宙論」読了</a>
       </li>
     
@@ -484,10 +488,6 @@
         <a href="/blog/2013/07/24/guide-for-japanese-researchers-in-us/">「研究留学術 第2版―研究者のためのアメリカ留学ガイド」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/07/22/mathematical-models-for-transcriptome-quantification-3/">RNA-Seqの数理―生成モデルによる発現量推定（3）ペアエンドリードとフラグメント長の分布関数</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -496,7 +496,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (1)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (75)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (76)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>

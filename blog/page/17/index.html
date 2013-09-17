@@ -116,6 +116,131 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/11/26/rjags-on-mac-os-x/">Mac OS XでJAGS＆rjagsパッケージを動かす</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-26T07:18:00+09:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>MacPortsでJAGSを入れる場合はちょっと注意</h3>
+
+<p>MacでJAGSをインストールする場合，</p>
+
+<ul>
+<li><a href="http://sourceforge.net/projects/mcmc-jags/">SourceForge</a>からパッケージをダウンロードしてインストールする方法</li>
+<li><a href="https://trac.macports.org/browser/trunk/dports/science/jags/Portfile">MacPorts</a>を使ってインストールする方法</li>
+</ul>
+
+
+<p>の2通りがある．どちらで入れてもJAGS自体に違いはないのだが，Rのrjagsパッケージをインストールする際に少し注意しなければいけないポイントがある．1つ目の方法でパッケージからインストールした場合だと，いつも通りに</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1"># パッケージからインストールした場合</span>
+</span><span class='line'><span class="o">&gt;</span> install.packages<span class="p">(</span><span class="s">&quot;rjags&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="o">&gt;</span> library<span class="p">(</span>rjags<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>とすれば良いのだが，MacPortsでインストールした場合では，</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1"># MacPortsからインストールした場合</span>
+</span><span class='line'><span class="o">&gt;</span> install.packages<span class="p">(</span><span class="s">&quot;rjags&quot;</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;source&quot;</span><span class="p">,</span> configure.args <span class="o">=</span> <span class="s">&#39;--with-jags-lib=/opt/local/lib --with-jags-include=/opt/local/include/JAGS --with-jags-modules=/opt/local/lib/JAGS/modules-3&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="o">&gt;</span> library<span class="p">(</span>rjags<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>のように，パッケージのインストールの際に色々とオプションを付ける必要がある．というのも，パッケージからインストールした場合では/usr/local/以下にインストールされるのに対し，MacPortsからインストールした場合では/opt/local/以下にインストールされるからだ．Rでrjagsパッケージをインストールする際には，どうやら/usr/local/以下のモジュールや共有ライブラリを参照するようなので，MacPortsで入れた場合にはそもそもディレクトリが違うためファイルが見つからないといったエラーが出る．</p>
+
+<h3>他の解決方法</h3>
+
+<p>ちなみに，/usr/local/lib以下にシンボリックリンクを貼って強引に解決する方法もある．自分は最初こちらで対処していたのだが，長期的に考えた場合にJAGSのバージョンアップによってdylibの名前が変わる可能性などもあるので，上のようにパッケージのインストールの段階で対処する方が良いだろう．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">cd</span> /usr/local/lib
+</span><span class='line'><span class="nv">$ </span>sudo ln -s /opt/local/lib/libjags.3.dylib .
+</span><span class='line'><span class="nv">$ </span>sudo ln -s /opt/local/lib/JAGS .
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>参考：MacPortsの場合でinstall.package(&#8220;rjags&#8221;)で入れてしまったときのrjags読み込み時のエラー</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="o">&gt;</span> library<span class="p">(</span>rjags<span class="p">)</span>
+</span><span class='line'> 要求されたパッケージ coda をロード中です
+</span><span class='line'> 要求されたパッケージ lattice をロード中です
+</span><span class='line'>Error :  <span class="m">.</span>onLoadはloadNamespace<span class="p">()</span>（rjagsに対する）の中で失敗しました、詳細は:
+</span><span class='line'> call: dyn.load<span class="p">(</span>file<span class="p">,</span> DLLpath <span class="o">=</span> DLLpath<span class="p">,</span> <span class="m">...</span><span class="p">)</span>
+</span><span class='line'> error:  共有ライブラリ <span class="s">&#39;/Library/Frameworks/R.framework/Versions/2.15/Resources/library/rjags/libs/x86_64/rjags.so&#39;</span> を読み込めません：
+</span><span class='line'>  dlopen<span class="p">(</span><span class="o">/</span>Library<span class="o">/</span>Frameworks<span class="o">/</span>R.framework<span class="o">/</span>Versions<span class="o">/</span><span class="m">2.15</span><span class="o">/</span>Resources<span class="o">/</span>library<span class="o">/</span>rjags<span class="o">/</span>libs<span class="o">/</span>x86_64<span class="o">/</span>rjags.so<span class="p">,</span> <span class="m">10</span><span class="p">)</span>: Library not loaded: <span class="o">/</span>usr<span class="o">/</span>local<span class="o">/</span>lib<span class="o">/</span>libjags.3.dylib
+</span><span class='line'>  Referenced from: <span class="o">/</span>Library<span class="o">/</span>Frameworks<span class="o">/</span>R.framework<span class="o">/</span>Versions<span class="o">/</span><span class="m">2.15</span><span class="o">/</span>Resources<span class="o">/</span>library<span class="o">/</span>rjags<span class="o">/</span>libs<span class="o">/</span>x86_64<span class="o">/</span>rjags.so
+</span><span class='line'>  Reason: image not found
+</span><span class='line'> エラー：  <span class="s">&#39;‘rjags’&#39;</span> に対するパッケージもしくは名前空間のロードが失敗しました
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>実行環境</h3>
+
+<ul>
+<li>Mac OS X 10.8.2</li>
+<li>R version 2.15.1</li>
+<li>JAGS 3.3.0</li>
+<li>rjags version 3-7</li>
+</ul>
+
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://mcmc-jags.sourceforge.net/">JAGS - Just Another Gibbs Sampler</a></li>
+<li><a href="http://cran.r-project.org/web/packages/rjags/index.html">CRAN - Package rjags</a></li>
+<li><a href="http://eity.que.jp/pukiwiki/index.php?BUGS">Eity&#8217;s Web - BUGS</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/11/25/imcmr-6-3/">「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その2</a></h1>
     
     
@@ -682,49 +807,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/21/review-apple-matsuhiro/">「僕がアップルで学んだこと 環境を整えれば人が変わる、組織が変わる」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-21T18:27:00+09:00" pubdate data-updated="true">Nov 21<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4048865390" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>元 Apple Inc.のシニアマネージャーの松井博氏による， Appleという会社を通して語られる働き方の指南書である．主にスティーブ・ジョブズやジョナサン・アイヴ，ティム・クックといったトップの人間を中心にして語られることが多いAppleだが，実際の会社内部の体制について語られることは意外と少ない．本書では，実際にアップルで働いた著者の体験談を元に，その企業の姿勢であったり価値観が語られる．そして本書での一番ポイントとなる部分は，松井氏がスティーブ・ジョブズが戻る以前の迷走期から復帰後の社内改革，そしてめざましい躍進ぶりを見せる黄金期にまたがって，Appleという会社を内側から眺め続けてきたところにある．めまぐるしく変わりゆく環境の中で，ジョブズの復帰により会社の環境はどのように変わったのか，そしてAppleが革新的な製品やサービスを作り続けられてきた理由はいったいどこにあるのかを，内部の視点からまとめ上げた一冊となっている．</p>
-
-<p>本書は大きく分けて，職場環境の変革について書かれた前半部と，Apple社員の異常なほどまでの社内政治について書かれた後半部から構成される．前半部の職場環境については，著者が実際に肌で体感してきたアップル社内の変貌を織り交ぜつつ，どうやったら社員がパフォーマンスを発揮し組織として成果を上げていくことができるかといった方法論が語られる．その中では，昨今のApple評で良く耳にするシンプル・コンセプト・デザインなどの基本的な要素から，著者が自分の部署内で実施してきた試行錯誤，そしてスティーブ・ジョブズが打ち出した方向性によってどのように会社としての方向性が明確になったかが，臨場感溢れる語り口で述べられる．一方で，後半部の社内政治においては，一見エンジニアの天国として華やかに見えるApple社内での，外部のイメージとは全く違った熾烈な競争から生じる社内政治について，著者のアメリカ勤務時代の経験が語られる．著者自身は社内政治について良い面も悪い面もあるとしながらも，社内での立ち回りの重要性であったり如何にして成果を自分のものにし失敗を被らずに上司にアピールするかといった，すこし敬遠されがちな内容にまで踏み込んでいる．</p>
-
-<p>本書で語られる経営哲学や仕事内容，上司部下の関係，職場の机のレイアウトに至るまでのエピソードはすべて，いい意味で個人の枠を飛び出していない．あくまで著者自身が社員としてとして会社の中で直面し，感じ，そして考えたかが率直に表現されている．そのため読者としては「Appleだから出来ることでしょ」「外資ベンチャーだから」「シリコンバレーだから」といった壁を作らずに済む．そもそもこの本の構成自体が自分でも何かできることはないだろうかという気持ちにさせるような書き方をしているので，Appleについて全く知らない人にとっても，エンジニアの楽園といった現実離れした妄想を抱いている人たちにとっても，数ある大企業の一つとしてのAppleとして，その会社のことを深く知ることができると思う．お酒の席で知り合いの先輩の人生哲学を聞くような感覚で気軽に読めて，それでいて内容も簡潔にまとまっており，なかなかに面白い本だった．</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/18/">&larr; Older</a></li>
@@ -772,6 +854,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2013/09/17/review-prml-girl/">「PRMLガール―文芸部のマネージャーが「パターン認識と機械学習」を読んだら」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/09/14/review-anthropic-principle/">「宇宙はなぜこのような宇宙なのか――人間原理と宇宙論」読了</a>
       </li>
     
@@ -807,10 +893,6 @@
         <a href="/blog/2013/07/24/guide-for-japanese-researchers-in-us/">「研究留学術 第2版―研究者のためのアメリカ留学ガイド」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/07/22/mathematical-models-for-transcriptome-quantification-3/">RNA-Seqの数理―生成モデルによる発現量推定（3）ペアエンドリードとフラグメント長の分布関数</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -819,7 +901,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (1)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (75)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (76)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>

@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-09-15T01:28:19+09:00</updated>
+  <updated>2013-09-17T20:48:50+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「PRMLガール―文芸部のマネージャーが「パターン認識と機械学習」を読んだら」読了]]></title>
+    <link href="http://yagays.github.io/blog/2013/09/17/review-prml-girl/"/>
+    <updated>2013-09-17T20:45:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/09/17/review-prml-girl</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873101840" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>何というか…</p>
+
+<h3>これはひどい(褒め言葉)</h3>
+
+<p>という感じで，楽しく読ませていただいた．</p>
+
+<p>内容的にはPRMLというよりかはエントロピーなどの情報理論なのだが，そのあたりに突っ込むのは無粋というもの．文芸部のツインテール女子高生が黄色い表紙を持っているだけで100点満点，むしろ点数はカンストですよ．「もしドラ」と「数学ガール」という2つの共通認識があってこそ成立するこの異次元な設定，そして機械学習ブームに後押しされてバイブルと化したPRMLの持て囃されっぷり．まさに現在の潮流を象徴する1冊といえるだろう．最近ではビジネスやマーケティングと組み合わさって何やら胡散臭い感じが出てきた機械学習界隈だけれども，アカデミアやエンジニア側としては上手く折り合いを付けて堅実に発展していって欲しいトコロ．まあそのあたり，変に商業主義を敵視したりExcelに突っかかっていったりせず，本書のように何でもアリで楽しめたらなぁと思う今日この頃．</p>
+
+<p>ただ本書でひとつ惜しむらくは，分量が少ないこと．薄い本といえどあれこれ設定やら背景を入れて，PRMLのごとく色んな話題を詰め込んで欲しかった．まあ本業のある中での執筆活動ということで大変だとは思うが，またストックの溜まった頃にまとめて放出してもらいたい．こういう小説系で書かれた数学分野の啓蒙書では，例えば野矢茂樹氏の<a href="http://www.amazon.co.jp/gp/product/4061494201/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4061494201&linkCode=as2&tag=yagays-22">無限論の教室 (講談社現代新書)</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4061494201" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />が個人で書きためていた原稿の新書化だった気がするので，結城浩氏の数学ガールくらいの大作とまではいかなくても，新書くらいの分量なら書籍としての出版は期待できるかも…．</p>
+
+<p>という感じで，機械学習系の勉強会での活動やgihyo.comで連載中の<a href="http://gihyo.jp/dev/serial/01/machine-learning">「機械学習 はじめよう」</a>など，これからも多方面で活躍されることを楽しみにしております．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「宇宙はなぜこのような宇宙なのか――人間原理と宇宙論」読了]]></title>
@@ -1232,26 +1254,6 @@
 <p>まだあまり使っていないので，これからが楽しみだ．Zenithのホッチキスで綴た論文を，頑張って読もう…．</p>
 
 <p><img src="http://dl.dropboxusercontent.com/u/142306/b/zenith.jpg" alt="" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA["Zero Dark Thirty"のBlu-rayを買った]]></title>
-    <link href="http://yagays.github.io/blog/2013/07/02/blu-ray-zero-dark-thirty/"/>
-    <updated>2013-07-02T00:36:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/07/02/blu-ray-zero-dark-thirty</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B00B1E6FF8" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>映画&#8221;Zero Dark Thirty&#8221;の北米版Blu-rayを買った．映画として完成度が高いというのは言うまでもないものの，個人的な思い入れが強い作品でもある．この映画で描かれるCIAの女性捜査官には，何かを追い求める執念であったり不屈の精神に強く惹かれるところがある．それをもう一度確かめたくて，9月の日本版の発売を待たず海外版を購入してしまったというわけだ．当然ながら日本語字幕は無い．</p>
-
-<p>今回購入したBlu-ray/DVD Comboには，Blu-rayとDVDが1枚ずつ入っている．Blu-rayは日本と北米ともに同じリージョンなのでPS3などのプレイヤーで普通に観ることができる．DVDはリージョンが違うため日本のプレイヤーでは通常は見ることができないため，PCなどの環境を別途用意する必要がある．(<a href="http://www.amazon.com/gp/help/customer/display.html?ie=UTF8&amp;nodeId=3193231">参考</a>)</p>
-
-<p>さて，今回初めて北米版のDVDを買って色々知ったのだが，映画の音声に通常の英語版に加えて，Descriptive Serviceというモードが付いている．これはどうやら視覚障害を持つ方向けのサービスのようだ．</p>
-
-<p><a href="http://en.wikipedia.org/wiki/Descriptive_Video_Service">Descriptive Video Service - Wikipedia, the free encyclopedia</a></p>
-
-<p>実際に聞いてみるとわかりやすいのだが，Descriptive Serviceはいわゆるオーディオブックのようなものだ．映画オリジナルのセリフの間に，情景の説明や誰が何をしたといったことがナレーションとして入っている．画面に表示される文字や暗転したといったことも含めて，セリフでカバーできない画面の内容が英語音声で説明されるので，画面を観ることができない人でも映画を楽しめるようになっている．本来はそのような用途で使用されるものなのだが，このナレーションは聞き取りやすい声で口調もそれほど速くないため，最近はこれを流しながら英語を聞く耳を鍛えている．Descriptive Serviceは当然ながら字幕に出すことができないので，英語学習に向いているとは言えないものの，好きな映画を見ながらセリフ以外のところで英語の学習ができるので，個人的に気に入っている．</p>
 ]]></content>
   </entry>
   
