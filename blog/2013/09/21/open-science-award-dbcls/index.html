@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>ディレクトリの書き込み権限が無いとファイルの消去ができない - Wolfeyes Bioinformatics beta</title>
+  <title>国内のライフサイエンス分野で役に立っているプロダクトをみんなで投票して表彰する「オープン・サイエンス・アワード」開催中！ - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.io/blog/2013/07/13/directory-permission">
+  <link rel="canonical" href="http://yagays.github.io/blog/2013/09/21/open-science-award-dbcls">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -114,7 +114,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">ディレクトリの書き込み権限が無いとファイルの消去ができない</h1>
+      <h1 class="entry-title">国内のライフサイエンス分野で役に立っているプロダクトをみんなで投票して表彰する「オープン・サイエンス・アワード」開催中！</h1>
     
     
       <p class="meta">
@@ -130,46 +130,50 @@
   
 
 
-<time datetime="2013-07-13T15:40:00+09:00" pubdate data-updated="true">Jul 13<span>th</span>, 2013</time>
+<time datetime="2013-09-21T01:06:00+09:00" pubdate data-updated="true">Sep 21<span>st</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>久しぶりに初歩的なところでハマったのでメモ．多人数が使用するサーバ上で，何故かrmすることのできないファイルがあった．パーミッションも所有者もグループも特に変なところは見当たらず，ファイルが壊れているわけでもGUIで他のプログラムが使用中というわけでもない．なのに，rmしようとすると以下のようなエラーが出てしまう（例示しているコマンドラインは手元で再現した状況）．</p>
+<div class="entry-content"><p><a href="http://osa2013.herokuapp.com/">Open Science Award presented by DBCLS</a></p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rm hehehe
-</span><span class='line'>remove hehehe? y
-</span><span class='line'>rm: hehehe: Permission denied</span></code></pre></td></tr></table></div></figure>
+<p>突然ですがお祭りのお知らせです！！！</p>
 
+<blockquote><p>オープン・サイエンス・アワードは「論文として発表されていない/されにくい」けど日々ありがたく使っている(国内の)データベース・ソフトウェア・ウェブサイト(ブログやWikiなど)をコミュニティで表彰しよう！という企画です。自薦/他薦を問わずノミネートされた作品に対してみなさんで投票し，得票の多い作品をJSBi年会で表彰，作者に発表を依頼します。学生/研究者，ウェット/ドライ，アカデミック/ビジネス，JSBi会員/非会員を問わずにどなたでも投票できます。利用したことがないノミネート作品もぜひチェックしてみてください。</p>
 
-<p>sudo権限を持っていないのでなんともしがたいなーと思いつつ，適当にディレクトリ名を&#8221;fuga_broken&#8221;に変更して放置していたのだけれども，たまたま機会があって人に相談したら「ディレクトリの書き込み権限が無いんじゃない？」と言われて，そこでようやく気がついた．</p>
+<p><a href="http://osa2013.herokuapp.com/">Open Science Award presented by DBCLS</a></p></blockquote>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ ls -l
-</span><span class='line'>合計 0
-</span><span class='line'>dr-xr-xr-x 3 yag_ays staff 102  7 13 15:27 fuga/</span></code></pre></td></tr></table></div></figure>
+<p>投票期限は9/27までとのことなので，皆さんぜひぜひ上記ウェブサイトから投票してみてください．今まで知らなかった素敵なツールやウェブサイトが発見できるかもしれませんよ！</p>
 
+<h3>Open Science Awardのリンクからこのサイトに来られた方へ</h3>
 
-<p>というわけで，ディレクトリの書き込み権限がなかったせいで，そのディレクトリ内のファイルの消去ができなかっただけだったというオチ．なぜ書き込み権限が無くなっていたのかはいまだに不明だ．対象となるディレクトリをchmodで書き込み権限を付加したら，あっさりファイルを削除することができた．</p>
+<p>最近はあんまりBioinfoっぽいことをBlogに書けてないのですが，過去にはこんな記事とか書いてます．主に個人的な勉強記録として，次世代シーケンサー(NGS)関係の解析をメインにバイオインフォマティクスに関する話題などなど．</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ chmod +w fuga
-</span><span class='line'>$ rm fuga/hehehe
-</span><span class='line'>remove fuga/hehehe? y
-</span><span class='line'>$ </span></code></pre></td></tr></table></div></figure>
+<ul>
+<li><a href="http://localhost:4000/blog/2013/08/01/de-bruijn-pronounce/">&#8220;de Bruijn&#8221;はどう発音する？ - Wolfeyes Bioinformatics beta</a></li>
+<li><a href="http://localhost:4000/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/">RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ - Wolfeyes Bioinformatics beta</a></li>
+<li><a href="http://localhost:4000/blog/2013/07/12/stat115-cole-trapnell/">Tophat/Cufflinksなどの開発者であるCole TrapnellによるRNA-Seqの遺伝子発現解析に関する講義動画 - Wolfeyes Bioinformatics beta</a></li>
+<li><a href="http://localhost:4000/blog/2013/07/07/genome-assembly-kmergenie/">ゲノムアセンブリにおいて最適なk-merを推定するKmerGenieを試してみた - Wolfeyes Bioinformatics beta</a></li>
+<li><a href="http://localhost:4000/blog/2013/07/10/timetree/">TimeTreeで生物種間の分岐年代を調べる - Wolfeyes Bioinformatics beta</a></li>
+<li><a href="http://localhost:4000/blog/2013/06/26/rna-seq-unleashed-trinity/">&#8220;RNA-Seq unleashed&#8221;によるTrinityのワークフローの解説 - Wolfeyes Bioinformatics beta</a></li>
+<li><a href="http://localhost:4000/blog/2013/06/20/fastq-dump-sratoolkit/">SRA Toolkitを使ってsraファイルからfastqファイルに変換する(更新版) - Wolfeyes Bioinformatics beta</a></li>
+<li><a href="http://localhost:4000/blog/2013/05/14/trinity-install/">Trinityのインストールとサンプルデータのアセンブル - Wolfeyes Bioinformatics beta</a></li>
+<li><a href="http://localhost:4000/blog/2013/04/20/install-biopython/">Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする - Wolfeyes Bioinformatics beta</a></li>
+<li><a href="http://yagays.github.io/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート - Wolfeyes Bioinformatics beta</a>
+<a href="http://yagays.github.io/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">「Rによるモンテカルロ法入門」読書ノート：アーカイブ - Wolfeyes Bioinformatics beta</a></li>
+</ul>
 
 
-<p>なんともまあ呆気なく解決してしまった．普段からディレクトリのパーミッションはまったく変えないので，問題解決の際にディレクトリにまで考えが及ばなく，久々に自分の経験の浅さを実感した．</p>
+<h4>参考</h4>
+
+<ul>
+<li><a href="https://github.com/dbcls/jsbi2013/wiki">Home · dbcls/jsbi2013 Wiki</a></li>
+<li><a href="http://osa2013.herokuapp.com/">Open Science Award presented by DBCLS</a></li>
+<li><a href="https://docs.google.com/spreadsheet/ccc?key=0ArS_kePkP4rWdGNpNlhHcGFHaHVfamVhcjF3SlA4Z1E">JSBi2013 DBCLS organized session DB/SW list</a></li>
+</ul>
+
 </div>
 
 
@@ -192,22 +196,16 @@
   
 
 
-<time datetime="2013-07-13T15:40:00+09:00" pubdate data-updated="true">Jul 13<span>th</span>, 2013</time>
+<time datetime="2013-09-21T01:06:00+09:00" pubdate data-updated="true">Sep 21<span>st</span>, 2013</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/linux/'>Linux</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2013/07/13/directory-permission/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2013/09/21/open-science-award-dbcls/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/07/13/directory-permission/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/07/13/directory-permission/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/09/21/open-science-award-dbcls/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/09/21/open-science-award-dbcls/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -228,14 +226,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2013/07/12/stat115-cole-trapnell/" title="Previous Post:
-        Tophat/Cufflinksなどの開発者であるCole TrapnellによるRNA-Seqの遺伝子発現解析に関する講義動画">&laquo; Tophat/Cufflinksなどの開発者であるCole TrapnellによるRNA-Seqの遺伝子発現解析に関する講義動画</a></li>
+        href="/blog/2013/09/17/review-prml-girl/" title="Previous Post:
+        「PRMLガール―文芸部のマネージャーが「パターン認識と機械学習」を読んだら」読了">&laquo; 「PRMLガール―文芸部のマネージャーが「パターン認識と機械学習」を読んだら」読了</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/"
-        title="Next Post: RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ">RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -417,8 +411,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.io/blog/2013/07/13/directory-permission/';
-        var disqus_url = 'http://yagays.github.io/blog/2013/07/13/directory-permission/';
+        var disqus_identifier = 'http://yagays.github.io/blog/2013/09/21/open-science-award-dbcls/';
+        var disqus_url = 'http://yagays.github.io/blog/2013/09/21/open-science-award-dbcls/';
         var disqus_script = 'embed.js';
       
     (function () {
