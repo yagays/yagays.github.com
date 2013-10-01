@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-10-02T03:37:08+09:00</updated>
+  <updated>2013-10-02T04:48:09+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -14,11 +14,22 @@
 
   
   <entry>
-    <title type="html"><![CDATA[米国予算の不成立による科学系政府機関への影響まとめ]]></title>
+    <title type="html"><![CDATA[米国予算案の不成立による科学系政府機関への影響まとめ]]></title>
     <link href="http://yagays.github.io/blog/2013/10/02/us-government-shutdown/"/>
     <updated>2013-10-02T02:41:00+09:00</updated>
     <id>http://yagays.github.io/blog/2013/10/02/us-government-shutdown</id>
-    <content type="html"><![CDATA[<h4>主要ジャーナルによる報道</h4>
+    <content type="html"><![CDATA[<p>(更新：2013/10/02 04:00)</p>
+
+<h4>まとめ</h4>
+
+<ul>
+<li>オバマ政権の医療保険改革法をめぐって10月からの新年度予算案が成立しなかった場合，一部政府機関が閉鎖される可能性がある</li>
+<li>対象となる一部政府機関にはNIHやNSF，CDC，NASAなどの科学技術に関わる機関が含まれている</li>
+<li>国防や治安，医療に関わる一部の活動は限定的に継続されるが，多くの職員は一時帰休/無給休暇(FURLOUGHED)になり，様々な活動に影響が出る見込み</li>
+</ul>
+
+
+<h4>主要ジャーナルによる報道</h4>
 
 <p><img src="http://dl.dropboxusercontent.com/u/142306/b/nature_government_shutdown.jpg" align="right"></p>
 
@@ -63,6 +74,22 @@
 </ul>
 
 
+<h3>米政府ポータルによるアナウンス</h3>
+
+<p><a href="http://www.usa.gov/">USA.gov: The U.S. Government&#8217;s Official Web Portal</a></p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/usagov_screenshot.png" alt="" /></p>
+
+<ul>
+<li><a href="http://notice.usa.gov/">USA.gov: The U.S. Government&#8217;s Official Web Portal</a>
+
+<ul>
+<li>落ちてるサービスとかはここに飛ばされる場合がある</li>
+</ul>
+</li>
+</ul>
+
+
 <br/>
 
 
@@ -71,6 +98,13 @@
 <h4>HHS (U.S. Department of Health &amp; Human Services, アメリカ合衆国保健福祉省)</h4>
 
 <p><a href="http://www.hhs.gov/">United States Department of Health and Human Services | HHS.gov</a></p>
+
+<ul>
+<li>総従業員数: 78,198</li>
+<li>業務継続者数: 37,686</li>
+<li>一時帰休者数: 40,512</li>
+</ul>
+
 
 <p><img src="http://dl.dropboxusercontent.com/u/142306/b/hhs_screenshot.png" alt="" /></p>
 
@@ -90,9 +124,34 @@
 </ul>
 
 
+<h3>CDC (Centers for Disease Control and Prevention, アメリカ疾病管理予防センター)</h3>
+
+<p><a href="http://emergency.cdc.gov/">CDC Emergency Preparedness &amp; Response Site</a></p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/cdc_screenshot.png" alt="" /></p>
+
+<blockquote><p>Due to the lapse in government funding, only web sites supporting excepted functions will be updated unless otherwise funded. As a result, the information on this website may not be up to date, the transactions submitted via the website may not be processed, and the agency may not be able to respond to inquiries until appropriations are enacted.</p>
+
+<p>Updates regarding government operating status and resumption of normal operations can be found at http://www.usa.gov.</p>
+
+<p><a href="http://emergency.cdc.gov/">http://emergency.cdc.gov/</a></p></blockquote>
+
+<blockquote class="twitter-tweet"><p>We&#39;re sorry, but we will not be tweeting or responding to @ replies during the government shutdown. We&#39;ll be back as soon as possible!</p>&mdash; CDC Emergency (@CDCemergency) <a href="https://twitter.com/CDCemergency/statuses/385015592836542464">October 1, 2013</a></blockquote>
+
+
+<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
 <h4>NIH (National Institute of Health, 国立衛生研究所)</h4>
 
 <p><a href="http://www.nih.gov/">National Institutes of Health (NIH)</a></p>
+
+<ul>
+<li>総従業員数: 18,646</li>
+<li>業務継続者数: 4,948</li>
+<li>一時帰休者数: 13,698</li>
+</ul>
+
 
 <p><img src="http://dl.dropboxusercontent.com/u/142306/b/nih_screenshot.png" alt="" /></p>
 
@@ -103,11 +162,14 @@
 <p><a href="http://nih.gov/">http://nih.gov/</a></p></blockquote>
 
 <ul>
-<li>NIH Statement on Possible Government Shutdown</li>
+<li>Contingency Staffing Plan for Operations in the Absence of Enacted Annual Appropriations
+
+<ul>
+<li><a href="http://www.hhs.gov/budget/fy2014/fy2014contingency_staffing_plan-rev2.pdf">http://www.hhs.gov/budget/fy2014/fy2014contingency_staffing_plan-rev2.pdf</a></li>
 </ul>
-
-
-<iframe src="https://docs.google.com/file/d/0B--eMR2sdrWvT0dhVExOQlNfYm8/preview?pli=1" width="640" height="480"></iframe>
+</li>
+<li>NIH Statement on Possible Government Shutdown : <a href="https://docs.google.com/file/d/0B--eMR2sdrWvT0dhVExOQlNfYm8/">NIH shutdown.pages</a></li>
+</ul>
 
 
 <h4>NCBI (National Center for Biotechnology Information, 国立生物工学情報センター)</h4>
@@ -121,6 +183,12 @@
 <p>Updates regarding government operating status and resumption of normal operations can be found at http://www.usa.gov.</p>
 
 <p><a href="http://www.ncbi.nlm.nih.gov/">http://www.ncbi.nlm.nih.gov/</a></p></blockquote>
+
+<blockquote class="twitter-tweet"><p>Due to a lapse in government funding, new posts and responses may not originate from this account until appropriations are enacted.</p>&mdash; NCBI Staff (@NCBI) <a href="https://twitter.com/NCBI/statuses/385017668194934784">October 1, 2013</a></blockquote>
+
+
+<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 
 <ul>
 <li><a href="http://ncbiinsights.ncbi.nlm.nih.gov/2013/10/01/due-to-a-lapse-in-government-funding/">Due to a lapse in government funding, new posts and responses may not originate from this account until appropriations are enacted. | NCBI Insights</a>
@@ -150,14 +218,49 @@
 </ul>
 
 
-<h3>USA.govによるアナウンス</h3>
+<h3>NSF (National Science Foundation, アメリカ国立科学財団)</h3>
 
-<p><a href="http://www.usa.gov/">USA.gov: The U.S. Government&#8217;s Official Web Portal</a></p>
+<p>現状ではウェブサイトにアクセスできない</p>
 
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/usagov_screenshot.png" alt="" /></p>
+<ul>
+<li>総従業員数: 2,000</li>
+<li>業務継続者数: 300</li>
+<li>一時帰休者数: 1,700</li>
+</ul>
 
-<p><a href="http://notice.usa.gov/">USA.gov: The U.S. Government&#8217;s Official Web Portal</a>
-- 落ちてるサービスとかはここに飛ばされるようだ</p>
+
+<blockquote class="twitter-tweet"><p>Due to the government shutdown, we will not be tweeting or responding to any replies. We will return as soon as possible.</p>&mdash; National Science Fdn (@NSF) <a href="https://twitter.com/NSF/statuses/385016485724569600">October 1, 2013</a></blockquote>
+
+
+<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<h3>NASA (National Aeronautics and Space Administration, アメリカ航空宇宙局)</h3>
+
+<p>現状ではウェブサイトにアクセスできない</p>
+
+<ul>
+<li>総従業員数: 18,250</li>
+<li>業務継続者数: 367</li>
+<li>一時帰休者数: 17,883</li>
+</ul>
+
+
+<blockquote class="twitter-tweet"><p>Due to the gov&#39;t shutdown, all public NASA activities/events are cancelled or postponed until further notice. Sorry for the inconvenience.</p>&mdash; NASA (@NASA) <a href="https://twitter.com/NASA/statuses/385017361125736448">October 1, 2013</a></blockquote>
+
+
+<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<ul>
+<li>Contingency Staffing Plan for Operations in the Absence of Enacted Annual Appropriations
+
+<ul>
+<li><a href="http://www.nasa.gov/sites/default/files/files/NASA_shutdown_plan_130927.pdf">http://www.nasa.gov/sites/default/files/files/NASA_shutdown_plan_130927.pdf</a></li>
+</ul>
+</li>
+</ul>
+
 ]]></content>
   </entry>
   
