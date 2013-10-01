@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-09-30T22:32:37+09:00</updated>
+  <updated>2013-10-02T02:41:57+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,85 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[米国政府機関の閉鎖に伴う科学系政府機関への影響まとめ]]></title>
+    <link href="http://yagays.github.io/blog/2013/10/02/us-government-shutdown/"/>
+    <updated>2013-10-02T02:41:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/10/02/us-government-shutdown</id>
+    <content type="html"><![CDATA[<h3>主要ジャーナルによる報道</h3>
+
+<ul>
+<li><a href="http://www.nature.com/news/us-government-shuts-down-1.13865">US government shuts down : Nature News &amp; Comment</a></li>
+</ul>
+
+
+<blockquote><p>Most government scientists were ordered to stay at home, their offices and labs closed or run by a skeleton staff of ‘essential’ workers. The National Institutes of Health (NIH) and the National Science Foundation (NSF) stopped processing grants, some government websites were made inaccessible and many important research programmes were left hanging, potentially putting lives at risk in the case of some disease studies.</p>
+
+<p><a href="http://www.nature.com/news/us-government-shuts-down-1.13865">http://www.nature.com/news/us-government-shuts-down-1.13865</a></p></blockquote>
+
+<ul>
+<li><a href="http://news.sciencemag.org/people-events/2013/09/u.s.-government-shutdown-looms-after-senate-vote?rss=1">U.S. Government Shutdown Looms After Senate Vote | Science/AAAS | News</a></li>
+</ul>
+
+
+<h3>メディア報道</h3>
+
+<ul>
+<li><a href="http://www.afpbb.com/articles/-/3000577">米下院、予算不成立で政府機関の閉鎖始まる　国際ニュース：AFPBB News</a></li>
+<li><a href="http://jp.reuters.com/article/topNews/idJPTYE99004B20131001">米政府機関を閉鎖、与野党が暫定予算案で合意できず | Reuters</a></li>
+<li><a href="http://jp.wsj.com/article/SB10001424052702304827404579108320201967580.html">米連邦政府機関が17年ぶりに閉鎖―予算協議まとまらず - WSJ.com</a></li>
+<li><a href="http://sankei.jp.msn.com/world/news/131001/amr13100111020004-n1.htm">米、１７年ぶり一部政府機関閉鎖へ　予算協議が行き詰まり - MSN産経ニュース</a></li>
+<li><a href="http://www3.nhk.or.jp/news/html/20131001/k10014941201000.html">米予算成立せず 政府機関一部閉鎖　NHKニュース</a></li>
+<li><a href="http://mainichi.jp/select/news/20130930k0000m030086000c.html">米国:政府機関の閉鎖濃厚　予算案成立の見通しなく－ 毎日ｊｐ(毎日新聞)</a></li>
+</ul>
+
+
+<h3>各政府機関の活動状況のリスト</h3>
+
+<ul>
+<li><p><a href="http://www.washingtonpost.com/wp-srv/special/politics/2013-shutdown-federal-department-impact/">Impact of a government shutdown on federal agencies - The Washington Post</a></p></li>
+<li><p><a href="http://edition.cnn.com/interactive/2013/09/politics/government-shutdown-impact/index.html">Government shutdown: What&#8217;s closed, what&#8217;s open? - CNN.com - CNN.com</a></p></li>
+</ul>
+
+
+<h2>科学系の各政府機関のウェブサイト</h2>
+
+<h3>NIH (National Institute of Health, アメリカ国立衛生研究所)</h3>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/nih_screenshot.png" alt="" /></p>
+
+<blockquote><p>Due to the lapse in government funding, the information on this web site may not be up to date, transactions submitted via the web site may not be processed, and the agency may not be able to respond to inquiries until appropriations are enacted.</p>
+
+<p>Updates regarding government operating status and resumption of normal operations can be found at USA.gov.</p>
+
+<p><a href="http://nih.gov/">http://nih.gov/</a></p></blockquote>
+
+<ul>
+<li><a href="https://docs.google.com/file/d/0B--eMR2sdrWvT0dhVExOQlNfYm8/edit">NIH shutdown.pages</a></li>
+</ul>
+
+
+<iframe src="https://docs.google.com/file/d/0B--eMR2sdrWvT0dhVExOQlNfYm8/preview?pli=1" width="640" height="480"></iframe>
+
+
+<h3>PubMed</h3>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/pubmed_screenshot.png" alt="" /></p>
+
+<blockquote><p>PubMed has been designated to be maintained with minimal staff during the lapse in government funding. The information on this website will be kept as up to date as possible, and the agency will attempt to respond to urgent operational inquiries during this period.</p>
+
+<p>Updates regarding government operating status and resumption of normal operations can be found at http://www.usa.gov.</p>
+
+<p><a href="http://www.ncbi.nlm.nih.gov/pubmed">http://www.ncbi.nlm.nih.gov/pubmed</a></p></blockquote>
+
+<ul>
+<li>PubMedは最低限のスタッフで継続</li>
+<li>アメリカのPubMedが使用できなくなった場合には，<a href="http://europepmc.org/">Europe PubMed Central</a>において同等のサービスを利用することができる</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Solveというスタートアップが開発するバイオインフォマティクスのデータベースのためのPython API]]></title>
@@ -983,284 +1062,6 @@
 <ul>
 <li><a href="http://www.timetree.org/">TimeTree :: The Timescale of Life</a></li>
 <li>(TimeTreeプロジェクトに関して)<a href="http://www.evolutionsbiologie.uni-konstanz.de/genombaum/Kuraku-ElasmoReview-Japanese.pdf">http://www.evolutionsbiologie.uni-konstanz.de/genombaum/Kuraku-ElasmoReview-Japanese.pdf</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ゲノムアセンブリにおいて最適なk-merを推定するKmerGenieを試してみた]]></title>
-    <link href="http://yagays.github.io/blog/2013/07/07/genome-assembly-kmergenie/"/>
-    <updated>2013-07-07T15:17:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/07/07/genome-assembly-kmergenie</id>
-    <content type="html"><![CDATA[<p>KmerGenieという，シーケンスデータのみを用いてアセンブラに依存しない形でアセンブルに指定する最適なk-merの値を求めることができるソフトウェアが最近出てきたので，ちょっと使ってみた．</p>
-
-<p><a href="http://kmergenie.bx.psu.edu/">KmerGenie</a></p>
-
-<p>そういえば以前<a href="http://yagays.github.io/blog/2012/06/06/velvetk/">VelvetK</a>という，これも同じようにk-merパラメータをデータセットから推定するツールについて書いたが，これは名前の通りVelvetに特化したソフトウェアだった．2007年くらいに公開され使われ始めたVelvetは，NGSの普及と相まってかなり長い間ゲノムアセンブラとして広く使われてきた印象がある．その後ABySSやMIRA，ALLPATHS-LG，Rayなどの様々なゲノムアセンブラが出てきたが，それらに対してVelvetKのようなk-mer最適化のようなツールは無かったようで，そのあたりアセンブラに非依存というのがKmerGenieの売りのようだ．</p>
-
-<h3>KmerGenieの仕組み</h3>
-
-<p>KmerGenieがどういう仕組みで最適なk-merを推定しているかは，以下のスライドやarXiv.orgで公開されている論文に詳しく書かれている．</p>
-
-<ul>
-<li><a href="http://ged.msu.edu/angus/tutorials-2013/files/rayan-2013-june-18-msu.pdf">http://ged.msu.edu/angus/tutorials-2013/files/rayan-2013-june-18-msu.pdf</a></li>
-<li><a href="http://arxiv.org/abs/1304.5665">[1304.5665] Informed and Automated k-Mer Size Selection for Genome Assembly</a></li>
-<li>(追記:2013/07/23) <a href="http://perso.eleves.bretagne.ens-cachan.fr/~chikhi/2013-july-20-hitseq.pdf">http://perso.eleves.bretagne.ens-cachan.fr/~chikhi/2013-july-20-hitseq.pdf</a></li>
-<li>(追記:2013/08/11) 論文：<a href="http://bioinformatics.oxfordjournals.org/content/early/2013/08/01/bioinformatics.btt310">Informed and automated k-mer size selection for genome assembly</a></li>
-</ul>
-
-
-<p>これによると，単純に言ってしまえば最適なk-merの出現頻度というものはきれいな正規分布に従うと仮定した上で，k-merの値を色々変えて出現頻度のヒストグラムを作成し，生成モデルを立ててフィッティングをして最適なk-merの値を推定しているようだ．実際には，正規分布を仮定したゲノム配列の分布とパレート分布を仮定したエラーの配列の分布が混ざった混合分布を考えて，その混合の重みなども考慮したパラメータ最適化をしているらしい．</p>
-
-<h3>KmerGenieのインストール</h3>
-
-<p>まずはKmerGenieをインストールする．ダウンロードしたファイルを展開すると既にディレクトリにkmergenieという実行ファイルがあるが，makeをしないと利用することができないので注意．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ wget http://kmergenie.bx.psu.edu/kmergenie-1.5397.tar.gz
-</span><span class='line'>$ cd kmergenie-1.5397
-</span><span class='line'>$ make</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>KmerGenieの実行</h3>
-
-<p>それでは実際にfastqファイルに対してKmerGenieを実行してみる．</p>
-
-<h4>1. ゲノムアセンブリのチュートリアルで使用されたE. coliのゲノムシーケンス</h4>
-
-<p>まずは2013年の6月に行われた<a href="http://bioinformatics.msu.edu/ngs-summer-course-2013">MSU NGS Summer Course 2013</a>のチュートリアルで使用されたサンプルデータを使ってみる．これはE. coliのゲノムシーケンスで，元は<a href="http://www.ncbi.nlm.nih.gov/pubmed/21926975">Chitsaz et al.</a>が出したデータの一部のようだ．中身は約4.7Mの70bpのシングルリード．</p>
-
-<p><a href="http://ged.msu.edu/angus/tutorials-2013/assembling-ecoli-with-velvet.html">Assembling E. coli sequences with Velvet — ANGUS 2.0 documentation</a></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ curl -O https://s3.amazonaws.com/public.ged.msu.edu/ecoli_ref-5m-trim.fastq.gz
-</span><span class='line'>$ gunzip ecoli_ref-5m-trim.fastq.gz</span></code></pre></td></tr></table></div></figure>
-
-
-<p>それではecoli_ref-5m-trim.fastqに対してKmerGenieを実行する．実行後に作られる各k-merでのカウントデータや分布をプロットしたpdfはカレントディレクトリにそのまま出力されるので，もし必要ならディレクトリを別途作ってそこで実行したほうが良いだろう．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ kmergenie ecoli_ref-5m-trim.fastq
-</span><span class='line'>running histogram estimation
-</span><span class='line'>Linear estimation: ~130 M distinct 41-mers are in the reads
-</span><span class='line'>K-mer sampling: 1/100
-</span><span class='line'>| processing                                                                                         |
-</span><span class='line'>[going to estimate histograms for values of k: 61 51 41 31 21 
-</span><span class='line'>-----------------------------------------------------------------------------------------------------------------------------Total time Wallclock  77.7066 s
-</span><span class='line'>fitting model to histograms to estimate best k
-</span><span class='line'>fitting histogram for k = 21
-</span><span class='line'>fitting histogram for k = 31
-</span><span class='line'>fitting histogram for k = 41
-</span><span class='line'>fitting histogram for k = 51
-</span><span class='line'>fitting histogram for k = 61
-</span><span class='line'>estimation of the best k so far: 51
-</span><span class='line'>refining estimation around [45; 57], with a step of 2
-</span><span class='line'>running histogram estimation
-</span><span class='line'>Linear estimation: ~139 M distinct 39-mers are in the reads
-</span><span class='line'>K-mer sampling: 1/100
-</span><span class='line'>| processing                                                                                         |
-</span><span class='line'>[going to estimate histograms for values of k: 57 55 53 51 49 47 45 
-</span><span class='line'>-----------------------------------------------------------------------------------------------------------------------------Total time Wallclock  56.4315 s
-</span><span class='line'>fitting model to histograms to estimate best k
-</span><span class='line'>fitting histogram for k = 21
-</span><span class='line'>fitting histogram for k = 31
-</span><span class='line'>fitting histogram for k = 41
-</span><span class='line'>fitting histogram for k = 45
-</span><span class='line'>fitting histogram for k = 47
-</span><span class='line'>fitting histogram for k = 49
-</span><span class='line'>fitting histogram for k = 51
-</span><span class='line'>fitting histogram for k = 53
-</span><span class='line'>fitting histogram for k = 55
-</span><span class='line'>fitting histogram for k = 57
-</span><span class='line'>fitting histogram for k = 61
-</span><span class='line'>table of predicted num. of genomic k-mers: histograms.dat
-</span><span class='line'>best k: 55</span></code></pre></td></tr></table></div></figure>
-
-
-<p>今回の場合，KmerGenieによる最適なk-merの値は55となった．出力結果で示されるk-mer頻度のプロットを並べて見ると，確かにkが小さいときは少しいびつになっており，k=55あたりで一番正規分布っぽくなっている…??ことがわかる．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/kmergenie1.png" alt="" /></p>
-
-<p>ただ，このサンプルーデータを解析しているチュートリアルではk-merを31〜35にしてvelvetでアセンブルしていることから，今回の55という推定値は少し大きめのような気がする．</p>
-
-<h3>2. Assemblathon2で使用されたセキセイインコのゲノムシーケンス</h3>
-
-<p>次はもう少し大きいデータで試してみよう．Assemblathon2というアセンブリツールの性能を競うコンペで使用されたセキセイインコのゲノムシーケンスの中からDuke Illumina GAIIx runsというデータを使ってみる．中身は76bpのペアエンドで合計で126M readsある．</p>
-
-<p><a href="http://bioshare.bioinformatics.ucdavis.edu/Data/hcbxz0i7kg/Parrot/illumina_duke_runs/">Index of /Data/hcbxz0i7kg/Parrot/illumina_duke_runs</a></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ lftp -e "mirror" http://bioshare.bioinformatics.ucdavis.edu/Data/hcbxz0i7kg/Parrot/illumina_duke_runs/ 
-</span><span class='line'>$ cat *.fastq &gt; budgie.fastq</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Assemblathonのサイトによるとセキセイインコのゲノムは二倍体らしいので，今回はKmerGenieの「&#8211;diploid」のパラメータを付けて実行する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ kmergenie --diploid budgie.fastq
-</span><span class='line'>running histogram estimation
-</span><span class='line'>Linear estimation: ~3721 M distinct 46-mers are in the reads
-</span><span class='line'>K-mer sampling: 1/1000
-</span><span class='line'>| processing                                                                                         |
-</span><span class='line'>[going to estimate histograms for values of k: 71 61 51 41 31 21
-</span><span class='line'>---------------------------------------------------------------------------------------------------------------------------Total time Wallclock  3035.49 s
-</span><span class='line'>fitting model to histograms to estimate best k
-</span><span class='line'>fitting histogram for k = 21
-</span><span class='line'>fitting histogram for k = 31
-</span><span class='line'>fitting histogram for k = 41
-</span><span class='line'>fitting histogram for k = 51
-</span><span class='line'>fitting histogram for k = 61
-</span><span class='line'>fitting histogram for k = 71
-</span><span class='line'>estimation of the best k so far: 21
-</span><span class='line'>refining estimation around [15; 27], with a step of 2
-</span><span class='line'>running histogram estimation
-</span><span class='line'>Linear estimation: ~6335 M distinct 24-mers are in the reads
-</span><span class='line'>K-mer sampling: 1/1000
-</span><span class='line'>| processing                                                                                         |
-</span><span class='line'>[going to estimate histograms for values of k: 27 25 23 21 19 17 15
-</span><span class='line'>---------------------------------------------------------------------------------------------------------------------------Total time Wallclock  2305.61 s
-</span><span class='line'>fitting model to histograms to estimate best k
-</span><span class='line'>fitting histogram for k = 15
-</span><span class='line'>fitting histogram for k = 17
-</span><span class='line'>fitting histogram for k = 19
-</span><span class='line'>fitting histogram for k = 21
-</span><span class='line'>fitting histogram for k = 23
-</span><span class='line'>fitting histogram for k = 25
-</span><span class='line'>fitting histogram for k = 27
-</span><span class='line'>fitting histogram for k = 31
-</span><span class='line'>fitting histogram for k = 41
-</span><span class='line'>fitting histogram for k = 51
-</span><span class='line'>fitting histogram for k = 61
-</span><span class='line'>fitting histogram for k = 71
-</span><span class='line'>table of predicted num. of genomic k-mers: histograms.dat
-</span><span class='line'>best k: 21</span></code></pre></td></tr></table></div></figure>
-
-
-<p>データ量が多いと計算時間もかなり大きくなるようで，出力にも少し書かれている通り，今回は1時間半くらいかかった．</p>
-
-<p>さて，今回の場合はKmerGenieによる最適なk-merの値は21となった．出力結果で示されるk-mer頻度のプロットを並べて見てみると，kが大きい値の時には確かに正規分布として近似できないくらいなだらかな曲線になっているものの，K=21の最適値付近でもその様子はあまり変わっていないような感じがする．そもそも可視化の都合もあって横幅が揃えられていなかったりと色々と問題はあるが，とりあえずは今回のデータから推定された最適値は21だった．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/kmergenie2.png" alt="" /></p>
-
-<h3>KmerGenieで使用できるパラメータ</h3>
-
-<p>以上のように，KmerGenieは幾つかのk-merの値で実行して最適と思われる値を自動で出力するが，他にも手動でパラメータを指定することでk-merの範囲や刻みを変更することができる．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ kmergenie
-</span><span class='line'>KmerGenie
-</span><span class='line'>
-</span><span class='line'>Usage:
-</span><span class='line'>    kmergenie &lt;read_file&gt; [options]
-</span><span class='line'>
-</span><span class='line'>Options:
-</span><span class='line'>    --diploid    use the diploid model
-</span><span class='line'>    --one-pass   skip the second pass
-</span><span class='line'>    -k &lt;value&gt;   largest k-mer size to consider (default: 121)
-</span><span class='line'>    -l &lt;value&gt;   smallest k-mer size to consider (default: 15)
-</span><span class='line'>    -s &lt;value&gt;   interval between consecurive kmer sizes (default: 10)
-</span><span class='line'>    -e &lt;value&gt;   k-mer sampling (default: auto-detected power of 10)"
-</span><span class='line'>    -o &lt;prefix&gt;  prefix of the output files (default: histograms)"</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>まとめ</h3>
-
-<p>このように，KmerGenieはシーケンスデータのみを用いてアセンブラに依存しない形で，アセンブルに指定する最適なk-merの値を求めることができる．推定された値が最良のアセンブルに繋がるかは実際に確認してみないと判断できないが，大まかな目安であったりk-mer決定プロセスの理由付けなどに力を発揮するだろう．今回は結果に対してそれほど詳細な評価を行わなかったが，<a href="http://arxiv.org/abs/1304.5665">arXiv.orgで公開されている論文</a>の方では<a href="http://gage.cbcb.umd.edu/index.html">GAGE</a>のデータセットに対してアセンブル結果を含めた性能比較をしているので，そちらも参考にしていただきたい．</p>
-
-<h3>参考</h3>
-
-<ul>
-<li><a href="http://kmergenie.bx.psu.edu/">KmerGenie</a></li>
-<li><a href="http://ged.msu.edu/angus/tutorials-2013/files/rayan-2013-june-18-msu.pdf">http://ged.msu.edu/angus/tutorials-2013/files/rayan-2013-june-18-msu.pdf</a></li>
-<li><a href="http://arxiv.org/abs/1304.5665">[1304.5665] Informed and Automated k-Mer Size Selection for Genome Assembly</a></li>
 </ul>
 
 ]]></content>
