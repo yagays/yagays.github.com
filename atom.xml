@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-10-02T03:22:22+09:00</updated>
+  <updated>2013-10-02T03:37:08+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -19,6 +19,8 @@
     <updated>2013-10-02T02:41:00+09:00</updated>
     <id>http://yagays.github.io/blog/2013/10/02/us-government-shutdown</id>
     <content type="html"><![CDATA[<h4>主要ジャーナルによる報道</h4>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/nature_government_shutdown.jpg" align="right"></p>
 
 <ul>
 <li><a href="http://www.nature.com/news/us-government-shuts-down-1.13865">US government shuts down : Nature News &amp; Comment</a></li>
@@ -46,13 +48,22 @@
 </ul>
 
 
-<h4>各政府機関の活動状況のリスト</h4>
+<h4>各政府機関による声明</h4>
 
 <ul>
 <li><a href="http://www.whitehouse.gov/omb/contingency-plans">Agency Contingency Plans | The White House</a></li>
+</ul>
+
+
+<h4>各政府機関の活動状況のリスト</h4>
+
+<ul>
 <li><a href="http://www.washingtonpost.com/wp-srv/special/politics/2013-shutdown-federal-department-impact/">Impact of a government shutdown on federal agencies - The Washington Post</a></li>
 <li><a href="http://edition.cnn.com/interactive/2013/09/politics/government-shutdown-impact/index.html">Government shutdown: What&#8217;s closed, what&#8217;s open? - CNN.com - CNN.com</a></li>
 </ul>
+
+
+<br/>
 
 
 <h3>科学系の各政府機関のウェブサイト</h3>
@@ -139,18 +150,14 @@
 </ul>
 
 
-<h3>USA.govによる</h3>
+<h3>USA.govによるアナウンス</h3>
 
 <p><a href="http://www.usa.gov/">USA.gov: The U.S. Government&#8217;s Official Web Portal</a></p>
 
-<p><a href="http://notice.usa.gov/">USA.gov: The U.S. Government&#8217;s Official Web Portal</a></p>
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/usagov_screenshot.png" alt="" /></p>
 
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/pubmed_screenshot.png" alt="" /></p>
-
-<ul>
-<li>落ちてるサービスとかはここに飛ばされるようだ</li>
-</ul>
-
+<p><a href="http://notice.usa.gov/">USA.gov: The U.S. Government&#8217;s Official Web Portal</a>
+- 落ちてるサービスとかはここに飛ばされるようだ</p>
 ]]></content>
   </entry>
   
