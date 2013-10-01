@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-10-02T03:10:14+09:00</updated>
+  <updated>2013-10-02T03:22:22+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -49,12 +49,35 @@
 <h4>各政府機関の活動状況のリスト</h4>
 
 <ul>
-<li><p><a href="http://www.washingtonpost.com/wp-srv/special/politics/2013-shutdown-federal-department-impact/">Impact of a government shutdown on federal agencies - The Washington Post</a></p></li>
-<li><p><a href="http://edition.cnn.com/interactive/2013/09/politics/government-shutdown-impact/index.html">Government shutdown: What&#8217;s closed, what&#8217;s open? - CNN.com - CNN.com</a></p></li>
+<li><a href="http://www.whitehouse.gov/omb/contingency-plans">Agency Contingency Plans | The White House</a></li>
+<li><a href="http://www.washingtonpost.com/wp-srv/special/politics/2013-shutdown-federal-department-impact/">Impact of a government shutdown on federal agencies - The Washington Post</a></li>
+<li><a href="http://edition.cnn.com/interactive/2013/09/politics/government-shutdown-impact/index.html">Government shutdown: What&#8217;s closed, what&#8217;s open? - CNN.com - CNN.com</a></li>
 </ul>
 
 
 <h3>科学系の各政府機関のウェブサイト</h3>
+
+<h4>HHS (U.S. Department of Health &amp; Human Services, アメリカ合衆国保健福祉省)</h4>
+
+<p><a href="http://www.hhs.gov/">United States Department of Health and Human Services | HHS.gov</a></p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/hhs_screenshot.png" alt="" /></p>
+
+<blockquote><p>Due to the lapse in government funding, only web sites supporting excepted functions will be updated unless otherwise funded. As a result, the information on this website may not be up to date, the transactions submitted via the website may not be processed, and the agency may not be able to respond to inquiries until appropriations are enacted.</p>
+
+<p>Updates regarding government operating status and resumption of normal operations can be found at http://www.usa.gov.</p>
+
+<p><a href="http://www.hhs.gov/">http://www.hhs.gov/</a></p></blockquote>
+
+<ul>
+<li>Contingency Staffing Plan for Operations in the Absence of Enacted Annual Appropriations
+
+<ul>
+<li><a href="http://www.hhs.gov/budget/fy2014/fy2014contingency_staffing_plan-rev2.pdf">http://www.hhs.gov/budget/fy2014/fy2014contingency_staffing_plan-rev2.pdf</a></li>
+</ul>
+</li>
+</ul>
+
 
 <h4>NIH (National Institute of Health, 国立衛生研究所)</h4>
 
@@ -69,7 +92,7 @@
 <p><a href="http://nih.gov/">http://nih.gov/</a></p></blockquote>
 
 <ul>
-<li><a href="https://docs.google.com/file/d/0B--eMR2sdrWvT0dhVExOQlNfYm8/edit">NIH shutdown.pages</a></li>
+<li>NIH Statement on Possible Government Shutdown</li>
 </ul>
 
 
@@ -113,6 +136,19 @@
 <ul>
 <li>PubMedは最低限のスタッフで継続</li>
 <li>アメリカのPubMedが使用できなくなった場合には，<a href="http://europepmc.org/">Europe PubMed Central</a>において同等のサービスを利用することができる</li>
+</ul>
+
+
+<h3>USA.govによる</h3>
+
+<p><a href="http://www.usa.gov/">USA.gov: The U.S. Government&#8217;s Official Web Portal</a></p>
+
+<p><a href="http://notice.usa.gov/">USA.gov: The U.S. Government&#8217;s Official Web Portal</a></p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/pubmed_screenshot.png" alt="" /></p>
+
+<ul>
+<li>落ちてるサービスとかはここに飛ばされるようだ</li>
 </ul>
 
 ]]></content>
