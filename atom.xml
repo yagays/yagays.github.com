@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-10-02T22:16:44+09:00</updated>
+  <updated>2013-10-03T09:14:32+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,54 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Courseraでバイオインフォマティクスのオンライン授業がスタート]]></title>
+    <link href="http://yagays.github.io/blog/2013/10/03/coursera-bioinformatics/"/>
+    <updated>2013-10-03T09:13:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/10/03/coursera-bioinformatics</id>
+    <content type="html"><![CDATA[<p><img src="http://dl.dropboxusercontent.com/u/142306/b/coursera_bioinfo.png" alt="" /></p>
+
+<p>トップレベルの大学の授業が無料で受けられるウェブサービス「Coursera」で，UCSDのバイオインフォマティクスのコースが10月からスタートする．Courseraでは初の英語で行われるバイオインフォマティクス分野のコースだ．</p>
+
+<p><a href="https://www.coursera.org/course/bioinformatics">Bioinformatics Algorithms (Part 1) | Coursera</a></p>
+
+<blockquote><p>This course will cover some of the common algorithms underlying the following fundamental topics in bioinformatics: assembling genomes, comparing DNA and protein sequences, finding regulatory motifs, analyzing genome rearrangements, identifying proteins, and many other topics.</p>
+
+<p><a href="https://www.coursera.org/course/bioinformatics">https://www.coursera.org/course/bioinformatics</a></p></blockquote>
+
+<p>シラバスによると，この授業では主にバイオインフォマティクスで用いられる様々なアルゴリズムについて，実際の生物学的な問題を解きながら知識を深めていくというスタイルのようだ．具体的には，以下のようなトピックが取り上げられている．</p>
+
+<ul>
+<li>どこからDNA複製は始まるの？</li>
+<li>どうやって抗生物質をシーケンスするの？</li>
+<li>どのようなDNAのパターンが細胞時計として働くの？</li>
+<li>どうやってゲノムをアセンブルするの？</li>
+<li>ヒトゲノムでどこが脆弱な部分なの？</li>
+<li>どうやって複数の配列を比較するの？</li>
+<li>どうやって病気を引き起こす変異を探しだすの？</li>
+</ul>
+
+
+<p>一見するとバイオインフォマティクスの分野のトピックだと分かりづらいものも含まれているが，どれもアルゴリズムを使った計算機的なアプローチが可能な興味深い話題ばかりだ．より詳しい内容や授業日程は以下のpdfからみることができる．</p>
+
+<ul>
+<li><a href="https://beta.stepic.org/media/attachments/lessons/1/Coursera%20Syllabus.pdf">https://beta.stepic.org/media/attachments/lessons/1/Coursera%20Syllabus.pdf</a></li>
+</ul>
+
+
+<p>授業の形式としては，動画による講義のほかに<a href="http://beta.stepic.org/2">Bioinformatics Algorithms: An Active-Learning Approach</a>というテキストを使って実際に問題を解くという宿題が課される．毎回5から10のプログラムの課題が出題され，授業全体の目安としては週に8から10時間程度の時間が必要になる．</p>
+
+<p>当然ながら授業はすべて英語だ．授業内容もある程度専門的なので，プログラミングの知識の他に基礎的な生物学の知識（英単語！）も求められるだろう．ただ，動画のレクチャーには英語字幕を付けることができるので，リスニング能力に多少不安がある人でも問題ないだろう．テキストも非常に充実しているので，じっくり取り組めばきっと大丈夫なはず…!!</p>
+
+<p>というわけで，初めてのCourseraのオンラインコース，頑張ってみます．</p>
+
+<br/>
+
+
+<p>なお，この授業の続きBioinformatics Algorithms (Part 2) は2014年の春に開講予定とのこと．そこでは遺伝子発現解析や進化系統樹の構築，生物情報ネットワークなどについてカバーする予定らしい．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[米国予算案の不成立による生命科学系政府機関への影響まとめ]]></title>
@@ -1346,45 +1394,6 @@ information about the shutdown.</p>
 
 
 <p> <p><a href="http://vimeo.com/60609783">lecture9-II</a> from <a href="http://vimeo.com/stat115">stat115</a> on <a href="https://vimeo.com">Vimeo</a>.</p></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[TimeTreeで生物種間の分岐年代を調べる]]></title>
-    <link href="http://yagays.github.io/blog/2013/07/10/timetree/"/>
-    <updated>2013-07-10T14:03:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/07/10/timetree</id>
-    <content type="html"><![CDATA[<p>2種類の生物がどれくらい系統的に近いか遠いかといった情報は，生物の分類をWikipediaで確認したり系統樹を眺めたりと色々と確認する方法があるが，ではどれくらい前に2種類の生物が分岐したかという情報は意外と確認するのが難しい．そういった分岐年代を簡単に確認，比較することができるのがTimeTreeというサイトだ．</p>
-
-<p><a href="http://www.timetree.org/">TimeTree :: The Timescale of Life</a></p>
-
-<h3>生物種を入力する</h3>
-
-<p>TimeTreeウェブサイトの左上にある検索ボックスに，分岐年代を辿りたい生物種を入力する．通常は<em>Canis lupus</em>と<em>Felis catus</em>のような学名を入力するのだけれども，一般的な名称であるdogやcatも自動で変換してくれるようだ．もし学名がハッキリ分かっているのなら，そちらを入力したほうが確実だろう．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/timetree1.png" alt="" /></p>
-
-<h3>結果</h3>
-
-<p>今回のような検索クエリを入力した結果，イヌ(<em>Canis lupus familiaris</em>)とネコ(<em>Felis catus</em>)の分岐年代は55.1 Million Years Agoと推定された．ただしこの値というのは，様々な分岐年代の研究に関してイヌとネコが当てはまるものを複数集めてきて，最終的に平均を取った値となっている．個別の研究の推定結果というのは，図の左側の時系列の箇所に黒の点で表示されているように，実際には42Myaから67Myaまで幅があるようだ．このように複数のソースから分岐年代を確認できるのもTimeTreeの大きな特徴となっている．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/timetree2.png" alt="" /></p>
-
-<p>上図の黒の点で示した個別の研究というのは，下のリストからそれぞれ確認することができる．Taxon Aがイヌ，Taxon Bがネコの検索クエリにそれぞれ対応しており，研究によってはイヌ亜目Caniformiaやネコ亜目Feliformiaのような目レベルで確認されているものや，クマ科Ursidaeやアザラシ科Phocidaeといった少し系統的に離れた分類群との比較も列挙されている（クマやアザラシはどちらもネコ目）．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/timetree4.png" alt="" /></p>
-
-<p>このように，ウェブページに表示されているリストから詳細なページに飛ぶことができるほか，「Molecular Time Estimates」にある「Download as CSV」をクリックすると，根拠となる論文や出版年のリストをコンマ区切りテキストとしてダウンロードすることができる．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/timetree3.png" alt="" /></p>
-
-<h3>参考</h3>
-
-<ul>
-<li><a href="http://www.timetree.org/">TimeTree :: The Timescale of Life</a></li>
-<li>(TimeTreeプロジェクトに関して)<a href="http://www.evolutionsbiologie.uni-konstanz.de/genombaum/Kuraku-ElasmoReview-Japanese.pdf">http://www.evolutionsbiologie.uni-konstanz.de/genombaum/Kuraku-ElasmoReview-Japanese.pdf</a></li>
-</ul>
-
 ]]></content>
   </entry>
   
