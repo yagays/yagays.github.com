@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-10-04T08:17:31+09:00</updated>
+  <updated>2013-10-05T09:51:12+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[メタボロミクスの包括的なレビュー「The Proceedings of Metabolomics 2nd Edition」]]></title>
+    <link href="http://yagays.github.io/blog/2013/10/05/hmt-metabolomics/"/>
+    <updated>2013-10-05T09:43:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/10/05/hmt-metabolomics</id>
+    <content type="html"><![CDATA[<p><a href="http://humanmetabolome.com/rd/proceedings" target="_blank"><img src="http://dl.dropboxusercontent.com/u/142306/b/metabolome.png" align="right"></a></p>
+
+<p>慶応義塾大学発のバイオベンチャー<a href="http://ja.wikipedia.org/wiki/%E3%83%92%E3%83%A5%E3%83%BC%E3%83%9E%E3%83%B3%E3%83%BB%E3%83%A1%E3%82%BF%E3%83%9C%E3%83%AD%E3%83%BC%E3%83%A0%E3%83%BB%E3%83%86%E3%82%AF%E3%83%8E%E3%83%AD%E3%82%B8%E3%83%BC%E3%82%BA">Human Metabolome Technologies</a>社が，メタボロミクスについての実験手法や研究事例などをまとめた包括的なレビューを無料で公開している．</p>
+
+<p><a href="http://humanmetabolome.com/rd/proceedings">The Proceedings of Metabolomics | Human Metabolome Technologies</a></p>
+
+<blockquote><p>目次</p>
+
+<p>第一章 三位一体</p>
+
+<p>第二章 メタボロミクスの概要</p>
+
+<p>第三章 メタボロミクスで用いられる分析手法</p>
+
+<p>第四章 多変量解析を用いたメタボロームデータ解析</p>
+
+<p>第五章 データベース</p>
+
+<p>第六章 メタボロームデータに影響を与える諸要因</p>
+
+<p>第七章 メタボロミクスの応用と実用</p>
+
+<p>第八章 HMTでのメタボロミクス手順</p>
+
+<p>第九章 生体試料</p>
+
+<p>第十章 ケーススタディ</p>
+
+<p>(<a href="http://humanmetabolome.com/rd/proceedings#2">http://humanmetabolome.com/rd/proceedings#2</a>)</p></blockquote>
+
+<p>上記の目次を見てもらえれば分かる通り，このレビューではメタボロミクスという分野全体に関して，その歴史やオミクス(-omics)における位置づけを明確にしつつ，実際の実験手法や解析手法，そして様々な分野への適応事例をまとめ上げたものになっている．冒頭の第一章でまず語られる「三位一体」とは，分析化学・コンピュータサイエンス・生物学のことを指し，これらが互いに支えあってメタボロミクスという分野が成り立っていることが述べられる．その3つの側面それぞれについて，分析化学では化合物の測定技術，コンピュータサイエンスではデータ解析技術，生物学ではメタボローム解析の意義や適応例といったように，それぞれメタボロミクスに必要な技術や知識が紹介される．</p>
+
+<p>私自身はメタボロミクスについてほとんど知識がない状態でこのレビューを読んだのだが，専門外の自分にとってもメタボロミクスの分野全体を俯瞰し，それぞれの内容について理解を深めることができたと思う．参考文献もかなり充実しており，関係ありそうな論文を幾つかピックアップしてそれぞれ読み進めているところだ．</p>
+
+<p>もしメタボロミクスに興味があったり研究に関係しそうな人は，ぜひこのレビューを一読することをオススメする．また，同社のウェブサイトでは<a href="http://humanmetabolome.com/rd/researchlist">研究領域別論文リスト</a>といった論文のサーベイを公開しているほかに，「<a href="http://humanmetabolome.com/09/10672">メタボロミクスの論文を読もう</a>」といったセミナーも日本各地で開催しているようなので，気になる人はチェックしてみてはどうだろうか．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://humanmetabolome.com/">メタボローム受託解析　メタボロミクス | Human Metabolome Technologies</a></li>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%83%92%E3%83%A5%E3%83%BC%E3%83%9E%E3%83%B3%E3%83%BB%E3%83%A1%E3%82%BF%E3%83%9C%E3%83%AD%E3%83%BC%E3%83%A0%E3%83%BB%E3%83%86%E3%82%AF%E3%83%8E%E3%83%AD%E3%82%B8%E3%83%BC%E3%82%BA">ヒューマン・メタボローム・テクノロジーズ - Wikipedia</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Courseraでバイオインフォマティクスのオンライン授業がスタート]]></title>
@@ -1357,44 +1408,6 @@ information about the shutdown.</p>
 
 
 <p>なんともまあ呆気なく解決してしまった．普段からディレクトリのパーミッションはまったく変えないので，問題解決の際にディレクトリにまで考えが及ばなく，久々に自分の経験の浅さを実感した．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Tophat/Cufflinksなどの開発者であるCole TrapnellによるRNA-Seqの遺伝子発現解析に関する講義動画]]></title>
-    <link href="http://yagays.github.io/blog/2013/07/12/stat115-cole-trapnell/"/>
-    <updated>2013-07-12T03:49:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/07/12/stat115-cole-trapnell</id>
-    <content type="html"><![CDATA[<p>非常に良い講義資料およびその講義ビデオを見つけたので紹介する．これはハーバードの大学院およびハーバード公衆衛生大学院のComputational Biologyの講義で，マイクロアレイ/次世代シーケンサの発現解析に始まり，ChIP-Seqやモチーフ検索，GWAやSNP解析に至るまで，Computational Biologyにおける様々な研究対象に関する講義が行われている．</p>
-
-<p><a href="http://www.stat115.org/index.html">STAT115 Introduction to Computational Biology</a></p>
-
-<blockquote><p>This course is an introduction to state-of-the-arts concepts, methodologies and practices in computational biology. After taking this course, you should be able to:</p>
-
-<ul>
-<li><p>Use appropriate commands or write your own scripts to manipulate your own genomic data</p></li>
-<li><p>Exploit appropriate pipeline or software to analyze your own high-throughput gene expression microarray and/or RNA-Seq data and high-throughput sequencing transcriptional regulation data</p></li>
-<li><p>Apply statistical or mathematical models to your own population/human genetics data</p></li>
-<li><p>Criticize and/or extend the computational analysis or statistical models in the literature</p></li>
-<li><p>Use R, Python, and/or Shell scripts and basic concepts in genomics and genetics to perform your own bioinformatics and computational biology research</p></li>
-</ul>
-
-
-<p><a href="http://www.stat115.org/syllabus.html">http://www.stat115.org/syllabus.html</a></p></blockquote>
-
-<p>このなかで，Cole TrapnellがRNA-Seqの遺伝子発現解析に関してレクチャーしている．Cole Trapnellといえば，<a href="http://tophat.cbcb.umd.edu/">TopHat</a>や<a href="http://cufflinks.cbcb.umd.edu/">Cufflinks</a>の開発者の中心人物のひとりだ．これらのツールに関する論文の第一著者でもある．その彼が，RNA-Seqの定量化や発現量推定などの一連の流れを，自身が開発に参加した&#8221;Tuxedo Tools&#8221;（Bowtie, Tophat, Cufflinks, CummeRbundの総称）を例に紹介しているのがこの動画だ．主にマッピング後の発現量推定に関して，基本的なFPKMの求め方であったり，Cufflinksのisoformの取り扱いであったりを，少し数式も交えながら詳しく解説している．</p>
-
-<p>講義資料：<a href="http://www.stat115.org/lectures/stat115_rnaseq.pdf">http://www.stat115.org/lectures/stat115_rnaseq.pdf</a></p>
-
-<iframe src="http://player.vimeo.com/video/60609764" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-
-
-<p> <p><a href="http://vimeo.com/60609764">lecture9-I</a> from <a href="http://vimeo.com/stat115">stat115</a> on <a href="https://vimeo.com">Vimeo</a>.</p></p>
-
-<iframe src="http://player.vimeo.com/video/60609783" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-
-
-<p> <p><a href="http://vimeo.com/60609783">lecture9-II</a> from <a href="http://vimeo.com/stat115">stat115</a> on <a href="https://vimeo.com">Vimeo</a>.</p></p>
 ]]></content>
   </entry>
   
