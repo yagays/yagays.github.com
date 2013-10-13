@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-10-08T23:33:01+09:00</updated>
+  <updated>2013-10-13T10:08:33+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「バイオ研究者が生き抜くための十二の智慧」読了]]></title>
+    <link href="http://yagays.github.io/blog/2013/10/13/review-lab-management-12-technique/"/>
+    <updated>2013-10-13T10:04:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/10/13/review-lab-management-12-technique</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4780908701" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>本書は，バイオ研究者のためのラボマネージメントのノウハウ集である．主に研究室を運営するPIやその下の教員クラスを対象にしており，実験室での試薬サンプルや実験データ管理，実験ノートの書き方から始まり，論文の投稿や査読，ラボ全体のミーティングやジャーナルクラブの運営，プレリリースなどの研究の情報発信など，研究者の研究以外の活動に関する「雑用」を上手く処理するテクニックが紹介される．たいていの研究者は，これらの細かい事務作業は放り出してただひたすらに自分の研究をしていたいと思うはずだ．しかし，これら「雑用」をしなければ，研究室という組織は機能しない．一見すると研究という仕事をしていないかのように取られがちなこれらの作業は，研究者として生きる上での義務となっている．他の研究者とコミュニケーションを取り，自分の成果を世界に発信することも，自分の研究と同じくらい大事なことだ．これらの「雑用」と呼ぶには相応しくない大事な仕事について，本書では様々な研究者が培ってきたテクニックを十二の智慧として紹介している．</p>
+
+<p>私も常々感じることだが，こういった研究室の運営や文化はなかなか外に出てこない．特に実験系のラボはその色合いが強い．それは，研究室という研究内容が違えば所属する人間も全く違うようなうユニークな環境のせいかもしれないし，人材の流動が少ないせいかもしれない．そもそも，それを知りたいという人が少ないからかもしれない．最近ではメディアでの紹介やブログなどのネット媒体によって情報を発信するトコロも増えてきたが，未だに研究室の実情は独自に醸成されてきた文化を守り抜いていくという閉鎖的な環境にあると思われる．それを良いと思うか悪いと思うかは置いておいて，自分の世界を一歩引いた視点で見ること，そして外の世界を見ることはきっと何かの役に立つ．研究なり研究以外の仕事をもっと上手くやれる方法はあるはずだし，誰か知っているし誰かやっているはずだ．そんな情報をもっと共有したりできる環境があればと思う．それは本書のような本の形でなくても良い．口コミでも学会のセッションでも何かしら広めていける方法はあるはずだ．個人的には，できればインターネットに形として残るブログなどに書いてほしいが，まあやり方はいくらでもあるだろう．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[メタボロミクスの包括的なレビュー「The Proceedings of Metabolomics」]]></title>
@@ -138,7 +152,7 @@
 
 <ul>
 <li>参考：<a href="https://help.cbp.gov/app/answers/detail/a_id/1207">October 1, 2013 Government Shutdown NEWS FLASH!!</a></li>
-<li><del datetime="2013-10-07T19:00:00+09:00">ESTAのウェブサイトには現在はアクセスができない</del>現在は復活している：<a href="https://esta.cbp.dhs.gov/">ICAP Error</a></li>
+<li><del datetime="2013-10-07T19:00:00+09:00">ESTAのウェブサイトには現在はアクセスができない</del>現在は復活している：<a href="https://esta.cbp.dhs.gov/esta/">ESTA - Welcome to the Electronic System for Travel Authorization</a></li>
 <li>大使館でのビザの発給は問題ない：<a href="http://japanese.japan.usembassy.gov/ja/visas.html">ビザサービス | 米国大使館 東京・日本</a></li>
 </ul>
 </li>
@@ -1376,47 +1390,6 @@ information about the shutdown.</p>
 <li>(RSEMの論文)<a href="http://www.biomedcentral.com/1471-2105/12/323">BMC Bioinformatics | Full text | RSEM: accurate transcript quantification from RNA-Seq data with or without a reference genome</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ディレクトリの書き込み権限が無いとファイルの消去ができない]]></title>
-    <link href="http://yagays.github.io/blog/2013/07/13/directory-permission/"/>
-    <updated>2013-07-13T15:40:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/07/13/directory-permission</id>
-    <content type="html"><![CDATA[<p>久しぶりに初歩的なところでハマったのでメモ．多人数が使用するサーバ上で，何故かrmすることのできないファイルがあった．パーミッションも所有者もグループも特に変なところは見当たらず，ファイルが壊れているわけでもGUIで他のプログラムが使用中というわけでもない．なのに，rmしようとすると以下のようなエラーが出てしまう（例示しているコマンドラインは手元で再現した状況）．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rm hehehe
-</span><span class='line'>remove hehehe? y
-</span><span class='line'>rm: hehehe: Permission denied</span></code></pre></td></tr></table></div></figure>
-
-
-<p>sudo権限を持っていないのでなんともしがたいなーと思いつつ，適当にディレクトリ名を&#8221;fuga_broken&#8221;に変更して放置していたのだけれども，たまたま機会があって人に相談したら「ディレクトリの書き込み権限が無いんじゃない？」と言われて，そこでようやく気がついた．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ ls -l
-</span><span class='line'>合計 0
-</span><span class='line'>dr-xr-xr-x 3 yag_ays staff 102  7 13 15:27 fuga/</span></code></pre></td></tr></table></div></figure>
-
-
-<p>というわけで，ディレクトリの書き込み権限がなかったせいで，そのディレクトリ内のファイルの消去ができなかっただけだったというオチ．なぜ書き込み権限が無くなっていたのかはいまだに不明だ．対象となるディレクトリをchmodで書き込み権限を付加したら，あっさりファイルを削除することができた．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ chmod +w fuga
-</span><span class='line'>$ rm fuga/hehehe
-</span><span class='line'>remove fuga/hehehe? y
-</span><span class='line'>$ </span></code></pre></td></tr></table></div></figure>
-
-
-<p>なんともまあ呆気なく解決してしまった．普段からディレクトリのパーミッションはまったく変えないので，問題解決の際にディレクトリにまで考えが及ばなく，久々に自分の経験の浅さを実感した．</p>
 ]]></content>
   </entry>
   
