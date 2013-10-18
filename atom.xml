@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-10-18T15:15:46+09:00</updated>
+  <updated>2013-10-18T15:23:45+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -41,6 +41,7 @@
 
 <ul>
 <li>今回はとりあえず動いたらいいので適当に使う</li>
+<li>np.matrixとnp.arrayが混ざってるの良くないっぽい</li>
 </ul>
 </li>
 </ul>
@@ -86,12 +87,13 @@
 
 <ul>
 <li>今回は適当に更新したときの対数尤度の差を見るようにした</li>
+<li>収束度合いの検出を改善するか，単調増加する対数尤度をプロットして適当なところで切るみたいなことをしたほうがいいかも</li>
 </ul>
 </li>
 </ul>
 
 
-<h4>通り書き終えて</h4>
+<h4>一通り書き終えて</h4>
 
 <ul>
 <li>まずはNumpyのスタイルを一通り身につけないといけない
