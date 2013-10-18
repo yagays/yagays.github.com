@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>「スーパーコンピューターを20万円で創る」読了 - Wolfeyes Bioinformatics beta</title>
+  <title>Numpyを使って混合ガウス分布のEMアルゴリズムを実装 - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.io/blog/2012/09/16/review-supercomputer">
+  <link rel="canonical" href="http://yagays.github.io/blog/2013/10/18/gmm-em-numpy">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -114,7 +114,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">「スーパーコンピューターを20万円で創る」読了</h1>
+      <h1 class="entry-title">Numpyを使って混合ガウス分布のEMアルゴリズムを実装</h1>
     
     
       <p class="meta">
@@ -130,42 +130,115 @@
   
 
 
-<time datetime="2012-09-16T02:24:00+09:00" pubdate data-updated="true">Sep 16<span>th</span>, 2012</time>
+<time datetime="2013-10-18T13:21:00+09:00" pubdate data-updated="true">Oct 18<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4087203956" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+<div class="entry-content"><p>Pythonの練習ということで，Numpyを使って混合ガウス分布のEMアルゴリズムによる最尤推定を実装してみた．そもそもPythonを書いた経験があまり無いうえに，全く知らないNumpyを使って行列演算や確率計算をしようということで，手探りでかなり苦戦してしまったが，何とか形にはなったと思う．ということで，次の勉強に活かすためにもここでコードを振り返ってみようと思う．</p>
+
+<p><strong>注意：以下のコードはテストデータでしか確かめてないので多分バグってる．あと確率値に対数を取ってないので，値が限りなく小さくなってゼロ除算になることがある．</strong></p>
+
+<script src="https://gist.github.com/yagays/7036127.js"></script>
 
 
-<p>以前「情熱大陸」という番組で理論天文学者である小久保英一郎がTVで語った言葉が，今でも強く印象に残っている．その言葉が番組のページに残っているので少し長めに引用させてもらうと，</p>
+<h3>実装</h3>
 
-<blockquote><p>「探検は知的情熱の肉体的表現である」</p>
+<h4>とっかかり</h4>
 
-<p>（チェリー・ガラード：スコット南極探検隊）</p>
+<ul>
+<li>まずscipyあたりで多変量正規分布が無いか探す
 
-<p>僕はこれ、だいッ好きな言葉で。</p>
+<ul>
+<li>普通の正規分布scipy.stats.normはあるが多変量は無いっぽい</li>
+<li>自分で関数を書く</li>
+</ul>
+</li>
+<li>逆行列とか転置とか書き方が複数あって混乱する
 
-<p>もう何ていうか、
-このように生きていきたいと思っているわけです。</p>
+<ul>
+<li>今回はとりあえず動いたらいいので適当に使う</li>
+</ul>
+</li>
+</ul>
 
-<p>「シミュレーションは知的情熱の計算機的表現である」と。</p>
 
-<p>ほんとは僕、探検家になりたかったんですけど。</p>
+<h4>EMアルゴリズムの作り始め</h4>
 
-<p>まあなかなかそういう世の中でもないので、</p>
+<ul>
+<li>Numpyの行列の表し方を一通り見る
 
-<p>知的な探検をする、と。</p>
+<ul>
+<li>Rっぽい</li>
+<li>0 originか1 originかで混乱する</li>
+</ul>
+</li>
+<li>更新するパラメータは基本的に入れ物となる変数を作っておいてそれに代入していく
 
-<p>で、道具はスーパーコンピュータということでやっています。</p>
+<ul>
+<li>最初はappendでリストに突っ込もうかと考えたけど，ndarrayとかになる場合もあるので面倒でやめた</li>
+</ul>
+</li>
+<li>Numpyの簡潔な書き方がわからない
 
-<p><a href="http://www.mbs.jp/jounetsu/2008/01_20.shtml">http://www.mbs.jp/jounetsu/2008/01_20.shtml</a></p></blockquote>
+<ul>
+<li>Rのapplyみたいに列指向で計算する方法がわからない</li>
+<li>最初はリスト内包使ったりmap,zipつかったりしたけど，行列計算ぽく書けばそれなりに動くことに気付く</li>
+<li>それでもだめならfor文で直感的に計算する</li>
+</ul>
+</li>
+</ul>
 
-<p>と，計算機シミュレーションを端的に素晴らしい言葉で言い表している．本書「スーパーコンピューターを20万円で創る」は，小久保英一郎がスーパーコンピューターGRAPEの開発に参加する少し前，まだスーパーコンピューターというものが企業主導の大資本で大規模開発されていた頃に，重力多体問題のシミュレーションを行うために自力でスーパーコンピューターを組み上げた研究者たちの実話の物語となっている．</p>
 
-<p>内容はかなり大雑把に物語を追いかける形となっており細かい部分に少し物足りなさは感じるものの，それでも当時の研究者の熱意や苦悩がひしひしと伝わってくる．私自身も今現在彼らと同じような立場にあるのだが，自分の境遇と似た部分も多く，非常に勇気づけられると同時に研究への情熱を奮い立たせられるような作品だった．</p>
+<h4>終わりかけ</h4>
+
+<ul>
+<li>共分散行列の更新で意図した結果にならずにだいぶ悩む
+
+<ul>
+<li>とりあえず人のを真似て書いてみる</li>
+</ul>
+</li>
+<li>対数尤度の収束規準をどうするかで悩む
+
+<ul>
+<li>今回は適当に更新したときの対数尤度の差を見るようにした</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>通り書き終えて</h4>
+
+<ul>
+<li>まずはNumpyのスタイルを一通り身につけないといけない
+
+<ul>
+<li>Numpyの流儀を学ぶ</li>
+<li>パッケージや方法が混在しているので，書き方を統一することが必要</li>
+</ul>
+</li>
+<li>実装の途中で数式の添字とかで混乱した
+
+<ul>
+<li>EMアルゴリズムの資料としてPRMLともう一つ別のスライドを参考にしたのが原因</li>
+<li>実装前にしっかりと頭のなかを整理しとくことが必要</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/n_shuyo/20100304/em_algorithm">EM アルゴリズム実装(勉強用) - Mi manca qualche giovedi`?</a></li>
+<li><a href="http://d.hatena.ne.jp/nishiohirokazu/20111109/1320829189">EMアルゴリズム答え合わせ - 西尾泰和のはてなダイアリー</a></li>
+<li><a href="http://d.hatena.ne.jp/teramonagi/20120909/1347194703">EMアルゴリズムによる混合分布のパラメーター推定の解析計算＆実装例 from 「Rによるモンテカルロ法入門」 - My Life as a Mock Quant</a></li>
+<li><a href="http://convexbrain.sourceforge.jp/cgi-bin/wifky.pl?p=EM%A5%A2%A5%EB%A5%B4%A5%EA%A5%BA%A5%E0">Intelligence Architecture けんきうノート - EMアルゴリズム</a></li>
+</ul>
+
 </div>
 
 
@@ -190,12 +263,12 @@
   
 
 
-<time datetime="2012-09-16T02:24:00+09:00" pubdate data-updated="true">Sep 16<span>th</span>, 2012</time>
+<time datetime="2013-10-18T13:21:00+09:00" pubdate data-updated="true">Oct 18<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/book/'>Book</a>
+    <a class='category' href='/blog/categories/python/'>Python</a>
   
 </span>
 
@@ -203,9 +276,9 @@
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2012/09/16/review-supercomputer/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2013/10/18/gmm-em-numpy/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2012/09/16/review-supercomputer/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2012/09/16/review-supercomputer/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/10/18/gmm-em-numpy/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/10/18/gmm-em-numpy/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -226,14 +299,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/09/15/review-h5n1/" title="Previous Post:
-        「H5N1―強毒性新型インフルエンザウイルス日本上陸のシナリオ」読了">&laquo; 「H5N1―強毒性新型インフルエンザウイルス日本上陸のシナリオ」読了</a></li>
+        href="/blog/2013/10/13/review-lab-management-12-technique/" title="Previous Post:
+        「バイオ研究者が生き抜くための十二の智慧」読了">&laquo; 「バイオ研究者が生き抜くための十二の智慧」読了</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/09/17/review-enddepression/"
-        title="Next Post: 「さっさと不況を終わらせろ」読了">「さっさと不況を終わらせろ」読了
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -415,8 +484,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.io/blog/2012/09/16/review-supercomputer/';
-        var disqus_url = 'http://yagays.github.io/blog/2012/09/16/review-supercomputer/';
+        var disqus_identifier = 'http://yagays.github.io/blog/2013/10/18/gmm-em-numpy/';
+        var disqus_url = 'http://yagays.github.io/blog/2013/10/18/gmm-em-numpy/';
         var disqus_script = 'embed.js';
       
     (function () {
