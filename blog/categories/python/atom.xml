@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-10-18T15:23:45+09:00</updated>
+  <updated>2013-10-19T01:57:20+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -20,7 +20,7 @@
     <id>http://yagays.github.io/blog/2013/10/18/gmm-em-numpy</id>
     <content type="html"><![CDATA[<p>Pythonの練習ということで，Numpyを使って混合ガウス分布のEMアルゴリズムによる最尤推定を実装してみた．そもそもPythonを書いた経験があまり無いうえに，全く知らないNumpyを使って行列演算や確率計算をしようということで，手探りでかなり苦戦してしまったが，何とか形にはなったと思う．ということで，次の勉強に活かすためにもここでコードを振り返ってみようと思う．</p>
 
-<p><strong>注意：以下のコードはテストデータでしか確かめてないので多分バグってる．あと確率値に対数を取ってないので，値が限りなく小さくなってゼロ除算になることがある．</strong></p>
+<p><strong>注意：以下のコードはテストデータでしか確かめてないので多分どこかバグってる．あと確率値に対数を取ってないので，値が限りなく小さくなってゼロ除算になることがある．</strong></p>
 
 <script src="https://gist.github.com/yagays/7036127.js"></script>
 
@@ -108,6 +108,12 @@
 <ul>
 <li>EMアルゴリズムの資料としてPRMLともう一つ別のスライドを参考にしたのが原因</li>
 <li>実装前にしっかりと頭のなかを整理しとくことが必要</li>
+</ul>
+</li>
+<li>全体的に対数尤度で計算する
+
+<ul>
+<li>いわゆるlogsumexpでアンダフローに対処する</li>
 </ul>
 </li>
 </ul>
