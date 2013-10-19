@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-10-19T01:57:20+09:00</updated>
+  <updated>2013-10-19T14:48:21+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -14,11 +14,42 @@
 
   
   <entry>
+    <title type="html"><![CDATA[「RとRubyによるデータ解析入門」読了]]></title>
+    <link href="http://yagays.github.io/blog/2013/10/19/review-exploring-everyday-things/"/>
+    <updated>2013-10-19T14:47:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/10/19/review-exploring-everyday-things</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873116155" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>プログラミング言語RとRubyを使って，日常に隠れた様々なデータを掘り起こし，シミュレーションや仮説検定といった方法を用いて解析しようという本書．基本的にはRubyで生データの取得や処理を行い，Rで統計処理や可視化する流れになっている．日本語訳ではデータ解析という少しお固いタイトルだけれども，原題は「Exploring Everyday Things With R and Ruby」であり，扱う内容は身近にある些細なことが多い．例えば，オフィスのトイレが従業員数に対して凄い少ないんだけど本当にこれだけでいいの？といった疑問とか，日頃よく使っているメールを解析してどんな傾向があるか探ってみようといったデータマイニング的なことから，はたまた心臓の鼓動を解析するといった自分ではやろうと思わないことまで，対象とする内容は実に多様だ．このラインナップを見て「最近流行りのデータ解析ってもっと凄いことするもんだと思ってた」と思うかもしれないが，本書を開いてみれば，それは実に的を外した意見であることがわかる．データというものは，インターネットのアクセスログやPOSの購買記録だけではない．身近にあるすべてのことはデータであり，記録し収集することで形となり，解析し可視化することで見えてくる事実というものがある．そういった発見をする喜びというものを，本書は教えてくれる．科学は研究者や技術者だけのものではなく，誰もが感じることのできるものである．日常で疑問に思ったことから仮説を立て，データを集めたりシミュレーションをしたりして解き明かすという方法を，本書では実例とともに学ぶことができる．</p>
+
+<p>本書を読むと，とにかく以下の2つのことが大事なのだと実感する．それは</p>
+
+<ul>
+<li>ふと疑問に思ったことを自分なりに確かめようとする</li>
+<li>とにかくデータを貯める</li>
+</ul>
+
+
+<p>ということだ．思い浮かんだ疑問をそのままにせず，直感的や一見合理的な理由をしっかりと確かめる術を持つということの大切さを改めて意識した．それには，シミュレーションや統計解析が非常に有効である．そして，それを実現するには後にも先にもデータが必要であるということ，日頃から意識して記録するという能動的な行為から，自動的に記録してくれるようなシステムを作りデータを貯めこむという受動的な行為まで，何らかの形で残しておけば後々使う機会があるかもしれないということだ．データが全て残せなければ，数とか量とか何らかの統計値でも良い．電子データなら物理的場所を取らないしいくらでも貯めこむことができる．そういった一手先のデータ収集をしておくことで，よりデータ解析が面白くなる．</p>
+
+<p>最後に実例を一つ．Siriのバックボーンとなっている<a href="http://www.wolframalpha.com/">WolframAlpha</a>などの開発者で有名なStephen Wolfram氏も，本書のアプローチに似たことをBlogで紹介している．</p>
+
+<ul>
+<li><a href="http://blog.stephenwolfram.com/2012/03/the-personal-analytics-of-my-life/">The Personal Analytics of My Life—Stephen Wolfram Blog</a></li>
+</ul>
+
+
+<p>かなり長期にわたるデータを細かく分析しており，グラフを見て想像を巡らすだけでも非常に面白い．</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Numpyを使って混合ガウス分布のEMアルゴリズムを実装]]></title>
     <link href="http://yagays.github.io/blog/2013/10/18/gmm-em-numpy/"/>
     <updated>2013-10-18T13:21:00+09:00</updated>
     <id>http://yagays.github.io/blog/2013/10/18/gmm-em-numpy</id>
-    <content type="html"><![CDATA[<p>Pythonの練習ということで，Numpyを使って混合ガウス分布のEMアルゴリズムによる最尤推定を実装してみた．そもそもPythonを書いた経験があまり無いうえに，全く知らないNumpyを使って行列演算や確率計算をしようということで，手探りでかなり苦戦してしまったが，何とか形にはなったと思う．ということで，次の勉強に活かすためにもここでコードを振り返ってみようと思う．</p>
+    <content type="html"><![CDATA[<p>Pythonの練習ということで，Numpyを使って混合ガウス分布のEMアルゴリズムによる最尤推定を実装してみた．そもそもPythonを書いた経験があまり無いうえに，全く知らないNumpyを使って行列演算や確率計算をしようということで，手探りでかなり苦戦してしまったが，何とか形にはなったと思う．ということで，次の勉強に活かすためにもここでコードを振り返ってみる．</p>
 
 <p><strong>注意：以下のコードはテストデータでしか確かめてないので多分どこかバグってる．あと確率値に対数を取ってないので，値が限りなく小さくなってゼロ除算になることがある．</strong></p>
 
@@ -1215,7 +1246,7 @@ information about the shutdown.</p>
 
 <p>特段留学する予定などはなく，単にアメリカの研究事情についての知識が欲しかったので図書館で借りて軽く読み通してみたのだが，かなり内容が濃くて実際に留学する上で必要な知識が詰まった1冊だった．もしアメリカ留学する機会があれば，この本は絶対に買って読み込むだろうと思う．また，ただの留学に必要な手続き紹介だけではなく，ポスドクとしての研究費獲得方法やアメリカと日本のラボの運営形態の違いなども紹介されており，通常の学生や研究者にとっても興味深い内容となっている．</p>
 
-<p>本書はアメリカ合衆国への留学に必要なありとあらゆる情報が網羅された留学ガイド本である．元は「<a href="http://kenkyuu.net/">研究留学ネット</a>」という，著者個人がアメリカ留学を期に立ち上げたウェブサイトを書籍化したもので，2002年に第一版が出版され，2012年にビザなどの手続きの変更や特別鼎談などが加わった第二版が出版されている．内容としては著者の個人的な留学経験を元に一般的なアメリカ留学に関して，受け入れ研究室探しの方法から始まり，ビザの発行や保険の加入，銀行口座の開設などの渡航前後に必要となる手続きであったり，日常生活レベルで必要な知識が細かく紹介されている．著者自体が医者のポスドクとして渡航しているからか，主な対象として日本でPhDを取得しアメリカでポスドクをするという人向けの色合いが強い．そのため，配偶者や子供を連れて行く場合のビザの情報であったり，車の購入に関する情報もカバーされている．といっても，当然ながらアメリカ留学に関する基本的な枠組みにそれほど差があるわけではないので，非医学の生命科学系研究者にとっても有用な情報が詰め込まれている．また，本書後半ではアメリカ留学を経験した9人の体験談が収録されており，大学や専門がそれぞれ違う人たちのリアルな留学経験が語られる．そして最後に特別鼎談として，本書著者の門川氏，先ほどの体験談を起稿された方の一人である広田氏，そして「<a href="http://harvardmedblog.blog90.fc2.com/">ハーバード大学医学部留学・独立日記</a>」で有名の島岡氏による特別対談が収録されている．</p>
+<p>本書はアメリカ合衆国への留学に必要なありとあらゆる情報が網羅された留学ガイド本である．元は「<a href="http://kenkyuu.net/">研究留学ネット</a>」という，著者個人がアメリカ留学を期に立ち上げたウェブサイトを書籍化したもので，2002年に第一版が出版され，2012年にビザなどの手続きの変更や特別鼎談などが加わった第二版が出版されている．内容としては著者の個人的な留学経験を元に一般的なアメリカ留学に関して，受け入れ研究室探しの方法から始まり，ビザの発行や保険の加入，銀行口座の開設などの渡航前後に必要となる手続きであったり，日常生活レベルで必要な知識が細かく紹介されている．著者自体が医者のポスドクとして渡航しているからか，主な対象として日本でPhDを取得しアメリカでポスドクをするという人向けの色合いが強い．そのため，配偶者や子供を連れて行く場合のビザの情報であったり，車の購入に関する情報もカバーされている．といっても，当然ながらアメリカ留学に関する基本的な枠組みにそれほど差があるわけではないので，非医学の生命科学系研究者にとっても有用な情報が詰め込まれている．また，本書後半ではアメリカ留学を経験した9人の体験談が収録されており，大学や専門がそれぞれ違う人たちのリアルな留学経験が語られる．そして最後に特別鼎談として，本書著者の門川氏，先ほどの体験談を起稿された方の一人である広田氏，そして「<a href="http://harvardmedblog.blog90.fc2.com/">ハーバード大学医学部留学・独立日記</a>」で有名な島岡氏による特別対談が収録されている．</p>
 
 <p>こういった本を読んでいると，将来の選択肢として留学があること，そして国や文化を超えて研究を行うということに関して色々と考えてしまう．かなり個人的な話になってしまうが，今ちょうど同じ研究室にいる中国からの留学生の世話をしているのだけれども，やはり外国で生活をするというのは並々ならぬ労力が必要のようだ．たとえ言語の壁はなんとか突破できたとしても，公共サービスや役所への提出書類の作成であったり，住居などの暮らしに関する細かな違い，そして何より文化の違いは，非常に大きな負荷となるに違いない．これに関しては経験がモノを言う部分だと思うので，今回のような本を参考にして知識を詰め込んでおいたり，実際に留学された経験者が身近にいて相談できる状態というのは非常に大事だと感じた．</p>
 
@@ -1442,69 +1473,6 @@ information about the shutdown.</p>
 <h3>参考</h3>
 
 <ul>
-<li><a href="http://arxiv.org/abs/1104.3889v2">[1104.3889v2] Models for transcript quantification from RNA-Seq</a></li>
-<li><a href="http://fgcz-intranet.uzh.ch/publish/BiostatLecture/RNA-seq-quantification.pdf">http://fgcz-intranet.uzh.ch/publish/BiostatLecture/RNA-seq-quantification.pdf</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[RNA-Seqの数理―生成モデルによる発現量推定（1）RNA-Seqの発現量推定とRPKM]]></title>
-    <link href="http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/"/>
-    <updated>2013-07-15T00:06:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1</id>
-    <content type="html"><![CDATA[<ul>
-<li>まとめ：<a href="http://yagays.github.io/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/">RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ - Wolfeyes Bioinformatics beta</a></li>
-</ul>
-
-
-<p>生成モデルの話を始める前に，まずはRNA-Seqの発現量としてよく知られているRPKMという指標からスタートし，生成モデルの話へと繋げていこう．</p>
-
-<h3>RNA-Seqの発現量推定の基本</h3>
-
-<p>RNA-Seqで得られるデータは，ある長さの配列（ショートリード）とクオリティスコアのセットして表現される．それをリファレンスとなるゲノム配列の中から探しだして，読まれた配列が何の転写物由来かを見つける作業をマッピングという．このマッピングをNGSから出力された数千万本/数億本のショートリードに対して行い，ある遺伝子の部位にどのくらい貼り付いたかをカウントすることで特定の転写物がどれくらい発現していたかを推定するという方法が，RNA-Seqの発現量推定では基本となる．</p>
-
-<p><a href="http://www.nature.com/nrg/journal/v10/n1/fig_tab/nrg2484_F1.html" target="_blank"><img src="http://dl.dropboxusercontent.com/u/142306/b/nrg2484-f1.jpg" alt="CCC License Number: 3187871036736 "></a></p>
-
-<p>この図はRNA-Seqの実験の流れを模式的に表している．まず対象となるトランスクリプトームであるmRNAを取り出し，断片化やアダプターの付与を経てシーケンスライブラリを作成する．次にNGSによって断片が大量にシーケンスされ，いわゆるATCGからなる文字列で構成されたショートリードが得られる．そしてゲノム配列にマッピングすることによって，RNAの発現量が推定される．この図では，ゲノム配列の各塩基ごとにどれくらいの本数のショートリードが貼り付いたかをカウントすることによって，RNA expression levelを図示している．Nucleotide positionによって特定の領域の発現量が欠損していたり遺伝子の末端で発現量が少なくなっているのには，マッピングの際に生じる幾つかの理由がある．まず，図中のJunction readsで示されている点線の箇所は，イントロンのスプライシングが起きた領域であり，mRNAの配列をゲノム配列にマッピングするために起こる現象である．そのため，イントロンの領域だけ発現量が無いように見える．また，Poly-A tailが配列の一部として混入することでショートリード自体がゲノム配列にマッピングできない場合もあり，末端の発現量が落ちる原因の一つになっている．</p>
-
-<p>では，このようにして求められた値を転写物ごとの発現量として一つの値で表現するには，どうすれば良いのか．ここで，RPKMという考え方が登場する．</p>
-
-<h3>RPKMの考え方</h3>
-
-<p>RNA-Seqの発現量の値として最初に考えられ今でも広く使われているRPKMという指標は，配列の本数を数えるという方法で転写物ごとの発現量を求めている．RPKMはreads per kilobase of exon per million mapped sequence readsの略称で，マッピングされたショートリードの数をエキソンの長さとシーケンサで読まれた配列の総数で正規化した値である．RPKMの計算方法を式で表すと以下のようになる．</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=RPKM+%5C++for+%5C++transcript+%5C+t+%3D+10%5E9+%5Ctimes%5Cfrac%7BX_t%7D%7Bl_t+N%7D" alt="RPKM \  for \  transcript \ t = 10^9 \times\frac{X_t}{l_t N}" /></p>
-
-<p>ここで，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X_t+" alt="X_t " />は転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />にマッピングされたショートリードの本数，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />は転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />の長さ(bp)，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=N+" alt="N " />はマッピングされたショートリードの総数を表している．</p>
-
-<p>さて，このRPKMという発現量の考え方の裏には以下のような仮定がある．</p>
-
-<ul>
-<li>配列数が長い転写物からはショートリードが多く読まれる</li>
-<li>全体で読まれるショートリードの数が多いと，マッピングされるショートリードも多くなる</li>
-</ul>
-
-
-<p>NGSによるRNA-Seqでは，特定の量のサンプルの中に含まれるトランスクリプトームをランダムにシーケンスするため，出てくるデータというのはあくまでも相対的な量となってしまう．そのため，このような仮定を置くことで転写物の発現や実験サンプルなどの違いを補正している．RPKMはある遺伝子の領域内に含まれるショートリードの本数を数え，転写物の長さと全体のデータ数で割って10<sup>9</sup> を掛けることによって簡単に求められるため，計算のしやすさと直感的な分かりやすさがある．</p>
-
-<h3>RPKMと生成モデルとの関係</h3>
-
-<p>このように，RPKMはマッピングされた配列の本数を数えるという単純な方法で発現量を推定している．一方で，これから考えていくことになる生成モデルによる発現量推定は，データが観測される事象を確率的に推定することでデータが与えられたときのトランスクリプトームの発現量というものを求める．これらは一見して全く違うもののように見えるのだが，<strong>実際には最も単純な生成モデルはRPKMと基本的な考え方が同じになる</strong>．つまり，RPKMも単純な生成モデルによる推定方法も，発現量はマッピングされたショートリードの本数と，転写物の長さおよびマッピングされたショートリードの総数の逆数によって決まるということだ．</p>
-
-<p>それを確かめるために，次回はCount Based Modelと呼ばれる生成モデルを作って発現量推定を定式化し，それがRPKMの計算式と同じ意味を持つということを示してみよう．</p>
-
-<ul>
-<li>次：<a href="http://yagays.github.io/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/">RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM - Wolfeyes Bioinformatics beta</a></li>
-</ul>
-
-
-<h3>参考</h3>
-
-<ul>
-<li><a href="http://www.nature.com/nmeth/journal/v5/n7/full/nmeth.1226.html">Mapping and quantifying mammalian transcriptomes by RNA-Seq - Nature Methods</a></li>
-<li><a href="http://www.nature.com/nrg/journal/v10/n1/full/nrg2484.html">RNA-Seq: a revolutionary tool for transcriptomics : Article : Nature Reviews Genetics</a></li>
 <li><a href="http://arxiv.org/abs/1104.3889v2">[1104.3889v2] Models for transcript quantification from RNA-Seq</a></li>
 <li><a href="http://fgcz-intranet.uzh.ch/publish/BiostatLecture/RNA-seq-quantification.pdf">http://fgcz-intranet.uzh.ch/publish/BiostatLecture/RNA-seq-quantification.pdf</a></li>
 </ul>

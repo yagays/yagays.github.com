@@ -116,6 +116,108 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/11/09/glm-mcmc-chp7-2/">「データ解析のための統計モデリング入門」読書ノート 7章 無限混合分布の生成過程をアニメーションにした</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-09T00:25:00+09:00" pubdate data-updated="true">Nov 9<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>まとめ：<a href="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート</a></li>
+<li>前回：<a href="http://yagays.github.com/blog/2012/11/02/glm-mcmc-chp7/">「データ解析のための統計モデリング入門」読書ノート 7章 GLMMとGLMを比較する</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=400006973X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>一言で言うと</h3>
+
+<p>「データ解析のための統計モデリング入門」P.157 図7.8とP.158 図7.9の分布を混ぜる過程をアニメーションにした．無限混合分布に関して手元の資料であまり情報が無かったことがあり，検算のためにと計算したときに作ったものだが，意外とうまく作れたんじゃないかと思う．</p>
+
+<h3>GLMMの最尤推定と積分</h3>
+
+<p>個体差<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_i+" alt="r_i " />を考慮に入れた今回のGLMMでは，尤度<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=L_i+" alt="L_i " />を以下の式のように積分をして<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_i+" alt="r_i " />を消す．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=L_i+%3D+%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7Dp%28y_i%7C%5Cbeta_1%2C%5Cbeta_2%2Cr_i%29p%28r_i%7Cs%29dr_i+" alt="L_i = \int_{-\infty}^{\infty}p(y_i|\beta_1,\beta_2,r_i)p(r_i|s)dr_i " /></p>
+
+<p>これはすなわち，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28y_i%7C%5Cbeta_1%2C%5Cbeta_2%2Cr_i%29" alt="p(y_i|\beta_1,\beta_2,r_i)" />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28r_i%7Cs%29+" alt="p(r_i|s) " />を混ぜあわせた無限混合分布となっている．</p>
+
+<h3>アニメーション作成過程</h3>
+
+<p>今回は，P.157 図7.8とP.158 図7.9の2つの図をアニメーションとして表現してみた．それぞれの実験のパラメータは以下の通り．</p>
+
+<ul>
+<li><p>二項分布と正規分布</p>
+
+<ul>
+<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta+%3D+0+" alt="\beta = 0 " /></li>
+<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=q+%3D+%5Cfrac%7B1%7D%7B1%2B%5Cexp%28-%28%5Cbeta+%2B+r%29%29%7D+" alt="q = \frac{1}{1+\exp(-(\beta + r))} " /></li>
+</ul>
+</li>
+<li><p>ポアソン分布と正規分布</p>
+
+<ul>
+<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta+%3D+0.5+" alt="\beta = 0.5 " /></li>
+<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clambda+%3D+%5Cexp%28%5Cbeta+%2B+r%29+" alt="\lambda = \exp(\beta + r) " /></li>
+</ul>
+</li>
+</ul>
+
+
+<p>ただし，無限混合分布に関しては，きちんと積分をして値を求めているわけではなく，rを細かく分割してそれぞれ計算した後に足しあわせているだけなので，あくまでも模式図ということで．</p>
+
+<h3>結果</h3>
+
+<p>gifアニメーションは少し容量が大きいので，以下のリンク先で公開している．</p>
+
+<ul>
+<li><a href="http://dl.dropbox.com/u/142306/b/glm_mcmc_7_1.gif">図7.8のアニメーション（二項分布と正規分布の無限混合分布）</a></li>
+<li><a href="http://dl.dropbox.com/u/142306/b/glm_mcmc_7_2.gif">図7.9のアニメーション（ポアソン分布と正規分布の無限混合分布）</a></li>
+</ul>
+
+
+<p>以下のプロットは，その中から1枚だけ抜き出した例となっている．左の図は二項分布/ポアソン分布の変化，中央の図は正規分布と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r+" alt="r " />の値，右の図は混合分布の変化を示している．rを小さい値から大きい値にかけて変化させていったときの，二項分布/ポアソン分布の変化と混合分布の形の変化がわかる．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc_7_1.png" alt="" /></p>
+
+<p>以下ソースコード．</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/11/09/glm-mcmc-chp7-2/">続きを読む &rarr;</a>
+    </footer>
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/11/08/creative-commons-jekyll-octopress-footer/">Jekyll/Octopressのフッターにクリエイティブ・コモンズ・ライセンスを書き加える</a></h1>
     
     
@@ -508,295 +610,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/04/ustream-setting-on-macosx/">学会・勉強会のUstream配信＆録画環境 on MacOSX</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-04T18:43:00+09:00" pubdate data-updated="true">Nov 4<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>「ダダ漏れ」というバズワードを聞かなくなって久しいですが，それでも勉強会などのプレゼンテーションにおいてネット配信や録画の公開などの需要は高まっており，もはやあって当然という感じもあります．また，最近では学会などの基調講演なども録画してYouTubeで後日公開という話もよく耳にするようになりました．しかし，いざUstreamなどで配信を行おうと思っても，そもそもどうすればいいかわからない，手持ちの環境ではマトモに配信ができない，もっとクオリティを上げたい，といったように，技術的な知識を要求されたり高価な機器に依存する部分があるなど，色々なレベルで難しいところがあります．</p>
-
-<p>そこで今回は，ある程度マシな配信&amp;録画環境を作ろうということで，僕が以前勉強会で配信を担当したときに構築した環境についてまとめてみました．今回の目標としては，</p>
-
-<h3>コンセプト：ちょっとお金を掛けて比較的マシな配信/録画環境を作ろう</h3>
-
-<p>という感じで，高価な機器でいきなりプロ並の配信を目指すのではなく，ちょっとお金と労力をかけることである程度マトモな配信環境を目指そうじゃないかといったスタンスになっています．ただし，この記事を書いた人間は映像/音声関係に全く素人であり，もっと良い環境構築法やテクニックなどあるとは思うので，より詳細に知りたい場合には専門家などが公開している情報を参考にしてもらえればと思います．</p>
-
-<h4>この記事はこんな人向け</h4>
-
-<ul>
-<li>今までMacBookのFaceTimeカメラを講演者に向けてUstしてたけど，もうちょっとマシな配信がしたい</li>
-<li>とりあえず音を何とかしたい</li>
-<li>配信しつつ録画もしときたい．Ustの録画しょぼい</li>
-</ul>
-
-
-<h4>他にはこんな使い方も</h4>
-
-<ul>
-<li>ニコニコ生放送でも配信したい
-
-<ul>
-<li>ニコ生でもUstreamと同様のセッティングで配信ができます</li>
-</ul>
-</li>
-<li>Skypeの会話をそのままUstに流したい or Ustで喋ってる裏でPCに入ってる音楽を流したい
-
-<ul>
-<li>USBオーディオ機器によってはMacBookの音を拾って流せます</li>
-</ul>
-</li>
-</ul>
-
-
-<br />
-
-
-<h3>用意する機材（ハードウェア編）</h3>
-
-<p>MacBookを中心にして，そこから音声を取ってくる部分と映像を取ってくる部分を外部のハードウェアで行う．それぞれ高画質/高音質を目指すとキリがないが，スタンダードモデルくらいのものを買えば大体は事が足りる．</p>
-
-<ul>
-<li><p><strong>MacBook</strong></p>
-
-<ul>
-<li>配信用/録画用として1台個別に用意する</li>
-<li>配信と録画をしている間はCPU使用率が高くなるので，熱が出る＆ファンが回りっぱなしになる</li>
-</ul>
-</li>
-<li><p><strong>USBオーディオ機器</strong></p>
-
-<ul>
-<li>マイクとMacBookを繋げる機器</li>
-<li>ハードウェアから音量調整やミュートができるので便利</li>
-<li>マイクからの音声を会場のスピーカーに流すこともできる（ハウリング注意）</li>
-</ul>
-</li>
-<li><p><strong>マイク</strong></p>
-
-<ul>
-<li>いわゆるカラオケにあるような奴</li>
-<li>ICレコーダーに付けるような小さいマイクは駄目</li>
-<li>基本は講演者の近くに置くか持ってもらう．集音性の高い専用のマイクを使う手もある</li>
-<li>マイクを講演者近くの壇上に置いておく場合には，マイクスタンドは必須</li>
-</ul>
-</li>
-<li><p><strong>USBカメラまたはデジカメ</strong></p>
-
-<ul>
-<li>要はMacBookに繋いで映像を入力できればよい</li>
-<li>三脚が付けられるタイプだと場所を選ばず安定して配置できるので良い</li>
-<li>外部接続のカメラ無ければ最悪MacBookのFaceTimeカメラでも良いが，中継している間はMacBookで調整などの操作ができないので注意</li>
-</ul>
-</li>
-<li><p><strong>各種ケーブルと変換アダプター</strong></p>
-
-<ul>
-<li>マイクやイヤホンの端子をUSBオーディオ機器の差し込み口に合わせないといけない
-
-<ul>
-<li>イヤホンだと6.3mmと3.5mm</li>
-<li>マイクだと6.3mmとXLR</li>
-</ul>
-</li>
-<li>この辺は変換アダプターが売られているので，それを購入すれば良い</li>
-<li><p>向きとかややこしい部分があるので，分からなかったら家電量販店の売り場の人に訊く</p></li>
-<li><p>講演者がいる壇上と中継する位置が遠い場合は，マイクのケーブルを延長する必要がある</p></li>
-</ul>
-</li>
-</ul>
-
-
-<h4>以下あれば嬉しいもの</h4>
-
-<ul>
-<li>イーモバイルなどのネット回線
-
-<ul>
-<li>会場にネットが無い場合は，中継用に1つ占有できる回線があると良い</li>
-</ul>
-</li>
-<li>Ustream確認用のPC端末
-
-<ul>
-<li>中継/録画している機器とは別に，実際に流れているUstreamの画像や音声を確認できるPCがあると状況を把握しやすい</li>
-</ul>
-</li>
-</ul>
-
-
-<h4>自分の場合の構成</h4>
-
-<ul>
-<li>MacBook Early2008（いわゆる白MacBook）</li>
-<li>USBオーディオ機器：ROLAND TRI-CAPTURE UA-33</li>
-<li>マイク：SONY F-V420</li>
-<li>USBカメラ：Logicool HD Webcam C615</li>
-<li>卓上に置けるマイクスタンド</li>
-<li>その他各種ケーブル・アダプター類</li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B004MP8AGA" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B005LFFE7I" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B00009VT6P" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B001O1116G" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B006HLUJPC" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-
-
-<br />
-
-
-<h3>MacBookにFlash Media Live Encoderをインストールする (ソフトウェア編)</h3>
-
-<ul>
-<li>Flash Media Live Encoder
-
-<ul>
-<li>このソフトウェアだけで配信と録画を同時に行う</li>
-<li>無料（要アカウント作成）</li>
-<li><a href="http://www.adobe.com/jp/products/flash-media-encoder.html">http://www.adobe.com/jp/products/flash-media-encoder.html</a></li>
-<li>画面全景：</li>
-</ul>
-</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/ustream_4.png" alt="" /></p>
-
-<h4>設定</h4>
-
-<ul>
-<li>VideoとAudioのデバイス設定だけは絶対に配信前に確認すること</li>
-<li>せっかく専用の機材を買ったのに，じつは音声はMacBookのスピーカーで録音してましたということになりかねないので注意</li>
-<li>Videoに外部接続カメラ，AudioにUSBオーディオ機器の名前が選択されていることを確認する</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/ustream_1.png" alt="" /></p>
-
-<ul>
-<li>映像や音声の設定は，要求されるクオリティや配信のネットワーク環境に合わせてチューニングする</li>
-</ul>
-
-
-<h4>配信</h4>
-
-<ul>
-<li>Ustreamで配信する場合は，配信用のプロファイルをUstreamのウェブサイトから入手する</li>
-<li>Ustreamのウェブサイトのダッシュボードから「番組設定」→「(番組名)」→「リモート」にある「Flash Media Encoder XML ファイル」をダウンロードする</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/ustream_3.png" alt="" /></p>
-
-<ul>
-<li>Flash Media Live Encoderのメニューバー「File」→「Open Profile」から，先ほどダウンロードしたXMLファイルを読み込む</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/ustream_2.jpg" alt="" /></p>
-
-<ul>
-<li>上のように画面右の「Stream to Flash Media Server」にFMS URLとStreamが表示されればOK</li>
-<li>あとは画面下のスタートを押せば，配信が開始される</li>
-</ul>
-
-
-<h4>録画</h4>
-
-<ul>
-<li>配信を録画するには，画面右下の「Save to File」にチェックを入れて保存する設定にしておく</li>
-</ul>
-
-
-<br />
-
-
-<h3>要するに</h3>
-
-<p>MacBook＋各種機材＋FlashMediaLiveEncoderで何とかなる！！！</p>
-
-<h3>という感じで，まとめ</h3>
-
-<p>だいぶ大雑把に環境構築についてまとめてみたが，実際には配信環境なり会場の様子なりシチュエーションによって必要な機材や技術が左右されるだろう．最初は何がなんだか分からず取っ付きにくい部分があるが，一度実際に勉強して機材を組んで配信してみると，何が必要でどこが重要なのかといったことが見えてくると思う．もし配信などに興味がある場合は，あれこれやりたいことは沢山あるとは思うが，まずはそこそこの機材からスタートしてだんだん慣れていくという感じが一番いいんじゃないだろうか．要点だけ掴めばあとは部分部分を改良していくだけなので，比較的スムーズに上達すると思う．</p>
-
-<h3>ちなみに：このまとめ記事ではできないこと</h3>
-
-<ul>
-<li>技術も知識もないけど手っ取り早くお金で解決したい
-
-<ul>
-<li>CEREVOのLiveSHellなどの専用機器を買って下さい</li>
-</ul>
-</li>
-<li>講演者のPCから映像をダイレクトに取ってきて配信に流す
-
-<ul>
-<li>TwinPactみたいな機器を買って下さい（ちょっと高い）</li>
-</ul>
-</li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0065G4GH6" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B005XDFD4M" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0000YTMVE" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://mascalade.blog89.fc2.com/blog-entry-296.html">http://mascalade.blog89.fc2.com/blog-entry-296.html</a></li>
-<li><a href="http://vad.seesaa.net/article/149852007.html">http://vad.seesaa.net/article/149852007.html</a></li>
-<li><a href="http://d.hatena.ne.jp/i_ogi/20080326/1206516540">http://d.hatena.ne.jp/i_ogi/20080326/1206516540</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/23/">&larr; Older</a></li>
@@ -845,6 +658,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2013/10/19/review-exploring-everyday-things/">「RとRubyによるデータ解析入門」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/10/18/gmm-em-numpy/">Numpyを使って混合ガウス分布のEMアルゴリズムを実装</a>
       </li>
     
@@ -880,10 +697,6 @@
         <a href="/blog/2013/09/14/review-anthropic-principle/">「宇宙はなぜこのような宇宙なのか――人間原理と宇宙論」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/09/09/poster/">学会ポスターを作る/発表する際の覚書</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -892,7 +705,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (1)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (77)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (78)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
