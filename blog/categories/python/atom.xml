@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-10-19T15:48:19+09:00</updated>
+  <updated>2013-10-20T11:35:39+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,92 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[matplotlibで混合ガウス分布をプロットする]]></title>
+    <link href="http://yagays.github.io/blog/2013/10/20/gmm-matplotlib/"/>
+    <updated>2013-10-20T11:22:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/10/20/gmm-matplotlib</id>
+    <content type="html"><![CDATA[<p>PythonとNumpy/Scipyの練習．前回は<a href="http://yagays.github.io/blog/2013/10/18/gmm-em-numpy/">Numpyを使って混合ガウス分布のEMアルゴリズムを実装</a>で混合ガウス分布について取り扱ったので，今回は混合ガウス分布についての数式をおさらいしつつ確率密度関数をプロットしようと思う．</p>
+
+<h3>混合ガウス分布の概要</h3>
+
+<p>混合ガウス分布は，複数のガウス分布の線形結合で表すことができる．</p>
+
+<p>![p(\bold{x})=\sum_{k=1}<sup>{K}\pi_k\mathcal{N}(\bold{x}|\bold{\mu}<em>k,\bold{\Sigma}</em>k)</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=p%28%5Cbold%7Bx%7D%29%3D%5Csum_%7Bk%3D1%7D%3Csup%3E%7BK%7D%5Cpi_k%5Cmathcal%7BN%7D%28%5Cbold%7Bx%7D%7C%5Cbold%7B%5Cmu%7D%3Cem%3Ek%2C%5Cbold%7B%5CSigma%7D%3C%2Fem%3Ek%29%3C%2Fsup%3E+)</p>
+
+<p>ここで，![\pi_k](http://chart.apis.google.com/chart?cht=tx&chl=%5Cpi_k)を混合係数，![\mathcal{N}(\bold{x}|\bold{\mu}<em>k,\bold{\Sigma}</em>k)](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%28%5Cbold%7Bx%7D%7C%5Cbold%7B%5Cmu%7D%3Cem%3Ek%2C%5Cbold%7B%5CSigma%7D%3C%2Fem%3Ek%29)を混合要素と呼ぶ．混合系数は確率の条件![\sum_{k=1}<sup>{K}\pi_k</sup> = 1 ](http://chart.apis.google.com/chart?cht=tx&chl=%5Csum_%7Bk%3D1%7D%3Csup%3E%7BK%7D%5Cpi_k%3C%2Fsup%3E+%3D+1+)および![0 \le \pi_k &lt; 1 ](http://chart.apis.google.com/chart?cht=tx&chl=0+%5Cle+%5Cpi_k+%26lt%3B+1+)を満たす．</p>
+
+<p>また，混合要素![\pi_k = p(k)](http://chart.apis.google.com/chart?cht=tx&chl=%5Cpi_k+%3D+p%28k%29)を![k](http://chart.apis.google.com/chart?cht=tx&chl=k)番目の混合要素が選ばれる事前確率とし，![\mathcal{N}(\bold{x}|\bold{\mu}<em>k,\bold{\Sigma}</em>k) ](http://chart.apis.google.com/chart?cht=tx&chl=%5Cmathcal%7BN%7D%28%5Cbold%7Bx%7D%7C%5Cbold%7B%5Cmu%7D%3Cem%3Ek%2C%5Cbold%7B%5CSigma%7D%3C%2Fem%3Ek%29+)を![k](http://chart.apis.google.com/chart?cht=tx&chl=k)が与えられた時の![x ](http://chart.apis.google.com/chart?cht=tx&chl=x+)の条件付き密度とすると，![x ](http://chart.apis.google.com/chart?cht=tx&chl=x+)の周辺分布は</p>
+
+<p>![p(\bold{x})=\sum_{k=1}<sup>{K}p(k)p(\bold{x}|k)</sup> ](http://chart.apis.google.com/chart?cht=tx&chl=p%28%5Cbold%7Bx%7D%29%3D%5Csum_%7Bk%3D1%7D%3Csup%3E%7BK%7Dp%28k%29p%28%5Cbold%7Bx%7D%7Ck%29%3C%2Fsup%3E+)</p>
+
+<p>で表すことができる．この![k ](http://chart.apis.google.com/chart?cht=tx&chl=k+)の選択が，EMを用いたGMMでの隠れ変数に対応している．</p>
+
+<h4>一次元の混合ガウス分布</h4>
+
+<p>```python
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.mlab as mlab</p>
+
+<p>x = np.linspace(-5, 5,200)
+pi_k = np.array([0.3,0.7])
+norm1 = mlab.normpdf(x, -1, 1)
+norm2 = mlab.normpdf(x, 2, 1)</p>
+
+<p>plt.plot(x,pi_k[0]<em>norm1,color="blue")
+plt.plot(x,pi_k[1]</em>norm2,color="blue")
+plt.plot(x,pi_k[0]<em>norm1+pi_k[1]</em>norm2, color="red")
+plt.show()
+```</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/gmm_1.png" alt="gmm_1.png" /></p>
+
+<p>今回は正規分布の確率密度関数にmatplotlibのmlab.normpdfを使ったが，scipy.statsのnorm.pdfを使うこともできる．</p>
+
+<p><code>
+import numpy as np
+rom scipy import stats
+norm1 = stats.norm.pdf(x, loc=-1, scale=1)
+norm2 = stats.norm.pdf(x, loc=2, scale=1)
+</code></p>
+
+<h3>二次元の混合ガウス分布</h3>
+
+<p>```
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.mlab as mlab</p>
+
+<p>pi_k = np.array([0.3,0.7])
+x = np.linspace(-3.0, 3.0,200)
+y = np.linspace(-2.0, 2.0,200)
+X, Y = np.meshgrid(x, y)
+Z1 = mlab.bivariate_normal(X, Y, 0.5, 1.0, -1, -1)
+Z2 = mlab.bivariate_normal(X, Y, 1.0, 1.0, 1, 1)
+Z = pi/k[0]<em>Z1 + pi_k[1]</em>Z2</p>
+
+<p>CS = plt.contour(X, Y, Z)
+plt.clabel(CS, inline=1, fontsize=10)
+plt.show()
+```</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/gmm_2.png" alt="gmm_2.png" /></p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/y_n_c/20091122/1258904025">matplotlibで等高線やら何やらのプロット - たこ焼き食べた.net</a></li>
+<li><a href="http://w.livedoor.jp/met-python/d/matplotlib/plot">matplotlib/plot - memoring - Seesaa Wiki（ウィキ）</a></li>
+<li><a href="http://d.hatena.ne.jp/teramonagi/20120930/1348982608">レプリカ交換モンテカルロ法（パラレル・テンパリング）による混合ガウス分布に従う乱数の生成 - My Life as a Mock Quant</a></li>
+<li><a href="http://oneau.wordpress.com/2011/02/28/simple-statistics-with-scipy/">Simple statistics with SciPy | Comfort at 1 AU</a></li>
+<li><a href="http://matplotlib.org/examples/pylab_examples/contour_demo.html">pylab_examples example code: contour_demo.py — Matplotlib 1.3.1 documentation</a></li>
+<li><a href="http://matplotlib.org/api/mlab_api.html">mlab — Matplotlib 1.3.1 documentation</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Numpyを使って混合ガウス分布のEMアルゴリズムを実装]]></title>

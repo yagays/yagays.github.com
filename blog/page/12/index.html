@@ -116,6 +116,102 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/04/21/octopress-update/">RVM環境でのOctopressの更新</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-21T22:50:00+09:00" pubdate data-updated="true">Apr 21<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>前々から計画していたOctopressの更新がやっと終わったので，その作業メモ．本当は色々と難航して面倒だったのだけれども，細かいところは割愛して必要最小限の部分だけをまとめてみた．</p>
+
+<h3>バックアップを取る</h3>
+
+<p>これは必須．以下のコマンドでは，Octopressのディレクトリを丸々デスクトップにコピーしている．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>cp -R octopress ~/Desktop
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Octopressをアップデートする</h3>
+
+<p>Git経由でOctorpessをアップデートする．_config.ymlなど自分で変更しているファイルがあるとgit pullできないので，あらかじめgit statusで変更されているファイルを調べてgit checkoutで除外しておく．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git fetch octopress
+</span><span class='line'><span class="nv">$ </span>git checkout -- Rakefile _config.yml
+</span><span class='line'><span class="nv">$ </span>git pull octopress master
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>そして_config.ymlとRakefileを元通りにする．_config.ymlはそれほど更新が無いのでそのままバックアップのコピーを持ってきても大丈夫だが，Rakefileは細かい箇所で更新が入っているので，diffなどを見つつ必要な変更点だけを書き換える．</p>
+
+<h3>RVMでRubyを1.9.3に更新する（必要な人だけ）</h3>
+
+<p>Octopressを更新するとRuby-1.9.3を使うように言われるので，こちらも更新しておく．RVM自体の更新もついでにやっておく．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rvm get stable
+</span><span class='line'><span class="nv">$ </span>rvm autolibs <span class="nb">enable</span>
+</span><span class='line'><span class="nv">$ </span>rvm install ruby-1.9.3
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Bundleでパッケージを更新する</h3>
+
+<p>最後にBundleでOctopressを動かすために必要なパッケージをひと通りインストールすれば，長かった更新作業も一段落．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>bundle install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>もしRubyのバージョンの更新をしていない人はbundle updateすればOK．</p>
+
+<p>あとは，rake generateなどを実行してみて，キチンとOctopressが動作するかを確かめれば終了．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://octopress.org/docs/updating/">Updating Octopress - Octopress</a></li>
+<li><a href="http://tokkonopapa.github.io/blog/2011/12/30/octopress-on-github-and-bitbucket/">Octopressのインストールから運用管理まで - T.I.D.</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/04/20/install-biopython/">Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする</a></h1>
     
     
@@ -464,60 +560,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/01/13/my-favorite-things/">「すべての買い物に逸話をつけよう」― 個性を身に付けるための単純な習慣</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-13T10:39:00+09:00" pubdate data-updated="true">Jan 13<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>すべてのモノはあなた自身を表現している</h3>
-
-<p>あなたが持つ全てのモノは，あなたの所有物でもあり，同時にあなたという存在を形作る要素でもある．あなたを除くすべての人間は，あなたという存在を認識する前に，その要素のひとつひとつを見てあなたの性格，癖，自分との相性，そして人生までをも想像する．すなわちモノはあなたの身体の延長線上にあるあなた自身であり，私たちが箸を持って食事をする際に箸の存在を意識せず体の一部として操ることができるのと同様に，あなたが持つすべてのモノはたとえ意識せずとも体の一部として機能しているのだ．今あなたが身に着けている衣服から装飾品，普段から使っているカバン，仕事道具であるペンや紙，電子機器，使い捨てのポストイットに至るまで，すべてあなた自体を構成している小さな部品であり，あなたの全てを表す重要な役割を担っている．</p>
-
-<p>それにもかかわらず，わたしたち多くの人はその細部に気を使わない．たまたま近くで売られていたからといって適当に選んだ文房具を使い，妥協して手頃な値段の携帯電話を使い，着古したお気に入りの服をあたかも新品のように身につけては人前に出ていく．それらの使い勝手や機能に少しは気にかけていながらも，それはただの消耗品としてしか認識せず，無意識に自分とは関係ないモノとして扱われている．改めてモノと自分の関係性を意識するときは，長年愛用し続けたモノを人に指摘された時か，もしくはゴミ箱に捨てる時だけだろう．それでもまた時間が経てばすぐに忘れてしまう．</p>
-
-<p>人々は何故そのことを薄々気付いていながらも，大事にしないのだろう．些細なことだと切り捨てているのかもしれないし，意識していても妥協してしまうのかもしれないし，時には選択肢がないからかもしれない．その理由は色々とあるけれども，一概にすべてを非難することはできない．仕方がなかったこともあるし，逆にそれが有利に働いたこともあるだろう．ただ，多くのケースはもっと良い方法があったんじゃないかと言っても過言ではない．気付けばあなたは不要なモノに囲まれて身動きがとれなくなっているのだ．</p>
-
-<p>じゃあどうすれば，そのしがらみから抜け出すことができるのだろう．身の回りのもの全てを，自分のお気に入りであるとか自分の1番と思えるものに揃えてしまえばいいのだろうか．考慮できるすべての選択肢の中から，最良と思えるモノだけを揃えればいいのだろうか．そう考え始めると気が遠くなるほど大変な作業に思えて，いつまで経っても完成しない美術品や建築物のように思えてくる．</p>
-
-<h3>逸話は理由になる</h3>
-
-<p>しかしこれを手っ取り早く簡単に解決する方法がある．<strong>何かを買うときには必ず逸話をつけるのだ．</strong>何から何まで，あなたが買ってあなたが使うものには，それなりの理由がなければいけない．買う理由と考えると途端に難しく感じるが，逸話程度なら何か作れそうな気がするだろう．ただそれだけでいい．今まで通りの適当な買い物をしたって構わない．ただし，一つ買うものをするたびに必ず一つ逸話をつけるようにする．気の利いたことを考える必要はない．「とっさに入った店で思わず手に取った」とか「どうしても好きな色が入ってるやつが欲しかった」程度のことでもいい．そのことを意識して覚えておくだけで十分だ．そして，モノを使うたびにその逸話を思い出したり，とっさに人に説明できたり，話を始めるときのキッカケとして使ったりできれば最高だ．そうすると自然とモノに対して意識がいくようになる．そして気がつけば，それはあなたを形作る大切なパーツになる．「とっさに掴んだ安物をいつまでも使い続けているんだ」と言えば，それだけであなたが物持ちが良いということが分かるし，同じ色のグッズを身の回りに多く置いておけば，あなたを連想させる色として機能するだろう．</p>
-
-<p>たとえば私の場合，日頃使っているペンは全て同じメーカーの同じ型番に統一している．どこの文具屋にも売っているような安い三色ボールペンだ．それが家のペン立てにも職場のペン立てにも，カバンの中のペンケースにも入っている．そうしていると，いかなる状況においても常に同じ書き心地で文字を書くことができる．これは人に教えてもらって実践していることだが，これが結構便利で気に入っている．そういう理由があるからこそ，私が次に買うペンも今までと同じモノを買うことになるだろう．これはもちろん後付けだから最初から意識していたわけではないし，最初は私も意識せずに使ってた単なるボールペンだった．でもそれは今では愛用品になっている．これが私が持っている逸話であり，私の一部として自然と取り込まれている．</p>
-
-<p>だから，あなたが次に買い物をするときには，まず第一に慎重に選ぶ．次に，あなたがそれを選んだ理由として必ず逸話を作ろう．そしてそれをしっかり記憶しておくのだ．そうすれば，いつか身の回りにはあなただけのオリジナルあふれるモノでいっぱいになっていることだろう．個性なんて考える必要は無い．ただ逸話をいっぱい集めればいいのだ．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/13/">&larr; Older</a></li>
@@ -565,6 +607,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2013/10/20/gmm-matplotlib/">matplotlibで混合ガウス分布をプロットする</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/10/19/review-exploring-everyday-things/">「RとRubyによるデータ解析入門」読了</a>
       </li>
     
@@ -600,10 +646,6 @@
         <a href="/blog/2013/09/17/review-prml-girl/">「PRMLガール―文芸部のマネージャーが「パターン認識と機械学習」を読んだら」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/09/14/review-anthropic-principle/">「宇宙はなぜこのような宇宙なのか――人間原理と宇宙論」読了</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -622,7 +664,7 @@
 <li class='category'><a href='/blog/categories/prml/'>PRML (5)</a></li>
 <li class='category'><a href='/blog/categories/perl/'>Perl (1)</a></li>
 <li class='category'><a href='/blog/categories/presentation/'>Presentation (1)</a></li>
-<li class='category'><a href='/blog/categories/python/'>Python (3)</a></li>
+<li class='category'><a href='/blog/categories/python/'>Python (4)</a></li>
 <li class='category'><a href='/blog/categories/rna-seq/'>RNA-Seq (5)</a></li>
 <li class='category'><a href='/blog/categories/reading/'>Reading (21)</a></li>
 <li class='category'><a href='/blog/categories/soapdenovo2/'>SOAPdenovo2 (3)</a></li>
