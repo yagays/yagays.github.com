@@ -116,6 +116,143 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/12/01/prml-1-takousiki/">「パターン認識と機械学習」1章 多項式曲線フィッティングをRで書いてみた</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-01T05:17:00+09:00" pubdate data-updated="true">Dec 1<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>事の発端</h3>
+
+<blockquote class="twitter-tweet"><p>これこれ、これですよ / “PRML読書会第一回 - Seeking for my unique color.” <a href="http://t.co/qtGtiKuO" title="http://htn.to/w8bGen">htn.to/w8bGen</a></p>&mdash; Yokoyama T (@wakuteka) <a href="https://twitter.com/wakuteka/status/272995562582835201" data-datetime="2012-11-26T09:29:48+00:00">November 26, 2012</a></blockquote>
+
+
+<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>先日「<a href="http://d.hatena.ne.jp/syou6162/20080801/1217528370">PRML読書会第一回 - Seeking for my unique color.</a>」のソースコードが一部界隈で局地的に話題にあがり，やれ</p>
+
+<ul>
+<li>takousikiってなんだよロシア人かよ</li>
+</ul>
+
+
+<p>だとか</p>
+
+<ul>
+<li>evalが多すぎて引いた</li>
+</ul>
+
+
+<p>だのといった罵詈雑言が（主に僕の口から）飛び交っていたわけだけれども，さすがに言うだけではsyou6162先生に申し訳ないと感じ，改めて彼のコードをRで書きなおしてみることにした．</p>
+
+<h3>多項式曲線フィッティングのコードを書き直す</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>f <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">){</span>sin<span class="p">(</span><span class="m">2</span><span class="o">*</span>pi<span class="o">*</span>x<span class="p">)}</span>
+</span><span class='line'>
+</span><span class='line'>takousiki <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>n<span class="p">){</span>
+</span><span class='line'>  x <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">0</span><span class="p">)</span>
+</span><span class='line'>  z <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">0</span><span class="p">)</span>
+</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>i in <span class="m">1</span>:n<span class="p">){</span>
+</span><span class='line'>    x <span class="o">&lt;-</span> cbind<span class="p">(</span>x<span class="p">,</span> seq<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span>by<span class="o">=</span><span class="m">0.1</span><span class="p">)</span><span class="o">^</span>i<span class="p">)</span>
+</span><span class='line'>    z <span class="o">&lt;-</span> cbind<span class="p">(</span>z<span class="p">,</span> seq<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span>by<span class="o">=</span><span class="m">0.01</span><span class="p">)</span><span class="o">^</span>i<span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  data <span class="o">&lt;-</span> data.frame<span class="p">(</span>f<span class="p">(</span>seq<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span>by<span class="o">=</span><span class="m">0.1</span><span class="p">))</span><span class="o">+</span>rnorm<span class="p">(</span><span class="m">11</span><span class="p">,</span> mean<span class="o">=</span><span class="m">0</span><span class="p">,</span> sd<span class="o">=</span><span class="m">0.5</span><span class="p">),</span> x<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  colnames<span class="p">(</span>data<span class="p">)</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span>paste<span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span>as.character<span class="p">(</span><span class="m">1</span>:n<span class="p">),</span>sep<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">))</span>
+</span><span class='line'>  colnames<span class="p">(</span>z<span class="p">)</span> <span class="o">&lt;-</span> paste<span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span>as.character<span class="p">(</span><span class="m">1</span>:n<span class="p">),</span>sep<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># predict</span>
+</span><span class='line'>  fit <span class="o">&lt;-</span> lm<span class="p">(</span>y ~ <span class="m">.</span><span class="p">,</span> data<span class="o">=</span>data<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  plot<span class="p">(</span>data<span class="p">[,</span><span class="m">2</span><span class="p">],</span> data<span class="p">[,</span><span class="m">1</span><span class="p">],</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">-1.5</span><span class="p">,</span><span class="m">1.5</span><span class="p">),</span> xlab<span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;M=&quot;</span><span class="p">,</span>n<span class="p">))</span>
+</span><span class='line'>  curve<span class="p">(</span>f<span class="p">(</span>x<span class="p">),</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>  lines<span class="p">(</span>seq<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span>by<span class="o">=</span><span class="m">0.01</span><span class="p">),</span> predict<span class="p">(</span>fit<span class="p">,</span>data.frame<span class="p">(</span>z<span class="p">)),</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>使い方としては，</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>takousiki<span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>takousiki<span class="p">(</span><span class="m">3</span><span class="p">)</span>
+</span><span class='line'>takousiki<span class="p">(</span><span class="m">8</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>とすると，多項式で曲線フィッティングした結果がプロットされる．ただし切片だけの0次は書けない．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/prml_takousiki.png" alt="" /></p>
+
+<p>サンプルデータの生成と推定した曲線の描写用のデータの生成を同時に行なっているため，コードがちょっと見にくいかもしれない．基本的に<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x%5E2+" alt="x^2 " />や<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x%5E3+" alt="x^3 " />などの多項式の各項の値をあらかじめデータフレームとして作っておいて，lm()関数で回帰するときのモデルを簡略化している．あと，関数名はオリジナルを踏襲しているので，あしからず．</p>
+
+<h3>他の方法としては</h3>
+
+<p>lm()関数などに渡すモデルは，as.formula()関数を使うことによって文字列から生成することができる．この方法もかなり簡単に使うことができるので，データフレームの列名を規則的に付けている場合などは使い勝手は良いと思われる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="o">&gt;</span> n <span class="o">&lt;-</span> <span class="m">5</span>
+</span><span class='line'><span class="o">&gt;</span> as.formula<span class="p">(</span>paste<span class="p">(</span><span class="s">&quot;y~&quot;</span><span class="p">,</span>paste<span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="m">1</span>:n<span class="p">,</span>sep<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>collapse<span class="o">=</span><span class="s">&quot;+&quot;</span><span class="p">)))</span>
+</span><span class='line'>y ~ x1 <span class="o">+</span> x2 <span class="o">+</span> x3 <span class="o">+</span> x4 <span class="o">+</span> x5
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/11/30/imcmr-6-5/">「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズム その3</a></h1>
     
     
@@ -721,133 +858,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/26/rjags-on-mac-os-x/">Mac OS XでJAGS＆rjagsパッケージを動かす</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-26T07:18:00+09:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>MacPortsでJAGSを入れる場合はちょっと注意</h3>
-
-<p>MacでJAGSをインストールする場合，</p>
-
-<ul>
-<li><a href="http://sourceforge.net/projects/mcmc-jags/">SourceForge</a>からパッケージをダウンロードしてインストールする方法</li>
-<li><a href="https://trac.macports.org/browser/trunk/dports/science/jags/Portfile">MacPorts</a>を使ってインストールする方法</li>
-</ul>
-
-
-<p>の2通りがある．どちらで入れてもJAGS自体に違いはないのだが，Rのrjagsパッケージをインストールする際に少し注意しなければいけないポイントがある．1つ目の方法でパッケージからインストールした場合だと，いつも通りに</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1"># パッケージからインストールした場合</span>
-</span><span class='line'><span class="o">&gt;</span> install.packages<span class="p">(</span><span class="s">&quot;rjags&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="o">&gt;</span> library<span class="p">(</span>rjags<span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>とすれば良いのだが，MacPortsでインストールした場合では，</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1"># MacPortsからインストールした場合</span>
-</span><span class='line'><span class="o">&gt;</span> install.packages<span class="p">(</span><span class="s">&quot;rjags&quot;</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;source&quot;</span><span class="p">,</span> configure.args <span class="o">=</span> <span class="s">&#39;--with-jags-lib=/opt/local/lib --with-jags-include=/opt/local/include/JAGS --with-jags-modules=/opt/local/lib/JAGS/modules-3&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="o">&gt;</span> library<span class="p">(</span>rjags<span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>のように，パッケージのインストールの際に色々とオプションを付ける必要がある．というのも，パッケージからインストールした場合では/usr/local/以下にインストールされるのに対し，MacPortsからインストールした場合では/opt/local/以下にインストールされるからだ．Rでrjagsパッケージをインストールする際には，どうやら/usr/local/以下のモジュールや共有ライブラリを参照するようなので，MacPortsで入れた場合にはそもそもディレクトリが違うためファイルが見つからないといったエラーが出る．</p>
-
-<h3>他の解決方法</h3>
-
-<p>ちなみに，/usr/local/lib以下にシンボリックリンクを貼って強引に解決する方法もある．自分は最初こちらで対処していたのだが，長期的に考えた場合にJAGSのバージョンアップによってdylibの名前が変わる可能性などもあるので，上のようにパッケージのインストールの段階で対処する方が良いだろう．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">cd</span> /usr/local/lib
-</span><span class='line'><span class="nv">$ </span>sudo ln -s /opt/local/lib/libjags.3.dylib .
-</span><span class='line'><span class="nv">$ </span>sudo ln -s /opt/local/lib/JAGS .
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>参考：MacPortsの場合でinstall.package(&#8220;rjags&#8221;)で入れてしまったときのrjags読み込み時のエラー</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="o">&gt;</span> library<span class="p">(</span>rjags<span class="p">)</span>
-</span><span class='line'> 要求されたパッケージ coda をロード中です
-</span><span class='line'> 要求されたパッケージ lattice をロード中です
-</span><span class='line'>Error :  <span class="m">.</span>onLoadはloadNamespace<span class="p">()</span>（rjagsに対する）の中で失敗しました、詳細は:
-</span><span class='line'> call: dyn.load<span class="p">(</span>file<span class="p">,</span> DLLpath <span class="o">=</span> DLLpath<span class="p">,</span> <span class="m">...</span><span class="p">)</span>
-</span><span class='line'> error:  共有ライブラリ <span class="s">&#39;/Library/Frameworks/R.framework/Versions/2.15/Resources/library/rjags/libs/x86_64/rjags.so&#39;</span> を読み込めません：
-</span><span class='line'>  dlopen<span class="p">(</span><span class="o">/</span>Library<span class="o">/</span>Frameworks<span class="o">/</span>R.framework<span class="o">/</span>Versions<span class="o">/</span><span class="m">2.15</span><span class="o">/</span>Resources<span class="o">/</span>library<span class="o">/</span>rjags<span class="o">/</span>libs<span class="o">/</span>x86_64<span class="o">/</span>rjags.so<span class="p">,</span> <span class="m">10</span><span class="p">)</span>: Library not loaded: <span class="o">/</span>usr<span class="o">/</span>local<span class="o">/</span>lib<span class="o">/</span>libjags.3.dylib
-</span><span class='line'>  Referenced from: <span class="o">/</span>Library<span class="o">/</span>Frameworks<span class="o">/</span>R.framework<span class="o">/</span>Versions<span class="o">/</span><span class="m">2.15</span><span class="o">/</span>Resources<span class="o">/</span>library<span class="o">/</span>rjags<span class="o">/</span>libs<span class="o">/</span>x86_64<span class="o">/</span>rjags.so
-</span><span class='line'>  Reason: image not found
-</span><span class='line'> エラー：  <span class="s">&#39;‘rjags’&#39;</span> に対するパッケージもしくは名前空間のロードが失敗しました
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>実行環境</h3>
-
-<ul>
-<li>Mac OS X 10.8.2</li>
-<li>R version 2.15.1</li>
-<li>JAGS 3.3.0</li>
-<li>rjags version 3-7</li>
-</ul>
-
-
-<h3>参考</h3>
-
-<ul>
-<li><a href="http://mcmc-jags.sourceforge.net/">JAGS - Just Another Gibbs Sampler</a></li>
-<li><a href="http://cran.r-project.org/web/packages/rjags/index.html">CRAN - Package rjags</a></li>
-<li><a href="http://eity.que.jp/pukiwiki/index.php?BUGS">Eity&#8217;s Web - BUGS</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/19/">&larr; Older</a></li>
@@ -895,6 +905,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2013/10/31/neuroscience/">メモ：脳神経科学の基礎の基礎</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/10/20/gmm-matplotlib/">matplotlibで混合ガウス分布の確率密度関数をプロットする</a>
       </li>
     
@@ -928,10 +942,6 @@
     
       <li class="post">
         <a href="/blog/2013/09/21/open-science-award-dbcls/">国内のライフサイエンス分野で役に立っているプロダクトをみんなで投票して表彰する「オープン・サイエンス・アワード」開催中！</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/09/17/review-prml-girl/">「PRMLガール―文芸部のマネージャーが「パターン認識と機械学習」を読んだら」読了</a>
       </li>
     
   </ul>

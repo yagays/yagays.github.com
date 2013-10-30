@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>「スーパーコンピューターを20万円で創る」読了 - Wolfeyes Bioinformatics beta</title>
+  <title>メモ：脳神経科学の基礎の基礎 - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.io/blog/2012/09/16/review-supercomputer">
+  <link rel="canonical" href="http://yagays.github.io/blog/2013/10/31/neuroscience">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -114,7 +114,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">「スーパーコンピューターを20万円で創る」読了</h1>
+      <h1 class="entry-title">メモ：脳神経科学の基礎の基礎</h1>
     
     
       <p class="meta">
@@ -130,42 +130,131 @@
   
 
 
-<time datetime="2012-09-16T02:24:00+09:00" pubdate data-updated="true">Sep 16<span>th</span>, 2012</time>
+<time datetime="2013-10-31T06:21:00+09:00" pubdate data-updated="true">Oct 31<span>st</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4087203956" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+<div class="entry-content"><p>少し脳神経科学の基礎を勉強する必要があったので，神経とはなんぞやというところから，電位としてニューロンが情報を伝える仕組み，あとは視覚に関しての情報処理的なところをおおまかに勉強している．深く入り込む予定はないので，関連する話を聞いたら何となく分かる程度に基礎を押さえるつもり…．きちんとまとめる必要もないので，個人的に押さえとく部分だけを復習がてら以下に列挙している．</p>
+
+<h4>神経細胞 neuron</h4>
+
+<ul>
+<li>軸索 axon</li>
+<li>樹状突起 dendrite</li>
+<li>棘突起 spine</li>
+<li>シナプス synapse
+
+<ul>
+<li>シナプス小胞 synaptic vesicle</li>
+</ul>
+</li>
+<li>髄鞘 myelin sheath
+
+<ul>
+<li>ランビエー紋輪 node of Ranvier</li>
+<li>シュワン細胞 Schwann cells</li>
+</ul>
+</li>
+</ul>
 
 
-<p>以前「情熱大陸」という番組で理論天文学者である小久保英一郎がTVで語った言葉が，今でも強く印象に残っている．その言葉が番組のページに残っているので少し長めに引用させてもらうと，</p>
+<h4>グリア細胞 glial cell</h4>
 
-<blockquote><p>「探検は知的情熱の肉体的表現である」</p>
+<ul>
+<li>マクログリア macroglia
 
-<p>（チェリー・ガラード：スコット南極探検隊）</p>
+<ul>
+<li>アストロサイト astrocyte, -glia</li>
+<li>オリゴデンドロサイト oligodendrocyte, -glia</li>
+</ul>
+</li>
+<li>マイクログリア microglia</li>
+</ul>
 
-<p>僕はこれ、だいッ好きな言葉で。</p>
 
-<p>もう何ていうか、
-このように生きていきたいと思っているわけです。</p>
+<h4>活動電位 action potential</h4>
 
-<p>「シミュレーションは知的情熱の計算機的表現である」と。</p>
+<ul>
+<li>静止膜電位 resting membrene potential</li>
+<li>スパイク spike</li>
+<li>オーバーシュート overshoot</li>
+<li>アンダーシュートundershoot</li>
+<li>過分極 hyperpolarization</li>
+<li>不応期 refactory period</li>
+<li>閾値 threshold</li>
+</ul>
 
-<p>ほんとは僕、探検家になりたかったんですけど。</p>
 
-<p>まあなかなかそういう世の中でもないので、</p>
+<h4>イオンチャンネル</h4>
 
-<p>知的な探検をする、と。</p>
+<ul>
+<li>電位依存性カリウムチャネル voltage-gated potassium channel</li>
+<li>電位依存性ナトリウムチャネル voltage-gated sodium channel</li>
+<li>漏洩チャネル leak channels</li>
+</ul>
 
-<p>で、道具はスーパーコンピュータということでやっています。</p>
 
-<p><a href="http://www.mbs.jp/jounetsu/2008/01_20.shtml">http://www.mbs.jp/jounetsu/2008/01_20.shtml</a></p></blockquote>
+<h2>視覚野 Visual Cortex</h2>
 
-<p>と，計算機シミュレーションを端的に素晴らしい言葉で言い表している．本書「スーパーコンピューターを20万円で創る」は，小久保英一郎がスーパーコンピューターGRAPEの開発に参加する少し前，まだスーパーコンピューターというものが企業主導の大資本で大規模開発されていた頃に，重力多体問題のシミュレーションを行うために自力でスーパーコンピューターを組み上げた研究者たちの実話の物語となっている．</p>
+<h3>第一次視覚野 Primary visual cortex</h3>
 
-<p>内容はかなり大雑把に物語を追いかける形となっており細かい部分に少し物足りなさは感じるものの，それでも当時の研究者の熱意や苦悩がひしひしと伝わってくる．私自身も今現在彼らと同じような立場にあるのだが，自分の境遇と似た部分も多く，非常に勇気づけられると同時に研究への情熱を奮い立たせられるような作品だった．</p>
+<p>(Striate cortex, V1)</p>
+
+<ul>
+<li>ハイパーコラム hypercolumn
+
+<ul>
+<li>方位円柱 orientation column</li>
+<li>眼球優位円柱 ocular dominance column</li>
+<li>色円柱 blob</li>
+</ul>
+</li>
+</ul>
+
+
+<p>網膜から外側膝状体へと中継された情報は，V1においても局在性を持つ
+- トポロジカルマッピング topographic mapping
+- 自己組織化 self organization</p>
+
+<h3>高次視覚野 higher visual cortex</h3>
+
+<ul>
+<li><p>背側皮質視覚路 dorsal stream</p>
+
+<ul>
+<li>MT野 middle temporal lobe</li>
+<li>MST野 middle super temporal lobe</li>
+<li>運動の知覚</li>
+</ul>
+</li>
+<li><p>腹側皮質視覚路 Ventral stream</p>
+
+<ul>
+<li>IT野 inferior temporal lobe</li>
+<li>対象物の認識</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>参考</h4>
+
+<p>まず入門として「<a href="http://www.amazon.co.jp/gp/product/4758122016/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4758122016&linkCode=as2&tag=yagays-22">もっとよくわかる! 脳神経科学〜やっぱり脳はスゴイのだ!  (実験医学別冊 もっとよくわかる! シリーズ)</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4758122016" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」を読んでいるのだけれども，かなり分かりやすくまとまっているようで良い．脳神経科学全般を基礎から網羅している形で，かなりとっつきやすい印象．今は必要な箇所だけを抜粋して読んでいるのだけれども，時間に余裕ができたら他の箇所も読んでみたい．視覚を含めた五感の仕組みであったり，感情や言語などの高次脳機能の仕組み，脳に関わる神経性の病気などの項など，色々面白そうなトピックが並んでいる．</p>
+
+<p>脳神経科学全般を</p>
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4758122016" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<ul>
+<li><a href="http://www.med.teikyo-u.ac.jp/~ortho/med/ana/ana110.htm">第十章　一次視覚野と高次中枢</a></li>
+<li><a href="http://www.cis.twcu.ac.jp/~asakawa/MathBio2010/lesson12/">視覚情報処理</a></li>
+<li><a href="http://homepage.psy.utexas.edu/homepage/faculty/pillow/courses/perception09/slides/Lec05_V1.pdf">Lec05_V1.pdf</a> (pdf)</li>
+</ul>
+
 </div>
 
 
@@ -190,22 +279,16 @@
   
 
 
-<time datetime="2012-09-16T02:24:00+09:00" pubdate data-updated="true">Sep 16<span>th</span>, 2012</time>
+<time datetime="2013-10-31T06:21:00+09:00" pubdate data-updated="true">Oct 31<span>st</span>, 2013</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/book/'>Book</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2012/09/16/review-supercomputer/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2013/10/31/neuroscience/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2012/09/16/review-supercomputer/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2012/09/16/review-supercomputer/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/10/31/neuroscience/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/10/31/neuroscience/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -226,14 +309,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/09/15/review-h5n1/" title="Previous Post:
-        「H5N1―強毒性新型インフルエンザウイルス日本上陸のシナリオ」読了">&laquo; 「H5N1―強毒性新型インフルエンザウイルス日本上陸のシナリオ」読了</a></li>
+        href="/blog/2013/10/20/gmm-matplotlib/" title="Previous Post:
+        matplotlibで混合ガウス分布の確率密度関数をプロットする">&laquo; matplotlibで混合ガウス分布の確率密度関数をプロットする</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/09/17/review-enddepression/"
-        title="Next Post: 「さっさと不況を終わらせろ」読了">「さっさと不況を終わらせろ」読了
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -414,8 +493,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.io/blog/2012/09/16/review-supercomputer/';
-        var disqus_url = 'http://yagays.github.io/blog/2012/09/16/review-supercomputer/';
+        var disqus_identifier = 'http://yagays.github.io/blog/2013/10/31/neuroscience/';
+        var disqus_url = 'http://yagays.github.io/blog/2013/10/31/neuroscience/';
         var disqus_script = 'embed.js';
       
     (function () {
