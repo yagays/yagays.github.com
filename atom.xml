@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-11-15T08:19:02+09:00</updated>
+  <updated>2013-11-15T21:03:09+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,217 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mac OS X Marvericks環境構築記録]]></title>
+    <link href="http://yagays.github.io/blog/2013/11/15/mac-mavericks-setting-2013/"/>
+    <updated>2013-11-15T17:16:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/11/15/mac-mavericks-setting-2013</id>
+    <content type="html"><![CDATA[<h3>システム環境設定</h3>
+
+<h4>Dock</h4>
+
+<ul>
+<li>Dockを自動的に隠す/表示：on</li>
+</ul>
+
+
+<h4>セキュリティとプライバシー</h4>
+
+<ul>
+<li>ファイアウォール：On</li>
+</ul>
+
+
+<h4>Spotlight</h4>
+
+<ul>
+<li>Spotlightメニューのキーボードショートカット：Ctrl-Shift Space</li>
+</ul>
+
+
+<h4>省エネルギー</h4>
+
+<ul>
+<li>バッテリー・電源アダプタ
+
+<ul>
+<li>コンピュータのスリープ：しない</li>
+<li>ディスプレイのスリープ：30分</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>キーボード</h4>
+
+<ul>
+<li>キーのリピート・リピート入力認識までの時間はKeyRemap4MacBookで個別に設定</li>
+<li>F1，F2などのすべてのキーを標準のファンクションキーとして使用：On</li>
+<li>入力ソース：Google 日本語入力</li>
+<li>ショートカット（あとでかく）</li>
+</ul>
+
+
+<h4>トラックパッド</h4>
+
+<ul>
+<li>ページ間をスワイプ
+
+<ul>
+<li>3本指でスワイプ</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>共有</h4>
+
+<ul>
+<li>コンピュータ名を変更</li>
+</ul>
+
+
+<h4>ユーザとグループ</h4>
+
+<ul>
+<li>Apple ID：設定</li>
+</ul>
+
+
+<h4>日付と時刻</h4>
+
+<ul>
+<li><p>日付と時刻</p>
+
+<ul>
+<li>日付と時刻を自動的に設定：Apple アジア</li>
+</ul>
+</li>
+<li><p>時計</p>
+
+<ul>
+<li>秒を表示：On</li>
+<li>日付を表示：On</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>辞書</h3>
+
+<ul>
+<li>LSD for Dictionary（ライフサイエンス辞書）（<a href="http://lsd.pharm.kyoto-u.ac.jp/ja/index.html">現在は公開中止</a>）</li>
+<li>Oxford Dicionary of English</li>
+<li>Oxford Thesaurus of English</li>
+</ul>
+
+
+<h3>フォント</h3>
+
+<ul>
+<li>Ricty
+
+<ul>
+<li>Inconsolata</li>
+<li>Migu 1M</li>
+</ul>
+</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port install fontforge
+</span><span class='line'>$ git clone https://github.com/yascentur/Ricty.git 
+</span><span class='line'>$ cd Ricty
+</span><span class='line'>$ sh ricty_generator.sh auto</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>ターミナル</h3>
+
+<ul>
+<li>フォント：Ricty Regular 14 pt.</li>
+<li><p>テキストをアンチエイリアス処理</p></li>
+<li><p>シェルの終了時：シェルが正常に終了した場合は閉じる</p></li>
+</ul>
+
+
+<h3>アプリケーション</h3>
+
+<ul>
+<li>1password</li>
+<li>AppCleaner</li>
+<li>ClamXav</li>
+<li>Cytoscape</li>
+<li>DaisyDisk</li>
+<li>Dropbox
+
+<ul>
+<li>モノクロのメニューバーアイコンを使用</li>
+</ul>
+</li>
+<li>Evernote</li>
+<li>Fantastical
+
+<ul>
+<li>iCal.appで先にGoogleアカウントを登録しておく</li>
+<li>Preference:Keyboard shortcut：Ctrl-Shift D</li>
+</ul>
+</li>
+<li>Google Chrome</li>
+<li>Google 日本語入力
+
+<ul>
+<li>句読点．，</li>
+<li>￥キーで入力する文字：バックスラッシュ</li>
+</ul>
+</li>
+<li>Kobito</li>
+<li>Keynote</li>
+<li>KeyRemap4MacBook</li>
+<li>LanguageSwitcher</li>
+<li>LaTeXiT</li>
+<li>Marked</li>
+<li>Pages</li>
+<li>ReadKit</li>
+<li>Sparrow</li>
+<li>Twitter</li>
+<li>Xcode</li>
+<li><p>夜フクロウ</p></li>
+<li><p>MenuMeters</p></li>
+</ul>
+
+
+<h3>MacPorts</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port selfupdate
+</span><span class='line'>$ sudo port install ...</span></code></pre></td></tr></table></div></figure>
+
+
+<p>とりあえず入れたもの
+- coreutils
+- emacs
+- nkf
+- screen
+- wget
+- zsh</p>
+
+<ul>
+<li>MacTex</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo tlmgr update --self --all
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[メモ：脳神経科学の基礎の基礎]]></title>
@@ -1480,29 +1691,6 @@ information about the shutdown.</p>
 
 
 <script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「研究留学術 第2版―研究者のためのアメリカ留学ガイド」読了]]></title>
-    <link href="http://yagays.github.io/blog/2013/07/24/guide-for-japanese-researchers-in-us/"/>
-    <updated>2013-07-24T21:37:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/07/24/guide-for-japanese-researchers-in-us</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4263206738" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>特段留学する予定などはなく，単にアメリカの研究事情についての知識が欲しかったので図書館で借りて軽く読み通してみたのだが，かなり内容が濃くて実際に留学する上で必要な知識が詰まった1冊だった．もしアメリカ留学する機会があれば，この本は絶対に買って読み込むだろうと思う．また，ただの留学に必要な手続き紹介だけではなく，ポスドクとしての研究費獲得方法やアメリカと日本のラボの運営形態の違いなども紹介されており，通常の学生や研究者にとっても興味深い内容となっている．</p>
-
-<p>本書はアメリカ合衆国への留学に必要なありとあらゆる情報が網羅された留学ガイド本である．元は「<a href="http://kenkyuu.net/">研究留学ネット</a>」という，著者個人がアメリカ留学を期に立ち上げたウェブサイトを書籍化したもので，2002年に第一版が出版され，2012年にビザなどの手続きの変更や特別鼎談などが加わった第二版が出版されている．内容としては著者の個人的な留学経験を元に一般的なアメリカ留学に関して，受け入れ研究室探しの方法から始まり，ビザの発行や保険の加入，銀行口座の開設などの渡航前後に必要となる手続きであったり，日常生活レベルで必要な知識が細かく紹介されている．著者自体が医者のポスドクとして渡航しているからか，主な対象として日本でPhDを取得しアメリカでポスドクをするという人向けの色合いが強い．そのため，配偶者や子供を連れて行く場合のビザの情報であったり，車の購入に関する情報もカバーされている．といっても，当然ながらアメリカ留学に関する基本的な枠組みにそれほど差があるわけではないので，非医学の生命科学系研究者にとっても有用な情報が詰め込まれている．また，本書後半ではアメリカ留学を経験した9人の体験談が収録されており，大学や専門がそれぞれ違う人たちのリアルな留学経験が語られる．そして最後に特別鼎談として，本書著者の門川氏，先ほどの体験談を起稿された方の一人である広田氏，そして「<a href="http://harvardmedblog.blog90.fc2.com/">ハーバード大学医学部留学・独立日記</a>」で有名な島岡氏による特別対談が収録されている．</p>
-
-<p>こういった本を読んでいると，将来の選択肢として留学があること，そして国や文化を超えて研究を行うということに関して色々と考えてしまう．かなり個人的な話になってしまうが，今ちょうど同じ研究室にいる中国からの留学生の世話をしているのだけれども，やはり外国で生活をするというのは並々ならぬ労力が必要のようだ．たとえ言語の壁はなんとか突破できたとしても，公共サービスや役所への提出書類の作成であったり，住居などの暮らしに関する細かな違い，そして何より文化の違いは，非常に大きな負荷となるに違いない．これに関しては経験がモノを言う部分だと思うので，今回のような本を参考にして知識を詰め込んでおいたり，実際に留学された経験者が身近にいて相談できる状態というのは非常に大事だと感じた．</p>
-
-<h3>参考</h3>
-
-<ul>
-<li><a href="http://kenkyuu.net/mybook.html">拙著『研究留学術』の紹介</a></li>
-</ul>
 
 ]]></content>
   </entry>
