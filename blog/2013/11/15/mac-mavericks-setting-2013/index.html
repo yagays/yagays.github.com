@@ -149,7 +149,7 @@
 
 <h3>システム環境設定</h3>
 
-<h4>Dock</h4>
+<h4>・Dock</h4>
 
 <ul>
 <li>Dockを自動的に隠す/表示：On</li>
@@ -163,7 +163,7 @@
 </ul>
 
 
-<h4>Spotlight</h4>
+<h4>・Spotlight</h4>
 
 <ul>
 <li>Spotlightメニューのキーボードショートカット：Ctrl-Shift Space</li>
@@ -171,7 +171,7 @@
 </ul>
 
 
-<h4>省エネルギー</h4>
+<h4>・省エネルギー</h4>
 
 <ul>
 <li>バッテリー・電源アダプタ
@@ -184,7 +184,7 @@
 </ul>
 
 
-<h4>キーボード</h4>
+<h4>・キーボード</h4>
 
 <ul>
 <li>キーのリピート・リピート入力認識までの時間はKeyRemap4MacBookで個別に設定</li>
@@ -194,7 +194,7 @@
 </ul>
 
 
-<h4>トラックパッド</h4>
+<h4>・トラックパッド</h4>
 
 <ul>
 <li>ページ間をスワイプ
@@ -206,21 +206,21 @@
 </ul>
 
 
-<h4>共有</h4>
+<h4>・共有</h4>
 
 <ul>
 <li>コンピュータ名を変更</li>
 </ul>
 
 
-<h4>ユーザとグループ</h4>
+<h4>・ユーザとグループ</h4>
 
 <ul>
 <li>Apple ID：設定</li>
 </ul>
 
 
-<h4>日付と時刻</h4>
+<h4>・日付と時刻</h4>
 
 <ul>
 <li><p>日付と時刻</p>
@@ -237,6 +237,27 @@
 </ul>
 </li>
 </ul>
+
+
+<h3>ファインダー</h3>
+
+<ul>
+<li>一般:新規Finderウィンドウで次を表示：$HOME</li>
+<li>詳細:すべてのファイル名拡張子を表示：On</li>
+<li>詳細:拡張子を変更刷る前に警告を表示：Off</li>
+<li>詳細:確実にゴミ箱を空にする：On</li>
+<li>詳細:検索実行時：現在のフォルダ内を検索</li>
+</ul>
+
+
+<p>ホームディレクトリのフォルダを英語化()</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd /System/Library/CoreServices/SystemFolderLocalizations/ja.lproj
+</span><span class='line'>$ sudo mv SystemFolderLocalizations.strings SystemFolderLocalizations.strings.bak
+</span><span class='line'>$ sudo cp ../en.lproj/SystemFolderLocalizations.strings .</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>辞書</h3>
@@ -348,23 +369,7 @@
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port selfupdate
-</span><span class='line'>$ sudo port install ...</span></code></pre></td></tr></table></div></figure>
-
-
-<p>とりあえず入れたもの</p>
-
-<ul>
-<li>coreutils</li>
-<li>emacs</li>
-<li>lftp</li>
-<li>nkf</li>
-<li>python27</li>
-<li>python34</li>
-<li>screen</li>
-<li>sshfs</li>
-<li>wget</li>
-<li>zsh</li>
-</ul>
+</span><span class='line'>$ sudo port install clojure coreutils emacs git-core imagemagick lftp nkf python27 python34 screen sshfs tig wget zsh</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>MacTex</h3>
