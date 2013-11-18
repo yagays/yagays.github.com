@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Biopython | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/biopython/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-11-18T09:18:12+09:00</updated>
+  <updated>2013-11-18T09:38:15+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -81,18 +81,38 @@ Seq('TACG', Alphabet())</p>
 
 <h4>追記：pipがデフォルトで入っていない場合</h4>
 
-<p>もしpipが入っていない場合は，以下のようにvirtualenvで作った環境でpipを入れる必要がある（もしくはsudo easy_installでpipやvirtualenvを入れる）．</p>
+<p>もしpipが入っていない場合は，以下のようにvirtualenvで作った環境でpipを入れる必要がある（もしくはsudo easy_installでpipを入れる）．</p>
 
 <p>```bash</p>
 
 <h1>source bin/activateした後に</h1>
 
 <p>$ wget --no-check-certificate https://pypi.python.org/packages/source/d/distribute/distribute-0.6.49.tar.gz
-$ cd distribute-0.6.49
 $ tar zxvf distribute-0.6.49.tar.gz
+$ cd distribute-0.6.49
 $ python setup.py install
 $ /path/to/biopython/bin/easy_install pip
 ```</p>
+
+<h3>追記2：wgetで落としたvirtualenvでCannot find sdist setuptools-*.tar.gzなどがでる場合</h3>
+
+<p>wgetで落としてきたvirtualenvでこういうエラーがでる時がある．</p>
+
+<p><code>
+Cannot find sdist setuptools-*.tar.gz
+Cannot find sdist pip-*.tar.gz
+</code></p>
+
+<p>sudoでvirtualenvを入れて，普通にvirtualenvを使うと上手くいくかもしれない．どういう環境でこうなるのかは不明だが，ちょっとこの辺りは怪しい．</p>
+
+<p><code>
+$ sudo easy_install virtualenv
+$ virtualenv biopython
+$ cd biopyton
+$ source bin/activate
+$ pip install numpy
+$ pip install Biopython
+</code></p>
 
 <h4>参考</h4>
 

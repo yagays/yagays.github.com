@@ -438,7 +438,7 @@
 
 <h4>追記：pipがデフォルトで入っていない場合</h4>
 
-<p>もしpipが入っていない場合は，以下のようにvirtualenvで作った環境でpipを入れる必要がある（もしくはsudo easy_installでpipやvirtualenvを入れる）．</p>
+<p>もしpipが入っていない場合は，以下のようにvirtualenvで作った環境でpipを入れる必要がある（もしくはsudo easy_installでpipを入れる）．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -448,10 +448,38 @@
 <span class='line-number'>6</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># source bin/activateした後に</span>
 </span><span class='line'><span class="nv">$ </span>wget --no-check-certificate https://pypi.python.org/packages/source/d/distribute/distribute-0.6.49.tar.gz
-</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>distribute-0.6.49
 </span><span class='line'><span class="nv">$ </span>tar zxvf distribute-0.6.49.tar.gz
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>distribute-0.6.49
 </span><span class='line'><span class="nv">$ </span>python setup.py install
 </span><span class='line'><span class="nv">$ </span>/path/to/biopython/bin/easy_install pip
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>追記2：wgetで落としたvirtualenvでCannot find sdist setuptools-*.tar.gzなどがでる場合</h3>
+
+<p>wgetで落としてきたvirtualenvでこういうエラーがでる時がある．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Cannot find sdist setuptools-*.tar.gz
+</span><span class='line'>Cannot find sdist pip-*.tar.gz
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>sudoでvirtualenvを入れて，普通にvirtualenvを使うと上手くいくかもしれない．どういう環境でこうなるのかは不明だが，ちょっとこの辺りは怪しい．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo easy_install virtualenv
+</span><span class='line'><span class="nv">$ </span>virtualenv biopython
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>biopyton
+</span><span class='line'><span class="nv">$ </span><span class="nb">source </span>bin/activate
+</span><span class='line'><span class="nv">$ </span>pip install numpy
+</span><span class='line'><span class="nv">$ </span>pip install Biopython
 </span></code></pre></td></tr></table></div></figure>
 
 
