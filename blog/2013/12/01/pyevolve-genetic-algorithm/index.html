@@ -160,14 +160,18 @@
 
 <h4>ゲノムインスタンスの生成</h4>
 
+<p>ゲノムの構造はバイナリや1次元配列，2次元配列，木構造などを取ることができ，初期値が取りうる値の幅なども決めることができる．以下のコードでは，値が15個あって最小値0，最大値100というゲノムを作成している．</p>
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">genome</span> <span class="o">=</span> <span class="n">G1DList</span><span class="o">.</span><span class="n">G1DList</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-</span><span class='line'><span class="n">genome</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="n">rangemin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rangemax</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">bestrawscore</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">rounddecimal</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</span><span class='line'><span class="n">genome</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="n">rangemin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rangemax</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <h4>ゲノムの初期化，突然変異の設定</h4>
+
+<p>次に，ゲノムインスタンスを初期化して突然変異の分布などを指定する．最初に指定したゲノムの構造に従って指定する必要があるが，パラメータはだいたい読んだ通り．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
