@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-11-30T11:32:49+09:00</updated>
+  <updated>2013-11-30T17:13:31+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,198 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Pythonで遺伝的アルゴリズムを解くPyevolveを試してみた]]></title>
+    <link href="http://yagays.github.io/blog/2013/12/01/pyevolve-genetic-algorithm/"/>
+    <updated>2013-12-01T09:00:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/12/01/pyevolve-genetic-algorithm</id>
+    <content type="html"><![CDATA[<p>課題のために遺伝的アルゴリズムを使う必要があったので，Pythonで遺伝的アルゴリズムを解くことのできるライブラリPyevolveを試してみた．</p>
+
+<h3>始めの一歩</h3>
+
+<p>動かし方はとてもシンプルなので，公式ドキュメントのGet Startedをざっと見たあとにExampleでどういう使い方ができるのかを個別に見ていけばいいと思う．</p>
+
+<ul>
+<li><a href="http://pyevolve.sourceforge.net/getstarted.html">Get Started - Tutorial — Pyevolve v0.5 documentation</a></li>
+<li><a href="http://pyevolve.sourceforge.net/examples.html">Examples — Pyevolve v0.5 documentation</a></li>
+</ul>
+
+
+<p>日本語資料なら，自分が確認した限りでは以下のサイトが一番詳しい．</p>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/mFumi/20100917/1284724566">Pyevolveで学ぶ遺伝的アルゴリズム - mfumiの日記</a></li>
+</ul>
+
+
+<h3>Pyevolveの基本的な使い方</h3>
+
+<h4>ゲノムインスタンスの生成</h4>
+
+<p><code>python
+genome = G1DList.G1DList(15)
+genome.setParams(rangemin=0, rangemax=100, bestrawscore=0.0, rounddecimal=4)
+</code></p>
+
+<h4>ゲノムの初期化，突然変異の設定</h4>
+
+<p><code>python
+genome.initializator.set(Initializators.G1DListInitializatorReal)
+genome.mutator.set(Mutators.G1DListMutatorRealGaussian)
+</code></p>
+
+<p>値が整数の場合は"G1DListInitializatorInteger"や"G1DListMutatorIntegerGaussian"が用意されている．</p>
+
+<ul>
+<li><a href="http://pyevolve.sourceforge.net/module_mutators.html">Mutators – mutation methods module — Pyevolve v0.5 documentation</a></li>
+</ul>
+
+
+<h4>評価関数をセット</h4>
+
+<p>評価関数eval_funcを作って，ゲノムインスタンスに指定する．</p>
+
+<p>```python
+def eval_func(chromosome):</p>
+
+<p>[...]
+```</p>
+
+<p><code>python
+genome.evaluator.set(eval_func)
+</code></p>
+
+<h4>GA Engineを作成する</h4>
+
+<p><code>python
+ga = GSimpleGA.GSimpleGA(genome)
+</code></p>
+
+<h4>選択方式などのパラメータを指定する</h4>
+
+<p>デフォルトでGA Engineを動かした場合，世代数や集団数は以下のようになる．</p>
+
+<ul>
+<li>100 世代</li>
+<li>集団サイズ：80個体</li>
+<li>ランキング選択</li>
+</ul>
+
+
+<p>これらを変更するには，以下のようにパラメータをセットする．</p>
+
+<p><code>python
+ga.selector.set(Selectors.GRouletteWheel)
+ga.setGenerations(5000)
+ga.setMutationRate(0.1)
+ga.setPopulationSize(100)
+</code></p>
+
+<p>選択方法は，その他にもランキング方式やトーナメント方式などが用意されている．</p>
+
+<ul>
+<li><a href="http://pyevolve.sourceforge.net/module_selectors.html">Selectors – selection methods module — Pyevolve v0.5 documentation</a></li>
+</ul>
+
+
+<h4>GA Engineの実行</h4>
+
+<p><code>python
+ga.evolve(freq_stats=250)
+</code></p>
+
+<p>実行中はfreq_statsで指定した世代ごとに以下のようなログが出力される．</p>
+
+<p><code>
+Gen. 1 (0.02%): Max/Min/Avg Fitness(Raw) [23104.07(27490.00)/15107.82(10386.00)/19253.39(19253.39)]
+Gen. 250 (5.00%): Max/Min/Avg Fitness(Raw) [9486.89(15212.00)/6883.91(3184.00)/7905.74(7905.74)]
+Gen. 500 (10.00%): Max/Min/Avg Fitness(Raw) [8749.57(15233.00)/6518.94(3085.00)/7291.31(7291.31)]
+Gen. 750 (15.00%): Max/Min/Avg Fitness(Raw) [8259.84(14274.00)/6173.50(3073.00)/6883.20(6883.20)]
+[…]
+</code></p>
+
+<br/>
+
+
+<h3>pyevolve_graph.pyの使い方</h3>
+
+<p>Pyevolveには，イテレーションの変化を可視化する便利なスクリプトがある．</p>
+
+<ul>
+<li><a href="http://pyevolve.sourceforge.net/graphs.html">Graphical Analysis - Plots — Pyevolve v0.5 documentation</a></li>
+</ul>
+
+
+<h4>1. DBAdaptersをインポートする</h4>
+
+<p><code>python
+from pyevolve import DBAdapters
+</code></p>
+
+<h4>2. 以下のスクリプトを追記する</h4>
+
+<p>挿入する場所はGSimpleGA.GSimpleGA() のすぐ後．</p>
+
+<p><code>python
+ga = GSimpleGA.GSimpleGA(genome)
+sqlite_adapter = DBAdapters.DBSQLite(identify="ex1")
+ga.setDBAdapter(sqlite_adapter)
+</code></p>
+
+<p>これで，GAの実行後にpyevolve.dbというファイルが作成される．</p>
+
+<h4>3. pyevolve_graph.pyを実行する</h4>
+
+<p>あとはpyevolve_graph.pyを実行する．可視化するグラフのタイプなどが選べるようになっているので，その辺りのパラメータは<a href="http://pyevolve.sourceforge.net/graphs.html">マニュアル</a>を参考．</p>
+
+<p>例えば，以下のようなグラフを出力することができる．</p>
+
+<p><code>
+$ pyevolve_graph.py -i ex1 -3 -g 1:500 -o pyevolve_graph
+</code></p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/pyevolve_graph.png" alt="" /></p>
+
+<h3>最後に：Pythonで遺伝的アルゴリズムをするなら</h3>
+
+<p>最後に残念なお知らせだが，Pyevolveは少なくても2年前から開発が止まっている．Pyevolve安定版0.5で公式に対応しているPythonのVersionも2.6となっている（2.7では動いた．3.x系は不明）．</p>
+
+<ul>
+<li><a href="https://github.com/perone/Pyevolve">perone/Pyevolve</a></li>
+<li><a href="https://pypi.python.org/pypi/Pyevolve">Pyevolve 0.5 : Python Package Index</a></li>
+</ul>
+
+
+<p>どうやら現在ではDEAPというライブラリが精力的に開発されているようだ．まだオンラインの資料は少ないものの，3.x系などの対応を考えるならこちらを使うのも手だろう．</p>
+
+<ul>
+<li><a href="http://stackoverflow.com/questions/16739118/genetic-algorithms-and-multi-objectives-optimization-on-python-libraries-tools">Genetic Algorithms and multi-objectives optimization on PYTHON : libraries/tools to use? - Stack Overflow</a></li>
+<li><a href="https://code.google.com/p/deap/">deap - Distributed Evolutionary Algorithms in Python - Google Project Hosting</a></li>
+</ul>
+
+
+<h3>動作環境</h3>
+
+<ul>
+<li>Mac OS X 10.8.5</li>
+<li>Python 2.7.6</li>
+<li>Pyevolve 0.5</li>
+</ul>
+
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://pyevolve.sourceforge.net/index.html">Welcome to Pyevolve documentation ! — Pyevolve v0.5 documentation</a></li>
+<li><a href="http://pyevolve.sourceforge.net/0_6rc1/index.html">Welcome to Pyevolve documentation ! — Pyevolve v0.6rc1 documentation</a></li>
+<li><a href="http://d.hatena.ne.jp/mFumi/20100917/1284724566">Pyevolveで学ぶ遺伝的アルゴリズム - mfumiの日記</a></li>
+<li><a href="http://d.hatena.ne.jp/gepuro/20120102/1325515592">pyevolveの使い方メモ - gepuroの日記</a></li>
+<li><a href="http://d.hatena.ne.jp/pashango_p/20090601/1243850103">pyevolveによる遺伝的アルゴリズム(1) - Pashango’s Blog</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[matplotlibで混合ガウス分布の確率密度関数をプロットする]]></title>

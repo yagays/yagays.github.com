@@ -116,6 +116,50 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/06/26/rna-seq-unleashed-trinity/">&#8220;RNA-Seq unleashed&#8221;によるTrinityのワークフローの解説</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-26T13:14:00+09:00" pubdate data-updated="true">Jun 26<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://evomics.org/learning/genomics/trinity/">Trinity | Evolution and Genomics</a>経由で知ったのだが，Trinityのワークフローに関してより分かりやすい図が2011年のNature BiotechnologyのNews and Viewsに掲載されていたので，ここで少し紹介する．この図はTrinityのアセンブリアルゴリズムの一連のワークフローを表しており，アセンブリ結果の解釈も含めて解説されているのが大きな特徴だ．Trinityが対象にしているトランスクリプトームのアセンブリは，アイソフォームや選択的スプライシングなどの影響を受けて良く似た配列が多数出てくるため，一意に決まらない場合が多い．そういったケースに対応するために，Trinityではアセンブルのグラフを作成して考えられる候補を幾つか出力するのだけれども，実はこの結果の解釈が一番難しい．多数の類似配列が出力で得られた時にそれがどういう可能性から出てきたものなのかを考える上で，この図の一番下の解説はとても参考になる．実際はこんなに上手くいかないだろうとは思うものの，個別のアイソフォームとして配列をクラスタリングしたり，そもそもTrinityが何を考慮してアセンブルしているかを確認する際には役立つだろう．</p>
+
+<blockquote><p>Iyer, M. K. &amp; Chinnaiyan, A. M. RNA-Seq unleashed. <em>Nat. Biotechnol.</em> <strong>29</strong>, 599–600 (2011).</p>
+
+<p><a href="http://www.nature.com/nbt/journal/v29/n7/full/nbt.1915.html">http://www.nature.com/nbt/journal/v29/n7/full/nbt.1915.html</a></p></blockquote>
+
+<p><a href="http://www.nature.com/nbt/journal/v29/n7/full/nbt.1915.html" target="_blank"><img src="http://dl.dropboxusercontent.com/u/142306/b/rna-seq_unleashed.gif" alt="CCC License Number: 3172280756988"></a></p>
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/06/25/biopython-translation/">Biopythonで塩基配列をアミノ酸配列にする</a></h1>
     
     
@@ -710,83 +754,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/06/19/macports-distfile-clean/">MacPortsで使用していない過去のバージョンのパッケージを消す＆ちょっと可視化</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-19T04:29:00+09:00" pubdate data-updated="true">Jun 19<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>MacBook Airの128GBしかない非力なSSDもそろそろ満杯になってきた．最近ではスワップが溜まっては再起動するということを繰り返していたので，色々と容量の食っているファイルをちまちま消していた．そういった地道な努力をしつつ無駄なキャッシュや不必要なファイルなどをちゃんと調べてみると，どうやらMacPortsが10GB近く占めていることがわかり，しかもバージョンアップによって使用されなくなったgccやllvm，boostなどの古いバージョンのせいだとわかったので，思い切って消してみることにした．</p>
-
-<h3>古いバージョンのパッケージを消す</h3>
-
-<p>MacPortsでは，バージョンが上がってアップデートする際に，インストールされているバージョンのパッケージをInactiveとし最新バージョンをActiveにするという方法で，過去のバージョンのパッケージが残される仕組みになっている．ということで，Inactiveなパッケージを全て消去するために，以下のコマンドを使用する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port -u uninstall</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これでInactiveなパッケージを全て消去することができる．なお，古いバージョンとして残っていたパッケージを消すということは気軽にバージョンを変更したりできなくなるということなので，もしバージョンアップによる不具合に対応する必要が出てくると後々面倒になることを注意しておきたい．</p>
-
-<h3>結果</h3>
-
-<p><strong>/opt/localが10GBから5GB</strong>になり，かなりのダイエットに成功した！容量の少ないMacBook Airでも，これでもうちょっと耐えられそう．</p>
-
-<h3>DaisyDiskによる可視化</h3>
-
-<p>さて，ここからは完全に蛇足なのだが，最近使用しているのDaisyDiskという可視化ソフトウェアがなかなか気に入っているので，今回のファイル消去の前後で/opt/localがどれだけ変化するかを確かめてみた．DaisyDiskは本来はインタラクティブに操作することができて，気になる箇所をクリックしたりして拡大することができるのだが，今回は前後の画像比較だけとなっている．使い心地が気になる人は以下のリンクから公式ページに飛んで紹介動画を見ていただきたい．</p>
-
-<p><a href="http://www.daisydiskapp.com/">DaisyDisk - Analyze disk usage and free up disk space on Mac</a></p>
-
-<h4>Before</h4>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/macports_before.png" alt="" /></p>
-
-<h4>After</h4>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/macports_after.png" alt="" /></p>
-
-<p>まず全体の容量が10GBから5GBに変わっており，それぞれの面積は単純に割合を示していることに注意．Inactiveなパッケージを消去する前は少数の比較的大きな領域がいくつも見られる．具体的には，左側の外縁から2つ目のピンクの領域がgccやllvm，boost，emacsなどのパッケージのディレクトリを表しており，一番外縁にある灰色がそれぞれのパッケージのファイルになっている．一つのパッケージに複数の灰色で区切られた細かいディレクトリが含まれているのは，それだけアップデートして古いバージョンのパッケージが溜まっていったからだ．そしてInactiveなパッケージを消去した後は，複数の小さな領域が組み合わさっていることがわかり，それぞれのパッケージに含まれるファイルの容量が小さくなったことを示している．</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://guide.macports.org/">MacPorts Guide</a></li>
-<li><a href="http://d.hatena.ne.jp/kanonji/20091025/1256495516">MacPortsをちゃんと使うために調べてみた - kanonjiの日記</a></li>
-<li><a href="http://d.hatena.ne.jp/t_mimori/20101020/1287568644">Macでディスク容量が足りなくなってきたら1【portをcleanしよう】 - En blanc et noir</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/9/">&larr; Older</a></li>
@@ -834,6 +801,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2013/12/01/pyevolve-genetic-algorithm/">Pythonで遺伝的アルゴリズムを解くPyevolveを試してみた</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/11/30/archive-physical-biology-of-the-cell/">「細胞の物理生物学」読書ノート：アーカイブ</a>
       </li>
     
@@ -869,10 +840,6 @@
         <a href="/blog/2013/10/03/coursera-bioinformatics/">Courseraでバイオインフォマティクスのオンライン授業がスタート</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/10/02/us-government-shutdown/">米国予算案の不成立による生命科学系政府機関への影響まとめ</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -891,7 +858,7 @@
 <li class='category'><a href='/blog/categories/prml/'>PRML (5)</a></li>
 <li class='category'><a href='/blog/categories/perl/'>Perl (1)</a></li>
 <li class='category'><a href='/blog/categories/presentation/'>Presentation (1)</a></li>
-<li class='category'><a href='/blog/categories/python/'>Python (4)</a></li>
+<li class='category'><a href='/blog/categories/python/'>Python (5)</a></li>
 <li class='category'><a href='/blog/categories/rna-seq/'>RNA-Seq (5)</a></li>
 <li class='category'><a href='/blog/categories/reading/'>Reading (21)</a></li>
 <li class='category'><a href='/blog/categories/soapdenovo2/'>SOAPdenovo2 (3)</a></li>
