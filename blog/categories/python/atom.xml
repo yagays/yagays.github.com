@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-11-30T17:41:50+09:00</updated>
+  <updated>2013-11-30T19:25:15+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -185,6 +185,11 @@ $ pyevolve_graph.py -i ex1 -3 -g 1:500 -o pyevolve_graph
 <li><a href="http://stackoverflow.com/questions/16739118/genetic-algorithms-and-multi-objectives-optimization-on-python-libraries-tools">Genetic Algorithms and multi-objectives optimization on PYTHON : libraries/tools to use? - Stack Overflow</a></li>
 <li><a href="https://code.google.com/p/deap/">deap - Distributed Evolutionary Algorithms in Python - Google Project Hosting</a></li>
 </ul>
+
+
+<p>もし遺伝的アルゴリズムをPythonを使って自分で実装したい場合は，<a href="http://www.amazon.co.jp/gp/product/4873113644/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4873113644&linkCode=as2&tag=yagays-22">集合知プログラミング</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4873113644" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />11章「進化する知性」がお薦めできる．基本的なアルゴリズムに加えて，交叉や突然変異の書き方であったり様々なデータタイプに対応したりと，実装も丁寧に解説されている．</p>
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873113644" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 
 
 <h3>動作環境</h3>
