@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-11-18T09:38:15+09:00</updated>
+  <updated>2013-11-30T10:41:35+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,64 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「細胞の物理生物学」読書ノート：アーカイブ]]></title>
+    <link href="http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/"/>
+    <updated>2013-11-30T09:20:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell</id>
+    <content type="html"><![CDATA[<h3>「細胞の物理生物学」</h3>
+
+<p>本書は，2008年11月にGarland Science社から出版された&#8221;Physical Biology of the Cell&#8221;の翻訳版である．学部または大学院における基礎コース向けに作られた本書は，細胞生物学を生物物理学の側面から再構成するとい大胆な内容となっている．すなわち，細胞内の機能や性質ごとに物理学の知見を適用していく従来の体系とは違い，物理モデルや物理法則から生物というものを捉えたときに，細胞内の高分子の挙動や生物的な構造をどのように分類できどのように認識できるだろうかという観点から，生物物理学を構築し直すということである．本書のタイトルに&#8221;Biophysics&#8221;ではなく&#8221;Physical biology&#8221;と付けていることからも，その意図が伝わってくる．全20章1000ページちかい分量の本書の中には，バネの運動を表すような単純な調和振動子から化学的な反応速度論のモデル，流体力学や統計モデルなどの基本的な物理モデルが含まれている．また，扱う生物現象としてもDNAから酵素反応，生体膜，細胞骨格，分子モーターなど幅広くカバーしている．</p>
+
+<p>なお，原書は2012年10月に第2版が出ている．第1版では全20章だった構成が第2版では全22章となっており，第2版では第3部に&#8221;Light and Life&#8221;という章が追加されたほか，第4部の1章が再構成され2章に分かれている．</p>
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4320057163" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=0815344503" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<h3>読書ノートまとめ</h3>
+
+<ul>
+<li>第0章</li>
+</ul>
+
+
+<h3>オンラインリソース</h3>
+
+<ul>
+<li><a href="http://microsite.garlandscience.com/pboc2/">Home - Physical Biology of the Cell</a>
+
+<ul>
+<li>公式のサポートページ．図表やデータセット，コードや動画等が公開されている</li>
+</ul>
+</li>
+<li><a href="http://www.garlandscience.com/product/isbn/0815341636">Garland Science - Book: Physical Biology of the Cell + 1</a>
+
+<ul>
+<li>Garland Scienceの第1版紹介ページ．Chp.2がサンプルでダウンロードできる．</li>
+</ul>
+</li>
+<li><a href="http://www.garlandscience.com/product/isbn/9780815344506">Garland Science - Book: Physical Biology of the Cell + 2</a>
+
+<ul>
+<li>Garland Scienceの第2版紹介ページ．Chp.17がサンプルでダウンロードできる．</li>
+</ul>
+</li>
+<li><a href="http://www.taguchi.bio.titech.ac.jp/paper/column/assets/pc6_bookreview_PBoC.pdf">pc6_bookreview_PBoC.pdf</a>（田口英樹氏による書評，PDF）</li>
+<li><a href="http://web.sfc.keio.ac.jp/~t10078si/rindoku/rindoku.html">細胞の物理生物学 輪読ノート</a></li>
+<li><p><a href="http://www.anat1.med.kyushu-u.ac.jp/reading/physical_-biology_of_the_cell/">Physical Biology of the Cell 輪読会 | 九州大学大学院医学研究院　系統解剖学分野</a></p></li>
+<li><p><a href="http://bionumbers.hms.harvard.edu/">BioNumbers - The Database of Useful Biological Numbers</a></p></li>
+</ul>
+
+
+<h3>注意</h3>
+
+<p>上記リンクを含むこの読書ノートは個人的なメモであって，章末問題などの解答の正確さや厳密さを保証するものではないことをご注意下さい．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mac OS X Mavericks環境構築記録]]></title>
@@ -1674,75 +1732,6 @@ information about the shutdown.</p>
 <li><p><a href="http://staff.aist.go.jp/t-fukatsu/CATNewsVol1No5-8.pdf">http://staff.aist.go.jp/t-fukatsu/CATNewsVol1No5-8.pdf</a>(de Brujinでド・ブロイ派)</p></li>
 <li><p><a href="http://ja.forvo.com/search/bruijn/">http://ja.forvo.com/search/bruijn/</a>(実際に発音している音声)</p></li>
 </ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Life Technologiesによる研究者応援ソング （Ph.Diddyシリーズ）]]></title>
-    <link href="http://yagays.github.io/blog/2013/07/26/ph-diddy/"/>
-    <updated>2013-07-26T13:33:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/07/26/ph-diddy</id>
-    <content type="html"><![CDATA[<p>研究者をネタにした音楽や動画などはいろいろとあるけれども，<a href="http://www.lifetechnologies.com/jp/ja/home.html">Life Technologies</a>社のPh.Diddyシリーズに関してあまり日本語で紹介されているウェブサイトがなかったので，ちょっとまとめてみた．このシリーズは珍しく日本語に翻訳されており，歌詞まで字幕で付けられているという充実っぷりだ．今までに3作が公開されており，Ph.Dを目指すPh.DiddyやPh.Divaがウェットのラボで奮闘する姿が描かれている．</p>
-
-<h3>Ph.Diddy登場！ (Ph.Diddy is on the scene)</h3>
-
-<iframe width="640" height="360" src="http://yagays.github.io//www.youtube.com/embed/9i5M3nLWW78" frameborder="0" allowfullscreen></iframe>
-
-
-<blockquote><p>アーノルド・ヤングは、生物工学Ph.D候補です（別名Ph.Diddy）。</p>
-
-<p>アーノルドはA+学生で、現在、サイエンス界の将来を背負って立つ準備中！
-彼はすぐに発見します。意欲的、献身的な研究室生活で味わう、失敗、達成感、激務、夜­遅くまで度重なる実験、査読、そして、尊敬と信頼を勝ち取るための奮闘の日々を！
-果たして、研究室生活での浮き沈みは、我々のPh.Diddyをどのように形成してい­くのか？</p>
-
-<p>そして、彼の初めての論文が発表されるまでの旅路は？</p>
-
-<p><a href="http://www.youtube.com/watch?v=9i5M3nLWW78">http://www.youtube.com/watch?v=9i5M3nLWW78</a></p></blockquote>
-
-<h3>Ph.Diva と謎のバンド (Ph.Diva and the Mystery Band)</h3>
-
-<iframe width="640" height="360" src="http://yagays.github.io//www.youtube.com/embed/5H6_-V5iFmI" frameborder="0" allowfullscreen></iframe>
-
-
-<blockquote><p>エイプリル・ブライトは生物工学のポスドクです（別名 Ph.Diva）。抄録が口頭発表に選ばれて興奮気味。さっそくプレゼンテーションの­準備に取り掛かります。PCR が予想通りの結果にならず、失望と期待、興奮、決断を繰り返す日々が始まりました。果­たして、Ph.Divaは晴れて会議の日を迎えることができるのでしょうか？</p>
-
-<p><a href="http://www.youtube.com/watch?v=5H6_-V5iFmI">http://www.youtube.com/watch?v=5H6_-V5iFmI</a></p></blockquote>
-
-<h3>Ph.Diddy 学会へ行く (Ph.Diddy at the Conference)</h3>
-
-<iframe width="640" height="360" src="http://yagays.github.io//www.youtube.com/embed/W-foZdGdyIM" frameborder="0" allowfullscreen></iframe>
-
-
-<blockquote><p>アーノルド・ヤングは、生物工学 Ph.D 候補です（別名 Ph.Diddy）。変化の激しいサイエンス界の将来を背負って立つべく、日々奮闘し­ています。ポスターも準備万端、いよいよ初めての学会に向けて出発です。ラボから飛び­出て出張! 飛行機で! 学会に! ドキドキワクワク、テンション MAX! アーノルドは科学に魅せられた仲間に出会い、交流できることを楽しみにしてきました。­いろんなブースで貰えるノベルティにも期待しているようです。今回の学会には PI とエイプリル・ブライト（別名 Ph.Diva）も同行しています。アーノルドは隣のブースの女性が気になっています­。彼女はアーノルドに気が付いてくれるでしょうか。</p>
-
-<p><a href="http://www.youtube.com/watch?v=W-foZdGdyIM">http://www.youtube.com/watch?v=W-foZdGdyIM</a></p></blockquote>
-
-<h3>曲はiTunesで購入できる</h3>
-
-<p>ちなみに，これらの曲はiTunesで購入することができる．</p>
-
-<div class="sticky-itslink"><a href="https://itunes.apple.com/jp/album/ph.diddy-is-on-scene-single/id478987896?uo=4" rel="nofollow" target="_blank"><img src="http://a3.mzstatic.com/us/r30/Music/c2/bf/75/mzi.rhahmmsq.100x100-75.jpg" style="border-style:none;float:left;margin:5px;" alt="The Ph.Diddy Is On the Scene - Single" title="The Ph.Diddy Is On the Scene - Single" /></a><div class="sticky-itslinktext"><a href="https://itunes.apple.com/jp/album/ph.diddy-is-on-scene-single/id478987896?uo=4" rel="nofollow" target="_blank">The Ph.Diddy Is On the Scene - Single</a><br />Ph.Diddy<br />価格： 150円<br /> <a href="https://itunes.apple.com/jp/album/ph.diddy-is-on-scene-single/id478987896?uo=4" rel="nofollow" target="_blank"><img src="http://ax.phobos.apple.com.edgesuite.net/ja_jp/images/web/linkmaker/badge_itunes-sm.gif" alt ="iTunesで見る" style="border-style:none;" /></a><br style="clear:left;" /></div></div>
-
-
-<div class="sticky-itslink"><a href="https://itunes.apple.com/jp/album/ph.-diva-mystery-band-single/id517060659?uo=4" rel="nofollow" target="_blank"><img src="http://a5.mzstatic.com/us/r30/Music/v4/9a/58/1d/9a581dd4-aab0-ffef-5c07-f2f9505ab7d8/885767463295.100x100-75.jpg" style="border-style:none;float:left;margin:5px;" alt="Ph. Diva and the Mystery Band - Single" title="Ph. Diva and the Mystery Band - Single" /></a><div class="sticky-itslinktext"><a href="https://itunes.apple.com/jp/album/ph.-diva-mystery-band-single/id517060659?uo=4" rel="nofollow" target="_blank">Ph. Diva and the Mystery Band - Single</a><br />Ph. Diva<br />価格： 200円<br /> <a href="https://itunes.apple.com/jp/album/ph.-diva-mystery-band-single/id517060659?uo=4" rel="nofollow" target="_blank"><img src="http://ax.phobos.apple.com.edgesuite.net/ja_jp/images/web/linkmaker/badge_itunes-sm.gif" alt ="iTunesで見る" style="border-style:none;" /></a><br /><span style="font-size:xx-small;">posted with <a href="http://sticky.linclip.com/linkmaker/" target="_blank">sticky</a> on 2013.7.26</span><br style="clear:left;" /></div></div>
-
-
-<p></p>
-
-<div class="sticky-itslink"><a href="https://itunes.apple.com/jp/album/conference-yeah-single/id555923275?uo=4" rel="nofollow" target="_blank"><img src="http://a2.mzstatic.com/us/r30/Music/v4/d3/c9/1b/d3c91b9f-bec7-7fa3-e576-077610c19adb/700261875149.100x100-75.jpg" style="border-style:none;float:left;margin:5px;" alt="Conference Yeah - Single" title="Conference Yeah - Single" /></a><div class="sticky-itslinktext"><a href="https://itunes.apple.com/jp/album/conference-yeah-single/id555923275?uo=4" rel="nofollow" target="_blank">Conference Yeah - Single</a><br />Ph.Diddy<br />価格： 200円<br /> <a href="https://itunes.apple.com/jp/album/conference-yeah-single/id555923275?uo=4" rel="nofollow" target="_blank"><img src="http://ax.phobos.apple.com.edgesuite.net/ja_jp/images/web/linkmaker/badge_itunes-sm.gif" alt ="iTunesで見る" style="border-style:none;" /></a><br /><span style="font-size:xx-small;">posted with <a href="http://sticky.linclip.com/linkmaker/" target="_blank">sticky</a> on 2013.7.26</span><br style="clear:left;" /></div></div>
-
-
-<p></p>
-
-<h4>追記</h4>
-
-<p>有難いことにライフテクノロジーズジャパンの方に反応を頂いた．どうやら4部作だそうなので，次の作品にも期待！</p>
-
-<blockquote class="twitter-tweet"><p><a href="https://twitter.com/yag_ays">@yag_ays</a> まとめていただきありがとうございます！！ 実はPh.Diddyシリーズは4部作らしいのですが、まだ4作目が完成しておりません…。その他にも動画を多数作成しておりますのでYoutubeをチェックしてみてください！ <a href="http://t.co/CDp9oZLjvQ">http://t.co/CDp9oZLjvQ</a></p>&mdash; ライフテクノロジーズジャパン株式会社 (@LifetechJPN) <a href="https://twitter.com/LifetechJPN/statuses/360656086560280580">July 26, 2013</a></blockquote>
-
-
-<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ]]></content>
   </entry>
