@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-12-02T16:45:52+09:00</updated>
+  <updated>2013-12-02T16:50:52+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[生物学のためのプレプリント・サーバ bioRxiv]]></title>
+    <title type="html"><![CDATA[ライフサイエンス分野のためのプレプリント・サーバ bioRxiv]]></title>
     <link href="http://yagays.github.io/blog/2013/12/02/biorxiv/"/>
     <updated>2013-12-02T16:40:00+09:00</updated>
     <id>http://yagays.github.io/blog/2013/12/02/biorxiv</id>
@@ -22,7 +22,7 @@
 
 <p><a href="http://biorxiv.org/">Home | bioRxiv</a></p>
 
-<p>論文のプレプリント・サーバとしては<a href="http://arxiv.org/">arXiv</a>が有名だが，その生物学バージョンが&#8221;<a href="http://biorxiv.org/">bioRxiv</a>&#8220;としてスタートしている．これまでにもarXivにおいて生物学といえばQuantitative Biology（q-bio）という分類があったが，今回作られたbioRxivはそれを補完するように作られているようだ．bioRxivはライフサイエンス全般を対象にしており，以下の25分野に分かれている．また，2013年12月2日時点では59の論文が投稿されている．</p>
+<p>論文のプレプリント・サーバとしては<a href="http://arxiv.org/">arXiv</a>が有名だが，その生物学バージョンが&#8221;<a href="http://biorxiv.org/">bioRxiv</a>&#8220;としてスタートしている．これまでにもarXivにおいて生物学といえばQuantitative Biology（q-bio）という分類があったが，今回作られたbioRxivはそれを補完するような形でライフサイエンス分野に絞って作られているようだ．生物学という括りの中で，以下の24分野に分かれている．また，2013年12月2日時点では59の論文が投稿されている．</p>
 
 <ul>
 <li>Biochemistry</li>
