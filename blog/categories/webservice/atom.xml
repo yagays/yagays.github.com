@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: WebService | Wolfeyes Bioinformatics beta]]></title>
+  <link href="http://yagays.github.io/blog/categories/webservice/atom.xml" rel="self"/>
+  <link href="http://yagays.github.io/"/>
+  <updated>2013-12-03T10:27:13+09:00</updated>
+  <id>http://yagays.github.io/</id>
+  <author>
+    <name><![CDATA[yag_ays]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ライフサイエンス分野のためのプレプリント・サーバ bioRxiv]]></title>
+    <link href="http://yagays.github.io/blog/2013/12/02/biorxiv/"/>
+    <updated>2013-12-02T16:40:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/12/02/biorxiv</id>
+    <content type="html"><![CDATA[<p><a href="http://biorxiv.org/"><img src="http://dl.dropboxusercontent.com/u/142306/b/biorxiv.png" alt="" /></a></p>
+
+<p><a href="http://biorxiv.org/">Home | bioRxiv</a></p>
+
+<p>論文のプレプリント・サーバといえば<a href="http://arxiv.org/">arXiv</a>が有名だが，その生物学バージョンが"<a href="http://biorxiv.org/">bioRxiv</a>"（バイオアーカイブ）としてスタートしている．これまでにもarXivにおいて生物学といえばQuantitative Biology（q-bio）という分類があったが，今回作られたbioRxivはそれを補完するような形でライフサイエンス分野に絞って作られているようだ．生物学という括りの中で，以下の24分野に分かれている．また，2013年12月2日時点では59の論文が投稿されている．</p>
+
+<ul>
+<li>Biochemistry</li>
+<li>Bioengineering</li>
+<li>Bioinformatics</li>
+<li>Biophysics</li>
+<li>Cancer Biology</li>
+<li>Cell Biology</li>
+<li>Developmental Biology</li>
+<li>Ecology</li>
+<li>Evolutionary Biology</li>
+<li>Genetics</li>
+<li>Genomics</li>
+<li>Immunology</li>
+<li>Microbiology</li>
+<li>Molecular Biology</li>
+<li>Molecular Medicine</li>
+<li>Neuroscience</li>
+<li>Paleontology</li>
+<li>Pathology</li>
+<li>Physiology</li>
+<li>Plant Biology</li>
+<li>Scientific Communication</li>
+<li>Synthetic Biology</li>
+<li>Systems Biology</li>
+<li>Zoology</li>
+</ul>
+
+
+<p>それぞれの論文のページにはアブストや投稿履歴，DOIなどがのarXivにも備わっている情報の他に，コメントを付けられる機能がある．こういうのは最近のオープンアクセス誌の流れだろうか．また，arXivには無いbioRxivの大きな特徴として，それぞれの論文にクリエイティブ・コモンズのライセンスが付けられているということがある．これは論文著者が投稿時に幾つかの選択肢の中から好きなライセンスを付けられるようになっており，CC-BYからno reuseまでかなり幅広く用意されているようだ．</p>
+
+<blockquote><p>Authors retain copyright and choose from several distribution/reuse options under which to make the article available (CC-BY, CC-BY-NC, CC-BY-ND, CC-BY-NC-ND, or no reuse). By posting on bioRxiv, authors explicitly consent to text mining of their work (e.g., by search engines or researchers).</p>
+
+<p><a href="http://biorxiv.org/about-biorxiv">http://biorxiv.org/about-biorxiv</a></p></blockquote>
+
+<p>個人的には生物学の分野だとあまりプレプリント・サーバには馴染みがないように思えるが，これから様々な使い方が広がっていくのだろうか．なお，主要な論文誌のプレプリント・サーバ利用のポリシーは以下に詳しくまとまっている．</p>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/List_of_academic_journals_by_preprint_policy">List of academic journals by preprint policy - Wikipedia, the free encyclopedia</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Courseraでバイオインフォマティクスのオンライン授業がスタート]]></title>
+    <link href="http://yagays.github.io/blog/2013/10/03/coursera-bioinformatics/"/>
+    <updated>2013-10-03T09:13:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/10/03/coursera-bioinformatics</id>
+    <content type="html"><![CDATA[<p><img src="http://dl.dropboxusercontent.com/u/142306/b/coursera_bioinfo.png" alt="" /></p>
+
+<p>トップレベルの大学の授業が無料で受けられるウェブサービス「Coursera」で，UCSDのバイオインフォマティクスのコースが10月からスタートする．Courseraでは初の英語で行われるバイオインフォマティクス分野のコースだ．</p>
+
+<p><a href="https://www.coursera.org/course/bioinformatics">Bioinformatics Algorithms (Part 1) | Coursera</a></p>
+
+<blockquote><p>This course will cover some of the common algorithms underlying the following fundamental topics in bioinformatics: assembling genomes, comparing DNA and protein sequences, finding regulatory motifs, analyzing genome rearrangements, identifying proteins, and many other topics.</p>
+
+<p><a href="https://www.coursera.org/course/bioinformatics">https://www.coursera.org/course/bioinformatics</a></p></blockquote>
+
+<p>シラバスによると，この授業では主にバイオインフォマティクスで用いられる様々なアルゴリズムについて，実際の生物学的な問題を解きながら知識を深めていくというスタイルのようだ．具体的には，以下のようなトピックが取り上げられている．</p>
+
+<ul>
+<li>どこからDNA複製は始まるの？</li>
+<li>どうやって抗生物質をシーケンスするの？</li>
+<li>どのようなDNAのパターンが細胞時計として働くの？</li>
+<li>どうやってゲノムをアセンブルするの？</li>
+<li>ヒトゲノムでどこが脆弱な部分なの？</li>
+<li>どうやって複数の配列を比較するの？</li>
+<li>どうやって病気を引き起こす変異を探しだすの？</li>
+</ul>
+
+
+<p>一見するとバイオインフォマティクスの分野のトピックだと分かりづらいものも含まれているが，どれもアルゴリズムを使った計算機的なアプローチが可能な興味深い話題ばかりだ．より詳しい内容や授業日程は以下のpdfからみることができる．</p>
+
+<ul>
+<li><a href="https://beta.stepic.org/media/attachments/lessons/1/Coursera%20Syllabus.pdf">https://beta.stepic.org/media/attachments/lessons/1/Coursera%20Syllabus.pdf</a></li>
+</ul>
+
+
+<p>授業の形式としては，動画による講義のほかに<a href="http://beta.stepic.org/2">Bioinformatics Algorithms: An Active-Learning Approach</a>というテキストを使って実際に問題を解くという宿題が課される．毎回5から10のプログラムの課題が出題され，授業全体の目安としては週に8から10時間程度の時間が必要になる．</p>
+
+<p>当然ながら授業はすべて英語だ．授業内容もある程度専門的なので，プログラミングの知識の他に基礎的な生物学の知識（英単語！）も求められるだろう．ただ，動画のレクチャーには英語字幕を付けることができるので，リスニング能力に多少不安がある人でも問題ないだろう．テキストも非常に充実しているので，じっくり取り組めばきっと大丈夫なはず…!!</p>
+
+<p>というわけで，初めてのCourseraのオンラインコース，頑張ってみます．</p>
+
+<br/>
+
+
+<p>なお，この授業の続きBioinformatics Algorithms (Part 2) は2014年の春に開講予定とのこと．そこでは遺伝子発現解析や進化系統樹の構築，生物情報ネットワークなどについてカバーする予定らしい．</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Solveというスタートアップが開発するバイオインフォマティクスのデータベースのためのPython API]]></title>
+    <link href="http://yagays.github.io/blog/2013/09/30/solve-bioinformatics/"/>
+    <updated>2013-09-30T22:05:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/09/30/solve-bioinformatics</id>
+    <content type="html"><![CDATA[<p>知り合いから教えてもらったウェブページで気になるプロジェクトがあったのでメモ．「Solve」と呼ばれるこのプロジェクトはまだ開発中のようで，ググっても詳細はよく分からない．現状では，ローンチしたら登録したメールアドレスに連絡するよというくらいしか活動が無い．</p>
+
+<p><a href="https://www.solvebio.com/">Solve | Rebuild Bioinformatics</a></p>
+
+<blockquote><p>The Solve API gives you instant access to TCGA, ENCODE, 1000 Genomes, HapMap, PolyPhen, RefSeq, UCSC, OMIM, UniProt, dbSNP. We worry about downloading and parsing flat files with confusing formats so you don't have to.</p>
+
+<p><a href="https://www.solvebio.com/">https://www.solvebio.com/</a></p></blockquote>
+
+<p>基本的にはPythonを拡張するパッケージで，バイオインフォマティクス系のデータベースに簡単にアクセスして解析できるようにするのが目的のようだ．上記のリストアップされているデータベースの並びを見ると「お前それよく使われてそうなやつリストアップしてるだけだろ」と思わざるをえないが，まあそこら辺は気にしない．ウェブページに代表例として載っているコードを見てみると，やろうとしていることは基本的に様々なデータベースのAPIらしい．それに加えて，データベースのドキュメントやメタデータも含めてSolveで取り扱えるようにするとのこと．これがBioPythonのプロジェクトの一つとしてならある程度納得行くのだけれども，これがスタートアップの一つとして立ち上がりつつあるのはどうなんだという感じがしないでもない．</p>
+
+<p>とりあえずローンチのメールを待とう．</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[国内のライフサイエンス分野で役に立っているプロダクトをみんなで投票して表彰する「オープン・サイエンス・アワード」開催中！]]></title>
+    <link href="http://yagays.github.io/blog/2013/09/21/open-science-award-dbcls/"/>
+    <updated>2013-09-21T01:06:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/09/21/open-science-award-dbcls</id>
+    <content type="html"><![CDATA[<p><a href="http://osa2013.herokuapp.com/">Open Science Award presented by DBCLS</a></p>
+
+<p><strong>突然ですがお祭りのお知らせです！！！</strong></p>
+
+<blockquote><p>オープン・サイエンス・アワードは「論文として発表されていない/されにくい」けど日々ありがたく使っている(国内の)データベース・ソフトウェア・ウェブサイト(ブログやWikiなど)をコミュニティで表彰しよう！という企画です。自薦/他薦を問わずノミネートされた作品に対してみなさんで投票し，得票の多い作品をJSBi年会で表彰，作者に発表を依頼します。学生/研究者，ウェット/ドライ，アカデミック/ビジネス，JSBi会員/非会員を問わずにどなたでも投票できます。利用したことがないノミネート作品もぜひチェックしてみてください。</p>
+
+<p><a href="http://osa2013.herokuapp.com/">Open Science Award presented by DBCLS</a></p></blockquote>
+
+<p>投票期限は9/27までとのことなので，皆さんぜひぜひ上記ウェブサイトから投票してみてください．今まで知らなかった素敵なツールやウェブサイトが発見できるかもしれませんよ！</p>
+
+<h3>Open Science Awardのリンクからこのサイトに来られた方へ</h3>
+
+<p>最近はあんまりバイオインフォっぽいことをBlogに書けてないのですが，過去にはこんな記事とか書いてます．主に個人的な勉強記録として次世代シーケンサー(NGS)関係の解析をメインにバイオインフォマティクスに関する話題など，その他にも色々と書いているので，<a href="http://yagays.github.io/blog/archives/">サイトのアーカイブ</a>や右カラムにあるカテゴリーから気になる記事を見てみて下さい．</p>
+
+<ul>
+<li><a href="http://yagays.github.io/blog/2013/08/01/de-bruijn-pronounce/">"de Bruijn"はどう発音する？</a></li>
+<li><a href="http://yagays.github.io/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/">RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ</a></li>
+<li><a href="http://yagays.github.io/blog/2013/07/12/stat115-cole-trapnell/">Tophat/Cufflinksなどの開発者であるCole TrapnellによるRNA-Seqの遺伝子発現解析に関する講義動画</a></li>
+<li><a href="http://yagays.github.io/blog/2013/07/07/genome-assembly-kmergenie/">ゲノムアセンブリにおいて最適なk-merを推定するKmerGenieを試してみた</a></li>
+<li><a href="http://yagays.github.io/blog/2013/07/10/timetree/">TimeTreeで生物種間の分岐年代を調べる</a></li>
+<li><a href="http://yagays.github.io/blog/2013/06/26/rna-seq-unleashed-trinity/">"RNA-Seq unleashed"によるTrinityのワークフローの解説</a></li>
+<li><a href="http://yagays.github.io/blog/2013/06/20/fastq-dump-sratoolkit/">SRA Toolkitを使ってsraファイルからfastqファイルに変換する(更新版)</a></li>
+<li><a href="http://yagays.github.io/blog/2013/05/14/trinity-install/">Trinityのインストールとサンプルデータのアセンブル</a></li>
+<li><a href="http://yagays.github.io/blog/2013/04/20/install-biopython/">Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする</a></li>
+<li><a href="http://yagays.github.io/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート</a></li>
+<li><a href="http://yagays.github.io/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">「Rによるモンテカルロ法入門」読書ノート：アーカイブ</a></li>
+</ul>
+
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="https://github.com/dbcls/jsbi2013/wiki">Home · dbcls/jsbi2013 Wiki</a></li>
+<li><a href="http://osa2013.herokuapp.com/">Open Science Award presented by DBCLS</a></li>
+<li><a href="https://docs.google.com/spreadsheet/ccc?key=0ArS_kePkP4rWdGNpNlhHcGFHaHVfamVhcjF3SlA4Z1E">JSBi2013 DBCLS organized session DB/SW list</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Life Technologiesによる研究者応援ソング （Ph.Diddyシリーズ）]]></title>
+    <link href="http://yagays.github.io/blog/2013/07/26/ph-diddy/"/>
+    <updated>2013-07-26T13:33:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/07/26/ph-diddy</id>
+    <content type="html"><![CDATA[<p>研究者をネタにした音楽や動画などはいろいろとあるけれども，<a href="http://www.lifetechnologies.com/jp/ja/home.html">Life Technologies</a>社のPh.Diddyシリーズに関してあまり日本語で紹介されているウェブサイトがなかったので，ちょっとまとめてみた．このシリーズは珍しく日本語に翻訳されており，歌詞まで字幕で付けられているという充実っぷりだ．今までに3作が公開されており，Ph.Dを目指すPh.DiddyやPh.Divaがウェットのラボで奮闘する姿が描かれている．</p>
+
+<h3>Ph.Diddy登場！ (Ph.Diddy is on the scene)</h3>
+
+<iframe width="640" height="360" src="http://yagays.github.io//www.youtube.com/embed/9i5M3nLWW78" frameborder="0" allowfullscreen></iframe>
+
+
+<blockquote><p>アーノルド・ヤングは、生物工学Ph.D候補です（別名Ph.Diddy）。</p>
+
+<p>アーノルドはA+学生で、現在、サイエンス界の将来を背負って立つ準備中！
+彼はすぐに発見します。意欲的、献身的な研究室生活で味わう、失敗、達成感、激務、夜­遅くまで度重なる実験、査読、そして、尊敬と信頼を勝ち取るための奮闘の日々を！
+果たして、研究室生活での浮き沈みは、我々のPh.Diddyをどのように形成してい­くのか？</p>
+
+<p>そして、彼の初めての論文が発表されるまでの旅路は？</p>
+
+<p><a href="http://www.youtube.com/watch?v=9i5M3nLWW78">http://www.youtube.com/watch?v=9i5M3nLWW78</a></p></blockquote>
+
+<h3>Ph.Diva と謎のバンド (Ph.Diva and the Mystery Band)</h3>
+
+<iframe width="640" height="360" src="http://yagays.github.io//www.youtube.com/embed/5H6_-V5iFmI" frameborder="0" allowfullscreen></iframe>
+
+
+<blockquote><p>エイプリル・ブライトは生物工学のポスドクです（別名 Ph.Diva）。抄録が口頭発表に選ばれて興奮気味。さっそくプレゼンテーションの­準備に取り掛かります。PCR が予想通りの結果にならず、失望と期待、興奮、決断を繰り返す日々が始まりました。果­たして、Ph.Divaは晴れて会議の日を迎えることができるのでしょうか？</p>
+
+<p><a href="http://www.youtube.com/watch?v=5H6_-V5iFmI">http://www.youtube.com/watch?v=5H6_-V5iFmI</a></p></blockquote>
+
+<h3>Ph.Diddy 学会へ行く (Ph.Diddy at the Conference)</h3>
+
+<iframe width="640" height="360" src="http://yagays.github.io//www.youtube.com/embed/W-foZdGdyIM" frameborder="0" allowfullscreen></iframe>
+
+
+<blockquote><p>アーノルド・ヤングは、生物工学 Ph.D 候補です（別名 Ph.Diddy）。変化の激しいサイエンス界の将来を背負って立つべく、日々奮闘し­ています。ポスターも準備万端、いよいよ初めての学会に向けて出発です。ラボから飛び­出て出張! 飛行機で! 学会に! ドキドキワクワク、テンション MAX! アーノルドは科学に魅せられた仲間に出会い、交流できることを楽しみにしてきました。­いろんなブースで貰えるノベルティにも期待しているようです。今回の学会には PI とエイプリル・ブライト（別名 Ph.Diva）も同行しています。アーノルドは隣のブースの女性が気になっています­。彼女はアーノルドに気が付いてくれるでしょうか。</p>
+
+<p><a href="http://www.youtube.com/watch?v=W-foZdGdyIM">http://www.youtube.com/watch?v=W-foZdGdyIM</a></p></blockquote>
+
+<h3>曲はiTunesで購入できる</h3>
+
+<p>ちなみに，これらの曲はiTunesで購入することができる．</p>
+
+<div class="sticky-itslink"><a href="https://itunes.apple.com/jp/album/ph.diddy-is-on-scene-single/id478987896?uo=4" rel="nofollow" target="_blank"><img src="http://a3.mzstatic.com/us/r30/Music/c2/bf/75/mzi.rhahmmsq.100x100-75.jpg" style="border-style:none;float:left;margin:5px;" alt="The Ph.Diddy Is On the Scene - Single" title="The Ph.Diddy Is On the Scene - Single" /></a><div class="sticky-itslinktext"><a href="https://itunes.apple.com/jp/album/ph.diddy-is-on-scene-single/id478987896?uo=4" rel="nofollow" target="_blank">The Ph.Diddy Is On the Scene - Single</a><br />Ph.Diddy<br />価格： 150円<br /> <a href="https://itunes.apple.com/jp/album/ph.diddy-is-on-scene-single/id478987896?uo=4" rel="nofollow" target="_blank"><img src="http://ax.phobos.apple.com.edgesuite.net/ja_jp/images/web/linkmaker/badge_itunes-sm.gif" alt ="iTunesで見る" style="border-style:none;" /></a><br style="clear:left;" /></div></div>
+
+
+<div class="sticky-itslink"><a href="https://itunes.apple.com/jp/album/ph.-diva-mystery-band-single/id517060659?uo=4" rel="nofollow" target="_blank"><img src="http://a5.mzstatic.com/us/r30/Music/v4/9a/58/1d/9a581dd4-aab0-ffef-5c07-f2f9505ab7d8/885767463295.100x100-75.jpg" style="border-style:none;float:left;margin:5px;" alt="Ph. Diva and the Mystery Band - Single" title="Ph. Diva and the Mystery Band - Single" /></a><div class="sticky-itslinktext"><a href="https://itunes.apple.com/jp/album/ph.-diva-mystery-band-single/id517060659?uo=4" rel="nofollow" target="_blank">Ph. Diva and the Mystery Band - Single</a><br />Ph. Diva<br />価格： 200円<br /> <a href="https://itunes.apple.com/jp/album/ph.-diva-mystery-band-single/id517060659?uo=4" rel="nofollow" target="_blank"><img src="http://ax.phobos.apple.com.edgesuite.net/ja_jp/images/web/linkmaker/badge_itunes-sm.gif" alt ="iTunesで見る" style="border-style:none;" /></a><br /><span style="font-size:xx-small;">posted with <a href="http://sticky.linclip.com/linkmaker/" target="_blank">sticky</a> on 2013.7.26</span><br style="clear:left;" /></div></div>
+
+
+<p></p>
+
+<div class="sticky-itslink"><a href="https://itunes.apple.com/jp/album/conference-yeah-single/id555923275?uo=4" rel="nofollow" target="_blank"><img src="http://a2.mzstatic.com/us/r30/Music/v4/d3/c9/1b/d3c91b9f-bec7-7fa3-e576-077610c19adb/700261875149.100x100-75.jpg" style="border-style:none;float:left;margin:5px;" alt="Conference Yeah - Single" title="Conference Yeah - Single" /></a><div class="sticky-itslinktext"><a href="https://itunes.apple.com/jp/album/conference-yeah-single/id555923275?uo=4" rel="nofollow" target="_blank">Conference Yeah - Single</a><br />Ph.Diddy<br />価格： 200円<br /> <a href="https://itunes.apple.com/jp/album/conference-yeah-single/id555923275?uo=4" rel="nofollow" target="_blank"><img src="http://ax.phobos.apple.com.edgesuite.net/ja_jp/images/web/linkmaker/badge_itunes-sm.gif" alt ="iTunesで見る" style="border-style:none;" /></a><br /><span style="font-size:xx-small;">posted with <a href="http://sticky.linclip.com/linkmaker/" target="_blank">sticky</a> on 2013.7.26</span><br style="clear:left;" /></div></div>
+
+
+<p></p>
+
+<h4>追記</h4>
+
+<p>有難いことにライフテクノロジーズジャパンの方に反応を頂いた．どうやら4部作だそうなので，次の作品にも期待！</p>
+
+<blockquote class="twitter-tweet"><p><a href="https://twitter.com/yag_ays">@yag_ays</a> まとめていただきありがとうございます！！ 実はPh.Diddyシリーズは4部作らしいのですが、まだ4作目が完成しておりません…。その他にも動画を多数作成しておりますのでYoutubeをチェックしてみてください！ <a href="http://t.co/CDp9oZLjvQ">http://t.co/CDp9oZLjvQ</a></p>&mdash; ライフテクノロジーズジャパン株式会社 (@LifetechJPN) <a href="https://twitter.com/LifetechJPN/statuses/360656086560280580">July 26, 2013</a></blockquote>
+
+
+<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+]]></content>
+  </entry>
+  
+</feed>
