@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>「細胞の物理生物学」読書ノート：第1章 - Wolfeyes Bioinformatics beta</title>
+  <meta name="author" content="yag_ays">
+
+  
+  <meta name="description" content="Tips and hacks about Bioinformatics on Ruby and R.">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yagays.github.io/blog/2013/12/05/pboc-01">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <script src="/javascripts/libs/jquery.js"></script>
+  <script src="/javascripts/libs/modernizr-2.0.js"></script>
+  <script src="/javascripts/libs/bootstrap.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Wolfeyes Bioinformatics beta" type="application/atom+xml">
+  <meta name="author" content="yag_ays">
+
+<meta name="description" content="Tips and hacks about Bioinformatics on Ruby and R.">
+<meta name="keywords" content="Bioinformatics,NGS,バイオインフォマティクス,機械学習,統計学,Ruby,R,Mac OS X,Linux">
+<meta name="google-translate-customization" content="f0d6fb1813054f83-93b90cf46465830f-g289228b826edcf56-12"></meta>
+<meta name="msvalidate.01" content="7B572D9F165B6C1C1D644708FF738704" />
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17620484-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <a class="brand" href="/">Wolfeyes Bioinformatics beta</a>
+
+      <div class="nav-collapse">
+        <ul class="nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About Me</a></li>
+</ul>
+
+
+        <ul class="nav pull-right" data-subscription="rss">
+          <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+          
+        </ul>
+
+        
+          <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <fieldset role="search">
+              <input type="hidden" name="q" value="site:yagays.github.io" />
+              <input class="search-query" type="text" name="q" results="0" placeholder="Search"/>
+            </fieldset>
+          </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</nav>
+  <div class="container">
+    <div class="row-fluid">
+      
+<article class="hentry span9" role="article">
+
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">「細胞の物理生物学」読書ノート：第1章</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-05T07:43:00+09:00" pubdate data-updated="true">Dec 5<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><ul>
+<li>読書ノートまとめ：<a href="http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/">http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4320057163" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=0815344503" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h2>第1章 なぜ？―数を通して見た生命</h2>
+
+<ul>
+<li><p>生物学のデータの背景にあるモデルを構築し理解する</p>
+
+<ul>
+<li>モデルは問題の複雑さや詳細をある程度切り捨てる</li>
+<li>現象をある程度正確に予測できるようなモデルを立てる</li>
+</ul>
+</li>
+<li><p>定量的なモデル</p>
+
+<ul>
+<li>定量的なデータには定量的なモデルが必要になる</li>
+<li>定量的なモデルは，生物学の問題について実験で検証可能な予測をする</li>
+<li>ある入力が変わった時，特定の生物学的な出力変数がどのように変わるかを定量的に測定することができるならば，そのデータの解釈も定量的に行う必要がある</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>3つの「事実」</h4>
+
+<ol>
+<li>自分で確かめることができること
+
+<ul>
+<li>e.g. 細胞はタンパク質を含んでいる</li>
+</ul>
+</li>
+<li>異なる独立の実験手法によって繰り返し確かめられたこと
+
+<ul>
+<li>e.g. 細胞においてリボソームがタンパク質を合成する</li>
+</ul>
+</li>
+<li>生物学的な観察による説得力のある説明ではあるが，証明されていないか論争中の仮説に基づいている
+
+<ul>
+<li>e.g. 細胞内のミトコンドリアは元は独立して生きていた細菌であり，真核細胞の祖先との細胞内共生によって今日に至る</li>
+</ul>
+</li>
+</ol>
+
+
+<h4>生物を作る4つの要素</h4>
+
+<ul>
+<li>高分子 Macromolecule
+
+<ul>
+<li>タンパク質 Protein</li>
+<li>糖 Carbohydrate</li>
+<li>脂質 Lipid</li>
+<li>核酸 Nucleic acid</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>理想化としてのモデル</h4>
+
+<p>高度に複雑な生物対象から抽象と単純化によって有用な洞察を得るには，「一つ」の簡単なモデルに着目する</p>
+
+<ul>
+<li>ある特定の側面を物語る重要な性質を選ぶ</li>
+<li><p>問題のどの特徴を無視することができるかを考える</p></li>
+<li><p>どんな対象でも良い</p>
+
+<ul>
+<li> DNA</li>
+<li> タンパク質</li>
+<li> 細胞膜</li>
+<li> 大腸菌</li>
+<li> 溶液</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>イラストとモデル</h4>
+
+<ul>
+<li>図式化 Schematize
+
+<ul>
+<li>重要な概念を説明するモデルをイラストとして表現</li>
+<li>何が重要かを，間接的あるいは直接的に表現</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>定量的モデルの数理化</h4>
+
+<ul>
+<li><p>e.g. Lacリプレッサー</p>
+
+<ul>
+<li>始めに思いつく大雑把なイメージ：Lacの近くに何かくっつくとDNAループを作って遺伝子が働かなくなるらしい．あと，くっつく場所との距離によって遺伝子の強さに違いがあって，なんか距離に応じて周期的っぽい</li>
+<li>そこから，このデータをきちんと定量的に測定して，定量的モデルを立てる</li>
+</ul>
+</li>
+<li><p>e.g. バネとしての振る舞い</p>
+
+<ul>
+<li>イメージ：中心からズレるとだんだん戻る力が強くなる</li>
+<li>定量的なモデル：平衡位置からずらした程度に比例した復元力<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathrm%7BEnergy%7D%3D%5Cfrac%7B1%7D%7B2%7Dkx%5E2+" alt="\mathrm{Energy}=\frac{1}{2}kx^2 " /></li>
+</ul>
+</li>
+<li><p>中心からの距離が小さい時に線形近似できるというメリットもある</p></li>
+</ul>
+
+
+<p>ただのバネの伸び縮みをモデル化しただけだけれども，バネの振る舞いに代表されるような単純な調和振動子モデルは，生物学の現象の様々なケースに適応することができる</p>
+
+<ul>
+<li>光ピンセットのトラップの中心に引っ張られる分子</li>
+<li>梁の曲がり</li>
+<li>DNAの曲がり</li>
+<li>泳ぐ精子の鞭毛の拍動</li>
+<li>細胞表面の膜のゆらぎ</li>
+<li>エネルギーランドスケープ上の分子</li>
+<li>時間とともに発現の程度を変える遺伝子ネットワーク</li>
+</ul>
+
+
+<h4>見積もりの役割</h4>
+
+<ul>
+<li>生物学的な構造と仮説に関する数の感覚を掴む
+
+<ul>
+<li>定量的な直感</li>
+</ul>
+</li>
+</ul>
+
+
+<p><strong>（「Guesstimation」と「次元解析」は第2版から追記された箇所．（PBOC 2nd P.27） ）</strong></p>
+
+<h4>Guesstimation</h4>
+
+<ul>
+<li>見積もり・フェルミ推定
+
+<ul>
+<li>幾何平均 Geometric mean</li>
+<li>下限と上限から幾何平均<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Csqrt%7Bx_%7Blower%7D%5Ctimes+x_%7Bupper%7D%7D" alt="\sqrt{x_{lower}\times x_{upper}}" />を取る</li>
+<li>e.g. だいたい10nmより小さくはならないし100nmよりは大きくならないだろうと予測される場合：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Csqrt%7B10+%5Ctimes+100%7D%3D+31.62278+" alt="\sqrt{10 \times 100}= 31.62278 " />だから，だいたい約30nmくらい</li>
+<li>文章中で紹介されている&#8221;Guesstimation by Weinstein and Adam&#8221;とは以下の本のことだろう．日本語訳として「サイエンス脳のためのフェルミ推定力養成ドリル」という題で出版されている</li>
+</ul>
+</li>
+</ul>
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B003TSEL9G" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4822283690" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<h4>次元解析 Dimensional analysis</h4>
+
+<ul>
+<li>関係してくる変数の次元を上手く組み合わせて，目的の変数の次元に揃える</li>
+</ul>
+
+
+<p>モルフォゲン勾配の場合</p>
+
+<ul>
+<li>Length scale : <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clambda+" alt="\lambda " />
+
+<ul>
+<li>[Length]</li>
+</ul>
+</li>
+<li>Diffusion constant : <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=D+" alt="D " />
+
+<ul>
+<li>[Length]<sup>2</sup> / [Time]</li>
+</ul>
+</li>
+<li>mean lifetime : <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctau+" alt="\tau " />
+
+<ul>
+<li>[Time]</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Diffusion constant（拡散係数）とmean lifetime（モルフォゲン分子の平均寿命）を上手く組み合わせてLength scaleの単位を表そうと思ったら， <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Csqrt%7BD+%5Ctau%7D+" alt="\sqrt{D \tau} " />になる．こうすれば，変数の性質を知らなかったとしても数式を立てることができる．</p>
+
+<ul>
+<li>注：平均寿命が分かりにくければ，モルフォゲンの時間あたりの分解率<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha+" alt="\alpha " />の逆数だと思えば良いだろう（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctau+%3D+%5Cfrac%7B1%7D%7B%5Calpha%7D+" alt="\tau = \frac{1}{\alpha} " />）
+
+<ul>
+<li>&#8220;<a href="http://dev.biologists.org/content/137/14/2253.long">Modelling the Bicoid gradient</a>&#8220;のBox3参照</li>
+</ul>
+</li>
+<li>モルフォゲンの濃度勾配に関しては，英語第2版の20章で詳しく述べられる</li>
+</ul>
+
+
+<h4>モデリングにおける4つの間違い</h4>
+
+<ul>
+<li>不適切なタイプの物理モデルを使った失敗
+
+<ul>
+<li>「ピックアップトラックに積み込むことのできる荷物の量は何時間か？」といった問題設定</li>
+</ul>
+</li>
+<li>システムの詳細を十分に考慮していない失敗
+
+<ul>
+<li>大腸菌の泳ぐ速度：ゆらぎを考慮していない</li>
+<li>失敗というより不適切</li>
+</ul>
+</li>
+<li>不適切な仮説を置いたモデルによる失敗
+
+<ul>
+<li>大腸菌の泳ぐ速度にブラウン運動を考慮していない</li>
+</ul>
+</li>
+<li>実験にブレイクスルーをもたらす失敗
+
+<ul>
+<li>新しい科学的発見をするチャンス！</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>Rules of Thumb</h4>
+
+<p>物理生物学者として見積もりするならこれくらいは覚えておくべき基本的な数字（テキストの表参照）</p>
+
+<ul>
+<li>BioNumbers
+
+<ul>
+<li><a href="http://bionumbers.hms.harvard.edu/">BioNumbers - The Database of Useful Biological Numbers</a></li>
+<li>今後テキストでたびたび登場するBNIDとは，BioNumber IDのこと</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>まとめ</h4>
+
+<p>物理学の定量的な思考を生物学に適用するために必要となるスキル</p>
+
+<ul>
+<li>基礎的な物理学のモデルによってシステムを記述する：モデル化するスキル</li>
+<li>システムに対する認識が適切で現実的かどうかをチェックする：定量的見積もりを行うスキル</li>
+</ul>
+
+</div>
+
+
+<br/><br/>
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">yag_ays</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-05T07:43:00+09:00" pubdate data-updated="true">Dec 5<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/pboc/'>PBOC</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2013/12/05/pboc-01/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/12/05/pboc-01/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/12/05/pboc-01/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    
+    <section>
+      <h1>Comments</h1>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+    
+    <ul class="pager">
+      
+      <li class="previous"><a class="basic-alignment left"
+        href="/blog/2013/12/04/pboc-00/" title="Previous Post:
+        「細胞の物理生物学」読書ノート：序文">&laquo; 「細胞の物理生物学」読書ノート：序文</a></li>
+      
+      <li><a href="/blog/archives">Blog Archives</a></li>
+      
+    </ul>
+  </footer>
+</article>
+
+<aside class="sidebar-nav span3">
+  
+    <section class="well">
+  <h2>About Me</h2>
+  <p>Yuki OKUDA</p>
+  <p>id: yag_ays</p>
+  <p>E-mail: yanagi.ayase [at] gmail.com</p>
+  <br />
+  <ul>
+    <li>Bioinformatics / NGS</li>
+    <li>Machine Learning / Statistics</li>
+    <li>Ruby / R / Clojure / Python</li>
+    <li>MacOSX / Linux</li>
+    <li>Book Review</li>
+  </ul>
+  <br />
+  <ul>
+    <li><a href="https://twitter.com/#!/yag_ays" target="_blank">Twitter</a></li>
+    <li><a href="https://github.com/yagays" target="_blank">Github</a> </li>
+    <li><a href="https://gist.github.com/yagays" target="_blank">Gist</a></li>
+    <li><a href="http://jp.linkedin.com/in/yukiokuda/" target="_blank">Linkedin</a></li>
+    <li><a href="http://b.hatena.ne.jp/yag_ays/" target="_blank">Bookmark</a></li>
+    <li><a href="http://slideshare.net/yag_ays/" target="_blank">Slideshare</a></li>
+    <li><a href="http://yan-ase.tumblr.com/" target="_blank">Tumblr</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="http://yag-ays.hateblo.jp/" target="_blank">Hatena Blog (Technical)</a> </li>
+    <li><a href="http://g86.dbcls.jp/~yag/wordpress/" target="_blank">Wordpress Blog (Technical, <i>old</i>)</a></li>
+  </ul>
+</section>
+<section class="well">
+  <h2>Recent Post</h2>
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/05/pboc-01/">「細胞の物理生物学」読書ノート：第1章</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/04/pboc-00/">「細胞の物理生物学」読書ノート：序文</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/02/biorxiv/">ライフサイエンス分野のためのプレプリント・サーバ bioRxiv</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/01/pyevolve-genetic-algorithm/">Pythonで遺伝的アルゴリズムを動かすPyevolveを試してみた</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/30/archive-physical-biology-of-the-cell/">「細胞の物理生物学」読書ノート：アーカイブ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/15/mac-mavericks-setting-2013/">Mac OS X Mavericks環境構築記録</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/31/neuroscience/">メモ：脳神経科学の基礎の基礎</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/20/gmm-matplotlib/">matplotlibで混合ガウス分布の確率密度関数をプロットする</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/19/review-exploring-everyday-things/">「RとRubyによるデータ解析入門」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/18/gmm-em-numpy/">Numpyを使って混合ガウス分布のEMアルゴリズムを実装</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="well">
+  <h2>Categories</h2>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
+<li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
+<li class='category'><a href='/blog/categories/biopython/'>Biopython (1)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (78)</a></li>
+<li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
+<li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
+<li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>Linux (3)</a></li>
+<li class='category'><a href='/blog/categories/mcmc/'>MCMC (3)</a></li>
+<li class='category'><a href='/blog/categories/misc/'>Misc (11)</a></li>
+<li class='category'><a href='/blog/categories/pboc/'>PBOC (3)</a></li>
+<li class='category'><a href='/blog/categories/prml/'>PRML (5)</a></li>
+<li class='category'><a href='/blog/categories/perl/'>Perl (1)</a></li>
+<li class='category'><a href='/blog/categories/presentation/'>Presentation (1)</a></li>
+<li class='category'><a href='/blog/categories/python/'>Python (5)</a></li>
+<li class='category'><a href='/blog/categories/rna-seq/'>RNA-Seq (5)</a></li>
+<li class='category'><a href='/blog/categories/reading/'>Reading (21)</a></li>
+<li class='category'><a href='/blog/categories/soapdenovo2/'>SOAPdenovo2 (3)</a></li>
+<li class='category'><a href='/blog/categories/slide/'>Slide (1)</a></li>
+<li class='category'><a href='/blog/categories/sublimetext2/'>SublimeText2 (2)</a></li>
+<li class='category'><a href='/blog/categories/trinity/'>Trinity (2)</a></li>
+<li class='category'><a href='/blog/categories/velvet/'>Velvet (1)</a></li>
+<li class='category'><a href='/blog/categories/webservice/'>WebService (6)</a></li>
+<li class='category'><a href='/blog/categories/zsh/'>Zsh (1)</a></li>
+<li class='category'><a href='/blog/categories/ipad/'>iPad (1)</a></li>
+<li class='category'><a href='/blog/categories/imcmr/'>imcmr (16)</a></li>
+<li class='category'><a href='/blog/categories/k-mer/'>k-mer (2)</a></li>
+
+  </ul>
+</section>
+<section class="well">
+  <h2>Translate</h2>
+  <div id="google_translate_element"></div><script type="text/javascript">
+    function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'ja', autoDisplay: false, gaTrack: true, gaId: 'UA-17620484-4'}, 'google_translate_element');
+    }
+  </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</section>
+
+
+<section class="well">
+  <h2>Twitter</h2>
+  <ul id="tweets" class="nav">
+    <li class="nav-header">Latest Tweets</li>
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      getTwitterFeed("yag_ays", 10, true);
+    });
+  </script>
+  <script src="/javascripts/asides/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/yag_ays" class="twitter-follow-button" data-show-count="false">Follow @yag_ays</a>
+  
+</section>
+
+<section class="well">
+  <h2>Recommend Books</h2>
+  <a href="http://www.amazon.co.jp/gp/product/4274067939/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4274067939&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4274067939&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274067939" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4863912803/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4863912803&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4863912803&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4863912803" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4560027870/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4560027870&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4560027870&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4560027870" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4862381502/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4862381502&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4862381502&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4862381502" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4621061224&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4621061240/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061240&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4621061240&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061240" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/400006973X/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=400006973X&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=400006973X&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=400006973X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4140815329/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4140815329&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4140815329&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4140815329" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4780908485/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4780908485&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4780908485&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4780908485" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4781605451/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4781605451&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4781605451&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4781605451" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4047284084/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4047284084&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4047284084&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4047284084" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4781609481/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4781609481&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4781609481&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4781609481" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <br/>
+  <iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yagays-22&o=9&p=9&l=ez&f=ifr&f=ifr" width="180" height="150" scrolling="no" marginwidth="0" marginheight="0" border="0" frameborder="0" style="border:none;"></iframe>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
+  <br />
+  <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Wolfeyes Bioinformatics beta</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">yag_ays</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a><br />
+  except where cited as being from another source or where otherwise noted.
+  <br />
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wolfeyesbioinformaticsbeta';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://yagays.github.io/blog/2013/12/05/pboc-01/';
+        var disqus_url = 'http://yagays.github.io/blog/2013/12/05/pboc-01/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
