@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-12-03T10:27:13+09:00</updated>
+  <updated>2013-12-04T09:05:21+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,81 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「細胞の物理生物学」読書ノート：序文]]></title>
+    <link href="http://yagays.github.io/blog/2013/12/04/pboc-0/"/>
+    <updated>2013-12-04T08:56:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/12/04/pboc-0</id>
+    <content type="html"><![CDATA[<ul>
+<li>読書ノートまとめ：<a href="http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/">http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/</a></li>
+</ul>
+
+
+<h2>序文</h2>
+
+<h3>学問の厳密さについて - On Exacitude in Science</h3>
+
+<p>日本語1版では序文冒頭，英語2版では第1章の前半で出てくる文章．これはホルヘ・ルイス・ボルヘスとアドルフォ・ビオイ＝カサーレスの書いた短編．訳注にあるように，架空の著者による架空の本の抜粋であり，二人の書いた短編自体にこの前後は存在しない．</p>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/On_Exactitude_in_Science">On Exactitude in Science - Wikipedia, the free encyclopedia</a></li>
+<li><a href="http://www.shobunsha.co.jp/?p=860">ボルヘス怪奇譚集 | 晶文社</a></li>
+</ul>
+
+
+<p>書籍の形として翻訳されたものは，「ボルヘス怪奇譚集」や「汚辱の世界史」，「澁澤龍彦文学館10　迷宮の箱」などで読めるようだ．</p>
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4794912617" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4003279263" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=448020010X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<h4>物理を使って生物を視る4つのステップ</h4>
+
+<ol>
+<li>生物の現象を観察する</li>
+<li>オーダーの見積もりを行う</li>
+<li>単純なモデルを適用する</li>
+<li>モデルを洗練する</li>
+</ol>
+
+
+<h4>本書の全体構成</h4>
+
+<ul>
+<li>第1部：「生命とは」
+
+<ul>
+<li>主に生物の現象を扱う</li>
+</ul>
+</li>
+<li>第2部：「平衡状態としての生命」
+
+<ul>
+<li>時間を考慮しないような定量的モデルを使ってとくことの出来る問題を扱う</li>
+</ul>
+</li>
+<li>第3部：「非平衡状態としての生命」
+
+<ul>
+<li>時間に依存したシステムのダイナミックな振る舞いや複雑さを扱う</li>
+</ul>
+</li>
+<li>第4部：「生命の意味」
+
+<ul>
+<li>生物システムのさまざまな情報処理について説明する</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ライフサイエンス分野のためのプレプリント・サーバ bioRxiv]]></title>
@@ -318,7 +393,12 @@
 <h3>読書ノートまとめ</h3>
 
 <ul>
-<li>第0章</li>
+<li>序文
+
+<ul>
+<li><a href="http://yagays.github.io/blog/2013/12/04/pboc-0/">「細胞の物理生物学」読書ノート：序文</a></li>
+</ul>
+</li>
 </ul>
 
 
@@ -1914,34 +1994,6 @@ information about the shutdown.</p>
 <p>その他にも，ポスターの内容は分かんないけどこのBlogを見てるよという方も，良ければ是非いらしてください．Blogの感想・意見・文句などなどお待ちしております．冷やかしでも構いません．「Blog見てます」と声をかけてもらえれば，私が泣いて喜びます．</p>
 
 <p>ではでは，NGS現場の回#3のポスター会場でお待ちしております．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「葬式は、要らない」読了]]></title>
-    <link href="http://yagays.github.io/blog/2013/08/05/review-no-funeral-required/"/>
-    <updated>2013-08-05T21:18:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/08/05/review-no-funeral-required</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4344981588" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>宗教学者の島田裕巳氏による葬式論．タイトルは少々誇張が含まれており，実際に本書の中で述べられている主張はもう少し穏やかな口調でいて同時に強烈なメッセージを含んでいる．それは，現代日本の葬式は贅沢だということである．ただし，贅沢という語感だけで判断してはいけない．贅沢とは本書冒頭で定義されている言葉を借りるならば，</p>
-
-<blockquote><p>贅沢とは何か．それは，必要限度を超えて，金銭やものなどを惜しみなく消費することである．</p>
-
-<p><a href="http://www.amazon.co.jp/gp/product/4344981588/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4344981588&linkCode=as2&tag=yagays-22">葬式は、要らない (幻冬舎新書)</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4344981588" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> (P.15)</p></blockquote>
-
-<p>ということだ．決して他人に対して羨望や僻みを含んだ意味ではないことを強調しておきたい．この定義から考えれば，葬式は必要限度以上に金銭やものを惜しみなく消費しており，だからそういった葬式は要らないということになる．ここで言う必要限度を超えているものは，葬式費用であり，檀家と僧侶との関係であり，戒名である．そして，これらの度を超えた豪華さを作り上げてきたのは，日本的な世間体と日本における仏教の変遷である．本書では以上のような主張を軸に，日本の葬式の現状や近年急速に変化しつつある業界基準を概観した上で，日本の葬式の歴史を紐解きつつ，これから向かう日本人と宗教の関係について論じている．</p>
-
-<p>葬式論の具体的な内容は実際に本を読んでいただくとして，そこから本書の締めとして抽象化へと一気に駆け上がっていくところが個人的に非常に印象に残った．それは著者の死生観というべきものだ．本書の最後の章において，氏は「葬式の先にある理想的な死のあり方」というものを述べている．その冒頭で引き合いに出されるのはアメリカの有名私立大学であるスタンフォード大学の由来だ．スタンフォード大学は正式名称リーランド・スタンフォード・ジュニア大学と言い，一個人の名前を冠している．これはアメリカ大陸横断鉄道の生みの親であったリーランド・スタンフォード夫妻の子供の名だ．夫妻の子供は若くで腸チフスで亡くなり，夫妻はその子供の名前を残すために，これまでに築き上げた資産を使い大学を創立した．それが今のスタンフォード大学である．つまりスタンフォードとは名前であり，ある一人の人間が生きた証なのだ．そして島田裕巳氏は言う．動物の中で人間だけが個人の死の後に何か残すことができる，それは個人の願望または遺族の希望である．本人と遺族に悔いの残らない死に方をすれば，それでいいじゃないか．それが目指すべき生き方であり死に方であるなら，葬式なんてどのようなものであってもいい．だから，葬式は要らない，と．</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://ja.wikipedia.org/wiki/%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%89%E5%A4%A7%E5%AD%A6">スタンフォード大学 - Wikipedia</a></li>
-<li><a href="http://www.iiwave.com/schooldata/2/overview_41204028.html">iiwave.com: Stanford University スタンフォード・ユニバーシティ</a></li>
-</ul>
-
 ]]></content>
   </entry>
   

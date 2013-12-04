@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: pboc | Wolfeyes Bioinformatics beta]]></title>
+  <title><![CDATA[Category: PBOC | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/pboc/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-12-03T10:27:13+09:00</updated>
+  <updated>2013-12-04T09:05:21+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,81 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「細胞の物理生物学」読書ノート：序文]]></title>
+    <link href="http://yagays.github.io/blog/2013/12/04/pboc-0/"/>
+    <updated>2013-12-04T08:56:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/12/04/pboc-0</id>
+    <content type="html"><![CDATA[<ul>
+<li>読書ノートまとめ：<a href="http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/">http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/</a></li>
+</ul>
+
+
+<h2>序文</h2>
+
+<h3>学問の厳密さについて - On Exacitude in Science</h3>
+
+<p>日本語1版では序文冒頭，英語2版では第1章の前半で出てくる文章．これはホルヘ・ルイス・ボルヘスとアドルフォ・ビオイ＝カサーレスの書いた短編．訳注にあるように，架空の著者による架空の本の抜粋であり，二人の書いた短編自体にこの前後は存在しない．</p>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/On_Exactitude_in_Science">On Exactitude in Science - Wikipedia, the free encyclopedia</a></li>
+<li><a href="http://www.shobunsha.co.jp/?p=860">ボルヘス怪奇譚集 | 晶文社</a></li>
+</ul>
+
+
+<p>書籍の形として翻訳されたものは，「ボルヘス怪奇譚集」や「汚辱の世界史」，「澁澤龍彦文学館10　迷宮の箱」などで読めるようだ．</p>
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4794912617" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4003279263" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=448020010X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<h4>物理を使って生物を視る4つのステップ</h4>
+
+<ol>
+<li>生物の現象を観察する</li>
+<li>オーダーの見積もりを行う</li>
+<li>単純なモデルを適用する</li>
+<li>モデルを洗練する</li>
+</ol>
+
+
+<h4>本書の全体構成</h4>
+
+<ul>
+<li>第1部：「生命とは」
+
+<ul>
+<li>主に生物の現象を扱う</li>
+</ul>
+</li>
+<li>第2部：「平衡状態としての生命」
+
+<ul>
+<li>時間を考慮しないような定量的モデルを使ってとくことの出来る問題を扱う</li>
+</ul>
+</li>
+<li>第3部：「非平衡状態としての生命」
+
+<ul>
+<li>時間に依存したシステムのダイナミックな振る舞いや複雑さを扱う</li>
+</ul>
+</li>
+<li>第4部：「生命の意味」
+
+<ul>
+<li>生物システムのさまざまな情報処理について説明する</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「細胞の物理生物学」読書ノート：アーカイブ]]></title>
@@ -35,7 +110,12 @@
 <h3>読書ノートまとめ</h3>
 
 <ul>
-<li>第0章</li>
+<li>序文
+
+<ul>
+<li><a href="http://yagays.github.io/blog/2013/12/04/pboc-0/">「細胞の物理生物学」読書ノート：序文</a></li>
+</ul>
+</li>
 </ul>
 
 
