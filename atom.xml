@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-12-06T11:18:58+09:00</updated>
+  <updated>2013-12-06T11:29:17+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -62,7 +62,7 @@
 
 <h4>1細胞あたりの炭素原子の個数</h4>
 
-<script type="math/tex; mode=display">\frac{1\times 10 ^ {-12} \ \mathrm{g} \times 0.3 \times 0.5}{12 \ \mathrm{g/mol}} \times 6.02 \times 10 ^ {23} \ \mathrm{molecules/mol}  = 7.5 \times 10 ^ 9 \approx 10 ^ {10}</script>
+<script type="math/tex; mode=display">\frac{1\times 10 ^ {-12} \ \mathrm{g} \times 0.3 \times 0.5}{12 \ \mathrm{g/mol}} \times 6 \times 10 ^ {23} \ \mathrm{molecules/mol}  = 7.5 \times 10 ^ 9 \approx 10 ^ {10}</script>
 
 
 <ul>
@@ -406,7 +406,7 @@
 
 <h4>ひとこと</h4>
 
-<p>このボルヘスの短編に本書の姿勢というものが凝縮されている．地図と科学を対応付けて考えるならば，分野の細分化が進行した現在におけるそれぞれの科学の役割というものを憂う一方で，地図という抽象化の中にある本質的な役割と設計方法について再考するのである．</p>
+<p>このボルヘスの短編に本書の姿勢というものが凝縮されている．地図と科学を対応付けて考えるならば，分野の細分化が進行した現在におけるそれぞれの科学の役割というものを憂う一方で，地図に代表される抽象化の中にある本質的な役割と設計方法について再考するきっかけとなる．</p>
 
 <iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4320057163" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
