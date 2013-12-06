@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>MacPortsで使用していない過去のバージョンのパッケージを消す＆ちょっと可視化 - Wolfeyes Bioinformatics beta</title>
+  <title>「細胞の物理生物学」読書ノート：第2章その1 - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.io/blog/2013/06/19/macports-distfile-clean">
+  <link rel="canonical" href="http://yagays.github.io/blog/2013/12/06/pboc-02-1">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -115,7 +115,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">MacPortsで使用していない過去のバージョンのパッケージを消す＆ちょっと可視化</h1>
+      <h1 class="entry-title">「細胞の物理生物学」読書ノート：第2章その1</h1>
     
     
       <p class="meta">
@@ -131,52 +131,105 @@
   
 
 
-<time datetime="2013-06-19T04:29:00+09:00" pubdate data-updated="true">Jun 19<span>th</span>, 2013</time>
+<time datetime="2013-12-06T00:03:00+09:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>MacBook Airの128GBしかない非力なSSDもそろそろ満杯になってきた．最近ではスワップが溜まっては再起動するということを繰り返していたので，色々と容量の食っているファイルをちまちま消していた．そういった地道な努力をしつつ無駄なキャッシュや不必要なファイルなどをちゃんと調べてみると，どうやらMacPortsが10GB近く占めていることがわかり，しかもバージョンアップによって使用されなくなったgccやllvm，boostなどの古いバージョンのせいだとわかったので，思い切って消してみることにした．</p>
-
-<h3>古いバージョンのパッケージを消す</h3>
-
-<p>MacPortsでは，バージョンが上がってアップデートする際に，インストールされているバージョンのパッケージをInactiveとし最新バージョンをActiveにするという方法で，過去のバージョンのパッケージが残される仕組みになっている．ということで，Inactiveなパッケージを全て消去するために，以下のコマンドを使用する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port -u uninstall</span></code></pre></td></tr></table></div></figure>
+<div class="entry-content"><ul>
+<li>読書ノートまとめ：<a href="http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/">http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/</a></li>
+</ul>
 
 
-<p>これでInactiveなパッケージを全て消去することができる．なお，古いバージョンとして残っていたパッケージを消すということは気軽にバージョンを変更したりできなくなるということなので，もしバージョンアップによる不具合に対応する必要が出てくると後々面倒になることを注意しておきたい．</p>
+<h4>ひとこと</h4>
 
-<h3>結果</h3>
+<p>第2章から本格的に定量的な計算が始まる．今のところは数や濃度などの数え上げが中心だが，これらは今後のベースになる部分なので，今回は少し丁寧に計算を追ってみた．実際に自分で計算してみると，有効数字の扱いやオーダーへの落とし込み方が何となくわかる．</p>
 
-<p><strong>/opt/localが10GBから5GB</strong>になり，かなりのダイエットに成功した！容量の少ないMacBook Airでも，これでもうちょっと耐えられそう．</p>
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4320057163" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
-<h3>DaisyDiskによる可視化</h3>
 
-<p>さて，ここからは完全に蛇足なのだが，最近使用しているのDaisyDiskという可視化ソフトウェアがなかなか気に入っているので，今回のファイル消去の前後で/opt/localがどれだけ変化するかを確かめてみた．DaisyDiskは本来はインタラクティブに操作することができて，気になる箇所をクリックしたりして拡大することができるのだが，今回は前後の画像比較だけとなっている．使い心地が気になる人は以下のリンクから公式ページに飛んで紹介動画を見ていただきたい．</p>
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=0815344503" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
-<p><a href="http://www.daisydiskapp.com/">DaisyDisk - Analyze disk usage and free up disk space on Mac</a></p>
 
-<h4>Before</h4>
+<h2>第2章 何が？そして，どこに？―細胞と生物の構築プラン</h2>
 
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/macports_before.png" alt="" /></p>
+<h3>大腸菌の標準</h3>
 
-<h4>After</h4>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/macports_after.png" alt="" /></p>
-
-<p>まず全体の容量が10GBから5GBに変わっており，それぞれの面積は単純に割合を示していることに注意．Inactiveなパッケージを消去する前は少数の比較的大きな領域がいくつも見られる．具体的には，左側の外縁から2つ目のピンクの領域がgccやllvm，boost，emacsなどのパッケージのディレクトリを表しており，一番外縁にある灰色がそれぞれのパッケージのファイルになっている．一つのパッケージに複数の灰色で区切られた細かいディレクトリが含まれているのは，それだけアップデートして古いバージョンのパッケージが溜まっていったからだ．そしてInactiveなパッケージを消去した後は，複数の小さな領域が組み合わさっていることがわかり，それぞれのパッケージに含まれるファイルの容量が小さくなったことを示している．</p>
-
-<h4>参考</h4>
+<p>本書では最少培地での細菌の状態を基本に考える．</p>
 
 <ul>
-<li><a href="http://guide.macports.org/">MacPorts Guide</a></li>
-<li><a href="http://d.hatena.ne.jp/kanonji/20091025/1256495516">MacPortsをちゃんと使うために調べてみた - kanonjiの日記</a></li>
-<li><a href="http://d.hatena.ne.jp/t_mimori/20101020/1287568644">Macでディスク容量が足りなくなってきたら1【portをcleanしよう】 - En blanc et noir</a></li>
+<li>長さ：<script type="math/tex">2 \ \mathrm{\mu m}</script></li>
+<li>直径：<script type="math/tex">1 \ \mathrm{\mu m}</script></li>
+<li>体積：<script type="math/tex">1 \ \mathrm{\mu m ^ 3} = 1 \ \mathrm{fL}</script></li>
+<li>表面積：<script type="math/tex">6 \ \mathrm{\mu m ^ 2} </script></li>
 </ul>
+
+
+<h3>見積もり―大腸菌のサイズを測る</h3>
+
+<ul>
+<li>大腸菌の体積：<script type="math/tex">1 \ \mathrm{fL} = 1×10 ^ {-15} \ \mathrm{L}</script></li>
+<li>大腸菌の質量：<script type="math/tex">1 \ \mathrm{pg} = 1 \times 10 ^ {-12} \ \mathrm{g}</script></li>
+</ul>
+
+
+<h4>1細胞あたりのタンパク質の総質量</h4>
+
+<script type="math/tex; mode=display">1 \ \mathrm{pg} \times 0.3 \times 0.5 = 0.15 \ \mathrm{pg}</script>
+
+
+<h4>1細胞あたりの炭素原子の個数</h4>
+
+<script type="math/tex; mode=display">\frac{1\times 10 ^ {-12} \ \mathrm{g} \times 0.3 \times 0.5}{12 \ \mathrm{g/mol}} \times 6.02 \times 10 ^ {23} \ \mathrm{molecules/mol}  = 7.5 \times 10 ^ 9 \approx 10 ^ {10}</script>
+
+
+<ul>
+<li>平均的なタンパク質のアミノ酸数：<script type="math/tex">300</script>個</li>
+<li>一つのアミノ酸の特徴的な質量：<script type="math/tex">100 \ \mathrm{Da}</script></li>
+<li><script type="math/tex">1 \ \mathrm{Da} = 1.6 \times 10 ^ {-24} \ \mathrm{g}</script></li>
+</ul>
+
+
+<h4>典型的なタンパク質の質量</h4>
+
+<script type="math/tex; mode=display">300 \times 100 \ \mathrm{Da} \times 1.6 \times 10 ^ {-24} \ \mathrm{g/Da}  = 4.8 \times 10 ^ {-20} \ \mathrm{g} \approx  5 \times 10 ^ {-20} \ \mathrm{g} </script>
+
+
+<h4>1細胞あたりのタンパク質の個数</h4>
+
+<script type="math/tex; mode=display">N _ {\mathrm{ribosome}} = \frac{0.15 \times 10 ^ {-12} \  \mathrm{g}}{5 \times 10 ^ {-20} \ \mathrm{g}} = 3 \times 10 ^ {6}</script>
+
+
+<h4>1細胞あたりの細胞質中のタンパク質の個数</h4>
+
+<script type="math/tex; mode=display">3 \times 10 ^ {6} \times \frac{2}{3} = 2 \times 10 ^ {6}</script>
+
+
+<h4>1細胞あたりの膜タンパク質の個数</h4>
+
+<script type="math/tex; mode=display">3 \times 10 ^ {6} \times \frac{1}{3} = 1 \times 10 ^ {6}</script>
+
+
+<h4>1細胞あたりのリボソームの個数</h4>
+
+<script type="math/tex; mode=display">\frac{0.2 \times 0.15 \times 10 ^ {-12} \ \mathrm{g}}{2.5 \times 10 ^ {6} \ \mathrm{Da} \times \frac{1}{3}} \times \frac{1}{1.6 \times 10 ^ {-24} \ \mathrm{g/Da}} = 22,500 \approx 20,000</script>
+
+
+<h4>1細胞あたりの脂質分子の個数</h4>
+
+<script type="math/tex; mode=display">N_{\mathrm{lipid}}\approx \frac{4\times 0.5\times 6 \times 10 ^ {6} \ \mathrm{nm ^ 2}}{0.5 \ \mathrm{nm ^ 2}} = 2.4 \times 10 ^ {7} \approx 2 \times 10 ^ {7}</script>
+
+
+<h4>1細胞あたりの水分子の個数</h4>
+
+<script type="math/tex; mode=display">N_{\mathrm{H_{2}O}} \approx \frac{0.7 \times 10 ^ {-12} \ \mathrm{g}}{18 \ \mathrm{g/mol}} \times 6 \times 10 ^ {23} \ \mathrm{molecules/mol} = 2.33 \times 10 ^ {10}\approx 2 \times 10 ^ {10}</script>
+
+
+<h4>1細胞あたりの無機イオンの個数</h4>
+
+<script type="math/tex; mode=display">N_{\mathrm{ions}} \approx \frac{100 \times 10 ^ {-3} \ \mathrm{mol} \times 6 \times 10 ^ {23} \ \mathrm{molecules/mol}}{10 ^ {15} \ \mathrm{\mu m ^ {3}}} \times 1 \ \mathrm{\mu m ^ {3}} = 6 \times 10 ^ {7}</script>
 
 </div>
 
@@ -202,16 +255,22 @@
   
 
 
-<time datetime="2013-06-19T04:29:00+09:00" pubdate data-updated="true">Jun 19<span>th</span>, 2013</time>
+<time datetime="2013-12-06T00:03:00+09:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/pboc/'>PBOC</a>
+  
+</span>
 
 
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2013/06/19/macports-distfile-clean/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2013/12/06/pboc-02-1/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/06/19/macports-distfile-clean/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/06/19/macports-distfile-clean/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/12/06/pboc-02-1/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/12/06/pboc-02-1/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -232,14 +291,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2013/06/18/slide-diffexp-denovo-assembled-transcriptomes/" title="Previous Post:
-        スライドメモ："Differential expression analysis of de novo assembled transcriptomes - Nadia Davidson"">&laquo; スライドメモ："Differential expression analysis of de novo assembled transcriptomes - Nadia Davidson"</a></li>
+        href="/blog/2013/12/05/pboc-01/" title="Previous Post:
+        「細胞の物理生物学」読書ノート：第1章">&laquo; 「細胞の物理生物学」読書ノート：第1章</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2013/06/20/fastq-dump-sratoolkit/"
-        title="Next Post: SRA Toolkitを使ってsraファイルからfastqファイルに変換する(更新版)">SRA Toolkitを使ってsraファイルからfastqファイルに変換する(更新版)
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -422,8 +477,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.io/blog/2013/06/19/macports-distfile-clean/';
-        var disqus_url = 'http://yagays.github.io/blog/2013/06/19/macports-distfile-clean/';
+        var disqus_identifier = 'http://yagays.github.io/blog/2013/12/06/pboc-02-1/';
+        var disqus_url = 'http://yagays.github.io/blog/2013/12/06/pboc-02-1/';
         var disqus_script = 'embed.js';
       
     (function () {
