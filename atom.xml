@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-12-06T11:29:17+09:00</updated>
+  <updated>2013-12-10T20:49:00+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,254 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「細胞の物理生物学」読書ノート：第2章その2]]></title>
+    <link href="http://yagays.github.io/blog/2013/12/10/pboc-02-2/"/>
+    <updated>2013-12-10T20:00:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/12/10/pboc-02-2</id>
+    <content type="html"><![CDATA[<ul>
+<li>読書ノートまとめ：<a href="http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/">http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/</a></li>
+</ul>
+
+
+<h4>ひとこと</h4>
+
+<p>今回は第2章全体を大まかに見ていく．この2章では，<a href="http://yagays.github.io/blog/2013/12/06/pboc-02-1/">前回</a>のようにモデルとなる大腸菌における様々な数や性質を紹介した後に，生物を構成する構造を大きさのオーダーごとに階層に分けて，各階層ごとの特徴について述べている．単に生物の構造を列挙しているだけに見えるが，それぞれがどの大きさレベルでの話をしているのかを把握し，それらの関係性を理解することが重要となる．ある構造を形作る小さな構造の集合という視点で眺めれば，生物の持つ複雑さを単純化して理解することができる．</p>
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4320057163" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=0815344503" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>大腸菌の概要</h3>
+
+<h4>モデル生物としての大腸菌</h4>
+
+<p>大腸菌は以下の理由により実験的に扱いやすく，分割できる最小単位である単細胞の生物としての標準的な「ものさし」として利用が可能である．</p>
+
+<ul>
+<li>採取が容易</li>
+<li>好気条件下で増える</li>
+<li>実験室での培養が可能で，生育環境も変えやすい</li>
+<li>変異体の作成が容易（遺伝子操作）</li>
+</ul>
+
+
+<h4>実際に大腸菌に含まれているタンパク質の測り方</h4>
+
+<p>代表的な方法として，2次元ポリアクリルアミドゲル電気泳動により細胞内に入り混じったタンパク質を分離することができる．</p>
+
+<ul>
+<li>横方向：pH：電場の印加</li>
+<li>縦方向：分子量：電荷を持った界面活性剤に固定させる</li>
+</ul>
+
+
+<h4>生物学的構造を調べる実験手法</h4>
+
+<ul>
+<li>計測方法
+
+<ul>
+<li>対象とする構造との相互作用を測る</li>
+<li>対象とする構造に力を加える</li>
+</ul>
+</li>
+</ul>
+
+
+<p>具体的には，以下のような実験がある．</p>
+
+<ul>
+<li>光学顕微鏡
+
+<ul>
+<li>特定の構造上に分布した蛍光物質から出る光を計測する</li>
+</ul>
+</li>
+<li>原子間力顕微鏡
+
+<ul>
+<li>表面を走査して構造の外形を計測する</li>
+</ul>
+</li>
+<li>電子顕微鏡，低温電子トモグラフィ
+
+<ul>
+<li>試料に放射した電子線やX線が散乱する様子を計測することによって内部構造を再構成する</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>大腸菌のスケール</h4>
+
+<p>図表参考．これから先はズームインしていく段階とズームアウトしていく段階をそれぞれ追いつつ，それらが成り立つ上での構造を詳しく見ていく．</p>
+
+<h3>様々な細胞とその構造</h3>
+
+<p>まず細胞からスタートする．ひとえに細胞と言っても，その大きさや機能は様々である．先ほど扱った大腸菌以外にも，単細胞の真核生物であったり多細胞生物の機能ごとに分化した細胞などがある．</p>
+
+<ul>
+<li>原生生物</li>
+<li>植物細胞</li>
+<li>出芽酵母
+
+<ul>
+<li>単細胞の真核生物のモデル生物</li>
+</ul>
+</li>
+<li>赤血球，線維芽細胞，ニューロン，網膜桿体細胞
+
+<ul>
+<li>高度に専門化した細胞</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>スケールを下げて眺める</h3>
+
+<h4>細胞小器官</h4>
+
+<p>細胞小器官が集まって細胞を構成している．</p>
+
+<ul>
+<li>小胞体</li>
+<li>ゴルジ体</li>
+<li>ミトコンドリア</li>
+<li>リソソーム</li>
+</ul>
+
+
+<p>これらに加えて，特定の機能に特化した細胞は，他の細胞にはない高度に専門化した細胞小器官を持っている場合がある．</p>
+
+<h4>生体高分子集合体</h4>
+
+<p>生体高分子集合体が集まって細胞小器官を構成している．</p>
+
+<ul>
+<li>タンパク質，核酸，糖，脂質などが集まった通常の複合体 
+
+<ul>
+<li>10nmスケールの生体高分子の集合として，重要な機能を持つ</li>
+<li>e.g. ヌクレオソーム，核孔複合体，レプリソーム，リボソーム，プロテアソーム，ATP合成酵素</li>
+</ul>
+</li>
+<li>特定の高分子のユニットが連なった，らせん複合体
+
+<ul>
+<li>同じ構造単位が繰り返され幾何的構造を取る</li>
+<li>e.g. 微小管，細菌のべん毛，タバコモザイクウィルス，コラーゲン繊維，DNA</li>
+</ul>
+</li>
+</ul>
+
+
+<p>これらの高分子集合体が集まって，特徴的な細胞内構造を取ることもある．</p>
+
+<ul>
+<li>小胞体
+
+<ul>
+<li>小胞体膜とリボソーム</li>
+</ul>
+</li>
+<li>飛翔筋肉
+
+<ul>
+<li>筋原線維（ミオシンフィラメントの集合）</li>
+<li>ミトコンドリア</li>
+</ul>
+</li>
+<li>上皮細胞
+
+<ul>
+<li>微繊毛</li>
+</ul>
+</li>
+</ul>
+
+
+<p>また，ウィルスは生体高分子集合体の中でも特殊な分類に入る．独立した複製という細胞としての基本機能は持たないものの，宿主に寄生して自己増殖ができるという特徴を持つ．</p>
+
+<ul>
+<li><p>キャプシドの多様性</p>
+
+<ul>
+<li>20面体のタンパク質の殻で，中にウィルスの遺伝物質が入っている</li>
+</ul>
+</li>
+<li><p>HIV</p></li>
+</ul>
+
+
+<h4>生体高分子</h4>
+
+<p>生体高分子が集まって生体高分子集合体を構成している．</p>
+
+<ul>
+<li>タンパク質
+
+<ul>
+<li>アミノ酸の配列</li>
+<li>球と棒による表示，空間充填表示，リボン表示などの表現方法がある</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>スケールを上げて眺める</h3>
+
+<h4>多細胞性</h4>
+
+<p>単体で生きることのできる細胞が集まることでコミュニケーションを行い協力する．</p>
+
+<ul>
+<li>ストロマトライトの原始的なコロニー</li>
+<li>細菌のバイオフィルム</li>
+<li>粘菌の移動体と子実体</li>
+</ul>
+
+
+<h4>多細胞生物</h4>
+
+<p>多細胞生物は以下の3つの要素を獲得することにより，細胞の集合体としてより大きく多機能な生物個体を形成することができる．</p>
+
+<ul>
+<li>多細胞生物の細胞の大きさと複雑さの3つの要素
+
+<ul>
+<li>大きな細胞京大体を構造的に支える細胞外マトリックス
+
+<ul>
+<li>e.g. 結合組織や上皮シート</li>
+</ul>
+</li>
+<li>同じゲノム情報を持ちつつも別の機能を演じることができるような専門化
+
+<ul>
+<li>e.g. 上皮細胞やニューロンなど</li>
+</ul>
+</li>
+<li>細胞が互いにコミュニケーションを取るための精巧な機構
+
+<ul>
+<li>e.g. ニューロンにおけるシナプス</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>個々の多細胞生物</h4>
+
+<p>生物個体を超えたさらに高次のレベルとして，ヒトと，ヒトの体に存在する微生物細胞群の関係も生態系として考えられる．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「細胞の物理生物学」読書ノート：第2章その1]]></title>
@@ -2180,80 +2428,6 @@ information about the shutdown.</p>
 <p>本書の中で特に興味深く語られるのは，やはり人間原理の発想というものが，天動説から地動説への転換と非常に類似しているということだろう．これはすなわち人間を中心に考えるか否かの問題である．人間の住む地球を系の中心としていた天動説から，地球も太陽を中心として公転しているする惑星の一つにすぎないとする地動説への転換は，一般に知られるように非常に大きな意味を持っていた．これは人間原理にも同様に当てはまる．われわれが観測している宇宙は唯一の絶対的な世界そのものではなく，観測者である人間が観測できうるようなあまたある多元宇宙の一つにすぎず，なんら特別なものではないかもしれないということである．そういった意味で，人間という存在を中心から引きずり下ろすということは，天動説から地動説への概念的な移り変わりと非常に似通っているといえる．</p>
 
 <p>ただし，だからといって天動説を信じてきた人々や人間原理以前の人々が傲慢であったかといえば，もちろんそうではない．人間の認識は，そして科学は，ものの考え方であるモデルを立ててそれを実験や観測によって確認することで，現象を理解につなげる．天動説はその当時の天体の観測技術ではある程度妥当であり，天体の運行を予測するということでは一定の成果を上げていたとされる．現代から考えると想像しづらい世界だが，そこは否定しようのない事実であり，それを無知という言葉で片付けることはできない．科学においては，常にモデルは理論を補強する実験データを求め，観測はその背後にある統一されたモデルを求める．人間原理はその繰り返しの中で出てきた新しい考え方であり，それが妥当であるかどうかはこれからの科学の発展により受理または棄却されていくのだろう．「巨人の肩の上に立つ」という言葉があるが，現代において人間原理は紛れもなくその巨人の肩の一部となっている．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[学会ポスターを作る/発表する際の覚書]]></title>
-    <link href="http://yagays.github.io/blog/2013/09/09/poster/"/>
-    <updated>2013-09-09T01:43:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/09/09/poster</id>
-    <content type="html"><![CDATA[<p>今回初めてポスターを作るにあたって知ったこと・気付いたこと・考えたことなどをまとめておく．次にポスターを作る時の自分，これを見て前回のことを思い出して頑張ってくれ．</p>
-
-<h3>心得その1：ポスターにフォーマットは無い</h3>
-
-<p>ポスターは与えられた制約のもとで自由に作ってよい．どのようにレイアウトをしようが，どんな内容を書こうが，ポスターを貼れるボードの大きさの範囲内で好き勝手に作ることができる．掲載する研究内容だって自由．テキストのフォントや大きさだって自由．PowerPointで作ったってKeynoteで作ったって手書きで作ったって自由．すべて好きなように作れる．ポスターという形でなくても，プレゼンテーションのスライドをA4に印刷して並べて掲示することもできるし，何ならiPadを飾ったって良い．コンビニによくある商品のポップをポスターに貼ることで内容を強調することもできるし，ポストイットに意見を書き込んで貼っていけばポスターはブレインストーミングの場にもなる．先輩の使いふるしのテンプレートを貰ってただ埋めていくのではなく，まず自分の研究のことを深く理解して，その成果や魅力を人に伝えるのに最も適した方法を考える．</p>
-
-<h3>心得その2：作っては壊しを繰り返す</h3>
-
-<p>画面に映し出される白紙のポスター原稿を前に呆然としてあれこれ思い悩む前に，とにかく何でもいいから書き込む．ポスターはどうしても1枚絵だから全体の構成や要素間の兼ね合いに注意が向かいやすいが，どうせ後々綺麗に整えるのだから気にしない．画面全体が埋まるまでは，適当に必要そうなことをひたすら詰め込む．研究内容に関して要旨などの文章が既にあるなら全部貼り付けておく．図ができていれば全部コピーして画面端にでも表示させておく．外見だけでも文字と図の詰まった状態にしておけば，取り敢えずは何とかなるんじゃないかと少し自信と余裕が出てくる．ただし，ここまではまだポスター作成の準備段階．</p>
-
-<p>次に，ポスターのクオリティを上げる行程に入る．ここから如何に内容をブラッシュアップしていくかが大変で，修正しては全体を見直すということをひたすら繰り返す必要がある．要らない部分を削りまくり，足りないものを付け足しまくる．ある程度できたと思ったらA4に印刷し，PCと画面から離れて紙と赤ペンに持ち替える．直すべきトコロを一通り列挙したら修正を加える作業に戻る．全体のレイアウトを見たければ，ポスターサイズの原稿をA4サイズに分割して印刷し，セロテープで貼りあわせて原寸大のサイズで確認する．これらの行程を繰り返せば繰り返すほどクオリティが高くなると思ったほうが良い．また，ある程度の段階で先生や先輩・後輩に意見を聞くのも大切で，パッと見たときの印象や論理構成，誤字脱字をチェックしてもらえると格段にクオリティが上がる．</p>
-
-<h3>心得その3：ポスターにすべて詰め込まなくても口頭説明で何とかなる</h3>
-
-<p>簡単に言えば，ポスターに不備があっても実際は何とかなる．一方的に説明をするプレゼンテーションとは違い，ポスターは相手とやり取りしながら内容を伝えることができる．ポスターに書いてないことは，覚えている範囲内で自分の口から説明すればよい．決められた発表時間も存在しないから，状況に合わせて説明の細かさや配分を変えることも可能になる．ポスターは往々にして端から端までじっくり見てもらうことが難しいものだから，ポスターの出来栄えや内容の充実度合いにこだわるのではなく，ある程度割り切った上で議論の叩き台として役に立てることを重要視する．そういった意味で，研究概要を漠然と書くのではなく，具体的な方法や数字を織り込んで作っておいた方が実際に役に立つ．</p>
-
-<br/>
-
-
-<h3>具体的なポスターの作り方 （リンク）</h3>
-
-<p><strong>ポスターの基本的な考え方やレイアウト</strong></p>
-
-<ul>
-<li><a href="http://www.ploscompbiol.org/article/info:doi/10.1371/journal.pcbi.0030102">PLOS Computational Biology: Ten Simple Rules for a Good Poster Presentation</a></li>
-<li><a href="http://colinpurrington.com/tips/academic/posterdesign">Designing conference posters - Colin Purrington</a></li>
-<li><a href="https://connect.le.ac.uk/posters">Designing posters</a></li>
-</ul>
-
-
-<p><strong>MacでA4分割したポスターを印刷するとき</strong></p>
-
-<ul>
-<li><a href="http://sysbioevo.org/ogishima/blog/research/keynote_posterazor_poster.html">KeynoteとPosteRazorによる学会ポスター分割印刷作製 – Ogishima Blog</a></li>
-</ul>
-
-
-<p><strong>豊富な具体例</strong></p>
-
-<ul>
-<li><a href="http://f1000.com/posters">F1000Posters - OA repository for posters and slide presentations in biology and medicine.</a></li>
-<li><a href="http://www.flickr.com/groups/pimpmyposter/">Flickr: The Pimp My Poster Pool</a></li>
-<li><a href="http://vizbi.org/Posters/">Posters | VIZBI</a></li>
-</ul>
-
-
-<p><strong>こんなポスターだってアリ</strong></p>
-
-<ul>
-<li><a href="http://blastedbio.blogspot.jp/2013/08/pixelated-potato-posters-in-python.html">Blasted Bioinformatics!?: Pixelated Posters at Potatoes in Practice</a></li>
-<li><a href="http://www.bioinformaticszen.com/post/genotype-from-phenotype/">Poster: Predicting genotype from phenotype · Bioinformatics Zen</a></li>
-</ul>
-
-
-<h3>良いデザインの背後にある理論を解説した良書</h3>
-
-<ul>
-<li>(参考)<a href="http://yagays.github.io/blog/2012/10/18/review-the-art-of-designing/">「デザインする技術 -よりよいデザインのための基礎知識」読了 - Wolfeyes Bioinformatics beta</a></li>
-</ul>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4839928401" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4844358588" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
 ]]></content>
   </entry>
   
