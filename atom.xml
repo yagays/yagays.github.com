@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-12-10T20:49:00+09:00</updated>
+  <updated>2013-12-11T15:15:43+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,113 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[MacPortsでPyMOLをインストールする]]></title>
+    <link href="http://yagays.github.io/blog/2013/12/11/pymol-macports/"/>
+    <updated>2013-12-11T13:24:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/12/11/pymol-macports</id>
+    <content type="html"><![CDATA[<p>分子ビューアのPyMOLをインストールしたので，そのときのメモ．今回は無料版をコンパイルするということでMacPortsからインストールしたのだが，FinkやHomebrewからもインストールすることができるようだ．</p>
+
+<ul>
+<li><a href="http://www.pymolwiki.org/index.php/MAC_Install">MAC Install - PyMOLWiki</a></li>
+</ul>
+
+
+<h4>MacPortsによるインストールとtclのバリアントによるエラー</h4>
+
+<p>MacPortsからそのままインストールを行うと以下のようなエラーが出た．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port install pymol
+</span><span class='line'>---&gt;  Computing dependencies for pymol
+</span><span class='line'>---&gt;  Fetching archive for pymol
+</span><span class='line'>Error: org.macports.archivefetch for port pymol returned: tcl must be installed without +corefoundation.
+</span><span class='line'>Please see the log file for port pymol for details:
+</span><span class='line'>    /opt/local/var/macports/logs/_opt_local_var_macports_sources_rsync.macports.org_release_tarballs_ports_science_pymol/pymol/main.log
+</span><span class='line'>To report a bug, follow the instructions in the guide:
+</span><span class='line'>    http://guide.macports.org/#project.tickets
+</span><span class='line'>Error: Processing of port pymol failed</span></code></pre></td></tr></table></div></figure>
+
+
+<p>エラーログを見ると，どうやらtclのインストールの際にcorefoundationというバリアントが付いているせいでエラーが起きているようだ．MacPortsで入れたtclを見てみると，以下のようにcorefounderとthreadsのバリアントが付いていることが確認できる．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ port installed tcl
+</span><span class='line'>The following ports are currently installed:
+</span><span class='line'>  tcl @8.6.1_0+corefoundation+threads (active)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>この問題は既に報告されているようだが，tclを再インストールせずにエラーを回避するのは今のところできない模様．ここにも書かれている通り，tclはRなどの他のソフトウェアでも使用するものなのでなるべく弄りたくは無いのだが，今回はやむを得ない．</p>
+
+<ul>
+<li><a href="http://trac.macports.org/ticket/37062">#37062 (pymol @1.5 tcl must be installed without +corefoundation) – MacPorts</a></li>
+</ul>
+
+
+<p>ということで，以下のようにtclを一度アンインストールして，バリアントを変えた状態でインストールしなおす．tclの依存関係にある他のプログラムも一度消さなければいけない．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port uninstall py27-pmw
+</span><span class='line'>$ sudo port uninstall py27-tkinter
+</span><span class='line'>$ sudo port uninstall tk
+</span><span class='line'>$ sudo port uninstall tcl
+</span><span class='line'>
+</span><span class='line'>$ sudo port install tcl -corefoundation
+</span><span class='line'>$ sudo port install tk -quartz
+</span><span class='line'>$ sudo port install pymol</span></code></pre></td></tr></table></div></figure>
+
+
+<p>アンインストールするpy27-pmw，py27-tkinter，tk，tclはそれぞれ依存関係で繋がっているので，この順番でアンインストールしないといけない．また，py27-pmwとpy27-tkinterはpymolを入れるときにdependenciesの関係で自動で入れてくれるので，アンインストールした後に明示的にインストールしなおさなくても良い．</p>
+
+<p>これでPyMOLがインストールできるはず．</p>
+
+<h3>余談</h3>
+
+<p>PyMOLを動かすにはXQuartzが必要になるので，あらかじめインストールしておいたほうがいいだろう．</p>
+
+<ul>
+<li><a href="http://xquartz.macosforge.org/landing/">XQuartz</a></li>
+</ul>
+
+
+<h4>環境</h4>
+
+<ul>
+<li>Mac OS X 10.9 Mavericks</li>
+<li>PyMOL Version 1.6.0.0</li>
+</ul>
+
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://www.pymol.org/">PyMOL | www.pymol.org</a></li>
+<li><a href="http://biokids.org/?PyMOL%A4%F2%BB%C8%A4%C3%A4%C6%A4%DF%A4%E8%A4%A6">PyMOLを使ってみよう - BioKids Wiki</a></li>
+<li><a href="http://www.wkagawa.info/crystallography_on_mac/pymol/">PyMOL | Wataru Kagawa&#8217;s Weblog</a></li>
+<li><a href="http://togotv.dbcls.jp/20090617.html">PyMOLを使ってタンパク質の構造を見る - 統合TV (togotv)(2009-06-17)</a></li>
+<li><a href="http://togotv.dbcls.jp/20090707.html">PyMOLを使い倒す - 統合TV (togotv)(2009-07-07)</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「細胞の物理生物学」読書ノート：第2章その2]]></title>
@@ -1047,7 +1154,18 @@
 <li>第2章
 
 <ul>
-<li><a href="http://yagays.github.io/blog/2013/12/06/pboc-02-1/">「細胞の物理生物学」読書ノート：第2章その1</a></li>
+<li><a href="http://yagays.github.io/blog/2013/12/06/pboc-02-1/">「細胞の物理生物学」読書ノート：第2章その1</a>
+
+<ul>
+<li>大腸菌のサイズの見積もり</li>
+</ul>
+</li>
+<li><a href="http://yagays.github.io/blog/2013/12/10/pboc-02-2/">「細胞の物理生物学」読書ノート：第2章その2</a>
+
+<ul>
+<li>第2章の概要</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2404,30 +2522,6 @@ information about the shutdown.</p>
 <p>ただ本書でひとつ惜しむらくは，分量が少ないこと．薄い本といえどあれこれ設定やら背景を入れて，PRMLのごとく色んな話題を詰め込んで欲しかった．まあ本業のある中での執筆活動ということで大変だとは思うが，またストックの溜まった頃にまとめて放出してもらいたい．こういう小説系で書かれた数学分野の啓蒙書では，例えば野矢茂樹氏の<a href="http://www.amazon.co.jp/gp/product/4061494201/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4061494201&linkCode=as2&tag=yagays-22">無限論の教室 (講談社現代新書)</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4061494201" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />が個人で書きためていた原稿の新書化だった気がするので，結城浩氏の数学ガールくらいの大作とまではいかなくても，新書くらいの分量なら書籍としての出版は期待できるかも…．</p>
 
 <p>という感じで，機械学習系の勉強会での活動やgihyo.comで連載中の<a href="http://gihyo.jp/dev/serial/01/machine-learning">「機械学習 はじめよう」</a>など，これからも多方面で活躍されることを楽しみにしております．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「宇宙はなぜこのような宇宙なのか――人間原理と宇宙論」読了]]></title>
-    <link href="http://yagays.github.io/blog/2013/09/14/review-anthropic-principle/"/>
-    <updated>2013-09-14T09:15:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/09/14/review-anthropic-principle</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4062882191" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>翻訳家の青木薫氏による書き下ろしの新書．この著者はサイモン・シンの数多くの著作の翻訳を手がけていることで有名だが，今回は翻訳ではなく本人が温めていた企画を科学書としてまとめ上げた形になる．そもそも翻訳業に進む以前に京都大学で理論物理の博士号を取得した氏だが，手がける作品の中で本書の軸となる概念に影響されたのが最初らしい．このあたりは本書の前書きや後書きに詳しく書かれている．そういったところで，自身の専門と関係した分野で翻訳書にまつわる内容を，わかりやすく分量もそこそこに書き上げたのがこの本書「宇宙はなぜこのような宇宙なのか」である．</p>
-
-<p>この題名はトートロジー的な表現をしていて少し分かりにくいが，中身を読めばこのタイトルはまさに本書を一言で言い表していることがわかる．本書のキーワードは，副題にある通り「人間原理」である．この人間原理という物の見方を通して宇宙というものを理解しようとする流れが，最近の宇宙論や理論物理学における潮流となっている．人間原理は一言で言えば</p>
-
-<blockquote><p>宇宙がなぜこのような宇宙であるのかを理解するためには，われわれ人間が現に存在しているという事実を考慮にいれなければならない</p>
-
-<p>(P.3)</p></blockquote>
-
-<p>とされる．ここで言う宇宙の理解というのは，具体的には宇宙の性質を決めている物理定数のことであり，実験や観測によって求められる定数の根拠や制約に人間が存在しているという事実を組み込むことで，この宇宙をより正確に理解しようということである．この一見して非科学的で奇妙な原理はそもそもどこから出てきたのか，なんでそのようなことを考えるのかに至ったのかを，これまでの人類の宇宙論/宇宙観を辿りつつ紐解いていく．</p>
-
-<p>本書の中で特に興味深く語られるのは，やはり人間原理の発想というものが，天動説から地動説への転換と非常に類似しているということだろう．これはすなわち人間を中心に考えるか否かの問題である．人間の住む地球を系の中心としていた天動説から，地球も太陽を中心として公転しているする惑星の一つにすぎないとする地動説への転換は，一般に知られるように非常に大きな意味を持っていた．これは人間原理にも同様に当てはまる．われわれが観測している宇宙は唯一の絶対的な世界そのものではなく，観測者である人間が観測できうるようなあまたある多元宇宙の一つにすぎず，なんら特別なものではないかもしれないということである．そういった意味で，人間という存在を中心から引きずり下ろすということは，天動説から地動説への概念的な移り変わりと非常に似通っているといえる．</p>
-
-<p>ただし，だからといって天動説を信じてきた人々や人間原理以前の人々が傲慢であったかといえば，もちろんそうではない．人間の認識は，そして科学は，ものの考え方であるモデルを立ててそれを実験や観測によって確認することで，現象を理解につなげる．天動説はその当時の天体の観測技術ではある程度妥当であり，天体の運行を予測するということでは一定の成果を上げていたとされる．現代から考えると想像しづらい世界だが，そこは否定しようのない事実であり，それを無知という言葉で片付けることはできない．科学においては，常にモデルは理論を補強する実験データを求め，観測はその背後にある統一されたモデルを求める．人間原理はその繰り返しの中で出てきた新しい考え方であり，それが妥当であるかどうかはこれからの科学の発展により受理または棄却されていくのだろう．「巨人の肩の上に立つ」という言葉があるが，現代において人間原理は紛れもなくその巨人の肩の一部となっている．</p>
 ]]></content>
   </entry>
   
