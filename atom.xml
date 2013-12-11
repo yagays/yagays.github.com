@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-12-11T15:15:43+09:00</updated>
+  <updated>2013-12-11T17:07:33+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -25,9 +25,17 @@
 </ul>
 
 
-<h4>MacPortsによるインストールとtclのバリアントによるエラー</h4>
+<h4>MacPortsによるインストール</h4>
 
-<p>MacPortsからそのままインストールを行うと以下のようなエラーが出た．</p>
+<p>通常のMacPortsのインストールの手順と同じで，以下のようにすればインストールすることができる．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port install pymol</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>tclのバリアントによるエラー</h4>
+
+<p>のだけれども，自分の環境でMacPortsからそのままインストールを行うと以下のようなエラーが出た．</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -339,7 +347,7 @@
 <li>多細胞生物の細胞の大きさと複雑さの3つの要素
 
 <ul>
-<li>大きな細胞京大体を構造的に支える細胞外マトリックス
+<li>大きな細胞共同体を構造的に支える細胞外マトリックス
 
 <ul>
 <li>e.g. 結合組織や上皮シート</li>
