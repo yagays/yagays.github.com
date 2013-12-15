@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-12-15T20:42:05+09:00</updated>
+  <updated>2013-12-15T22:56:07+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -55,7 +55,12 @@
 <iframe src="http://www.slideshare.net/slideshow/embed_code/29219489" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
 
 
-<p>さて，PRMLの図を動かしてみたという感じですが，どうだったでしょうか？EMアルゴリズムの各ステップで，どういった操作をしていたかをざっくりと分かって頂けたかと思います．</p>
+<p>さて，PRMLの図を動かしてみたという感じですが，どうだったでしょうか？EMアルゴリズムの各ステップを更新していくことで，対数尤度の山を徐々に登っていく様子が何となくつかめたと思います．初期値<script type="math/tex">\theta</script>だったパラメータも，<script type="math/tex">\theta'</script>，<script type="math/tex">\theta''</script>と更新されて，尤度関数を最大化するパラメータが求められたことがわかります．</p>
+
+<h3>EMアルゴリズムにおける下界</h3>
+
+<p>とは言うものの，下界って何だとかどうやって計算するんだとか色々あやふやなところがあるので，その辺を少し補足しておきます．下界（Lower Bound）とは，その名の通り対数尤度がここよりも小さくならないということを表しています．EMアルゴリズムはこの下界というものを使って，だんだん底上げしていく感じだと考えれば良いと思います．Eステップでパラメータを固定したときの下界というものを求めて，Mステップで潜在変数の分布を固定したときの下界と対数尤度の値が同じになるように下界を押し上げます．これを繰り返すことによって，対数尤度を増加させていくという感じです．必ず下界よりも対数尤度は上にあるので，決して対数尤度が小さくはなりません．こうやってEMアルゴリズムは対数尤度を最大化していきます．
+例えば混合ガウス分布にEMアルゴリズムを適用する場合だと，Jensenの不等式を使って数式の変形することにより下界は求めることができます．下界と対数尤度の差が実はKLダイバージェンスになっているという話もあるのですが，今回は潜在変数の分布について話してないので割愛します．詳しくはPRMLの数式を追ってみてください．</p>
 
 <h3>イメージで分かるEMアルゴリズムの性質</h3>
 
