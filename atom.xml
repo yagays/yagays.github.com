@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2013-12-13T13:35:58+09:00</updated>
+  <updated>2013-12-15T20:19:34+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[MLAC2013 数式を使わずイメージで理解するEMアルゴリズム]]></title>
+    <link href="http://yagays.github.io/blog/2013/12/15/mlac-2013-em-algorithm/"/>
+    <updated>2013-12-15T19:16:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2013/12/15/mlac-2013-em-algorithm</id>
+    <content type="html"><![CDATA[<h3>はじめに</h3>
+
+<p><a href="http://qiita.com/advent-calendar/2013/machinelearning">Machine Learning Advent Calendar 2013</a>の15日目を担当する<a href="https://twitter.com/yag_ays">@yag_ays</a>です．今回は初心者の人を対象に，なるべく数式を使わずにEMアルゴリズムについて解説したいと思います．</p>
+
+<p>EMアルゴリズムは，SVMやニューラルネットワークといった華々しい機械学習の手法の一つではなく，機械学習の中で使われる尤度最大化という一部分を担当するアルゴリズムです．そのため多くの人にとってEMアルゴリズムは，それ単体を使ってみたりだとか独自に改良をしたりするような対象ではないでしょう．でも，EMアルゴリズムなんて仰々しい名前が付けられているだけあって，いざ自分の仕事に組み込む場合には中身を理解していないと「なぜEMアルゴリズムを使ったの？」であったり「それを使うと何が嬉しいの？」といった質問が来たときに困るし，とりあえず概念だけでも一通り理解しておきたいと思う人もいると思います．そこで今回は，大雑把にEMアルゴリズムを理解することを目的に，細かい定義やら数式は抜きにしてイメージで覚えられるような解説を書いてみました．まあ結局PRMLの受け売りなのですが，紙の上で見るよりかは分かりやすくしたと思うので勘弁してください．</p>
+
+<ul>
+<li><strong>この記事の対象となる人</strong>
+
+<ul>
+<li>EMアルゴリズムについて聞いたことはあるけどよく分かっていない人</li>
+<li>例えば「これEMアルゴリズム使ってるけど，局所解に落ちてるんじゃない」って言われたとして，？？？ってなる人</li>
+</ul>
+</li>
+<li><strong>この記事の対象ではない人</strong>
+
+<ul>
+<li>「パターン認識と機械学習」(PRML)下巻9章を読み通した人</li>
+<li>イメージと聞いて情報幾何の話だと思った人</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>EMアルゴリズムとは</h3>
+
+<p>EMアルゴリズムは，繰り返しによって尤度関数を最大化するアルゴリズムです．機械学習の文脈では，よく混合ガウス分布（GMM）などの潜在変数を用いたモデリングの際に用いられます．PRMLで言うところの9章「混合モデルとEM」ですね．また，今回のMLAC 2013では<a href="https://github.com/masakazu-ishihata/advent2013">m_ishihataさんの記事</a>でも出てきますので，何に使うのかピンと来ない人はそちらも参照してもらえればと思います．</p>
+
+<p>ここで覚えておいて欲しいのは，<strong>尤度関数を最大化する</strong>ということです．確率的な機械学習の手法を使っていると，ときどき尤度関数というものが出てきます．尤度関数は数式には書くことができても，実際にそれがどういう形をしていてどの値で最大になるのかといったことは全く予想がつきません．尤度関数に適当に数字を入れれば値が帰ってきますが，それをパラメータすべてについて計算することは現実的には不可能です．そういった条件でどうにか上手いこと計算して効率よく最大値を求めたいといったときに，EMアルゴリズムは使われます．</p>
+
+<h3>イメージで理解するEMアルゴリズム</h3>
+
+<p>前置きはこのくらいにして，では実際にEMアルゴリズムが何をしているのかを動画で見てもらいましょう．なお，これはあくまでイメージですので，実際にはn次元以上の空間ですし対数尤度関数が図示できるわけでもありません．その点は注意してください．なお，以下の解説はPRML下巻9章の図9.14 (P.169)を参考にしています．</p>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/29219489" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+
+
+<p>さて，PRMLの図を動かしてみたという感じですが，どうだったでしょうか？EMアルゴリズムの各ステップで，どういった操作をしていたかをざっくりと分かって頂けたかと思います．</p>
+
+<h3>イメージで分かるEMアルゴリズムの性質</h3>
+
+<p>ここからは，EMアルゴリズムで注意しなければいけない点を解説します．先ほど紹介したイメージを持っていれば，数式を使わずともEMアルゴリズムの持つ問題点を指摘できるはずです．</p>
+
+<h4>各ステップを繰り返す必要がある</h4>
+
+<p>当然ですが，EMアルゴリズムはEステップとMステップを繰り返す必要があります．EMアルゴリズムが適用できる問題ならば各ステップの計算自体は簡単ですが，パラメータや対数尤度値がある程度収束するまでは，計算し続けなければいけません．</p>
+
+<h4>初期値に依存し，局所最適解に落ちることもある</h4>
+
+<p>先ほど示したイメージでは，下界を引き上げていく際に二次関数のようなものの頂点と対数尤度関数を行ったり来たりしていました．ということは，きちんと勾配にしたがって最大化してくれるという保証がある一方で，それらがある程度一致したところでパラメータは更新しようがないということになります．そのため，EMアルゴリズムは初期値によっては局所最適解に落ちる可能性もあります．</p>
+
+<h3>まとめ</h3>
+
+<p>いかがだったでしょうか？この記事で少しでもEMアルゴリズムのイメージがつかめてもらえれば幸いです．そうすれば，PRMLなどの数式の出てくる参考書を読んでも，EMアルゴリズムというものが一体何がしたいのかといったことが理解しやすくなるんじゃないかと思います．</p>
+
+<p>少し個人的な話になりますが，私自身はこうやって模式図やイメージを実際に頭のなかで組み立てると，とても理解が捗ります．私が機械学習の勉強をするときにこういうことを意識しはじめたのは，PRML復々習レーンで第3章の線形回帰モデルの冒頭を発表したときでした．そのときには3.1.2の「最小二乗法の幾何学」という項が一体何を言っているのか全く分からず，発表の際に堂々と「分かりませんでした！」と言ったことをよく覚えています．その時に発表の際に参加者の皆さんに教えていただいたおかげで，最小二乗法の理解が一気に深まったように思えました．よくわからない数式の最小化という漠然とした状態から，数式の各項が何を表していて，何を最小化するのかということまで具体的に理解できたのはこのときでした．こういった感覚はPRMLを読むうちに何度もあり，自分の中できちんと理解に落としこむことの重要性を実感しました．今回の記事では，その一つとしてEMアルゴリズムをイメージでつかんでもらえるような紹介の仕方をしてみました．勿論のことながら，本当に自分で自由に使えるくらい理解するにはきちんと数式を追わなければいけないですし，もちろん図式としてイメージできないことも多々あります．しかしながら，どんな難しいアルゴリズムや手法でも，やってることは絵にかけるほど単純なのだというリラックスした感覚で臨めば，意外と理解できるものだと思います．機械学習の勉強で壁にぶち当たったときは，ぜひ図を書いたり具体的な絵にして考えなおしてみると上手くいくかもしれません．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://qiita.com/advent-calendar/2013/machinelearning">Machine Learning Advent Calendar 2013 - Qiita [キータ]</a></li>
+</ul>
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621061224" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621061240" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「山賊ダイアリー」1〜4巻 読了]]></title>
@@ -2488,51 +2565,6 @@ information about the shutdown.</p>
 <p>基本的にはPythonを拡張するパッケージで，バイオインフォマティクス系のデータベースに簡単にアクセスして解析できるようにするのが目的のようだ．上記のリストアップされているデータベースの並びを見ると「お前それよく使われてそうなやつリストアップしてるだけだろ」と思わざるをえないが，まあそこら辺は気にしない．ウェブページに代表例として載っているコードを見てみると，やろうとしていることは基本的に様々なデータベースのAPIらしい．それに加えて，データベースのドキュメントやメタデータも含めてSolveで取り扱えるようにするとのこと．これがBioPythonのプロジェクトの一つとしてならある程度納得行くのだけれども，これがスタートアップの一つとして立ち上がりつつあるのはどうなんだという感じがしないでもない．</p>
 
 <p>とりあえずローンチのメールを待とう．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[国内のライフサイエンス分野で役に立っているプロダクトをみんなで投票して表彰する「オープン・サイエンス・アワード」開催中！]]></title>
-    <link href="http://yagays.github.io/blog/2013/09/21/open-science-award-dbcls/"/>
-    <updated>2013-09-21T01:06:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/09/21/open-science-award-dbcls</id>
-    <content type="html"><![CDATA[<p><a href="http://osa2013.herokuapp.com/">Open Science Award presented by DBCLS</a></p>
-
-<p><strong>突然ですがお祭りのお知らせです！！！</strong></p>
-
-<blockquote><p>オープン・サイエンス・アワードは「論文として発表されていない/されにくい」けど日々ありがたく使っている(国内の)データベース・ソフトウェア・ウェブサイト(ブログやWikiなど)をコミュニティで表彰しよう！という企画です。自薦/他薦を問わずノミネートされた作品に対してみなさんで投票し，得票の多い作品をJSBi年会で表彰，作者に発表を依頼します。学生/研究者，ウェット/ドライ，アカデミック/ビジネス，JSBi会員/非会員を問わずにどなたでも投票できます。利用したことがないノミネート作品もぜひチェックしてみてください。</p>
-
-<p><a href="http://osa2013.herokuapp.com/">Open Science Award presented by DBCLS</a></p></blockquote>
-
-<p>投票期限は9/27までとのことなので，皆さんぜひぜひ上記ウェブサイトから投票してみてください．今まで知らなかった素敵なツールやウェブサイトが発見できるかもしれませんよ！</p>
-
-<h3>Open Science Awardのリンクからこのサイトに来られた方へ</h3>
-
-<p>最近はあんまりバイオインフォっぽいことをBlogに書けてないのですが，過去にはこんな記事とか書いてます．主に個人的な勉強記録として次世代シーケンサー(NGS)関係の解析をメインにバイオインフォマティクスに関する話題など，その他にも色々と書いているので，<a href="http://yagays.github.io/blog/archives/">サイトのアーカイブ</a>や右カラムにあるカテゴリーから気になる記事を見てみて下さい．</p>
-
-<ul>
-<li><a href="http://yagays.github.io/blog/2013/08/01/de-bruijn-pronounce/">&#8220;de Bruijn&#8221;はどう発音する？</a></li>
-<li><a href="http://yagays.github.io/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/">RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ</a></li>
-<li><a href="http://yagays.github.io/blog/2013/07/12/stat115-cole-trapnell/">Tophat/Cufflinksなどの開発者であるCole TrapnellによるRNA-Seqの遺伝子発現解析に関する講義動画</a></li>
-<li><a href="http://yagays.github.io/blog/2013/07/07/genome-assembly-kmergenie/">ゲノムアセンブリにおいて最適なk-merを推定するKmerGenieを試してみた</a></li>
-<li><a href="http://yagays.github.io/blog/2013/07/10/timetree/">TimeTreeで生物種間の分岐年代を調べる</a></li>
-<li><a href="http://yagays.github.io/blog/2013/06/26/rna-seq-unleashed-trinity/">&#8220;RNA-Seq unleashed&#8221;によるTrinityのワークフローの解説</a></li>
-<li><a href="http://yagays.github.io/blog/2013/06/20/fastq-dump-sratoolkit/">SRA Toolkitを使ってsraファイルからfastqファイルに変換する(更新版)</a></li>
-<li><a href="http://yagays.github.io/blog/2013/05/14/trinity-install/">Trinityのインストールとサンプルデータのアセンブル</a></li>
-<li><a href="http://yagays.github.io/blog/2013/04/20/install-biopython/">Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする</a></li>
-<li><a href="http://yagays.github.io/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート</a></li>
-<li><a href="http://yagays.github.io/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">「Rによるモンテカルロ法入門」読書ノート：アーカイブ</a></li>
-</ul>
-
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="https://github.com/dbcls/jsbi2013/wiki">Home · dbcls/jsbi2013 Wiki</a></li>
-<li><a href="http://osa2013.herokuapp.com/">Open Science Award presented by DBCLS</a></li>
-<li><a href="https://docs.google.com/spreadsheet/ccc?key=0ArS_kePkP4rWdGNpNlhHcGFHaHVfamVhcjF3SlA4Z1E">JSBi2013 DBCLS organized session DB/SW list</a></li>
-</ul>
-
 ]]></content>
   </entry>
   
