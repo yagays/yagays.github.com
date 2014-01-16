@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Book | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/book/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-01-12T15:57:36+09:00</updated>
+  <updated>2014-01-16T14:03:45+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「数学ガールの誕生 理想の数学対話を求めて」読了]]></title>
+    <link href="http://yagays.github.io/blog/2014/01/16/review-birth-of-math-girl/"/>
+    <updated>2014-01-16T09:07:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/01/16/review-birth-of-math-girl</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4797373253" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>電車の中で女の子が「<a href="http://www.amazon.co.jp/gp/product/4320026683/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4320026683&linkCode=as2&tag=yagays-22">コンピュータの数学</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4320026683" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」を読んでいるという一つの奇妙な物語から，全てが始まった．この文章は当時リアルタイムで読んでいた私もよく覚えている．Webサイトに掲載されている数学の面白い文章があるというだけで，知的好奇心を満たす手軽な読み物として楽しんでいた．それが将来「数学ガール」シリーズとして，確固たる地位を確立するとは思わなかったが...．</p>
+
+<p>本書は，「数学ガール」シリーズの著者である結城浩氏が行った2つの講演を元にしている．一つは公立はこだて未来大学での教員と学生を対象にした講演，もう一つは編集者などを対象にした勉強会で，そのどちらも数学ガールというヒット作が誕生した経緯や作品への取り組みがテーマである．例えば，そもそも著者が自分のWebサイト上で個人的に書き始めた短編がきっかけであること，元々シリーズになる予定は無くタイトルに連番を振るのをためらったこと，ゲーデルの不完全性定理を書くことを反対されたことなどなど，数学ガールの歴史を紐解きつつ，その裏舞台を紹介してくれる．それと同時に，なぜこのようなヒット作となったのか，数学という難しいとされる題材を高校生の物語に乗せて見事に描き切ったのかといった秘訣について，著者が自己分析をしている興味深い内容となっている．そういった一連のシリーズの歴史を通して，出版であったり教育に対して結城浩氏がどう捉えているのかを垣間見ることができる．</p>
+
+<p>詳しい内容は本書を読んでいただくとして，恐らく根底に流れるスタンスは一貫して「読者のことを考える」ということだろう．では，読者とは誰か，どういった人を対象にするのか，その人が作品を向き合ったときに何を考えるのか，何を知りたいのか，どう理解していくのか，そういったことを突き詰めていった結果がこの「数学ガール」シリーズなのだという．だから，そもそも最初の読者である自分が理解していないことは書けないし，一方で数学者とは異なる視点から一般の人に向けた数学の体系を描くこともできる．そういった執筆の背景を理解すると，「数学ガール」シリーズを読み進めていくときの心地よさであったり，理解へと繋がる一瞬の感覚の理由というものが理解できる気がする．</p>
+
+<p>著者曰く「物理ガール」や「情報ガール」は，自然科学や工学に根ざしているという理由でちょっと難しいそうだ．二匹目のドジョウは難しいかもしれないが，人に教えるという行為について本書から学べることはたくさんあるだろう．また，数学ガール自体のファンにとっても，数学ガールの漫画化であったり海外展開の話，そして最初に書いた「コンピュータの数学」にまつわる短い読み切りなどなど，十分に楽しめる一冊となっている．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「人間はいろいろな問題についてどう考えていけば良いのか」読了]]></title>
@@ -105,28 +123,6 @@
 
 <iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4472403625" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「PRMLガール―文芸部のマネージャーが「パターン認識と機械学習」を読んだら」読了]]></title>
-    <link href="http://yagays.github.io/blog/2013/09/17/review-prml-girl/"/>
-    <updated>2013-09-17T20:45:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/09/17/review-prml-girl</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873101840" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>何というか…</p>
-
-<h3>これはひどい(褒め言葉)</h3>
-
-<p>という感じで，楽しく読ませていただいた．</p>
-
-<p>内容的にはPRMLというよりかはエントロピーなどの情報理論なのだが，そのあたりに突っ込むのは無粋というもの．文芸部のツインテール女子高生が黄色い表紙を持っているだけで100点満点，むしろ点数はカンストですよ．「もしドラ」と「数学ガール」という2つの共通認識があってこそ成立するこの異次元な設定，そして機械学習ブームに後押しされてバイブルと化したPRMLの持て囃されっぷり．まさに現在の潮流を象徴する1冊といえるだろう．最近ではビジネスやマーケティングと組み合わさって何やら胡散臭い感じが出てきた機械学習界隈だけれども，アカデミアやエンジニア側としては上手く折り合いを付けて堅実に発展していって欲しいトコロ．まあそのあたり，変に商業主義を敵視したりExcelに突っかかっていったりせず，本書のように何でもアリで楽しめたらなぁと思う今日この頃．</p>
-
-<p>ただ本書でひとつ惜しむらくは，分量が少ないこと．薄い本といえどあれこれ設定やら背景を入れて，PRMLのごとく色んな話題を詰め込んで欲しかった．まあ本業のある中での執筆活動ということで大変だとは思うが，またストックの溜まった頃にまとめて放出してもらいたい．こういう小説系で書かれた数学分野の啓蒙書では，例えば野矢茂樹氏の<a href="http://www.amazon.co.jp/gp/product/4061494201/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4061494201&linkCode=as2&tag=yagays-22">無限論の教室 (講談社現代新書)</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4061494201" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />が個人で書きためていた原稿の新書化だった気がするので，結城浩氏の数学ガールくらいの大作とまではいかなくても，新書くらいの分量なら書籍としての出版は期待できるかも…．</p>
-
-<p>という感じで，機械学習系の勉強会での活動やgihyo.comで連載中の<a href="http://gihyo.jp/dev/serial/01/machine-learning">「機械学習 はじめよう」</a>など，これからも多方面で活躍されることを楽しみにしております．</p>
 ]]></content>
   </entry>
   
