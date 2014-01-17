@@ -1,0 +1,763 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>「細胞の物理生物学」読書ノート：第3章 - Wolfeyes Bioinformatics beta</title>
+  <meta name="author" content="yag_ays">
+
+  
+  <meta name="description" content="Tips and hacks about Bioinformatics on Ruby and R.">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yagays.github.io/blog/2014/01/17/pboc-03">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <script src="/javascripts/libs/jquery.js"></script>
+  <script src="/javascripts/libs/modernizr-2.0.js"></script>
+  <script src="/javascripts/libs/bootstrap.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Wolfeyes Bioinformatics beta" type="application/atom+xml">
+  <meta name="author" content="yag_ays">
+
+<meta name="description" content="Tips and hacks about Bioinformatics on Ruby and R.">
+<meta name="keywords" content="Bioinformatics,NGS,バイオインフォマティクス,機械学習,統計学,Ruby,R,Mac OS X,Linux">
+<meta name="google-translate-customization" content="f0d6fb1813054f83-93b90cf46465830f-g289228b826edcf56-12"></meta>
+<meta name="msvalidate.01" content="7B572D9F165B6C1C1D644708FF738704" />
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17620484-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <a class="brand" href="/">Wolfeyes Bioinformatics beta</a>
+
+      <div class="nav-collapse">
+        <ul class="nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About Me</a></li>
+</ul>
+
+
+        <ul class="nav pull-right" data-subscription="rss">
+          <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+          
+        </ul>
+
+        
+          <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <fieldset role="search">
+              <input type="hidden" name="q" value="site:yagays.github.io" />
+              <input class="search-query" type="text" name="q" results="0" placeholder="Search"/>
+            </fieldset>
+          </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</nav>
+  <div class="container">
+    <div class="row-fluid">
+      
+<article class="hentry span9" role="article">
+
+  
+  <header class="page-header">
+    
+      <h1 class="entry-title">「細胞の物理生物学」読書ノート：第3章</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-17T20:42:00+09:00" pubdate data-updated="true">Jan 17<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><ul>
+<li>読書ノートまとめ：<a href="http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/">http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/</a></li>
+</ul>
+
+
+<h4>この章のまとめ</h4>
+
+<p>3章では，生物を取り巻く「時間」を扱う．細胞内の化学反応などのナノセカンドスケールから，生物の進化の歴史のスケールまで，様々な時間というものが考えられる．本章では，前半では一般的な生物学的時間スケールについての数の感覚をつかむために，様々な生物現象の時間について扱うとともに，後半ではそれらを進行時間・相対的時間・操作される時間の3つの時間に大別して，その特徴や機構について見ていく．</p>
+
+<p>この章のポイントとしては，</p>
+
+<ul>
+<li>生物を取り巻く時間の数の感覚を理解することに</li>
+<li>生物が時間をどう「操作」しているのか</li>
+</ul>
+
+
+<p>だろう．一つ目は前章と同様にオーダーレベルで生物現象の時間を把握することだが，それと同時に「なぜそれくらい時間がかかるのか」といった時間を規定するより低次な現象についても考慮していく必要がある．原子の大きさに比べて生物のサイズがなぜこれほどまでに大きいのかという前章の疑問と同様に，なぜ生物は今の時間スケールで生きているのかということが，各時間スケールを俯瞰することにより理解できる．二つ目は抽象的な言い方をしているが，化学反応や物理現象は時間という一方向にしか進まないものを，いかに生物が都合の良いように調節しているかということである．そこには，時計のような周期性の仕組みであったり，タイミングを同期するようなチェック機構，反応時間自体の調節などがある．</p>
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4320057163" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=0815344503" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>3.1 時間スケールの階層性</h3>
+
+<ul>
+<li>様々な生物学的時間の階層（おおよそ対数スケール）
+
+<ul>
+<li>ショウジョウバエの発生</li>
+<li>ショウジョウバエの胚の初期発生段階</li>
+<li>細菌の細胞分裂</li>
+<li>細胞の運動</li>
+<li>タンパク質合成</li>
+<li>転写</li>
+<li>イオンチャネルの開閉</li>
+<li>酵素による触媒反応</li>
+</ul>
+</li>
+<li>生物学的時間の測定
+
+<ul>
+<li>直接的観測
+
+<ul>
+<li>実際に裸眼や光学顕微鏡で観測した対象の変化を見る</li>
+</ul>
+</li>
+<li>固定した時間での観測
+
+<ul>
+<li>ある時間間隔で測定し，集団の性質の経時変化を見る</li>
+<li>計測によって対象が変化してしまう場合に有効
+
+<ul>
+<li>細胞が壊れてしまうとか死んでしまうとか</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>パルス追跡
+
+<ul>
+<li>放射性炭素によるラベリング</li>
+</ul>
+</li>
+<li>生成物の蓄積の観測
+
+<ul>
+<li>生成物の濃度や蛍光強度を計測する</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>進化のスケール
+
+<ul>
+<li>共通祖先の存在（LUCA:last universal common ancestor）</li>
+<li>進化の過程を直接測定することは難しい
+
+<ul>
+<li>化石の分析</li>
+<li>現存する種の比較
+
+<ul>
+<li>形態学的な特徴</li>
+<li>DNA配列の類似性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>こういった測定には標準的な時間を計るストップウォッチのようなものが必要</li>
+</ul>
+</li>
+<li>大腸菌の時間
+
+<ul>
+<li>最少培地での増殖速度は3,000秒（50分）</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>3.2 進行時間</h3>
+
+<p>多くのステップからなる生物現象の時間や，時計や振動の機構について見ていく．</p>
+
+<ul>
+<li>セントラルドグマ
+
+<ul>
+<li>それぞれのステップのに関わる高分子の速度が関わってくる
+
+<ul>
+<li>DNA複製：レプリソーム（約1,000 bp/s）</li>
+<li>転写：RNAポリメラーゼ（約40 nucleotide/s）</li>
+<li>翻訳：リボソーム（約15 aa/s）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>時計と振動
+
+<ul>
+<li>時計のような振動する機構は，その一部分の時間を使って振動周期を決めるようコントロールされている</li>
+<li>基本的に活性化と抑制の組み合わせ</li>
+<li>e.g. 初期胚の細胞周期
+
+<ul>
+<li><ol>
+<li>サイクリンのタンパク質合成</li>
+</ol>
+</li>
+<li><ol>
+<li>閾値を超えるサイクリンの蓄積によるサイクリン依存キナーゼの活性</li>
+</ol>
+</li>
+<li><ol>
+<li>キナーゼの標的タンパク質によるサイクリンタンパク質の分解分解</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>e.g. シアノバクテリアの概日リズム</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>3.3 相対的時間</h3>
+
+<p>関係した過程の順番を保証するような機構について見ていく</p>
+
+<h4>真核生物の細胞周期や複雑な機構の生成</h4>
+
+<p>複雑な制御やチェック機構を実現するために，遺伝子ネットワークによって遺伝子発現の順序がプログラムされている．</p>
+
+<ul>
+<li>複雑な細胞周期とチェックポイント
+
+<ul>
+<li>G_1 (ギャップ1)
+
+<ul>
+<li>細胞サイズや周囲の環境のチェック</li>
+<li>DNA損傷のチェック</li>
+</ul>
+</li>
+<li>S (核内DNAの複製)
+
+<ul>
+<li>なし</li>
+</ul>
+</li>
+<li>G_2 (ギャップ2)
+
+<ul>
+<li>DNAの複製のチェック</li>
+</ul>
+</li>
+<li>M (核分裂，細胞分裂)
+
+<ul>
+<li>染色体と紡錘体の結合のチェック</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>タンパク質がプロモータ領域に結合することによる転写制御
+
+<ul>
+<li>抑制：転写を物理的に妨害（ネガティブな制御）</li>
+<li>活性化：RNAポリメラーゼを誘導（ポジティブな制御）</li>
+</ul>
+</li>
+<li>実験による相対的時間の計測
+
+<ul>
+<li>e.g. カウロバクターの細胞分裂
+
+<ul>
+<li>細胞周期を同期させ，一定時間おきにDNAマイクロアレイでmRNAの発現量を計測する</li>
+<li>ゲノムの20%程度が細胞周期に従うmRNAの時間変化を示した→細胞周期に関わっている</li>
+</ul>
+</li>
+<li>e.g. 大腸菌のべん毛の形成
+
+<ul>
+<li>べん毛を構成する高分子に対応する遺伝子の発現強度をGFPを用いて計測する</li>
+<li>関連する遺伝子産物が段階的に生成されていく様子が観測される</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>ウィルスの生活環</h4>
+
+<p>バクテリオファージの場合，ウィスルの付着から溶菌まで30分程度で完了する．</p>
+
+<ul>
+<li>ウィルスの自己複製の過程
+
+<ul>
+<li>付着による感染・DNA注入</li>
+<li>転写・翻訳</li>
+<li>集合・詰め込み</li>
+<li>溶菌</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>発生過程</h4>
+
+<p>多細胞生物の発生過程において，受精卵だった1つの核の分裂や細胞の空間的な移動が正確に調整され，胚発生に関する遺伝子がカスケード的に働くことによりパターンの形成が行われる．</p>
+
+<ul>
+<li>ギャップ遺伝子
+
+<ul>
+<li>胚を前部，中部，後部の3つの領域に分割する</li>
+</ul>
+</li>
+<li>ペアルール遺伝子
+
+<ul>
+<li>7本の縞模様を作る</li>
+</ul>
+</li>
+<li>体節極性遺伝子
+
+<ul>
+<li>14本の縞模様を作る</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>3.4 操作される時間</h3>
+
+<p>細胞内部では自然に起こる物理的な速度を超えて，生物が能動的に化学反応や物質輸送の速度を上昇させる．こういった速度を操作する機構について見ていく．</p>
+
+<ul>
+<li>酵素反応
+
+<ul>
+<li>通常の化学反応では非常に長い時間がかかる</li>
+<li>酵素を触媒として使うことにより反応の時間をオーダーレベルで加速させる</li>
+<li>e.g. トリースリン酸異性化酵素は反応速度を10<sup>9</sup> 倍にする</li>
+</ul>
+</li>
+<li>細胞内の物質輸送
+
+<ul>
+<li>ブラウン運動による移動はランダムであり，拡散する時間は長さのスケールに依存する
+
+<ul>
+<li><script type="math/tex">t_{\mathrm{diffusion}}=x ^ 2/D</script>（<script type="math/tex">D</script>は拡散係数，<script type="math/tex">x</script>は距離）</li>
+<li>濃度にも関連する</li>
+</ul>
+</li>
+<li>分子モーターにより細胞内輸送を行う
+
+<ul>
+<li>アクチンフィラメントにおけるキネシンとダイニン</li>
+</ul>
+</li>
+<li>膜タンパクのチャネルとポンプ
+
+<ul>
+<li>イオン輸送・イオンの濃度勾配を保つ</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DNAの複製速度
+
+<ul>
+<li>最少培地では大腸菌の分裂は3,000 s程度で，染色体の複製フォークの最高スピード程度で実現できる．
+
+<ul>
+<li>しかし実際には，環境が良ければ1,200 s程度で分裂できる</li>
+</ul>
+</li>
+<li>染色体の複製は並列で行われる
+
+<ul>
+<li>大腸菌よりもゲノムサイズが大きいアフリカツメガエルの初期胚でも30分程度で分裂することができる</li>
+<li>真核生物は幾つかの染色体に分割され，複数の異なる開始点から同時に複製が始まる</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>卵と胞子
+
+<ul>
+<li>細胞の成長と分裂を分離することができる</li>
+<li>胞子の休眠や冬眠</li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+
+<br/><br/>
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">yag_ays</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-17T20:42:00+09:00" pubdate data-updated="true">Jan 17<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/pboc/'>PBOC</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2014/01/17/pboc-03/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2014/01/17/pboc-03/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2014/01/17/pboc-03/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    
+    <section>
+      <h1>Comments</h1>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+    
+    <ul class="pager">
+      
+      <li class="previous"><a class="basic-alignment left"
+        href="/blog/2014/01/16/review-birth-of-math-girl/" title="Previous Post:
+        「数学ガールの誕生 理想の数学対話を求めて」読了">&laquo; 「数学ガールの誕生 理想の数学対話を求めて」読了</a></li>
+      
+      <li><a href="/blog/archives">Blog Archives</a></li>
+      
+    </ul>
+  </footer>
+</article>
+
+<aside class="sidebar-nav span3">
+  
+    <section class="well">
+  <h2>About Me</h2>
+  <p>Yuki OKUDA</p>
+  <p>id: yag_ays</p>
+  <p>E-mail: yanagi.ayase [at] gmail.com</p>
+  <br />
+  <ul>
+    <li>Bioinformatics / NGS</li>
+    <li>Machine Learning / Statistics</li>
+    <li>Ruby / R / Clojure / Python</li>
+    <li>MacOSX / Linux</li>
+    <li>Book Review</li>
+  </ul>
+  <br />
+  <ul>
+    <li><a href="https://twitter.com/#!/yag_ays" target="_blank">Twitter</a></li>
+    <li><a href="https://github.com/yagays" target="_blank">Github</a> </li>
+    <li><a href="https://gist.github.com/yagays" target="_blank">Gist</a></li>
+    <li><a href="http://jp.linkedin.com/in/yukiokuda/" target="_blank">Linkedin</a></li>
+    <li><a href="http://b.hatena.ne.jp/yag_ays/" target="_blank">Bookmark</a></li>
+    <li><a href="http://slideshare.net/yag_ays/" target="_blank">Slideshare</a></li>
+    <li><a href="http://yan-ase.tumblr.com/" target="_blank">Tumblr</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="http://yag-ays.hateblo.jp/" target="_blank">Hatena Blog (Technical)</a> </li>
+    <li><a href="http://g86.dbcls.jp/~yag/wordpress/" target="_blank">Wordpress Blog (Technical, <i>old</i>)</a></li>
+  </ul>
+</section>
+<section class="well">
+  <h2>Recent Post</h2>
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/17/pboc-03/">「細胞の物理生物学」読書ノート：第3章</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/16/review-birth-of-math-girl/">「数学ガールの誕生 理想の数学対話を求めて」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/12/review-mori-thinking/">「人間はいろいろな問題についてどう考えていけば良いのか」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/15/mlac-2013-em-algorithm/">MLAC2013 数式を使わずイメージで理解するEMアルゴリズム</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/12/review-sanzoku-diary/">「山賊ダイアリー」1〜4巻 読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/11/pymol-macports/">MacPortsでPyMOLをインストールする</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/10/pboc-02-2/">「細胞の物理生物学」読書ノート：第2章その2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/pboc-02-1/">「細胞の物理生物学」読書ノート：第2章その1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/05/pboc-01/">「細胞の物理生物学」読書ノート：第1章</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/04/pboc-00/">「細胞の物理生物学」読書ノート：序文</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="well">
+  <h2>Categories</h2>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
+<li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
+<li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (81)</a></li>
+<li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
+<li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
+<li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>Linux (3)</a></li>
+<li class='category'><a href='/blog/categories/mcmc/'>MCMC (3)</a></li>
+<li class='category'><a href='/blog/categories/machinelearning/'>MachineLearning (5)</a></li>
+<li class='category'><a href='/blog/categories/misc/'>Misc (11)</a></li>
+<li class='category'><a href='/blog/categories/pboc/'>PBOC (6)</a></li>
+<li class='category'><a href='/blog/categories/prml/'>PRML (5)</a></li>
+<li class='category'><a href='/blog/categories/perl/'>Perl (1)</a></li>
+<li class='category'><a href='/blog/categories/presentation/'>Presentation (1)</a></li>
+<li class='category'><a href='/blog/categories/python/'>Python (5)</a></li>
+<li class='category'><a href='/blog/categories/rna-seq/'>RNA-Seq (5)</a></li>
+<li class='category'><a href='/blog/categories/reading/'>Reading (21)</a></li>
+<li class='category'><a href='/blog/categories/soapdenovo2/'>SOAPdenovo2 (3)</a></li>
+<li class='category'><a href='/blog/categories/slide/'>Slide (1)</a></li>
+<li class='category'><a href='/blog/categories/sublimetext2/'>SublimeText2 (2)</a></li>
+<li class='category'><a href='/blog/categories/trinity/'>Trinity (2)</a></li>
+<li class='category'><a href='/blog/categories/velvet/'>Velvet (1)</a></li>
+<li class='category'><a href='/blog/categories/webservice/'>WebService (6)</a></li>
+<li class='category'><a href='/blog/categories/zsh/'>Zsh (1)</a></li>
+<li class='category'><a href='/blog/categories/ipad/'>iPad (1)</a></li>
+<li class='category'><a href='/blog/categories/imcmr/'>imcmr (16)</a></li>
+<li class='category'><a href='/blog/categories/k-mer/'>k-mer (2)</a></li>
+
+  </ul>
+</section>
+<section class="well">
+  <h2>Translate</h2>
+  <div id="google_translate_element"></div><script type="text/javascript">
+    function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'ja', autoDisplay: false, gaTrack: true, gaId: 'UA-17620484-4'}, 'google_translate_element');
+    }
+  </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</section>
+
+
+<section class="well">
+  <h2>Twitter</h2>
+  <ul id="tweets" class="nav">
+    <li class="nav-header">Latest Tweets</li>
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      getTwitterFeed("yag_ays", 10, true);
+    });
+  </script>
+  <script src="/javascripts/asides/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/yag_ays" class="twitter-follow-button" data-show-count="false">Follow @yag_ays</a>
+  
+</section>
+
+<section class="well">
+  <h2>Recommend Books</h2>
+  <a href="http://www.amazon.co.jp/gp/product/4274067939/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4274067939&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4274067939&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274067939" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4863912803/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4863912803&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4863912803&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4863912803" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4560027870/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4560027870&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4560027870&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4560027870" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4862381502/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4862381502&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4862381502&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4862381502" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4621061224&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4621061240/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061240&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4621061240&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061240" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/400006973X/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=400006973X&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=400006973X&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=400006973X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4140815329/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4140815329&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4140815329&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4140815329" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4780908485/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4780908485&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4780908485&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4780908485" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4781605451/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4781605451&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4781605451&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4781605451" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4047284084/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4047284084&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4047284084&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4047284084" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4781609481/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4781609481&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4781609481&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4781609481" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <br/>
+  <iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yagays-22&o=9&p=9&l=ez&f=ifr&f=ifr" width="180" height="150" scrolling="no" marginwidth="0" marginheight="0" border="0" frameborder="0" style="border:none;"></iframe>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
+  <br />
+  <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Wolfeyes Bioinformatics beta</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">yag_ays</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a><br />
+  except where cited as being from another source or where otherwise noted.
+  <br />
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wolfeyesbioinformaticsbeta';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://yagays.github.io/blog/2014/01/17/pboc-03/';
+        var disqus_url = 'http://yagays.github.io/blog/2014/01/17/pboc-03/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
