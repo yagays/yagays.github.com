@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Book | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/book/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-02-11T00:29:02+09:00</updated>
+  <updated>2014-02-11T00:55:25+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,18 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「クリエイティブの授業 STEAL LIKE AN ARTIST」読了]]></title>
+    <link href="http://yagays.github.io/blog/2014/02/12/review-steal-like-an-artist/"/>
+    <updated>2014-02-12T00:00:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/02/12/review-steal-like-an-artist</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4788908050" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>空いた時間にたまたま本屋で見つけて，空いた時間でざっと読んだのだけれども，まあ元は取れたかなぁというくらいには面白かった．内容としては，ライフハックとかクリエイティブとかに代表されるようなウェブに転がってそうなトピックばかりだし，それこそ本書まるまるウェブサイトに上がってても違和感無いような分量でもある．でも本書はある意味で一貫していて，それこそウェブにはない編集の力のようなものを感じる．本書の主張は端的に言えば「STEAL LIKE AN ARTIST」，クリエイティビティは先人の優れた作品を盗むことから生まれるということだ．そこから派生して，情報を選別して自分のモノにすること，アイデアは抱え込まないで他人と共有することなどなど，まあ言ってしまえば，話自体はハッカー文化とかエンジニア文化とかなり親和性が高い．そういうのが本書に影響しているのか，単に最近のトレンドなのか分からないけど，まあひとつの生き方として筋が通っているし，自分もそうありたいと思うことが多い．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「人に強くなる極意」読了]]></title>
@@ -93,37 +105,6 @@
 <p>本書は，地元岡山県北部で猟師になった著者が，猟銃や罠などを使ってイノシシやシカ，鳥などの動物を狩る「リアル猟師奮闘記」だ．実際に山に入って狩猟をするのは勿論のこと，狩猟仲間やベテランとのやり取りや日々の生活なども描かれる．</p>
 
 <p>最近めっきり漫画を読まなくなってしまったのだけれども，ネットで評判になってる本書を見てたまたま買って読んでみたら，これがなかなか良かった．絵やコマの割り方が細かくないため素直に物語や知識を追えて，なおかつ実録モノというところが，個人的に気に入った要因だと思う．変に説教臭く無いのも好感が持てる．それでいて本能的な肉への欲求であったり，家畜化されていない動物を仕留めそして食べるという行為の心理的な変化を感じ，料理に化けるときの喜びのようなものがダイレクトに伝わってくる．要所要所に挟まってくる日本の狩猟のシステムであったり，狩りの方法や先人の智慧なども非常に興味深い．知的好奇心も満たされつつ一般人の日常では味わうことのない世界を覗くことができて，個人的には満足度の高い作品だった．狩猟時期が限られていることもあって新しいネタがどんどん出てくるわけでもないようだが，次のシーズンの狩猟の成果に期待したい．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「RとRubyによるデータ解析入門」読了]]></title>
-    <link href="http://yagays.github.io/blog/2013/10/19/review-exploring-everyday-things/"/>
-    <updated>2013-10-19T14:47:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/10/19/review-exploring-everyday-things</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873116155" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>プログラミング言語RとRubyを使って，日常に隠れた様々なデータを掘り起こし，シミュレーションや仮説検定といった方法を用いて解析しようという本書．基本的にはRubyで生データの取得や処理を行い，Rで統計処理や可視化する流れになっている．日本語訳ではデータ解析という少しお固いタイトルだけれども，原題は「Exploring Everyday Things With R and Ruby」であり，扱う内容は身近にある些細なことが多い．例えば，オフィスのトイレが従業員数に対して凄い少ないんだけど本当にこれだけでいいの？といった疑問とか，日頃よく使っているメールを解析してどんな傾向があるか探ってみようといったデータマイニング的なことから，はたまた心臓の鼓動を解析するといった自分ではやろうと思い付かないことまで，対象とする内容は実に多様だ．このラインナップを見て「最近流行りのデータ解析ってもっと凄いことするもんだと思ってた」と思うかもしれないが，本書を開いてみれば，それは実に的を外した意見であることがわかる．データというものは，インターネットのアクセスログやPOSの購買記録だけではない．身近にあるすべてのことはデータであり，記録し収集することで形となり，解析し可視化することで見えてくる事実というものがある．そういった発見をする喜びというものを，本書は教えてくれる．科学は研究者や技術者だけのものではなく，誰もが感じることのできるものである．日常で疑問に思ったことから仮説を立て，データを集めたりシミュレーションをしたりして解き明かすという方法を，本書では実例とともに学ぶことができる．</p>
-
-<p>本書を読むと，とにかく以下の2つのことが大事なのだと実感する．それは</p>
-
-<ul>
-<li><strong>ふと疑問に思ったことを自分なりに確かめようとする</strong></li>
-<li><strong>とにかくデータを貯める</strong></li>
-</ul>
-
-
-<p>ということだ．思い浮かんだ疑問をそのままにせず，直感的や一見合理的な理由をしっかりと確かめる術を持つということの大切さを改めて意識した．それにはシミュレーションや統計解析が非常に有効である．そして，それを実現するには後にも先にもデータが必要であるということ，日頃から意識して記録するという能動的な行為から，自動的に記録してくれるようなシステムを作りデータを貯めこむという受動的な行為まで，何らかの形で残しておけば後々使う機会があるかもしれないということだ．データが全て残せなければ，数とか量とか何らかの統計値でも良い．電子データなら物理的場所を取らないしいくらでも貯めこむことができる．そういった一手先のデータ収集をしておくことで，よりデータ解析が面白くなる．</p>
-
-<p>最後に実例を一つ．Siriのバックボーンとなっている<a href="http://www.wolframalpha.com/">WolframAlpha</a>などの開発者で有名なStephen Wolfram氏も，本書のアプローチに似たことをBlogで紹介している．</p>
-
-<ul>
-<li><a href="http://blog.stephenwolfram.com/2012/03/the-personal-analytics-of-my-life/">The Personal Analytics of My Life—Stephen Wolfram Blog</a></li>
-</ul>
-
-
-<p>かなり長期にわたるデータを細かく分析しており，グラフを見て想像を巡らすだけでも非常に面白い．</p>
 ]]></content>
   </entry>
   

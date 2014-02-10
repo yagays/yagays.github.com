@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-02-11T00:29:02+09:00</updated>
+  <updated>2014-02-11T00:55:25+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,18 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「クリエイティブの授業 STEAL LIKE AN ARTIST」読了]]></title>
+    <link href="http://yagays.github.io/blog/2014/02/12/review-steal-like-an-artist/"/>
+    <updated>2014-02-12T00:00:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/02/12/review-steal-like-an-artist</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4788908050" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>空いた時間にたまたま本屋で見つけて，空いた時間でざっと読んだのだけれども，まあ元は取れたかなぁというくらいには面白かった．内容としては，ライフハックとかクリエイティブとかに代表されるようなウェブに転がってそうなトピックばかりだし，それこそ本書まるまるウェブサイトに上がってても違和感無いような分量でもある．でも本書はある意味で一貫していて，それこそウェブにはない編集の力のようなものを感じる．本書の主張は端的に言えば「STEAL LIKE AN ARTIST」，クリエイティビティは先人の優れた作品を盗むことから生まれるということだ．そこから派生して，情報を選別して自分のモノにすること，アイデアは抱え込まないで他人と共有することなどなど，まあ言ってしまえば，話自体はハッカー文化とかエンジニア文化とかなり親和性が高い．そういうのが本書に影響しているのか，単に最近のトレンドなのか分からないけど，まあひとつの生き方として筋が通っているし，自分もそうありたいと思うことが多い．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「人に強くなる極意」読了]]></title>
@@ -2420,33 +2432,6 @@
 <iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=1449319793" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 
 
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「バイオ研究者が生き抜くための十二の智慧」読了]]></title>
-    <link href="http://yagays.github.io/blog/2013/10/13/review-lab-management-12-technique/"/>
-    <updated>2013-10-13T10:04:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/10/13/review-lab-management-12-technique</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4780908701" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>本書は，バイオ研究者のためのラボマネージメントのノウハウ集である．主に研究室を運営するPIやその下の教員クラスを対象にしており，実験室での試薬サンプルや実験データ管理，実験ノートの書き方から始まり，論文の投稿や査読，ラボ全体のミーティングやジャーナルクラブの運営，プレリリースなどの研究の情報発信など，研究者の研究以外の活動に関する「雑用」を上手く処理するテクニックが紹介される．たいていの研究者は，これらの細かい事務作業は放り出してただひたすらに自分の研究をしていたいと思うはずだ．しかし，これら「雑用」をしなければ，研究室という組織は機能しない．一見すると研究という仕事をしていないかのように取られがちなこれらの作業は，研究者として生きる上での義務となっている．他の研究者とコミュニケーションを取り，自分の成果を世界に発信することも，自分の研究と同じくらい大事なことだ．これらの「雑用」と呼ぶには相応しくない大事な仕事について，本書では様々な研究者が培ってきたテクニックを十二の智慧として紹介している．</p>
-
-<p>内容は上記の通り幅広く取り扱っているが，個々に割かれているページ数はあまり多くない．新鮮なアイデアを探すのには持ってこいな資料だが，ノウハウ集であって指南書ではないので，読んで即実行して成果が得られるわけではないだろう．自分一人でできるものは簡単だが，他人との共同作業やラボ全体に関するものはなかなか導入が難しいという実情もある．既にある研究室の文化とのすり合わせもあるだろうし，本書を読んでない相手に新しいやり方の意義を伝えて使い方を学んでもらうのはなかなか大変だ．マネージメントの特効薬ではないということをある程度覚悟して読み進めることをお薦めする．ただし，食わず嫌いは良くない．上を説得するのは面倒だから，行動力が無いからと言っては始まらない．何事もまず一度試してみると周囲から何かしら反応があるはずだから，それを元に現実的な方法に修正していくというのが理想だろう．</p>
-
-<p>それにしても，私も常々感じることだが，こういった研究室の運営や文化はなかなか外に出てこない．特に実験系のラボはその色合いが強い．それは，研究室という研究内容が違えば所属する人間も全く違うようなうユニークな環境のせいかもしれないし，人材の流動が少ないせいかもしれない．そもそも，それを知りたいという人が少ないからかもしれない．最近ではメディアでの紹介やブログなどのネット媒体によって情報を発信するトコロも増えてきたが，未だに研究室の実情は独自に醸成されてきた文化を守り抜いていくという閉鎖的な環境にあると思われる．それを良いと思うか悪いと思うかは置いておいて，自分の世界を一歩引いた視点で見ること，そして外の世界を見ることはきっと何かの役に立つ．研究なり研究以外の仕事をもっと上手くやれる方法はあるはずだし，誰か知っているし誰かやっているはずだ．そんな情報をもっと共有したりできる環境があればと思う．それは本書のような本の形でなくても良い．口コミでも学会のセッションでも何かしら広めていける方法はあるはずだ．個人的には，できればインターネットに形として残るブログなどに書いてほしいが，まあやり方はいくらでもあるだろう．</p>
-
-<br/>
-
-
-<p>ラボのマネージメントに関して，今回紹介した本書には書かれてなかった点を補足するならば，以下の2冊がお薦めだ．「<a href="http://www.amazon.co.jp/gp/product/4895924742/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4895924742&linkCode=as2&tag=yagays-22">ラボ・ダイナミクス―理系人間のためのコミュニケーションスキル</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4895924742" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」は，主にラボ内の人間関係に関する実例が豊富に載っている．セミナーで怒鳴り散らすような相手にどう対処するか，ラボの規則を守ってくれない同僚にどう接するかなど，やっかいな問題の対処法が多数紹介されている．また，学生の指導や教育という観点からは「<a href="http://www.amazon.co.jp/gp/product/4472403625/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4472403625&linkCode=as2&tag=yagays-22">ベストプロフェッサー (高等教育シリーズ)</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4472403625" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」がお薦めできる．</p>
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4895924742" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4472403625" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 
 ]]></content>
   </entry>

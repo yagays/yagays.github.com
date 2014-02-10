@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>RNA-Seqの数理―生成モデルによる発現量推定（1）RNA-Seqの発現量推定とRPKM - Wolfeyes Bioinformatics beta</title>
+  <title>「クリエイティブの授業 STEAL LIKE AN ARTIST」読了 - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1">
+  <link rel="canonical" href="http://yagays.github.io/blog/2014/02/12/review-steal-like-an-artist">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -115,7 +115,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">RNA-Seqの数理―生成モデルによる発現量推定（1）RNA-Seqの発現量推定とRPKM</h1>
+      <h1 class="entry-title">「クリエイティブの授業 STEAL LIKE an ARTIST」読了</h1>
     
     
       <p class="meta">
@@ -131,68 +131,17 @@
   
 
 
-<time datetime="2013-07-15T00:06:00+09:00" pubdate data-updated="true">Jul 15<span>th</span>, 2013</time>
+<time datetime="2014-02-12T00:00:00+09:00" pubdate data-updated="true">Feb 12<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><ul>
-<li>まとめ：<a href="http://yagays.github.io/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/">RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ - Wolfeyes Bioinformatics beta</a></li>
-</ul>
+<div class="entry-content"><iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4788908050" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
-<p>生成モデルの話を始める前に，まずはRNA-Seqの発現量としてよく知られているRPKMという指標からスタートし，生成モデルの話へと繋げていこう．</p>
-
-<h3>RNA-Seqの発現量推定の基本</h3>
-
-<p>RNA-Seqで得られるデータは，ある長さの配列（ショートリード）とクオリティスコアのセットして表現される．それをリファレンスとなるゲノム配列の中から探しだして，読まれた配列が何の転写物由来かを見つける作業をマッピングという．このマッピングをNGSから出力された数千万本/数億本のショートリードに対して行い，ある遺伝子の部位にどのくらい貼り付いたかをカウントすることで特定の転写物がどれくらい発現していたかを推定するという方法が，RNA-Seqの発現量推定では基本となる．</p>
-
-<p><a href="http://www.nature.com/nrg/journal/v10/n1/fig_tab/nrg2484_F1.html" target="_blank"><img src="http://dl.dropboxusercontent.com/u/142306/b/nrg2484-f1.jpg" alt="CCC License Number: 3187871036736 "></a></p>
-
-<p>この図はRNA-Seqの実験の流れを模式的に表している．まず対象となるトランスクリプトームであるmRNAを取り出し，断片化やアダプターの付与を経てシーケンスライブラリを作成する．次にNGSによって断片が大量にシーケンスされ，いわゆるATCGからなる文字列で構成されたショートリードが得られる．そしてゲノム配列にマッピングすることによって，RNAの発現量が推定される．この図では，ゲノム配列の各塩基ごとにどれくらいの本数のショートリードが貼り付いたかをカウントすることによって，RNA expression levelを図示している．Nucleotide positionによって特定の領域の発現量が欠損していたり遺伝子の末端で発現量が少なくなっているのには，マッピングの際に生じる幾つかの理由がある．まず，図中のJunction readsで示されている点線の箇所は，イントロンのスプライシングが起きた領域であり，mRNAの配列をゲノム配列にマッピングするために起こる現象である．そのため，イントロンの領域だけ発現量が無いように見える．また，Poly-A tailが配列の一部として混入することでショートリード自体がゲノム配列にマッピングできない場合もあり，末端の発現量が落ちる原因の一つになっている．</p>
-
-<p>では，このようにして求められた値を転写物ごとの発現量として一つの値で表現するには，どうすれば良いのか．ここで，RPKMという考え方が登場する．</p>
-
-<h3>RPKMの考え方</h3>
-
-<p>RNA-Seqの発現量の値として最初に考えられ今でも広く使われているRPKMという指標は，配列の本数を数えるという方法で転写物ごとの発現量を求めている．RPKMはreads per kilobase of exon per million mapped sequence readsの略称で，マッピングされたショートリードの数をエキソンの長さとシーケンサで読まれた配列の総数で正規化した値である．RPKMの計算方法を式で表すと以下のようになる．</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=RPKM+%5C++for+%5C++transcript+%5C+t+%3D+10%5E9+%5Ctimes%5Cfrac%7BX_t%7D%7Bl_t+N%7D" alt="RPKM \  for \  transcript \ t = 10^9 \times\frac{X_t}{l_t N}" /></p>
-
-<p>ここで，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X_t+" alt="X_t " />は転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />にマッピングされたショートリードの本数，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />は転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />の長さ(bp)，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=N+" alt="N " />はマッピングされたショートリードの総数を表している．</p>
-
-<p>さて，このRPKMという発現量の考え方の裏には以下のような仮定がある．</p>
-
-<ul>
-<li>配列数が長い転写物からはショートリードが多く読まれる</li>
-<li>全体で読まれるショートリードの数が多いと，マッピングされるショートリードも多くなる</li>
-</ul>
-
-
-<p>NGSによるRNA-Seqでは，特定の量のサンプルの中に含まれるトランスクリプトームをランダムにシーケンスするため，出てくるデータというのはあくまでも相対的な量となってしまう．そのため，このような仮定を置くことで転写物の発現や実験サンプルなどの違いを補正している．RPKMはある遺伝子の領域内に含まれるショートリードの本数を数え，転写物の長さと全体のデータ数で割って10<sup>9</sup> を掛けることによって簡単に求められるため，計算のしやすさと直感的な分かりやすさがある．</p>
-
-<h3>RPKMと生成モデルとの関係</h3>
-
-<p>このように，RPKMはマッピングされた配列の本数を数えるという単純な方法で発現量を推定している．一方で，これから考えていくことになる生成モデルによる発現量推定は，データが観測される事象を確率的に推定することでデータが与えられたときのトランスクリプトームの発現量というものを求める．これらは一見して全く違うもののように見えるのだが，<strong>実際には最も単純な生成モデルはRPKMと基本的な考え方が同じになる</strong>．つまり，RPKMも単純な生成モデルによる推定方法も，発現量はマッピングされたショートリードの本数と，転写物の長さおよびマッピングされたショートリードの総数の逆数によって決まるということだ．</p>
-
-<p>それを確かめるために，次回はCount Based Modelと呼ばれる生成モデルを作って発現量推定を定式化し，それがRPKMの計算式と同じ意味を持つということを示してみよう．</p>
-
-<ul>
-<li>次：<a href="http://yagays.github.io/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/">RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM - Wolfeyes Bioinformatics beta</a></li>
-</ul>
-
-
-<h3>参考</h3>
-
-<ul>
-<li><a href="http://www.nature.com/nmeth/journal/v5/n7/full/nmeth.1226.html">Mapping and quantifying mammalian transcriptomes by RNA-Seq - Nature Methods</a></li>
-<li><a href="http://www.nature.com/nrg/journal/v10/n1/full/nrg2484.html">RNA-Seq: a revolutionary tool for transcriptomics : Article : Nature Reviews Genetics</a></li>
-<li><a href="http://arxiv.org/abs/1104.3889v2">[1104.3889v2] Models for transcript quantification from RNA-Seq</a></li>
-<li><a href="http://fgcz-intranet.uzh.ch/publish/BiostatLecture/RNA-seq-quantification.pdf">http://fgcz-intranet.uzh.ch/publish/BiostatLecture/RNA-seq-quantification.pdf</a></li>
-</ul>
-
+<p>空いた時間にたまたま本屋で見つけて，空いた時間でざっと読んだのだけれども，まあ元は取れたかなぁというくらいには面白かった．内容としては，ライフハックとかクリエイティブとかに代表されるようなウェブに転がってそうなトピックばかりだし，それこそ本書まるまるウェブサイトに上がってても違和感無いような分量でもある．でも本書はある意味で一貫していて，それこそウェブにはない編集の力のようなものを感じる．本書の主張は端的に言えば「STEAL LIKE AN ARTIST」，クリエイティビティは先人の優れた作品を盗むことから生まれるということだ．そこから派生して，情報を選別して自分のモノにすること，アイデアは抱え込まないで他人と共有することなどなど，まあ言ってしまえば，話自体はハッカー文化とかエンジニア文化とかなり親和性が高い．そういうのが本書に影響しているのか，単に最近のトレンドなのか分からないけど，まあひとつの生き方として筋が通っているし，自分もそうありたいと思うことが多い．</p>
 </div>
 
 
@@ -217,12 +166,12 @@
   
 
 
-<time datetime="2013-07-15T00:06:00+09:00" pubdate data-updated="true">Jul 15<span>th</span>, 2013</time>
+<time datetime="2014-02-12T00:00:00+09:00" pubdate data-updated="true">Feb 12<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/rna-seq/'>RNA-Seq</a>
+    <a class='category' href='/blog/categories/book/'>Book</a>
   
 </span>
 
@@ -230,9 +179,9 @@
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2014/02/12/review-steal-like-an-artist/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2014/02/12/review-steal-like-an-artist/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2014/02/12/review-steal-like-an-artist/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -253,14 +202,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/" title="Previous Post:
-        RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ">&laquo; RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ</a></li>
+        href="/blog/2014/02/11/review-satou-masaru-wisdom/" title="Previous Post:
+        「人に強くなる極意」読了">&laquo; 「人に強くなる極意」読了</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/"
-        title="Next Post: RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM">RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -444,8 +389,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/';
-        var disqus_url = 'http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/';
+        var disqus_identifier = 'http://yagays.github.io/blog/2014/02/12/review-steal-like-an-artist/';
+        var disqus_url = 'http://yagays.github.io/blog/2014/02/12/review-steal-like-an-artist/';
         var disqus_script = 'embed.js';
       
     (function () {
