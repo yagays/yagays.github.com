@@ -117,6 +117,158 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/11/16/sublimerepl-clojure/">Sublime Text 2のSublimeREPLパッケージでClojureを動かす</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-16T00:07:00+09:00" pubdate data-updated="true">Nov 16<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近ローカルの開発環境をEmacsから<a href="http://www.sublimetext.com/">Sublime Text 2</a>に乗り換えたので，長い間.emacsに溜め込んだ環境をSublime Text 2でも再現するために，ちまちまと移行作業をしている．Sublime Text 2の強みというのはPythonで拡張パッケージが書ける上にパッケージ管理が非常に簡単というところにあると思っていて，とりあえずデフォルトの環境をなんとかしたいと思えばパッケージを探せば何とかなる．</p>
+
+<p>ということで，今回はEmacsで構築していたClojureの開発環境を，SublimeREPLパッケージを使ってSublime Text 2で再現してみる．Emacsではswank-clojureとslime-replで書いたコードを逐次実行できる環境を作っていたが，今回もSublime Text 2内でClojureを動かして，エディタ内でコードの編集と実行を両立できるようにする．なお，今回の環境構築ではClojureやLeiningenのインストールはひと通り終えているものとする．</p>
+
+<p>ちなみに，私の過去のEmacs＆Clojure環境は以下のblogにまとめてある．</p>
+
+<ul>
+<li><a href="http://yag-ays.hateblo.jp/entry/2012/01/09/224531">Clojure + Emacs環境のセッティング（MacOSX Lion 10.7） - やぐブロ</a></li>
+</ul>
+
+
+<h3>1. Package Controlをインストールする</h3>
+
+<p>これについては他のサイトでもよく解説されていることなので，簡単に紹介とインストール方法だけ．Sublime Text 2では<a href="http://wbond.net/sublime_packages/package_control">Sublime Package Control</a>というパッケージ管理が定番となっていて，Sublime Text 2内のコマンドから検索・インストール・最新バージョンへの更新などを簡単に行うことができる．</p>
+
+<p>まず，Sublime Text 2のコンソールに以下のコマンドを入力（コピペ）する．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">urllib2</span><span class="o">,</span><span class="nn">os</span><span class="p">;</span><span class="n">pf</span><span class="o">=</span><span class="s">&#39;Package Control.sublime-package&#39;</span><span class="p">;</span><span class="n">ipp</span><span class="o">=</span><span class="n">sublime</span><span class="o">.</span><span class="n">installed_packages_path</span><span class="p">();</span><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span><span class="p">;</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ipp</span><span class="p">,</span><span class="n">pf</span><span class="p">),</span><span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://sublime.wbond.net/&#39;</span><span class="o">+</span><span class="n">pf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="s">&#39;%20&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>インストールが終了したら，Sublime Text 2を再起動する．メニューバーの&#8221;Tools&#8221;からCommand Paletteを開いて「package」と入力して，以下のようにPackage Controlのコマンドが表示されればOK．これでパッケージのインストールが簡単に行えるようになる．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/subl_1.png" alt="" /></p>
+
+<br />
+
+
+<h3>2. SublimeREPLをインストールする</h3>
+
+<p>次に，Clojureをエディタ内で動かすためにSublimeREPLというパッケージをインストールする．ちなみにこのパッケージはClojure専用というわけではないので，RubyやPython，Rなどの他の言語のREPLの機能も兼ね備えている．</p>
+
+<p>まず，先ほどの確認のときのようにCommand Paletteを開いて「install」と入力し，「Package Control: Install Package」を選択する．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/subl_2.png" alt="" /></p>
+
+<p>すると，登録されているパッケージ一覧が表示されるので，「SublimeREPL」と入力してパッケージを選択してインストールを行う．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/subl_3.png" alt="" /></p>
+
+<p>これで，SublimeREPLパッケージのインストールは完了．メニューバーのToolsにSublimeREPLという項目が表示されればOK．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/subl_4.png" alt="" /></p>
+
+<br />
+
+
+<h3>3. SublimeREPLの環境設定にLeiningenのPATHを追記する</h3>
+
+<p>最後に，SublimeREPLの環境設定を行う．具体的にはLeiningenがインストールされているディレクトリにPATHを通すのだが，これをしないと「OSError(2, &#8216;No such file or directory&#8217;)」といったエラーが表示されるので注意．</p>
+
+<p>今回の場合は，パッケージ内の設定ファイルに直接追記することにする．まず，SublimeREPLのパッケージのディレクトリ内にあるClojureのMain.sublime-menuというファイルを開く．これには，Sublime Text 2の&#8221;Preference&#8221;→&#8221;Browse Packages…&#8221;でFinderを表示してディレクトリを辿っても良いが，今回はTerminal.appで以下のコマンドを入力する．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>open <span class="nv">$HOME</span>/Library/Application<span class="se">\ </span>Support/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2/Packages/SublimeREPL/config/Clojure/
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/subl_5.png" alt="" /></p>
+
+<p>そして，Finderで表示された中にあるMain.sublime-menuをエディタで読み込み，29行目のextend_envの行にLeiningenがあるディレクトリのPATHを入力する．今回はMacPortsで入れたLeiningenを使用するために，/opt/local/binを指定する．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="s2">&quot;extend_env&quot;</span>: <span class="o">{</span><span class="s2">&quot;INSIDE_EMACS&quot;</span>: <span class="s2">&quot;1&quot;</span> <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>と書かれている行の末尾に「&#8221;PATH&#8221;: &#8220;{PATH}:/opt/local/bin/&#8221;」を追記する．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="s2">&quot;extend_env&quot;</span>: <span class="o">{</span><span class="s2">&quot;INSIDE_EMACS&quot;</span>: <span class="s2">&quot;1&quot;</span>, <span class="s2">&quot;PATH&quot;</span>: <span class="s2">&quot;{PATH}:/opt/local/bin/&quot;</span><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>4. SublimeREPLの起動</h3>
+
+<p>メニューバーの&#8221;Tools&#8221;から&#8221;SublimeREPL&#8221;→&#8221;Clojure&#8221;→&#8221;Clojure&#8221;を選択して，以下のようにREPLが起動すれば，無事にSublimeREPLの環境設定は終了．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/subl_6.png" alt="" /></p>
+
+<h4>環境</h4>
+
+<ul>
+<li>OS
+
+<ul>
+<li>Mac OS X 10.8.2</li>
+</ul>
+</li>
+<li>Sublime Text 2
+
+<ul>
+<li>Version 2.0.1, Build 2217</li>
+</ul>
+</li>
+<li>Leiningen
+
+<ul>
+<li>Leiningen 1.6.1.1</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://wbond.net/sublime_packages/package_control">Sublime Package Control – a Sublime Text 2 Package Manager by wbond</a></li>
+<li><a href="http://sublimerepl.readthedocs.org/en/latest/">SublimeREPL — SublimeREPL 1.0.30 documentation</a></li>
+<li><a href="https://github.com/wuub/SublimeREPL/issues/11">Opening clojure REPL fails / Fix PATH problems · Issue #11 · wuub/SublimeREPL</a></li>
+<li><a href="http://dev.clojure.org/display/doc/Getting+Started+With+Sublime+Text+2">Getting Started With Sublime Text 2 - Clojure Documentation - Clojure Development</a></li>
+<li><a href="https://gist.github.com/2407109">Setting Up Clojure on OS X — Gist</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/11/15/review-wired-5/">「WIRED VOL.5」読了</a></h1>
     
     
@@ -318,339 +470,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/11/imcmr-5-4/">「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 確率的勾配法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-11T06:17:00+09:00" pubdate data-updated="true">Nov 11<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>内容：確率的勾配法(Stochastic Gradient Methods)で関数の最大値を求める</h3>
-
-<p>目的関数からの直接的なシミュレーションが難しい場合，関数の表面をローカルになぞって最大値を探索するという手法が使える．探索に用いる系列は以下のように表す事ができる．</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta_%7Bj%2B1%7D+%3D+%5Ctheta_j+%2B++%5Cvarepsilon_j+" alt="\theta_{j+1} = \theta_j +  \varepsilon_j " /></p>
-
-<p>これは現在のステップに摂動項<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cvarepsilon_j+" alt="\varepsilon_j " />を加えて次のステップとすることを表している．つまりこれはマルコフ連鎖となるのだが，今回はそれほどマルコフ性は重要にはならない．</p>
-
-<p>概念的に目的関数の分布を山の斜面と考えるならば，現在の位置からちょっと動いて…を繰り返して山を登っていくような動きをする．ただし，単純に傾斜の上の方に登っていくのではなく，どちらかに進むかはランダムなので，たまに斜面を下ったりもする．その試行を繰り返していくことで，山の頂上を目指すような方法となっている．</p>
-
-<h4>有限差分法</h4>
-
-<p>有限差分法では，関数の勾配は</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cnabla+h%28%5Ctheta_j%29+%5Capprox+%5Cfrac%7Bh%28%5Ctheta_j%2B%5Cbeta_j%5Czeta_j%29-h%28%5Ctheta_j-%5Cbeta_j%5Czeta_j%29%7D%7B2%5Cbeta_j%7D%5Czeta_j+%3D+%5Cfrac%7B%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%7D%7B2%5Cbeta_j%7D%5Czeta_j+" alt="\nabla h(\theta_j) \approx \frac{h(\theta_j+\beta_j\zeta_j)-h(\theta_j-\beta_j\zeta_j)}{2\beta_j}\zeta_j = \frac{\Delta h(\theta_j,\beta_j\zeta_j)}{2\beta_j}\zeta_j " /></p>
-
-<p>とし，摂動項<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cvarepsilon_j+" alt="\varepsilon_j " />を組み込んだ系列の更新は以のようになる．</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta_%7Bj%2B1%7D+%3D+%5Ctheta_j+%2B++%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+" alt="\theta_{j+1} = \theta_j +  \frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j)\zeta_j " /></p>
-
-<h3>例 5.7 有限差分法による関数の最大化において，複数の勾配パラメータがどのように収束に影響するかを調べる</h3>
-
-<p><a href="http://yagays.github.com/blog/2012/11/06/imcmr-5-3/">例5.6</a>の続き．有限差分法を用いて以下の式を最小化することを目的とする．</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=h%28x%2Cy%29%3D%28x%5Csin%2820y%29%2By%5Csin%2820x%29%29%5E2%5Ccosh%28%5Csin%2810x%29x%29%2B+%28x%5Ccos%2810y%29-y%5Csin%2810x%29%29%5E2%5Ccosh%28%5Ccos%2820y%29y%29+" alt="h(x,y)=(x\sin(20y)+y\sin(20x))^2\cosh(\sin(10x)x)+ (x\cos(10y)-y\sin(10x))^2\cosh(\cos(20y)y) " /></p>
-
-<p>今回は最大化ではなく最小化することが目的なので，この関数をマイナスにする必要がある．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>h <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">){</span>
-</span><span class='line'>  <span class="o">-</span><span class="p">(</span>x<span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">*</span>sin<span class="p">(</span><span class="m">20</span><span class="o">*</span>x<span class="p">[</span><span class="m">2</span><span class="p">])</span> <span class="o">+</span> x<span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">*</span>sin<span class="p">(</span><span class="m">20</span><span class="o">*</span>x<span class="p">[</span><span class="m">1</span><span class="p">]))</span><span class="o">^</span><span class="m">2</span> <span class="o">*</span> cosh<span class="p">(</span>sin<span class="p">(</span><span class="m">10</span><span class="o">*</span>x<span class="p">[</span><span class="m">1</span><span class="p">])</span><span class="o">*</span>x<span class="p">[</span><span class="m">1</span><span class="p">])</span> <span class="o">-</span>
-</span><span class='line'>    <span class="p">(</span>x<span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">*</span>cos<span class="p">(</span><span class="m">10</span><span class="o">*</span>x<span class="p">[</span><span class="m">2</span><span class="p">])</span> <span class="o">-</span> x<span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">*</span>sin<span class="p">(</span><span class="m">10</span><span class="o">*</span>x<span class="p">[</span><span class="m">1</span><span class="p">]))</span><span class="o">^</span><span class="m">2</span> <span class="o">*</span> cosh<span class="p">(</span>cos<span class="p">(</span><span class="m">20</span><span class="o">*</span>x<span class="p">[</span><span class="m">2</span><span class="p">])</span><span class="o">*</span>x<span class="p">[</span><span class="m">2</span><span class="p">])</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>アルゴリズム</h4>
-
-<ul>
-<li>勾配の値が10<sup>-5</sup> になるまで以下を繰り返す
-
-<ol>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />を生成する</li>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta_%7Bj%7D+" alt="\theta_{j} " />を使って勾配<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+" alt="\frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j)\zeta_j " />を生成する</li>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta_%7Bj%7D%2B%5Cvarepsilon_j+" alt="\theta_{j}+\varepsilon_j " />を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta_%7Bj%2B1%7D+" alt="\theta_{j+1} " />とする</li>
-<li><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha_j+" alt="\alpha_j " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_j+" alt="\beta_j " />を更新する</li>
-</ol>
-</li>
-</ul>
-
-
-<p>なお，実際のソースコードでは勾配の値が発散しないように，scaleが1以上になった場合には内部でループをして値を再計算するようにしている．</p>
-
-<br />
-
-
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4274068307" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h4><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />の生成方法と有限差分法における役割</h4>
-
-<p>さて，ここで有限差分法のポイントとなる<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />に関して，実際にどうやって値を生成するのか，そしてこの値がどういう意味を持っているかについて考えてみる．</p>
-
-<p>まずは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />の生成方法について．本文中では<strong>「<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />は単位球<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5C%7C+%5Czeta_j+%5C%7C+%3D+1+" alt="\| \zeta_j \| = 1 " />上に一様に分布しています」</strong>とあるだけで，コードの方を参照してみてもzeta / sqrt(t(zeta) %*% zeta)としか書かれていない．ではこれは一体何をしているのかというと，一言で言うと「球面上の一様分布から乱数を生成する」，つまり今回の場合は単位円の円周の上からある一点を取ってきて<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />の値にするということをしている．</p>
-
-<p>このような球面上の一様分布に関しては「<a href="http://www.amazon.co.jp/gp/product/4274068307/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4274068307&linkCode=as2&tag=yagays-22">Ｒによる計算機統計学</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274068307" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」のP.96に詳しく書かれており，この本ではD次元の球面上の一様乱数を生成する方法についてrunif.sphere()関数を定義している．今回の場合はxとyの2次元について考えているので，「<a href="http://www.amazon.co.jp/gp/product/4274068307/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4274068307&linkCode=as2&tag=yagays-22">Ｒによる計算機統計学</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274068307" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」に倣ってrunif.sphere(1,2)とすれば，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />と同様の値が得られる．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1"># Ｒによる計算機統計学 P.87より</span>
-</span><span class='line'><span class="c1"># http://personal.bgsu.edu/~mrizzo/SCR/SCRch3.R</span>
-</span><span class='line'>runif.sphere <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>n<span class="p">,</span> d<span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="c1"># return a random sample uniformly distributed</span>
-</span><span class='line'>    <span class="c1"># on the unit sphere in R ^d</span>
-</span><span class='line'>    M <span class="o">&lt;-</span> matrix<span class="p">(</span>rnorm<span class="p">(</span>n<span class="o">*</span>d<span class="p">),</span> nrow <span class="o">=</span> n<span class="p">,</span> ncol <span class="o">=</span> d<span class="p">)</span>
-</span><span class='line'>    L <span class="o">&lt;-</span> apply<span class="p">(</span>M<span class="p">,</span> MARGIN <span class="o">=</span> <span class="m">1</span><span class="p">,</span>
-</span><span class='line'>               FUN <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">){</span>sqrt<span class="p">(</span>sum<span class="p">(</span>x<span class="o">*</span>x<span class="p">))})</span>
-</span><span class='line'>    D <span class="o">&lt;-</span> diag<span class="p">(</span><span class="m">1</span> <span class="o">/</span> L<span class="p">)</span>
-</span><span class='line'>    U <span class="o">&lt;-</span> D <span class="o">%*%</span> M
-</span><span class='line'>    U
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>次に，有限差分法における<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />の役割について考えてみる．</p>
-
-<p>そもそも，確率的勾配法はローカルに関数の表面をなぞるように探索して，値の大きいポイントを探す確率的なアプローチだった．概念的には，<a href="http://yagays.github.com/blog/2012/11/06/imcmr-5-3/">前回3Dプロットをした</a>ような山みたいになっている関数の上をあちこち動いて頂上を探し出すということだが，あちこち動きまわるためには，歩く「方向」と「距離」を考えなければならない．今回の有限差分法における勾配は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cvarepsilon_j+%3D+%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29%5Czeta_j+" alt="\varepsilon_j = \frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j)\zeta_j " />で表されていたが，その「方向」が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />，「距離」が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B%5Calpha_j%7D%7B2%5Cbeta_j%7D%5CDelta+h%28%5Ctheta_j%2C%5Cbeta_j%5Czeta_j%29+" alt="\frac{\alpha_j}{2\beta_j}\Delta h(\theta_j,\beta_j\zeta_j) " />に対応している．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-7_3.png" alt="" /></p>
-
-<p>では実際に<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />と勾配<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cvarepsilon_j+" alt="\varepsilon_j " />を図示して，「方向」と「距離」の意味を確かめてみよう．以下の図は，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />の取りうる単位円と，赤い矢印<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />，黒い矢印<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cvarepsilon_j+" alt="\varepsilon_j " />を示した図になっている（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=j%3D1+" alt="j=1 " />）．この図を見ると，赤い矢印で方向が示され，黒い矢印でどれくらいの距離を進むかが見て取れる．<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Czeta_j+" alt="\zeta_j " />は乱数で生成された値なので，本書の「そのつど方向をランダムに選択する」という勾配の説明の通り，単位円の円周上からどこか一点を選択して進む方向を決めている．</p>
-
-<p>といったように，この有限差分法では関数の山の傾斜を考えて進む方向を決めるのではなく，何も考えずに動いてみるといったアプローチとなっている．ただし，距離に関しては別で，関数を使って傾斜を見つつ調整しているので，その点は注意．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>plot<span class="p">(</span>runif.sphere<span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="m">2</span><span class="p">),</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">-2</span><span class="p">,</span><span class="m">2</span><span class="p">),</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">-2</span><span class="p">,</span><span class="m">2</span><span class="p">),</span> cex<span class="o">=</span><span class="m">0.1</span><span class="p">)</span>
-</span><span class='line'>arrows<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span>grad<span class="p">[</span><span class="m">1</span><span class="p">],</span>grad<span class="p">[</span><span class="m">2</span><span class="p">],</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>             <span class="c1"># 黒の矢印が勾配</span>
-</span><span class='line'>arrows<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span>zeta<span class="p">[</span><span class="m">1</span><span class="p">],</span>zeta<span class="p">[</span><span class="m">2</span><span class="p">],</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>  <span class="c1"># 赤の矢印がゼータ</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-7_2.png" alt="" /></p>
-
-<h4>今回実験を行う4つのシナリオ</h4>
-
-<p>この有限差分法において，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha_j+" alt="\alpha_j " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_j+" alt="\beta_j " />の系列の更新式は任意に設定できる．今回は4つのシナリオを用意して実験を行った．それぞれのシナリオの更新式は以下の通り．</p>
-
-<ul>
-<li>シナリオ1：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1%2F%5Clog%28j%2B1%29+" alt="1/\log(j+1) " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1%2F%5Clog%28j%2B1%29%5E%7B0.1%7D+" alt="1/\log(j+1)^{0.1} " /></li>
-<li>シナリオ2：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1%2F100%5Clog%28j%2B1%29+" alt="1/100\log(j+1) " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1%2F%5Clog%28j%2B1%29%5E%7B0.1%7D+" alt="1/\log(j+1)^{0.1} " /></li>
-<li>シナリオ3：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1%2F%28j%2B1%29+" alt="1/(j+1) " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1%2F%28j%2B1%29%5E%7B0.5%7D+" alt="1/(j+1)^{0.5} " /></li>
-<li>シナリオ4：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1%2F%28j%2B1%29+" alt="1/(j+1) " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1%2F%28j%2B1%29%5E%7B0.1%7D+" alt="1/(j+1)^{0.1} " /></li>
-</ul>
-
-
-<p>(※シナリオ1と2に関しては後述の「本問題の疑問点」を参考)</p>
-
-<h4>例 5.7のソースコード</h4>
-
-<p>前置きがだいぶ長くなってしまったが，本題のソースコードおよび4つのシナリオにおける確率的勾配法の探索過程を示した図は以下のようになる．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>h <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">){</span>
-</span><span class='line'>  <span class="o">-</span><span class="p">(</span>x<span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">*</span>sin<span class="p">(</span><span class="m">20</span><span class="o">*</span>x<span class="p">[</span><span class="m">2</span><span class="p">])</span> <span class="o">+</span> x<span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">*</span>sin<span class="p">(</span><span class="m">20</span><span class="o">*</span>x<span class="p">[</span><span class="m">1</span><span class="p">]))</span><span class="o">^</span><span class="m">2</span> <span class="o">*</span> cosh<span class="p">(</span>sin<span class="p">(</span><span class="m">10</span><span class="o">*</span>x<span class="p">[</span><span class="m">1</span><span class="p">])</span><span class="o">*</span>x<span class="p">[</span><span class="m">1</span><span class="p">])</span> <span class="o">-</span>
-</span><span class='line'>    <span class="p">(</span>x<span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">*</span>cos<span class="p">(</span><span class="m">10</span><span class="o">*</span>x<span class="p">[</span><span class="m">2</span><span class="p">])</span> <span class="o">-</span> x<span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">*</span>sin<span class="p">(</span><span class="m">10</span><span class="o">*</span>x<span class="p">[</span><span class="m">1</span><span class="p">]))</span><span class="o">^</span><span class="m">2</span> <span class="o">*</span> cosh<span class="p">(</span>cos<span class="p">(</span><span class="m">20</span><span class="o">*</span>x<span class="p">[</span><span class="m">2</span><span class="p">])</span><span class="o">*</span>x<span class="p">[</span><span class="m">2</span><span class="p">])</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>start <span class="o">&lt;-</span> c<span class="p">(</span><span class="m">0.65</span><span class="p">,</span> <span class="m">0.8</span><span class="p">)</span>
-</span><span class='line'>theta <span class="o">&lt;-</span> matrix<span class="p">(</span>start<span class="p">,</span> ncol<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>dif <span class="o">&lt;-</span> <span class="m">1</span>
-</span><span class='line'>iter <span class="o">&lt;-</span> <span class="m">1</span>
-</span><span class='line'>alpha <span class="o">&lt;-</span> <span class="m">1</span>
-</span><span class='line'>beta <span class="o">&lt;-</span> <span class="m">1</span>
-</span><span class='line'>
-</span><span class='line'><span class="kr">while</span><span class="p">(</span>dif <span class="o">&gt;</span> <span class="m">10</span><span class="o">^</span><span class="m">-5</span><span class="p">){</span>
-</span><span class='line'>  zeta <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>  zeta <span class="o">&lt;-</span> zeta <span class="o">/</span> sqrt<span class="p">(</span>t<span class="p">(</span>zeta<span class="p">)</span> <span class="o">%*%</span> zeta<span class="p">)</span>
-</span><span class='line'>  grad <span class="o">&lt;-</span> alpha<span class="p">[</span>iter<span class="p">]</span><span class="o">*</span>zeta <span class="o">*</span> <span class="p">(</span>h<span class="p">(</span>theta<span class="p">[</span>iter<span class="p">,]</span><span class="o">+</span>beta<span class="p">[</span>iter<span class="p">]</span><span class="o">*</span>zeta<span class="p">)</span> <span class="o">-</span>
-</span><span class='line'>    h<span class="p">(</span>theta<span class="p">[</span>iter<span class="p">,]</span><span class="o">-</span>beta<span class="p">[</span>iter<span class="p">]</span><span class="o">*</span>zeta<span class="p">))</span> <span class="o">/</span> <span class="m">2</span><span class="o">*</span>beta<span class="p">[</span>iter<span class="p">]</span>
-</span><span class='line'>  scale <span class="o">&lt;-</span> sqrt<span class="p">(</span>t<span class="p">(</span>grad<span class="p">)</span> <span class="o">%*%</span> grad<span class="p">)</span>
-</span><span class='line'>  <span class="kr">while</span><span class="p">(</span>scale <span class="o">&gt;</span> <span class="m">1</span><span class="p">){</span>
-</span><span class='line'>    zeta <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>    zeta <span class="o">&lt;-</span> zeta <span class="o">/</span> sqrt<span class="p">(</span>t<span class="p">(</span>zeta<span class="p">)</span> <span class="o">%*%</span> zeta<span class="p">)</span>
-</span><span class='line'>    grad <span class="o">&lt;-</span> alpha<span class="p">[</span>iter<span class="p">]</span><span class="o">*</span>zeta <span class="o">*</span> <span class="p">(</span>h<span class="p">(</span>theta<span class="p">[</span>iter<span class="p">,]</span><span class="o">+</span>beta<span class="p">[</span>iter<span class="p">]</span><span class="o">*</span>zeta<span class="p">)</span> <span class="o">-</span>
-</span><span class='line'>      h<span class="p">(</span>theta<span class="p">[</span>iter<span class="p">,]</span><span class="o">-</span>beta<span class="p">[</span>iter<span class="p">]</span><span class="o">*</span>zeta<span class="p">))</span> <span class="o">/</span> <span class="m">2</span><span class="o">*</span>beta<span class="p">[</span>iter<span class="p">]</span>
-</span><span class='line'>    scale <span class="o">&lt;-</span> sqrt<span class="p">(</span>t<span class="p">(</span>grad<span class="p">)</span> <span class="o">%*%</span> grad<span class="p">)</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  theta <span class="o">&lt;-</span> rbind<span class="p">(</span>theta<span class="p">,</span> theta<span class="p">[</span>iter<span class="p">,]</span><span class="o">+</span>grad<span class="p">)</span>
-</span><span class='line'>  dif <span class="o">&lt;-</span> scale
-</span><span class='line'>  iter <span class="o">&lt;-</span> iter <span class="o">+</span> <span class="m">1</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># scenario1</span>
-</span><span class='line'>  alpha <span class="o">&lt;-</span> cbind<span class="p">(</span>alpha<span class="p">,</span> <span class="m">1</span><span class="o">/</span>log<span class="p">(</span>iter<span class="o">+</span><span class="m">1</span><span class="p">))</span>
-</span><span class='line'>  beta <span class="o">&lt;-</span> cbind<span class="p">(</span>beta<span class="p">,</span> <span class="m">1</span><span class="o">/</span><span class="p">(</span>log<span class="p">(</span>iter<span class="o">+</span><span class="m">1</span><span class="p">))</span><span class="o">^</span><span class="p">(</span><span class="m">0.1</span><span class="p">))</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>hcur <span class="o">&lt;-</span> h<span class="p">(</span>start<span class="p">)</span>
-</span><span class='line'>hval <span class="o">&lt;-</span> h<span class="p">(</span>start<span class="p">)</span>
-</span><span class='line'>x <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span>le<span class="o">=</span><span class="m">435</span><span class="p">)</span>
-</span><span class='line'>y <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span>le<span class="o">=</span><span class="m">435</span><span class="p">)</span>
-</span><span class='line'>z <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="m">0</span><span class="p">,</span> nrow<span class="o">=</span><span class="m">435</span><span class="p">,</span> ncol<span class="o">=</span><span class="m">435</span><span class="p">)</span>
-</span><span class='line'><span class="kr">for</span> <span class="p">(</span>i in <span class="m">1</span>:<span class="m">435</span><span class="p">){</span>
-</span><span class='line'>  <span class="kr">for</span> <span class="p">(</span>j in <span class="m">1</span>:<span class="m">435</span><span class="p">){</span>
-</span><span class='line'>    z<span class="p">[</span>i<span class="p">,</span>j<span class="p">]</span> <span class="o">&lt;-</span> h<span class="p">(</span>c<span class="p">(</span>x<span class="p">[</span>i<span class="p">],</span> y<span class="p">[</span>j<span class="p">]))</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>image<span class="p">(</span>x<span class="p">,</span> y<span class="p">,</span> z<span class="p">,</span> col<span class="o">=</span>terrain.colors<span class="p">(</span><span class="m">150</span><span class="p">))</span>
-</span><span class='line'>lines<span class="p">(</span>theta<span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>points<span class="p">(</span>theta<span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">],</span> theta<span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">],</span> col<span class="o">=</span><span class="s">&quot;gold&quot;</span><span class="p">,</span> pch<span class="o">=</span><span class="m">19</span><span class="p">)</span>
-</span><span class='line'>title<span class="p">(</span>main<span class="o">=</span><span class="s">&quot;scenario 1&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>シナリオ2,3,4の場合は，whileループの最後の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha_j+" alt="\alpha_j " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_j+" alt="\beta_j " />の更新式を以下の通りにする．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1"># scenario2</span>
-</span><span class='line'>  alpha <span class="o">&lt;-</span> cbind<span class="p">(</span>alpha<span class="p">,</span> <span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">100</span><span class="o">*</span>log<span class="p">(</span>iter<span class="o">+</span><span class="m">1</span><span class="p">)))</span>
-</span><span class='line'>  beta <span class="o">&lt;-</span> cbind<span class="p">(</span>beta<span class="p">,</span> <span class="m">1</span><span class="o">/</span><span class="p">(</span>log<span class="p">(</span>iter<span class="o">+</span><span class="m">1</span><span class="p">))</span><span class="o">^</span><span class="p">(</span><span class="m">0.1</span><span class="p">))</span>
-</span><span class='line'><span class="c1"># scenario3</span>
-</span><span class='line'>  alpha <span class="o">&lt;-</span> cbind<span class="p">(</span>alpha<span class="p">,</span> <span class="m">1</span><span class="o">/</span><span class="p">(</span>iter<span class="o">+</span><span class="m">1</span><span class="p">))</span>
-</span><span class='line'>  beta <span class="o">&lt;-</span> cbind<span class="p">(</span>beta<span class="p">,</span> <span class="m">1</span><span class="o">/</span>sqrt<span class="p">(</span>iter<span class="o">+</span><span class="m">1</span><span class="p">))</span>
-</span><span class='line'><span class="c1"># scenario4</span>
-</span><span class='line'>  alpha <span class="o">&lt;-</span> cbind<span class="p">(</span>alpha<span class="p">,</span> <span class="m">1</span><span class="o">/</span><span class="p">(</span>iter<span class="o">+</span><span class="m">1</span><span class="p">))</span>
-</span><span class='line'>  beta <span class="o">&lt;-</span> cbind<span class="p">(</span>beta<span class="p">,</span> <span class="m">1</span><span class="o">/</span><span class="p">(</span>iter<span class="o">+</span><span class="m">1</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="m">0.1</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-7_1.png" alt="" /></p>
-
-<p>上の図の解釈だが，この4つのシナリオの場合において</p>
-
-<ul>
-<li>シナリオ1では，動きまわる距離が大きすぎて（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha_j+" alt="\alpha_j " />が収束するのに時間がかかって）なかなかアルゴリズムが停止しない</li>
-<li>シナリオ2では，動きまわる距離が小さすぎて（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha_j+" alt="\alpha_j " />がすぐ収束してしまって）ローカルミニマムにはまっている</li>
-<li>シナリオ3では，動きまわる距離はシナリオ2より改善しているが，最大値を見つけられていない</li>
-<li>シナリオ4では，上手い具合に最大値を見つけることができている</li>
-</ul>
-
-
-<p>ことが分かる．</p>
-
-<p>なお，この解釈は本書（P.156）に書かれているものとは多少異なっているということを注意していただきたい．それに関しては次の疑問点のところで述べる．</p>
-
-<h3>本問題の疑問点</h3>
-
-<p>さて，この問題を素直に解いてもP.157の図5.7のようにはいかない．色々と試してみた結果，どうやら<strong>本書におけるシナリオ1と2の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_j+" alt="\beta_j " />において，分母にかかっている0.1乗の表記がおかしい気がする．</strong>この0.1乗がlogの中の括弧にかかっていると考えて0.1*log()としてコードを組むと，値が発散しすぎてなかなか収束しなくなる．ということで，ここでは以下のように式を解釈して問題を解いた．正直なところ，これが正しいのかよくわかっていない．</p>
-
-<ul>
-<li>シナリオ1と2の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_j+" alt="\beta_j " />：<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7B%5Clog%28j%2B1%29%5E%7B0.1%7D%7D+" alt="\frac{1}{\log(j+1)^{0.1}} " />→<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7B%28%5Clog%28j%2B1%29%29%5E%7B0.1%7D%7D+" alt="\frac{1}{(\log(j+1))^{0.1}} " /></li>
-</ul>
-
-
-<p>これにともなって，シナリオの図示や解釈にも少し違いが出てきている．そのため，今回は本書の解説（P.156）からは少し外れることになったが，自分がスクリプトを回して得た結果を解釈に用いた．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/25/">&larr; Older</a></li>
@@ -698,6 +517,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/11/review-satou-masaru-wisdom/">「人に強くなる極意」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/01/17/pboc-03/">「細胞の物理生物学」読書ノート：第3章</a>
       </li>
     
@@ -731,10 +554,6 @@
     
       <li class="post">
         <a href="/blog/2013/12/05/pboc-01/">「細胞の物理生物学」読書ノート：第1章</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/12/04/pboc-00/">「細胞の物理生物学」読書ノート：序文</a>
       </li>
     
   </ul>
