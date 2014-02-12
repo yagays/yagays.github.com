@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Book | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/book/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-02-11T00:55:25+09:00</updated>
+  <updated>2014-02-12T15:39:27+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「強いチームはオフィスを捨てる」読了]]></title>
+    <link href="http://yagays.github.io/blog/2014/02/13/review-remote/"/>
+    <updated>2014-02-13T00:00:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/02/13/review-remote</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4152094338" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>37signals(現Basecamp)の最新の著作．今回は社員が自宅で働くというリモートワークに焦点をあて，オフィスに束縛される現代の働き方に疑問を投げかける．前作「小さなチーム、大きな仕事」と同様に，切れ味の良い語り口と豊富な挿絵で通説をぶったぎるさまは健在だ．37signalsは創業当時から国をまたいだリモートワークを実践して成長してきたという実績があり，自社の経験に裏打ちされた方法論は非常に説得力のあるものとなっている．</p>
+
+<p>著者らは，リモートワークに踏み切れない会社と毎日オフィスに束縛されている社員を説き伏せる．そんな非効率なことはやめよう，と．今の技術ではリモートでも十二分に働らく環境は実現できるし，実際にリモートワークにすると会社に掛かるコストが減ることだって数字に表れている．オフィスで同じ空間をともにしたり会議で向き合って意見を出し合うこともいいけど，リモートだってそれは可能だ．また，社員が働かなくなるかが不安になるのは社員を管理しようとする行為のせいであり，むしろリモートでは働き過ぎてしまうのが問題であり，管理すべきは別にあるという．</p>
+
+<p>ただし，オフィスを完全になくせと言っているわけではない．実際37signalsもオフィスを持っているし，年に数回は社員全員が集まってミーティングもしている．何度か顔を突き合わせて喋ることにより，インターネット上でのコミュニケーションがより円滑になるそうだ．つまり，リモートを補完するためのオフィスであり，オフィスを補完するためのリモートとして，うまいこと組み合わせることで効率化を目指しているということだ．リモートワークの導入だって一筋縄ではいかないのを承知で，最初は一部署単位で初めてみるとか，週に2日だけリモートワークにするとか，さまざまな案も本書の中で提案している．</p>
+
+<p>リモートワークの最終目標は，社員が一番活躍できる環境を実現することにある．Googleやベンチャー企業が無理をしてでも社内をデコレーションしたり食事を無料にしたりして環境を整えるのは，まさに働く環境のためであり，一方でオフィスという囲いに窮屈感を感じていることのあらわれでもある．趣味や家庭などの自分の好きな場所にいられることの大切さは，何事にも代え難い．それを実現する方法としてのリモートワークという働き方である．37signalsの社員の中には，旅行しながら仕事をしているメンバーもいるそうだ．短い休暇をやりくりして旅行を計画する必要はなく，好きなように移動して気に入った場所に滞在しながら働くことができる．そういった自分に合ったワークスタイルを選べる自由さが，これからの働き方なのかもしれない．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「クリエイティブの授業 STEAL LIKE AN ARTIST」読了]]></title>
@@ -82,29 +100,6 @@
 <p>森博嗣の思考術とでも言うべきか．あとがきには仕事術に関する本を書いてくれと頼まれたとあるが，元研究者の著者としてはその二つは同義だろう．本書は「抽象的思考」を軸に，著者が世の中のあらゆる問題に対してどう考えていくのかといったことが丁寧に解説される．とは言うものの，人の脳みその中で行われる捉えどころの無いものを，直接文字として起こすことはできない．本書においても，方法論として述べられるところはあるものの，基本的には森博嗣本人が「どのような考え方であるのか」ということが中心となる．しかしながら，それはアプローチの方法であり，問題の定義の仕方であり，問題に対して自分がどう接していくのかということに繋がる．何も突拍子もない思考の跳躍をしているわけではなく，問題を一歩引いて眺めたり，多面的に捉えたりと，そのアプローチには「枠」があり，それが抽象化である．</p>
 
 <p>さて，本書で個人的に一番面白かったのが，著者が思考というものを「庭」に喩えている最後の章だ．抽象的思考というものを抽象的に捉えたらということを突き詰めた結果，著者は趣味のガーデニングに行き着いたようだ．ガーデニングは思いの外難しいらしい．思い描く理想の庭を人工的に作っても，植物はいずれ朽ちてしまう．どれだけ手を加えても，時間の流れには逆らえない．しかし，その摂理に虚無的になるのではなく，継続して何かし続けることで，その行為がまた新たな結果を生む．そういった論理では測れない「自然」的な要素が，著者の考える思考の本質なのだという．自分の思考を育てるという意味で，地道な努力によって自分の「庭」を作っていくほか無い．それは，人に強制されたり刷り込まれるものではなく，自発的なもの，結論が出るまでに時間を要するもの，人の一生をかけて理想に近づけていくというものであるというのが著者の思考術である．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「山賊ダイアリー」1〜4巻 読了]]></title>
-    <link href="http://yagays.github.io/blog/2013/12/12/review-sanzoku-diary/"/>
-    <updated>2013-12-12T23:19:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/12/12/review-sanzoku-diary</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4063523918" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4063524264" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=406352454X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4063524884" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<p>本書は，地元岡山県北部で猟師になった著者が，猟銃や罠などを使ってイノシシやシカ，鳥などの動物を狩る「リアル猟師奮闘記」だ．実際に山に入って狩猟をするのは勿論のこと，狩猟仲間やベテランとのやり取りや日々の生活なども描かれる．</p>
-
-<p>最近めっきり漫画を読まなくなってしまったのだけれども，ネットで評判になってる本書を見てたまたま買って読んでみたら，これがなかなか良かった．絵やコマの割り方が細かくないため素直に物語や知識を追えて，なおかつ実録モノというところが，個人的に気に入った要因だと思う．変に説教臭く無いのも好感が持てる．それでいて本能的な肉への欲求であったり，家畜化されていない動物を仕留めそして食べるという行為の心理的な変化を感じ，料理に化けるときの喜びのようなものがダイレクトに伝わってくる．要所要所に挟まってくる日本の狩猟のシステムであったり，狩りの方法や先人の智慧なども非常に興味深い．知的好奇心も満たされつつ一般人の日常では味わうことのない世界を覗くことができて，個人的には満足度の高い作品だった．狩猟時期が限られていることもあって新しいネタがどんどん出てくるわけでもないようだが，次のシーズンの狩猟の成果に期待したい．</p>
 ]]></content>
   </entry>
   
