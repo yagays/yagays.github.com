@@ -117,6 +117,105 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/10/10/shut-the-fuck-up-and-download-all-pdf-files/">ウェブページにリストアップされているpdfファイルをwgetでまとめてダウンロードする方法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-10T00:03:00+09:00" pubdate data-updated="true">Oct 10<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>pdf中毒者のためのwget入門</h3>
+
+<p>大学の先生方が用意する講義資料やプレゼンテーションのスライドの類なんかは，得てして個人のウェブページにまとまりなくリストアップされているだけの場合が多い．必要なときにダウンロードするようにすると既に持っているファイルを再度ダウンロードしてしまって重複することがあるし，まとめてダウンロードするためにブラウザ上でいちいちクリックするのも面倒くさい．そのため，ウェブページにリストアップされているpdfファイルをコマンド一発でまとめてダウンロードしたい！というときには，wgetコマンドが非常に便利だ．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>wget -r -l 1 -A pdf -w 5 -nd http://example.com/hoge/index.html
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これだけでいいのだ．このコマンドを使えば，example.com/hoge/index.htmlというウェブページにリストアップされているpdfファイルを一括してダウンロードすることができる．指定したオプションを少し解説しよう．</p>
+
+<h4><code>-r -l 1</code></h4>
+
+<p><strong>-r</strong>と<strong>-l</strong>オプションによって，再帰的に1階層分だけリンクをたどるように指定している．つまり，指定したウェブページに貼ってあるリンクの中から，目的となるファイルだけをダウンロードすることができる．</p>
+
+<h4><code>-A pdf</code></h4>
+
+<p><strong>-A</strong>オプションによって，拡張子がpdfのファイルのみをダウンロードするように指定している．これをpptに変えればパワーポイントのファイルだけダウンロードできるし，pdf,pptのようにコンマ区切りで複数列挙することもできる．</p>
+
+<h4><code>-w 5</code></h4>
+
+<p><strong>-w</strong>オプションによって，ダウンロード処理の間隔を5秒開けている．wgetはダウンロード処理が終わり次第次のダウンロードを実行し始めるため，短時間に大量にダウンロードすると向こうのサーバに負荷をかける可能性がある．そのため，ダウンロード間隔を少し開けることで，集中してアクセスしないようにしている．間隔の秒数には特に意味があるわけではないが，最低でも数秒は開けたほうが良いだろう．「<a href="http://www.amazon.co.jp/gp/product/4873111870/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4873111870&linkCode=as2&tag=yagays-22">Spidering hacks―ウェブ情報ラクラク取得テクニック101選</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4873111870" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」なんかを見ると，スクリプトによって3秒または5秒開けてる場合が多い．</p>
+
+<h4><code>-nd</code></h4>
+
+<p><strong>-nd</strong>オプションによって，ダウンロードしたファイルを同一ディレクトリ（標準ではカレントディレクトリ）に保存している．これを指定しないと，ウェブページのURL階層通りに/hoge/fuga/piyo/といったディレクトリ構造が作成されてしまう．なお，<code>-P hoge</code>というオプションを追加すると，hogeというディレクトリ以下にダウンロードしたファイルが保存される．</p>
+
+<h3>なお，Mac OS Xの場合にはwgetのインストールが必要</h3>
+
+<p>そういえば，wgetはMacには標準で入っていないので，MacPortsかHomebrewなどを使ってインストールする必要がある．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo port install wget
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>または</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install wget
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>もちろんソースコードをコンパイルして入れることもできる(<a href="http://osxdaily.com/2012/05/22/install-wget-mac-os-x/">http://osxdaily.com/2012/05/22/install-wget-mac-os-x/</a>)</p>
+
+<h3>!注意!</h3>
+
+<p><strong>相手方のサーバ負荷に配慮するのはもちろん，利用規約の有無やダウンロード環境にも注意が必要である．</strong>ウェブページによっては，スクリプトを使った一括ダウンロードなどを制限/禁止している場合がある．上記コマンドを使ったダウンロードを行う際は，そのような利用規約があるかどうかをまず確認し，最大限利用規約を守るよう注意しなければいけない．また，万が一の場合には相手に迷惑を掛けてドメイン/IPアドレス単位でアクセスが禁止される可能性もある．そのため，会社や大学で実行する際には細心の注意を払い，同じIPアドレスを使う同僚や組織に迷惑をかけないよう注意しなければならない．</p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://www.itsenka.com/contents/development/unix-linux/wget.html">http://www.itsenka.com/contents/development/unix-linux/wget.html</a></li>
+<li><a href="http://taichino.com/engineer-life/linux/288">http://taichino.com/engineer-life/linux/288</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873111870" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774138169" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/10/09/review-art-of-reading/">「読書の技法 誰でも本物の知識が身につく熟読術・速読術「超」入門」読了</a></h1>
     
     
@@ -314,51 +413,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/09/25/review-critical-speaking/">「外国語を身につけるための日本語レッスン」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-25T00:04:00+09:00" pubdate data-updated="true">Sep 25<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4560049882" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>だいぶ時間が空いてしまった．<a href="http://yagays.github.com/blog/2012/09/05/review-critical-reading/">「外国語で発想するための日本語レッスン」</a>に続いて本書も既に読み終えていたのだけれども，色々な印象をもう片方の本に引っ張られそうだったので，あえて書評を書くのを先送りにしていた1冊．少し間をおいて改めて通読したのだが，その間に本書の技術をどれだけ現実に活かすことができたかと考えると，なかなか自分で評価するのは難しい．</p>
-
-<p>本書「外国語を身につけるための日本語レッスン」は，会話における論理的な言語技術を身につけるための本である．疑問と回答を繰り返す論理的な対話は，基本的に言語に依存しない．ただ，言語の背景にある文化や共通認識によって，そのスタイルというのはかなり違ったものとなっている．そういった点において外国語に翻訳できるような日本語というのは，日本語でありながら日本語的ではない一面も持つ．本書はその違いを埋めつつ言語的に互換があるような論理的な会話を組み立てるために，日本語で曖昧になっている部分をとことん突き詰めて理解するところから始まる．そして，自分の理解を相手にはっきり分かりやすく伝え理解してもらうためには，どういう情報を伝えればいいのか，そしてどういう順番で伝えればいいのかといった具体的な手法が述べられる．</p>
-
-<p>「外国語で発想するための日本語レッスン」が文章の書き方指南だとしたら，本書はプレゼンテーション指南の本だ．自分の考えを人に伝えるという点では同じだが，対話ならではの会話のやり取りやリアルタイムで流れる時間は，文章とは違った即興性や論理展開を必要とする．取り敢えず大学生は背伸びした振りをしてビジネス書や就活本に手をだすくらいなら，一通りこれを読めと言いたくなるような，非常に信頼出来る1冊．できる事なら，テストで自己満足の論述や発表をしては一人満足するものの実際の点数はあんまり良くない，みたいな昔の自分に教えたいくらいだ…．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/32/">&larr; Older</a></li>
@@ -406,6 +460,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/02/20/withings-pulse/">Withingsのpulseを購入した</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/16/review-wit-and-foolishness-in-english/">「マーク・ピーターセンの英語のツボ」読了</a>
       </li>
     
@@ -441,10 +499,6 @@
         <a href="/blog/2013/12/12/review-sanzoku-diary/">「山賊ダイアリー」1〜4巻 読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/12/11/pymol-macports/">MacPortsでPyMOLをインストールする</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -453,7 +507,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (84)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (85)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
