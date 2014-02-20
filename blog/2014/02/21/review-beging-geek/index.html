@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>「データ解析のための統計モデリング入門」読書ノート 10章 階層ベイズモデルの生成過程とグラフィカルモデル - Wolfeyes Bioinformatics beta</title>
+  <title>Being Geek ―ギークであり続けるためのキャリア戦略」読了 - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.io/blog/2012/12/05/glm-mcmc-chp10">
+  <link rel="canonical" href="http://yagays.github.io/blog/2014/02/21/review-beging-geek">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -115,7 +115,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">「データ解析のための統計モデリング入門」読書ノート 10章 階層ベイズモデルの生成過程とグラフィカルモデル</h1>
+      <h1 class="entry-title">Being Geek ―ギークであり続けるためのキャリア戦略」読了</h1>
     
     
       <p class="meta">
@@ -131,80 +131,53 @@
   
 
 
-<time datetime="2012-12-05T13:31:00+09:00" pubdate data-updated="true">Dec 5<span>th</span>, 2012</time>
+<time datetime="2014-02-21T08:23:00+09:00" pubdate data-updated="true">Feb 21<span>st</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><ul>
-<li>まとめ：<a href="http://yagays.github.com/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート</a></li>
-</ul>
+<div class="entry-content"><iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873114993" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=400006973X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+<p>書店でこの本を見かけたら，まず第23章「『ナード』ハンドブック」を読んでみてほしい．そこに書かれていることがまるで自分のことのように思えたら，きっと本書はあなたにピッタリだ．現状でのキャリアに満足しているにせよしていないにせよ，ギークとして仕事をもっと巧くやりぬくために大いに参考になるだろう．</p>
+
+<p>本書はギークと総称される職人気質なソフトウェア開発者のための仕事術に焦点をあてている．著者はギーク出身の現マネージャーで，彼がギークとして活躍していた頃の，そして彼がマネージャーとしてその能力をマネジメントに活かした時の経験がふんだんに盛り込まれている．</p>
+
+<p>本書は，4部構成全40章の短いエッセイで構成されており，転職の話から始まって転職の話で終わる．それはすなわち，長い人生の中のある時点でひとつの会社へのキャリアがはじまりある時点でそのキャリアが終わるという，会社を軸にしたキャリアの単位を表してる．そこには，転職を上手に進めるにはどうすればよいかということからスタートし，実際に会社に入った後の上司との付き合い方，プロジェクトの管理，仕事に必要なスキル，そしてその会社を離れるときに巻き起こる周囲への影響などが含まれる．本書ではそういったエンジニアが経験するであろうことについて，時には上手い対処の仕方，時には冷静で客観的な見方を教えてくれる．</p>
+
+<br/>
 
 
-<p>今回は特に図を再現するわけでもなくコードを動かすわけでもないのだが，自学のために10章の階層ベイズモデルの生成過程を丁寧に追ってみて，グラフィカルモデルを描いてみた．</p>
-
-<h3>10章の階層ベイズモデルで用いる実験条件 </h3>
-
-<p>まずは実験条件の確認．今回は，植物から得られる種子数と施肥処理の有無の関係を調べる．対象となる植物100個体はそれぞれ10個体ずつ植木鉢に植えられており，その植木鉢のうち半分は施肥処理がされている．つまり，植物50個体は無処理で，もう半分の50個体は施肥処理がされた個体である．その植物個体からそれぞれ種子を採取し，施肥処理の有無による種子数の変化をみる．</p>
-
-<p>これだけ見ると無処理と施肥処理の植物個体の種子数の平均を見れば何となく分かりそうだが，今回はしっかりとモデルを組んで，どの要因がどれだけ影響するのかといったことまでも含めて解析を行なう．今回の話の筋としては，単純に平均で考えたりGLMで調べると施肥処理の効果はありそうという結果が出るけれども，場所差・個体差などの擬似反復の要素を取り入れたモデルを組めば施肥処理の効果は無いという結論を導くといった流れになっている．</p>
-
-<h3>潜在変数モデルと生成過程，グラフィカルモデル</h3>
-
-<p>ここからは，本書の内容に自分の知識や人から教わった内容を組み合わせて解釈した内容となっている．そのため，本書に書いていない内容を扱ったり著者の意向に沿わない書き方をしているかもしれないので，その辺りはご注意を．</p>
-
-<p>今回考慮する個体差<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_i+" alt="r_i " />や場所差<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_j+" alt="r_j " />という要素は，本書7章でも定義しているように「人間が測定出来無い・測定できなかった」数量や因子である．こういった要素というのは一般に「潜在変数」と言い，これを組み込んだモデルは「潜在変数モデル」と呼ばれる．ベイズモデルにおいてはパラメータはある真の値を持つ数学的な変数ではなく，何らかの分布をもつ確率変数として扱う．そのため，非ベイズで考えていたパラメータ自体を，潜在変数とハイパーパラメータのような組み合わせで表現することができる．</p>
-
-<p>また，観測データがどのような確率モデルによって生成されたかをモデルとして表現することを，生成モデルまたは生成過程と呼ぶ．そして，モデルを図式的に記述するために用いるのがグラフィカルモデルである．特に今回の場合では確率分布を表すので，確率的グラフィカルモデルとも呼ばれる．</p>
-
-<h3>10章の階層ベイズモデルを生成過程やグラフィカルモデルで記述してみる</h3>
-
-<p>それでは実際に，上で説明した実験条件を生成過程やグラフィカルモデルで表してみる．といっても本書とかけ離れた難しいことをやりたいわけではなくて，下で示す生成過程はBUGS言語を数式に直しただけだし，グラフィカルモデルは基本的に本書P.238の図10.8とほぼ同じような内容となっている．</p>
-
-<h3>生成過程</h3>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/glm_chp10_2.png" alt="" /></p>
-
-<h3>グラフィカルモデル</h3>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/glm_chp10_1.png" alt="" /></p>
-
-<h3>グラフィカルモデルの表記について</h3>
-
-<p>四角で囲っている部分はプレートと呼ばれ，複数のノードをひとつにまとめたものである．今回は例で言えば，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_i+%3D+%5C%7Br_1%2Cr_2%2C%5Cdots%2Cr_%7B100%7D%5C%7D+" alt="r_i = {r_1,r_2,\dots,r_{100}} " />の100個のノードを横一列に並べて全て描き表すかわりに，プレートを使って一つのノードを代表させている．また，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=y_i+" alt="y_i " />を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=y_%7Bji%7D+" alt="y_{ji} " />と書いているのは，生成過程での2つのイテレーションの内側にあるということを強調するためである．その割には場所差を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=r_%7Bj%28i%29%7D+" alt="r_{j(i)} " />と表記しているが，こちらは本書に準拠した書き方をしている．なお，ここでは施肥処理の有無である<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f_i+" alt="f_i " />は観測値なので一応入れていない</p>
-
-<p>あと，変数やパラメータの書き方に色々と流儀はあるようだが，今回はあまり気にしていない．PRML風に書くならば，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta_1%2C%5Cbeta_2%2Cs%2Cs_p+" alt="\beta_1,\beta_2,s,s_p " />を塗りつぶされた小さな点で表現して，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=y_%7Bji%7D+" alt="y_{ji} " />のノードを影付けする感じだろうか．</p>
-
-<h3>グラフィカルモデルから数式への変換</h3>
-
-<p>グラフィカルモデルの何が嬉しいかといえば条件付き独立性が云々という話など色々とあるようだが，個人的な感覚としては，グラフィカルモデルをぱっと見るだけでモデルで考慮すべき事前分布が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=y_%7Bji%7D+" alt="y_{ji} " />にかかるすべての確率変数の積<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28%5Cbeta_1%29p%28%5Cbeta_2%29p%28s%29p%28s_p%29%5Cprod_i%5Cprod_j+p%28r_i%7Cs%29p%28r_j%7Cs_p%29+" alt="p(\beta_1)p(\beta_2)p(s)p(s_p)\prod_i\prod_j p(r_i|s)p(r_j|s_p) " />で書けるということがわかるというのは結構大きい気がする．ちなみに，グラフィカルモデルのプレートで表している部分が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cprod+" alt="\prod " />と対応している．</p>
-
-<h3>イテレーションの階層構造について</h3>
-
-<p>本書では個体番号<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=i+" alt="i " />により植木鉢<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=j+" alt="j " />が決まるとしているため，個体番号<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=i+" alt="i " />のイテレーションの中に<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=j+" alt="j " />が入る形となっている．個人的には「個体番号1の植木鉢Aの個体」よりかは「植木鉢Aの個体番号1の個体」のような階層構造にしたほうがイメージしやすいと思うが，今回は場所差と個体差は独立ということなので，どちらにせよ結果は変わらないはず．</p>
-
-<h3>おまけ</h3>
-
-<p>カフェでsyou6162にグラフィカルモデルについて教えを乞う図．ケーキを食べながら必死にお絵かきしてました．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/20121202.jpg" alt="" /></p>
-
-<h3>参考</h3>
+<p>私自身はまだソフトウェア開発者としてのキャリアの中にはいない人間なので，正直に言って書かれていることに現実味を感じないところもある．トピックごとの粒度などエッセイの構成が合わないと感じることもあったが，幾つかは非常に印象に残るものだった．こういう本の類は読み通すことにそれほどの重要性があるわけではないと思うので，ざっと読んでみて気に入ったエッセイを探したり，適当に気になるものだけを読んでみるのも良いと思う．ちなみに，自分が気に入ったエッセイは以下の通り．</p>
 
 <ul>
-<li>(pdf) <a href="http://www.kecl.ntt.co.jp/as/members/ueda/pdf/CVIM-ueda.pdf">http://www.kecl.ntt.co.jp/as/members/ueda/pdf/CVIM-ueda.pdf</a></li>
+<li>8章 企業文化
+
+<ul>
+<li>少数のコアメンバーが企業全体の文化を支えているということについて．それがある時変化するということはどういうことを意味するのか．</li>
 </ul>
+</li>
+<li>23章 「ナード」ハンドブック
 
+<ul>
+<li>パートナー向け，ギークやナードの取扱説明書．</li>
+</ul>
+</li>
+<li>26章 「危機」と「創造」モデル
 
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621061224" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+<ul>
+<li>メンタルモデル，すなわち気の持ちようについて．</li>
+</ul>
+</li>
+<li>30章 声を出す
 
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621061240" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+<ul>
+<li>人前でプレゼンテーションをするときのテクニック．ところでプレゼンテーションとスピーチの違いって分かる？</li>
+</ul>
+</li>
+</ul>
 
 </div>
 
@@ -230,16 +203,22 @@
   
 
 
-<time datetime="2012-12-05T13:31:00+09:00" pubdate data-updated="true">Dec 5<span>th</span>, 2012</time>
+<time datetime="2014-02-21T08:23:00+09:00" pubdate data-updated="true">Feb 21<span>st</span>, 2014</time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/book/'>Book</a>
+  
+</span>
 
 
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2012/12/05/glm-mcmc-chp10/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2014/02/21/review-beging-geek/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2012/12/05/glm-mcmc-chp10/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2012/12/05/glm-mcmc-chp10/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2014/02/21/review-beging-geek/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2014/02/21/review-beging-geek/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -260,14 +239,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/12/04/review-phylogeny-mandala/" title="Previous Post:
-        「系統樹曼荼羅―チェイン・ツリー・ネットワーク」読了">&laquo; 「系統樹曼荼羅―チェイン・ツリー・ネットワーク」読了</a></li>
+        href="/blog/2014/02/20/withings-pulse/" title="Previous Post:
+        Withingsのpulseを購入した">&laquo; Withingsのpulseを購入した</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/12/06/review-ninja-slayer/"
-        title="Next Post: 「ニンジャスレイヤー ネオサイタマ炎上1」読了">「ニンジャスレイヤー ネオサイタマ炎上1」読了
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -451,8 +426,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.io/blog/2012/12/05/glm-mcmc-chp10/';
-        var disqus_url = 'http://yagays.github.io/blog/2012/12/05/glm-mcmc-chp10/';
+        var disqus_identifier = 'http://yagays.github.io/blog/2014/02/21/review-beging-geek/';
+        var disqus_url = 'http://yagays.github.io/blog/2014/02/21/review-beging-geek/';
         var disqus_script = 'embed.js';
       
     (function () {

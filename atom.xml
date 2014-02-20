@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-02-20T21:17:23+09:00</updated>
+  <updated>2014-02-21T08:28:10+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,55 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Being Geek ―ギークであり続けるためのキャリア戦略」読了]]></title>
+    <link href="http://yagays.github.io/blog/2014/02/21/review-beging-geek/"/>
+    <updated>2014-02-21T08:23:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/02/21/review-beging-geek</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873114993" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>書店でこの本を見かけたら，まず第23章「『ナード』ハンドブック」を読んでみてほしい．そこに書かれていることがまるで自分のことのように思えたら，きっと本書はあなたにピッタリだ．現状でのキャリアに満足しているにせよしていないにせよ，ギークとして仕事をもっと巧くやりぬくために大いに参考になるだろう．</p>
+
+<p>本書はギークと総称される職人気質なソフトウェア開発者のための仕事術に焦点をあてている．著者はギーク出身の現マネージャーで，彼がギークとして活躍していた頃の，そして彼がマネージャーとしてその能力をマネジメントに活かした時の経験がふんだんに盛り込まれている．</p>
+
+<p>本書は，4部構成全40章の短いエッセイで構成されており，転職の話から始まって転職の話で終わる．それはすなわち，長い人生の中のある時点でひとつの会社へのキャリアがはじまりある時点でそのキャリアが終わるという，会社を軸にしたキャリアの単位を表してる．そこには，転職を上手に進めるにはどうすればよいかということからスタートし，実際に会社に入った後の上司との付き合い方，プロジェクトの管理，仕事に必要なスキル，そしてその会社を離れるときに巻き起こる周囲への影響などが含まれる．本書ではそういったエンジニアが経験するであろうことについて，時には上手い対処の仕方，時には冷静で客観的な見方を教えてくれる．</p>
+
+<br/>
+
+
+<p>私自身はまだソフトウェア開発者としてのキャリアの中にはいない人間なので，正直に言って書かれていることに現実味を感じないところもある．トピックごとの粒度などエッセイの構成が合わないと感じることもあったが，幾つかは非常に印象に残るものだった．こういう本の類は読み通すことにそれほどの重要性があるわけではないと思うので，ざっと読んでみて気に入ったエッセイを探したり，適当に気になるものだけを読んでみるのも良いと思う．ちなみに，自分が気に入ったエッセイは以下の通り．</p>
+
+<ul>
+<li>8章 企業文化
+
+<ul>
+<li>少数のコアメンバーが企業全体の文化を支えているということについて．それがある時変化するということはどういうことを意味するのか．</li>
+</ul>
+</li>
+<li>23章 「ナード」ハンドブック
+
+<ul>
+<li>パートナー向け，ギークやナードの取扱説明書．</li>
+</ul>
+</li>
+<li>26章 「危機」と「創造」モデル
+
+<ul>
+<li>メンタルモデル，すなわち気の持ちようについて．</li>
+</ul>
+</li>
+<li>30章 声を出す
+
+<ul>
+<li>人前でプレゼンテーションをするときのテクニック．ところでプレゼンテーションとスピーチの違いって分かる？</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Withingsのpulseを購入した]]></title>
@@ -2050,136 +2099,6 @@
 
 
 <p>よ，4年前と全然変わってねぇ&#8230;．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[メモ：脳神経科学の基礎の基礎]]></title>
-    <link href="http://yagays.github.io/blog/2013/10/31/neuroscience/"/>
-    <updated>2013-10-31T06:21:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/10/31/neuroscience</id>
-    <content type="html"><![CDATA[<p>少し脳神経科学の基礎を勉強する必要があったので，神経とはなんぞやというところから，電位としてニューロンが情報を伝える仕組み，あとは視覚に関しての情報処理的なところをおおまかに勉強している．深く入り込む予定はないので，関連する話を聞いたら何となく分かる程度に基礎を押さえるつもり…．きちんとまとめる必要もないので，個人的に押さえとく部分だけを復習がてら以下に列挙している．</p>
-
-<h4>神経細胞 neuron</h4>
-
-<ul>
-<li>軸索 axon</li>
-<li>樹状突起 dendrite</li>
-<li>棘突起 spine</li>
-<li>シナプス synapse
-
-<ul>
-<li>シナプス小胞 synaptic vesicle</li>
-</ul>
-</li>
-<li>髄鞘 myelin sheath
-
-<ul>
-<li>ランビエー紋輪 node of Ranvier</li>
-<li>シュワン細胞 Schwann cells</li>
-</ul>
-</li>
-</ul>
-
-
-<h4>グリア細胞 glial cell</h4>
-
-<ul>
-<li>マクログリア macroglia
-
-<ul>
-<li>アストロサイト astrocyte, -glia</li>
-<li>オリゴデンドロサイト oligodendrocyte, -glia</li>
-</ul>
-</li>
-<li>マイクログリア microglia</li>
-</ul>
-
-
-<h4>活動電位 action potential</h4>
-
-<ul>
-<li>静止膜電位 resting membrene potential</li>
-<li>スパイク spike</li>
-<li>オーバーシュート overshoot</li>
-<li>アンダーシュートundershoot</li>
-<li>過分極 hyperpolarization</li>
-<li>不応期 refractory period</li>
-<li>閾値 threshold</li>
-</ul>
-
-
-<h4>イオンチャンネル</h4>
-
-<ul>
-<li>電位依存性カリウムチャネル voltage-gated potassium channel</li>
-<li>電位依存性ナトリウムチャネル voltage-gated sodium channel</li>
-<li>漏洩チャネル leak channels</li>
-</ul>
-
-
-<h2>視覚野 Visual Cortex</h2>
-
-<h3>第一次視覚野 Primary visual cortex</h3>
-
-<p>(Striate cortex, V1)</p>
-
-<ul>
-<li>ハイパーコラム hypercolumn
-
-<ul>
-<li>方位円柱 orientation column</li>
-<li>眼球優位円柱 ocular dominance column</li>
-<li>色円柱 blob</li>
-</ul>
-</li>
-</ul>
-
-
-<p>網膜から外側膝状体へと中継された情報は，V1においても局在性を持つ</p>
-
-<ul>
-<li>トポグラフィックマッピング topographic mapping</li>
-<li>自己組織化 self organization</li>
-</ul>
-
-
-<h3>高次視覚野 higher visual cortex</h3>
-
-<ul>
-<li><p>背側皮質視覚路 dorsal stream</p>
-
-<ul>
-<li>MT野 middle temporal lobe</li>
-<li>MST野 middle super temporal lobe</li>
-<li>運動の知覚</li>
-</ul>
-</li>
-<li><p>腹側皮質視覚路 Ventral stream</p>
-
-<ul>
-<li>IT野 inferior temporal lobe</li>
-<li>対象物の認識</li>
-</ul>
-</li>
-</ul>
-
-
-<h4>参考</h4>
-
-<p>まず入門として「<a href="http://www.amazon.co.jp/gp/product/4758122016/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4758122016&linkCode=as2&tag=yagays-22">もっとよくわかる! 脳神経科学〜やっぱり脳はスゴイのだ!  (実験医学別冊 もっとよくわかる! シリーズ)</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4758122016" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」を読んでいるのだけれども，かなり分かりやすくまとまっているようで良い．脳神経科学全般を基礎から網羅している形で，かなりとっつきやすい印象．今は必要な箇所だけを抜粋して読んでいるのだけれども，時間に余裕ができたら他の箇所も読んでみたい．視覚を含めた五感の仕組みであったり，感情や言語などの高次脳機能の仕組み，脳に関わる神経性の病気などの項など，色々面白そうなトピックが並んでいる．</p>
-
-<p>脳神経科学全般を</p>
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4758122016" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<ul>
-<li><a href="http://www.med.teikyo-u.ac.jp/~ortho/med/ana/ana110.htm">第十章　一次視覚野と高次中枢</a></li>
-<li><a href="http://www.cis.twcu.ac.jp/~asakawa/MathBio2010/lesson12/">視覚情報処理</a></li>
-<li><a href="http://homepage.psy.utexas.edu/homepage/faculty/pillow/courses/perception09/slides/Lec05_V1.pdf">Lec05_V1.pdf</a> (pdf)</li>
-</ul>
-
 ]]></content>
   </entry>
   
