@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-02-26T23:27:14+09:00</updated>
+  <updated>2014-03-09T17:10:47+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「マインクラフト 革命的ゲームの真実」読了]]></title>
+    <link href="http://yagays.github.io/blog/2014/03/09/review-minecraft/"/>
+    <updated>2014-03-09T17:00:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/03/09/review-minecraft</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4046532955" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p><a href="https://minecraft.net/">マインクラフト</a>は，今やもっとも人気のあるインディーズゲームと言っても過言ではないだろう．本書は，マインクラフトというゲームとその開発者である「ノッチ」ことMarkus Perssonについて，その成功の軌跡を追った作品となっている．個人が片手間で開発したゲームが突然爆発的な人気を博し，それにともなってゲーム会社の設立やコンシューマ機への移植，ゲーマーの多様化など，マインクラフトを取り巻くエコシステムがめまぐるしく変化する様を，リアルに感じることができる．それこそマインクラフトの成功はここ数年くらいの出来事であり，ノッチの開発者としての人生も十数年程度なので，まさに今起きている変革を追うのに最適な1冊だ．と同時に，インディーズゲームとしての成功例を，ある意味で生々しく見せつけられる．</p>
+
+<p>私も数年来のマインクラフトファンだ．最初に触ったのがalphaのVersion 1.2くらいで，まだベッドが実装されてなかったことを覚えている．このゲームに夢中になるきっかけは，ぬどん氏の「<a href="http://www.nicovideo.jp/mylist/21942308">史上最大の（中略）マインクラフト実況</a>」の実況だったので，まさに本書に描かれるユーザコミュニティの拡大の影響をもろに受けた一人だ（英語圏では実況に代表される動画は<a href="http://ja.wikipedia.org/wiki/%E3%83%9E%E3%82%B7%E3%83%8B%E3%83%9E">マシニマ</a>と呼ばれる）．そこからゲームや実況を今でも楽しんでいるので，マインクラフトの変化を見続けてきたユーザといえる．</p>
+
+<p>そういう人にとっても楽しめる1冊であることは確かなのだが，今更「ノッチは子供の頃からレゴに触れていた」とか「今やコンシューマ機に移植されたり教育にも進出しているんですよ」言われても，まあそうだろうなくらいの感覚なので，むしろノッチの家庭環境であったりマインクラフトが生まれた土壌のようなものが個人的には興味深かった．その中でも，「スウェーデン」という国とマインクラフトのつながりは，本書を読んでいて重要なポイントだと感じた．</p>
+
+<p>マインクラフトはスウェーデンで生まれた．まずこの事実について，マインクラフトのゲーマーでも知らない人は多いと思う．スウェーデンという国は，実は私たちがよく知るゲームと深い関係にある．マインクラフトとの対比でたびたび登場する「バトルフィールド」シリーズは，スウェーデンの首都ストックホルムに本社のあるDICEが，エレクトロニックアーツの子会社として開発しているゲームである．その他にも幾つものゲームメーカーがスウェーデンに開発拠点を置いている．なぜ北欧の中でもスウェーデンなのかという問いについて，本書では人口当たりのIT発達率が高いことや，英語教育が充実していること，そして英語圏のポップカルチャーを受け入れてきたということが挙げられている．そのような環境の中でノッチはゲーム開発に憧れる一人のギーク（もしくはナード）として育ち，子供時代にはレゴを，成長するにつれPCゲームへとその興味を移していった．そして，転職であったり同じ趣味を持つ仲間との出会いなどがあり，ソフトウェア開発会社で働きつつも時間を見つけて製作したのがマインクラフトだった．</p>
+
+<p>やはり「なぜマインクラフトのようなヒット作が生まれたのか」という原因を考える上で，いかにネットが発達して情報の共有やコミュニティが発達したとしても，ある国にあるタイミングである技術者が存在していたという事実は重要な気がする．そこに意味を見出してもコントロール出来無い以上は仕方がないが，「文化」と呼べるものがあることがひとつの強みなのだと感じる．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「細胞の物理生物学」読書ノート：第4章前半]]></title>
@@ -1975,116 +1995,6 @@
 <li><a href="http://d.hatena.ne.jp/pashango_p/20090601/1243850103">pyevolveによる遺伝的アルゴリズム(1) - Pashango’s Blog</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「細胞の物理生物学」読書ノート：アーカイブ]]></title>
-    <link href="http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/"/>
-    <updated>2013-11-30T09:20:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell</id>
-    <content type="html"><![CDATA[<h3>「細胞の物理生物学」&#8221;Physical Biology of the Cell&#8221;</h3>
-
-<p>本書は，2008年11月にGarland Science社から出版された&#8221;Physical Biology of the Cell&#8221;の翻訳版である．学部または大学院における基礎コース向けに作られた本書は，細胞生物学を生物物理学の側面から再構成するという大胆な内容となっている．すなわち，細胞内の機能や性質ごとに物理学の知見を適用するというこれまでの体系とは違い，物理モデルや物理法則から生物というものを捉えたときに，細胞内の高分子の挙動や生物的な構造をどのように分類できどのように認識できるだろうかという観点から，生物物理学を構築し直すということである．本書のタイトルに&#8221;Biophysics&#8221;ではなく&#8221;Physical biology&#8221;と付けていることからも，その意図が伝わってくる．全20章1000ページちかい分量の本書の中には，バネの運動を表すような単純な調和振動子から化学的な反応速度論のモデル，流体力学や統計モデルなどの基本的な物理モデルが含まれている．また，扱う生物現象としてもDNAから酵素反応，生体膜，細胞骨格，分子モーターなど幅広くカバーしている．</p>
-
-<p>また，本書の大きな特徴として挙げられるのが「見積もり」という概念である．定量的な物理モデルを立てた上で生物学の現象に対する定量的な議論を行うためには，オーダーの見積もりが重要になる．見積もる値は，細胞内に存在するあるタンパク質の個数であったり，平衡時に観測される化合物の濃度，大腸菌が泳ぐときの速度など様々である．それらの値は，実際に立てたモデルを検証するときに役に立つばかりでなく，目にみえない世界を想像するときの直感的な感覚としても非常に有用となる．このように，単純化した上でオーダーレベルの数字に落としこむことで，定量的な解釈の手助けとなる．本書では，こういった見積りの具体例が各所に散りばめられており，各章の最後に付属する章末問題でも多数取り扱われている．</p>
-
-<p>なお，訳書は1版をもとに翻訳されたものだが，原書は2012年10月に第2版が出ている．第1版では全20章だった構成が第2版では全22章となっており，第2版では第3部に&#8221;Light and Life&#8221;という章が追加されたほか，第4部の1章が再構成され2章に分かれている．</p>
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4320057163" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=0815344503" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<h3>読書ノートまとめ</h3>
-
-<ul>
-<li>序文
-
-<ul>
-<li><a href="http://yagays.github.io/blog/2013/12/04/pboc-00/">「細胞の物理生物学」読書ノート：序文</a></li>
-</ul>
-</li>
-<li>第1章
-
-<ul>
-<li><a href="http://yagays.github.io/blog/2013/12/05/pboc-01/">「細胞の物理生物学」読書ノート：第1章</a></li>
-</ul>
-</li>
-<li>第2章
-
-<ul>
-<li><a href="http://yagays.github.io/blog/2013/12/06/pboc-02-1/">「細胞の物理生物学」読書ノート：第2章その1</a>
-
-<ul>
-<li>大腸菌のサイズの見積もり</li>
-</ul>
-</li>
-<li><a href="http://yagays.github.io/blog/2013/12/10/pboc-02-2/">「細胞の物理生物学」読書ノート：第2章その2</a>
-
-<ul>
-<li>第2章の概要</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>第3章
-
-<ul>
-<li><a href="http://yagays.github.io/blog/2014/01/17/pboc-03">「細胞の物理生物学」読書ノート：第3章</a>
-
-<ul>
-<li>第3章の概要</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>第4章
-
-<ul>
-<li><a href="http://yagays.github.io/blog/2014/02/26/pboc-04-1/">「細胞の物理生物学」読書ノート：第4章前半 - Wolfeyes Bioinformatics beta</a>
-
-<ul>
-<li>第4章前半の概要</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<h3>オンラインリソース</h3>
-
-<ul>
-<li><a href="http://microsite.garlandscience.com/pboc2/">Home - Physical Biology of the Cell</a>
-
-<ul>
-<li>公式のサポートページ．図表やデータセット，コードや動画等が公開されている</li>
-</ul>
-</li>
-<li><a href="http://www.garlandscience.com/product/isbn/0815341636">Garland Science - Book: Physical Biology of the Cell + 1</a>
-
-<ul>
-<li>Garland Scienceの第1版紹介ページ．Chp.2がサンプルでダウンロードできる．</li>
-</ul>
-</li>
-<li><a href="http://www.garlandscience.com/product/isbn/9780815344506">Garland Science - Book: Physical Biology of the Cell + 2</a>
-
-<ul>
-<li>Garland Scienceの第2版紹介ページ．Chp.17がサンプルでダウンロードできる．</li>
-</ul>
-</li>
-<li><a href="http://www.taguchi.bio.titech.ac.jp/paper/column/assets/pc6_bookreview_PBoC.pdf">pc6_bookreview_PBoC.pdf</a>（田口英樹氏による書評，PDF）</li>
-<li><a href="http://web.sfc.keio.ac.jp/~t10078si/rindoku/rindoku.html">細胞の物理生物学 輪読ノート</a></li>
-<li><p><a href="http://www.anat1.med.kyushu-u.ac.jp/reading/physical_-biology_of_the_cell/">Physical Biology of the Cell 輪読会 | 九州大学大学院医学研究院　系統解剖学分野</a></p></li>
-<li><p><a href="http://bionumbers.hms.harvard.edu/">BioNumbers - The Database of Useful Biological Numbers</a></p></li>
-</ul>
-
-
-<h3>注意</h3>
-
-<p>上記リンクを含むこの読書ノートは個人的なメモであって，章末問題などの解答の正確さや厳密さを保証するものではないことをご注意下さい．</p>
 ]]></content>
   </entry>
   
