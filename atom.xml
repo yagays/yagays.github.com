@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-03-09T17:25:04+09:00</updated>
+  <updated>2014-03-11T08:14:31+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「アナと雪の女王」の"Let it go"の演出だけでわかる物語の背景]]></title>
+    <link href="http://yagays.github.io/blog/2014/03/11/frozen-let-it-go/"/>
+    <updated>2014-03-11T07:55:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/03/11/frozen-let-it-go</id>
+    <content type="html"><![CDATA[<iframe width="640" height="360" src="http://yagays.github.io//www.youtube.com/embed/moSFlvxnbgk" frameborder="0" allowfullscreen></iframe>
+
+
+<p>アカデミー賞2冠の「<a href="http://ugc.disney.co.jp/blog/movie/category/anayuki/">アナと雪の女王</a>」(原題&#8221;Frozen&#8221;)の公開が今週に控えて非常に楽しみなのだけれども，それに先駆けて主題歌&#8221;Let It Go&#8221;のシーンの抜粋がディズニー公式で上がっていたので，その感想を少し書き出そうと思う．ちなみに動画内で歌っているのは題名にあるアナではなく，その姉のエルサらしい．</p>
+
+<p>当然映画本編は見てないし予告編をチラッと見たくらいでストーリーも大雑把にしかわからないのだが，この動画が伝える情報量ははるかに多く，歌詞も相まって彼女の置かれている境遇や心境が手に取るようにわかる．テーマ的には身分や責務という束縛からの解放，典型的な通過儀礼の初っ端というところだろうか．</p>
+
+<p>さて，歌いながら彼女が何をしているかといえば，単に着替えているだけなのだけれども，その意図が非常にわかりやすい．それまで着ていた伝統的かつ高貴なドレスから，グローブを取り，マントを脱ぎ捨て，髪留めを放り投げ編んでいた髪を解き，最後には自分で作り上げた自由なドレスへと変身してしまう．つまりは他人に押し付けられた衣装を脱ぎ捨てていくという行為が，自分らしさを取り戻していくという過程につながっている．歌う時のジェスチャーもまさに心境を反映したものであり，最初は両手を握り胸の当たりに当てて戸惑う雰囲気をだしつつ，ドレスを着替えた後半からは両腕をめいっぱい広げ堂々とした姿で力強く歌い上げる．曲の盛り上がりも相まって，まさに解放，まさに自由といったパワーを感じる．また，最後のバルコニーでの振り向きざまにドアが閉まるシーンも，その後の彼女の心境として象徴的だ．故郷や地位の抑圧から解き放たれた彼女は自分らしさを獲得したが，一方で客観的に見れば彼女は自分自身の殻に閉じこもってしまったということなのだろう．</p>
+
+<p>というわけで，この映像だけでバッチリ予習もできたことだし，早く本編を見たいところ．姉と妹という関係が物語にどう影響してくるのかが気になる．それにしても，動画を何度見返しても髪留めの放り投げ方が凄まじいのがすごい気になる……．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「マインクラフト 革命的ゲームの真実」読了]]></title>
@@ -1764,235 +1782,6 @@
 
 <ul>
 <li><a href="http://en.wikipedia.org/wiki/List_of_academic_journals_by_preprint_policy">List of academic journals by preprint policy - Wikipedia, the free encyclopedia</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Pythonで遺伝的アルゴリズムを動かすPyevolveを試してみた]]></title>
-    <link href="http://yagays.github.io/blog/2013/12/01/pyevolve-genetic-algorithm/"/>
-    <updated>2013-12-01T09:00:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/12/01/pyevolve-genetic-algorithm</id>
-    <content type="html"><![CDATA[<p>課題のために遺伝的アルゴリズムを使う必要があったので，Pythonで遺伝的アルゴリズムを動かすことのできるライブラリPyevolveを試してみた．</p>
-
-<h3>始めの一歩</h3>
-
-<p>動かし方はとてもシンプルなので，公式ドキュメントのGet Startedをざっと見たあとにExampleでどういう使い方ができるのかを個別に見ていけばいいと思う．</p>
-
-<ul>
-<li><a href="http://pyevolve.sourceforge.net/getstarted.html">Get Started - Tutorial — Pyevolve v0.5 documentation</a></li>
-<li><a href="http://pyevolve.sourceforge.net/examples.html">Examples — Pyevolve v0.5 documentation</a></li>
-</ul>
-
-
-<p>日本語資料なら，自分が確認した限りでは以下のサイトが一番詳しい．</p>
-
-<ul>
-<li><a href="http://d.hatena.ne.jp/mFumi/20100917/1284724566">Pyevolveで学ぶ遺伝的アルゴリズム - mfumiの日記</a></li>
-</ul>
-
-
-<h3>Pyevolveの基本的な使い方</h3>
-
-<h4>ゲノムインスタンスの生成</h4>
-
-<p>ゲノムの構造はバイナリや1次元配列，2次元配列，木構造などを取ることができ，初期値が取りうる値の幅なども決めることができる．以下のコードでは，値が15個あって最小値0，最大値100というゲノムを作成している．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">genome</span> <span class="o">=</span> <span class="n">G1DList</span><span class="o">.</span><span class="n">G1DList</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-</span><span class='line'><span class="n">genome</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="n">rangemin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rangemax</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>ゲノムの初期化，突然変異の設定</h4>
-
-<p>次に，ゲノムインスタンスを初期化して突然変異の分布などを指定する．最初に指定したゲノムの構造に従って指定する必要があるが，パラメータはだいたい読んだ通り．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">genome</span><span class="o">.</span><span class="n">initializator</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">Initializators</span><span class="o">.</span><span class="n">G1DListInitializatorReal</span><span class="p">)</span>
-</span><span class='line'><span class="n">genome</span><span class="o">.</span><span class="n">mutator</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">Mutators</span><span class="o">.</span><span class="n">G1DListMutatorRealGaussian</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>値が整数の場合は&#8221;G1DListInitializatorInteger&#8221;や&#8221;G1DListMutatorIntegerGaussian&#8221;が用意されている．</p>
-
-<ul>
-<li><a href="http://pyevolve.sourceforge.net/module_mutators.html">Mutators – mutation methods module — Pyevolve v0.5 documentation</a></li>
-</ul>
-
-
-<h4>評価関数をセット</h4>
-
-<p>評価関数eval_funcを作って，ゲノムインスタンスに指定する．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">eval_func</span><span class="p">(</span><span class="n">chromosome</span><span class="p">):</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">[</span><span class="o">...</span><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">genome</span><span class="o">.</span><span class="n">evaluator</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">eval_func</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>GA Engineを作成する</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">ga</span> <span class="o">=</span> <span class="n">GSimpleGA</span><span class="o">.</span><span class="n">GSimpleGA</span><span class="p">(</span><span class="n">genome</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>選択方式などのパラメータを指定する</h4>
-
-<p>デフォルトでGA Engineを動かした場合，世代数や集団数は以下のようになる．</p>
-
-<ul>
-<li>100 世代</li>
-<li>集団サイズ：80個体</li>
-<li>ランキング選択</li>
-</ul>
-
-
-<p>これらを変更するには，以下のようにパラメータをセットする．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">ga</span><span class="o">.</span><span class="n">selector</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">Selectors</span><span class="o">.</span><span class="n">GRouletteWheel</span><span class="p">)</span>
-</span><span class='line'><span class="n">ga</span><span class="o">.</span><span class="n">setGenerations</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>
-</span><span class='line'><span class="n">ga</span><span class="o">.</span><span class="n">setMutationRate</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-</span><span class='line'><span class="n">ga</span><span class="o">.</span><span class="n">setPopulationSize</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>選択方法は，その他にもランキング方式やトーナメント方式などが用意されている．</p>
-
-<ul>
-<li><a href="http://pyevolve.sourceforge.net/module_selectors.html">Selectors – selection methods module — Pyevolve v0.5 documentation</a></li>
-</ul>
-
-
-<h4>GA Engineの実行</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">ga</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">freq_stats</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>実行中はfreq_statsで指定した世代ごとに以下のようなログが出力される．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">Gen</span><span class="o">.</span> <span class="mi">1</span> <span class="p">(</span><span class="mf">0.02</span><span class="o">%</span><span class="p">):</span> <span class="n">Max</span><span class="o">/</span><span class="n">Min</span><span class="o">/</span><span class="n">Avg</span> <span class="n">Fitness</span><span class="p">(</span><span class="n">Raw</span><span class="p">)</span> <span class="p">[</span><span class="mf">23104.07</span><span class="p">(</span><span class="mf">27490.00</span><span class="p">)</span><span class="o">/</span><span class="mf">15107.82</span><span class="p">(</span><span class="mf">10386.00</span><span class="p">)</span><span class="o">/</span><span class="mf">19253.39</span><span class="p">(</span><span class="mf">19253.39</span><span class="p">)]</span>
-</span><span class='line'><span class="n">Gen</span><span class="o">.</span> <span class="mi">250</span> <span class="p">(</span><span class="mf">5.00</span><span class="o">%</span><span class="p">):</span> <span class="n">Max</span><span class="o">/</span><span class="n">Min</span><span class="o">/</span><span class="n">Avg</span> <span class="n">Fitness</span><span class="p">(</span><span class="n">Raw</span><span class="p">)</span> <span class="p">[</span><span class="mf">9486.89</span><span class="p">(</span><span class="mf">15212.00</span><span class="p">)</span><span class="o">/</span><span class="mf">6883.91</span><span class="p">(</span><span class="mf">3184.00</span><span class="p">)</span><span class="o">/</span><span class="mf">7905.74</span><span class="p">(</span><span class="mf">7905.74</span><span class="p">)]</span>
-</span><span class='line'><span class="n">Gen</span><span class="o">.</span> <span class="mi">500</span> <span class="p">(</span><span class="mf">10.00</span><span class="o">%</span><span class="p">):</span> <span class="n">Max</span><span class="o">/</span><span class="n">Min</span><span class="o">/</span><span class="n">Avg</span> <span class="n">Fitness</span><span class="p">(</span><span class="n">Raw</span><span class="p">)</span> <span class="p">[</span><span class="mf">8749.57</span><span class="p">(</span><span class="mf">15233.00</span><span class="p">)</span><span class="o">/</span><span class="mf">6518.94</span><span class="p">(</span><span class="mf">3085.00</span><span class="p">)</span><span class="o">/</span><span class="mf">7291.31</span><span class="p">(</span><span class="mf">7291.31</span><span class="p">)]</span>
-</span><span class='line'><span class="n">Gen</span><span class="o">.</span> <span class="mi">750</span> <span class="p">(</span><span class="mf">15.00</span><span class="o">%</span><span class="p">):</span> <span class="n">Max</span><span class="o">/</span><span class="n">Min</span><span class="o">/</span><span class="n">Avg</span> <span class="n">Fitness</span><span class="p">(</span><span class="n">Raw</span><span class="p">)</span> <span class="p">[</span><span class="mf">8259.84</span><span class="p">(</span><span class="mf">14274.00</span><span class="p">)</span><span class="o">/</span><span class="mf">6173.50</span><span class="p">(</span><span class="mf">3073.00</span><span class="p">)</span><span class="o">/</span><span class="mf">6883.20</span><span class="p">(</span><span class="mf">6883.20</span><span class="p">)]</span>
-</span><span class='line'><span class="p">[</span><span class="err">…</span><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<br/>
-
-
-<h3>pyevolve_graph.pyの使い方</h3>
-
-<p>Pyevolveには，イテレーションの変化を可視化する便利なスクリプトがある．</p>
-
-<ul>
-<li><a href="http://pyevolve.sourceforge.net/graphs.html">Graphical Analysis - Plots — Pyevolve v0.5 documentation</a></li>
-</ul>
-
-
-<h4>1. DBAdaptersをインポートする</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">pyevolve</span> <span class="kn">import</span> <span class="n">DBAdapters</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>2. 以下のスクリプトを追記する</h4>
-
-<p>挿入する場所はGSimpleGA.GSimpleGA() のすぐ後．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">ga</span> <span class="o">=</span> <span class="n">GSimpleGA</span><span class="o">.</span><span class="n">GSimpleGA</span><span class="p">(</span><span class="n">genome</span><span class="p">)</span>
-</span><span class='line'><span class="n">sqlite_adapter</span> <span class="o">=</span> <span class="n">DBAdapters</span><span class="o">.</span><span class="n">DBSQLite</span><span class="p">(</span><span class="n">identify</span><span class="o">=</span><span class="s">&quot;ex1&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="n">ga</span><span class="o">.</span><span class="n">setDBAdapter</span><span class="p">(</span><span class="n">sqlite_adapter</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これで，GAの実行後にpyevolve.dbというファイルが作成される．</p>
-
-<h4>3. pyevolve_graph.pyを実行する</h4>
-
-<p>あとはpyevolve_graph.pyを実行する．可視化するグラフのタイプなどが選べるようになっているので，その辺りのパラメータは<a href="http://pyevolve.sourceforge.net/graphs.html">マニュアル</a>を参考．</p>
-
-<p>例えば，以下のようなグラフを出力することができる．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="err">$</span> <span class="n">pyevolve_graph</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">i</span> <span class="n">ex1</span> <span class="o">-</span><span class="mi">3</span> <span class="o">-</span><span class="n">g</span> <span class="mi">1</span><span class="p">:</span><span class="mi">500</span> <span class="o">-</span><span class="n">o</span> <span class="n">pyevolve_graph</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/pyevolve_graph.png" alt="" /></p>
-
-<h3>最後に：Pythonで遺伝的アルゴリズムをするなら</h3>
-
-<p>最後に残念なお知らせだが，Pyevolveは少なくとも2年前から開発が止まっている．Pyevolve安定版0.5で公式に対応しているPythonのVersionも2.6となっている（2.7では動いた．3.x系は不明）．</p>
-
-<ul>
-<li><a href="https://github.com/perone/Pyevolve">perone/Pyevolve</a></li>
-<li><a href="https://pypi.python.org/pypi/Pyevolve">Pyevolve 0.5 : Python Package Index</a></li>
-</ul>
-
-
-<p>どうやら現在ではDEAPというライブラリが精力的に開発されているようだ．まだオンラインの資料は少ないものの，3.x系などの対応を考えるならこちらを使うのも手だろう．</p>
-
-<ul>
-<li><a href="http://stackoverflow.com/questions/16739118/genetic-algorithms-and-multi-objectives-optimization-on-python-libraries-tools">Genetic Algorithms and multi-objectives optimization on PYTHON : libraries/tools to use? - Stack Overflow</a></li>
-<li><a href="https://code.google.com/p/deap/">deap - Distributed Evolutionary Algorithms in Python - Google Project Hosting</a></li>
-</ul>
-
-
-<p>もし遺伝的アルゴリズムをPythonを使って自分で実装したい場合は，<a href="http://www.amazon.co.jp/gp/product/4873113644/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4873113644&linkCode=as2&tag=yagays-22">集合知プログラミング</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4873113644" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />11章「進化する知性」がお薦めできる．基本的なアルゴリズムに加えて，交叉や突然変異の書き方であったり様々なデータタイプに対応したりと，実装も丁寧に解説されている．</p>
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873113644" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<h3>動作環境</h3>
-
-<ul>
-<li>Mac OS X 10.8.5</li>
-<li>Python 2.7.6</li>
-<li>Pyevolve 0.5</li>
-</ul>
-
-
-<h3>参考</h3>
-
-<ul>
-<li><a href="http://pyevolve.sourceforge.net/index.html">Welcome to Pyevolve documentation ! — Pyevolve v0.5 documentation</a></li>
-<li><a href="http://pyevolve.sourceforge.net/0_6rc1/index.html">Welcome to Pyevolve documentation ! — Pyevolve v0.6rc1 documentation</a></li>
-<li><a href="http://d.hatena.ne.jp/mFumi/20100917/1284724566">Pyevolveで学ぶ遺伝的アルゴリズム - mfumiの日記</a></li>
-<li><a href="http://d.hatena.ne.jp/gepuro/20120102/1325515592">pyevolveの使い方メモ - gepuroの日記</a></li>
-<li><a href="http://d.hatena.ne.jp/pashango_p/20090601/1243850103">pyevolveによる遺伝的アルゴリズム(1) - Pashango’s Blog</a></li>
 </ul>
 
 ]]></content>
