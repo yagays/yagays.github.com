@@ -117,6 +117,220 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/06/20/fastq-dump-sratoolkit/">SRA Toolkitを使ってsraファイルからfastqファイルに変換する(更新版)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-20T11:26:00+09:00" pubdate data-updated="true">Jun 20<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>久しぶりにfastq-dumpを使ったら少し仕様が変わっていたのでメモ．だいぶ前に別の場所で書いた記事は，既に古くなってしまっている．何もせず記事を放置しておくのも申し訳ないし，どうやらfastq-dumpでググると上位にくるようなので，ここいらで更新しておかないと…．</p>
+
+<p>(deprecated) <a href="http://g86.dbcls.jp/~yag/wordpress/archives/959">Wolf Ears » SRA Toolkitを使ってsraファイルからfastqファイルに変換する</a></p>
+
+<h3>SRA Toolkitのインストール</h3>
+
+<p>sraからfastqに変換するプログラムは，SRA Toolkitの中にあるfastq-dumpを使う．まずはNCBIのサイトからOS環境に合わせてコンパイルされたSRA Toolkitをダウンロードしてインストールする．</p>
+
+<p><a href="http://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software">Software : Software : Sequence Read Archive : NCBI/NLM/NIH</a></p>
+
+<p>コンパイルされたバイナリとしては，Linux系列のCentOSやUbuntu，MacOSやMS Windowsに合わせたものが用意されている．私の環境はRed Hat Enterpriseなので，とりあえず「CentOS Linux 64 bit architecture」を選択する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ wget http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.3.2-5/sratoolkit.2.3.2-5-centos_linux64.tar.gz
+</span><span class='line'>$ tar zxvf sratoolkit.2.3.2-5-centos_linux64.tar.gz </span></code></pre></td></tr></table></div></figure>
+
+
+<p>今回使用するfastq-dumpは展開したディレクトリのbin以下に入っている．以下のように実行して動作するか確認する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump
+</span><span class='line'>
+</span><span class='line'>Usage:
+</span><span class='line'>  sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump [options] &lt;path [path...]&gt;
+</span><span class='line'>  sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump [options] [ -A ] &lt;accession&gt;
+</span><span class='line'>
+</span><span class='line'>Use option --help for more information
+</span><span class='line'>
+</span><span class='line'>sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump : 2.3.2</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>fastq-dumpの使い方</h3>
+
+<p>基本的な使い方としては，以下のようにfastq-dumpにsraファイルを指定すればよい&#8230;</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump ./DRR002191.sra</span></code></pre></td></tr></table></div></figure>
+
+
+<p>…のだが，ここでひとつ注意が必要になる．上のコマンドを指定すると，データがシングルエンドでもペアエンドでも同様に一つのファイルとして出力されてしまう．実際に変換されたfastqファイルの中身を見てみると，上のDRR002191.sraは本当は90bpのペアエンドなのだが，以下のように結合された配列として出力される．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ head -n 4 DRR002191.fastq
+</span><span class='line'>@DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=180
+</span><span class='line'>NCAATGGCAATAGCAATGCATTGAAATGAAAAGGCATTTACCAGGAGCAGGAAAGCCAGAAAGAGGAGCAGTGNNCNNGGAGTTGCNNNNTGCTTGGCTTCATCTTTTGCAATTCTGCATCTTTTGCATTTCCCTTCTCGCTCTGCTGCTCGCTCGCCTTTCTTNNNCGNCCTTTTCCCC
+</span><span class='line'>+DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=180
+</span><span class='line'>#1=DDFFFHFFHHIIJJJIJJIJJIJBCHHIHGCC&gt;FGIGIHDH?HJIEGEGI@FEHIJIIE@HI9=EH=CDD#################B@CFFDDDDFHHHGIJJIJJGGIGJIIHGHIGIJIHIJIEIIHIJJIGGHHEGI@DGCGEFHHIGIEFEFFBCB################</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ということで，きちんとペアエンドを2つのfastqファイルに変換するには，&#8211;split-filesというオプションを使用する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump --split-files ./DRR002191.sra</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これで，きちんと2つのfastqファイルが出力される．個別のfastqファイルを見ると，やはり先程の変換はペアエンドの配列を結合して出力されていることがわかる．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ls *.fastq
+</span><span class='line'>DRR002191_1.fastq  DRR002191_2.fastq
+</span><span class='line'>
+</span><span class='line'>$ head -n 4 DRR002191_1.fastq DRR002191_2.fastq
+</span><span class='line'>==&gt; DRR002191_1.fastq &lt;==
+</span><span class='line'>@DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=90
+</span><span class='line'>NCAATGGCAATAGCAATGCATTGAAATGAAAAGGCATTTACCAGGAGCAGGAAAGCCAGAAAGAGGAGCAGTGNNCNNGGAGTTGCNNNN
+</span><span class='line'>+DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=90
+</span><span class='line'>#1=DDFFFHFFHHIIJJJIJJIJJIJBCHHIHGCC&gt;FGIGIHDH?HJIEGEGI@FEHIJIIE@HI9=EH=CDD#################
+</span><span class='line'>
+</span><span class='line'>==&gt; DRR002191_2.fastq &lt;==
+</span><span class='line'>@DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=90
+</span><span class='line'>TGCTTGGCTTCATCTTTTGCAATTCTGCATCTTTTGCATTTCCCTTCTCGCTCTGCTGCTCGCTCGCCTTTCTTNNNCGNCCTTTTCCCC
+</span><span class='line'>+DRR002191.1 FCD0BMAACXX:5:1101:1133:1889# length=90
+</span><span class='line'>B@CFFDDDDFHHHGIJJIJJGGIGJIIHGHIGIJIHIJIEIIHIJJIGGHHEGI@DGCGEFHHIGIEFEFFBCB################</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>その他の注意点</h3>
+
+<p>fastq-dumpに指定するsraファイルは，きちんとパスを指定しないといけないようだ．以下のようなエラーが出る場合は，絶対パスを指定するか，カレントディレクトリにsraファイルがある場合にはファイル名の前に「<strong>./</strong>」を付け加える．</p>
+
+<h4>パスが解決できなくて実行できない例</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump DRR002191.sra
+</span><span class='line'>2013-06-20T02:11:42 fastq-dump.2.3.2 err: name not found while resolving tree within virtual file system module - failed to open 'DRR002191.sra'
+</span><span class='line'>Written 0 spots total</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>絶対パスを指定するか./を付け加える</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump /path/to/DRR002191.sra
+</span><span class='line'>$ fastq-dump ./DRR002191.sra</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<br/>
+
+
+<p>また，他のオプションなどの情報はfastq-dumpのhelpから見ることができる．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ fastq-dump --help
+</span><span class='line'>
+</span><span class='line'>Usage:
+</span><span class='line'>  /home/is/yuki-ok/biolocal/src/sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump [options] &lt;path [path...]&gt;
+</span><span class='line'>  /home/is/yuki-ok/biolocal/src/sratoolkit.2.3.2-5-centos_linux64/bin/fastq-dump [options] [ -A ] &lt;accession&gt;
+</span><span class='line'>
+</span><span class='line'>INPUT
+</span><span class='line'>  -A|--accession &lt;accession&gt;       Replaces accession derived from &lt;path&gt; in
+</span><span class='line'>                                   filename(s) and deflines (only for single
+</span><span class='line'>                                   table dump)
+</span><span class='line'>  --table &lt;table-name&gt;             Table name within cSRA object, default is
+</span><span class='line'>                                   "SEQUENCE"
+</span><span class='line'>
+</span><span class='line'>[...]</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>環境</h4>
+
+<ul>
+<li>NCBI SRA Toolkit : May 9 2013, version 2.3.2-5 release</li>
+<li>fastq-dump : 2.3.2</li>
+</ul>
+
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://www.ncbi.nlm.nih.gov/sra/?term=DRR002191">Whole genome resequencing of Masaru Tomita - SRA - NCBI</a></li>
+<li><a href="http://trace.ddbj.nig.ac.jp/DRASearch/run?acc=DRR002191">DRR002191 - DRA Search</a></li>
+<li><a href="ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/fastq/DRA000/DRA000583/DRX001619">/ddbj_database/dra/fastq/DRA000/DRA000583/DRX001619 のインデックス</a> (こちらではまだfastq.bz2で配布されている)</li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/06/19/macports-distfile-clean/">MacPortsで使用していない過去のバージョンのパッケージを消す＆ちょっと可視化</a></h1>
     
     
@@ -503,69 +717,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/22/esl-pdf-trimming/">&#8220;The Elements of Statistical Learning&#8221;のpdfの余白を削る</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-22T09:22:00+09:00" pubdate data-updated="true">May 22<span>nd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=0387848576" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>機械学習系の教科書としてはそこそこの知名度のある「The Elements of Statistical Learning」（通称ESLまたはHastie）は，全ページのPDFが公式で配布されている．</p>
-
-<p><a href="http://www-stat.stanford.edu/~tibs/ElemStatLearn/">Elements of Statistical Learning: data mining, inference, and prediction. 2nd Edition.</a></p>
-
-<p>これは輪講に使えそうだということで色々と準備をしているのだが，このpdfには一つ気になるところがあって，それはページの余白が大きいということだ．右上にトンボの一部と「Printer: Opaque this」という文字が書かれているように，おそらく印刷所に出す前のpdfをそのまま配布しているらしい．pdfが配布されているだけ有難いというものではあるものの，このままでは少し読みづらい．ということで，余白を良い感じに自動で削れるツールを探して，文字だけの部分を抜き出してみた．</p>
-
-<h3>brissで余白をトリミングする</h3>
-
-<p>今回は「briss」というJavaアプリケーションを使ってみる．</p>
-
-<p><a href="http://appdrill.net/61580/briss.html">[Mac] 自炊に！PDFのページを重ねて一発で余白を切り取る「briss」 « Appdrill</a></p>
-
-<p>使い方は上のリンクを参考にしていただくとして，pdfを読み込んだ画面が以下のようになる．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/briss1.png" alt="" /></p>
-
-<p>これは1ページ目だけを除いた残りのページを全て重ねあわせたたもので，右ページ中央に表示されているグチャッとした部分がpdfのテキスト部分となる．水色の透過の部分がトリミング後に残る箇所を表しており，読み込んだ際に自動で設定される．左上と右下の四角をドラッグすると範囲を手動で選択できるが，下手にやると右ページと左ページでpdfサイズがズレることがあるので，今回のESLのpdfの場合は自動で設定されたものをそのまま使った方がいいだろう．</p>
-
-<p>トリミングを実行して出力されたpdfを開くと，このような感じになる．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/briss2.png" alt="" /></p>
-
-<p>今回の場合は本当に文字ぎりぎりという感じだが，iPadで眺めたり印刷する際にはちょうどくらいだ．これでストレス無くESLを読む事ができる．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/14/">&larr; Older</a></li>
@@ -613,6 +764,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/03/30/cpd-winter-intern/">クックパッドのウィンターインターンシップに参加してきた</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/11/frozen-let-it-go/">「アナと雪の女王」の&#8221;Let it go&#8221;の演出だけでわかる物語の背景</a>
       </li>
     
@@ -646,10 +801,6 @@
     
       <li class="post">
         <a href="/blog/2014/02/11/review-satou-masaru-wisdom/">「人に強くなる極意」読了</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/01/17/pboc-03/">「細胞の物理生物学」読書ノート：第3章</a>
       </li>
     
   </ul>

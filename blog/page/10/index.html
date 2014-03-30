@@ -117,6 +117,178 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/">RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-16T00:00:00+09:00" pubdate data-updated="true">Jul 16<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>まとめ：<a href="http://yagays.github.io/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/">RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ - Wolfeyes Bioinformatics beta</a></li>
+</ul>
+
+
+<h3>Count Based Model</h3>
+
+<p>今回はCount Based Modelと呼ばれる最も基本的な生成モデルを作って発現量推定を定式化し，それがRPKMの計算式と同じ意味を持つことを示してみよう．なお，以降の内容はPachter 2011をベースにしている．</p>
+
+<blockquote><p>Models for transcript quantification from RNA-Seq. q-bio.GN, (2011).</p>
+
+<p><a href="http://arxiv.org/abs/1104.3889v2">http://arxiv.org/abs/1104.3889v2</a></p></blockquote>
+
+<h3>Count Based Modelにおける仮定</h3>
+
+<p>Count based Modelは非常にシンプルな生成モデルだ．単純化のために3つの前提条件を置いて，RNA-Seqをモデル化している．</p>
+
+<ul>
+<li>NGSのシーケンスはシングルエンド</li>
+<li>ショートリードはただ1箇所だけにマッピングされる</li>
+<li>すべての転写物はただ1つのアイソフォームを持つ</li>
+</ul>
+
+
+<p>NGSのシーケンスに関しても，トランスクリプトームに関しても，かなり限定して考えていることがわかる．遺伝子の構造が単純な生物において初期のNGS解析をしていると思えばいいだろう．現実的にはこのような状態というのはあり得ないが，転写物からショートリードが生成されるという核の部分は残しつつ単純化をしている．</p>
+
+<h3>Count Based Modelの生成過程</h3>
+
+<p>生成モデルというものは，まず初めに観測データであるショートリードの生成過程を立てる．今回のCount Based Modelでは</p>
+
+<blockquote><p><strong>トランスクリプトーム全体からある転写物が選ばれ，ある開始点からショートリードがシーケンスされた</strong></p></blockquote>
+
+<p>と考える．<a href="http://yagays.github.io/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/">前回の記事で概要を示した</a>ように，RNA-Seqの実験プロトコルは幾つかの複雑な段階を踏んでショートリードをシーケンスしていた．その多くの段階は偶然の連続によって，たまたま転写物がフラグメントとしてある部分から断片化され，たまたまシーケンスされてショートリードとして出力されたとみなすことができる．これらを確率的な事象として扱うことによって，確率的な視点からシーケンスデータが生じた背景にあるRNA-Seqの発現量というものを推定することができる．</p>
+
+<br/>
+
+
+<p>さて，長ったらしい文章の前置きはここまでにして，次からは実際に生成過程を数式に落としこんでいく．まず最初にこれまで言葉で説明してきたものを変数や集合として定義をし，事象の起こりやすさを尤度として表現する．概念と数式の対応関係が少し分かりにくいかもしれないが，もし要領が掴めないようならこの後に書いてある具体例の図も参照しつつ，どの変数が何を表しているかを丁寧に追ってほしい．</p>
+
+<h3>尤度の定式化</h3>
+
+<p>転写物の集合<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=T+" alt="T " />に含まれる転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />は，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D+" alt="\tilde{l_t} " />の有効配列長を持ち，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Csum_%7Bt%5Cin+T%7D+%5Crho_t+%3D+1+" alt="\sum_{t\in T} \rho_t = 1 " />となるような<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho_t+" alt="\rho_t " />という相対的な発現量を持つ．RNA-Seqによって得られたショートリードを<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f+" alt="f " />，その全体を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F+" alt="F " />とし，転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />にマッピングされたショートリードの集合を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F_t+" alt="F_t " />とする．</p>
+
+<p>このとき，ショートリード<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f+" alt="f " />が転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />から生じる確率は，以下の式で表すことができる．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28f%5Cin+t%29%3D+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_t%7D%7D+" alt="p(f\in t)= \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_t}} " /></p>
+
+<p>次に，選ばれた転写物のどの位置からショートリードがシーケンスされるかはランダムに選ばれるため，この確率<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28f%5Cin+t%29+" alt="p(f\in t) " />に有効配列長の逆数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+" alt="\frac{1}{\tilde{l_t}} " />を掛けあわせた値が，ショートリード<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f+" alt="f " />が転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />のある開始点から生成される確率となる．</p>
+
+<p>このとき，観測されたショートリード全体<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F+" alt="F " />の尤度は，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho_t+" alt="\rho_t " />の関数として以下のように表される．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod_%7Bt%5Cin+T%7D%5Cprod_%7Bf%5Cin+F_t%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Ccdot%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29+" alt="\mathcal{L}(\rho)= \prod_{t\in T}\prod_{f\in F_t} \bigg( \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_r}}\cdot\frac{1}{\tilde{l_t}} \bigg) " /></p>
+
+<p>そして，転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />にマッピングされたショートリードの本数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X_t+" alt="X_t " />を使って，以下のように書き換えられる．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod_%7Bt%5Cin+T%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Ccdot%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29%5E%7BX_t%7D+" alt="\mathcal{L}(\rho)= \prod_{t\in T} \bigg( \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_r}}\cdot\frac{1}{\tilde{l_t}} \bigg)^{X_t} " /></p>
+
+<p>これがCount Based Modelにおける尤度である．</p>
+
+<h3>具体例を用いて尤度を導出する</h3>
+
+<h4>確率の考え方</h4>
+
+<p>といっても，これだけでは何のことか分からないので，具体例を使って詳しく解説していこう．単純化のために，以下の図のような3つの転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t_1%2C+t_2%2C+t_3+" alt="t_1, t_2, t_3 " />と6本のショートリード<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f_1%2Cf_2%5Cdots%2Cf_6+" alt="f_1,f_2\dots,f_6 " />が次のようにマッピングされたという状態を想定する．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/generative-models_1.png" alt="" /></p>
+
+<p>3つの転写物にはそれぞれ発現量を持っている．例えば，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t_1+" alt="t_1 " />は20，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t_2+" alt="t_2 " />は5，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t_3+" alt="t_3 " />は15という具合だ．今回は発現量を確率値として考えるため，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B20%7D%7B40%7D%2C%5Cfrac%7B5%7D%7B40%7D%2C%5Cfrac%7B15%7D%7B40%7D+" alt="\frac{20}{40},\frac{5}{40},\frac{15}{40} " />のように相対値として表す．これが<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho_t+" alt="\rho_t " />であり，総和が1になる理由だ．この<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho_t+" alt="\rho_t " />が今回の生成モデルで最終的に求めたい値である．</p>
+
+<p>さて，ショートリード<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f_1+" alt="f_1 " />が転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t_1+" alt="t_1 " />から生成される確率は，先ほどの定式化で<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28f%5Cin+t%29%3D+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_t%7D%7D+" alt="p(f\in t)= \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_t}} " />としていた．これはある転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />の長さと相対的な発現量を掛けあわせたものと，その全体との比率を求めており，ただの発現量の比率だけでなく転写物の長さも関係しているということを表している．ランダムに一つ選んでシーケンスするということを考えれば，多く転写されていてなおかつ長い転写物のほうが選ばれやすいのは明らかだろう．この式は，そういった意味を数式として厳密に表現しているだけなのだ．</p>
+
+<p>次に，転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />が選ばれた後に，今度はその転写物のどの位置の配列が読まれたかということを考える．これは端っこの方の配列が読まれたのか真ん中の方の配列が読まれたのかといった情報だ．このときに出てくるのが有効配列長Effective lengthと呼ばれる値で，ショートリードの長さを<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=m+" alt="m " />としたときの<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D%3Dl_t+-+m+%2B+1+" alt="\tilde{l_t}=l_t - m + 1 " />で表される．これは単純に長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />から長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=m+" alt="m " />の配列を取ってくる時の場合の数である．今回のモデルでは，シーケンスされる場所は場所に依存せず一様なランダムで決まるとしているので，有効配列長で割り算をしている．</p>
+
+<p>そして，これをすべてのショートリードである<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f_1+" alt="f_1 " />から<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f_6+" alt="f_6 " />まですべて掛けあわせることで，今回得られたショートリードが生成される確率というものを求めることができる．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D%5Cfrac%7Bp%28f_1%5Cin+t_1%29%7D%7B%5Ctilde%7Bl_1%7D%7D%5Ctimes%5Cfrac%7Bp%28f_2%5Cin+t_1%29%7D%7B%5Ctilde%7Bl_1%7D%7D%5Ctimes%5Cfrac%7Bp%28f_3%5Cin+t_1%29%7D%7B%5Ctilde%7Bl_1%7D%7D+" alt="\mathcal{L}(\rho)=\frac{p(f_1\in t_1)}{\tilde{l_1}}\times\frac{p(f_2\in t_1)}{\tilde{l_1}}\times\frac{p(f_3\in t_1)}{\tilde{l_1}} " /><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctimes%5Cfrac%7Bp%28f_4%5Cin+t_2%29%7D%7B%5Ctilde%7Bl_2%7D%7D%5Ctimes%5Cfrac%7Bp%28f_5%5Cin+t_2%29%7D%7B%5Ctilde%7Bl_2%7D%7D%5Ctimes%5Cfrac%7Bp%28f_6%5Cin+t_3%29%7D%7B%5Ctilde%7Bl_3%7D%7D+" alt="\times\frac{p(f_4\in t_2)}{\tilde{l_2}}\times\frac{p(f_5\in t_2)}{\tilde{l_2}}\times\frac{p(f_6\in t_3)}{\tilde{l_3}} " /></p>
+
+<p>この確率<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BL%7D%28%5Crho%29+" alt="\mathcal{L}(\rho) " />が尤度と呼ばれる．尤度とは「もっともらしさ」という意味だ．上で仮定したような<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=f_1%2Cf_2%5Cdots%2Cf_6+" alt="f_1,f_2\dots,f_6 " />のショートリードのデータが実際に手元に得られたのだから，それが起こる確率が高かったに違いない，ということを尤度では考えている．</p>
+
+<h4>尤度式の展開</h4>
+
+<p>では次に，この式をもう少し綺麗にしていこう．まずは2行目で転写物ごとに式をまとめ，3行目ですべての転写物を一つの式で表している．そして最後に<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28f%5Cin+t%29+" alt="p(f\in t) " />を置き換えると，先ほどの<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod_%7Bt%5Cin+T%7D%5Cprod_%7Bf%5Cin+F_t%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Ccdot%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29+" alt="\mathcal{L}(\rho)= \prod_{t\in T}\prod_{f\in F_t} \bigg( \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_r}}\cdot\frac{1}{\tilde{l_t}} \bigg) " />まで導出することができる．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/generative-models_2.png" alt="" /></p>
+
+<p>そして最後のまとめとして，転写物ごとにマッピングされたショートリードの生成確率というのは同じであることを利用して，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X_t+" alt="X_t " />でまとめる．
+つまり，ショートリードの配列は生成確率に依存せず<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28f_1%5Cin+t_1%29+%3D++p%28f_2%5Cin+t_1%29+%3D++p%28f_3%5Cin+t_1%29" alt="p(f_1\in t_1) =  p(f_2\in t_1) =  p(f_3\in t_1)" />なので，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28f_1%5Cin+t_1%29+%5Ctimes+p%28f_2%5Cin+t_1%29+%5Ctimes+p%28f_3%5Cin+t_1%29+%3D+%28p%28f%5Cin+t_1%29%29%5E%7BX_1%7D+" alt="p(f_1\in t_1) \times p(f_2\in t_1) \times p(f_3\in t_1) = (p(f\in t_1))^{X_1} " />と変形している．こうすることにより，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BL%7D%28%5Crho%29%3D+%5Cprod_%7Bt%5Cin+T%7D+%5Cbigg%28+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_r%7D%7D%5Ccdot%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Cbigg%29%5E%7BX_t%7D+" alt="\mathcal{L}(\rho)= \prod_{t\in T} \bigg( \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_r}}\cdot\frac{1}{\tilde{l_t}} \bigg)^{X_t} " />となる．</p>
+
+<h3>尤度を最大にするパラメータを解析的に求める</h3>
+
+<p>では，数式として表された尤度を最大化する値を求めよう．まずは上の式を少し整理するところから始める．<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha_t+" alt="\alpha_t " />という新たな変数を用意して<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho_t+" alt="\rho_t " />を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha_t+" alt="\alpha_t " />に置き換える．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha_t+%3D+p%28f%5Cin+t%29%3D+%5Cfrac%7B%5Crho_t+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D%5Crho_r+%5Ctilde%7Bl_t%7D%7D+" alt="\alpha_t = p(f\in t)= \frac{\rho_t \tilde{l_t}}{\sum_{r\in T}\rho_r \tilde{l_t}} " /></p>
+
+<p>この<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha_t+" alt="\alpha_t " />を用いて，先ほどの尤度式を書き換えると</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BL%7D%28%5Calpha_t%29%3D%5Cprod_%7Bt%5Cin+T%7D%5Cbigg%28+%5Cfrac%7B%5Calpha_t%7D%7B%5Ctilde%7Bl_t%7D%7D%5Cbigg%29%5E%7BX_t%7D+%5Cpropto+%5Cprod_%7Bt%5Cin+T%7D+%7B%5Calpha_t%7D%5E%7BX_t%7D+" alt="\mathcal{L}(\alpha_t)=\prod_{t\in T}\bigg( \frac{\alpha_t}{\tilde{l_t}}\bigg)^{X_t} \propto \prod_{t\in T} {\alpha_t}^{X_t} " /></p>
+
+<p>となる．ここで，尤度<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BL%7D+" alt="\mathcal{L} " />の変数が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha_t+" alt="\alpha_t " />になっていることに注意．最尤推定の目的としては尤度<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BL%7D+" alt="\mathcal{L} " />を最大化する<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha_t+" alt="\alpha_t " />を求めたいだけなので，関係ない<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D+" alt="\tilde{l_t} " />は消している．</p>
+
+<p>そして，この尤度を最大にする<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha_t+" alt="\alpha_t " />をラグランジュの未定乗数法を用いて求めると，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Chat%7B%5Calpha_t%7D+%3D+%5Cfrac%7BX_t%7D%7BN%7D+" alt="\hat{\alpha_t} = \frac{X_t}{N} " />となる．以下の図は，ラグランジュの未定乗数法の導出部分の詳細．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/generative-models_3.png" alt="" /></p>
+
+<p>このときの<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho_t+" alt="\rho_t " />は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho_t+%3D+%5Cfrac%7B%5Calpha_t+%2F+%5Ctilde%7Bl_t%7D%7D%7B%5Csum_%7Br%5Cin+T%7D+%5Calpha_t+%2F+%5Ctilde%7Bl_t%7D%7D+" alt="\rho_t = \frac{\alpha_t / \tilde{l_t}}{\sum_{r\in T} \alpha_t / \tilde{l_t}} " />で表されるので，先ほど求めた<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Chat%7B%5Calpha_t%7D+" alt="\hat{\alpha_t} " />を代入して，</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Chat%7B%5Crho_t%7D+%3D+%5Cfrac%7BX_t%7D%7BN%7D+%5Ccdot+%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Ccdot+%5Cbigg%28+%5Cfrac%7B1%7D%7B%5Csum_%7Br%5Cin+T%7D%5Cfrac%7BX_r%7D%7BN+l_r%7D%7D+%5Cbigg%29+" alt="\hat{\rho_t} = \frac{X_t}{N} \cdot \frac{1}{\tilde{l_t}} \cdot \bigg( \frac{1}{\sum_{r\in T}\frac{X_r}{N l_r}} \bigg) " /></p>
+
+<p>と表すことができる．これが，Count Based Modelによって求められた発現量<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho_t+" alt="\rho_t " />の推定値である．</p>
+
+<h3>Count Based Modelの解析解とRPKMとの関係</h3>
+
+<p>さて，ようやくRPKMとの関連の話に入ることができる．上で求めた<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Chat%7B%5Crho_t%7D+" alt="\hat{\rho_t} " />を，次のように式変形する．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Chat%7B%5Crho_t%7D+%3D+%5Cfrac%7BX_t%7D%7BN%7D+%5Ccdot+%5Cfrac%7B1%7D%7B%5Ctilde%7Bl_t%7D%7D+%5Ccdot+%5Cbigg%28+%5Cfrac%7B1%7D%7B%5Csum_%7Br%5Cin+T%7D%5Cfrac%7BX_r%7D%7BN+l_r%7D%7D+%5Cbigg%29+" alt="\hat{\rho_t} = \frac{X_t}{N} \cdot \frac{1}{\tilde{l_t}} \cdot \bigg( \frac{1}{\sum_{r\in T}\frac{X_r}{N l_r}} \bigg) " /></p>
+
+<p>この式をよく見ると，後半の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbigg%28+%5Cfrac%7B1%7D%7B%5Csum_%7Br%5Cin+T%7D%5Cfrac%7BX_r%7D%7BN+l_r%7D%7D+%5Cbigg%29+" alt="\bigg( \frac{1}{\sum_{r\in T}\frac{X_r}{N l_r}} \bigg) " />は全ての転写物に関して計算しているだけなので，ただの定数である．ということで，特定の転写物の発現量<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Chat%7B%5Crho_t%7D+" alt="\hat{\rho_t} " />に関係してくる変数だけを抜き出すと，</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Chat%7B%5Crho_t%7D+%5Cpropto+%5Cfrac%7BX_t%7D%7B%5Ctilde%7Bl_t%7D+N%7D+" alt="\hat{\rho_t} \propto \frac{X_t}{\tilde{l_t} N} " /></p>
+
+<p>ここに<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=10%5E9+" alt="10^9 " />を掛ければ，<strong>生成モデルにおける発現量の推定式はRPKMの式<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=RPKM+%5C++for+%5C++transcript+%5C+t+%3D+10%5E9+%5Ctimes%5Cfrac%7BX_t%7D%7Bl_t+N%7D" alt="RPKM \  for \  transcript \ t = 10^9 \times\frac{X_t}{l_t N}" />と全く同じ式になることがわかる！！！</strong></p>
+
+<p>ということで，Count Based Modelにおける最尤推定によって推定される発現量と，マッピングされたショートリードの数だけで計算されたRPKMの発現量は，基本的には同じ計算式によって求めることができることがわかった．</p>
+
+<h3>まとめ</h3>
+
+<p>後半はだいぶ駆け足になってしまったが，Count Based Modelの導出とRPKMとの関係を解説してみた．生成モデルというややこしい数式を立てておいて結局RPKMと同じかよと思うかもしれないが，生成モデルはここから様々な仮定をモデルに組み込むことによって，より複雑かつ現実に則した一般的なモデルへと改良していくことができる．今回のCount Based Modelはその枠組みとして，非常に基本的な考え方である．しかしながら，実際にはこの方法だけを使ってソフトウェアが作られたり論文として出ているわけでもなく，あまり詳しい解説が無い部分だと思われる．今回はLior Pachter氏のレビューをもとに具体例をはさみながらモデルを読み解いていったが，次回以降はもう少しCufflinksで使われているような技術も導入しつつ，より複雑なモデルへと進んでいきたい．</p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://arxiv.org/abs/1104.3889v2">[1104.3889v2] Models for transcript quantification from RNA-Seq</a></li>
+<li><a href="http://fgcz-intranet.uzh.ch/publish/BiostatLecture/RNA-seq-quantification.pdf">http://fgcz-intranet.uzh.ch/publish/BiostatLecture/RNA-seq-quantification.pdf</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/07/15/mathematical-models-for-transcriptome-quantification-1/">RNA-Seqの数理―生成モデルによる発現量推定（1）RNA-Seqの発現量推定とRPKM</a></h1>
     
     
@@ -420,74 +592,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/10/timetree/">TimeTreeで生物種間の分岐年代を調べる</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-10T14:03:00+09:00" pubdate data-updated="true">Jul 10<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>2種類の生物がどれくらい系統的に近いか遠いかといった情報は，生物の分類をWikipediaで確認したり系統樹を眺めたりと色々と確認する方法があるが，ではどれくらい前に2種類の生物が分岐したかという情報は意外と確認するのが難しい．そういった分岐年代を簡単に確認，比較することができるのがTimeTreeというサイトだ．</p>
-
-<p><a href="http://www.timetree.org/">TimeTree :: The Timescale of Life</a></p>
-
-<h3>生物種を入力する</h3>
-
-<p>TimeTreeウェブサイトの左上にある検索ボックスに，分岐年代を辿りたい生物種を入力する．通常は<em>Canis lupus</em>と<em>Felis catus</em>のような学名を入力するのだけれども，一般的な名称であるdogやcatも自動で変換してくれるようだ．もし学名がハッキリ分かっているのなら，そちらを入力したほうが確実だろう．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/timetree1.png" alt="" /></p>
-
-<h3>結果</h3>
-
-<p>今回のような検索クエリを入力した結果，イヌ(<em>Canis lupus familiaris</em>)とネコ(<em>Felis catus</em>)の分岐年代は55.1 Million Years Agoと推定された．ただしこの値というのは，様々な分岐年代の研究に関してイヌとネコが当てはまるものを複数集めてきて，最終的に平均を取った値となっている．個別の研究の推定結果というのは，図の左側の時系列の箇所に黒の点で表示されているように，実際には42Myaから67Myaまで幅があるようだ．このように複数のソースから分岐年代を確認できるのもTimeTreeの大きな特徴となっている．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/timetree2.png" alt="" /></p>
-
-<p>上図の黒の点で示した個別の研究というのは，下のリストからそれぞれ確認することができる．Taxon Aがイヌ，Taxon Bがネコの検索クエリにそれぞれ対応しており，研究によってはイヌ亜目Caniformiaやネコ亜目Feliformiaのような目レベルで確認されているものや，クマ科Ursidaeやアザラシ科Phocidaeといった少し系統的に離れた分類群との比較も列挙されている（クマやアザラシはどちらもネコ目）．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/timetree4.png" alt="" /></p>
-
-<p>このように，ウェブページに表示されているリストから詳細なページに飛ぶことができるほか，「Molecular Time Estimates」にある「Download as CSV」をクリックすると，根拠となる論文や出版年のリストをコンマ区切りテキストとしてダウンロードすることができる．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/timetree3.png" alt="" /></p>
-
-<h3>参考</h3>
-
-<ul>
-<li><a href="http://www.timetree.org/">TimeTree :: The Timescale of Life</a></li>
-<li>(TimeTreeプロジェクトに関して)<a href="http://www.evolutionsbiologie.uni-konstanz.de/genombaum/Kuraku-ElasmoReview-Japanese.pdf">http://www.evolutionsbiologie.uni-konstanz.de/genombaum/Kuraku-ElasmoReview-Japanese.pdf</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/11/">&larr; Older</a></li>
@@ -535,6 +639,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/03/30/cpd-winter-intern/">クックパッドのウィンターインターンシップに参加してきた</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/11/frozen-let-it-go/">「アナと雪の女王」の&#8221;Let it go&#8221;の演出だけでわかる物語の背景</a>
       </li>
     
@@ -568,10 +676,6 @@
     
       <li class="post">
         <a href="/blog/2014/02/11/review-satou-masaru-wisdom/">「人に強くなる極意」読了</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/01/17/pboc-03/">「細胞の物理生物学」読書ノート：第3章</a>
       </li>
     
   </ul>

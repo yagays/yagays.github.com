@@ -117,6 +117,51 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/05/04/review-zweig-chess/">「チェスの話――ツヴァイク短篇選」読了</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-04T11:44:00+09:00" pubdate data-updated="true">May 4<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4622080915" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>以前，こんな話を聞いたことがある．羽生善治という桁外れの天才がいなければ，将棋はこれほどまでに一般の人気を得られなかっただろう，と．それは将棋の対局の面白さだけではなく，ゴシップという下世話な興味もかき立てられると同時に，天才の人格であったり普段の振る舞いであったり天才である所以が人々を魅了するからだという．</p>
+
+<p>本書「ツヴァイク短篇集」の最後に収録されている「チェスの話」は，チェスの名手2人がたまたまブエノス・アイレスへと向かう船上で出会い，対決をすることになるという物語だ．一人はチェス世界チャンピオンとして名を上げ，現在はチェスの試合で各地を行脚している男．天才と呼ぶに相応しい彼は，一方でチェス以外のことは何一つ人並みにできないような人間で，その様子は滑稽であり変人そのものだった．もう一人のチェスの名手は，たまたま世界チャンピオンが客と試合しているところに出くわした一人の紳士だった．彼は的確なアドバイスでその勝負を引き分けに持ち込むのだが，その知識と戦術に感嘆した客が世界チャンピオンとの対決を提案しても，その紳士は及び腰でその申し出を断り，どこかへ立ち去ってしまう．紳士を説得しようと追いかけた主人公は，どうしてあれほどまでに卓越したチェスの腕を磨いたか，紳士の過去についての独白を聞くことになる．</p>
+
+<p>この短編では，チェスというゲームに魅了された人間の人生と思考という果てしない深淵が，圧倒的なディティールをもって描かれる．それは，考えるという行為そのものについて一人の人間の日常的な行為を超えて，自身との対峙，知識の欲求，自分と他者の存在，そして考えることに取り憑かれた人間の本質を私たちに提示する．チェスの名手になった紳士の独白は，ある種の心理実験の報告書のようであり，特殊な環境における人間の肉体的な活動と脳内で激しく回転する思考プロセスを追いかけることで，精神の実体たる思考の一つの側面を見事に表現している．紳士の思考は，話が進むにつれ異常さを増していく．その異常さが極限を迎えるとき，ようやく思考における真理が見えてくるようで，その境地に辿り着けない私のような平凡な人間にとっては，その事実にひどく惹きつけられるのだ．</p>
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/05/03/review-dead-body/">「死体入門」読了</a></h1>
     
     
@@ -360,102 +405,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/04/21/octopress-update/">RVM環境でのOctopressの更新</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-21T22:50:00+09:00" pubdate data-updated="true">Apr 21<span>st</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>前々から計画していたOctopressの更新がやっと終わったので，その作業メモ．本当は色々と難航して面倒だったのだけれども，細かいところは割愛して必要最小限の部分だけをまとめてみた．</p>
-
-<h3>バックアップを取る</h3>
-
-<p>これは必須．以下のコマンドでは，Octopressのディレクトリを丸々デスクトップにコピーしている．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>cp -R octopress ~/Desktop
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Octopressをアップデートする</h3>
-
-<p>Git経由でOctorpessをアップデートする．_config.ymlなど自分で変更しているファイルがあるとgit pullできないので，あらかじめgit statusで変更されているファイルを調べてgit checkoutで除外しておく．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git fetch octopress
-</span><span class='line'><span class="nv">$ </span>git checkout -- Rakefile _config.yml
-</span><span class='line'><span class="nv">$ </span>git pull octopress master
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>そして_config.ymlとRakefileを元通りにする．_config.ymlはそれほど更新が無いのでそのままバックアップのコピーを持ってきても大丈夫だが，Rakefileは細かい箇所で更新が入っているので，diffなどを見つつ必要な変更点だけを書き換える．</p>
-
-<h3>RVMでRubyを1.9.3に更新する（必要な人だけ）</h3>
-
-<p>Octopressを更新するとRuby-1.9.3を使うように言われるので，こちらも更新しておく．RVM自体の更新もついでにやっておく．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rvm get stable
-</span><span class='line'><span class="nv">$ </span>rvm autolibs <span class="nb">enable</span>
-</span><span class='line'><span class="nv">$ </span>rvm install ruby-1.9.3
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Bundleでパッケージを更新する</h3>
-
-<p>最後にBundleでOctopressを動かすために必要なパッケージをひと通りインストールすれば，長かった更新作業も一段落．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>bundle install
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>もしRubyのバージョンの更新をしていない人はbundle updateすればOK．</p>
-
-<p>あとは，rake generateなどを実行してみて，キチンとOctopressが動作するかを確かめれば終了．</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://octopress.org/docs/updating/">Updating Octopress - Octopress</a></li>
-<li><a href="http://tokkonopapa.github.io/blog/2011/12/30/octopress-on-github-and-bitbucket/">Octopressのインストールから運用管理まで - T.I.D.</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/17/">&larr; Older</a></li>
@@ -503,6 +452,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/03/30/cpd-winter-intern/">クックパッドのウィンターインターンシップに参加してきた</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/11/frozen-let-it-go/">「アナと雪の女王」の&#8221;Let it go&#8221;の演出だけでわかる物語の背景</a>
       </li>
     
@@ -536,10 +489,6 @@
     
       <li class="post">
         <a href="/blog/2014/02/11/review-satou-masaru-wisdom/">「人に強くなる極意」読了</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/01/17/pboc-03/">「細胞の物理生物学」読書ノート：第3章</a>
       </li>
     
   </ul>
