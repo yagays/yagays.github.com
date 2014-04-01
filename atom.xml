@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-03-30T22:57:21+09:00</updated>
+  <updated>2014-04-01T12:03:47+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,141 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[超！A＆G＋の自動録画環境を作った]]></title>
+    <link href="http://yagays.github.io/blog/2014/04/01/agqr-recording-script/"/>
+    <updated>2014-04-01T11:50:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/04/01/agqr-recording-script</id>
+    <content type="html"><![CDATA[<p>声優ラジオの知見をより一層深めるための<a href="http://www.agqr.jp/">超！A＆G＋</a>のストリーミングを録画する環境を作った．</p>
+
+<h3>注意</h3>
+
+<p>この記事の内容はすべて自己責任でお願いします．また，この記事に関する質問等は一切お答えしませんのでご了承下さい．</p>
+
+<h3>録画環境</h3>
+
+<p>想定している環境は以下の通り．</p>
+
+<ul>
+<li>常にインターネットに繋がっていてRubyが動いてcronが回せる環境
+
+<ul>
+<li>スクリプトを定期実行して録画を開始・停止する</li>
+<li>Mac OS XもしくはLinux推奨</li>
+</ul>
+</li>
+<li><a href="http://rtmpdump.mplayerhq.hu/">RTMPDump</a>
+
+<ul>
+<li>AGQRの録画</li>
+</ul>
+</li>
+<li><a href="http://www.ffmpeg.org/">FFmpeg</a>
+
+<ul>
+<li>flvからmp4へのエンコード</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>録画スクリプト</h3>
+
+<p>録画したい番組の情報をschedule.yamlに書き，cronで定期実行するagqr.rbが録画を実行する．スクリプト冒頭のradio_dir，rtmpdump，ffmpegは各自の環境に合わせて変更する．</p>
+
+<script src="https://gist.github.com/yagays/9898758.js"></script>
+
+
+<h3>運用</h3>
+
+<h4>ディレクトリとファイル</h4>
+
+<p>ディレクトリは以下のように設定する．実行時に必須なのはagqr.rb，schedule.yaml，fileおよびtmpディレクトリ．なお<strong>tmp以下のflvフィアルは自動的に削除されない</strong>ので，不要になれば手動で削除する必要がある．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ tree                                                                                                                            
+</span><span class='line'>.
+</span><span class='line'>├── agqr.rb
+</span><span class='line'>├── file
+</span><span class='line'>│   ├── *.mp4
+</span><span class='line'>│   └── tmp
+</span><span class='line'>│       └── *.flv
+</span><span class='line'>└── schedule.yaml
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>cron</h4>
+
+<p>cronによる定期実行は以下のように毎時29分と59分にスケジュールし，開始15秒前から録画がスタートするように45秒スリープしてからagqr.rbを実行する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ crontab -l
+</span><span class='line'>29,59 * * * * sleep 45;cd /path/to/radio;/usr/bin/ruby /path/to/radio/agqr.rb</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>schedule.yaml</h4>
+
+<p>録画スケジュールを管理するschedule.yamlは以下のように設定する．ファイル形式は<a href="http://www.yaml.org/">YAML</a>，それぞれの録画スケジュールは順不同．</p>
+
+<ul>
+<li>record: true/false
+
+<ul>
+<li>録画をするかどうかを指定する</li>
+</ul>
+</li>
+<li>title:</li>
+<li>personality:
+
+<ul>
+<li>パーソナリティがいない(titleに含まれている)場合は空白で良い</li>
+</ul>
+</li>
+<li>date:wday:
+
+<ul>
+<li>曜日を指定．月曜なら1，火曜なら2という具合に．</li>
+</ul>
+</li>
+<li>date:hour:
+
+<ul>
+<li>開始時刻(時)</li>
+</ul>
+</li>
+<li>date:min:
+
+<ul>
+<li>開始時刻(分)</li>
+</ul>
+</li>
+<li>date:time:
+
+<ul>
+<li>録画時間(秒)</li>
+<li>開始15秒前から録画スタートするので，30分番組なら1815，1時間番組なら3615といったように15秒多めに指定した方が良い</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://mira.mie.jp/a/74">超A&amp;G+を録画する@Linux - mirahouse</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[クックパッドのウィンターインターンシップに参加してきた]]></title>
@@ -1707,91 +1842,6 @@
 <ul>
 <li>基礎的な物理学のモデルによってシステムを記述する：モデル化するスキル</li>
 <li>システムに対する認識が適切で現実的かどうかをチェックする：定量的見積もりを行うスキル</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「細胞の物理生物学」読書ノート：序文]]></title>
-    <link href="http://yagays.github.io/blog/2013/12/04/pboc-00/"/>
-    <updated>2013-12-04T08:56:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/12/04/pboc-00</id>
-    <content type="html"><![CDATA[<ul>
-<li>読書ノートまとめ：<a href="http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/">http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/</a></li>
-</ul>
-
-
-<h4>ひとこと</h4>
-
-<p>このボルヘスの短編に本書の姿勢というものが凝縮されている．地図と科学を対応付けて考えるならば，分野の細分化が進行した現在におけるそれぞれの科学の役割というものを憂う一方で，地図に代表される抽象化の中にある本質的な役割と設計方法について再考するきっかけとなる．</p>
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4320057163" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=0815344503" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h2>序文</h2>
-
-<h3>学問の厳密さについて - On Exactitude in Science</h3>
-
-<p>日本語1版では序文冒頭，英語2版では第1章の前半で出てくる文章．これはホルヘ・ルイス・ボルヘスとアドルフォ・ビオイ＝カサーレスの書いた短編．訳注にあるように，架空の著者による架空の本の抜粋であり，二人の書いた短編自体にこの前後は存在しない．</p>
-
-<ul>
-<li><a href="http://en.wikipedia.org/wiki/On_Exactitude_in_Science">On Exactitude in Science - Wikipedia, the free encyclopedia</a></li>
-<li><a href="http://www.shobunsha.co.jp/?p=860">ボルヘス怪奇譚集 | 晶文社</a></li>
-</ul>
-
-
-<p>書籍の形として翻訳されたものは，「ボルヘス怪奇譚集」や「汚辱の世界史」，「澁澤龍彦文学館10　迷宮の箱」などで読めるようだ．</p>
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4794912617" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4003279263" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=448020010X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<h3>物理を使って生物を視る4つのステップ</h3>
-
-<ol>
-<li>生物の現象を観察する</li>
-<li>オーダーの見積もりを行う</li>
-<li>単純なモデルを適用する</li>
-<li>モデルを洗練する</li>
-</ol>
-
-
-<h3>本書の全体構成</h3>
-
-<ul>
-<li>第1部：「生命とは」
-
-<ul>
-<li>主に生物の現象を扱う</li>
-</ul>
-</li>
-<li>第2部：「平衡状態としての生命」
-
-<ul>
-<li>時間を考慮しないような定量的モデルを使ってとくことの出来る問題を扱う</li>
-</ul>
-</li>
-<li>第3部：「非平衡状態としての生命」
-
-<ul>
-<li>時間に依存したシステムのダイナミックな振る舞いや複雑さを扱う</li>
-</ul>
-</li>
-<li>第4部：「生命の意味」
-
-<ul>
-<li>生物システムのさまざまな情報処理について説明する</li>
-</ul>
-</li>
 </ul>
 
 ]]></content>

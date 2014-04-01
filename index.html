@@ -117,6 +117,170 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2014/04/01/agqr-recording-script/">超！A＆G＋の自動録画環境を作った</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-01T11:50:00+09:00" pubdate data-updated="true">Apr 1<span>st</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>声優ラジオの知見をより一層深めるための<a href="http://www.agqr.jp/">超！A＆G＋</a>のストリーミングを録画する環境を作った．</p>
+
+<h3>注意</h3>
+
+<p>この記事の内容はすべて自己責任でお願いします．また，この記事に関する質問等は一切お答えしませんのでご了承下さい．</p>
+
+<h3>録画環境</h3>
+
+<p>想定している環境は以下の通り．</p>
+
+<ul>
+<li>常にインターネットに繋がっていてRubyが動いてcronが回せる環境
+
+<ul>
+<li>スクリプトを定期実行して録画を開始・停止する</li>
+<li>Mac OS XもしくはLinux推奨</li>
+</ul>
+</li>
+<li><a href="http://rtmpdump.mplayerhq.hu/">RTMPDump</a>
+
+<ul>
+<li>AGQRの録画</li>
+</ul>
+</li>
+<li><a href="http://www.ffmpeg.org/">FFmpeg</a>
+
+<ul>
+<li>flvからmp4へのエンコード</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>録画スクリプト</h3>
+
+<p>録画したい番組の情報をschedule.yamlに書き，cronで定期実行するagqr.rbが録画を実行する．スクリプト冒頭のradio_dir，rtmpdump，ffmpegは各自の環境に合わせて変更する．</p>
+
+<script src="https://gist.github.com/yagays/9898758.js"></script>
+
+
+<h3>運用</h3>
+
+<h4>ディレクトリとファイル</h4>
+
+<p>ディレクトリは以下のように設定する．実行時に必須なのはagqr.rb，schedule.yaml，fileおよびtmpディレクトリ．なお<strong>tmp以下のflvフィアルは自動的に削除されない</strong>ので，不要になれば手動で削除する必要がある．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ tree                                                                                                                            
+</span><span class='line'>.
+</span><span class='line'>├── agqr.rb
+</span><span class='line'>├── file
+</span><span class='line'>│   ├── *.mp4
+</span><span class='line'>│   └── tmp
+</span><span class='line'>│       └── *.flv
+</span><span class='line'>└── schedule.yaml
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>cron</h4>
+
+<p>cronによる定期実行は以下のように毎時29分と59分にスケジュールし，開始15秒前から録画がスタートするように45秒スリープしてからagqr.rbを実行する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ crontab -l
+</span><span class='line'>29,59 * * * * sleep 45;cd /path/to/radio;/usr/bin/ruby /path/to/radio/agqr.rb</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>schedule.yaml</h4>
+
+<p>録画スケジュールを管理するschedule.yamlは以下のように設定する．ファイル形式は<a href="http://www.yaml.org/">YAML</a>，それぞれの録画スケジュールは順不同．</p>
+
+<ul>
+<li>record: true/false
+
+<ul>
+<li>録画をするかどうかを指定する</li>
+</ul>
+</li>
+<li>title:</li>
+<li>personality:
+
+<ul>
+<li>パーソナリティがいない(titleに含まれている)場合は空白で良い</li>
+</ul>
+</li>
+<li>date:wday:
+
+<ul>
+<li>曜日を指定．月曜なら1，火曜なら2という具合に．</li>
+</ul>
+</li>
+<li>date:hour:
+
+<ul>
+<li>開始時刻(時)</li>
+</ul>
+</li>
+<li>date:min:
+
+<ul>
+<li>開始時刻(分)</li>
+</ul>
+</li>
+<li>date:time:
+
+<ul>
+<li>録画時間(秒)</li>
+<li>開始15秒前から録画スタートするので，30分番組なら1815，1時間番組なら3615といったように15秒多めに指定した方が良い</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://mira.mie.jp/a/74">超A&amp;G+を録画する@Linux - mirahouse</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2014/03/30/cpd-winter-intern/">クックパッドのウィンターインターンシップに参加してきた</a></h1>
     
     
@@ -568,84 +732,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/21/review-beging-geek/">Being Geek ―ギークであり続けるためのキャリア戦略」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-21T08:23:00+09:00" pubdate data-updated="true">Feb 21<span>st</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873114993" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>書店でこの本を見かけたら，まず第23章「『ナード』ハンドブック」を読んでみてほしい．そこに書かれていることがまるで自分のことのように思えたら，きっと本書はあなたにピッタリだ．現状でのキャリアに満足しているにせよしていないにせよ，ギークとして仕事をもっと巧くやりぬくために大いに参考になるだろう．</p>
-
-<p>本書はギークと総称される職人気質なソフトウェア開発者のための仕事術に焦点をあてている．著者はギーク出身の現マネージャーで，彼がギークとして活躍していた頃の，そして彼がマネージャーとしてその能力をマネジメントに活かした時の経験がふんだんに盛り込まれている．</p>
-
-<p>本書は，4部構成全40章の短いエッセイで構成されており，転職の話から始まって転職の話で終わる．それはすなわち，長い人生の中のある時点でひとつの会社へのキャリアがはじまりある時点でそのキャリアが終わるという，会社を軸にしたキャリアの単位を表してる．そこには，転職を上手に進めるにはどうすればよいかということからスタートし，実際に会社に入った後の上司との付き合い方，プロジェクトの管理，仕事に必要なスキル，そしてその会社を離れるときに巻き起こる周囲への影響などが含まれる．本書ではそういったエンジニアが経験するであろうことについて，時には上手い対処の仕方，時には冷静で客観的な見方を教えてくれる．</p>
-
-<br/>
-
-
-<p>私自身はまだソフトウェア開発者としてのキャリアの中にはいない人間なので，正直に言って書かれていることに現実味を感じないところもある．トピックごとの粒度などエッセイの構成が合わないと感じることもあったが，幾つかは非常に印象に残るものだった．こういう本の類は読み通すことにそれほどの重要性があるわけではないと思うので，ざっと読んでみて気に入ったエッセイを探したり，適当に気になるものだけを読んでみるのも良いと思う．ちなみに，自分が気に入ったエッセイは以下の通り．</p>
-
-<ul>
-<li>8章 企業文化
-
-<ul>
-<li>少数のコアメンバーが企業全体の文化を支えているということについて．それがある時変化するということはどういうことを意味するのか．</li>
-</ul>
-</li>
-<li>23章 「ナード」ハンドブック
-
-<ul>
-<li>パートナー向け，ギークやナードの取扱説明書．</li>
-</ul>
-</li>
-<li>26章 「危機」と「創造」モデル
-
-<ul>
-<li>メンタルモデル，すなわち気の持ちようについて．</li>
-</ul>
-</li>
-<li>30章 声を出す
-
-<ul>
-<li>人前でプレゼンテーションをするときのテクニック．ところでプレゼンテーションとスピーチの違いって分かる？</li>
-</ul>
-</li>
-</ul>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/2/">&larr; Older</a></li>
@@ -691,6 +777,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/04/01/agqr-recording-script/">超！A＆G＋の自動録画環境を作った</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/30/cpd-winter-intern/">クックパッドのウィンターインターンシップに参加してきた</a>
       </li>
     
@@ -724,10 +814,6 @@
     
       <li class="post">
         <a href="/blog/2014/02/12/review-steal-like-an-artist/">「クリエイティブの授業 STEAL LIKE AN ARTIST」読了</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/11/review-satou-masaru-wisdom/">「人に強くなる極意」読了</a>
       </li>
     
   </ul>
