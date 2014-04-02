@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-04-01T12:30:39+09:00</updated>
+  <updated>2014-04-02T10:51:25+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -19,6 +19,8 @@
     <updated>2014-04-01T11:50:00+09:00</updated>
     <id>http://yagays.github.io/blog/2014/04/01/agqr-recording-script</id>
     <content type="html"><![CDATA[<p>声優ラジオの知見をより一層深めるために<a href="http://www.agqr.jp/">超！A＆G＋</a>のストリーミングを録画する環境を作った．</p>
+
+<p>(追記4/2:y_benjo氏がより書きやすいyaml構造のスクリプトに改良してくれているので，そちらも参照<a href="https://gist.github.com/ybenjo/9904543">https://gist.github.com/ybenjo/9904543</a>)</p>
 
 <h3>注意</h3>
 
@@ -209,6 +211,14 @@
 <p>懇親会終わりのマックスの疲労とテンションの高さも相まって道路脇のコーンを抱える@moznion氏．</p>
 
 <p><img src="http://dl.dropboxusercontent.com/u/142306/b/moz.jpg" alt="" /></p>
+
+<h3>他の参加者のレポート</h3>
+
+<ul>
+<li><a href="http://kouki.hatenadiary.com/entry/2014/03/30/155824">クックパッドのインターンに行ってきて料理をしなかったお話。 - kouki_danの日記</a></li>
+<li><a href="http://moznion.hatenadiary.com/entry/2014/04/01/000636">COOKPAD 5-day winter internshipに参加したのでポエムを - その手の平は尻もつかめるさ</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
