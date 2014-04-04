@@ -186,7 +186,7 @@
 
 <h4>ディレクトリとファイル</h4>
 
-<p>ディレクトリは以下のように設定する．実行時に必須なのはagqr.rb，schedule.yaml，fileおよびtmpディレクトリ．なお<strong>tmp以下のflvフィアルは自動的に削除されない</strong>ので，不要になれば手動で削除する必要がある．</p>
+<p>スクリプトや録音ファイルなどを置くradioディレクトリは以下のように設定する．実行時に必須なのはagqr.rb，schedule.yaml，fileおよびtmpディレクトリ．なお<strong>tmp以下のflvフィアルは自動的に削除されない</strong>ので，不要になれば手動で削除する必要がある．</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -196,8 +196,8 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ tree                                                                                                                            
-</span><span class='line'>.
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ tree radio
+</span><span class='line'>radio
 </span><span class='line'>├── agqr.rb
 </span><span class='line'>├── file
 </span><span class='line'>│   ├── *.mp4
@@ -257,7 +257,7 @@
 
 <ul>
 <li>録画時間(秒)</li>
-<li>開始15秒前から録画スタートするので，30分番組なら1815，1時間番組なら3615といったように15秒多めに指定した方が良い</li>
+<li>開始15秒前から録画スタートするので，30分番組なら1815，1時間番組なら3615といったように15秒多めに指定した方が良いかもしれない．ここは各自で調節する</li>
 </ul>
 </li>
 </ul>
