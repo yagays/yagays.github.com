@@ -117,6 +117,69 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/05/22/esl-pdf-trimming/">&#8220;The Elements of Statistical Learning&#8221;のpdfの余白を削る</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-22T09:22:00+09:00" pubdate data-updated="true">May 22<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=0387848576" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>機械学習系の教科書としてはそこそこの知名度のある「The Elements of Statistical Learning」（通称ESLまたはHastie）は，全ページのPDFが公式で配布されている．</p>
+
+<p><a href="http://www-stat.stanford.edu/~tibs/ElemStatLearn/">Elements of Statistical Learning: data mining, inference, and prediction. 2nd Edition.</a></p>
+
+<p>これは輪講に使えそうだということで色々と準備をしているのだが，このpdfには一つ気になるところがあって，それはページの余白が大きいということだ．右上にトンボの一部と「Printer: Opaque this」という文字が書かれているように，おそらく印刷所に出す前のpdfをそのまま配布しているらしい．pdfが配布されているだけ有難いというものではあるものの，このままでは少し読みづらい．ということで，余白を良い感じに自動で削れるツールを探して，文字だけの部分を抜き出してみた．</p>
+
+<h3>brissで余白をトリミングする</h3>
+
+<p>今回は「briss」というJavaアプリケーションを使ってみる．</p>
+
+<p><a href="http://appdrill.net/61580/briss.html">[Mac] 自炊に！PDFのページを重ねて一発で余白を切り取る「briss」 « Appdrill</a></p>
+
+<p>使い方は上のリンクを参考にしていただくとして，pdfを読み込んだ画面が以下のようになる．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/briss1.png" alt="" /></p>
+
+<p>これは1ページ目だけを除いた残りのページを全て重ねあわせたたもので，右ページ中央に表示されているグチャッとした部分がpdfのテキスト部分となる．水色の透過の部分がトリミング後に残る箇所を表しており，読み込んだ際に自動で設定される．左上と右下の四角をドラッグすると範囲を手動で選択できるが，下手にやると右ページと左ページでpdfサイズがズレることがあるので，今回のESLのpdfの場合は自動で設定されたものをそのまま使った方がいいだろう．</p>
+
+<p>トリミングを実行して出力されたpdfを開くと，このような感じになる．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/briss2.png" alt="" /></p>
+
+<p>今回の場合は本当に文字ぎりぎりという感じだが，iPadで眺めたり印刷する際にはちょうどくらいだ．これでストレス無くESLを読む事ができる．</p>
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/05/21/tree/">Treeを使ってディレクトリ構造をターミナル上で可視化する</a></h1>
     
     
@@ -501,142 +564,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/14/trinity-install/">Trinityのインストールとサンプルデータのアセンブル</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-14T21:25:00+09:00" pubdate data-updated="true">May 14<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>久しぶりに<a href="http://trinityrnaseq.sourceforge.net/">Trinity</a>を触ろうと思ってインストールしたら，実行に<a href="http://bowtie-bio.sourceforge.net/index.shtml">Bowtie</a>が必要になっていた．de novo transcriptome assemblyの後の解析で使う程度かと思いきや，どうやらChrysalis（2段階目）で必要になるらしい．そのため，Bowtieにパスを通していないとTrinity.pl実行時に以下のようなエラーが出る．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Error, cannot find path to bowtie, which is now needed as part of Chrysalis' read scaffolding step at ../../Trinity.pl line 622.</span></code></pre></td></tr></table></div></figure>
-
-
-<p>というわけで，TrinityのインストールをしつつBowtieも用意して，試しにソースコードに含まれているテストデータの実行をしてみる．</p>
-
-<h3>1. Trinityのインストール</h3>
-
-<p>SourceForgeからソースコードをダウンロードしてインストールする．解凍したディレクトリでmakeをすればよい．</p>
-
-<p><a href="http://sourceforge.net/projects/trinityrnaseq/files/">Trinity RNA-Seq Assembly - Browse Files at SourceForge.net</a></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ wget http://downloads.sourceforge.net/project/trinityrnaseq/trinityrnaseq_r2013-02-25.tgz 
-</span><span class='line'>$ tar zxvf trinityrnaseq_r2013-02-25.tgz 
-</span><span class='line'>$ cd trinityrnaseq_r2013-02-25
-</span><span class='line'>$ make</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>2. Bowtieのインストール</h3>
-
-<p>こちらも同様にSourceForgeからダウンロードするが，コンパイル済みのバイナリが配布されているので，makeをせずにそのまま利用できる．OSごとに32bit版と64bit版が用意されているので，環境に合わせてダウンロードする．</p>
-
-<p><a href="http://bowtie-bio.sourceforge.net/index.shtml">Bowtie: An ultrafast, memory-efficient short read aligner</a></p>
-
-<p><a href="http://sourceforge.net/projects/bowtie-bio/files/bowtie/1.0.0/">Bowtie - Browse /bowtie/1.0.0 at SourceForge.net</a></p>
-
-<h3>3. Bowtieのバイナリがあるディレクトリにパスを通す</h3>
-
-<p>今回はとりあえずシェルの設定ファイルをいじらずに，コマンドでbowtieがあるディレクトリをパスに指定する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ export PATH=/Users/yag_ays/Downloads/bowtie-1.0.0:$PATH</span></code></pre></td></tr></table></div></figure>
-
-
-<p>もし頻繁に使用するなら，bowtieのバイナリをパスが通っている場所に移動させたほうがいいだろう．</p>
-
-<h3>サンプルデータのアセンブル</h3>
-
-<p>ひと通り動くことを確認するために，ソースコードの中に含まれているサンプルデータの解析を動かしてみる．</p>
-
-<p>今回実行するのはsample_data/test_Trinity_Assembly．ディレクトリ内にrunMe.shがあるので，単純にそれを実行すればよい．初回は配列ファイルの解凍が実行されるため，Trinityが実行されるまでに少し時間がかかる．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd sample_data/test_Trinity_Assembly
-</span><span class='line'>$ ./runMe.sh</span></code></pre></td></tr></table></div></figure>
-
-
-<p>もしきちんとパスを通せていれば，標準出力に以下のようなテキストが表示され，解析が始まる．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ ../../Trinity.pl --seqType fq --JM 2G --left reads.left.fq --right reads.right.fq --SS_lib_type RF --CPU 4 --no_cleanup --monitoring --output test
-</span><span class='line'>WARNING, --monitoring can only be used on linux. Turning it off.
-</span><span class='line'>
-</span><span class='line'>Current settings:
-</span><span class='line'>core file size          (blocks, -c) 0
-</span><span class='line'>data seg size           (kbytes, -d) unlimited
-</span><span class='line'>file size               (blocks, -f) unlimited
-</span><span class='line'>max locked memory       (kbytes, -l) unlimited
-</span><span class='line'>max memory size         (kbytes, -m) unlimited
-</span><span class='line'>open files                      (-n) 256
-</span><span class='line'>pipe size            (512 bytes, -p) 1
-</span><span class='line'>stack size              (kbytes, -s) 8192
-</span><span class='line'>cpu time               (seconds, -t) unlimited
-</span><span class='line'>max user processes              (-u) 709
-</span><span class='line'>virtual memory          (kbytes, -v) unlimited
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>Paired mode requires bowtie. Found bowtie at: /Users/yag_ays/Downloads/bowtie-1.0.0/bowtie
-</span><span class='line'>
-</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/16/">&larr; Older</a></li>
@@ -684,6 +611,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/04/26/review-stap-stop/">「STOP論文捏造―なぜ起こるのか」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/04/24/review-adtech-professional-sdplus/">「アドテクノロジー プロフェッショナル養成読本」読了</a>
       </li>
     
@@ -719,10 +650,6 @@
         <a href="/blog/2014/02/21/review-beging-geek/">Being Geek ―ギークであり続けるためのキャリア戦略」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/02/20/withings-pulse/">Withingsのpulseを購入した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -731,7 +658,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (88)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (89)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>

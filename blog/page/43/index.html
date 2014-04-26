@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Wolfeyes Bioinformatics beta</title>
+  <meta name="author" content="yag_ays">
+
+  
+  <meta name="description" content="Tips and hacks about Bioinformatics on Ruby and R.">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yagays.github.io/blog/page/43">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/syntax/syntax.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    body {
+      padding-bottom: 40px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    img {
+      max-width: 100%;
+    }
+    .sharing, .meta, .pager {
+      margin: 20px 0px 20px 0px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+  </style>
+  <script src="/javascripts/libs/jquery.js"></script>
+  <script src="/javascripts/libs/modernizr-2.0.js"></script>
+  <script src="/javascripts/libs/bootstrap.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Wolfeyes Bioinformatics beta" type="application/atom+xml">
+  <meta name="author" content="yag_ays">
+
+<meta name="description" content="Tips and hacks about Bioinformatics on Ruby and R.">
+<meta name="keywords" content="Bioinformatics,NGS,バイオインフォマティクス,機械学習,統計学,Ruby,R,Mac OS X,Linux">
+<meta name="google-translate-customization" content="f0d6fb1813054f83-93b90cf46465830f-g289228b826edcf56-12"></meta>
+<meta name="msvalidate.01" content="7B572D9F165B6C1C1D644708FF738704" />
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17620484-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <a class="brand" href="/">Wolfeyes Bioinformatics beta</a>
+
+      <div class="nav-collapse">
+        <ul class="nav">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About Me</a></li>
+</ul>
+
+
+        <ul class="nav pull-right" data-subscription="rss">
+          <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+          
+        </ul>
+
+        
+          <form class="pull-right navbar-search" action="http://google.com/search" method="get">
+            <fieldset role="search">
+              <input type="hidden" name="q" value="site:yagays.github.io" />
+              <input class="search-query" type="text" name="q" results="0" placeholder="Search"/>
+            </fieldset>
+          </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</nav>
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span9">
+  
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/23/new-post/">Github Pages + Octopressでブログを作ってみた</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-23T15:52:00+09:00" pubdate data-updated="true">May 23<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>お久しぶりです，yag_aysです．</p>
+
+<p>さくらVPSの解約に伴い，Wordpressで立てていたblogをGithub Pagesで立て直すことにしました．</p>
+
+<p>ということで，また懲りずに技術系記事をひっそりと書いていく予定です．よろしくお願いします．</p>
+
+<h2>以下メモ</h2>
+
+<ul>
+<li>Githubのレポジトリを作成する</li>
+</ul>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/github_accountsetting.png" alt="アカウント登録" /></p>
+
+<ul>
+<li>ページを作成してindex.htmlを作成すると，以下のようにNotificationが来る．</li>
+</ul>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/github_notify.png" alt="Notification" /></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'> cd octopress
+</span><span class='line'> gem install bundler
+</span><span class='line'> bundle install
+</span><span class='line'>
+</span><span class='line'> rake setup_github_pages
+</span><span class='line'> rake generate
+</span><span class='line'> rake deploy
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>まだMarkdownがよくわかってない&#8230;</p>
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  <ul class="pager">
+    
+    <li><a href="/blog/archives">Blog Archives</a></li>
+    
+    <li class="next"><a href="/blog/page/42/">Newer &rarr;</a></li>
+    
+  </ul>
+</div>
+<aside class="sidebar-nav span3">
+  
+    <section class="well">
+  <h2>About Me</h2>
+  <p>Yuki OKUDA</p>
+  <p>id: yag_ays</p>
+  <p>E-mail: yanagi.ayase [at] gmail.com</p>
+  <br />
+  <ul>
+    <li>Bioinformatics / NGS</li>
+    <li>Machine Learning / Statistics</li>
+    <li>Ruby / R / Clojure / Python</li>
+    <li>MacOSX / Linux</li>
+    <li>Book Review</li>
+  </ul>
+  <br />
+  <ul>
+    <li><a href="https://twitter.com/#!/yag_ays" target="_blank">Twitter</a></li>
+    <li><a href="https://github.com/yagays" target="_blank">Github</a> </li>
+    <li><a href="https://gist.github.com/yagays" target="_blank">Gist</a></li>
+    <li><a href="http://jp.linkedin.com/in/yukiokuda/" target="_blank">Linkedin</a></li>
+    <li><a href="http://b.hatena.ne.jp/yag_ays/" target="_blank">Bookmark</a></li>
+    <li><a href="http://slideshare.net/yag_ays/" target="_blank">Slideshare</a></li>
+    <li><a href="http://yan-ase.tumblr.com/" target="_blank">Tumblr</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="http://yag-ays.hateblo.jp/" target="_blank">Hatena Blog (Technical)</a> </li>
+    <li><a href="http://g86.dbcls.jp/~yag/wordpress/" target="_blank">Wordpress Blog (Technical, <i>old</i>)</a></li>
+  </ul>
+</section>
+<section class="well">
+  <h2>Recent Post</h2>
+  <ul id="recent_posts" class="nav nav-list">
+    <li class="nav-header">Recent Posts</li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/26/review-stap-stop/">「STOP論文捏造―なぜ起こるのか」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/24/review-adtech-professional-sdplus/">「アドテクノロジー プロフェッショナル養成読本」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/11/review-55-fabulous-women-in-america/">「アメリカのめっちゃスゴい女性たち」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/04/poang-chair/">後傾姿勢になれるIKEAのアームチェアPOÄNGがライフチェンジングだった話</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/01/agqr-recording-script/">超！A＆G＋の自動録画環境を作った</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/30/cpd-winter-intern/">クックパッドのウィンターインターンシップに参加してきた</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/frozen-let-it-go/">「アナと雪の女王」の&#8221;Let it go&#8221;の演出だけでわかる物語の背景</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/09/review-minecraft/">「マインクラフト 革命的ゲームの真実」読了</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/26/pboc-04-1/">「細胞の物理生物学」読書ノート：第4章前半</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/21/review-beging-geek/">Being Geek ―ギークであり続けるためのキャリア戦略」読了</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="well">
+  <h2>Categories</h2>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
+<li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
+<li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (89)</a></li>
+<li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
+<li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
+<li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>Linux (3)</a></li>
+<li class='category'><a href='/blog/categories/mcmc/'>MCMC (3)</a></li>
+<li class='category'><a href='/blog/categories/machinelearning/'>MachineLearning (5)</a></li>
+<li class='category'><a href='/blog/categories/misc/'>Misc (11)</a></li>
+<li class='category'><a href='/blog/categories/pboc/'>PBOC (7)</a></li>
+<li class='category'><a href='/blog/categories/prml/'>PRML (5)</a></li>
+<li class='category'><a href='/blog/categories/perl/'>Perl (1)</a></li>
+<li class='category'><a href='/blog/categories/presentation/'>Presentation (1)</a></li>
+<li class='category'><a href='/blog/categories/python/'>Python (5)</a></li>
+<li class='category'><a href='/blog/categories/rna-seq/'>RNA-Seq (5)</a></li>
+<li class='category'><a href='/blog/categories/reading/'>Reading (21)</a></li>
+<li class='category'><a href='/blog/categories/soapdenovo2/'>SOAPdenovo2 (3)</a></li>
+<li class='category'><a href='/blog/categories/slide/'>Slide (1)</a></li>
+<li class='category'><a href='/blog/categories/sublimetext2/'>SublimeText2 (2)</a></li>
+<li class='category'><a href='/blog/categories/trinity/'>Trinity (2)</a></li>
+<li class='category'><a href='/blog/categories/velvet/'>Velvet (1)</a></li>
+<li class='category'><a href='/blog/categories/webservice/'>WebService (6)</a></li>
+<li class='category'><a href='/blog/categories/zsh/'>Zsh (1)</a></li>
+<li class='category'><a href='/blog/categories/ipad/'>iPad (1)</a></li>
+<li class='category'><a href='/blog/categories/imcmr/'>imcmr (16)</a></li>
+<li class='category'><a href='/blog/categories/k-mer/'>k-mer (2)</a></li>
+
+  </ul>
+</section>
+<section class="well">
+  <h2>Translate</h2>
+  <div id="google_translate_element"></div><script type="text/javascript">
+    function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'ja', autoDisplay: false, gaTrack: true, gaId: 'UA-17620484-4'}, 'google_translate_element');
+    }
+  </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</section>
+
+
+<section class="well">
+  <h2>Twitter</h2>
+  <ul id="tweets" class="nav">
+    <li class="nav-header">Latest Tweets</li>
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      getTwitterFeed("yag_ays", 10, true);
+    });
+  </script>
+  <script src="/javascripts/asides/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/yag_ays" class="twitter-follow-button" data-show-count="false">Follow @yag_ays</a>
+  
+</section>
+
+<section class="well">
+  <h2>Recommend Books</h2>
+  <a href="http://www.amazon.co.jp/gp/product/4274067939/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4274067939&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4274067939&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4274067939" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4863912803/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4863912803&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4863912803&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4863912803" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4560027870/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4560027870&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4560027870&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4560027870" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4862381502/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4862381502&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4862381502&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4862381502" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4621061224/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061224&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4621061224&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061224" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <a href="http://www.amazon.co.jp/gp/product/4621061240/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4621061240&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4621061240&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4621061240" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/400006973X/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=400006973X&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=400006973X&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=400006973X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4140815329/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4140815329&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4140815329&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4140815329" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4780908485/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4780908485&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4780908485&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4780908485" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4781605451/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4781605451&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4781605451&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4781605451" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4047284084/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4047284084&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4047284084&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4047284084" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /><a href="http://www.amazon.co.jp/gp/product/4781609481/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=4781609481&linkCode=as2&tag=yagays-22"><img border="0" src="http://ws.assoc-amazon.jp/widgets/q?_encoding=UTF8&ASIN=4781609481&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=yagays-22" ></a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4781609481" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+  <br/>
+  <iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yagays-22&o=9&p=9&l=ez&f=ifr&f=ifr" width="180" height="150" scrolling="no" marginwidth="0" marginheight="0" border="0" frameborder="0" style="border:none;"></iframe>
+</section>
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo" class="page-footer"><hr>
+<p>
+  <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
+  <br />
+  <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Wolfeyes Bioinformatics beta</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">yag_ays</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a><br />
+  except where cited as being from another source or where otherwise noted.
+  <br />
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'wolfeyesbioinformaticsbeta';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

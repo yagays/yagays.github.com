@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-04-24T15:55:36+09:00</updated>
+  <updated>2014-04-26T15:01:20+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「STOP論文捏造―なぜ起こるのか」読了]]></title>
+    <link href="http://yagays.github.io/blog/2014/04/26/review-stap-stop/"/>
+    <updated>2014-04-26T14:58:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/04/26/review-stap-stop</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873102065" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>STAP細胞に端を発する自然科学分野の論文捏造の背景にある，現在の生物学・医学研究が抱える根本的問題に焦点を当てた本書．STAP細胞の論文のどこに致命的欠陥があったかを出発点にして，論文捏造のメカニズムや方法，そして論文捏造が行われるに至る「研究者の日常」というものを知ることができる．</p>
+
+<p>表面的な問題としての実験画像の加工や文章の剽窃などは，もとを辿ればアカデミアにおける論文至上主義的な評価制度に行き着く．研究者の研究の質を評価するのは非常に難しい．だからこそインパクトファクターが生まれ，引用回数が指標になり，そして研究者は「もっと多くの論文！もっと良い論文誌！」と躍起になる．それ自体が悪いとは言うことができないが，その裏にある不公平なシステムや非科学的な態度には大いに問題がある．研究者として成功するためのプレッシャー，信用で成り立つ論文誌のレビュー，論文に記載できるマテメソの文字数の制限，不十分な実験設備の管理，研究室で常態化する謎の風習などなど，本書を読むとその異常性がはっきりとわかる．それと同時に，さまざまな圧力に板挟みになる研究者の身動きのとれなさがひしひしと伝わってくる．</p>
+
+<p>自然科学の研究者について何も知識がないと読み通して理解するのはつらいかもしれないけれども，大学で研究室に配属されたことのある学生くらいなら本書は非常によい勉強材料となると思われる．バイオ研究の中でもがいている人も，バイオ分野を知らない外野の人間にも，ぜひ読んで研究という行為について考えてみて欲しい．</p>
+
+<p>あと最後に，本書を書いた人はぜひとも文責を負うという意味でも本書に名前を明記すべきだと思う．たとえそれがハンドルネームや偽名でも良いので，「暗黒通信団」という団体名義で書くのではなく，一個人がその経験から研究者の現状を憂い真摯に告発するという態度を示してほしかった．本書に書かれている内容がかなり具体例が入り混じって際どいのはわかるが，その部分を曖昧にしてしまうと本書が持つ意味的な切れ味も悪くなると思う．こういったことは暗黒通信団だからこそできる素晴らしい活動だと思うので，一貫した理念でこれからも活動してほしいと思う．陰ながら応援しています．</p>
+
+<blockquote class="twitter-tweet" lang="en"><p>暗黒通信団の「STOP論文捏造なぜ起こるのか」，内容はまあ良いとして，誰がこの文章を書いたのかという文責をキチンと明記してほしいと思った．文章内で「著者」という言葉が何度か出てくるけど，お前誰だよ…．巻末には著者と称して表紙絵を書いた人間の名前が書いてあるし，それでいいのか</p>&mdash; やぐ (@yag_ays) <a href="https://twitter.com/yag_ays/statuses/459916903880732672">April 26, 2014</a></blockquote>
+
+
+<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<blockquote class="twitter-tweet" lang="en"><p>補足しておくと，暗黒通信団という行動力があり科学技術に理解がある団体だからこういう紙媒体でのまとまりのある批評ができると思うし，だからこそその辺りを明確にしてほしかったなという感じです</p>&mdash; やぐ (@yag_ays) <a href="https://twitter.com/yag_ays/statuses/459921008644730881">April 26, 2014</a></blockquote>
+
+
+<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「アドテクノロジー プロフェッショナル養成読本」読了]]></title>
@@ -1173,123 +1203,6 @@
 <p>本書は，地元岡山県北部で猟師になった著者が，猟銃や罠などを使ってイノシシやシカ，鳥などの動物を狩る「リアル猟師奮闘記」だ．実際に山に入って狩猟をするのは勿論のこと，狩猟仲間やベテランとのやり取りや日々の生活なども描かれる．</p>
 
 <p>最近めっきり漫画を読まなくなってしまったのだけれども，ネットで評判になってる本書を見てたまたま買って読んでみたら，これがなかなか良かった．絵やコマの割り方が細かくないため素直に物語や知識を追えて，なおかつ実録モノというところが，個人的に気に入った要因だと思う．変に説教臭く無いのも好感が持てる．それでいて本能的な肉への欲求であったり，家畜化されていない動物を仕留めそして食べるという行為の心理的な変化を感じ，料理に化けるときの喜びのようなものがダイレクトに伝わってくる．要所要所に挟まってくる日本の狩猟のシステムであったり，狩りの方法や先人の智慧なども非常に興味深い．知的好奇心も満たされつつ一般人の日常では味わうことのない世界を覗くことができて，個人的には満足度の高い作品だった．狩猟時期が限られていることもあって新しいネタがどんどん出てくるわけでもないようだが，次のシーズンの狩猟の成果に期待したい．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[MacPortsでPyMOLをインストールする]]></title>
-    <link href="http://yagays.github.io/blog/2013/12/11/pymol-macports/"/>
-    <updated>2013-12-11T13:24:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/12/11/pymol-macports</id>
-    <content type="html"><![CDATA[<p>分子ビューアのPyMOLをインストールしたので，そのときのメモ．今回は無料版をコンパイルするということでMacPortsからインストールしたのだが，FinkやHomebrewからもインストールすることができるようだ．</p>
-
-<ul>
-<li><a href="http://www.pymolwiki.org/index.php/MAC_Install">MAC Install - PyMOLWiki</a></li>
-</ul>
-
-
-<h4>MacPortsによるインストール</h4>
-
-<p>通常のMacPortsのインストールの手順と同じで，以下のようにすればインストールすることができる．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port install pymol</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>tclのバリアントによるエラー</h4>
-
-<p>のだけれども，自分の環境でMacPortsからそのままインストールを行うと以下のようなエラーが出た．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port install pymol
-</span><span class='line'>---&gt;  Computing dependencies for pymol
-</span><span class='line'>---&gt;  Fetching archive for pymol
-</span><span class='line'>Error: org.macports.archivefetch for port pymol returned: tcl must be installed without +corefoundation.
-</span><span class='line'>Please see the log file for port pymol for details:
-</span><span class='line'>    /opt/local/var/macports/logs/_opt_local_var_macports_sources_rsync.macports.org_release_tarballs_ports_science_pymol/pymol/main.log
-</span><span class='line'>To report a bug, follow the instructions in the guide:
-</span><span class='line'>    http://guide.macports.org/#project.tickets
-</span><span class='line'>Error: Processing of port pymol failed</span></code></pre></td></tr></table></div></figure>
-
-
-<p>エラーログを見ると，どうやらtclのインストールの際にcorefoundationというバリアントが付いているせいでエラーが起きているようだ．MacPortsで入れたtclを見てみると，以下のようにcorefounderとthreadsのバリアントが付いていることが確認できる．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ port installed tcl
-</span><span class='line'>The following ports are currently installed:
-</span><span class='line'>  tcl @8.6.1_0+corefoundation+threads (active)</span></code></pre></td></tr></table></div></figure>
-
-
-<p>この問題は既に報告されているようだが，tclを再インストールせずにエラーを回避するのは今のところできない模様．ここにも書かれている通り，tclはRなどの他のソフトウェアでも使用するものなのでなるべく弄りたくは無いのだが，今回はやむを得ない．</p>
-
-<ul>
-<li><a href="http://trac.macports.org/ticket/37062">#37062 (pymol @1.5 tcl must be installed without +corefoundation) – MacPorts</a></li>
-</ul>
-
-
-<p>ということで，以下のようにtclを一度アンインストールして，バリアントを変えた状態でインストールしなおす．tclの依存関係にある他のプログラムも一度消さなければいけない．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port uninstall py27-pmw
-</span><span class='line'>$ sudo port uninstall py27-tkinter
-</span><span class='line'>$ sudo port uninstall tk
-</span><span class='line'>$ sudo port uninstall tcl
-</span><span class='line'>
-</span><span class='line'>$ sudo port install tcl -corefoundation
-</span><span class='line'>$ sudo port install tk -quartz
-</span><span class='line'>$ sudo port install pymol</span></code></pre></td></tr></table></div></figure>
-
-
-<p>アンインストールするpy27-pmw，py27-tkinter，tk，tclはそれぞれ依存関係で繋がっているので，この順番でアンインストールしないといけない．また，py27-pmwとpy27-tkinterはpymolを入れるときにdependenciesの関係で自動で入れてくれるので，アンインストールした後に明示的にインストールしなおさなくても良い．</p>
-
-<p>これでPyMOLがインストールできるはず．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/pymol.png" alt="" /></p>
-
-<h3>余談</h3>
-
-<p>PyMOLを動かすにはXQuartzが必要になるので，あらかじめインストールしておいたほうがいいだろう．</p>
-
-<ul>
-<li><a href="http://xquartz.macosforge.org/landing/">XQuartz</a></li>
-</ul>
-
-
-<h4>環境</h4>
-
-<ul>
-<li>Mac OS X 10.9 Mavericks</li>
-<li>PyMOL Version 1.6.0.0</li>
-</ul>
-
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://www.pymol.org/">PyMOL | www.pymol.org</a></li>
-<li><a href="http://biokids.org/?PyMOL%A4%F2%BB%C8%A4%C3%A4%C6%A4%DF%A4%E8%A4%A6">PyMOLを使ってみよう - BioKids Wiki</a></li>
-<li><a href="http://www.wkagawa.info/crystallography_on_mac/pymol/">PyMOL | Wataru Kagawa&#8217;s Weblog</a></li>
-<li><a href="http://togotv.dbcls.jp/20090617.html">PyMOLを使ってタンパク質の構造を見る - 統合TV (togotv)(2009-06-17)</a></li>
-<li><a href="http://togotv.dbcls.jp/20090707.html">PyMOLを使い倒す - 統合TV (togotv)(2009-07-07)</a></li>
-</ul>
-
 ]]></content>
   </entry>
   
