@@ -117,6 +117,47 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2014/02/12/review-steal-like-an-artist/">「クリエイティブの授業 STEAL LIKE an ARTIST」読了</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-12T00:00:00+09:00" pubdate data-updated="true">Feb 12<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4788908050" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>空いた時間にたまたま本屋で見つけて，空いた時間でざっと読んだのだけれども，まあ元は取れたかなぁというくらいには面白かった．内容としては，ライフハックとかクリエイティブとかに代表されるようなウェブに転がってそうなトピックばかりだし，それこそ本書まるまるウェブサイトに上がってても違和感無いような分量でもある．でも本書はある意味で一貫していて，それこそウェブにはない編集の力のようなものを感じる．本書の主張は端的に言えば「STEAL LIKE AN ARTIST」，クリエイティビティは先人の優れた作品を盗むことから生まれるということだ．そこから派生して，情報を選別して自分のモノにすること，アイデアは抱え込まないで他人と共有することなどなど，まあ言ってしまえば，話自体はハッカー文化とかエンジニア文化とかなり親和性が高い．そういうのが本書に影響しているのか，単に最近のトレンドなのか分からないけど，まあひとつの生き方として筋が通っているし，自分もそうありたいと思うことが多い．</p>
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2014/02/11/review-satou-masaru-wisdom/">「人に強くなる極意」読了</a></h1>
     
     
@@ -622,118 +663,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/15/mlac-2013-em-algorithm/">MLAC2013 数式を使わずイメージで理解するEMアルゴリズム</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-15T19:16:00+09:00" pubdate data-updated="true">Dec 15<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>はじめに</h3>
-
-<p><a href="http://qiita.com/advent-calendar/2013/machinelearning">Machine Learning Advent Calendar 2013</a>の15日目を担当する<a href="https://twitter.com/yag_ays">@yag_ays</a>です．専門はバイオインフォマティクスという計算機を使って生物学をする分野で，生モノではなく遺伝子の文字列相手に格闘している大学院生です．今回は初心者の人を対象に，なるべく数式を使わずにEMアルゴリズムについて解説してみたいと思います．</p>
-
-<p>EMアルゴリズムは，SVMやニューラルネットワークといった華々しい機械学習の手法の一つではなく，機械学習の中で使われる尤度最大化という一部分を担当するアルゴリズムです．そのため多くの人にとってEMアルゴリズムは，それ単体を使ってみたりだとか独自に改良をしたりするような対象ではないでしょう．でも，EMアルゴリズムなんて仰々しい名前が付けられているだけあって，いざ自分の仕事に組み込む場合には中身を理解していないと「なぜEMアルゴリズムを使ったの？」であったり「それを使うと何が嬉しいの？」といった質問が来たときに困るし，とりあえず概念だけでも一通り理解しておきたいと思う人もいると思います．そこで今回は，大雑把にEMアルゴリズムを理解することを目的に，細かい定義やら数式は抜きにしてイメージで覚えられるような解説を書いてみました．まあ結局PRMLの受け売りなのですが，紙の上で見るよりかは分かりやすくしたと思うので勘弁してください．</p>
-
-<ul>
-<li><strong>この記事の対象となる人</strong>
-
-<ul>
-<li>EMアルゴリズムについて聞いたことはあるけどよく分かっていない人</li>
-<li>例えば「これEMアルゴリズム使ってるけど，局所解に落ちてるんじゃない」って言われたとして，？？？ってなる人</li>
-</ul>
-</li>
-<li><strong>この記事の対象ではない人</strong>
-
-<ul>
-<li>「パターン認識と機械学習」(PRML)下巻9章を読み通した人</li>
-<li>イメージと聞いて情報幾何の話だと思った人</li>
-</ul>
-</li>
-</ul>
-
-
-<h3>EMアルゴリズムとは</h3>
-
-<p>EMアルゴリズムは，潜在変数が存在する時の尤度関数を最大化するアルゴリズムです．機械学習の文脈では，よく混合ガウス分布（GMM）などの潜在変数を用いたモデリングの際に用いられます．PRMLで言うところの下巻9章「混合モデルとEM」ですね．また，今回のMLAC 2013では<a href="https://github.com/masakazu-ishihata/advent2013">m_ishihataさんの記事</a>でも出てきますので，何に使うのかピンと来ない人はそちらも参照してもらえればと思います．</p>
-
-<p>ここで覚えておいて欲しいのは，<strong>尤度関数を最大化する</strong>ということです．確率的な機械学習の手法を使っていると，ときどき尤度関数というものが出てきます．特にEMアルゴリズムのような潜在変数が存在する時には，尤度関数は数式には書くことができても，実際にそれがどういう形をしていてどの値で最大になるのかといったことは全く予想ができません．尤度関数に適当に数字を入れれば値が帰ってきますが，それをパラメータすべてについて計算することは現実的には不可能です．そういった条件でどうにか上手いこと計算して効率よく最大値を求めたいといったときに，EMアルゴリズムは使われます．</p>
-
-<h3>イメージで理解するEMアルゴリズム</h3>
-
-<p>前置きはこのくらいにして，では実際にEMアルゴリズムが何をしているのかをスライドで見てもらいましょう．なお，これはあくまでイメージですので，実際にはデータ数に依存する高次元の空間ですし，EMアルゴリズムの計算途中で対数尤度関数がこのように図示できるわけでもありません．その点は注意してください．なお，以下の解説はPRML下巻9章の図9.14 (P.169)を参考にしています．</p>
-
-<iframe src="http://www.slideshare.net/slideshow/embed_code/29219489" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-
-
-<p>さて，PRMLの図を動かしてみたという感じですが，どうだったでしょうか？途中に少し記号を書いてしまいましたが，あまり気にしないでください．EMアルゴリズムの各ステップを更新していくことで，対数尤度の山を徐々に登っていく様子が何となくつかめたと思います．初期値<script type="math/tex">\theta</script>だったパラメータも，<script type="math/tex">\theta'</script>，<script type="math/tex">\theta''</script>と更新されて，尤度関数を最大化するパラメータが求められたことがわかります．</p>
-
-<h3>EMアルゴリズムにおける下界</h3>
-
-<p>とは言うものの，下界って何だとかどうやって計算するんだとか色々あやふやなところがあるので，その辺を少し補足しておきましょう．下界（Lower Bound）とは，その名の通り対数尤度がここよりも小さくならないということを表しています．EMアルゴリズムでは，この下界というものを使ってだんだん底上げしていくことで対数尤度を増加させていくという感じです．Eステップでパラメータを固定したときの下界というものを求めて，Mステップで潜在変数の分布を固定したときの下界と対数尤度の値が同じになるように下界を押し上げます．あとはこれの繰り返しになるのですが，必ず下界よりも対数尤度は上にあるので，決して対数尤度が小さくはなりません．こうやってEMアルゴリズムは対数尤度を最大化していきます．</p>
-
-<p>下界の求め方も今回は数式を使わずに説明するということで，対数尤度式からアレコレ計算すると出てくる程度に捉えておいてもらえればと思います．例えば混合ガウス分布にEMアルゴリズムを適用する場合だと，Jensenの不等式を使って数式の変形することにより下界は求めることができます．下界と対数尤度の差が実はKLダイバージェンスになっているという話もあるのですが，潜在変数の分布について話してないのでここでは割愛します．詳しくはPRMLの数式を追ってみてください．</p>
-
-<h3>イメージで分かるEMアルゴリズムの性質</h3>
-
-<p>ここからは，EMアルゴリズムで注意しなければいけない点を解説します．先ほど紹介したイメージを持っていれば，数式を使わずともEMアルゴリズムの持つ問題点を指摘できるはずです．</p>
-
-<h4>各ステップを繰り返す必要がある</h4>
-
-<p>当然ですが，EMアルゴリズムはEステップとMステップを繰り返す必要があります．EMアルゴリズムが適用できる問題ならば各ステップの計算自体は簡単ですが，パラメータや対数尤度値がある程度収束するまでは，計算し続けなければいけません．</p>
-
-<h4>初期値に依存し，局所最適解に落ちることもある</h4>
-
-<p>先ほど示したイメージでは，下界を引き上げていく際に二次関数のようなものの頂点と対数尤度関数を行ったり来たりしていました．ということは，きちんと勾配にしたがって最大化してくれるという保証がある一方で，それらがある程度一致したところでパラメータは更新しようがないということになります．そのため，EMアルゴリズムは初期値によっては局所最適解に落ちる可能性があります．</p>
-
-<h3>まとめ</h3>
-
-<p>いかがだったでしょうか？この記事で少しでもEMアルゴリズムのイメージがつかめてもらえれば幸いです．そうすれば，PRMLなどの数式の出てくる参考書を読んでも，EMアルゴリズムというものが一体何がしたいのかといったことが理解しやすくなるんじゃないかと思います．</p>
-
-<p>少し個人的な話になりますが，私自身はこうやって模式図やイメージを実際に頭のなかで組み立てると，とても理解が捗ります．私が機械学習の勉強をするときにこういうことを意識しはじめたのは，PRML復々習レーンで第3章の線形回帰モデルの冒頭を発表したときでした．そのときには3.1.2の「最小二乗法の幾何学」という項が一体何を言っているのか全く分からず，発表の際に堂々と「分かりませんでした！」と言ったことをよく覚えています．その時に発表の際に参加者の皆さんに教えていただいたおかげで，最小二乗法の理解が一気に深まったように思えました．よくわからない数式の最小化という漠然とした状態から，数式の各項が何を表していて，何を最小化するのかということまで具体的に理解できたのはこのときでした．こういった感覚はPRMLを読むうちに何度もあり，自分の中できちんと理解に落としこむことの重要性を実感しています．今回の記事では，その一つとしてEMアルゴリズムをイメージでつかんでもらえるような紹介の仕方をしてみました．勿論のことながら，自分で自由自在に使いこなすくらい理解するにはきちんと数式を追わなければいけないですし，図式としてイメージできないことも多々あります．しかしながら，どんな難しいアルゴリズムや手法でも，やってることは絵にかけるほど単純なのだというリラックスした感覚で臨めば，意外と理解につながるものだと思います．機械学習の勉強で壁にぶち当たったときは，ぜひ図を書いたり具体的な絵にして考えなおしてみると上手くいくかもしれません．</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://qiita.com/advent-calendar/2013/machinelearning">Machine Learning Advent Calendar 2013 - Qiita [キータ]</a></li>
-</ul>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621061224" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621061240" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/5/">&larr; Older</a></li>
@@ -781,6 +710,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/05/10/review-self-study-guidebook/">「ワンランク上をめざすビジネスパーソンの独習ガイド」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/05/03/art-and-museum-2014-first-half/">スヌーピー，ウォーホル，グルスキー，そして映画をめぐる美術</a>
       </li>
     
@@ -816,10 +749,6 @@
         <a href="/blog/2014/03/09/review-minecraft/">「マインクラフト 革命的ゲームの真実」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/02/26/pboc-04-1/">「細胞の物理生物学」読書ノート：第4章前半</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -828,7 +757,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (90)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (91)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
