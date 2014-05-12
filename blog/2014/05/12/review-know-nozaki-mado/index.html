@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>"The Elements of Statistical Learning"のpdfの余白を削る - Wolfeyes Bioinformatics beta</title>
+  <title>「know」読了 - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.io/blog/2013/05/22/esl-pdf-trimming">
+  <link rel="canonical" href="http://yagays.github.io/blog/2014/05/12/review-know-nozaki-mado">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -115,7 +115,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">"The Elements of Statistical Learning"のpdfの余白を削る</h1>
+      <h1 class="entry-title">「know」読了</h1>
     
     
       <p class="meta">
@@ -131,39 +131,23 @@
   
 
 
-<time datetime="2013-05-22T09:22:00+09:00" pubdate data-updated="true">May 22<span>nd</span>, 2013</time>
+<time datetime="2014-05-12T09:02:00+09:00" pubdate data-updated="true">May 12<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=0387848576" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+<div class="entry-content"><iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4150311218" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
-<p>機械学習系の教科書としてはそこそこの知名度のある「The Elements of Statistical Learning」（通称ESLまたはHastie）は，全ページのPDFが公式で配布されている．</p>
+<p>「ググる」に代表される検索システムがが電子葉という脳機能の一部として実用化され，知ること自体がネットワーク上の情報にアクセスすることと同義となった世界の物語．身の回りでは情報材とよばれる素子によって通信が媒介され情報が発信し続けられ，人間はそれに自由にアクセスできる．そんな情報に溢れた未来で，知りたいと欲する知識欲の根源とはなにか，予測できるものとできないもの，そして全能性について，本書「Know」はそういった問題に焦点を当てた小説だ．</p>
 
-<p><a href="http://www-stat.stanford.edu/~tibs/ElemStatLearn/">Elements of Statistical Learning: data mining, inference, and prediction. 2nd Edition.</a></p>
+<p>扱われるトピック的には現在の科学技術の延長線上に収まっていて，突拍子もないアイデアが出てきたり宇宙人がみたいな話も無い．その分ある程度予期できるというか，出来なくはないだろうという感じで未だ実現しない技術が常識的に使われる未来を脳内に描きやすい．というより読んでいてあれこれ考えを巡らすのが楽しい．</p>
 
-<p>これは輪講に使えそうだということで色々と準備をしているのだが，このpdfには一つ気になるところがあって，それはページの余白が大きいということだ．右上にトンボの一部と「Printer: Opaque this」という文字が書かれているように，おそらく印刷所に出す前のpdfをそのまま配布しているらしい．pdfが配布されているだけ有難いというものではあるものの，このままでは少し読みづらい．ということで，余白を良い感じに自動で削れるツールを探して，文字だけの部分を抜き出してみた．</p>
+<p>一方で，本書は京都が舞台になっており，表紙絵からも分かる通りかなり宗教色を入れ込んだ作品になっている．そういうあたりは手塚治虫の火の鳥を想起させるけれども，本書が向き合う宗教観はそれとは少し違う気がする．あたかも宗教画や教義の中には真実が隠されていて，現代人はそれに気付いてないんだ的な扱いをしていて，僕はあまり好きじゃない．ある意味西洋的であるというか，その宗教ってそんなに始まりをつかさどるようなものだったっけ？と疑問が湧いてしまって，その点は馴染めなかった．</p>
 
-<h3>brissで余白をトリミングする</h3>
-
-<p>今回は「briss」というJavaアプリケーションを使ってみる．</p>
-
-<p><a href="http://appdrill.net/61580/briss.html">[Mac] 自炊に！PDFのページを重ねて一発で余白を切り取る「briss」 « Appdrill</a></p>
-
-<p>使い方は上のリンクを参考にしていただくとして，pdfを読み込んだ画面が以下のようになる．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/briss1.png" alt="" /></p>
-
-<p>これは1ページ目だけを除いた残りのページを全て重ねあわせたたもので，右ページ中央に表示されているグチャッとした部分がpdfのテキスト部分となる．水色の透過の部分がトリミング後に残る箇所を表しており，読み込んだ際に自動で設定される．左上と右下の四角をドラッグすると範囲を手動で選択できるが，下手にやると右ページと左ページでpdfサイズがズレることがあるので，今回のESLのpdfの場合は自動で設定されたものをそのまま使った方がいいだろう．</p>
-
-<p>トリミングを実行して出力されたpdfを開くと，このような感じになる．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/briss2.png" alt="" /></p>
-
-<p>今回の場合は本当に文字ぎりぎりという感じだが，iPadで眺めたり印刷する際にはちょうどくらいだ．これでストレス無くESLを読む事ができる．</p>
+<p>あと最後に蛇足で内容とは全く関係無いが，計算機科学的にはCould not getではなくてPermission Deniedなのでは&#8230;と思った．</p>
 </div>
 
 
@@ -188,22 +172,16 @@
   
 
 
-<time datetime="2013-05-22T09:22:00+09:00" pubdate data-updated="true">May 22<span>nd</span>, 2013</time>
+<time datetime="2014-05-12T09:02:00+09:00" pubdate data-updated="true">May 12<span>th</span>, 2014</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/machinelearning/'>MachineLearning</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2013/05/22/esl-pdf-trimming/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2014/05/12/review-know-nozaki-mado/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/05/22/esl-pdf-trimming/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/05/22/esl-pdf-trimming/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2014/05/12/review-know-nozaki-mado/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2014/05/12/review-know-nozaki-mado/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -224,14 +202,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2013/05/21/tree/" title="Previous Post:
-        treeを使ってディレクトリ構造をターミナル上で可視化する">&laquo; treeを使ってディレクトリ構造をターミナル上で可視化する</a></li>
+        href="/blog/2014/05/10/review-self-study-guidebook/" title="Previous Post:
+        「ワンランク上をめざすビジネスパーソンの独習ガイド」読了">&laquo; 「ワンランク上をめざすビジネスパーソンの独習ガイド」読了</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2013/06/01/paragraph-heading/"
-        title="Next Post: 段落の冒頭に強い接続語を使ってはいけない…?">段落の冒頭に強い接続語を使ってはいけない…?
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -415,8 +389,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.io/blog/2013/05/22/esl-pdf-trimming/';
-        var disqus_url = 'http://yagays.github.io/blog/2013/05/22/esl-pdf-trimming/';
+        var disqus_identifier = 'http://yagays.github.io/blog/2014/05/12/review-know-nozaki-mado/';
+        var disqus_url = 'http://yagays.github.io/blog/2014/05/12/review-know-nozaki-mado/';
         var disqus_script = 'embed.js';
       
     (function () {
