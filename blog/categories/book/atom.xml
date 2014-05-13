@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Book | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/book/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-05-13T01:12:24+09:00</updated>
+  <updated>2014-05-14T00:19:17+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「Webを支える技術」「WEB+DB PRESS Vol.80」読了]]></title>
+    <link href="http://yagays.github.io/blog/2014/05/14/review-webdb-web-architecture/"/>
+    <updated>2014-05-14T00:18:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/05/14/review-webdb-web-architecture</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774163988" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774142042" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>なんでもそうなんだけど，WEB+DB PRESSの表紙に書いてある「新人さん大歓迎」みたいに，基礎をもう一度おさらい！とかまだ間に合う！とかいう売り文句にめっぽう弱い．自分自身基礎をほっぽり出してトップダウン式にアレコレやってきたからというのもあるし，何か抜けているところは無いかと心配性になったりというのもあるし，何にせよ再入門みたいなことを繰り返してしまう．実際に中身を見れば「ああこの程度か」とか「所々わからないなー」のように当たりはつくのだけれども，際限なく空いている穴を埋めきるのに必死になってしまう．</p>
+
+<p>ということでWeb+DB PRESSの「Web技術入門」を読んでもうちょっと詳しく見ときたいなと思って，本棚から「Webを支える技術」を引っ張り出してきて一通り読み返した．だいたいのことは覚えていたけれども，それでも抜け落ちていた部分であったり，数年前に読んだ時にはピンと来なかった部分を見つけられたと思う．特にHTTPやRESTのシンプルな構造ゆえのpros and consみたいな点は最近ようやく分かるようになってきた．アプリケーション状態を持たないステートレスな接続の果たす役割や，それを実現する自己記述的なメッセージ，あとはHTTPメソッドそれぞれの冪等性や安全の有無も改めて考えると面白い．</p>
+
+<p>それにしても今月のWeb+DB PRESSは本当に新人向けにまとまってて良かった．Mac開発環境の解説とかは本当に必要最低限の技術を広く浅くという感じなのだけれども，これからバリバリプログラミングしたいですって人とかに勧めるのに最適な1冊じゃないだろうか．他にもエンジニアの学び方とかCourseraのコラムも良さ気．あとはzsh入門があればバッチリだと思ったのだが，まあそこは次のステップにでも．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「機龍警察」読了]]></title>
@@ -90,20 +109,6 @@
 
 <script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「アドテクノロジー プロフェッショナル養成読本」読了]]></title>
-    <link href="http://yagays.github.io/blog/2014/04/24/review-adtech-professional-sdplus/"/>
-    <updated>2014-04-24T15:50:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2014/04/24/review-adtech-professional-sdplus</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774164291" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>最初は「なんでアドテクはミリ秒レベルで競っているのか」ということを知りたくて本書を手に取ったのだけれども，その疑問が解消できたのはもちろんのこと，分野全体について広く浅くカバーされていてアドテク入門にに最適な1冊だった．今までは広告配信なんて結局ユーザ情報とコンテンツのマッチングだろう程度に思っていたところがあったものの，実際には広告配信の裏にはアドネットワークの市場が形成されていて，そこではオークションによって広告主と配信媒体とのせめぎ合いが行われていた．そうした両者の最適化の結果がミリ秒単位での駆け引きの後にユーザに広告を配信するという現在のスタイルを作り上げたのだと考えると，インターネットにおける広告というものの規模と，それを可能にしたフロントエンドやネットワークレベルでのエンジニアリングに驚かされる．</p>
-
-<p>本書の前半の巻頭企画と特別企画では，実際にアドテクに触れるときの背景知識や運用方法について，特集1では実際のミリ秒のしのぎをけずる広告配信のコアについて，後半の特集2,3では実際の技術について解説される．RTBにはじまり，DSP，DMP，SSP，CGM，レムナント，インプレッションなどなど，アドテク初心者には聞きなれない専門用語のオンパレードだけれども，そのあたりはきちんと本書の中で解説されるので，分からないながらも読み進めていくと次第に理解することができる．雑誌1冊分の分量で気軽に読めて，実際のアドテクのネット記事を読むための基礎を身につけられたと思う．</p>
 ]]></content>
   </entry>
   
