@@ -117,6 +117,113 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/07/22/mathematical-models-for-transcriptome-quantification-3/">RNA-Seqの数理―生成モデルによる発現量推定（3）ペアエンドリードとフラグメント長の分布関数</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-22T09:59:00+09:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>まとめ：<a href="http://yagays.github.io/blog/2013/07/14/mathematical-models-for-transcriptome-quantification-0/">RNA-Seqの数理―生成モデルによる発現量推定：アーカイブ - Wolfeyes Bioinformatics beta</a></li>
+</ul>
+
+
+<p>前回はCount Based Modelの基礎やRPKMとの関連を解説したが，これらはすべてシングルエンドを前提とした発現量推定の方法だった．そこで今回は，現在主流となっているペアエンドに対応できるようモデルの一部を拡張し，その際に必要になるフラグメント長の分布を考慮した有効配列長の考え方について紹介する．</p>
+
+<h3>ペアエンドリード</h3>
+
+<p>ペアエンドによるシーケンスは，illuminaなどで現在もっとも広く使われているNGSの手法だ．ペアエンドのショートリードは，ゲノムやmRNAを特定の長さのフラグメントに細かく分割したあと，その両端にアダプターを付けて左右同時にシーケンスすることによって得られる．この方法によって，単純にシーケンスのデータ量が2倍になるだけでなく，ある程度離れた距離の2つの配列の関係性も同時に得られる．つまり，元々ひとつの同じフラグメントからシーケンスされたのだから，そのフラグメントの長さの範囲内で2つのショートリードは必ず存在していたはずだという情報である．これらは発現量推定において転写物のアイソフォームを確認するために用いられるほか，主にゲノムアセンブリやトランスクリプトームアセンブリにおいて，コンティグと呼ばれるアセンブルされた断片をつなぎ合わせるスキャフォールディングにおいて有効な実験手法になっている．</p>
+
+<h3>RPKMからFPKMへ</h3>
+
+<p>シングルエンドではRPKMとして計算していた発現量の指標をペアエンドに拡張するのはとても簡単で，2本のマッピングされたショートリードのペアを1本のフラグメントの本数として見なし，転写物ごとにその本数数えるだけで良い．これをFPKM（Fragments per kilobase of exon per million mapped sequence reads）という．RPKMのReadsの部分をFragments，すなわちペアエンドの2つのショートリードに置き換えただけで，全体のデータ量と転写物の配列長で正規化する部分は変わっていない．ただし，マッピングする配列が実質2本になったということで，両方ともマッピングされるという以外にも，片方だけマッピングされたといった特殊な場合が出てくる．このような特殊なケースはマッピングするソフトウェアの設定やFPKMの計算方法に依存するものの，基本的には2本の配列がフラグメント長の間を置いてマッピングされるかどうかによってFPKMの値を求める．</p>
+
+<h3>Count Based Modelにおける変更点</h3>
+
+<p>ではCount Based Modelにペアエンドのショートリードを対応させよう．RPKMからFPKMに拡張したときと同様に発現量の導出部分に手を加える必要はないのだが，一つだけペアエンドを考慮する必要のある変数がある．それが転写物の有効配列長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D+" alt="\tilde{l_t} " />だ．</p>
+
+<p>転写物の有効配列長Effective length of a transcriptsは，ある転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />から長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=m+" alt="m " />のショートリードが得られるときの開始点の場合の数であり，シングルエンドの場合は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D+%3D+l_t+-+m+%2B+1+" alt="\tilde{l_t} = l_t - m + 1 " />で表される．これはショートリードに長さがあるぶんだけフラグメントが生じる開始点として考慮できる長さは短くなるということだ．</p>
+
+<p>では，今回のペアエンドリードの場合はどう考えればいいだろうか．基本的にはシングルエンドの場合と同様に，長さぶんだけ差し引いた値が有効配列長となる．長さといっても，ペアエンドは元々一つのフラグメントからシーケンスされたショートリードなので，フラグメントの長さを用いる．</p>
+
+<p>しかしここで一つ問題点が出てくる．それは，フラグメントの長さが実は一定ではないということだ．mRNAなどを断片化してある長さのフラグメントに選定する作業は実験的に行なわれるため，どうしてもフラグメントの長さに幅ができてしまう．そのため，ショートリードによって，ペアエンドの間の距離が短いものや長いものが出てくる．この現象は実際にゲノムにペアエンドリードを貼り付けて間の距離を測れば確認することができる．以下の図は，Cufflinksの論文中で実際に求められたフラグメント長の分布を表している（Supplementary Figure 1.）．この場合では，200bpを中心にしてフラグメント長にばらつきがあり，おおよそ正規分布の形をしていることがわかる．山の左側が途中で切断されているのは，ショートリードの長さが75bpのためである．</p>
+
+<p><a href="http://www.nature.com/nbt/journal/v28/n5/full/nbt.1621.html" target="_blank"><img src="http://dl.dropboxusercontent.com/u/142306/b/generative-models_4.png" alt="CCC License Number:3192890152232"></a></p>
+
+<p>この図からわかるように，フラグメント長はショートリードによってばらつきがあるため，有効配列長を求める際に一意に値を決めることができない．</p>
+
+<h3>フラグメント長の分布関数を使って有効配列長を求める</h3>
+
+<p>この問題を解消するための手段として，フラグメント長の分布関数を使うという方法がある．</p>
+
+<p>転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />の長さを<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />とする．ショートリードのフラグメントの長さを<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=i+" alt="i " />としたときのフラグメント長の分布関数を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F%28i%29+" alt="F(i) " />とし，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Csum_%7Bi%3D1%7D%5E%7B%5Cinfty%7DF%28i%29%3D1+" alt="\sum_{i=1}^{\infty}F(i)=1 " />となるように確率分布に近似する．このときの転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />の有効配列長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D+" alt="\tilde{l_t} " />は，以下のように表される．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D+%3D+%5Csum_%7Bi%3D1%7D%5E%7Bl_t%7DF%28i%29%28l_t-i%2B1%29+" alt="\tilde{l_t} = \sum_{i=1}^{l_t}F(i)(l_t-i+1) " /></p>
+
+<p>この式の解釈としては，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%28l_t-i%2B1%29+" alt="(l_t-i+1) " />の部分はシングルエンドの有効配列長の求め方と同じ方法で，ショートリードの長さがフラグメントの長さに変わっただけである．そこに<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F%28i%29+" alt="F(i) " />という分布関数を掛けあわせ，長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1+" alt="1 " />から転写物の長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />まで足しあわせた値が，ペアエンドの有効配列長となる．つまり，分布の重み付きの配列長として表現しているということだ．</p>
+
+<p>この考え方を模式的に表した図を，以下に示した．ここでは青色の直線で表した転写物<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t+" alt="t " />に黒色の直線で表したショートリードをマッピングしている．太い部分が実際にシーケンスされたショートリード，細い部分がシーケンスされていないフラグメントの部分で，全体で一つのフラグメントを表している．フラグメント長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=i+" alt="i " />を長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1+" alt="1 " />から<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />までずらしたときのそれぞれの分布は，右に示したような正規分布のような形をとり，これを<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F%28i%29+" alt="F(i) " />としている（実際は離散的）．そして，それぞれのフラグメント長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=i+" alt="i " />における有効配列長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%28l_t-i%2B1%29+" alt="(l_t-i+1) " />に分布関数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=F%28i%29+" alt="F(i) " />を掛けあわせたものを全て足し合わせることにより，長さ<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />の転写物における有効配列長<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />を求めることができる．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/generative-models_5.png" alt="" /></p>
+
+<h3>Cufflinksとの関連</h3>
+
+<p>さて，今回示した数式<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctilde%7Bl_t%7D+%3D+%5Csum_%7Bi%3D1%7D%5E%7Bl_t%7DF%28i%29%28l_t-i%2B1%29+" alt="\tilde{l_t} = \sum_{i=1}^{l_t}F(i)(l_t-i+1) " />は，<a href="http://www.nature.com/nbt/journal/v28/n5/full/nbt.1621.html">Cufflinksの論文</a>のOnline Methodsに出てくる数式だ．ただしそちらの方では<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l_t+" alt="l_t " />が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l%28t%29+" alt="l(t) " />となっているが，表記を<a href="http://yagays.github.io/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/">前回の記事</a>と統一しているだけで表していることは変わりない．</p>
+
+<p>また，Cufflinksのソフトウェアの実行においても，このフラグメント長の分布の種類やパラメータを具体的に指定することができる．</p>
+
+<p><a href="http://cufflinks.cbcb.umd.edu/manual.html">Cufflinks RNA-Seq analysis tools - User&#8217;s Manual</a></p>
+
+<p>例えば，&#8211;frag-len-meanはフラグメント長の分布の平均，&#8211;frag-len-std-devではフラグメント長の分布の標準偏差を指定することができる．ただし，現在のバージョンでは，</p>
+
+<blockquote><p>Note: Cufflinks now learns the fragment length mean for each SAM file, so using this option is no longer recommended with paired-end reads.</p>
+
+<p><a href="http://cufflinks.cbcb.umd.edu/manual.html">http://cufflinks.cbcb.umd.edu/manual.html</a></p></blockquote>
+
+<p>のように自動的に推定されるようになっており，ユーザが特に意識することなく実行できるようになっている．</p>
+
+<h3>まとめ</h3>
+
+<p>このように，ペアエンドにおいてはフラグメント長の分布を考慮することによって，有効配列長をより正確に記述した．今回のペアエンドリードの導入ではモデル自体は変更しなかったものの，きちんと実験環境やシーケンスの癖を数式としてモデルに反映することができている．</p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://www.nature.com/nbt/journal/v28/n5/full/nbt.1621.html">Transcript assembly and quantification by RNA-Seq reveals unannotated transcripts and isoform switching during cell differentiation : Nature Biotechnology : Nature Publishing Group</a></li>
+<li><a href="http://www.stat115.org/lectures/stat115_rnaseq.pdf">http://www.stat115.org/lectures/stat115_rnaseq.pdf</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/07/16/mathematical-models-for-transcriptome-quantification-2/">RNA-Seqの数理―生成モデルによる発現量推定（2）Count Based ModelとRPKM</a></h1>
     
     
@@ -525,73 +632,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/12/stat115-cole-trapnell/">Tophat/Cufflinksなどの開発者であるCole TrapnellによるRNA-Seqの遺伝子発現解析に関する講義動画</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-12T03:49:00+09:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>非常に良い講義資料およびその講義ビデオを見つけたので紹介する．これはハーバードの大学院およびハーバード公衆衛生大学院のComputational Biologyの講義で，マイクロアレイ/次世代シーケンサの発現解析に始まり，ChIP-Seqやモチーフ検索，GWAやSNP解析に至るまで，Computational Biologyにおける様々な研究対象に関する講義が行われている．</p>
-
-<p><a href="http://www.stat115.org/index.html">STAT115 Introduction to Computational Biology</a></p>
-
-<blockquote><p>This course is an introduction to state-of-the-arts concepts, methodologies and practices in computational biology. After taking this course, you should be able to:</p>
-
-<ul>
-<li><p>Use appropriate commands or write your own scripts to manipulate your own genomic data</p></li>
-<li><p>Exploit appropriate pipeline or software to analyze your own high-throughput gene expression microarray and/or RNA-Seq data and high-throughput sequencing transcriptional regulation data</p></li>
-<li><p>Apply statistical or mathematical models to your own population/human genetics data</p></li>
-<li><p>Criticize and/or extend the computational analysis or statistical models in the literature</p></li>
-<li><p>Use R, Python, and/or Shell scripts and basic concepts in genomics and genetics to perform your own bioinformatics and computational biology research</p></li>
-</ul>
-
-
-<p><a href="http://www.stat115.org/syllabus.html">http://www.stat115.org/syllabus.html</a></p></blockquote>
-
-<p>このなかで，Cole TrapnellがRNA-Seqの遺伝子発現解析に関してレクチャーしている．Cole Trapnellといえば，<a href="http://tophat.cbcb.umd.edu/">TopHat</a>や<a href="http://cufflinks.cbcb.umd.edu/">Cufflinks</a>の開発者の中心人物のひとりだ．これらのツールに関する論文の第一著者でもある．その彼が，RNA-Seqの定量化や発現量推定などの一連の流れを，自身が開発に参加した&#8221;Tuxedo Tools&#8221;（Bowtie, Tophat, Cufflinks, CummeRbundの総称）を例に紹介しているのがこの動画だ．主にマッピング後の発現量推定に関して，基本的なFPKMの求め方であったり，Cufflinksのisoformの取り扱いであったりを，少し数式も交えながら詳しく解説している．</p>
-
-<p>講義資料：<a href="http://www.stat115.org/lectures/stat115_rnaseq.pdf">http://www.stat115.org/lectures/stat115_rnaseq.pdf</a></p>
-
-<iframe src="http://player.vimeo.com/video/60609764" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-
-
-<p> <p><a href="http://vimeo.com/60609764">lecture9-I</a> from <a href="http://vimeo.com/stat115">stat115</a> on <a href="https://vimeo.com">Vimeo</a>.</p></p>
-
-<iframe src="http://player.vimeo.com/video/60609783" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-
-
-<p> <p><a href="http://vimeo.com/60609783">lecture9-II</a> from <a href="http://vimeo.com/stat115">stat115</a> on <a href="https://vimeo.com">Vimeo</a>.</p></p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/13/">&larr; Older</a></li>
@@ -639,6 +679,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/05/25/review-dark-beyond-the-weiqi/">「盤上の夜」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/05/14/review-webdb-web-architecture/">「Webを支える技術」「WEB+DB PRESS Vol.80」読了</a>
       </li>
     
@@ -674,10 +718,6 @@
         <a href="/blog/2014/04/04/poang-chair/">後傾姿勢になれるIKEAのアームチェアPOÄNGがライフチェンジングだった話</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/04/01/agqr-recording-script/">超！A＆G＋の自動録画環境を作った</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -686,7 +726,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (94)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (95)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>

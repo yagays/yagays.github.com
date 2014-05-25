@@ -117,6 +117,218 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/12/11/imcmr-6-6/">「Rによるモンテカルロ法入門」読書ノート：6章 メトロポリス・ヘイスティング・アルゴリズムを用いたモデル選択</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-11T15:34:00+09:00" pubdate data-updated="true">Dec 11<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>例 6.8 モデル選択</h3>
+
+<h4>この問題の目的とデータセットの説明</h4>
+
+<p>線形回帰のモデル選択について考える．data(swiss)はスイスの47地域における出生率と社会経済指標のデータである．社会経済指標には，農業従事率や教育の度合い，特定の宗教の割合，幼児の死亡率など，合計で5つの標準化された観測値が含まれている．今回は，線形回帰によって出生率と社会経済指標の関係を調べることを目標としている．つまり，社会経済指標の中で何が出生率に効いているかを知りたいということだ．そのような線形回帰において一番重要なのが，5つある説明変数をどうやって組み合わせてモデルを作るかという問題である．5つの説明変数から作ることの出来るモデルは2<sup>5</sup> 個なので，今回の場合のモデルの総数はたかだか32個程度だが，たとえば説明変数が20個になると，モデルの総数は2<sup>20</sup> = 1048576個となり，全部のモデルをそれぞれ計算するのは現実的ではなくなってしまう．そこで，モデルの全パターンを試すことなく，もっとも出生率に効いてる社会経済指標だけを選んでモデルを作りたい．そのために，今回は周辺分布の最大化によるモデル選択をランダム・ウォーク・メトロポリス・ヘイスティング・アルゴリズムを使って算出してみる．</p>
+
+<h4>数式の説明</h4>
+
+<p>通常の線形回帰を考えるということで，出生率yと社会経済指標xは以下の式で表される．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbold%7By%7D+%3D+%5Cbeta+X+%2B+%5Cvarepsilon+" alt="\bold{y} = \beta X + \varepsilon " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cvarepsilon+%5Csim+%5Cmathcal%7BN%7D_n%280%2C%5Csigma%5E2+I_n%29+" alt="\varepsilon \sim \mathcal{N}_n(0,\sigma^2 I_n) " /></p>
+
+<p>このときの<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbold%7By%7D%7C%5Cbeta%2C%5Csigma%5E2%2CX+" alt="\bold{y}|\beta,\sigma^2,X " />は
+<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbold%7By%7D%7C%5Cbeta%2C%5Csigma%5E2%2CX+%5Csim+%5Cmathcal%7BN%7D_n%28X%5Cbeta%2C%5Csigma%5E2I_n%29+" alt="\bold{y}|\beta,\sigma^2,X \sim \mathcal{N}_n(X\beta,\sigma^2I_n) " />となる．</p>
+
+<p>ここで，出生率yは47の地域でそれぞれ観測されているため，観測数n=47のベクトルy={y_1..yn}として表される．</p>
+
+<p>そして，このときの尤度関数は</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l%28%5Cbeta%2C%5Csigma%5E2%7C%5Cbold%7By%7D%2CX%29%3D%5Cbig%28%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%5Csigma%5E2%7D%7D%5Cbig%29%5En+%5Cexp%5Cbig%5B-%5Cfrac%7B1%7D%7B2%5Csigma%5E2%7D%28%5Cbold%7By%7D-X%5Cbeta%29%5E%7B%5Cmathrm%7BT%7D%7D%28%5Cbold%7By%7D-X%5Cbeta%29%5Cbig%5D+" alt="l(\beta,\sigma^2|\bold{y},X)=\big(\frac{1}{\sqrt{2\pi\sigma^2}}\big)^n \exp\big[-\frac{1}{2\sigma^2}(\bold{y}-X\beta)^{\mathrm{T}}(\bold{y}-X\beta)\big] " /></p>
+
+<p>である．</p>
+
+<p>このあたりの式変形は練習問題6.5を参照．</p>
+
+<h3>データセットの準備</h3>
+
+<p>swissデータセットを読み込んだあと，応答変数yとして出生率の対数，説明変数Xとして5つの社会経済指標を代入している．説明変数には</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>data<span class="p">(</span>swiss<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>y <span class="o">&lt;-</span> log<span class="p">(</span>as.vector<span class="p">(</span>swiss<span class="p">[,</span><span class="m">1</span><span class="p">]))</span>
+</span><span class='line'>X <span class="o">&lt;-</span> as.matrix<span class="p">(</span>swiss<span class="p">[,</span><span class="m">2</span>:<span class="m">6</span><span class="p">])</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>説明変数である社会経済指標の詳細は以下の通りである．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="o">&gt;</span> names<span class="p">(</span>swiss<span class="p">)</span>
+</span><span class='line'><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="s">&quot;Fertility&quot;</span>        <span class="s">&quot;Agriculture&quot;</span>      <span class="s">&quot;Examination&quot;</span>      <span class="s">&quot;Education&quot;</span>        <span class="s">&quot;Catholic&quot;</span>         <span class="s">&quot;Infant.Mortality&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>関数の定義</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>inv <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>X<span class="p">){</span>
+</span><span class='line'>  EV <span class="o">&lt;-</span> eigen<span class="p">(</span>X<span class="p">)</span>
+</span><span class='line'>  EV<span class="p">$</span>vector <span class="o">%*%</span> diag<span class="p">(</span><span class="m">1</span><span class="o">/</span>EV<span class="p">$</span>values<span class="p">)</span> <span class="o">%*%</span> t<span class="p">(</span>EV<span class="p">$</span>vector<span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>lpostw <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>gam<span class="p">,</span> y<span class="p">,</span> X<span class="p">,</span> beta<span class="p">){</span>
+</span><span class='line'>  n <span class="o">&lt;-</span> length<span class="p">(</span>y<span class="p">)</span>
+</span><span class='line'>  qgam <span class="o">&lt;-</span> sum<span class="p">(</span>gam<span class="p">)</span>
+</span><span class='line'>  Xt1 <span class="o">&lt;-</span> cbind<span class="p">(</span>rep<span class="p">(</span><span class="m">1</span><span class="p">,</span>n<span class="p">),</span> X<span class="p">[,</span>which<span class="p">(</span>gam<span class="o">==</span><span class="m">1</span><span class="p">)])</span>
+</span><span class='line'>  <span class="kr">if</span><span class="p">(</span>qgam <span class="o">!=</span> <span class="m">0</span><span class="p">){</span>
+</span><span class='line'>    P1 <span class="o">&lt;-</span> Xt1 <span class="o">%*%</span> inv<span class="p">(</span>t<span class="p">(</span>Xt1<span class="p">)</span> <span class="o">%*%</span> Xt1<span class="p">)</span> <span class="o">%*%</span> t<span class="p">(</span>Xt1<span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>else<span class="p">{</span>
+</span><span class='line'>    P1 <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="m">0</span><span class="p">,</span> n<span class="p">,</span> n<span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="o">-</span><span class="p">(</span>qgam<span class="o">+</span><span class="m">1</span><span class="p">)</span><span class="o">/</span><span class="m">2</span> <span class="o">*</span> log<span class="p">(</span>n<span class="o">+</span><span class="m">1</span><span class="p">)</span> <span class="o">-</span> n<span class="o">/</span><span class="m">2</span> <span class="o">*</span>
+</span><span class='line'>    log<span class="p">(</span>t<span class="p">(</span>y<span class="p">)</span> <span class="o">%*%</span> y
+</span><span class='line'>        <span class="o">-</span> n<span class="o">/</span><span class="p">(</span>n<span class="o">+</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>        <span class="o">*</span> t<span class="p">(</span>y<span class="p">)</span> <span class="o">%*%</span> P1 <span class="o">%*%</span> y<span class="o">-</span><span class="m">1</span><span class="o">/</span><span class="p">(</span>n<span class="o">+</span><span class="m">1</span><span class="p">)</span> <span class="o">*</span> t<span class="p">(</span>beta<span class="p">)</span>
+</span><span class='line'>        <span class="o">%*%</span> t<span class="p">(</span>cbind<span class="p">(</span>rep<span class="p">(</span><span class="m">1</span><span class="p">,</span>n<span class="p">),</span> X<span class="p">))</span> <span class="o">%*%</span> P1
+</span><span class='line'>        <span class="o">%*%</span> cbind<span class="p">(</span>rep<span class="p">(</span><span class="m">1</span><span class="p">,</span>n<span class="p">),</span> X<span class="p">)</span> <span class="o">%*%</span> beta
+</span><span class='line'>    <span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>gocho <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>niter<span class="p">,</span> y<span class="p">,</span> X<span class="p">){</span>
+</span><span class='line'>  lga <span class="o">&lt;-</span> dim<span class="p">(</span>X<span class="p">)[</span><span class="m">2</span><span class="p">]</span>
+</span><span class='line'>  beta <span class="o">&lt;-</span> lm<span class="p">(</span>y ~ X<span class="p">)$</span>coeff
+</span><span class='line'>  gamma <span class="o">&lt;-</span> matrix<span class="p">(</span><span class="m">0</span><span class="p">,</span> nrow<span class="o">=</span>niter<span class="p">,</span> ncol<span class="o">=</span>lga<span class="p">)</span>
+</span><span class='line'>  gamma<span class="p">[</span><span class="m">1</span><span class="p">,]</span> <span class="o">&lt;-</span> sample<span class="p">(</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> lga<span class="p">,</span> rep<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>t in <span class="m">1</span>:<span class="p">(</span>niter<span class="o">-</span><span class="m">1</span><span class="p">)){</span>
+</span><span class='line'>    j <span class="o">&lt;-</span> sample<span class="p">(</span><span class="m">1</span>:lga<span class="p">,</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>    gam0 <span class="o">&lt;-</span> gamma<span class="p">[</span>t<span class="p">,]</span>
+</span><span class='line'>    gam1 <span class="o">&lt;-</span> gamma<span class="p">[</span>t<span class="p">,]</span>
+</span><span class='line'>    gam1<span class="p">[</span>j<span class="p">]</span> <span class="o">&lt;-</span> <span class="m">1</span> <span class="o">-</span> gam0<span class="p">[</span>j<span class="p">]</span>
+</span><span class='line'>    pr <span class="o">&lt;-</span> lpostw<span class="p">(</span>gam0<span class="p">,</span> y<span class="p">,</span> X<span class="p">,</span> beta<span class="p">)</span>
+</span><span class='line'>    pr <span class="o">&lt;-</span> c<span class="p">(</span>pr<span class="p">,</span> lpostw<span class="p">(</span>gam1<span class="p">,</span> y<span class="p">,</span> X<span class="p">,</span> beta<span class="p">))</span>
+</span><span class='line'>    pr <span class="o">&lt;-</span> exp<span class="p">(</span>pr <span class="o">-</span> max<span class="p">(</span>pr<span class="p">))</span>
+</span><span class='line'>    gamma<span class="p">[</span>t<span class="o">+</span><span class="m">1</span><span class="p">,]</span> <span class="o">&lt;-</span> gam0
+</span><span class='line'>    <span class="kr">if</span><span class="p">(</span>sample<span class="p">(</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> <span class="m">1</span><span class="p">,</span> prob<span class="o">=</span>pr<span class="p">)){</span>
+</span><span class='line'>      gamma<span class="p">[</span>t<span class="o">+</span><span class="m">1</span><span class="p">,]</span> <span class="o">&lt;-</span> gam1
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  gamma
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>練習問題 6.5</h3>
+
+<h4>a. <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta%7C%5Csigma%5E2%2CX+" alt="\beta|\sigma^2,X " />から<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X%5Cbeta%7C%5Csigma%5E2%2CX+" alt="X\beta|\sigma^2,X " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbold%7By%7D%7C%5Csigma%5E2%2CX+" alt="\bold{y}|\sigma^2,X " />を導出する</h4>
+
+<p>1つ目は，正規分布の線形変換を使う．これは，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X+%5Csim+%5Cmathcal%7BN%7D%28%5Cmu%2C%5Csigma%5E2%29+" alt="X \sim \mathcal{N}(\mu,\sigma^2) " />のとき<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=Y+%3D+AX+%2B+b+" alt="Y = AX + b " />とすると<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=Y+%5Csim+%5Cmathcal%7BN%7D%28A%5Cmu%2Bb%2CA%5Csigma%5E2+A%5E%5Cmathrm%7BT%7D%29+" alt="Y \sim \mathcal{N}(A\mu+b,A\sigma^2 A^\mathrm{T}) " />となる．
+この性質により，</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X%5Cbeta%7C%5Csigma%5E2%2CX%5Csim%5Cmathcal%7BN%7D_n%28X%5Ctilde%7B%5Cbeta%7D%2Cn%5Csigma%5E2X%28X%5E%5Cmathrm%7BT%7DX%29%5E%7B-1%7DX%5E%5Cmathrm%7BT%7D%29+" alt="X\beta|\sigma^2,X\sim\mathcal{N}_n(X\tilde{\beta},n\sigma^2X(X^\mathrm{T}X)^{-1}X^\mathrm{T}) " /></p>
+
+<p>となる．</p>
+
+<p>2つ目は，正規分布の再生性を使う．これは，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X+%5Csim+%5Cmathcal%7BN%7D%28%5Cmu_X%2C%5Csigma_X%5E2%29+" alt="X \sim \mathcal{N}(\mu_X,\sigma_X^2) " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=Y+%5Csim+%5Cmathcal%7BN%7D%28%5Cmu_Y%2C%5Csigma_Y%5E2%29+" alt="Y \sim \mathcal{N}(\mu_Y,\sigma_Y^2) " />が独立ならば<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X%2BY+%5Csim+%5Cmathcal%7BN%7D%28%5Cmu_X%2B%5Cmu_Y%2C%5Csigma_X%5E2%2B%5Csigma_Y%5E2%29+" alt="X+Y \sim \mathcal{N}(\mu_X+\mu_Y,\sigma_X^2+\sigma_Y^2) " />が成り立つというものである．いま，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbold%7By%7D%3D%5Cbeta+X%2B%5Cvarepsilon+" alt="\bold{y}=\beta X+\varepsilon " />における<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta+X+" alt="\beta X " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cvarepsilon+" alt="\varepsilon " />はともに独立の正規分布なので，1つ目で求めた式と合わせて</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbold%7By%7D%7C%5Csigma%5E2%2CX+%5Csim+%5Cmathcal%7BN%7D_n%28X%5Ctilde%7B%5Cbeta%7D%2C%5Csigma%5E2%28I_n%2Bn%5Csigma%5E2X%28X%5E%5Cmathrm%7BT%7DX%29%5E%7B-1%7DX%5E%5Cmathrm%7BT%7D%29%29+" alt="\bold{y}|\sigma^2,X \sim \mathcal{N}_n(X\tilde{\beta},\sigma^2(I_n+n\sigma^2X(X^\mathrm{T}X)^{-1}X^\mathrm{T})) " /></p>
+
+<p>となる．</p>
+
+<h4>b. &amp; c.</h4>
+
+<p>まだよく分かっていないので後回し．設問b.に関しては，どうやら「<a href="http://www.amazon.co.jp/gp/product/0387389792/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=0387389792&linkCode=as2&tag=yagays-22">Bayesian Core: A Practical Approach to Computational Bayesian Statistics (Springer Texts in Statistics)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=0387389792" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」に詳しく書いてある(らしい)．該当部分をざっと読んでみたけど，よく分からなかった…．</p>
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://www.is.titech.ac.jp/~mase/mase/html.jp/temp/swiss.jp.170.html">R: スイスの出生率と社会経済指標データ (1888)</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/12/10/review-checklist-manifesto/">「アナタはなぜチェックリストを使わないのか？」読了</a></h1>
     
     
@@ -333,51 +545,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/12/06/review-ninja-slayer/">「ニンジャスレイヤー ネオサイタマ炎上1」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-06T21:07:00+09:00" pubdate data-updated="true">Dec 6<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4047283312" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>前々から小説自体も断片的に読んでいたし，流れてくるネット評もちらほら流れてきて，特徴的な言い回しがネットスラングとしても着実に勢力を伸ばしていることも感じていた．今回はそれらの確認という意味でも，書籍化され複数の物語がひとつにまとめられた本書を読んだのだが，何と表現していいのか…ただ，とにかく色んな意味で凄い，そして面白い．これを単純なプロットで構成された似非日本語のSFと言うなかれ，これは文化の融合なのだ．</p>
-
-<p>世の中には，日本というローカルな視点から抜けだせずに，やれ外国でもてはやされているのは間違った日本文化だとか，ちゃんとした日本文化を伝えないといけないだとかいった貧しい考えの人がある程度存在する．そういう人たちは自身の日本の見方に何の疑問も抱かずに外部を批判するわけだけれども，その自分たちの日本文化をそっくりそのまま異文化の人間に理解し受け入れてもらう難しさというのを，全くもって理解していない．異文化は自分たちとは違うからこそ異文化なのだ．インド料理屋にいけばインド人がインド料理食べてるし，トルコ料理屋にいけばトルコ人がトルコ料理食べているわけで，そういった異文化の認識から一歩踏み込んで，自分たちの文化の一つとしてカレーなりケバブなりの食文化であったり，宗教などを含む独自の文化が認識されるには，非常に繊細な文化のすり合わせが必要になる．外国人だって日本料理が食べたければ日本料理屋に行くだろう．じゃあそれで日本文化が認知されて，よく分からない生魚とライスを食べる文化として理解されたら，それで満足だろうか．本当に知ってもらいたいことはそんな事実の羅列ではないだろう．自分たちの様式を変えてまでも，相手の文化の懐に潜り込んで，日本文化の本質を相手に理解してもらいと思わないだろうか．そして相手に自分たちの文化のエッセンスを取り込んでもらい，より新しい文化というものを作って欲しくはないだろうか．</p>
-
-<p>とまあ気が付けば変な講釈を垂れ流してしまったが，結論としてはニンジャスレイヤーは日本人が読んでもエンターテイメント性に優れていて面白いということで．というか，逆に日本人の英語への理解が必要な部分がある．あまり馴染みのない英語のカタカナ表記があって，lesserやgreaterみたいな何となく分かりそうなものから，shrineやcoffinみたいな意味を知らないと理解できない単語もちらほら見られるので，そのあたりはどっちかというと日本人の理解が試されている感がある．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/24/">&larr; Older</a></li>
@@ -425,6 +592,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/05/25/review-dark-beyond-the-weiqi/">「盤上の夜」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/05/14/review-webdb-web-architecture/">「Webを支える技術」「WEB+DB PRESS Vol.80」読了</a>
       </li>
     
@@ -460,10 +631,6 @@
         <a href="/blog/2014/04/04/poang-chair/">後傾姿勢になれるIKEAのアームチェアPOÄNGがライフチェンジングだった話</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/04/01/agqr-recording-script/">超！A＆G＋の自動録画環境を作った</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -472,7 +639,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (94)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (95)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
