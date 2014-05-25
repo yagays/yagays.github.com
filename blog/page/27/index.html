@@ -117,6 +117,145 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/11/22/imcmr-6-2/">「Rによるモンテカルロ法入門」読書ノート：6章 マルコフ連鎖とランダム・ウォーク</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-22T12:14:00+09:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>練習問題 6.1 自己回帰モデルAR(1)が定常分布を持つことを実験的に示す</h3>
+
+<p>この問題はいわゆるAR(1)というもので，本書の1章 P.34に同様のコードおよび作図が載っている．なお，本問題の詳細は<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">MCMC-UseR.pdf</a>のP.130を参照．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X%5E%7B%28t%2B1%29%7D+%3D+%5Crho+X%5E%7B%28t%29%7D%2B%5Cvarepsilon_t+" alt="X^{(t+1)} = \rho X^{(t)}+\varepsilon_t " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cvarepsilon_t+%5Csim+%5Cmathcal%7BN%7D%280%2C1%29+" alt="\varepsilon_t \sim \mathcal{N}(0,1) " />で定義されるマルコフ連鎖において，系列<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5C%7BX%5E%7B%28t%29%7D%5C%7D+" alt="{X^{(t)}} " />の定常分布は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BN%7D%280%2C+%5Cfrac%7B%5Csigma%5E2%7D%7B1-%5Crho%5E2%7D%29+" alt="\mathcal{N}(0, \frac{\sigma^2}{1-\rho^2}) " />で表される．今回は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D10%5E4+" alt="t=10^4 " />までのシミュレーション結果をヒストグラムとしてプロットし，定常分布を赤い曲線で示した．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>rho <span class="o">&lt;-</span> <span class="m">0.9</span>
+</span><span class='line'>x <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>t in <span class="m">2</span>:<span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">){</span>
+</span><span class='line'>  x<span class="p">[</span>t<span class="p">]</span> <span class="o">&lt;-</span> x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="o">*</span>rho <span class="o">+</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>hist<span class="p">(</span>x<span class="p">,</span> nclass<span class="o">=</span><span class="m">150</span><span class="p">,</span> freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">)</span>
+</span><span class='line'>curve<span class="p">(</span>dnorm<span class="p">(</span>x<span class="p">,</span> mean<span class="o">=</span><span class="m">0</span><span class="p">,</span> sd<span class="o">=</span><span class="p">(</span><span class="m">1</span><span class="o">/</span>sqrt<span class="p">(</span><span class="m">1</span><span class="o">-</span>rho<span class="o">^</span><span class="m">2</span><span class="p">))),</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6_1.png" alt="" /></p>
+
+<h3>練習問題 6.2 ランダム・ウォークが定常分布を持たないことを実験的に示す</h3>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X%5E%7B%28t%2B1%29%7D%3DX%5E%7B%28t%29%7D%2B%5Cvarepsilon_t+" alt="X^{(t+1)}=X^{(t)}+\varepsilon_t " />で表されるランダム・ウォークが，シミュレーション回数を増やしても定常分布に収束しないことを実験的に確かめる．今回は初期値<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=X%5E%7B%280%29%7D%3D0+" alt="X^{(0)}=0 " />として，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D10%5E4+" alt="t=10^4 " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D10%5E6+" alt="t=10^6 " />までマルコフ連鎖をシミュレートする．
+この問題は練習問題6.1における<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho+%3D+1" alt="\rho = 1" />の場合と同じになるので，上で書いたコードのパラメータを変更するだけで再現できる．ただ，今回は別の書き方としてcumsum()関数を用いてランダム・ウォークの系列を計算している．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>init <span class="o">&lt;-</span> <span class="m">0</span>
+</span><span class='line'>x1 <span class="o">&lt;-</span> cumsum<span class="p">(</span>rnorm<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="o">-</span><span class="m">1</span><span class="p">))</span>
+</span><span class='line'>x2 <span class="o">&lt;-</span> cumsum<span class="p">(</span>rnorm<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">6</span><span class="o">-</span><span class="m">1</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+</span><span class='line'>hist<span class="p">(</span>x1<span class="p">,</span> nclass<span class="o">=</span><span class="m">150</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;t=10^4&quot;</span><span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span><span class="m">1</span>:<span class="m">10</span><span class="o">^</span><span class="m">4</span><span class="p">,</span> c<span class="p">(</span>init<span class="p">,</span>x1<span class="p">),</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;t&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;t=10^4&quot;</span><span class="p">)</span>
+</span><span class='line'>hist<span class="p">(</span>x2<span class="p">,</span> nclass<span class="o">=</span><span class="m">150</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;t=10^6&quot;</span><span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span><span class="m">1</span>:<span class="m">10</span><span class="o">^</span><span class="m">6</span><span class="p">,</span> c<span class="p">(</span>init<span class="p">,</span>x2<span class="p">),</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;t&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;t=10^6&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6_2.png" alt="" /></p>
+
+<p>シミュレーション回数を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D10%5E4+" alt="t=10^4 " />と<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=t%3D10%5E6+" alt="t=10^6 " />としてランダム・ウォークを実行した結果が上図である．左図に系列のヒストグラム，右図に試行回数を横軸に取った系列をプロットしている．上のように図示すると，たとえ10<sup>6</sup> 回試行したとしても何らかの分布に収束しないことがわかる．</p>
+
+<h3>雑感</h3>
+
+<p>練習問題 6.1と練習問題6.2を比較すると，ランダム・ウォークにおいて先行する状態に<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=0+%5Cleq+%5Crho+%3C+1+" alt="0 \leq \rho &lt; 1 " />のような値を掛け合わせるだけで定常分布を取るというのは，なんとも面白い結果となっている．</p>
+
+<h3>補足：<a href="http://www.stat.ufl.edu/~casella/ShortCourse/MCMC-UseR.pdf">MCMC-UseR.pdf</a>のP.132</h3>
+
+<ul>
+<li>練習問題の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Crho+" alt="\rho " />と以下図の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta+" alt="\theta " />は同じ</li>
+<li>pdfにも書いてあるがスケール（x軸とy軸の描写範囲）に注意．いかに<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta+" alt="\theta " />が効いているかがわかる</li>
+<li>左上はマルコフ連鎖ではない</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>rho in c<span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0.4</span><span class="p">,</span> <span class="m">0.8</span><span class="p">,</span> <span class="m">0.95</span><span class="p">)){</span>
+</span><span class='line'>  x <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>  y <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>t in <span class="m">2</span>:<span class="m">1000</span><span class="p">){</span>
+</span><span class='line'>    x<span class="p">[</span>t<span class="p">]</span> <span class="o">&lt;-</span> x<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="o">*</span>rho <span class="o">+</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>    y<span class="p">[</span>t<span class="p">]</span> <span class="o">&lt;-</span> y<span class="p">[</span>t<span class="o">-</span><span class="m">1</span><span class="p">]</span><span class="o">*</span>rho <span class="o">+</span> rnorm<span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  plot<span class="p">(</span>x<span class="p">,</span>y<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;theta=&quot;</span><span class="p">,</span>rho<span class="p">))</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp6_6_extra.png" alt="" /></p>
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/11/21/review-apple-matsuhiro/">「僕がアップルで学んだこと 環境を整えれば人が変わる、組織が変わる」読了</a></h1>
     
     
@@ -745,105 +884,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/17/sublime-text-2-octopress-package/">Sublime Text 2でRVM環境のOctopressを操作する</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-17T01:59:00+09:00" pubdate data-updated="true">Nov 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sublime Text 2でOctopressの基本コマンドを実行できるパッケージを使ってみた．</p>
-
-<ul>
-<li><a href="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/">http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/</a></li>
-</ul>
-
-
-<h3>1. sublime-text-2-octopressをインストールする</h3>
-
-<p>Package Controlでsublime-text-2-octopressをインストールする．これは定石通り．</p>
-
-<h3>2. Octopress.sublime-settingsを編集する</h3>
-
-<p>sublime-text-2-octopressの環境設定を行う．Sublime Text 2のメニューバーから&#8221;Sublime Text 2&#8221;→&#8221;Preferences&#8221;→&#8221;Package Settings&#8221;→&#8221;Octopress&#8221;→&#8221;Settings-User&#8221;でOctopress.sublime-settingsを開く．</p>
-
-<p>今回設定するのは&#8221;octopress_path&#8221;と&#8221;octopress_cmd_before_rake&#8221;の2箇所．&#8221;octopress_path&#8221;はOctopressのディレクトリを指定する．そして&#8221;octopress_cmd_before_rake&#8221;にはrubyやrakeのパスを通す設定を読み込むコマンドを指定するのだが，下手に.zshrcなどを読み込むと不要な設定が多すぎてエラーになってしまうので注意が必要になる．自分の環境の場合，RubyはRVMで管理しているため，&#8221;octopress_cmd_before_rake&#8221;にはRVMの設定ファイルである<strong>&#8220;$HOME/rvm/scripts/rvm&#8221;</strong>を読み込むように指定する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>  // path to your octopress
-</span><span class='line'>  "octopress_path": "/Users/yag_ays/Dropbox/octopress",  
-</span><span class='line'>  // command to run before calling rake, eg source ~/.bash_profile to set up your local environment inc paths to ruby, rake etc.
-</span><span class='line'>  "octopress_cmd_before_rake" : "source /Users/yag_ays/.rvm/scripts/rvm",
-</span><span class='line'>  // set to generate, deploy or generate_and_deploy if you wish to have your changes generated into the /public folder and/or deployed upon file save
-</span><span class='line'>  "octopress_onsave_action": "",
-</span><span class='line'>  // true or false
-</span><span class='line'>  "use_bundle": false
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>3. OctopressのNew Postを実行してみる</h3>
-
-<p>それでは試しに新しい記事を書いてみる．Command Paletteで「octopress」と入力すると，sublime-text-2-octopressでサポートされているコマンド一覧が表示される．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_1.png" alt="" /></p>
-
-<p>「Octopress: New Post」を選択すると，画面下にタイトルを入力する欄が表示される．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_2.png" alt="" /></p>
-
-<p>タイトルを入力してEnterを押すと，Octopressのテンプレートが表示され，New Postが実行される．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_3.png" alt="" /></p>
-
-<p>この他にも，既存のPostやPageを編集したり，GenerateやDeployができる仕様となっている．</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/">sublime text 2 の octopress プラグインを作ってみました - Welcome to the blog of blueplanet</a></li>
-<li><a href="https://github.com/blueplanet/sublime-text-2-octopress">blueplanet/sublime-text-2-octopress</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/28/">&larr; Older</a></li>
@@ -891,6 +931,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/05/26/kyoto-kibune/">京都・貴船に行ってきた</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/05/25/review-dark-beyond-the-weiqi/">「盤上の夜」読了</a>
       </li>
     
@@ -924,10 +968,6 @@
     
       <li class="post">
         <a href="/blog/2014/04/11/review-55-fabulous-women-in-america/">「アメリカのめっちゃスゴい女性たち」読了</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/04/poang-chair/">後傾姿勢になれるIKEAのアームチェアPOÄNGがライフチェンジングだった話</a>
       </li>
     
   </ul>

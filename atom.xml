@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-05-25T15:26:31+09:00</updated>
+  <updated>2014-05-26T07:52:09+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,42 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[京都・貴船に行ってきた]]></title>
+    <link href="http://yagays.github.io/blog/2014/05/26/kyoto-kibune/"/>
+    <updated>2014-05-26T07:41:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/05/26/kyoto-kibune</id>
+    <content type="html"><![CDATA[<p>京都に住んでいる知り合いと久しぶりに遊ぶことになって，貴船に行ってきた．どこに行くかとかを含めて昼夜の店まで手配してくれて，本当にありがたかった．</p>
+
+<p>出町柳から叡山電鉄で30分ほど揺られて，そこから10分ほどバスに乗ると貴船に着く．山間の狭い川沿いに店が幾つも並んでいて，いたるところに川床がある．川床とは川の上に大きな台を敷いてその上で飲み食いする場所のことで，自然の景観を利用した何とも風流な設備である．しかも台は川の平たいところにしかおけないので，川床の間には滝が挟まっていたりしていて最高に眺めが良い．その日は京都市内ならすぐに汗ばむくらいの気温でも，川床にいるとちょっとひんやりする程度で，本当に気持ちがよかった．今回は流しそうめんを食べたのだけれど，目の前に滝を見つつ手前に流れてくるそうめんを掴んでは食べるのは，まさにエンターテイメント性があった．川床はそこにいるだけで快適で楽しいので，今度は普通に料理を食べるのもいいかもしれない．何やら温泉もできるようなので，湯に使った後の涼みは最高に気持ちが良いだろうなと考えつつ下山．また紅葉のときにでも訪れたい場所だ．</p>
+
+<p>その後は京都市内でスイーツを食べたり魚を食べたりした．写真は撮ってないけど，生湯葉チーズ巻なるものが非常に美味しかった．</p>
+
+<iframe src="https://www.flickr.com/photos/124108383@N03/14264345825/in/set-72157644421797979/player/" width="800" height="600" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+
+
+
+<iframe src="https://www.flickr.com/photos/124108383@N03/14077788737/in/set-72157644421797979/player/" width="800" height="600" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+
+
+
+<iframe src="https://www.flickr.com/photos/124108383@N03/14263921954/in/set-72157644421797979/player/" width="800" height="600" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+
+
+
+<iframe src="https://www.flickr.com/photos/124108383@N03/14077720160/in/set-72157644421797979/player/" width="800" height="600" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+
+
+
+<iframe src="https://www.flickr.com/photos/124108383@N03/14264320815/in/set-72157644421797979/player/" width="800" height="600" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「盤上の夜」読了]]></title>
@@ -846,18 +882,6 @@
 <p>ただし，オフィスを完全になくせと言っているわけではない．実際37signalsもオフィスを持っているし，年に数回は社員全員が集まってミーティングもしている．何度か顔を突き合わせて喋ることにより，インターネット上でのコミュニケーションがより円滑になるそうだ．つまり，リモートを補完するためのオフィスであり，オフィスを補完するためのリモートとして，うまいこと組み合わせることで効率化を目指しているということだ．リモートワークの導入だって一筋縄ではいかないのを承知で，最初は一部署単位で初めてみるとか，週に2日だけリモートワークにするとか，さまざまな案も本書の中で提案している．</p>
 
 <p>リモートワークの最終目標は，社員が一番活躍できる環境を実現することにある．Googleやベンチャー企業が無理をしてでも社内をデコレーションしたり食事を無料にしたりして環境を整えるのは，まさに働く環境のためであり，一方でオフィスという囲いに窮屈感を感じていることのあらわれでもある．趣味や家庭などの自分の好きな場所にいられることの大切さは，何事にも代え難い．それを実現する方法としてのリモートワークという働き方である．37signalsの社員の中には，旅行しながら仕事をしているメンバーもいるそうだ．短い休暇をやりくりして旅行を計画する必要はなく，好きなように移動して気に入った場所に滞在しながら働くことができる．そういった自分に合ったワークスタイルを選べる自由さが，これからの働き方なのかもしれない．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「クリエイティブの授業 STEAL LIKE AN ARTIST」読了]]></title>
-    <link href="http://yagays.github.io/blog/2014/02/12/review-steal-like-an-artist/"/>
-    <updated>2014-02-12T00:00:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2014/02/12/review-steal-like-an-artist</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4788908050" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>空いた時間にたまたま本屋で見つけて，空いた時間でざっと読んだのだけれども，まあ元は取れたかなぁというくらいには面白かった．内容としては，ライフハックとかクリエイティブとかに代表されるようなウェブに転がってそうなトピックばかりだし，それこそ本書まるまるウェブサイトに上がってても違和感無いような分量でもある．でも本書はある意味で一貫していて，それこそウェブにはない編集の力のようなものを感じる．本書の主張は端的に言えば「STEAL LIKE AN ARTIST」，クリエイティビティは先人の優れた作品を盗むことから生まれるということだ．そこから派生して，情報を選別して自分のモノにすること，アイデアは抱え込まないで他人と共有することなどなど，まあ言ってしまえば，話自体はハッカー文化とかエンジニア文化とかなり親和性が高い．そういうのが本書に影響しているのか，単に最近のトレンドなのか分からないけど，まあひとつの生き方として筋が通っているし，自分もそうありたいと思うことが多い．</p>
 ]]></content>
   </entry>
   
