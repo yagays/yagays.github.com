@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>SOAPdenovo2のインストール方法 - Wolfeyes Bioinformatics beta</title>
+  <title>「「レジリエンス」の鍛え方」読了 - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.io/blog/2012/10/13/soapdenovo2-install">
+  <link rel="canonical" href="http://yagays.github.io/blog/2014/05/29/review-resilience">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -115,7 +115,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">SOAPdenovo2のインストール方法</h1>
+      <h1 class="entry-title">「「レジリエンス」の鍛え方」読了</h1>
     
     
       <p class="meta">
@@ -131,122 +131,21 @@
   
 
 
-<time datetime="2012-10-13T07:30:00+09:00" pubdate data-updated="true">Oct 13<span>th</span>, 2012</time>
+<time datetime="2014-05-29T14:10:00+09:00" pubdate data-updated="true">May 29<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>前回<a href="http://yagays.github.com/blog/2012/10/11/soapdenovo2-stats/">SOAPdenovo2の話</a>を書いたが，そういえばSOAPdenovo2といえばインストールまわりが不親切だったので，ちょっと解説みたいなものを書いてみる．</p>
-
-<h3>ダウンロード</h3>
-
-<p>SOAPdenovoのパッケージがおかれているSourceForgeにアクセスする</p>
-
-<ul>
-<li><a href="http://sourceforge.net/projects/soapdenovo2/">http://sourceforge.net/projects/soapdenovo2/</a></li>
-</ul>
+<div class="entry-content"><iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=440845494X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
 
 
-<p>まずここで注意しなければいけないのは，緑のアイコンででかでかと表示されている「Download」をクリックしてはいけないということだ．よくよく見ると「GapCloser」と書いてあり，これは本体とは別のプログラムファイルである．欲しいのはSOAPdenovo2の実行ファイルなので，「Browse All File」をクリックしてアップロードされているファイルの中から欲しいものを探す．なお，上部の「File」をクリックしても同じ．</p>
+<p>レジリエンスとは「精神的な打たれ強さであり感情をコントロールできる強い自己規律」のことを言うそうだ．世界で活躍するエリートには，そのレジリエンスというものがあるからこそ活躍でき，逆に言えばレジリエンスがない人はキャリアの途中で挫折したり成果が出なかったりするらしい．そういった精神的な部分はビジネススクールではあまり教えてくれないから重要だという．著者はP&amp;G出身者で現在はレジリエンスを専門にした社会人向けの心的ケアの会社を立ち上げている．</p>
 
-<p><img src="http://dl.dropbox.com/u/142306/b/soapdenovo2_1.jpg" alt="" /></p>
+<p>内容に入る前にまずレジリエンスという聞きなれない言葉なのだけれども，本書を読む限りだと，特段新しい考え方や方法論を言い表しているわけではなさそうだ．レリジエンスという体系が出来上がっているようには見えず，単に小手先のテクニック集にしかなっていないと感じる．いちおう本書の流れとしては失敗とそこからの再生に沿って話が進むけれども……．具体的な内容としては，精神的な強さが必要でそれを実現するにはこういうことをすべきだということが手を替え品を替えて説明される．それぞれに取って付けたような心理学の研究結果みたいなものが理論付けとして述べられるが，因果と相関の違いがわかってないんじゃないかと思う部分も多い．もちろん個別の内容がすべて悪いというわけではなく，例えば失敗に対して予期できる失敗とアクシデンタルな失敗を区別して考えるべきとか，感情をコントロールするには自分で自分を分析して一歩引いた目線で考えろとか，そういったテクニックとしてはいいんだけど，それで終わりという感じ．</p>
 
-<p>「bin」をクリックする．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/soapdenovo2_2.jpg" alt="" /></p>
-
-<p>これでSOAPdenovo2の一連のファイルが表示される．この中で必要なのは「SOAPdenovo2_revision210.tgz」というファイル．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/soapdenovo2_3.jpg" alt="" /></p>
-
-<p>そして「SOAPdenovo2_revision210.tgz」クリックすると，ページが遷移したあと自動でダウンロードが開始される．もしサーバなどにダウンロードしたい場合は，画面上部にある「Direct link」のリンクURLを使って以下のようにwgetなどでダウンロードする．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>wget http://downloads.sourceforge.net/project/soapdenovo2/bin/SOAPdenovo2_revision210.tgz
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>解凍およびインストール</h3>
-
-<p>あとは，ダウンロードしたSOAPdenovo2_revision210.tgzを解凍するだけでSOAPdenovo2のバイナリが得られる．SOAPdenovo2はまだソースコードの公開をしておらず，プログラムはすべて実行可能なバイナリ形式で配布されている．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>tar zxvf SOAPdenovo2_revision210.tgz
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>なお，上記のコマンドでは，カレントディレクトリに全てのファイルが展開されるので，もし特定のディレクトリに展開したい場合には，以下のように<strong><code>-C</code></strong>オプションを付ける．展開先のディレクトリが無いとエラーになるので，実行前に<strong><code>mkdir</code></strong>などで作っておく．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>tar zxvf SOAPdenovo2_revision210.tgz -C path/to/SOAPdenovo2_revision210
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>展開すると，以下のようになる．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls -l
-</span><span class='line'>total 7040
-</span><span class='line'>-rw-r--r-- 1 yag_ays users   16199 Sep 13 15:54 MANUAL
-</span><span class='line'>-rwxr-xr-x 1 yag_ays users 1958292 Sep 13 13:50 pregraph_sparse_127mer.v1.0.3*
-</span><span class='line'>-rwxr-xr-x 1 yag_ays users 1941908 Sep 13 13:50 pregraph_sparse_63mer.v1.0.3*
-</span><span class='line'>-rwxr-xr-x 1 yag_ays users 1718828 Sep 13 13:49 SOAPdenovo-127mer*
-</span><span class='line'>-rwxr-xr-x 1 yag_ays users 1562546 Sep 13 13:49 SOAPdenovo-63mer*
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>SOAPdenovo-63mer</strong>と<strong>SOAPdenovo-127mer</strong>がSOAPdenovo2の本体になる．ここで少し注意が必要なのだが，SOAPdenovo2なのに実行ファイル名がSOAPdenovoとなっていてややこしいのに加えて，SOAPdenovoは「SOAPdenovo63mer」なのに対し，今回はK-merの値の前にハイフンが入っていて余計混乱を招きそうな名前になっている．パイプラインで処理させている人は，名前の変更に注意しよう．</p>
-
-<p>また，SOAPdenovo2では新たに<strong>pregraph_sparce</strong>というモジュールが追加されている．これは，SOAPdenovo2のアセンブル第1段階で行われるpregraphというコマンドの改良版で，コンティグとしてグラフをつなげていく前段階で候補を減らしておき，後々の処理の無駄を省くというもののようだ．基本的にSOAPdenovo2を実行するだけならpregraph_sparseは必要ないが，高速化をしたいといった場合には試してみてもいいと思われる．pregraph_sparseの詳しい使い方はMANUALに書かれているので，そちらを参考していただきたい．ちなみに，MANUALでは&#8221;consumption&#8221;の綴りが間違っている．</p>
-
-<h3>実行の確認</h3>
-
-<p>ファイルを展開したディレクトリでSOAPdenovo2を実行して，以下のようにバージョンとヘルプが表示されれば，インストールは成功している．なお，いまのところLinuxにしか対応してないようで，Mac OS Xでは実行できないので注意．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>./SOAPdenovo-63mer
-</span><span class='line'>
-</span><span class='line'>Version 2.04: released on July 13th, 2012
-</span><span class='line'>Compile Sep 13 2012     12:48:54
-</span><span class='line'>
-</span><span class='line'>Usage: SOAPdenovo &lt;<span class="nb">command</span>&gt; <span class="o">[</span>option<span class="o">]</span>
-</span><span class='line'>    pregraph     construct kmer-graph
-</span><span class='line'>    contig       eliminate errors and output contigs
-</span><span class='line'>    map          map reads to contigs
-</span><span class='line'>    scaff        construct scaffolds
-</span><span class='line'>    all          <span class="k">do </span>all the above in turn
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>最後に愚痴</h3>
-
-<p>そもそも，SourceForgeは様々なプログラムが配布場所として使用しているが，そもそも色々と不便で分かりにくい．広告が多い上に画面がごちゃごちゃしていて構造を把握しづらいし，ファイルを自動ダウンロードにしてるのもいい迷惑だし，慣れていないとなかなかに辛いものがある．元のプロジェクトの概要を機械翻訳で日本語にしただけの有りもしない日本語版のページなど，Google検索などでのノイズも非常に多い．まあ結論としては，今回はこれが言いたかっただけです，はい．</p>
-
-<h3>参考</h3>
-
-<ul>
-<li><a href="http://sourceforge.net/projects/soapdenovo2/">http://sourceforge.net/projects/soapdenovo2/</a></li>
-<li><a href="http://cell-innovation.nig.ac.jp/wiki/tiki-index.php?page=SOAPdenovo%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%AD%E3%82%B0">http://cell-innovation.nig.ac.jp/wiki/tiki-index.php?page=SOAPdenovo%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%AD%E3%82%B0</a></li>
-</ul>
-
+<p>多くの人は当然ながらストレスを抱え込みたくないし，失敗だってしたくないし，ポジティブに日々を過ごして仕事で成果を出したいと思うはずだ．そういう時にこそ自分を変えようと思って他人の人生であったり優秀な人の習慣を参考にするのだろうけれども，今回の場合は本で読んでも感動は薄いし，まあこういった内容は自己啓発セミナー向けかなぁ．</p>
 </div>
 
 
@@ -271,22 +170,16 @@
   
 
 
-<time datetime="2012-10-13T07:30:00+09:00" pubdate data-updated="true">Oct 13<span>th</span>, 2012</time>
+<time datetime="2014-05-29T14:10:00+09:00" pubdate data-updated="true">May 29<span>th</span>, 2014</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/soapdenovo2/'>SOAPdenovo2</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2012/10/13/soapdenovo2-install/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2014/05/29/review-resilience/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2012/10/13/soapdenovo2-install/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2012/10/13/soapdenovo2-install/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2014/05/29/review-resilience/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2014/05/29/review-resilience/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -307,14 +200,10 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2012/10/12/prml-talksession/" title="Previous Post:
-        「今度こそわかる!? PRMLの学習の学習」に参加しました">&laquo; 「今度こそわかる!? PRMLの学習の学習」に参加しました</a></li>
+        href="/blog/2014/05/28/review-hiroyukikojima-php/" title="Previous Post:
+        「数学は世界をこう見る 数と空間への現代的なアプローチ」読了">&laquo; 「数学は世界をこう見る 数と空間への現代的なアプローチ」読了</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
-      
-      <li class="next"><a class="basic-alignment right" href="/blog/2012/10/14/review-glm-mcmc/"
-        title="Next Post: 「データ解析のための統計モデリング入門」読書ノート">「データ解析のための統計モデリング入門」読書ノート
-        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -498,8 +387,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.io/blog/2012/10/13/soapdenovo2-install/';
-        var disqus_url = 'http://yagays.github.io/blog/2012/10/13/soapdenovo2-install/';
+        var disqus_identifier = 'http://yagays.github.io/blog/2014/05/29/review-resilience/';
+        var disqus_url = 'http://yagays.github.io/blog/2014/05/29/review-resilience/';
         var disqus_script = 'embed.js';
       
     (function () {
