@@ -117,6 +117,51 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/06/06/velvetk/">VelvetKを使ってVelvetを用いたアセンブルに最適なk-merサイズを推定する</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-06T17:12:00+09:00" pubdate data-updated="true">Jun 6<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>(追記, 2013/07/18,  Velvetに依らないk-mer推定の記事：<a href="http://yagays.github.io/blog/2013/07/07/genome-assembly-kmergenie/">ゲノムアセンブリにおいて最適なk-merを推定するKmerGenieを試してみた - Wolfeyes Bioinformatics beta</a>)</p>
+
+<p>VelvetKというスクリプトが公開されたらしい．これはVelvetのアセンブルの際にユーザが指定する必要のあるk-merのkの値を，ゲノムサイズとショートリードのサイズから自動推定するスクリプトのようだ．普通ならばkの値を細かく変えてVelvetを大量に走らせてアセンブル結果を評価するというのが定石だと思うが，もしkの値が自動推定できるなら，そのkの値付近だけを重点的に調べるといったことが出来るので大幅に労力を削減できる．私自身あまりVelvet/Oasesを使った経験が無いのだが，取り敢えず一通り使ってみた．</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/06/06/velvetk/">続きを読む &rarr;</a>
+    </footer>
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/06/05/genesinconflict-2-1/">「せめぎ合う遺伝子」読書ノート 2章その1</a></h1>
     
     
@@ -368,86 +413,9 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/23/new-post/">Github Pages + Octopressでブログを作ってみた</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-23T15:52:00+09:00" pubdate data-updated="true">May 23<span>rd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>お久しぶりです，yag_aysです．</p>
-
-<p>さくらVPSの解約に伴い，Wordpressで立てていたblogをGithub Pagesで立て直すことにしました．</p>
-
-<p>ということで，また懲りずに技術系記事をひっそりと書いていく予定です．よろしくお願いします．</p>
-
-<h2>以下メモ</h2>
-
-<ul>
-<li>Githubのレポジトリを作成する</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/github_accountsetting.png" alt="アカウント登録" /></p>
-
-<ul>
-<li>ページを作成してindex.htmlを作成すると，以下のようにNotificationが来る．</li>
-</ul>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/github_notify.png" alt="Notification" /></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'> git clone git://github.com/imathis/octopress.git octopress
-</span><span class='line'> cd octopress
-</span><span class='line'> gem install bundler
-</span><span class='line'> bundle install
-</span><span class='line'>
-</span><span class='line'> rake setup_github_pages
-</span><span class='line'> rake generate
-</span><span class='line'> rake deploy
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>まだMarkdownがよくわかってない&#8230;</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
+    
+    <li class="previous"><a href="/blog/page/45/">&larr; Older</a></li>
     
     <li><a href="/blog/archives">Blog Archives</a></li>
     
@@ -492,6 +460,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/06/08/review-im-sorry-i-broke-your-company/">「申し訳ない、御社をつぶしたのは私です。」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/05/29/review-resilience/">「「レジリエンス」の鍛え方」読了</a>
       </li>
     
@@ -527,10 +499,6 @@
         <a href="/blog/2014/05/03/art-and-museum-2014-first-half/">スヌーピー，ウォーホル，グルスキー，そして映画をめぐる美術</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/04/26/review-stap-stop/">「STOP論文捏造―なぜ起こるのか」読了</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -539,7 +507,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (95)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (96)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
