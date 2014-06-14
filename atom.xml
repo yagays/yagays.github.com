@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-06-09T15:53:04+09:00</updated>
+  <updated>2014-06-14T10:34:17+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「All You Need Is Kill」読了]]></title>
+    <link href="http://yagays.github.io/blog/2014/06/14/review-all-you-need-is-kill/"/>
+    <updated>2014-06-14T10:33:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/06/14/review-all-you-need-is-kill</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4086302195" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>映画が始まる前に読んでおこうと思って読んだ作品．本作品を原作としてハリウッドで映画化され，向こうでは<a href="http://www.imdb.com/title/tt1631867/">”Edge of Tomorrow”</a>という題になっているそうだ．<a href="http://www.rottentomatoes.com/m/edge_of_tomorrow/">Rotten Tomatoes評</a>をみるかぎり，なかなか評判は良さそうなので期待が高まる．</p>
+
+<p>これを読んで一番に思い浮かべたのがダンカン・ジョーンズの「ミッション: 8ミニッツ」だった．といっても，本書が出たのが2004年，映画は2011年．個人的にアイデアのオリジナリティとかは気にしないのでそれはどうでもいいとして，両者ともに主人公の心情の変化というものが同じ軌跡をなぞるようで面白い．ループの最初はとまどい現状の認識に手一杯なのだけれども，次第に理解をしてその中で自由に動けるまでになる．そして最終的にはその時間に愛着を抱くようになり，目標の達成とともにその愛する時間は終わってしまう．逆に結末は全く違う．一方は理想的の解を見つけて愛する人と結ばれ，もう一方は愛する人を失いながらも残酷な世界を生き抜く．時間が終わること自体がオチなのだけれど，その先に提示される世界に，作り手が考える人間の生きることの捉え方が表れていて，その点も興味深い．</p>
+
+<p>「勝ちに不思議の勝ちあり、負けに不思議の負けなし」という言葉があるが，この場合は不思議さを完全に払拭するような明確な理由がある．だがそれは周りからは認識できないし，能力や成績などの結果からしか推測することができない．たとえそれを外部が認識したとして，無限回の試行を勝ちの理由にできるんだろうか．全探索に近いような繰り返しでパターンを覚えたから？　それとも無限回の試行で訓練されたから？　それはある意味で機械学習の文脈での過学習のような気もするし，目的関数の最適解への収束にも取れる．まあループが繰り返したりネストせずにその場限りなら，どちらにせよループの末の結論が正しいのだろうけれども，そうして生き延びた彼ら/彼女らの将来を思慮せずにはいられない．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「申し訳ない、御社をつぶしたのは私です。」読了]]></title>
@@ -854,55 +870,6 @@
 <p>&#8220;Just when it seems that a particular model system has exhausted its usefulness, like a phoenix from the ashes, these model systems reemerge in some new context providing a model basis for some new class of phenomena.&#8221;</p>
 
 <p>(&#8221;<a href="http://www.amazon.co.jp/gp/product/0815344503/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=0815344503&linkCode=as2&tag=yagays-22">Physical Biology of the Cell</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=0815344503" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />&#8221; P.153)</p></blockquote>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Being Geek ―ギークであり続けるためのキャリア戦略」読了]]></title>
-    <link href="http://yagays.github.io/blog/2014/02/21/review-beging-geek/"/>
-    <updated>2014-02-21T08:23:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2014/02/21/review-beging-geek</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873114993" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>書店でこの本を見かけたら，まず第23章「『ナード』ハンドブック」を読んでみてほしい．そこに書かれていることがまるで自分のことのように思えたら，きっと本書はあなたにピッタリだ．現状でのキャリアに満足しているにせよしていないにせよ，ギークとして仕事をもっと巧くやりぬくために大いに参考になるだろう．</p>
-
-<p>本書はギークと総称される職人気質なソフトウェア開発者のための仕事術に焦点をあてている．著者はギーク出身の現マネージャーで，彼がギークとして活躍していた頃の，そして彼がマネージャーとしてその能力をマネジメントに活かした時の経験がふんだんに盛り込まれている．</p>
-
-<p>本書は，4部構成全40章の短いエッセイで構成されており，転職の話から始まって転職の話で終わる．それはすなわち，長い人生の中のある時点でひとつの会社へのキャリアがはじまりある時点でそのキャリアが終わるという，会社を軸にしたキャリアの単位を表してる．そこには，転職を上手に進めるにはどうすればよいかということからスタートし，実際に会社に入った後の上司との付き合い方，プロジェクトの管理，仕事に必要なスキル，そしてその会社を離れるときに巻き起こる周囲への影響などが含まれる．本書ではそういったエンジニアが経験するであろうことについて，時には上手い対処の仕方，時には冷静で客観的な見方を教えてくれる．</p>
-
-<br/>
-
-
-<p>私自身はまだソフトウェア開発者としてのキャリアの中にはいない人間なので，正直に言って書かれていることに現実味を感じないところもある．トピックごとの粒度などエッセイの構成が合わないと感じることもあったが，幾つかは非常に印象に残るものだった．こういう本の類は読み通すことにそれほどの重要性があるわけではないと思うので，ざっと読んでみて気に入ったエッセイを探したり，適当に気になるものだけを読んでみるのも良いと思う．ちなみに，自分が気に入ったエッセイは以下の通り．</p>
-
-<ul>
-<li>8章 企業文化
-
-<ul>
-<li>少数のコアメンバーが企業全体の文化を支えているということについて．それがある時変化するということはどういうことを意味するのか．</li>
-</ul>
-</li>
-<li>23章 「ナード」ハンドブック
-
-<ul>
-<li>パートナー向け，ギークやナードの取扱説明書．</li>
-</ul>
-</li>
-<li>26章 「危機」と「創造」モデル
-
-<ul>
-<li>メンタルモデル，すなわち気の持ちようについて．</li>
-</ul>
-</li>
-<li>30章 声を出す
-
-<ul>
-<li>人前でプレゼンテーションをするときのテクニック．ところでプレゼンテーションとスピーチの違いって分かる？</li>
-</ul>
-</li>
-</ul>
-
 ]]></content>
   </entry>
   
