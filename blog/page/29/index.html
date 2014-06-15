@@ -117,6 +117,105 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/11/17/sublime-text-2-octopress-package/">Sublime Text 2でRVM環境のOctopressを操作する</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-17T01:59:00+09:00" pubdate data-updated="true">Nov 17<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sublime Text 2でOctopressの基本コマンドを実行できるパッケージを使ってみた．</p>
+
+<ul>
+<li><a href="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/">http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/</a></li>
+</ul>
+
+
+<h3>1. sublime-text-2-octopressをインストールする</h3>
+
+<p>Package Controlでsublime-text-2-octopressをインストールする．これは定石通り．</p>
+
+<h3>2. Octopress.sublime-settingsを編集する</h3>
+
+<p>sublime-text-2-octopressの環境設定を行う．Sublime Text 2のメニューバーから&#8221;Sublime Text 2&#8221;→&#8221;Preferences&#8221;→&#8221;Package Settings&#8221;→&#8221;Octopress&#8221;→&#8221;Settings-User&#8221;でOctopress.sublime-settingsを開く．</p>
+
+<p>今回設定するのは&#8221;octopress_path&#8221;と&#8221;octopress_cmd_before_rake&#8221;の2箇所．&#8221;octopress_path&#8221;はOctopressのディレクトリを指定する．そして&#8221;octopress_cmd_before_rake&#8221;にはrubyやrakeのパスを通す設定を読み込むコマンドを指定するのだが，下手に.zshrcなどを読み込むと不要な設定が多すぎてエラーになってしまうので注意が必要になる．自分の環境の場合，RubyはRVMで管理しているため，&#8221;octopress_cmd_before_rake&#8221;にはRVMの設定ファイルである<strong>&#8220;$HOME/rvm/scripts/rvm&#8221;</strong>を読み込むように指定する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  // path to your octopress
+</span><span class='line'>  "octopress_path": "/Users/yag_ays/Dropbox/octopress",  
+</span><span class='line'>  // command to run before calling rake, eg source ~/.bash_profile to set up your local environment inc paths to ruby, rake etc.
+</span><span class='line'>  "octopress_cmd_before_rake" : "source /Users/yag_ays/.rvm/scripts/rvm",
+</span><span class='line'>  // set to generate, deploy or generate_and_deploy if you wish to have your changes generated into the /public folder and/or deployed upon file save
+</span><span class='line'>  "octopress_onsave_action": "",
+</span><span class='line'>  // true or false
+</span><span class='line'>  "use_bundle": false
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>3. OctopressのNew Postを実行してみる</h3>
+
+<p>それでは試しに新しい記事を書いてみる．Command Paletteで「octopress」と入力すると，sublime-text-2-octopressでサポートされているコマンド一覧が表示される．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_1.png" alt="" /></p>
+
+<p>「Octopress: New Post」を選択すると，画面下にタイトルを入力する欄が表示される．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_2.png" alt="" /></p>
+
+<p>タイトルを入力してEnterを押すと，Octopressのテンプレートが表示され，New Postが実行される．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/20121115subl_octopress_3.png" alt="" /></p>
+
+<p>この他にも，既存のPostやPageを編集したり，GenerateやDeployができる仕様となっている．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://blueplanet.github.com/blog/2012/10/16/sublime-text-2-octopress/">sublime text 2 の octopress プラグインを作ってみました - Welcome to the blog of blueplanet</a></li>
+<li><a href="https://github.com/blueplanet/sublime-text-2-octopress">blueplanet/sublime-text-2-octopress</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/11/16/sublimerepl-clojure/">Sublime Text 2のSublimeREPLパッケージでClojureを動かす</a></h1>
     
     
@@ -423,53 +522,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/12/review-who-moved-my-cheese/">「チーズはどこへ消えた?」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-12T16:40:00+09:00" pubdate data-updated="true">Nov 12<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=459403019X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>10年近く前に大ヒットとなった，自己啓発ブームのさきがけのような1冊．2匹のネズミと2人と小人がチーズを探すという寓話を通して，成功を追求することや変化を恐れずに行動を起こすことの重要性が語られる．</p>
-
-<p>本書は寓話を使った切り口でありながら，回りくどい方法で読者に主張したいことを伝えるのではなく，冒頭の文章でまずはじめに私たち自身の単純さと複雑さの象徴が寓話に登場するネズミと小人であることが語られる．そして，元クラスメートだった数人が大人になって久しぶりに会って食事しているというシチュエーションのもとで，そのうちの一人がこの寓話の話をし始める．実際にネズミと小人の寓話が語られた後に，話を聞いた他の参加者が，その寓話をどう読み解くかを議論したり感想を述べたりするという構成となっている．</p>
-
-<p>寓話の内容はとても簡単だ．ネズミと小人はそれぞれチーズを探して迷路をさまよう毎日を過ごしている．チーズはどこにあるかわからない．ひとたび大きなチーズが見つかればしばらくは食いつなぐことができるのだが，それも時間が経つとともに食べてなくなってしまうし，その場所にまたチーズが置かれるかどうかもわからない．そうした環境のなか，ネズミは何も考えずにチーズを探すことに専念し，環境の変化に敏感で常に新しい行動を起こすことに抵抗がない．一方で，小人の方は物事を複雑に考えがちで，単にチーズが無くなることに筋の通らない理屈を結び付けたがったり，今までの成功に囚われて生活を変えることができない．その両者が，それまで同じような生活をしていた中で，ある場所で好みのチーズを発見するところから物語は始まる．そして，その好みのチーズを見つけた後に，ネズミと小人それぞれのチーズ探しに対する態度はがらりと変わってしまうことで話は進んでいく．</p>
-
-<p>古本屋で見つけたので，買って読んでみたという感じ．この本を今更読むのはどうなのと思うけれども，まあ話が陳腐になってるといったわけでもないので，気になる人は読んでみるといいかもしれない．はまる人にとっては教訓を得られるだろうし，はまらない人でも教養程度にはなるだろう．物語が終わった後の解釈の部分も含めて上手くまとまっているし，何よりページ数が少ないので空いた時間にでも読みきれる程度のものだ．自己啓発の本としては，長々と意味不明な理論展開されて読後感が悪いのもあるけれども，この本に関しては物語をどう捉えるにしろ，こんな素晴らしい本を読めてよかったとか意味なかったけどこれくらいの時間の浪費なら別に…といったように，キッパリ割り切れるところがいいのかもしれない．個人的には好きな類の本ではある．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/30/">&larr; Older</a></li>
@@ -517,6 +569,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/06/15/review-the-power-of-less/">「減らす技術」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/06/14/review-all-you-need-is-kill/">「All You Need Is Kill」読了</a>
       </li>
     
@@ -550,10 +606,6 @@
     
       <li class="post">
         <a href="/blog/2014/05/12/review-know-nozaki-mado/">「know」読了</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/10/review-self-study-guidebook/">「ワンランク上をめざすビジネスパーソンの独習ガイド」読了</a>
       </li>
     
   </ul>
