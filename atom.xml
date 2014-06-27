@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-06-19T13:24:57+09:00</updated>
+  <updated>2014-06-27T11:35:22+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,60 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Gollum入門した]]></title>
+    <link href="http://yagays.github.io/blog/2014/06/27/gollum-wiki/"/>
+    <updated>2014-06-27T11:31:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/06/27/gollum-wiki</id>
+    <content type="html"><![CDATA[<p>最近メモがあちこちに散乱していて，<a href="http://kobito.qiita.com/ja">Kobito</a>に殴り書きしたり，<a href="http://brettterpstra.com/projects/nvalt/">nvALT</a>に適当に書いたり，<a href="http://evernote.com/intl/jp/">Evernote</a>にノート作ったりと，色々と良くない感じだったので，ある程度しっかりと書くメモはGollumで書くようにした．</p>
+
+<p>GollumはGitHub-likeなwikiエンジンだ．とにかくmarkdownで書けてgit連携，DBを立てる必要も無く，ソースコードがシンタックスハイライト付きで貼れるというのが嬉しい．</p>
+
+<h3>Gollumセットアップ</h3>
+
+<p><a href="https://github.com/gollum/gollum">gollum/gollum</a></p>
+
+<h4>Gollumのインストール</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install gollum</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Gollumセットアップ</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ mkdir wiki; cd wiki
+</span><span class='line'>$ git init
+</span><span class='line'>$ gollum</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これでhttp://localhost:4567/にアクセスするとwikiが立ち上がっている．もしgit initしていないとエラーになるので注意．</p>
+
+<h3>スクリーンショット</h3>
+
+<p>というわけで，適当にmarkdownで書いてsaveすると以下のように立ち上がる．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/gollum.png" alt="" /></p>
+
+<h3>所感</h3>
+
+<p>まだ使い始めて1週間も経っていないけれども，かなり使い勝手は良いと思う．かなり簡素な作りながらも，ディレクトリ構成やgitの方を意識しないで済むのは楽だ．一方で物足りない部分は確かにあって，ファイルやディレクトリ名を入力するときの補完とかをしてくれればいいのにとは思うけれども，まあその辺はそれほど苦にならないし運用でカバーできる．そういう部分も含めて，他のWikiエンジンやWordpress，Sphinxを使うよりかは，はるかに自分に合っていると思う．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="https://github.com/gollum/gollum/wiki">Home · gollum/gollum Wiki</a></li>
+<li><a href="http://yukke.hateblo.jp/entry/2013/05/02/224859">githubのwikiエンジン&#8221;gollum&#8221;の導入と細かい設定 - yukke::note</a></li>
+<li><a href="http://blog.hifumi.info/2014/02/02/my-wiki-powered-by-gollum/">gollumを使って個人用wikiをサーバに立てた | blog: takahiro okumura</a></li>
+<li><a href="http://pioneerboy.hatenablog.com/entry/2014/06/19/161859">ゼロからはじめるGollum Wiki - 雨に煙る</a></li>
+<li><a href="http://blog.necomimi.net/?p=1941">Github gollumでファイルアップロードする | CATch a TAIL!</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「住まいの解剖図鑑」読了]]></title>
@@ -655,24 +709,6 @@
 <li><a href="http://moznion.hatenadiary.com/entry/2014/04/01/000636">COOKPAD 5-day winter internshipに参加したのでポエムを - その手の平は尻もつかめるさ</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「アナと雪の女王」の"Let it go"の演出だけでわかる物語の背景]]></title>
-    <link href="http://yagays.github.io/blog/2014/03/11/frozen-let-it-go/"/>
-    <updated>2014-03-11T07:55:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2014/03/11/frozen-let-it-go</id>
-    <content type="html"><![CDATA[<iframe width="640" height="360" src="http://yagays.github.io//www.youtube.com/embed/moSFlvxnbgk" frameborder="0" allowfullscreen></iframe>
-
-
-<p>アカデミー賞2冠の「<a href="http://ugc.disney.co.jp/blog/movie/category/anayuki/">アナと雪の女王</a>」(原題&#8221;Frozen&#8221;)の公開が今週に控えて非常に楽しみなのだけれども，それに先駆けて主題歌&#8221;Let It Go&#8221;のシーンの抜粋がディズニー公式で上がっていたので，その感想を少し書き出そうと思う．ちなみに動画内で歌っているのは題名にあるアナではなく，その姉のエルサらしい．</p>
-
-<p>当然映画本編は見てないし予告編をチラッと見たくらいでストーリーも大雑把にしかわからないのだが，この動画が伝える情報量ははるかに多く，歌詞も相まって彼女の置かれている境遇や心境が手に取るようにわかる．テーマ的には身分や責務という束縛からの解放，典型的な通過儀礼の初っ端というところだろうか．</p>
-
-<p>さて，歌いながら彼女が何をしているかといえば，単に着替えているだけなのだけれども，その意図が非常にわかりやすい．それまで着ていた伝統的かつ高貴なドレスから，グローブを取り，マントを脱ぎ捨て，髪留めを放り投げ編んでいた髪を解き，最後には自分で作り上げた自由なドレスへと変身してしまう．つまりは他人に押し付けられた衣装を脱ぎ捨てていくという行為が，自分らしさを取り戻していくという過程につながっている．歌う時のジェスチャーもまさに心境を反映したものであり，最初は両手を握り胸の当たりに当てて戸惑う雰囲気をだしつつ，ドレスを着替えた後半からは両腕をめいっぱい広げ堂々とした姿で力強く歌い上げる．曲の盛り上がりも相まって，まさに解放，まさに自由といったパワーを感じる．また，最後のバルコニーでの振り向きざまにドアが閉まるシーンも，その後の彼女の心境として象徴的だ．故郷や地位の抑圧から解き放たれた彼女は自分らしさを獲得したが，一方で客観的に見れば彼女は自分自身の殻に閉じこもってしまったということなのだろう．</p>
-
-<p>というわけで，この映像だけでバッチリ予習もできたことだし，早く本編を見たいところ．姉と妹という関係が物語にどう影響してくるのかが気になる．それにしても，動画を何度見返しても髪留めの放り投げ方が凄まじいのがすごい気になる……．</p>
 ]]></content>
   </entry>
   
