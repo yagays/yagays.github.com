@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-07-09T16:17:19+09:00</updated>
+  <updated>2014-07-09T16:28:59+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[論文紹介:"Recommending Investors for Crowdfunding Projects"]]></title>
+    <title type="html"><![CDATA[論文紹介:Recommending Investors for Crowdfunding Projects]]></title>
     <link href="http://yagays.github.io/blog/2014/07/09/www2014review-kickstarter/"/>
     <updated>2014-07-09T16:08:00+09:00</updated>
     <id>http://yagays.github.io/blog/2014/07/09/www2014review-kickstarter</id>
@@ -42,7 +42,7 @@
 <li>既存研究あんまり書かなかったんだけど，投資分野の予測なのでいろいろある
 
 <ul>
-<li>Kickstarterにおいて特定のフレーズプロジェクトの成功予測に役立つとか(http://dl.acm.org/citation.cfm?id=2531602.2531656)</li>
+<li>Kickstarterにおいて特定のフレーズプロジェクトの成功予測に役立つとか(<a href="http://dl.acm.org/citation.cfm?id=2531602.2531656">http://dl.acm.org/citation.cfm?id=2531602.2531656</a>)</li>
 <li>Kickstarter以外にもCrowdfundingはいろいろあるので，その辺のレポートも引用されてる</li>
 </ul>
 </li>
@@ -72,6 +72,14 @@
 <ul>
 <li>外部サイト連携とかを付けないと，そもそも取ってこれないし正式に使えない(?)</li>
 <li>一番使いやすいのはKickstarterで表示したプロジェクトのウェブページの履歴とかかな</li>
+<li>いずれにせよ投資者の趣向をどう観測するかという感じ</li>
+</ul>
+</li>
+<li>そもそもKickstarterの投資に参加している人のなかでマッチングが上手くいったとして，投資数が増えるのだろうか？
+
+<ul>
+<li>プロジェクトの成功率/投資額をあげようと思った時に，推薦に限界がある場合には，いかに他所から興味ある人を引っ張ってくるかになる</li>
+<li>ソーシャルのちからに頼れなくなると，結局広告打ったりメディアに紹介してもらったりという従来の方法に頼らざるをえないかも</li>
 </ul>
 </li>
 </ul>
