@@ -117,6 +117,139 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/05/06/linux-root-directory/">Linuxのルートディレクトリ構成まとめ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-06T09:27:00+09:00" pubdate data-updated="true">May 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li><strong>/</strong> # ルートディレクトリ</li>
+<li><strong>/vmlinuz</strong> # /bootに置かれているLinuxカーネルにシンボリックリンクが貼られている</li>
+<li><strong>/bin/</strong> # バイナリ形式の実行ファイル置き場</li>
+<li><strong>/boot/</strong> # Linuxカーネルやブート処理に必要なファイル置き場</li>
+<li><strong>/dev/</strong> # デバイスファイル置き場
+
+<ul>
+<li><strong>/tty*</strong> # 制御端末に対応している．&#8221;tty&#8221;は&#8221;Teletype&#8221;が由来</li>
+<li><strong>/null</strong> # nullデバイス．出力の破棄先に使う</li>
+<li><strong>/zero</strong> # zeroデバイス．Nullが延々返ってくる</li>
+</ul>
+</li>
+<li><strong>/etc/</strong> # 設定ファイル置き場
+
+<ul>
+<li><strong>/hosts</strong> # ホストとIPの対応付けを行う</li>
+<li><strong>/hosts.allow</strong> # 接続を許可するホスト一覧</li>
+<li><strong>/hosts.deny</strong> # 接続を拒否するホスト一覧</li>
+<li><strong>/passwd</strong> # ユーザの名前やホームディレクトリ一覧</li>
+<li><strong>/resolv.conf</strong> # 名前解決のためのDNSサーバ一覧</li>
+<li><strong>/shadow</strong> # ユーザのパスワード（暗号化されている）</li>
+<li><strong>/rc.local</strong> Linuxの起動時に実行されるシェルスクリプト</li>
+<li><strong>/rc?.d/</strong> # 起動用ファイルが置かれるディレクトリ（各ランレベルごとに番号が振られている）</li>
+</ul>
+</li>
+<li><strong>/home/</strong> # ユーザのホームディレクトリ置き場</li>
+<li><strong>/lib/</strong> # 共有ライブラリ置き場</li>
+<li><strong>/lost+found/</strong> # システム障害時の不明ファイル避難先</li>
+<li><strong>/proc/</strong> # プロセスファイスシステム（procfs）置き場．CPUやメモリの情報などが含まれている．
+
+<ul>
+<li><strong>/cpuinfo</strong> # CPU情報</li>
+<li><strong>/meminfo</strong> # メモリ情報</li>
+<li><strong>/loadavg</strong> # ロードアベレージ(uptimeやtopに表示される)</li>
+</ul>
+</li>
+<li><strong>/root/</strong> # スーパーユーザのホームディレクトリ</li>
+<li><strong>/sbin/</strong> # システム管理者が使用する実行ファイル置き場</li>
+<li><strong>/tmp/</strong> # 一時ファイル置き場．リブートすると消える</li>
+<li><strong>/usr/</strong> # 複数マシンで共有可能なファイル置き場
+
+<ul>
+<li><strong>/src/</strong> # システムコマンドのソースコード</li>
+<li><strong>/include/</strong> # システムのヘッダファイル</li>
+<li><strong>/share/</strong> # 複数マシンで共有可能なファイル（特にドキュメント系）
+
+<ul>
+<li><strong>/man/</strong> # manページ
+
+<ul>
+<li><strong>/man*/</strong> セクションごとにディレクトリが分かれている</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>/info/</strong> # infoファイル</li>
+<li><strong>/local/</strong> # システムの管理者が管理するファイル</li>
+</ul>
+</li>
+<li><strong>/var/</strong> # 頻繁に書き換えられるファイル置き場
+
+<ul>
+<li><strong>/log/</strong> # ログファイル</li>
+<li><strong>/spool/</strong> # 一時的に保存するファイル</li>
+<li><strong>/tmp/</strong> # /tmpと似ているが，リブートしても消えない</li>
+<li><strong>/run/</strong> # 起動中のプロセスのPIDが保存される．Ubuntu12.04ではルートディレクトリの/runにシンボリックリンクが貼られている</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>環境</h4>
+
+<p>なるべく一般的なLinuxの情報を参考にしつつ，手元のUbuntu12.04と照らし合わせながら作成している．環境によっては違う部分があると思うので注意．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://www.atmarkit.co.jp/ait/articles/0108/07/news002.html">Windowsユーザーに教えるLinuxの常識（2）：各ディレクトリの役割を知ろう（ルートディレクトリ編） (1/2) - ＠IT</a></li>
+<li><p><a href="http://www.usupi.org/sysad/239.html">ハードウェアの情報を収集する - いますぐ実践! Linuxシステム管理 / Vol.239</a></p></li>
+<li><p>「<a href="http://www.amazon.co.jp/gp/product/4839938717/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4839938717&linkCode=as2&tag=yagays-22">Linuxの教科書　改訂版 （マイコミムック） (MYCOMムック)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4839938717" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」では，ルートディレクトリ構成および中身のファイルに至るまで，基礎の部分について網羅的に書かれている．また，/etcと/varの概要をRed Had系とDebian系でそれぞれリストアップしている．</p></li>
+<li><p>「<a href="http://www.amazon.co.jp/gp/product/4797328355/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4797328355&linkCode=as2&tag=yagays-22">ふつうのLinuxプログラミング Linuxの仕組みから学べるgccプログラミングの王道</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4797328355" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」では，ルートディレクトリの基本的な構造とその役割について書かれている．特に/usrと/varを使い分ける基準が解説されている点は参考になった．</p></li>
+<li><p>「<a href="http://www.amazon.co.jp/gp/product/4774151432/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4774151432&linkCode=as2&tag=yagays-22">プロのための Linuxシステム・10年効く技術 (Software Design plus)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4774151432" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+」では，/dev/nullおよび/dev/zeroの使い方について参考にした．他にもプロセスまわりやメモリ管理について詳細に書かれている．</p></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4839938717" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4797328355" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774151432" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/05/05/toothless-ears/">「ヒックとドラゴン」における耳を使った感情表現</a></h1>
     
     
@@ -343,68 +476,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/04/29/mau-natural-history/">思わずReblogしたくなるような博物画が見られるiPhone/iPadアプリ「MAU M&L 博物図譜」</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-29T09:51:00+09:00" pubdate data-updated="true">Apr 29<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class="sticky-itslink"><a href="https://itunes.apple.com/jp/app/mau-m-l-bo-wu-tu-pu/id545593250?mt=8&uo=4" rel="nofollow" target="_blank"><img src="http://a883.phobos.apple.com/us/r1000/094/Purple/v4/d5/d6/e1/d5d6e1d8-a47a-c2b0-1137-967ef7e98572/mzl.qqyzntlx.100x100-75.png" style="border-style:none;float:left;margin:5px;" alt="MAU M&amp;L 博物図譜" title="MAU M&amp;L 博物図譜" /></a><div class="sticky-itslinktext"><a href="https://itunes.apple.com/jp/app/mau-m-l-bo-wu-tu-pu/id545593250?mt=8&uo=4" rel="nofollow" target="_blank">MAU M&amp;L 博物図譜</a><br />Musashino Art University<br />価格： 0円<br /> <a href="https://itunes.apple.com/jp/app/mau-m-l-bo-wu-tu-pu/id545593250?mt=8&uo=4" rel="nofollow" target="_blank"><img src="http://ax.phobos.apple.com.edgesuite.net/ja_jp/images/web/linkmaker/badge_appstore-sm.gif" alt ="iTunesで見る" style="border-style:none;" /></a><br /><span style="font-size:xx-small;">posted with <a href="http://sticky.linclip.com/linkmaker/" target="_blank">sticky</a> on 2013.4.29</span><br style="clear:left;" /></div></div>
-
-
-<p></p>
-
-<p>久しぶりに面白いiPad Appで遊んだので，ここで少し紹介したいと思う．前々からiPadには入れてたものの，じっくり見る機会が無くて今の今まで放置していたのが非常に悔やまれるくらい，とても良い作品だった．</p>
-
-<p>この「MAU M&amp;L 博物図譜」は，武蔵野美術大学 美術館・図書館が所蔵する博物図譜の貴重な資料を，iPadで自由に鑑賞することのできるアプリケーションだ．収録されている図譜は主に17世紀から19世紀に描かれたものであり，これは西洋で航海技術が発達して任務を受けた探検家やナチュラリストなどの博物学者が世界中に進出していった時代に，未開の地に生きる動植物や自然の景観を観察・記録したものである．描かれる対象は花や果物などの植物に始まり，昆虫，鳥，哺乳類，はたまた海に漂うクラゲや無脊椎動物に至るまで，実に多岐にわたる．その形や色，質感までもが細部に至るまで非常に緻密に描かれ，学術的価値とともに芸術的価値をも持つのが，この中に収録されている博物図譜の数々である．</p>
-
-<p>このアプリの優れた点の一つに，武蔵野美術大学の客員教授である荒俣宏氏による博物図譜の見方や楽しみ方が解説された映像を見ることができるということがある．荒俣氏の解説によれば，博物図譜を眺めるということは，美術的にも優れた名画を鑑賞するといったことだけではなく，過去の学者や画家たちがいかに自然を観察し，工夫を凝らして図譜として表現してきたかといった歴史的な背景までも読み取ることができるということである．そこには，博物学の歩んできた道のりに加えて，東洋と西洋の自然観の違いや時代ごとの絵画への要請などが含まれている．荒俣氏はこれを「視覚の冒険」であると表現する．</p>
-
-<p>実際にこのアプリを操作して博物図譜を眺めていると，本当に未知の世界を冒険しているかのような感覚になる．この驚きや喜びは，TVやYouTubeなどで鮮明な映像を見ることのできる現代においても，まったく色褪せていない．それはまさに，過去の探検家や画家の目を通して自然を見ることの興奮なのだ．彼らの「ものの見方」を借りて，動物や植物を観察する．そこには，現在では味わうことのできない様々な発見と知的興奮に満ちあふれている．</p>
-
-<br/>
-
-
-<p>最後に，<strong>iPhoneやiPadを持っている方は，ぜひ一度インストールして博物図譜の数々を眺めてみてほしい．そして，何でもいいので収録されている図譜を画面に表示させたら，めいっぱいピンチアウトして画面を拡大してほしい．</strong>この博物図譜のアーカイブの高解像度に驚くと同時に，信じられないほど高精細で書き込まれた生物画に圧倒されることだろう．鳥の羽毛の1本1本から，イカの斑点模様，クラゲの触手の細かな描写など，例を挙げればキリがない．とにもかくにも一度やってみないと分からない楽しさなので，ぜひ実際に手にとって体験していただきたい．</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://www.musabi.ac.jp/exhibit/10_hakubutsu/">博物図譜とデジタルアーカイブ: top</a></li>
-<li><a href="http://mauml.musabi.ac.jp/museum/archives/1459">博物図譜とデジタルアーカイブ V | 武蔵野美術大学 美術館</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/21/">&larr; Older</a></li>
@@ -452,6 +523,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/07/18/gollum-disable-ctrl-b-hotkey/">GollumでCtrl-bのキーボードショートカットを無効にする</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/09/www2014review-kickstarter/">論文紹介:Recommending Investors for Crowdfunding Projects</a>
       </li>
     
@@ -485,10 +560,6 @@
     
       <li class="post">
         <a href="/blog/2014/05/28/review-hiroyukikojima-php/">「数学は世界をこう見る 数と空間への現代的なアプローチ」読了</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/26/kyoto-kibune/">京都・貴船に行ってきた</a>
       </li>
     
   </ul>

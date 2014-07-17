@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-07-17T20:44:12+09:00</updated>
+  <updated>2014-07-18T04:30:44+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[GollumでCtrl-bのキーボードショートカットを無効にする]]></title>
+    <link href="http://yagays.github.io/blog/2014/07/18/gollum-disable-ctrl-b-hotkey/"/>
+    <updated>2014-07-18T04:12:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/07/18/gollum-disable-ctrl-b-hotkey</id>
+    <content type="html"><![CDATA[<p>Gollumで記事を編集していると，Ctrl-bで「****」というmarkdownのbold記法が挿入されるキーボードショートカットがあって邪魔だったので，無効にした．</p>
+
+<h3>方法</h3>
+
+<p>Gollumのgollum.editor.jsの中の該当部分をコメントアウトする．</p>
+
+<p><a href="https://github.com/gollum/gollum/blob/master/lib/gollum/public/gollum/javascript/editor/gollum.editor.js#L215">https://github.com/gollum/gollum/blob/master/lib/gollum/public/gollum/javascript/editor/gollum.editor.js#L215</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>      <span class="nx">Mousetrap</span><span class="p">.</span><span class="nx">bind</span><span class="p">([</span><span class="s1">&#39;command+3&#39;</span><span class="p">,</span> <span class="s1">&#39;ctrl+3&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">e</span> <span class="p">){</span> <span class="nx">hotkey</span><span class="p">(</span> <span class="nx">e</span><span class="p">,</span> <span class="s1">&#39;function-h3&#39;</span> <span class="p">);</span> <span class="p">});</span>
+</span><span class='line'><span class="c1">//           Mousetrap.bind([&#39;command+b&#39;, &#39;ctrl+b&#39;], function( e ){ hotkey( e, &#39;function-bold&#39; ); });</span>
+</span><span class='line'>      <span class="nx">Mousetrap</span><span class="p">.</span><span class="nx">bind</span><span class="p">([</span><span class="s1">&#39;command+i&#39;</span><span class="p">,</span> <span class="s1">&#39;ctrl+i&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">e</span> <span class="p">){</span> <span class="nx">hotkey</span><span class="p">(</span> <span class="nx">e</span><span class="p">,</span> <span class="s1">&#39;function-italic&#39;</span> <span class="p">);</span> <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>gollum.editor.jsは，rbenvで入れた自分の環境の場合$HOME/.rbenv/versions/1.9.3-p547/lib/ruby/gems/1.9.1/gems/gollum-3.0.0/lib/gollum/public/gollum/javascript/editorに入っている．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[論文紹介:Recommending Investors for Crowdfunding Projects]]></title>
@@ -592,43 +618,6 @@
 <p>タイトルそのままに，アメリカ合衆国で活躍する女性を紹介した本書．自伝のあらすじを並べたような短さと簡潔さで，ざっと読んでもそれぞれの登場人物の生き様を感じることができる．その中でも女性の力強さには毎度，いや1ページごとに驚かされる．男性社会におけるガラスの天井，人種差別，両親の離婚や貧困に起因する複雑な少女時代，そのどれもが逆境として描かれる．それをすべて現在の活躍の糧だと考えるのは行き過ぎかもしれないし，そういう環境で育った人間はすべからく偉大な一人になれるかといえば必ずしもそうではない．彼女らは一握りのイレギュラーであることに間違いない．そして一人の象徴される人間の裏には大多数のサイレント・マジョリティ，もしくは芽の出ない才能を持った女性が多数いたことだろう．その中で出る杭となって出てきた彼女らの功績は賞賛されるべきものであり，まさに「めっちゃスゴい」人生だ．</p>
 
 <p>雑誌に連載されていたコラムのためか，それぞれの記事の情報量には物足りなさを感じる部分もある．しかしながら，本書は次へ進むきっかけと捉えて，より深く知りたいと考えるには充分だと思う．少なくとも私は，紹介されているコメディアンの出演するドラマを見たくなったし，現役で活躍するCEOの会社の今後が楽しみになったし，そういった女性が活躍する土壌を持つアメリカの文化をより知りたくなった．それにしても55人(実際には+2人)の人生を一度に眺めるのはなかなか大変だ．まずは興味を持ったところから調べ始めよう……．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[後傾姿勢になれるIKEAのアームチェアPOÄNGがライフチェンジングだった話]]></title>
-    <link href="http://yagays.github.io/blog/2014/04/04/poang-chair/"/>
-    <updated>2014-04-04T14:33:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2014/04/04/poang-chair</id>
-    <content type="html"><![CDATA[<p><a href="http://yagays.github.io/blog/2014/03/30/cpd-winter-intern/">この前のインターン</a>で座った椅子が思いの外良い体験だったので，増税前にと自分も一式揃えてしまった．</p>
-
-<p><a href="http://www.ikea.com/jp/ja/catalog/categories/series/07472/">POÄNG/ポエング シリーズ - IKEA</a></p>
-
-<p>購入したのは，アームチェアとフットスツールとフロアランプ．私の場合は実際にIKEAの店舗に行って購入したのだけれども，トータルで15,000円くらいに送料2,000円くらいだった．これをソファと考えると，かなりお手頃な値段と言える．</p>
-
-<p>そもそも自分は普通の机で作業していると，つい前のめりになって無意識に肩に力が入ってしまう癖がある．なので集中しているといつの間にか肩こりがヤバくて，それに伴う頭痛というコンボがかなりの悩みの種だった．エンジニアが椅子にこだわるように，コレばかりはアーロンとかエンボディとかリープとか良い椅子買ったりしないと駄目なのかなーと思っていたのだけれども，今回この深く座る型のアームチェアに座ったら見事に様々な問題が解消されて，こんな解決方法があったのかと「エウレカ！」状態だった．ソファみたいな椅子に深くすわることによって，自然と前傾姿勢が取れなくなり，肩に力が入らなくなる．それにラップトップの画面と顔との距離も適度に離れるので，目にも優しい．あとは足を放り出す体制なので，足を組む癖も解消される．まさに自分にピッタリな椅子だった．強いて欠点を上げるとするならば，少し通気性が悪いということと，だんだん眠くなってくるということだろうか．それを差し引いても，この椅子で作業する快適さは揺らがない．</p>
-
-<p>こういう後傾姿勢はエンジニア的にも導入事例があるようで，<a href="http://alpha.mixi.co.jp/2011/10753/">Mixiのエンジニアのオフィス</a>では<a href="http://www.okamura.co.jp/product/work/cruise_atlas/index.html">クルーズ＆アトラス</a>という机と椅子のセットを導入しているらしい．これは椅子自体が後傾姿勢をサポートしているのはもちろん，机もそれに合わせて傾けられるというもので，まさに自分の追い求めているものにかなり近い環境だと言える．実際に座ったことはないので自分に合うかどうかはわからないけれども，一度は試してみたい．</p>
-
-<p>そんなこんなで思い切ってアームチェアを買ってしまったのだけれども，今のところかなり快適に過ごせている．もし椅子の悩みを抱えている人がいるなら，オフィス用の高い椅子を買うという選択肢以外にも，こういう代替案があるということもぜひ知ってもらいたい．まあ会社では使えないかもしれないが&#8230;&#8230;．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/poang.jpg" alt="" /></p>
-
-<ul>
-<li><a href="http://www.ikea.com/jp/ja/catalog/products/S89864546/#/S49887502">POÄNG アームチェア - グラノン ブラック, バーチ材突き板 - IKEA</a></li>
-<li><a href="http://www.ikea.com/jp/ja/catalog/products/S89889405/">POÄNG フットスツール - グラノン ブラック, バーチ材突き板 - IKEA</a></li>
-<li><a href="http://www.ikea.com/jp/ja/catalog/products/70231356/">UPPBO フロア/読書ランプ - IKEA</a></li>
-</ul>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B008QTUGWY" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B008R5XWSC" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B00JEY8NDY" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
 ]]></content>
   </entry>
   
