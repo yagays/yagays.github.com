@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-07-18T16:44:50+09:00</updated>
+  <updated>2014-07-23T00:52:52+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,62 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Homebrew/scienceでバイオインフォマティクスのソフトウェアを入れる]]></title>
+    <link href="http://yagays.github.io/blog/2014/07/23/homebrew-science-bioinformatics/"/>
+    <updated>2014-07-23T00:38:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/07/23/homebrew-science-bioinformatics</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/Homebrew/homebrew-science">Homebrew/homebrew-science</a></p>
+
+<p>Homebrewにはtapというコマンドがあって，例えばhomebrew/dupesのようにMacOSXに標準で入っているソフトウェア/パッケージを個別に入れられたりと，公式以外のフォーミュラからbrewコマンドで入れられるシステムがある．</p>
+
+<p>その中でHomebrew/scienceという科学系のリポジトリがあり，バイオインフォマティクスに関するソフトウェアも多数登録されている．例えば，</p>
+
+<ul>
+<li>blast</li>
+<li>blat</li>
+<li>hmmer</li>
+<li>clustal-w</li>
+</ul>
+
+
+<p>のような基本的なソフトウェアから，</p>
+
+<ul>
+<li>bowtie2</li>
+<li>cufflinks</li>
+<li>bwa</li>
+<li>fastqc</li>
+<li>igv</li>
+<li>samtools</li>
+<li>bedtools</li>
+</ul>
+
+
+<p>のようなNGSまわりの解析ツールもひと通りHomebrewから入れることができる．どのようなソフトウェアが登録されているかは，<a href="https://github.com/Homebrew/homebrew-science">homebrew-scienceのGitHubページ</a>を参考．</p>
+
+<p>ひとつ注意点としては，Homebrew/sicenceで入れたソフトウェアが常に最新のものかどうかは保証されない．Homebrew/scienceの中にあるフォーミュラで記述されているものがインストールされるので，フォーミュラの管理状態によっては最新ではないバージョンを指している可能性がある．もし最新バージョンを入れたい/バージョンに気をつけるといった場合には，公式ページで配布されているソフトウェアのバージョンを確認したほうが良いだろう．</p>
+
+<h3>使い方</h3>
+
+<p>Homebrewをセットアップした上で，以下のコマンドでtapを追加することができる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew tap homebrew/science
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>あとは好きなソフトウェアをbrew installすれば良い．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="https://github.com/Homebrew/homebrew/wiki/brew-tap">brew tap · Homebrew/homebrew Wiki</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[GollumでCtrl-bのキーボードショートカットを無効にする]]></title>
@@ -604,20 +660,6 @@
 <p>最初は「なんでアドテクはミリ秒レベルで競っているのか」ということを知りたくて本書を手に取ったのだけれども，その疑問が解消できたのはもちろんのこと，分野全体について広く浅くカバーされていてアドテク入門にに最適な1冊だった．今までは広告配信なんて結局ユーザ情報とコンテンツのマッチングだろう程度に思っていたところがあったものの，実際には広告配信の裏にはアドネットワークの市場が形成されていて，そこではオークションによって広告主と配信媒体とのせめぎ合いが行われていた．そうした両者の最適化の結果がミリ秒単位での駆け引きの後にユーザに広告を配信するという現在のスタイルを作り上げたのだと考えると，インターネットにおける広告というものの規模と，それを可能にしたフロントエンドやネットワークレベルでのエンジニアリングに驚かされる．</p>
 
 <p>本書の前半の巻頭企画と特別企画では，実際にアドテクに触れるときの背景知識や運用方法について，特集1では実際のミリ秒のしのぎをけずる広告配信のコアについて，後半の特集2,3では実際の技術について解説される．RTBにはじまり，DSP，DMP，SSP，CGM，レムナント，インプレッションなどなど，アドテク初心者には聞きなれない専門用語のオンパレードだけれども，そのあたりはきちんと本書の中で解説されるので，分からないながらも読み進めていくと次第に理解することができる．雑誌1冊分の分量で気軽に読めて，実際のアドテクのネット記事を読むための基礎を身につけられたと思う．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「アメリカのめっちゃスゴい女性たち」読了]]></title>
-    <link href="http://yagays.github.io/blog/2014/04/11/review-55-fabulous-women-in-america/"/>
-    <updated>2014-04-11T14:59:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2014/04/11/review-55-fabulous-women-in-america</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4838726465" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>タイトルそのままに，アメリカ合衆国で活躍する女性を紹介した本書．自伝のあらすじを並べたような短さと簡潔さで，ざっと読んでもそれぞれの登場人物の生き様を感じることができる．その中でも女性の力強さには毎度，いや1ページごとに驚かされる．男性社会におけるガラスの天井，人種差別，両親の離婚や貧困に起因する複雑な少女時代，そのどれもが逆境として描かれる．それをすべて現在の活躍の糧だと考えるのは行き過ぎかもしれないし，そういう環境で育った人間はすべからく偉大な一人になれるかといえば必ずしもそうではない．彼女らは一握りのイレギュラーであることに間違いない．そして一人の象徴される人間の裏には大多数のサイレント・マジョリティ，もしくは芽の出ない才能を持った女性が多数いたことだろう．その中で出る杭となって出てきた彼女らの功績は賞賛されるべきものであり，まさに「めっちゃスゴい」人生だ．</p>
-
-<p>雑誌に連載されていたコラムのためか，それぞれの記事の情報量には物足りなさを感じる部分もある．しかしながら，本書は次へ進むきっかけと捉えて，より深く知りたいと考えるには充分だと思う．少なくとも私は，紹介されているコメディアンの出演するドラマを見たくなったし，現役で活躍するCEOの会社の今後が楽しみになったし，そういった女性が活躍する土壌を持つアメリカの文化をより知りたくなった．それにしても55人(実際には+2人)の人生を一度に眺めるのはなかなか大変だ．まずは興味を持ったところから調べ始めよう……．</p>
 ]]></content>
   </entry>
   
