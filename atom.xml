@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-08-15T11:14:43+09:00</updated>
+  <updated>2014-08-15T11:23:20+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -108,6 +108,7 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
+<span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>ipython notebook --pylab inline
 </span><span class='line'>
 </span><span class='line'><span class="o">[</span>...<span class="o">]</span>
@@ -115,7 +116,8 @@
 </span><span class='line'><span class="o">[</span>NotebookApp<span class="o">]</span> WARNING | Starting all kernels in pylab mode is not recommended,
 </span><span class='line'>    and will be disabled in a future release.
 </span><span class='line'>    Please use the %matplotlib magic to <span class="nb">enable </span>matplotlib instead.
-</span><span class='line'>    pylab implies many imports, which can have confu
+</span><span class='line'>    pylab implies many imports, which can have confusing side effects
+</span><span class='line'>    and harm the reproducibility of your notebooks.
 </span></code></pre></td></tr></table></div></figure>
 
 
