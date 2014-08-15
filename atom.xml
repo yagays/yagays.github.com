@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-08-15T11:01:29+09:00</updated>
+  <updated>2014-08-15T11:06:57+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -14,13 +14,13 @@
 
   
   <entry>
-    <title type="html"><![CDATA["ipython notebook --pylab inline"は使うのを止めようという話]]></title>
+    <title type="html"><![CDATA[iPython Notebookの--pylab inlineは使うのをやめようという話]]></title>
     <link href="http://yagays.github.io/blog/2014/08/15/ipython-notebook-matplotlib-inline/"/>
     <updated>2014-08-15T09:48:00+09:00</updated>
     <id>http://yagays.github.io/blog/2014/08/15/ipython-notebook-matplotlib-inline</id>
     <content type="html"><![CDATA[<h3>TL;DR</h3>
 
-<p><strong>ipython notebook &#8211;pylab inlineのかわりにipython notebook &#8211;matplotlib inline使おう．もしくはipythonの始めに%matplotlib inlineを実行しておく．</strong></p>
+<p>ipython notebook &#8211;pylab inlineのかわりに<strong>ipython notebook &#8211;matplotlib inline</strong>使おう．もしくはipythonの始めに<strong>%matplotlib inline</strong>を実行しておく．</p>
 
 <h3>iPython Notebookについて</h3>
 
@@ -62,7 +62,7 @@
 
 <p>どっちも実行できていて何の変哲もないように見えるんだけど，よくNumpyの実行環境で見るimport numpy as npの場合だと，1行目の書き方では実行できるが，2行目の書き方では実行できない．それが，pylabをインポートしているとどちらもできてしまう，正確に言えば，Numpyの関数がモジュール名もしくはエイリアスを使わないでも実行できてしまう．</p>
 
-<p>ではこれの何が問題かというと，関数の名前がかぶるというわけだ．たとえば組み込み関数のsum()やall()は，実はNumpyにも同様の名前の関数がある．なのでpylabをインポートすると，勝手にsumやallがNumpyのモジュールのものに置き換わってしまう．</p>
+<p>ではこれの何が問題かというと，関数の名前がかぶるというわけだ．たとえば組み込み関数の<a href="http://docs.python.jp/2/library/functions.html#sum">sum()</a>や<a href="http://docs.python.jp/2/library/functions.html#all">all()</a>は，実はNumpyにも同様の名前の関数がある（<a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html">sum</a>,<a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.all.html">all</a>,）．なのでpylabをインポートすると，勝手にsumやallがNumpyのモジュールのものに置き換わってしまう．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -91,7 +91,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>意識的にpylabを使おうと思って書くコードなら良いんだけど，もしpylab関係なくいつもiPython Notebook使ってるからという感覚でpythonのコードを書いたとして，あとで普通のpythonで実行したら動かない，なんてことが起こりかねない．まあ気をつければ済む話かもしれないが，こういう地雷は踏まないに限る．．</p>
+<p>意識的にpylabを使おうと思って書くコードなら良いんだけど，もしpylab関係なくいつもiPython Notebook使ってるからという感覚でpythonのコードを書いたとして，あとで普通のpythonで実行したら動かない，なんてことが起こりかねない．まあ気をつければ済む話かもしれないが，こういう地雷は踏まないに限る．</p>
 
 <h3>公式にも&#8211;pylabは使えなくなる見込み</h3>
 
