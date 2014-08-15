@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-08-15T11:24:07+09:00</updated>
+  <updated>2014-08-15T11:31:15+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -20,7 +20,7 @@
     <id>http://yagays.github.io/blog/2014/08/15/ipython-notebook-matplotlib-inline</id>
     <content type="html"><![CDATA[<h3>TL;DR</h3>
 
-<p>ipython notebook &#8211;pylab inlineのかわりに<strong>ipython notebook &#8211;matplotlib inline</strong>使おう．もしくはipythonの始めに<strong>%matplotlib inline</strong>を実行しておく．</p>
+<p>もしpylabは使わないけどiPython Notebookでグラフのinline表示をしたいなら，ipython notebook &#8211;pylab inlineのかわりに<strong>ipython notebook &#8211;matplotlib inline</strong>を使おう．もしくはipythonの始めに<strong>%matplotlib inline</strong>を実行しておく．</p>
 
 <h3>iPython Notebookについて</h3>
 
@@ -78,13 +78,11 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-<span class='line-number'>12</span>
 </pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># pylabをインポートしない場合</span>
 </span><span class='line'><span class="nv">$ </span>ipython
 </span><span class='line'>
 </span><span class='line'>In <span class="o">[</span>1<span class="o">]</span>: sum,all
 </span><span class='line'>Out<span class="o">[</span>1<span class="o">]</span>: <span class="o">(</span>&lt;<span class="k">function </span>sum&gt;, &lt;<span class="k">function </span>all&gt;<span class="o">)</span>
-</span><span class='line'>
 </span><span class='line'>
 </span><span class='line'><span class="c"># pylabをインポートした場合</span>
 </span><span class='line'><span class="nv">$ </span>ipython --pylab
