@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-08-15T11:06:57+09:00</updated>
+  <updated>2014-08-15T11:12:56+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -25,6 +25,9 @@
 <h3>iPython Notebookについて</h3>
 
 <p>周知の事実だとは思うが，<a href="http://ipython.org/index.html">iPython</a>は超便利なPythonのインタラクティブシェルだ．その一部として<a href="http://ipython.org/notebook.html">iPython Notebook</a>というのがあり，ブラウザでコードを実行できたり，実行結果をノートとして保存したり，matplotlibなどで描写したグラフをノートの中にそのまま表示したりできる．RでいうところのRstudio+knitrのような，解析レポートを作るときには重宝するツールとなっている．</p>
+
+<br/>
+
 
 <p><img src="https://dl.dropboxusercontent.com/u/142306/b/ipythonnotebook.png" alt="http://nbviewer.ipython.org/gist/twiecki/3962843より" /></p>
 
@@ -60,9 +63,9 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>どっちも実行できていて何の変哲もないように見えるんだけど，よくNumpyの実行環境で見るimport numpy as npの場合だと，1行目の書き方では実行できるが，2行目の書き方では実行できない．それが，pylabをインポートしているとどちらもできてしまう，正確に言えば，Numpyの関数がモジュール名もしくはエイリアスを使わないでも実行できてしまう．</p>
+<p>どっちも実行できていて何の変哲もないように見えるんだけど，よくNumpyの実行環境で見るimport numpy as npの場合だと，1行目の書き方では実行できるが，2行目の書き方では実行できない．それが，pylabをインポートしているとどちらもできてしまう，正確に言えば，Numpyの関数がモジュール名もしくはエイリアスを先頭に付けなくても実行できてしまう．</p>
 
-<p>ではこれの何が問題かというと，関数の名前がかぶるというわけだ．たとえば組み込み関数の<a href="http://docs.python.jp/2/library/functions.html#sum">sum()</a>や<a href="http://docs.python.jp/2/library/functions.html#all">all()</a>は，実はNumpyにも同様の名前の関数がある（<a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html">sum</a>,<a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.all.html">all</a>,）．なのでpylabをインポートすると，勝手にsumやallがNumpyのモジュールのものに置き換わってしまう．</p>
+<p>ではこれの何が問題かというと，関数の名前がかぶるというわけだ．たとえば組み込み関数の<a href="http://docs.python.jp/2/library/functions.html#sum">sum()</a>や<a href="http://docs.python.jp/2/library/functions.html#all">all()</a>は，実はNumpyにも同様の名前の関数がある（<a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html">sum()</a>,<a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.all.html">all()</a>）．なのでpylabをインポートすると，勝手にsumやallがNumpyのモジュールのものに置き換わってしまう．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -132,7 +135,7 @@
 
 <h3>注意</h3>
 
-<p>ここまで読んだならわかるとは思うけれども，pylabの行儀悪いNumpyインポートを避けようということをしたわけだから，当然Numpyは別でインポートしないといけないし，ウェブページに載っているiPython Notebookの実行例とかに書いてあるNumpyの関数にはモジュール名かnpを付ける必要がある．今回の方法を使っているなら，そのあたりは適宜読み替える必要がある．あんまり見たこと無い関数があったら，それがPythonの組み込み関数なのかNumpyやpylabの関数なのか疑ってかかろう．なんかコードのサンプルをコピペしたけど動かないというときは，まあ大抵この問題だ．</p>
+<p>ここまで読んだならわかるとは思うけれども，pylabの行儀悪いNumpyインポートを避けようということをしたわけだから，当然Numpyは別でインポートしないといけないし，そのへんのウェブページに載っているiPython Notebookの実行例とかのNumpyの関数の入ったコードはそのままでは実行できない．今回の方法を使っているなら，そのあたりは適宜読み替える必要がある．あんまり見たこと無い関数があったら，それがPythonの組み込み関数なのかNumpyやpylabの関数なのか疑ってかかろう．もしNumpyの関数なら，import numpy as npがされていることを確認したうえでnp.を関数の先頭につければ実行できる．なんかコードのサンプルをコピペしたけど動かないというときは，まあ大抵この問題だ．</p>
 
 <h3>元ネタ</h3>
 
