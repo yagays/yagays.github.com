@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-08-15T12:16:39+09:00</updated>
+  <updated>2014-08-15T19:42:16+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -20,7 +20,7 @@
     <id>http://yagays.github.io/blog/2014/08/15/ipython-notebook-matplotlib-inline</id>
     <content type="html"><![CDATA[<h3>TL;DR</h3>
 
-<p>ipython notebook --pylab inlineのかわりに<strong>ipython notebook --matplotlib inline</strong>を使おう．もしくはipythonの始めに<strong>%matplotlib inline</strong>を実行しておく．</p>
+<p><code>ipython notebook --pylab inline</code>のかわりに<code>ipython notebook --matplotlib inline</code>を使おう．もしくはipythonの始めに<code>%matplotlib inline</code>を実行しておく．</p>
 
 <h3>iPython Notebookについて</h3>
 
@@ -104,8 +104,8 @@ and harm the reproducibility of your notebooks.
 <p>--pylab inlineを回避する方法は2つある．</p>
 
 <ul>
-<li>ipython notebook --matplotlib inlineで起動する</li>
-<li>%matplotlib inlineをiPython Notebookの冒頭で実行しておく</li>
+<li><code>ipython notebook --matplotlib inline</code>で起動する</li>
+<li><code>%matplotlib inline</code>をiPython Notebookの冒頭で実行しておく</li>
 </ul>
 
 
