@@ -117,6 +117,63 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/10/14/review-glm-mcmc/">「データ解析のための統計モデリング入門」読書ノート</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-14T04:40:00+09:00" pubdate data-updated="true">Oct 14<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=400006973X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p><strong>「データ解析のための統計モデリング入門」</strong>をひと通り読んだ．本書はGLMからMCMCによる分布推定までの一連の統計モデリングの流れを，生態学における研究の問題に即したテストデータやRを使った解析例とともに解説した本である．本書を書かれた久保さんの講義資料は前々から拝見していたのだが，今回はそれが全体を通して非常によくまとまっている印象を受けた．やはり実例に沿った例題があって，それを解決するためのストーリーが組まれていると，何が問題で何をすべきなのか，そしてその評価方法を含めてハッキリとしていて読みやすい．Rのコードに関しても，コマンドの実行方法からその解釈の仕方まで丁寧に解説が組まれており，数式とのつながりもわかりやすい．個人的には，後半のMCMCの実験に関しては大部分をWinBUGSにお任せで，シミュレーションの過程が少し不明瞭だった感じもするのだが，限られた紙面でMCMCの細かい実装方法を説明するよりかは既存のツールを使ったほうが全体の流れとしても良かったのだろう．</p>
+
+<br />
+
+
+<p>さて，本書を読み始める前に必ず目に通すべきなのが，<a href="http://hosho.ees.hokudai.ac.jp/~kubo/ce/IwanamiBook.html">公式ページ</a>にも貼られている各章のつながりや線形モデルの発展の図だ．全体の流れを俯瞰できるほか，実際に中を読みながら今ある問題と図とを照らし合わても，自分が今どういった位置づけの中で何を解いているのかということを把握することができる．</p>
+
+<p>これが非常に参考になったので，個人的にも自分の読書ノートに書きなぐったまとめ図を清書して作ってみた．ほとんど久保さんの図を真似ただけだが，2つの図を組み合わせ感じでストーリーに沿った形で線形モデルの発展をなぞっている．基本的に章の間をつなぐような自問自答の形を取っており，各章には推定するパラメータと手法の代表的なものを付け加えている．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/glm_mcmc.png" alt="" /></p>
+
+<p>以下に簡単な読書ノートを載せておく．Rのコードを使った実験はまだできていないが，とりあえずはMCMCの実装くらいまではやりたいと思う．<strong>なお，このまとめには多分に間違いが含まれている可能性があるので，もし参考にされる際には注意していただきたい．</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/14/review-glm-mcmc/">続きを読む &rarr;</a>
+    </footer>
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/10/13/soapdenovo2-install/">SOAPdenovo2のインストール方法</a></h1>
     
     
@@ -653,59 +710,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/09/review-art-of-reading/">「読書の技法 誰でも本物の知識が身につく熟読術・速読術「超」入門」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-09T06:45:00+09:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4492044698" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>対象は文学・思想・哲学・歴史に偏っているが，読書法としては簡潔で的確</h3>
-
-<p>本書は佐藤優が実践している読書法や勉強法，そして大量の情報をどうやって効率良く捌くかについて論じた本だ．本書前半では，佐藤氏のこれまでの人生における読書遍歴が語られるほか，本書全体を通して文章の端々に彼独自の試行錯誤の跡が見られる．</p>
-
-<p>読書に対する彼の態度は非常に明確で，本や情報の取捨選択をはっきりすることが繰り返し述べられる．それは，どのような本を読むべきでどのような本を読まないべきか，どういう情報を重視してどういう情報を読み飛ばすかということだ．ある事柄に関して読書で知識を得ようと思った時に，まず基本となる本の選び方から，重要な箇所のマーキングや書き込み，そして要約などの情報の整理に至るまで，本の著者の意見や自分の欲しい情報を的確に抜き出す技術が具体的に語られる．このような考えの根本には，時間は有限であるという彼自身の強い考えがあり，多読・速読を勧める上での佐藤氏ならではの理由付けがある．本書の技法に倣って文章を抜き出せば，</p>
-
-<blockquote><p>「読書は有限であり希少財である」という大原則を忘れてはいけない．速読はあくまで熟読する本を精査するための手段にすぎず，熟読できる本の数が限られるからこそ必要となるものだ．速読が熟読よりも効果を上げることは絶対にない．</p>
-
-<p><a href="http://www.amazon.co.jp/gp/product/4492044698/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4492044698&linkCode=as2&tag=yagays-22">読書の技法 誰でも本物の知識が身につく熟読術・速読術「超」入門</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4492044698" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> (p.88)</p></blockquote>
-
-<p>と，速読をただ単に早く本を読む技術と見なしているわけではないことがわかる．本書の帯には「月平均300冊，多い月は500冊以上」と多読を煽る謳い文句が並んでいるが，中をしっかりと読めばそれが安易な多読を推奨しているわけではないことが理解できるだろう．こういった点においては，読書ありきで自然と知識が身につくという陳腐な読書論と比較して，本書の主張や読書手法は非常に合理的であり，ある程度の訓練を必要としながらも実用的である．</p>
-
-<p>佐藤氏の元外務省主任分析官という経歴や神学部出身という学歴から分かる通り，主に思想や歴史の分野に関わる話が多い．科学や理学系に関しては，数学の勉強法で「テクネー」と呼ばれる繰り返しによる理解の重要性に触れている等ある程度の言及はあるものの，少し物足りなさは感じる．しかし，だからといって彼の技法が理学系に通用しないというわけではなく，全体を通して読書法や勉強法は首尾一貫しており応用が効くようなものだ．また，漫画や小説の読み方もそれぞれ読み方があり，漫画のデフォルメされた主張を鵜呑みにし過ぎないことや小説から何を汲み取るべきかなど，学問以外の読書に関しても言及があるのが本書の良いところだ．読書技法の基本から応用まで幅広く網羅した，誰でも読める幅広い年齢層向けの本として，かなり良くまとまっていてクオリティが高い1冊だと思う．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/37/">&larr; Older</a></li>
@@ -753,6 +757,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/08/15/ipython-notebook-matplotlib-inline/">&#8220;ipython notebook &#8211;pylab inline&#8221;は使うのを止めようという話</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/23/homebrew-science-bioinformatics/">Homebrew/scienceでバイオインフォマティクスのソフトウェアを入れる</a>
       </li>
     
@@ -788,10 +796,6 @@
         <a href="/blog/2014/06/08/review-im-sorry-i-broke-your-company/">「申し訳ない、御社をつぶしたのは私です。」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/05/29/review-resilience/">「「レジリエンス」の鍛え方」読了</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -812,7 +816,7 @@
 <li class='category'><a href='/blog/categories/prml/'>PRML (5)</a></li>
 <li class='category'><a href='/blog/categories/perl/'>Perl (1)</a></li>
 <li class='category'><a href='/blog/categories/presentation/'>Presentation (1)</a></li>
-<li class='category'><a href='/blog/categories/python/'>Python (5)</a></li>
+<li class='category'><a href='/blog/categories/python/'>Python (6)</a></li>
 <li class='category'><a href='/blog/categories/rna-seq/'>RNA-Seq (5)</a></li>
 <li class='category'><a href='/blog/categories/reading/'>Reading (21)</a></li>
 <li class='category'><a href='/blog/categories/soapdenovo2/'>SOAPdenovo2 (3)</a></li>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-07-23T01:54:23+09:00</updated>
+  <updated>2014-08-15T11:01:29+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,127 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA["ipython notebook --pylab inline"は使うのを止めようという話]]></title>
+    <link href="http://yagays.github.io/blog/2014/08/15/ipython-notebook-matplotlib-inline/"/>
+    <updated>2014-08-15T09:48:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/08/15/ipython-notebook-matplotlib-inline</id>
+    <content type="html"><![CDATA[<h3>TL;DR</h3>
+
+<p><strong>ipython notebook --pylab inlineのかわりにipython notebook --matplotlib inline使おう．もしくはipythonの始めに%matplotlib inlineを実行しておく．</strong></p>
+
+<h3>iPython Notebookについて</h3>
+
+<p>周知の事実だとは思うが，<a href="http://ipython.org/index.html">iPython</a>は超便利なPythonのインタラクティブシェルだ．その一部として<a href="http://ipython.org/notebook.html">iPython Notebook</a>というのがあり，ブラウザでコードを実行できたり，実行結果をノートとして保存したり，matplotlibなどで描写したグラフをノートの中にそのまま表示したりできる．RでいうところのRstudio+knitrのような，解析レポートを作るときには重宝するツールとなっている．</p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/142306/b/ipythonnotebook.png" alt="http://nbviewer.ipython.org/gist/twiecki/3962843より" /></p>
+
+<p>(<a href="http://nbviewer.ipython.org/gist/twiecki/3962843">http://nbviewer.ipython.org/gist/twiecki/3962843</a>より)</p>
+
+<p>で，iPython Notebookに関する記事を見ていると，だいたい以下のようなコマンドで実行している．</p>
+
+<p><code>sh
+$ ipython notebook --pylab inline
+</code></p>
+
+<p>ipython notebookで起動，それにくわえて--pylab inlineとすることでiPython Notebook内で描写したグラフが展開できて嬉しいわけだけど，一つ問題がある．それはpylabをインポートしている点だ．</p>
+
+<h3>無意識にpylab使うとなにが危ないか</h3>
+
+<p>pylab自体は色々と便利なパッケージなんだけれども，そのpylabの挙動に少し問題がある．上で示したようなコマンドでpylabフラグを付けて実行すると，実は裏ではnumpyのモジュールがnpのエイリアスとともに，トップレベルでもインポートされている．実際にコマンドを叩いて確かめてみると以下のようになる．</p>
+
+<p>```
+$ ipython --pylab</p>
+
+<p>In [1]: np.arange(0,10)
+Out[1]: array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</p>
+
+<p>In [2]: arange(0,10)
+Out[2]: array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+```</p>
+
+<p>どっちも実行できていて何の変哲もないように見えるんだけど，よくNumpyの実行環境で見るimport numpy as npの場合だと，1行目の書き方では実行できるが，2行目の書き方では実行できない．それが，pylabをインポートしているとどちらもできてしまう，正確に言えば，Numpyの関数がモジュール名もしくはエイリアスを使わないでも実行できてしまう．</p>
+
+<p>ではこれの何が問題かというと，関数の名前がかぶるというわけだ．たとえば組み込み関数のsum()やall()は，実はNumpyにも同様の名前の関数がある．なのでpylabをインポートすると，勝手にsumやallがNumpyのモジュールのものに置き換わってしまう．</p>
+
+<p>```</p>
+
+<h1>pylabをインポートしない場合</h1>
+
+<p>$ ipython</p>
+
+<p>In [1]: sum,all
+Out[1]: (<function sum>, <function all>)</p>
+
+<h1>pylabをインポートした場合</h1>
+
+<p>$ ipython --pylab</p>
+
+<p>In [1]: sum,all
+Out[1]: (<function numpy.core.fromnumeric.sum>, <function numpy.core.fromnumeric.all>)
+```</p>
+
+<p>意識的にpylabを使おうと思って書くコードなら良いんだけど，もしpylab関係なくいつもiPython Notebook使ってるからという感覚でpythonのコードを書いたとして，あとで普通のpythonで実行したら動かない，なんてことが起こりかねない．まあ気をつければ済む話かもしれないが，こういう地雷は踏まないに限る．．</p>
+
+<h3>公式にも--pylabは使えなくなる見込み</h3>
+
+<p>あと，--pylabを使ってiPython Notebookを起動すると以下のような警告文が出る．</p>
+
+<p>```
+$ ipython notebook --pylab inline</p>
+
+<p>[...]</p>
+
+<p>[NotebookApp] WARNING | Starting all kernels in pylab mode is not recommended,</p>
+
+<pre><code>and will be disabled in a future release.
+Please use the %matplotlib magic to enable matplotlib instead.
+pylab implies many imports, which can have confu
+</code></pre>
+
+<p>```</p>
+
+<p>ということで，iPython Notebookを使うときには--pylabで読み込みをしないほうが良い．</p>
+
+<h3>pylabを使わないでinline表示させるには</h3>
+
+<p>--pylab inlineを回避する方法は2つある．</p>
+
+<ul>
+<li>ipython notebook --matplotlib inlineで起動する</li>
+<li>%matplotlib inlineをiPython Notebookの冒頭で実行しておく</li>
+</ul>
+
+
+<p>こうすることによって，pylabのインポートを回避しつつiPythonのノート内でグラフを描写することができる．1つ目のiPythonのフラグで指定するほうが簡単だとは思うのだが，ぐぐってもこのコマンドで実行している例があまり出てこないのだけれども，たぶん問題無いと思う．</p>
+
+<h3>注意</h3>
+
+<p>ここまで読んだならわかるとは思うけれども，pylabの行儀悪いNumpyインポートを避けようということをしたわけだから，当然Numpyは別でインポートしないといけないし，ウェブページに載っているiPython Notebookの実行例とかに書いてあるNumpyの関数にはモジュール名かnpを付ける必要がある．今回の方法を使っているなら，そのあたりは適宜読み替える必要がある．あんまり見たこと無い関数があったら，それがPythonの組み込み関数なのかNumpyやpylabの関数なのか疑ってかかろう．なんかコードのサンプルをコピペしたけど動かないというときは，まあ大抵この問題だ．</p>
+
+<h3>元ネタ</h3>
+
+<ul>
+<li><a href="http://carreau.github.io/posts/10-No-PyLab-Thanks.ipynb.html">No Pylab Thanks | Random Thoughts</a></li>
+</ul>
+
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://docs.python.jp/2/tutorial/modules.html">6. モジュール — Python 2.7ja1 documentation</a></li>
+<li><a href="http://hennohito.cocolog-nifty.com/blog/2014/07/pythonpylab-21a.html">今から始めるPython　その４　pylabネームスペースの解説: YATTSUKE BLOG</a></li>
+<li>http://nbviewer.ipython.org/github/ipython/ipython/blob/1.x/examples/notebooks/Part%203%20-%20Plotting%20with%20Matplotlib.ipynb
+
+<ul>
+<li>%matplotlib inlineを使っている例</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Pythonで遺伝的アルゴリズムを動かすPyevolveを試してみた]]></title>
@@ -487,117 +608,6 @@ Seq('YES', ExtendedIUPACProtein())
 <ul>
 <li><a href="http://biopython.org/DIST/docs/tutorial/Tutorial.html">Biopython Tutorial and Cookbook</a></li>
 <li><a href="http://yagays.github.io/blog/2013/04/20/install-biopython/">Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする - Wolfeyes Bioinformatics beta</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mac OS Xで手っ取り早くBiopythonをインストールして使えるようにする]]></title>
-    <link href="http://yagays.github.io/blog/2013/04/20/install-biopython/"/>
-    <updated>2013-04-20T15:09:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/04/20/install-biopython</id>
-    <content type="html"><![CDATA[<p>新しい環境でBiopythonをセットアップしたので，そのときのメモ．Pythonのバージョン/パッケージ管理はvirtualenvやらvirtualenvwrapperやらpipやらsetuptoolsやらで発狂する可能性が高いので，手っ取り早く使いたい人は以下のおまじないだけ実行して使えるようにしておくと良さそう．sudoする必要もないし知らないディレクトリを汚すこともないので，非常に簡単にインストールできる．以下のリンク先にしたがって，ポチポチと5行程度のコマンドを実行すれば完了．</p>
-
-<ul>
-<li><a href="http://biopython.org/wiki/Talk:Download">Talk:Download - Biopython</a></li>
-</ul>
-
-
-<p>ディレクトリ作成も含めて，ちょっと改変したものが以下の7行．</p>
-
-<p><code>bash
-$ mkdir biopython
-$ cd biopython
-$ wget --no-check-certificate https://raw.github.com/pypa/virtualenv/master/virtualenv.py
-$ python virtualenv.py .
-$ source bin/activate
-$ pip install numpy
-$ pip install Biopython
-</code></p>
-
-<p>環境によってはnumpyやBiopythonのインストールがコケるかもしれないので，インストールの最後に「Successfully installed numpy/Biopython」が表示されることを確認したほうが良いだろう．</p>
-
-<p>```bash
-$ pip install numpy
-Downloading/unpacking numpy
-  Downloading numpy-1.7.1.zip (3.1MB): 3.1MB downloaded
-  Running setup.py egg_info for package numpy</p>
-
-<pre><code>Running from numpy source directory.
-</code></pre>
-
-<p><del>(略)</del></p>
-
-<p>Successfully installed numpy
-Cleaning up...
-$
-```</p>
-
-<p>最後に，きちんとBiopythonが使えるようになっているか確認する．</p>
-
-<p>```python
-$ python
-Python 2.7.2 (default, Oct 11 2012, 20:14:37)
-[GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.</p>
-
-<blockquote><blockquote><blockquote><p>from Bio.Seq import Seq
-Seq("ATGC").complement()
-Seq('TACG', Alphabet())</p>
-
-<p>```</p></blockquote></blockquote></blockquote>
-
-<p>なお，一度シェルを閉じるとPythonまわりの読み込みは消えてしまうので，その時は再度インストールしたディレクトリで<code>source bin/activate</code>を実行する必要がある．</p>
-
-<h4>実行環境</h4>
-
-<ul>
-<li>Mac OS X 10.8.3</li>
-<li>Python 2.7.2</li>
-</ul>
-
-
-<h4>追記：pipがデフォルトで入っていない場合</h4>
-
-<p>もしpipが入っていない場合は，以下のようにvirtualenvで作った環境でpipを入れる必要がある（もしくはsudo easy_installでpipを入れる）．</p>
-
-<p>```bash</p>
-
-<h1>source bin/activateした後に</h1>
-
-<p>$ wget --no-check-certificate https://pypi.python.org/packages/source/d/distribute/distribute-0.6.49.tar.gz
-$ tar zxvf distribute-0.6.49.tar.gz
-$ cd distribute-0.6.49
-$ python setup.py install
-$ /path/to/biopython/bin/easy_install pip
-```</p>
-
-<h3>追記2：wgetで落としたvirtualenvでCannot find sdist setuptools-*.tar.gzなどがでる場合</h3>
-
-<p>wgetで落としてきたvirtualenvでこういうエラーがでる時がある．</p>
-
-<p><code>
-Cannot find sdist setuptools-*.tar.gz
-Cannot find sdist pip-*.tar.gz
-</code></p>
-
-<p>sudoでvirtualenvを入れて，普通にvirtualenvを使うと上手くいくかもしれない．どういう環境でこうなるのかは不明だが，ちょっとこの辺りは怪しい．</p>
-
-<p><code>
-$ sudo easy_install virtualenv
-$ virtualenv biopython
-$ cd biopyton
-$ source bin/activate
-$ pip install numpy
-$ pip install Biopython
-</code></p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://biopython.org/DIST/docs/tutorial/Tutorial.html">Biopython Tutorial and Cookbook</a></li>
-<li><a href="http://biopython.org/wiki/Talk:Download">Talk:Download - Biopython</a></li>
 </ul>
 
 ]]></content>
