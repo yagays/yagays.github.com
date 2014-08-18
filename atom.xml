@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-08-18T21:15:32+09:00</updated>
+  <updated>2014-08-18T21:20:30+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -29,14 +29,33 @@
 </ul>
 
 
-<p>kimonoはWebから簡単にクローラーを作成してAPIやJSON形式で取得できるようにするようなアプリケーションで，Chrome Extensionを使うことでインタラクティブにクロールする内容を選択することができる．今回は，<a href="http://www.kaggle.com/users/">Kaggle Rankings</a>のランキング500ページ分をクロールして，20000人分のユーザの情報（名前，ランク，ポイント，ロケーション）を取得した．今回クロールした結果は，以下のkimonoのウェブページから誰でも利用できる．ただしrankとptsが一緒になってたりとちょっと汚いので注意．</p>
+<p>kimonoはWebから簡単にクローラーを作成してAPIやJSON形式で取得できるようにするようなアプリケーションで，Chrome Extensionを使うことでインタラクティブにクロールする内容を選択することができる．今回は，<a href="http://www.kaggle.com/users/">Kaggle Rankings</a>のランキング500ページ分をクロールして，20000人分のユーザの情報（名前，ランク，ポイント，ロケーション）を取得した．今回クロールした結果は，以下のkimonoのウェブページから誰でも利用できるはず(アカウント持ってないと見れないかな)．ただしrankとptsが一緒になってたりとちょっと汚いので注意．</p>
 
 <ul>
 <li><a href="https://www.kimonolabs.com/apis/dyo7tdm8">https://www.kimonolabs.com/apis/dyo7tdm8</a></li>
 </ul>
 
 
-<p>あと，どれくらい簡単にできるかをgif動画にしてみた．最初は色々戸惑った部分もあったけれど，慣れてしまえば本当に簡単に扱える．以下の場合だと，ユーザ情報がページあたり50人分あるので，ある部分を選択したあとに他の部分も同様に取得するようにチェックを付けるのが重要．あと，paginationはいわゆる「次」にあたる部分を選択する．本当は選択した部分に対して正規表現を掛けてテキスト処理をかけることもできるのだけれども，今回は行っていない．</p>
+<p>例えば，curlとPythonだと以下のようになる</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ curl --include --request GET "https://www.kimonolabs.com/api/dyo7tdm8?apikey=7ZTTugRoP8xgIlOdAdyiHmwP4rFLviDO"</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">json</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">urllib</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">results</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&quot;https://www.kimonolabs.com/api/dyo7tdm8?apikey=7ZTTugRoP8xgIlOdAdyiHmwP4rFLviDO&quot;</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ちなみに，どれくらい簡単にできるかをgif動画にしてみた．最初は色々戸惑った部分もあったけれど，慣れてしまえば本当に簡単に扱える．以下の場合だと，ユーザ情報がページあたり50人分あるので，ある部分を選択したあとに他の部分も同様に取得するようにチェックを付けるのが重要．あと，paginationはいわゆる「次」にあたる部分を選択する．本当は選択した部分に対して正規表現を掛けてテキスト処理をかけることもできるのだけれども，今回は行っていない．</p>
 
 <p><img src="http://dl.dropboxusercontent.com/u/142306/b/kimono.gif" alt="" /></p>
 
