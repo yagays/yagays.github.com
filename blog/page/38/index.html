@@ -117,6 +117,57 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/09/29/sphinx-dropbox-bookshelf/">Dropbox+Sphinxで自分専用の電子書籍リストを作ってみた</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-29T14:05:00+09:00" pubdate data-updated="true">Sep 29<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="http://dl.dropbox.com/u/142306/b/bookshelf.png" align="right" hspace="10px"></p>
+
+<h3>きっかけ</h3>
+
+<p>本を裁断してpdfにする自炊というものをやり始めて1年以上が経ち，自炊したpdfも350冊・35GBを超えてしまった．手持ちのiPadには全部の書籍が入りきらなくなってしまい，終いには自炊した本のことを忘れて中古で買い直す始末．そんなこんなで，自炊した書籍のpdfをまとめる本棚みたいなものが欲しくなってきた．手の込んだものはいらないので，表紙をざっと眺めたり，タイトルと著者を検索できる程度のもので簡単に済ませたい．</p>
+
+<p>というわけで，<strong>Sphinxで静的htmlを吐き出してDropboxのPublicフォルダで公開するようなシステム</strong>を簡単に組んでみた．SphinxはPythonで書かれたドキュメンテーションツールで，rst形式のテキストから静的なhtmlを出力できるほか，jsで簡易な検索もできる．バックグラウンドでスクリプトを動かしたりデータベースを置いておく必要がないので，DropboxのPublicフォルダみたいな場所でも公開できる便利さがある．今回はそれをメインにして，付加情報として書籍ファイルのISBNを使ってAmazonのProduct Advertising APIを叩いてメタ情報を入手し，書籍カバーの画像と一緒に表示させるようなSphinxのrstファイルを作成するという目論見．今回やってみた限りだとDropbox+Sphinxは連携が案外簡単だったので，この他にも個人的なメモなどの用途にも最適だと思う．</p>
+
+<p>なお，今回のウェブページはリンクを一般に公開しておらず，また書籍pdfはダウンロードできる状態にはしていない．書籍の電子化に関しては色々難しいところがあるのでスクリプトの公開などは控えるようにする．</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/09/29/sphinx-dropbox-bookshelf/">続きを読む &rarr;</a>
+    </footer>
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/09/25/review-critical-speaking/">「外国語を身につけるための日本語レッスン」読了</a></h1>
     
     
@@ -318,57 +369,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/09/19/review-chance-and-necessity/">「偶然と必然―現代生物学の思想的な問いかけ」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-19T21:28:00+09:00" pubdate data-updated="true">Sep 19<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4622004283" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>本書「偶然と必然」は副題にある通り，進化学や遺伝学など19世紀後半から20世紀半ばにかけて発展した現代生物学という新しい考え方を通して，科学の探求における思想・哲学的な問題に対して指針を示すような内容となっている．著者はノーベル生理学医学賞を受賞したJacques Lucien Monodで，1969年の講演をもとに書かれている．翻訳書は1972年に初版が出版されているので，かれこれ40年も前の本になる．</p>
-
-<p>本書ではまず自然物と人工物の違いなどから生物の特性として合目的性・自律的形態発生・複製の不変性が示される．その過程には「客観性」が重要なキーワードとして登場し，自然の持つ客観性，客観性の前提の元での科学批判の重要性，そして科学そのものが客観性を前提としていることが語られ，自然物と人工物(生物)の矛盾が提起される．そして実際に生物の持つ複雑な機能や役割を，生化学や遺伝学，そして進化学的な視点で解釈していく．そして最後には進化や人間の思考を総括し，人間の知識や倫理問題，第二の進化といった思想的な持論へと発展していく．</p>
-
-<p>とまあ解ったような振りをして纏めてみたものの，実際は殆ど理解していないと思う．全体を通して過去の西洋哲学や各種思想などと織り交ぜて語られるため，概要がつかみにくい部分があってなかなか苦労した．まあこれは私の不勉強からくるものだから仕方がない．昔の名著と呼ばれる本を読むときには必ずといっていいほど起こる現象なのだが，語られる内容や表現の古さからくる難解さと自分の理解の無さが交じり合って非常に不明瞭なまま読み進めなければいけない辺り，内容をただ追うことに専念できる普段の読書とは違ってなかなか辛いものがある．</p>
-
-<p>本書の場合，生命観などの思想に関しては今でも色褪せないような内容だと思われるが，生物学に限って言えば，生物の定義や生命機能の理解のような諸問題に関しては今の主流の考え方とさほど変わらない．生物分野の古典の名著といえば「<a href="http://www.amazon.co.jp/gp/product/4003394615/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4003394615&linkCode=as2&tag=yagays-22">生命とは何か―物理的にみた生細胞 (岩波文庫)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4003394615" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」あたりは上手く物理と融合した内容で改めて今読み直しても結構面白いのだが，本書に限ってはやはり生物学より自然哲学の傾向が強いので，そのあたり読む人を選ぶ本かもしれない．</p>
-
-<p>(追記 2012/09/20)</p>
-
-<p>「<a href="http://www.amazon.co.jp/gp/product/4130633333/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4130633333&linkCode=as2&tag=yagays-22">40年後の『偶然と必然』: モノーが描いた生命・進化・人類の未来</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4130633333" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」という本が最近出版されたらしく，書店で立ち読みした限りだとなかなかおもしろそうなので今度読んでみたい．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/39/">&larr; Older</a></li>
@@ -416,6 +416,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/08/18/kaggle-users-japan/">kimonoでKaggleユーザのクロールをしてみた</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/08/16/review-bad-data-handbook/">「バッドデータハンドブック ―データにまつわる問題への19の処方箋」読了</a>
       </li>
     
@@ -449,10 +453,6 @@
     
       <li class="post">
         <a href="/blog/2014/06/15/review-the-power-of-less/">「減らす技術」読了</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/06/14/review-all-you-need-is-kill/">「All You Need Is Kill」読了</a>
       </li>
     
   </ul>

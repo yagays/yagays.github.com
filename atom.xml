@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-08-16T17:16:41+09:00</updated>
+  <updated>2014-08-18T21:15:32+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,50 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[kimonoでKaggleユーザのクロールをしてみた]]></title>
+    <link href="http://yagays.github.io/blog/2014/08/18/kaggle-users-japan/"/>
+    <updated>2014-08-18T20:37:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/08/18/kaggle-users-japan</id>
+    <content type="html"><![CDATA[<p>ふとKaggleに参加している日本人がどれくらいいるのかが気になったので，簡単にクローラーを作って調べてみた．</p>
+
+<h3>Kimonoを使ったクロール</h3>
+
+<p>手動でクローラーを書いてもいいのだけれども，今回は<a href="https://www.kimonolabs.com/">kimono</a>というクローラを使ってみた．</p>
+
+<ul>
+<li>参考：<a href="http://blog.takuros.net/entry/2014/08/13/212838">プログラミング・レスで5分でサックリWebスクレイピング「kimonolabs」 - プログラマになりたい</a></li>
+</ul>
+
+
+<p>kimonoはWebから簡単にクローラーを作成してAPIやJSON形式で取得できるようにするようなアプリケーションで，Chrome Extensionを使うことでインタラクティブにクロールする内容を選択することができる．今回は，<a href="http://www.kaggle.com/users/">Kaggle Rankings</a>のランキング500ページ分をクロールして，20000人分のユーザの情報（名前，ランク，ポイント，ロケーション）を取得した．今回クロールした結果は，以下のkimonoのウェブページから誰でも利用できる．ただしrankとptsが一緒になってたりとちょっと汚いので注意．</p>
+
+<ul>
+<li><a href="https://www.kimonolabs.com/apis/dyo7tdm8">https://www.kimonolabs.com/apis/dyo7tdm8</a></li>
+</ul>
+
+
+<p>あと，どれくらい簡単にできるかをgif動画にしてみた．最初は色々戸惑った部分もあったけれど，慣れてしまえば本当に簡単に扱える．以下の場合だと，ユーザ情報がページあたり50人分あるので，ある部分を選択したあとに他の部分も同様に取得するようにチェックを付けるのが重要．あと，paginationはいわゆる「次」にあたる部分を選択する．本当は選択した部分に対して正規表現を掛けてテキスト処理をかけることもできるのだけれども，今回は行っていない．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/kimono.gif" alt="" /></p>
+
+<h3>後処理</h3>
+
+<p>クロール自体はkimonoに任せることができたので，ここからはpythonスクリプトをちゃちゃっと書いて整形作業．クロールしたデータはJSON形式やcsv形式でダウンロードすることもできるが，今回はAPIから叩いてみる．kimonoの&#8221;Use in code&#8221;というタブに，CurlやjQuery，Node，PHP，Python，Rubyでそれぞれ書かれたスクリプトがあるので，それを使ってデータを取得する．</p>
+
+<p>今回は日本人のアカウント一覧が欲しいので，&#8221;Country of residence&#8221;にJapanと書かれていてかつポイントを持っているアカウント一覧を出力した．なお，ユーザプロフィールの記入は基本任意なので，<strong>プロフィールで&#8221;Country of residence&#8221;を編集していない日本人は対象外になっている</strong>．</p>
+
+<h3>リスト(2014/08/18現在)</h3>
+
+<p>ユーザページに飛べるように一応HTMLにした．気が向いたら定期的にアップデートするようにして，もっときちんと体裁整えるかも．こういった公開も含めてkimono側で簡単なインターフェイスがあると楽なんだけどなーと思った．</p>
+
+<ul>
+<li><a href="https://dl.dropboxusercontent.com/u/142306/kaggle_jpn.html">https://dl.dropboxusercontent.com/u/142306/kaggle_jpn.html</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「バッドデータハンドブック ―データにまつわる問題への19の処方箋」読了]]></title>
@@ -734,74 +778,6 @@
 <p>まず全体の雰囲気としては，ちょっと前によく聞いたようなトピックが大半を占める．言ってしまえば勝間和代以降の人々が提唱するようなスキルや生き方で，その界隈を追っていた人間からすると目新しさをあまり感じないだろう．実際に本書最初のロジカルシンキングで紹介されているのはまさに勝間和代が最初期に紹介していた本なので，何とも言えない懐かしさを感じさせる．</p>
 
 <p>選書は自分が口出しする部分ではないのでいいとして，なぜその本を選んだのかといった書評の部分が本書は薄い．こういう技術や知識が必要だからこの本はオススメですといういわゆるキュレーションを軸にしているにも関わらず，それを読むべき理由付けとしての書評が機能していないというか，こういうことが書いてあるから読むべきくらいにしかなってない．紹介するアイデア自体が，誰も聞いたことのないような奇抜で斬新で面白そうなものであればそれで良いが，本書はそうじゃない．例えばロジカルシンキングが大事というときに，ロジカルシンキングの本を持ってきてこれ名著だからオススメですと言われるのは，それじゃあ本屋のポップ（紹介文）と変わらないんじゃない？と思ってしまう．その本がどう重要なのか，なぜ基本書として選ばれる名著なのか，類書と比べてどういう立ち位置の本なのかなど，色々な切り口がオススメの説得材料としてあるといいのだけれども……．中には「7つの習慣の続編だからって舐めてないで第3の案も面白いから読めよ」といった良さげな紹介も含まれているものの，全体的に本の羅列にしか感じられないのが残念だ．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[スヌーピー，ウォーホル，グルスキー，そして映画をめぐる美術]]></title>
-    <link href="http://yagays.github.io/blog/2014/05/03/art-and-museum-2014-first-half/"/>
-    <updated>2014-05-03T08:02:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2014/05/03/art-and-museum-2014-first-half</id>
-    <content type="html"><![CDATA[<p>最近(といっても去年末から今に至るまで)行った4つの美術展．</p>
-
-<br/>
-
-
-<h4>スヌーピー展＠森アーツセンターギャラリー</h4>
-
-<p><a href="http://www.roppongihills.com/events/2013/10/macg_snoopy-exhibition/">スヌーピー展 しあわせは、きみをもっと知ること。 | 六本木ヒルズ - Roppongi Hills</a></p>
-
-<p>スヌーピーがベトナム戦争っぽい雰囲気のなか機関銃撃ちながら親に向けた手紙っぽい筆跡で考え事してる絵がとても印象的だったんだけど，ぐぐっても出てこない．</p>
-
-<h4>アンディ・ウォーホル展＠森美術館</h4>
-
-<p><a href="http://www.mori.art.museum/contents/andy_warhol/">アンディ・ウォーホル展：永遠の15分 | 森美術館</a></p>
-
-<p>20世紀の革命はやっぱりサンプリングなんだということを改めて実感した．</p>
-
-<h4>アンドレアス・グルスキー展＠国立国際美術館(大阪)</h4>
-
-<p><a href="http://gursky.jp/">ANDREAS GURSKY ｜ アンドレアス・グルスキー展 ｜ 東京展 : 2013.07.03-09.16 / 国立新美術館 ｜ 大阪展 : 2014.02.01-05.11 / 国立国際美術館</a></p>
-
-<blockquote class="twitter-tweet" lang="en"><p>そういえば今日駆け込みでアンドレアス・グルスキー展に行ってきたのだけれども，そもそも写真がデカイってだけで楽しいし，被写体の幾何学的な美しさとかスケールの大きさにただただ圧倒されるばかりだった．写真展は初めてだったけど非常に刺激を受けたし，写真撮りたくなった</p>&mdash; やぐ (@yag_ays) <a href="https://twitter.com/yag_ays/statuses/458970382234443776">April 23, 2014</a></blockquote>
-
-
-<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-
-
-<blockquote class="twitter-tweet" lang="en"><p>グルスキーのカミオカンデの写真とか画像処理で付け加えているところもあるっぽいので，必ずしも一発撮りという感じでは無いっぽいし，それも含めて面白いなーと思う．事実は小説より奇なりとは言うけれども，肉眼と写真の関係はどっちが奇になるのかなーとか考えると，境界こそ面白いのかもしれないし</p>&mdash; やぐ (@yag_ays) <a href="https://twitter.com/yag_ays/statuses/458974315308785664">April 23, 2014</a></blockquote>
-
-
-<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-
-
-<blockquote class="twitter-tweet" lang="en"><p>チャオプラヤ川は僕には抽象度が高すぎて，空港とか100円ショップとか具体的な方がお手軽に消費できました</p>&mdash; やぐ (@yag_ays) <a href="https://twitter.com/yag_ays/statuses/458977055376281600">April 23, 2014</a></blockquote>
-
-
-<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-
-
-<blockquote class="twitter-tweet" lang="en"><p>今回の経験によって「これグルスキーっぽい」という詠唱魔法が使えるようになったので，所々で使っていきたい</p>&mdash; やぐ (@yag_ays) <a href="https://twitter.com/yag_ays/statuses/458977624656601089">April 23, 2014</a></blockquote>
-
-
-<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-<h4>映画をめぐる美術＠東京国立近代美術館</h4>
-
-<p><a href="http://www.momat.go.jp/Honkan/readingcinema/index.html">展覧会情報映画をめぐる美術 ――マルセル・ブロータースから始める</a></p>
-
-<blockquote class="twitter-tweet" lang="en"><p>東京国立近代美術館の「映画をめぐる美術」，狼たちの午後のモデルになった実行犯が実際に犯行を振り返った短編ドキュメンタリーがすごい良かった．ある意味で今実際に上映されている「アクト・オブ・キリング」的な感じ</p>&mdash; やぐ (@yag_ays) <a href="https://twitter.com/yag_ays/statuses/462119662243696640">May 2, 2014</a></blockquote>
-
-
-<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
 ]]></content>
   </entry>
   

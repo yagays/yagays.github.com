@@ -117,6 +117,75 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/05/15/n50-ng50/">アセンブルの指標であるN50とNG50の違い</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-15T09:42:00+09:00" pubdate data-updated="true">May 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>今回は配列をアセンブルするときの指標に使うN50とNG50について少しまとめてみようと思う．</p>
+
+<h3>前置き</h3>
+
+<p>アセンブリというのはシーケンサで得られる短い配列から元のゲノム配列を復元する作業のことで，例えるならば膨大な数のジグソーパズルを形を頼りに完成させるとか，シュレッダーに掛けられて短冊になった書類を元に戻す作業といえる．これだけ聞くと頑張ればできそうな気がするが，実際には使える情報はATGCの配列だけと非常に限られており，場所によっては同じ文字が延々と続く箇所があったり，時々文字が間違っていたりと，手作業では不可能に近いし何より計算機を使ったとしても非常に難しい．それに加えて，そもそも元あった状態である解答を誰も知らないので，結果が合っているかどうかも分からず，答え合わせ（評価）がしづらいということがある．</p>
+
+<p>このアセンブリの評価に関しては，Assemblathonというゲノムアセンブラの精度を争うコンペティションで活発に議論されている．というのも，各研究室で開発されたアセンブラの性能に順位を付けるためという以前に，未知のゲノムに対して今までに誰もアセンブル結果の配列だけで評価してこなかったからだ．もう少し正確に言えば，今までのモデル生物のゲノム配列解読は，過去に実験で確かめられてきた膨大な知見のもとで大量の人材と資金を投入して一歩ずつ進められてきた研究であり，現在のスタイルであるNGSを使った非モデル生物のゲノム配列解読のアプローチとはほとんど別物だと言っても過言ではない．そういった経緯があり，現在のAssemblathonではこれからのゲノム配列解読の基準となるような評価手法について，コンペティションを通して試行錯誤が繰り返されている（この話題に関しては<a href="http://www.slideshare.net/kbradnam/assemblathon-2-talk">Assemblathon2のスライド</a>が詳しい）．</p>
+
+<p>ちなみに，Assemblathonは現在，擬似データでアセンブルを競った第1回は終了し論文も出ており，実際の生物データを使った第2回が終了して論文が出るのを待つだけで（<a href="http://arxiv.org/abs/1301.5406">既にArXivに上がっている</a>），第3回も企画されている．</p>
+
+<p>というわけで，ゲノムを読むといっても今までのようにはいかないし，新しい評価も考えつつやっていかないとねという話．その中でスタンダードな評価指標が今回紹介するN50とNG50になる．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/n50.png" align="right"></p>
+
+<h3>N50</h3>
+
+<p>N50とは一言でいえば配列長の加重平均なのだが，それでは誰も理解してくれないのでもうちょっと噛み砕こう．簡単に言えば，配列を長い順に並べて上から順に足していった時に，全体の長さの半分に達した時の配列の長さ(単位はbp)のことをN50という．イメージだと右図のように，半分の面積になるときの配列の長さがN50となる．得られた配列の分布を見つつ中間くらいの長さを表しているので，長い配列が多いとN50は大きくなるし，逆に長い配列が少なく短い配列が大量にあるとN50は小さくなる．アセンブルの際には復元したいゲノムに少しでも近づけるよう長い配列がたくさん得られると嬉しいので，N50はアセンブルの結果の良し悪しを判断する指標となっている．</p>
+
+<h3>NG50</h3>
+
+<p>とは言うものの，長けりゃそれでいいのかという疑問から出てきたのがNG50という指標だ．アセンブルで得られた配列全体の長さの代わりに，推定されるゲノム配列の長さを使って配列長の平均を計算している．つまり，予想では100Mbpだと推定された生物のゲノムならば，配列を長い順に並べて上から順に足していって100Mbpに達したときの配列の長さをNG50としている．考え方としては，理想となるゲノム配列の長さに近づけるために，長い配列だけじゃなくてある程度短い配列も評価しようということだろう．また，アセンブラの性能を異なるゲノムサイズの生物間で比較する際にも，NG50を用いることで公平に判断することができる．ただし，ゲノムサイズに関しては実験的に求めるかK-merから推定する必要があるので，必ずしも正確かどうかは難しいところがある．</p>
+
+<h3>まとめ</h3>
+
+<p>以上で，ざっとN50とNG50についてまとめてみた．実はこの議論にも続きがあって，NG50だけでは不十分でNG1からNG99までを検討しないといけないという話もある．今回はそこまでは踏み込まないが，気になる人はAssemblathon2の評価手法に関するページを見ていただきたい（<a href="http://assemblathon.org/post/44431933387/assemblathon-2-basic-assembly-metrics">The Assemblathon • Assemblathon 2 basic assembly metrics</a>）．結論としては一概にどの指標がいいかを決めるのは非常に難しいということで，色々と試してみる必要がある．</p>
+
+<h3>参考</h3>
+
+<ul>
+<li>(pdf) <a href="http://korflab.ucdavis.edu/datasets/Assemblathon/Assemblathon1/assemblathon_talk.pdf">http://korflab.ucdavis.edu/datasets/Assemblathon/Assemblathon1/assemblathon_talk.pdf</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/05/14/trinity-install/">Trinityのインストールとサンプルデータのアセンブル</a></h1>
     
     
@@ -484,61 +553,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/05/toothless-ears/">「ヒックとドラゴン」における耳を使った感情表現</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-05T23:35:00+09:00" pubdate data-updated="true">May 5<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>この「ヒックとドラゴン」を観たあとの多幸感たるや，人に話さずにはいられなかったほどだ．ひとしきり知り合いに薦めまくった後，その興奮冷めやらぬままにiTunesでサウンドトラックを購入し，Amazonで「<a href="http://www.amazon.co.jp/gp/product/1557048630/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=1557048630&linkCode=as2&tag=yagays-22">The Art of How to Train Your Dragon</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=1557048630" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」をポチってしまった．</p>
-
-<p>「ヒックとドラゴン」（原題:&#8221;How to Train Your Dragon&#8221;）は2010年に公開されたドリームワークス製作の3Dアニメーションだ．ストーリーや見どころなどの解説はWikipediaやAmazonを観ていただくとしてココでは割愛するが，個人的に感動した点を1つだけ書いておきたい．それはブルーレイの特典映像で語られているドラゴンのキャラデザインについてだ．主人公との友情を深めていく「トゥース（英語ではToothless）」と呼ばれるドラゴンは，他に登場するオリジナリティあふれるドラゴンとは違い，人間との交流で生ずる感情の機微を表現する必要があった．動きは哺乳類であるネコをモチーフにしていたり，肌は無機質な爬虫類の質感に加えて黒豹をイメージしたりしているのだが，表情を作る上で重要視したのがドラゴンの「耳」だという（正確には角という設定のようだが）．トゥースの頭についている耳を自在に動かし，喜びや興味を示す時には耳を立て，威嚇や不快感を示す際には耳を倒すという動作を付けることで，より感情を表現することができたのだという．それが一番如実に表れているのは，トゥースが地面に描いた絵をヒックが足で踏んだりして遊ぶシーンだ．表情が交互に示されるこの場面では，目の開き具合の他に，耳をひょこひょこさせる姿が印象的で，感情の変化がハッキリとわかるようになっている．この後に二人が初めて心を開くシーンがあるのだが，その展開を予感させるような印象深いシーンであり，耳の表現が非常に効果的に表れている．</p>
-
-<p>これと似た手法は，日本のアニメーションで言えば「アホ毛」だろうか．元々は画一的な髪型に変化を持たせるため付け加えられたであろうアホ毛に動きを付けることで，本人の感情の変化を表現することができたという意味で，非常に似通ったところがある気がした．最近では長いアホ毛で記号を描いたり文字を書いたりという直接的な表現もあるようだが，髪の毛のかすかな動きが感じさせる効果は侮れないものがある．髪と感情が連動しているなんて&#8230;と思う部分もあるけれども，アニメーションの作り込みに様々な制限があるなかで発明された表現なのだと考えると，なかなかに興味深い．こういった現実離れした表現方法が許される部分においても，アニメーションを見る楽しさがある．</p>
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0051DPN6M" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B00386EZJU" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=1557048630" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/21/">&larr; Older</a></li>
@@ -586,6 +600,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/08/18/kaggle-users-japan/">kimonoでKaggleユーザのクロールをしてみた</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/08/16/review-bad-data-handbook/">「バッドデータハンドブック ―データにまつわる問題への19の処方箋」読了</a>
       </li>
     
@@ -619,10 +637,6 @@
     
       <li class="post">
         <a href="/blog/2014/06/15/review-the-power-of-less/">「減らす技術」読了</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/06/14/review-all-you-need-is-kill/">「All You Need Is Kill」読了</a>
       </li>
     
   </ul>
