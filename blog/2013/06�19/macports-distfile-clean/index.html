@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>kimonoでKaggleユーザのクロールをしてみた - Wolfeyes Bioinformatics beta</title>
+  <title>MacPortsで使用していない過去のバージョンのパッケージを消す＆ちょっと可視化 - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.io/blog/2014/08/18/kaggle-users-japan">
+  <link rel="canonical" href="http://yagays.github.io/blog/2013/06/19/macports-distfile-clean">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -115,7 +115,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">kimonoでKaggleユーザのクロールをしてみた</h1>
+      <h1 class="entry-title">MacPortsで使用していない過去のバージョンのパッケージを消す＆ちょっと可視化</h1>
     
     
       <p class="meta">
@@ -131,64 +131,51 @@
   
 
 
-<time datetime="2014-08-18T20:37:00+09:00" pubdate data-updated="true">Aug 18<span>th</span>, 2014</time>
+<time datetime="2013-06-19T04:29:00+09:00" pubdate data-updated="true">Jun 19<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>ふとKaggleに参加している日本人がどれくらいいるのかが気になったので，簡単にクローラーを作って調べてみた．</p>
+<div class="entry-content"><p>MacBook Airの128GBしかない非力なSSDもそろそろ満杯になってきた．最近ではスワップが溜まっては再起動するということを繰り返していたので，色々と容量の食っているファイルをちまちま消していた．そういった地道な努力をしつつ無駄なキャッシュや不必要なファイルなどをちゃんと調べてみると，どうやらMacPortsが10GB近く占めていることがわかり，しかもバージョンアップによって使用されなくなったgccやllvm，boostなどの古いバージョンのせいだとわかったので，思い切って消してみることにした．</p>
 
-<h3>Kimonoを使ったクロール</h3>
+<h3>古いバージョンのパッケージを消す</h3>
 
-<p>手動でクローラーを書いてもいいのだけれども，今回は<a href="https://www.kimonolabs.com/">kimono</a>というクローラーを使ってみた．</p>
-
-<ul>
-<li>参考：<a href="http://blog.takuros.net/entry/2014/08/13/212838">プログラミング・レスで5分でサックリWebスクレイピング「kimonolabs」 - プログラマになりたい</a></li>
-</ul>
-
-
-<p>kimonoはWebから簡単にクローラーを作成してAPIやJSON形式で取得できるようにするようなアプリケーションで，Chrome Extensionを使うことでインタラクティブにクロールする内容を選択することができる．今回は，<a href="http://www.kaggle.com/users/">Kaggle Rankings</a>のランキング500ページ分をクロールして，20000人分のユーザの情報（名前，ランク，ポイント，ロケーション）を取得した．今回クロールした結果は，以下のkimonoのウェブページから誰でも利用できるはず(アカウント持ってないと見れないかな)．ただしrankとptsが一緒になってたりとちょっと汚いので注意．</p>
-
-<ul>
-<li><a href="https://www.kimonolabs.com/apis/dyo7tdm8">https://www.kimonolabs.com/apis/dyo7tdm8</a></li>
-</ul>
-
-
-<p>ちなみに，どれくらい簡単にできるかをgif動画にしてみた．最初は色々戸惑った部分もあったけれど，慣れてしまえば本当に簡単に扱える．以下の場合だと，ユーザ情報がページあたり50人分あるので，ある部分を選択したあとに他の部分も同様に取得するようにチェックを付けるのが重要．あと，paginationはいわゆる「次」にあたる部分を選択する．本当は選択した部分に対して正規表現を掛けてテキスト処理をかけることもできるのだけれども，今回は行っていない．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/kimono.gif" alt="" /></p>
-
-<h3>後処理</h3>
-
-<p>クロール自体はkimonoに任せることができたので，ここからはpythonスクリプトをちゃちゃっと書いて整形作業．クロールしたデータはJSON形式やcsv形式でダウンロードすることもできるが，今回はAPIから叩いてみる．kimonoの&#8221;Use in code&#8221;というタブに，CurlやjQuery，Node，PHP，Python，Rubyでそれぞれ書かれたスクリプトがあるので，それを使ってデータを取得する．例えば，curlとPythonだと以下のようになる</p>
+<p>MacPortsでは，バージョンが上がってアップデートする際に，インストールされているバージョンのパッケージをInactiveとし最新バージョンをActiveにするという方法で，過去のバージョンのパッケージが残される仕組みになっている．ということで，Inactiveなパッケージを全て消去するために，以下のコマンドを使用する．</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ curl --include --request GET "https://www.kimonolabs.com/api/dyo7tdm8?apikey=7ZTTugRoP8xgIlOdAdyiHmwP4rFLviDO"</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port -u uninstall</span></code></pre></td></tr></table></div></figure>
 
 
+<p>これでInactiveなパッケージを全て消去することができる．なお，古いバージョンとして残っていたパッケージを消すということは気軽にバージョンを変更したりできなくなるということなので，もしバージョンアップによる不具合に対応する必要が出てくると後々面倒になることを注意しておきたい．</p>
 
+<h3>結果</h3>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">json</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">urllib</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">results</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&quot;https://www.kimonolabs.com/api/dyo7tdm8?apikey=7ZTTugRoP8xgIlOdAdyiHmwP4rFLviDO&quot;</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure>
+<p><strong>/opt/localが10GBから5GB</strong>になり，かなりのダイエットに成功した！容量の少ないMacBook Airでも，これでもうちょっと耐えられそう．</p>
 
+<h3>DaisyDiskによる可視化</h3>
 
-<p>今回は日本人のアカウント一覧が欲しいので，&#8221;Country of residence&#8221;にJapanと書かれていてかつポイントを持っているアカウント一覧を出力した．なお，ユーザプロフィールの記入は基本任意なので，<strong>プロフィールで&#8221;Country of residence&#8221;を編集していない日本人は対象外になっている</strong>．</p>
+<p>さて，ここからは完全に蛇足なのだが，最近使用しているのDaisyDiskという可視化ソフトウェアがなかなか気に入っているので，今回のファイル消去の前後で/opt/localがどれだけ変化するかを確かめてみた．DaisyDiskは本来はインタラクティブに操作することができて，気になる箇所をクリックしたりして拡大することができるのだが，今回は前後の画像比較だけとなっている．使い心地が気になる人は以下のリンクから公式ページに飛んで紹介動画を見ていただきたい．</p>
 
-<h3>リスト(2014/08/18現在)</h3>
+<p><a href="http://www.daisydiskapp.com/">DaisyDisk - Analyze disk usage and free up disk space on Mac</a></p>
 
-<p>ユーザページに飛べるように一応HTMLにした．気が向いたら定期的にアップデートするようにして，もっときちんと体裁整えるかも．こういった公開も含めてkimono側で簡単なインターフェイスがあると楽なんだけどなーと思った．</p>
+<h4>Before</h4>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/macports_before.png" alt="" /></p>
+
+<h4>After</h4>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/macports_after.png" alt="" /></p>
+
+<p>まず全体の容量が10GBから5GBに変わっており，それぞれの面積は単純に割合を示していることに注意．Inactiveなパッケージを消去する前は少数の比較的大きな領域がいくつも見られる．具体的には，左側の外縁から2つ目のピンクの領域がgccやllvm，boost，emacsなどのパッケージのディレクトリを表しており，一番外縁にある灰色がそれぞれのパッケージのファイルになっている．一つのパッケージに複数の灰色で区切られた細かいディレクトリが含まれているのは，それだけアップデートして古いバージョンのパッケージが溜まっていったからだ．そしてInactiveなパッケージを消去した後は，複数の小さな領域が組み合わさっていることがわかり，それぞれのパッケージに含まれるファイルの容量が小さくなったことを示している．</p>
+
+<h4>参考</h4>
 
 <ul>
-<li><a href="https://dl.dropboxusercontent.com/u/142306/kaggle_jpn.html">https://dl.dropboxusercontent.com/u/142306/kaggle_jpn.html</a></li>
+<li><a href="http://guide.macports.org/">MacPorts Guide</a></li>
+<li><a href="http://d.hatena.ne.jp/kanonji/20091025/1256495516">MacPortsをちゃんと使うために調べてみた - kanonjiの日記</a></li>
+<li><a href="http://d.hatena.ne.jp/t_mimori/20101020/1287568644">Macでディスク容量が足りなくなってきたら1【portをcleanしよう】 - En blanc et noir</a></li>
 </ul>
 
 </div>
@@ -215,16 +202,16 @@
   
 
 
-<time datetime="2014-08-18T20:37:00+09:00" pubdate data-updated="true">Aug 18<span>th</span>, 2014</time>
+<time datetime="2013-06-19T04:29:00+09:00" pubdate data-updated="true">Jun 19<span>th</span>, 2013</time>
       
 
 
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2014/08/18/kaggle-users-japan/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2013/06/19/macports-distfile-clean/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2014/08/18/kaggle-users-japan/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2014/08/18/kaggle-users-japan/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2013/06/19/macports-distfile-clean/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2013/06/19/macports-distfile-clean/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -245,10 +232,14 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2014/08/16/review-bad-data-handbook/" title="Previous Post:
-        「バッドデータハンドブック ―データにまつわる問題への19の処方箋」読了">&laquo; 「バッドデータハンドブック ―データにまつわる問題への19の処方箋」読了</a></li>
+        href="/blog/2013/06/18/slide-diffexp-denovo-assembled-transcriptomes/" title="Previous Post:
+        スライドメモ："Differential expression analysis of de novo assembled transcriptomes - Nadia Davidson"">&laquo; スライドメモ："Differential expression analysis of de novo assembled transcriptomes - Nadia Davidson"</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
+      
+      <li class="next"><a class="basic-alignment right" href="/blog/2013/06/20/fastq-dump-sratoolkit/"
+        title="Next Post: SRA Toolkitを使ってsraファイルからfastqファイルに変換する(更新版)">SRA Toolkitを使ってsraファイルからfastqファイルに変換する(更新版)
+        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -432,8 +423,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.io/blog/2014/08/18/kaggle-users-japan/';
-        var disqus_url = 'http://yagays.github.io/blog/2014/08/18/kaggle-users-japan/';
+        var disqus_identifier = 'http://yagays.github.io/blog/2013/06/19/macports-distfile-clean/';
+        var disqus_url = 'http://yagays.github.io/blog/2013/06/19/macports-distfile-clean/';
         var disqus_script = 'embed.js';
       
     (function () {
