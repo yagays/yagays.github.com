@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-08-18T23:24:44+09:00</updated>
+  <updated>2014-08-31T11:18:21+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,162 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Vowpal Wabbitまとめ]]></title>
+    <link href="http://yagays.github.io/blog/2014/08/31/vowpal-wabbit/"/>
+    <updated>2014-08-31T10:47:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/08/31/vowpal-wabbit</id>
+    <content type="html"><![CDATA[<h3>VWとは</h3>
+
+<blockquote><p>The Vowpal Wabbit (VW) project is a fast out-of-core learning system sponsored by Microsoft Research and (previously) Yahoo! Research.</p>
+
+<p><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki">Home · JohnLangford/vowpal_wabbit Wiki</a></p></blockquote>
+
+<h3>Install</h3>
+
+<p>要Boost．</p>
+
+<h4>Linux</h4>
+
+<p><a href="https://github.com/JohnLangford/vowpal_wabbit/blob/master/README.md">vowpal_wabbit/README.md</a>に書いてある通り，git cloneしてmakeする．それが駄目なら./autogen.shしてからmakeする．</p>
+
+<p>自分の場合は./autogen.shがエラーを吐いたので調べたところ，./autogen.sh内部でldconfigに失敗してBOOST_DIR_ARGが取得でていないのが原因だった．su権限でldconfigをしてLIBFILEの箇所を以下のように書き換えて対処した．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#  LIBFILE=`ldconfig -p | grep program_options | tail -n 1 | cut -d &#39;&gt;&#39; -f 2`</span>
+</span><span class='line'>  <span class="nv">LIBFILE</span><span class="o">=</span><span class="s2">&quot;/usr/lib64/libboost_program_options-mt.so&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Mac OS X</h4>
+
+<p>Mac OS Xの場合Homebrewでバイナリをインストール可能だが，vw-varinfo等のutil系は入らない．</p>
+
+<h4>Windows</h4>
+
+<ul>
+<li><a href="http://qiita.com/shima_x/items/9147eaa3626fab87ada2">機械学習 - windowsマシンでvowpal wabbitを使う（個人的メモ） - Qiita</a></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew info vowpal-wabbit
+</span><span class='line'>vowpal-wabbit: stable 7.7 <span class="o">(</span>bottled<span class="o">)</span>, HEAD
+</span><span class='line'>https://github.com/JohnLangford/vowpal_wabbit
+</span><span class='line'>/usr/local/Cellar/vowpal-wabbit/7.7 <span class="o">(</span>30 files, 4.7M<span class="o">)</span> *
+</span><span class='line'>  Poured from bottle
+</span><span class='line'>From: https://github.com/Homebrew/homebrew/blob/master/Library/Formula/vowpal-wabbit.rb
+</span><span class='line'><span class="o">==</span>&gt; Dependencies
+</span><span class='line'>Build: boost ✔, autoconf ✔, automake ✔, libtool ✔
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>brew install vowpal-wabbit
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>VWの気をつけるポイント</h2>
+
+<ul>
+<li>VWの独自フォーマット
+
+<ul>
+<li>VWを使いはじめるときの最初の難関ポイント</li>
+<li>Tutorial等を見て自分でcsvなどのデータをVWフォーマットに変換する必要がある</li>
+<li>カテゴリ変数やテキストはそのまま列挙で大丈夫．VWの方でn-gramも取ることができる</li>
+</ul>
+</li>
+<li>VWのパラメータ名
+
+<ul>
+<li>資料によってパラメータの名前が違うので注意</li>
+<li>自分の環境で<code>vw --help</code>して適宜読み替える</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Tutorial</h3>
+
+<ul>
+<li><p><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/Tutorial">Tutorial · JohnLangford/vowpal_wabbit Wiki</a></p></li>
+<li><p>https://github.com/JohnLangford/vowpal_wabbit/wiki/v7.0_tutorial.pdf</p>
+
+<ul>
+<li>Binary Classification and Regression</li>
+<li>Multiclass Classification</li>
+<li>“Offline” Contextual Bandit</li>
+<li>Sequence Predictions</li>
+</ul>
+</li>
+<li><p><a href="http://zinkov.com/posts/2013-08-13-vowpal-tutorial/">Convex Optimized - Vowpal Wabbit tutorial for the Uninitiated</a></p>
+
+<ul>
+<li>かなり幅広く網羅したtutorial</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Other Resources</h3>
+
+<ul>
+<li>Slides
+
+<ul>
+<li><a href="http://hunch.net/~vw/vw_tutorial.pdf">http://hunch.net/~vw/vw_tutorial.pdf</a></li>
+<li><a href="http://www.slideshare.net/pauldix/terascale-learning">Terascale Learning</a></li>
+<li><a href="http://www.slideshare.net/jakehofman/technical-tricks-of-vowpal-wabbit">Technical Tricks of Vowpal Wabbit</a></li>
+</ul>
+</li>
+<li><a href="http://fastml.com/large-scale-l1-feature-selection-with-vowpal-wabbit/">Large scale L1 feature selection with Vowpal Wabbit - FastML</a>
+
+<ul>
+<li><a href="http://www.kaggle.com/c/job-salary-prediction">Job Salary Prediction | Kaggle</a></li>
+<li>L1 Regularizationについて</li>
+</ul>
+</li>
+<li><a href="http://fastml.com/vowpal-wabbit-eats-big-data-from-the-criteo-competition-for-breakfast/">Vowpal Wabbit eats big data from the Criteo competition for breakfast - FastML</a>
+
+<ul>
+<li><a href="http://www.kaggle.com/c/criteo-display-ad-challenge">Display Advertising Challenge | Kaggle</a></li>
+<li>コンペの評価方法がLogarithmic Lossだから，VWの<code>--loss_function</code>をlogisticにしてくとVWの標準出力のaverage lossの部分がだいたいKaggleのスコアになるという話</li>
+<li>変数が大量にあるとfeature hashingの時にHashValが衝突(collision)するから，<code>-b</code>でちょっと大きめにしておくといいという話
+
+<ul>
+<li><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/Feature-Hashing-and-Extraction">Feature Hashing and Extraction · JohnLangford/vowpal_wabbit Wiki</a></li>
+<li>むやみに大きくしても意味がないので，使用するデータのfeature数に合わせて調節する</li>
+<li>VWは通常メモリ使わないほうだけど，<code>-b</code>を大きくするとGBレベルでメモリ消費するようになる．最大の<code>-b 32</code>だと64GB程度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://blogs.technet.com/b/machinelearning/archive/2014/08/13/vowpal-wabbit-for-fast-learning.aspx">Vowpal Wabbit for Fast Learning - Machine Learning - Site Home - TechNet Blogs</a>
+
+<ul>
+<li>Vowpal Wabbitの名前の由来が書いてある</li>
+</ul>
+</li>
+<li><a href="http://fastml.com/go-non-linear-with-vowpal-wabbit/">Go non-linear with Vowpal Wabbit - FastML</a>
+
+<ul>
+<li><a href="https://www.kaggle.com/c/amazon-employee-access-challenge">Amazon.com - Employee Access Challenge | Kaggle</a></li>
+<li>VWの様々な機能(Neural Network,Quadratic and cubic features, N-grams)について</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[kimonoでKaggleユーザのクロールをしてみた]]></title>
@@ -777,24 +933,6 @@
 <p>一方で，本書は京都が舞台になっており，表紙絵からも分かる通りかなり宗教色や日本の歴史観を入れ込んだ作品になっている．そういうあたりは手塚治虫の火の鳥を想起させるけれども，本書が向き合う宗教や歴史観はそれとは少し違う気がする．あたかも宗教画や教義の中には真実が隠されていて，現代人はそれに気付いてないんだ的な扱いをしていて，僕はあまり好きじゃない．ある意味西洋的であるというか，宗教や歴史的な古文書ってそんなに始まりをつかさどるようなものだったっけ？と疑問が湧いてしまって，その点は馴染めなかった．</p>
 
 <p>あと最後に蛇足で内容とは全く関係無いが，計算機科学的にはCould not getではなくてPermission Deniedなのでは&#8230;と思った．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「ワンランク上をめざすビジネスパーソンの独習ガイド」読了]]></title>
-    <link href="http://yagays.github.io/blog/2014/05/10/review-self-study-guidebook/"/>
-    <updated>2014-05-10T16:03:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2014/05/10/review-self-study-guidebook</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4799313584" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>六本木ヒルズ49Fアカデミーヒルズにある会員制図書館「六本木ライブラリー」のアドバイザーの著作で，そこで扱っているようなビジネスパーソン向けの選書を紹介した本書．選書は著者が重要だと思う幾つかのジャンルに分けられ，ロジカルシンキングやビジネススキル，コミュニケーションスキル，はたまた「自分のお金」などといったように，あくまで図書館に陳列されているような大枠ではなくターゲットを絞ってまとめられている．また，本を選ぶ基準としてもジャンルの「基本書」となるような代表的で費用対効果の高い本を選んでいるとのこと．</p>
-
-<p>本を紹介する本なんて言ってしまえば読み手が次の本を見つけらさえすればそれでいいわけで，そこにアレコレ言うのも難なのだけれども，気になった点を幾つか．</p>
-
-<p>まず全体の雰囲気としては，ちょっと前によく聞いたようなトピックが大半を占める．言ってしまえば勝間和代以降の人々が提唱するようなスキルや生き方で，その界隈を追っていた人間からすると目新しさをあまり感じないだろう．実際に本書最初のロジカルシンキングで紹介されているのはまさに勝間和代が最初期に紹介していた本なので，何とも言えない懐かしさを感じさせる．</p>
-
-<p>選書は自分が口出しする部分ではないのでいいとして，なぜその本を選んだのかといった書評の部分が本書は薄い．こういう技術や知識が必要だからこの本はオススメですといういわゆるキュレーションを軸にしているにも関わらず，それを読むべき理由付けとしての書評が機能していないというか，こういうことが書いてあるから読むべきくらいにしかなってない．紹介するアイデア自体が，誰も聞いたことのないような奇抜で斬新で面白そうなものであればそれで良いが，本書はそうじゃない．例えばロジカルシンキングが大事というときに，ロジカルシンキングの本を持ってきてこれ名著だからオススメですと言われるのは，それじゃあ本屋のポップ（紹介文）と変わらないんじゃない？と思ってしまう．その本がどう重要なのか，なぜ基本書として選ばれる名著なのか，類書と比べてどういう立ち位置の本なのかなど，色々な切り口がオススメの説得材料としてあるといいのだけれども……．中には「7つの習慣の続編だからって舐めてないで第3の案も面白いから読めよ」といった良さげな紹介も含まれているものの，全体的に本の羅列にしか感じられないのが残念だ．</p>
 ]]></content>
   </entry>
   

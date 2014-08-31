@@ -117,6 +117,61 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2014/07/18/gollum-disable-ctrl-b-hotkey/">GollumでCtrl-bのキーボードショートカットを無効にする</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-18T04:12:00+09:00" pubdate data-updated="true">Jul 18<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Gollumで記事を編集していると，Ctrl-bで「****」というmarkdownのbold記法が挿入されるキーボードショートカットがあって邪魔だったので，無効にした．</p>
+
+<h3>方法</h3>
+
+<p>Gollumのgollum.editor.jsの中の該当部分をコメントアウトする．</p>
+
+<p><a href="https://github.com/gollum/gollum/blob/master/lib/gollum/public/gollum/javascript/editor/gollum.editor.js#L215">https://github.com/gollum/gollum/blob/master/lib/gollum/public/gollum/javascript/editor/gollum.editor.js#L215</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>      <span class="nx">Mousetrap</span><span class="p">.</span><span class="nx">bind</span><span class="p">([</span><span class="s1">&#39;command+3&#39;</span><span class="p">,</span> <span class="s1">&#39;ctrl+3&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">e</span> <span class="p">){</span> <span class="nx">hotkey</span><span class="p">(</span> <span class="nx">e</span><span class="p">,</span> <span class="s1">&#39;function-h3&#39;</span> <span class="p">);</span> <span class="p">});</span>
+</span><span class='line'><span class="c1">//           Mousetrap.bind([&#39;command+b&#39;, &#39;ctrl+b&#39;], function( e ){ hotkey( e, &#39;function-bold&#39; ); });</span>
+</span><span class='line'>      <span class="nx">Mousetrap</span><span class="p">.</span><span class="nx">bind</span><span class="p">([</span><span class="s1">&#39;command+i&#39;</span><span class="p">,</span> <span class="s1">&#39;ctrl+i&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">e</span> <span class="p">){</span> <span class="nx">hotkey</span><span class="p">(</span> <span class="nx">e</span><span class="p">,</span> <span class="s1">&#39;function-italic&#39;</span> <span class="p">);</span> <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>gollum.editor.jsは，rbenvで入れた自分の環境の場合$HOME/.rbenv/versions/1.9.3-p547/lib/ruby/gems/1.9.1/gems/gollum-3.0.0/lib/gollum/public/gollum/javascript/editorに入っている．</p>
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2014/07/09/www2014review-kickstarter/">論文紹介:Recommending Investors for Crowdfunding Projects</a></h1>
     
     
@@ -445,62 +500,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/06/15/review-the-power-of-less/">「減らす技術」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-15T16:08:00+09:00" pubdate data-updated="true">Jun 15<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4887597304" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p><a href="http://d.hatena.ne.jp/yomoyomo/20140603/leobabauta">世界的人気ブログZen Habitsなどレオ・バボータの文章の日本語訳 - YAMDAS現更新履歴</a></p>
-
-<p>上の記事でレオ・バボータのことを知って本書を手にとった．別に気持ちが楽になりたいというわけでもないのだけれど，そこらのまとめサイトの雑な受け売りではなく，一通り元ネタを知っておきたいという気持ちが常にあるからだ．ざっと読んで内容と著者の名前を覚えておければそれで良かった．</p>
-
-<p>本書の主張はほんとうにシンプルで「制約をつければ重要なことにフォーカスできる」というもの．やりたいことを減らす，仕事の量を減らす，メールを読む量を減らす．そうやって自分に制限を課すことによって，自然と重要そうなことだけしかやれないような状態になる．そうすれば，人生や仕事にクリティカルに効いてくるようなことに絞った行動ができるし，逆に不必要なことに時間を割くこともなくなる．そして生活はシンプルになって，結果としてハッピーだというわけだ．</p>
-
-<br/>
-
-
-<p>言っていることはまあそうだよねという感じ．それよりも，伝え方が巧い．言ってしまえばどんな人間だって，これをすれば理想の方向に持っていけるような方法に落としこんでいる．どんなに怠惰で意志が弱くてやりたい事なんて無いというような人であっても，この方法を実践できるし(したいかどうかは別)，実践すればある程度の成果を出せる．一方で，もともと生産性の高い人でも，仕事以外では成功していなかったり，何かを犠牲にしている場合があるわけで，そうしたケースにも対応できている．</p>
-
-<p>さて，この方法の前提には，だれもが「多ければ多いほど良い」と考えているという，ある種の本能的な価値観がある．労働時間に応じて給料が上がるならば，労働時間を増やせば手に入るお金も多くなるといった感覚だ．この具体的なケースが正しいかどうかはまあ置いておいて，日常的なものごとというものは基本的に出した分だけ見返りも多いことが多い．そうすると，みんな欲求のもとになるものを増やそうとする．それ自体は間違ってはいないんだけど，そもそも効率を考えていないし，選択しないという悪い習慣に繋がるというのが一番の問題になる．それが本書の根底にあるみんなの悪い癖だ．その癖をなくそうと思っても，減らすと見返りも減ると思い込んでいるから，なかなか成功しない．だから本書のような方法で強制的に制限をかけることで，なんとかしようということだ．</p>
-
-<p>中には「量をこなせば質になる」と考える人もいるだろうが，それはある意味あっていて，同時にまちがっている．質に変化させる段階で見極める力を身につけていないと，結局数撃ちゃ当たる戦法からは抜け出せない．ちなみに，この量から質に持って行こうとする方法を「<a href="http://www.amazon.co.jp/gp/product/4862760856/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4862760856&linkCode=as2&tag=yagays-22">イシューからはじめよ―知的生産の「シンプルな本質」</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4862760856" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」という本の中では「犬の道」と言い表している．言い得て妙というか，まあ人間なんだから頭使えよということだろう．</p>
-
-<p>こういうことに自覚的な人でもそうでない人も，とりあえず本書のようなことをすれば大体は自然と良い方向に行くと思う．中にはシンプルを崇拝しすぎて必要なものまで削ってしまうような人も出てくるかもしれないけれど，まあほどほどということをわきまえた上でやってみると，上手くいくかもしれない．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/3/">&larr; Older</a></li>
@@ -548,6 +547,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/08/31/vowpal-wabbit/">Vowpal Wabbitまとめ</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/08/18/kaggle-users-japan/">kimonoでKaggleユーザのクロールをしてみた</a>
       </li>
     
@@ -581,10 +584,6 @@
     
       <li class="post">
         <a href="/blog/2014/06/19/review-the-anatomical-chart-of-homes/">「住まいの解剖図鑑」読了</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/06/15/review-the-power-of-less/">「減らす技術」読了</a>
       </li>
     
   </ul>
