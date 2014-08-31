@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Vowpal Wabbitまとめ - Wolfeyes Bioinformatics beta</title>
+  <title>私的Vowpal Wabbitまとめ - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
@@ -115,7 +115,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">Vowpal Wabbitまとめ</h1>
+      <h1 class="entry-title">私的Vowpal Wabbitまとめ</h1>
     
     
       <p class="meta">
@@ -138,13 +138,13 @@
   </header>
 
 
-<div class="entry-content"><h3>VWとは</h3>
+<div class="entry-content"><h2>VWとは</h2>
 
 <blockquote><p>The Vowpal Wabbit (VW) project is a fast out-of-core learning system sponsored by Microsoft Research and (previously) Yahoo! Research.</p>
 
 <p><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki">Home · JohnLangford/vowpal_wabbit Wiki</a></p></blockquote>
 
-<h3>Install</h3>
+<h2>Install</h2>
 
 <p>要Boost．</p>
 
@@ -164,13 +164,6 @@
 <h4>Mac OS X</h4>
 
 <p>Mac OS Xの場合Homebrewでバイナリをインストール可能だが，vw-varinfo等のutil系は入らない．</p>
-
-<h4>Windows</h4>
-
-<ul>
-<li><a href="http://qiita.com/shima_x/items/9147eaa3626fab87ada2">機械学習 - windowsマシンでvowpal wabbitを使う（個人的メモ） - Qiita</a></li>
-</ul>
-
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -195,15 +188,22 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h2>VWの気をつけるポイント</h2>
+<h4>Windows</h4>
+
+<ul>
+<li><a href="http://qiita.com/shima_x/items/9147eaa3626fab87ada2">機械学習 - windowsマシンでvowpal wabbitを使う（個人的メモ） - Qiita</a></li>
+</ul>
+
+
+<h2>VWを始めるときに気をつけるポイント</h2>
 
 <ul>
 <li>VWの独自フォーマット
 
 <ul>
 <li>VWを使いはじめるときの最初の難関ポイント</li>
-<li>Tutorial等を見て自分でcsvなどのデータをVWフォーマットに変換する必要がある</li>
-<li>カテゴリ変数やテキストはそのまま列挙で大丈夫．VWの方でn-gramも取ることができる</li>
+<li>自分でcsvなどのデータをVWフォーマットに変換する必要がある</li>
+<li>カテゴリ変数やテキストはそのまま列挙しても大丈夫．VWの方でn-gramも取ることができる</li>
 </ul>
 </li>
 <li>VWのパラメータ名
@@ -216,7 +216,7 @@
 </ul>
 
 
-<h3>Tutorial</h3>
+<h2>Tutorial</h2>
 
 <ul>
 <li><p><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/Tutorial">Tutorial · JohnLangford/vowpal_wabbit Wiki</a></p></li>
@@ -238,7 +238,7 @@
 </ul>
 
 
-<h3>Other Resources</h3>
+<h2>Other Resources</h2>
 
 <ul>
 <li>Slides
@@ -252,15 +252,15 @@
 <li><a href="http://fastml.com/large-scale-l1-feature-selection-with-vowpal-wabbit/">Large scale L1 feature selection with Vowpal Wabbit - FastML</a>
 
 <ul>
-<li><a href="http://www.kaggle.com/c/job-salary-prediction">Job Salary Prediction | Kaggle</a></li>
 <li>L1 Regularizationについて</li>
+<li><a href="http://www.kaggle.com/c/job-salary-prediction">Job Salary Prediction | Kaggle</a></li>
 </ul>
 </li>
 <li><a href="http://fastml.com/vowpal-wabbit-eats-big-data-from-the-criteo-competition-for-breakfast/">Vowpal Wabbit eats big data from the Criteo competition for breakfast - FastML</a>
 
 <ul>
-<li><a href="http://www.kaggle.com/c/criteo-display-ad-challenge">Display Advertising Challenge | Kaggle</a></li>
 <li>コンペの評価方法がLogarithmic Lossだから，VWの<code>--loss_function</code>をlogisticにしてくとVWの標準出力のaverage lossの部分がだいたいKaggleのスコアになるという話</li>
+<li><a href="http://www.kaggle.com/c/criteo-display-ad-challenge">Display Advertising Challenge | Kaggle</a></li>
 <li>変数が大量にあるとfeature hashingの時にHashValが衝突(collision)するから，<code>-b</code>でちょっと大きめにしておくといいという話
 
 <ul>
@@ -280,8 +280,8 @@
 <li><a href="http://fastml.com/go-non-linear-with-vowpal-wabbit/">Go non-linear with Vowpal Wabbit - FastML</a>
 
 <ul>
-<li><a href="https://www.kaggle.com/c/amazon-employee-access-challenge">Amazon.com - Employee Access Challenge | Kaggle</a></li>
 <li>VWの様々な機能(Neural Network,Quadratic and cubic features, N-grams)について</li>
+<li><a href="https://www.kaggle.com/c/amazon-employee-access-challenge">Amazon.com - Employee Access Challenge | Kaggle</a></li>
 </ul>
 </li>
 </ul>
@@ -386,7 +386,7 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
-        <a href="/blog/2014/08/31/vowpal-wabbit/">Vowpal Wabbitまとめ</a>
+        <a href="/blog/2014/08/31/vowpal-wabbit/">私的Vowpal Wabbitまとめ</a>
       </li>
     
       <li class="post">
