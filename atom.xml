@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-08-31T11:45:11+09:00</updated>
+  <updated>2014-08-31T11:46:28+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -143,7 +143,7 @@
 
 <ul>
 <li><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/Feature-Hashing-and-Extraction">Feature Hashing and Extraction · JohnLangford/vowpal_wabbit Wiki</a></li>
-<li>-bのデフォルトが18なので，2<sup>18=262,144くらいのfeature数なら問題無い．むやみに大きくしても意味がないので，使用するデータのfeature数に合わせて調節する</sup></li>
+<li>-bのデフォルトが18なので，2<sup>18</sup> =262,144くらいのfeature数なら問題無い．むやみに大きくしても意味がないので，使用するデータのfeature数に合わせて調節する</li>
 <li>VWは通常メモリ使わないほうだけど，<code>-b</code>を大きくするとGBレベルでメモリ消費するようになる．最大の<code>-b 32</code>だと64GB程度</li>
 </ul>
 </li>
