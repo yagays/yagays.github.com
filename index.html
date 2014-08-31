@@ -154,7 +154,7 @@
 
 <p><a href="https://github.com/JohnLangford/vowpal_wabbit/blob/master/README.md">vowpal_wabbit/README.md</a>に書いてある通り，git cloneしてmakeする．それが駄目なら./autogen.shしてからmakeする．</p>
 
-<p>自分の場合は./autogen.shがエラーを吐いたので調べたところ，./autogen.sh内部でldconfigに失敗してBOOST_DIR_ARGが取得でていないのが原因だった．su権限でldconfigをしてLIBFILEの箇所を以下のように書き換えて対処した．</p>
+<p>自分の場合は./autogen.shがエラーを吐いたので調べたところ，./autogen.sh内部でldconfigに失敗してBOOST_DIR_ARGが取得できていないのが原因だった．su権限でldconfigをしてLIBFILEの箇所を以下のように書き換えて対処した．当然ながらこれは環境に依存するので，自身の環境でLIBFILEに渡すコマンドを実行して置き換える．</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -261,11 +261,11 @@
 <ul>
 <li>コンペの評価方法がLogarithmic Lossだから，VWの<code>--loss_function</code>をlogisticにしてくとVWの標準出力のaverage lossの部分がだいたいKaggleのスコアになるという話</li>
 <li><a href="http://www.kaggle.com/c/criteo-display-ad-challenge">Display Advertising Challenge | Kaggle</a></li>
-<li>変数が大量にあるとfeature hashingの時にHashValが衝突(collision)するから，<code>-b</code>でちょっと大きめにしておくといいという話
+<li>変数が大量にあるとfeature hashingの時にHashValが衝突(collision)するから，<code>-b</code>でhashing spaceをちょっと大きめにしておくといいという話
 
 <ul>
 <li><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/Feature-Hashing-and-Extraction">Feature Hashing and Extraction · JohnLangford/vowpal_wabbit Wiki</a></li>
-<li>むやみに大きくしても意味がないので，使用するデータのfeature数に合わせて調節する</li>
+<li>-bのデフォルトが18なので，2<sup>18=262,144くらいのfeature数なら問題無い．むやみに大きくしても意味がないので，使用するデータのfeature数に合わせて調節する</sup></li>
 <li>VWは通常メモリ使わないほうだけど，<code>-b</code>を大きくするとGBレベルでメモリ消費するようになる．最大の<code>-b 32</code>だと64GB程度</li>
 </ul>
 </li>

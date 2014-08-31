@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>私的Vowpal Wabbitまとめ - Wolfeyes Bioinformatics beta</title>
+  <title>PRML復々習レーン#3で発表しました - Wolfeyes Bioinformatics beta</title>
   <meta name="author" content="yag_ays">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yagays.github.io/blog/2014/08/31/vowpal-wabbit">
+  <link rel="canonical" href="http://yagays.github.io/blog/2012/07/18/re-revenge-prml-3">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/bootstrap/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/bootstrap/responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -115,7 +115,7 @@
   
   <header class="page-header">
     
-      <h1 class="entry-title">私的Vowpal Wabbitまとめ</h1>
+      <h1 class="entry-title">PRML復々習レーン#3で発表しました</h1>
     
     
       <p class="meta">
@@ -131,157 +131,24 @@
   
 
 
-<time datetime="2014-08-31T10:47:00+09:00" pubdate data-updated="true">Aug 31<span>st</span>, 2014</time>
+<time datetime="2012-07-18T10:12:00+09:00" pubdate data-updated="true">Jul 18<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>VWとは</h2>
+<div class="entry-content"><p>「パターン認識と機械学習」勉強会の復々習レーン#3で，3章の頭を担当しました．資料はslideshareにアップロードしています．</p>
 
-<blockquote><p>The Vowpal Wabbit (VW) project is a fast out-of-core learning system sponsored by Microsoft Research and (previously) Yahoo! Research.</p>
-
-<p><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki">Home · JohnLangford/vowpal_wabbit Wiki</a></p></blockquote>
-
-<h2>Install</h2>
-
-<p>要Boost．</p>
-
-<h4>Linux</h4>
-
-<p><a href="https://github.com/JohnLangford/vowpal_wabbit/blob/master/README.md">vowpal_wabbit/README.md</a>に書いてある通り，git cloneしてmakeする．それが駄目なら./autogen.shしてからmakeする．</p>
-
-<p>自分の場合は./autogen.shがエラーを吐いたので調べたところ，./autogen.sh内部でldconfigに失敗してBOOST_DIR_ARGが取得できていないのが原因だった．su権限でldconfigをしてLIBFILEの箇所を以下のように書き換えて対処した．当然ながらこれは環境に依存するので，自身の環境でLIBFILEに渡すコマンドを実行して置き換える．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#  LIBFILE=`ldconfig -p | grep program_options | tail -n 1 | cut -d &#39;&gt;&#39; -f 2`</span>
-</span><span class='line'>  <span class="nv">LIBFILE</span><span class="o">=</span><span class="s2">&quot;/usr/lib64/libboost_program_options-mt.so&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div style="width:427px" id="__ss_13661580"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/yag_ays/re-revenge-chap031" title="Re revenge chap03-1" target="_blank">Re revenge chap03-1</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/13661580" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0" allowfullscreen></iframe> <div style="padding:5px 0 12px"> View more presentations from <a href="http://www.slideshare.net/yag_ays" target="_blank">yag ays</a> </div> </div>
 
 
-<h4>Mac OS X</h4>
+<p>3章の頭は線形回帰モデルの導入部分でPRMLの中では簡単な部類のところなのですが，きちんと説明しようとすればするほど自分の理解がいかに曖昧なものだったか思い知らされるばかりで，非常に勉強になりました．特に「§3.1.最小二乗法の幾何学」に関しては参加者の皆様に頼りっきりという何とも情けない感じになってしまったのですが，懇切丁寧に教えていただいたおかげで何とか図の直感的理解くらいはできるようになりました．これに関しては，その場で指摘していただいたことと自分の解釈をこねくり回しつつある程度纏めたものを，スライドの最後に補足として付け加えてあります．とは言っても，本文に書かれている数式は全くといっていいほど追いきれていないので，「学習の学習」とにらめっこしつつ，もう少し理解を深めたいと思います．</p>
 
-<p>Mac OS Xの場合Homebrewでバイナリをインストール可能だが，vw-varinfo等のutil系は入らない．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew info vowpal-wabbit
-</span><span class='line'>vowpal-wabbit: stable 7.7 <span class="o">(</span>bottled<span class="o">)</span>, HEAD
-</span><span class='line'>https://github.com/JohnLangford/vowpal_wabbit
-</span><span class='line'>/usr/local/Cellar/vowpal-wabbit/7.7 <span class="o">(</span>30 files, 4.7M<span class="o">)</span> *
-</span><span class='line'>  Poured from bottle
-</span><span class='line'>From: https://github.com/Homebrew/homebrew/blob/master/Library/Formula/vowpal-wabbit.rb
-</span><span class='line'><span class="o">==</span>&gt; Dependencies
-</span><span class='line'>Build: boost ✔, autoconf ✔, automake ✔, libtool ✔
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ </span>brew install vowpal-wabbit
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>Windows</h4>
+<p>次回もよろしくお願いします．</p>
 
 <ul>
-<li><a href="http://qiita.com/shima_x/items/9147eaa3626fab87ada2">機械学習 - windowsマシンでvowpal wabbitを使う（個人的メモ） - Qiita</a></li>
-</ul>
-
-
-<h2>VWを始めるときに気をつけるポイント</h2>
-
-<ul>
-<li>VWの独自フォーマット
-
-<ul>
-<li>VWを使いはじめるときの最初の難関ポイント</li>
-<li>自分でcsvなどのデータをVWフォーマットに変換する必要がある</li>
-<li>カテゴリ変数やテキストはそのまま列挙しても大丈夫．VWの方でn-gramも取ることができる</li>
-</ul>
-</li>
-<li>VWのパラメータ名
-
-<ul>
-<li>資料によってパラメータの名前が違うので注意</li>
-<li>自分の環境で<code>vw --help</code>して適宜読み替える</li>
-</ul>
-</li>
-</ul>
-
-
-<h2>Tutorial</h2>
-
-<ul>
-<li><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/Tutorial">Tutorial · JohnLangford/vowpal_wabbit Wiki</a>
-
-<ul>
-<li><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/v7.0_tutorial.pdf">https://github.com/JohnLangford/vowpal_wabbit/wiki/v7.0_tutorial.pdf</a>
-
-<ul>
-<li>Binary Classification and Regression</li>
-<li>Multiclass Classification</li>
-<li>“Offline” Contextual Bandit</li>
-<li>Sequence Predictions</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="http://zinkov.com/posts/2013-08-13-vowpal-tutorial/">Convex Optimized - Vowpal Wabbit tutorial for the Uninitiated</a>
-
-<ul>
-<li>かなり幅広く網羅したtutorial</li>
-</ul>
-</li>
-</ul>
-
-
-<h2>Other Resources</h2>
-
-<ul>
-<li><a href="http://www.slideshare.net/pauldix/terascale-learning">Terascale Learning</a></li>
-<li><a href="http://www.slideshare.net/jakehofman/technical-tricks-of-vowpal-wabbit">Technical Tricks of Vowpal Wabbit</a></li>
-<li><a href="http://fastml.com/large-scale-l1-feature-selection-with-vowpal-wabbit/">Large scale L1 feature selection with Vowpal Wabbit - FastML</a>
-
-<ul>
-<li>L1 Regularizationについて</li>
-<li><a href="http://www.kaggle.com/c/job-salary-prediction">Job Salary Prediction | Kaggle</a></li>
-</ul>
-</li>
-<li><a href="http://fastml.com/vowpal-wabbit-eats-big-data-from-the-criteo-competition-for-breakfast/">Vowpal Wabbit eats big data from the Criteo competition for breakfast - FastML</a>
-
-<ul>
-<li>コンペの評価方法がLogarithmic Lossだから，VWの<code>--loss_function</code>をlogisticにしてくとVWの標準出力のaverage lossの部分がだいたいKaggleのスコアになるという話</li>
-<li><a href="http://www.kaggle.com/c/criteo-display-ad-challenge">Display Advertising Challenge | Kaggle</a></li>
-<li>変数が大量にあるとfeature hashingの時にHashValが衝突(collision)するから，<code>-b</code>でhashing spaceをちょっと大きめにしておくといいという話
-
-<ul>
-<li><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/Feature-Hashing-and-Extraction">Feature Hashing and Extraction · JohnLangford/vowpal_wabbit Wiki</a></li>
-<li>-bのデフォルトが18なので，2<sup>18=262,144くらいのfeature数なら問題無い．むやみに大きくしても意味がないので，使用するデータのfeature数に合わせて調節する</sup></li>
-<li>VWは通常メモリ使わないほうだけど，<code>-b</code>を大きくするとGBレベルでメモリ消費するようになる．最大の<code>-b 32</code>だと64GB程度</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="http://blogs.technet.com/b/machinelearning/archive/2014/08/13/vowpal-wabbit-for-fast-learning.aspx">Vowpal Wabbit for Fast Learning - Machine Learning - Site Home - TechNet Blogs</a>
-
-<ul>
-<li>Vowpal Wabbitの名前の由来が書いてある</li>
-</ul>
-</li>
-<li><a href="http://fastml.com/go-non-linear-with-vowpal-wabbit/">Go non-linear with Vowpal Wabbit - FastML</a>
-
-<ul>
-<li>VWの様々な機能(Neural Network,Quadratic and cubic features, N-grams)について</li>
-<li><a href="https://www.kaggle.com/c/amazon-employee-access-challenge">Amazon.com - Employee Access Challenge | Kaggle</a></li>
-</ul>
-</li>
+<li><a href="http://atnd.org/events/30181">http://atnd.org/events/30181</a></li>
 </ul>
 
 </div>
@@ -308,16 +175,22 @@
   
 
 
-<time datetime="2014-08-31T10:47:00+09:00" pubdate data-updated="true">Aug 31<span>st</span>, 2014</time>
+<time datetime="2012-07-18T10:12:00+09:00" pubdate data-updated="true">Jul 18<span>th</span>, 2012</time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/prml/'>PRML</a>, <a class='category' href='/blog/categories/presentation/'>Presentation</a>
+  
+</span>
 
 
     </p>
     
       <div class="sharing">
-  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2014/08/31/vowpal-wabbit/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  <a href="http://b.hatena.ne.jp/entry/http://yagays.github.io/blog/2012/07/18/re-revenge-prml-3/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2014/08/31/vowpal-wabbit/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2014/08/31/vowpal-wabbit/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://yagays.github.io/blog/2012/07/18/re-revenge-prml-3/" data-via="yag_ays" data-counturl="http://yagays.github.io/blog/2012/07/18/re-revenge-prml-3/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -338,10 +211,14 @@
     <ul class="pager">
       
       <li class="previous"><a class="basic-alignment left"
-        href="/blog/2014/08/18/kaggle-users-japan/" title="Previous Post:
-        kimonoでKaggleユーザのクロールをしてみた">&laquo; kimonoでKaggleユーザのクロールをしてみた</a></li>
+        href="/blog/2012/07/10/review-problems-of-biology/" title="Previous Post:
+        「生物学のすすめ」読了">&laquo; 「生物学のすすめ」読了</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
+      
+      <li class="next"><a class="basic-alignment right" href="/blog/2012/07/27/review-yamagata-hiroo/"
+        title="Next Post: 「要するに」「新教養主義宣言」「訳者解説」読了">「要するに」「新教養主義宣言」「訳者解説」読了
+        &raquo;</a></li>
       
     </ul>
   </footer>
@@ -525,8 +402,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yagays.github.io/blog/2014/08/31/vowpal-wabbit/';
-        var disqus_url = 'http://yagays.github.io/blog/2014/08/31/vowpal-wabbit/';
+        var disqus_identifier = 'http://yagays.github.io/blog/2012/07/18/re-revenge-prml-3/';
+        var disqus_url = 'http://yagays.github.io/blog/2012/07/18/re-revenge-prml-3/';
         var disqus_script = 'embed.js';
       
     (function () {
