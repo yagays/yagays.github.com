@@ -244,6 +244,15 @@
 </ul>
 
 
+<h2>vw-varinfoについて</h2>
+
+<p>vw-varinfoを使うことによって，変数ごとに重み等の情報を出力することができる．</p>
+
+<ul>
+<li><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/using-vw-varinfo">using vw varinfo · JohnLangford/vowpal_wabbit Wiki</a></li>
+</ul>
+
+
 <h2>Other Resources</h2>
 
 <ul>
@@ -252,15 +261,23 @@
 <li><a href="http://fastml.com/large-scale-l1-feature-selection-with-vowpal-wabbit/">Large scale L1 feature selection with Vowpal Wabbit - FastML</a>
 
 <ul>
-<li>L1 Regularizationについて</li>
+<li>L1 Regularizationについて
+
+<ul>
 <li><a href="http://www.kaggle.com/c/job-salary-prediction">Job Salary Prediction | Kaggle</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="http://fastml.com/vowpal-wabbit-eats-big-data-from-the-criteo-competition-for-breakfast/">Vowpal Wabbit eats big data from the Criteo competition for breakfast - FastML</a>
 
 <ul>
-<li>コンペの評価方法がLogarithmic Lossだから，VWの<code>--loss_function</code>をlogisticにしてくとVWの標準出力のaverage lossの部分がだいたいKaggleのスコアになるという話</li>
+<li>コンペの評価方法がLogarithmic Lossだから，VWの<code>--loss_function</code>をlogisticにしてくとVWの標準出力のaverage lossの部分がだいたいKaggleのスコアになるという話
+
+<ul>
 <li><a href="http://www.kaggle.com/c/criteo-display-ad-challenge">Display Advertising Challenge | Kaggle</a></li>
+</ul>
+</li>
 <li>変数が大量にあるとfeature hashingの時にHashValが衝突(collision)するから，<code>-b</code>でhashing spaceをちょっと大きめにしておくといいという話
 
 <ul>
@@ -280,8 +297,24 @@
 <li><a href="http://fastml.com/go-non-linear-with-vowpal-wabbit/">Go non-linear with Vowpal Wabbit - FastML</a>
 
 <ul>
-<li>VWの様々な機能(Neural Network,Quadratic and cubic features, N-grams)について</li>
+<li>VWの様々な機能(Neural Network,Quadratic and cubic features, N-grams)について
+
+<ul>
 <li><a href="https://www.kaggle.com/c/amazon-employee-access-challenge">Amazon.com - Employee Access Challenge | Kaggle</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://mlwave.com/movie-review-sentiment-analysis-with-vowpal-wabbit/">Movie Review Sentiment Analysis with Vowpal Wabbit | MLWave</a>
+
+<ul>
+<li>映画レビューサイトのテキストを使ったsentiment analysisにVWを使った話
+
+<ul>
+<li><a href="http://www.kaggle.com/c/sentiment-analysis-on-movie-reviews">Sentiment Analysis on Movie Reviews | Kaggle</a></li>
+</ul>
+</li>
+<li>vw-varinfoを使うことによってpositive/negativeな単語のfeature relevanceを可視化している</li>
 </ul>
 </li>
 </ul>
