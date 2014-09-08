@@ -117,6 +117,136 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/12/06/pboc-02-1/">「細胞の物理生物学」読書ノート：第2章その1</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-06T00:03:00+09:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>読書ノートまとめ：<a href="http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/">http://yagays.github.io/blog/2013/11/30/archive-physical-biology-of-the-cell/</a></li>
+</ul>
+
+
+<h4>ひとこと</h4>
+
+<p>第2章から本格的に定量的な計算が始まる．今のところは数や濃度などの数え上げが中心だが，これらは今後のベースになる部分なので，今回は少し丁寧に計算を追ってみた．実際に自分で計算してみると，有効数字の扱いやオーダーへの落とし込み方が何となくわかる．</p>
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4320057163" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=0815344503" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h2>第2章 何が？そして，どこに？―細胞と生物の構築プラン</h2>
+
+<h3>大腸菌の標準</h3>
+
+<p>本書では最少培地での細菌の状態を基本に考える．</p>
+
+<ul>
+<li>長さ：<script type="math/tex">2 \ \mathrm{\mu m}</script></li>
+<li>直径：<script type="math/tex">1 \ \mathrm{\mu m}</script></li>
+<li>体積：<script type="math/tex">1 \ \mathrm{\mu m ^ 3} = 1 \ \mathrm{fL}</script></li>
+<li>表面積：<script type="math/tex">6 \ \mathrm{\mu m ^ 2} </script></li>
+</ul>
+
+
+<h3>見積もり―大腸菌のサイズを測る</h3>
+
+<ul>
+<li>大腸菌の体積：<script type="math/tex">1 \ \mathrm{fL} = 1×10 ^ {-15} \ \mathrm{L}</script></li>
+<li>大腸菌の質量：<script type="math/tex">1 \ \mathrm{pg} = 1 \times 10 ^ {-12} \ \mathrm{g}</script></li>
+</ul>
+
+
+<h4>1細胞あたりのタンパク質の総質量</h4>
+
+<script type="math/tex; mode=display">1 \ \mathrm{pg} \times 0.3 \times 0.5 = 0.15 \ \mathrm{pg}</script>
+
+
+<h4>1細胞あたりの炭素原子の個数</h4>
+
+<script type="math/tex; mode=display">\frac{1\times 10 ^ {-12} \ \mathrm{g} \times 0.3 \times 0.5}{12 \ \mathrm{g/mol}} \times 6 \times 10 ^ {23} \ \mathrm{molecules/mol}  = 7.5 \times 10 ^ 9 \approx 10 ^ {10}</script>
+
+
+<ul>
+<li>平均的なタンパク質のアミノ酸数：<script type="math/tex">300</script>個</li>
+<li>一つのアミノ酸の特徴的な質量：<script type="math/tex">100 \ \mathrm{Da}</script></li>
+<li><script type="math/tex">1 \ \mathrm{Da} = 1.6 \times 10 ^ {-24} \ \mathrm{g}</script></li>
+</ul>
+
+
+<h4>典型的なタンパク質の質量</h4>
+
+<script type="math/tex; mode=display">300 \times 100 \ \mathrm{Da} \times 1.6 \times 10 ^ {-24} \ \mathrm{g/Da}  = 4.8 \times 10 ^ {-20} \ \mathrm{g} \approx  5 \times 10 ^ {-20} \ \mathrm{g} </script>
+
+
+<h4>1細胞あたりのタンパク質の個数</h4>
+
+<script type="math/tex; mode=display">N _ {\mathrm{ribosome}} = \frac{0.15 \times 10 ^ {-12} \  \mathrm{g}}{5 \times 10 ^ {-20} \ \mathrm{g}} = 3 \times 10 ^ {6}</script>
+
+
+<h4>1細胞あたりの細胞質中のタンパク質の個数</h4>
+
+<script type="math/tex; mode=display">3 \times 10 ^ {6} \times \frac{2}{3} = 2 \times 10 ^ {6}</script>
+
+
+<h4>1細胞あたりの膜タンパク質の個数</h4>
+
+<script type="math/tex; mode=display">3 \times 10 ^ {6} \times \frac{1}{3} = 1 \times 10 ^ {6}</script>
+
+
+<h4>1細胞あたりのリボソームの個数</h4>
+
+<script type="math/tex; mode=display">\frac{0.2 \times 0.15 \times 10 ^ {-12} \ \mathrm{g}}{2.5 \times 10 ^ {6} \ \mathrm{Da} \times \frac{1}{3}} \times \frac{1}{1.6 \times 10 ^ {-24} \ \mathrm{g/Da}} = 22,500 \approx 20,000</script>
+
+
+<h4>1細胞あたりの脂質分子の個数</h4>
+
+<script type="math/tex; mode=display">N_{\mathrm{lipid}}\approx \frac{4\times 0.5\times 6 \times 10 ^ {6} \ \mathrm{nm ^ 2}}{0.5 \ \mathrm{nm ^ 2}} = 2.4 \times 10 ^ {7} \approx 2 \times 10 ^ {7}</script>
+
+
+<h4>1細胞あたりの水分子の個数</h4>
+
+<script type="math/tex; mode=display">N_{\mathrm{H_{2}O}} \approx \frac{0.7 \times 10 ^ {-12} \ \mathrm{g}}{18 \ \mathrm{g/mol}} \times 6 \times 10 ^ {23} \ \mathrm{molecules/mol} = 2.33 \times 10 ^ {10}\approx 2 \times 10 ^ {10}</script>
+
+
+<h4>1細胞あたりの無機イオンの個数</h4>
+
+<script type="math/tex; mode=display">N_{\mathrm{ions}} \approx \frac{100 \times 10 ^ {-3} \ \mathrm{mol} \times 6 \times 10 ^ {23} \ \mathrm{molecules/mol}}{10 ^ {15} \ \mathrm{\mu m ^ {3}}} \times 1 \ \mathrm{\mu m ^ {3}} = 6 \times 10 ^ {7}</script>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/12/05/pboc-01/">「細胞の物理生物学」読書ノート：第1章</a></h1>
     
     
@@ -876,145 +1006,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/11/30/archive-physical-biology-of-the-cell/">「細胞の物理生物学」読書ノート：アーカイブ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-30T09:20:00+09:00" pubdate data-updated="true">Nov 30<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>「細胞の物理生物学」&#8221;Physical Biology of the Cell&#8221;</h3>
-
-<p>本書は，2008年11月にGarland Science社から出版された&#8221;Physical Biology of the Cell&#8221;の翻訳版である．学部または大学院における基礎コース向けに作られた本書は，細胞生物学を生物物理学の側面から再構成するという大胆な内容となっている．すなわち，細胞内の機能や性質ごとに物理学の知見を適用するというこれまでの体系とは違い，物理モデルや物理法則から生物というものを捉えたときに，細胞内の高分子の挙動や生物的な構造をどのように分類できどのように認識できるだろうかという観点から，生物物理学を構築し直すということである．本書のタイトルに&#8221;Biophysics&#8221;ではなく&#8221;Physical biology&#8221;と付けていることからも，その意図が伝わってくる．全20章1000ページちかい分量の本書の中には，バネの運動を表すような単純な調和振動子から化学的な反応速度論のモデル，流体力学や統計モデルなどの基本的な物理モデルが含まれている．また，扱う生物現象としてもDNAから酵素反応，生体膜，細胞骨格，分子モーターなど幅広くカバーしている．</p>
-
-<p>また，本書の大きな特徴として挙げられるのが「見積もり」という概念である．定量的な物理モデルを立てた上で生物学の現象に対する定量的な議論を行うためには，オーダーの見積もりが重要になる．見積もる値は，細胞内に存在するあるタンパク質の個数であったり，平衡時に観測される化合物の濃度，大腸菌が泳ぐときの速度など様々である．それらの値は，実際に立てたモデルを検証するときに役に立つばかりでなく，目にみえない世界を想像するときの直感的な感覚としても非常に有用となる．このように，単純化した上でオーダーレベルの数字に落としこむことで，定量的な解釈の手助けとなる．本書では，こういった見積りの具体例が各所に散りばめられており，各章の最後に付属する章末問題でも多数取り扱われている．</p>
-
-<p>なお，訳書は1版をもとに翻訳されたものだが，原書は2012年10月に第2版が出ている．第1版では全20章だった構成が第2版では全22章となっており，第2版では第3部に&#8221;Light and Life&#8221;という章が追加されたほか，第4部の1章が再構成され2章に分かれている．</p>
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4320057163" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=0815344503" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<h3>読書ノートまとめ</h3>
-
-<ul>
-<li>序文
-
-<ul>
-<li><a href="http://yagays.github.io/blog/2013/12/04/pboc-00/">「細胞の物理生物学」読書ノート：序文</a></li>
-</ul>
-</li>
-<li>第1章
-
-<ul>
-<li><a href="http://yagays.github.io/blog/2013/12/05/pboc-01/">「細胞の物理生物学」読書ノート：第1章</a></li>
-</ul>
-</li>
-<li>第2章
-
-<ul>
-<li><a href="http://yagays.github.io/blog/2013/12/06/pboc-02-1/">「細胞の物理生物学」読書ノート：第2章その1</a>
-
-<ul>
-<li>大腸菌のサイズの見積もり</li>
-</ul>
-</li>
-<li><a href="http://yagays.github.io/blog/2013/12/10/pboc-02-2/">「細胞の物理生物学」読書ノート：第2章その2</a>
-
-<ul>
-<li>第2章の概要</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>第3章
-
-<ul>
-<li><a href="http://yagays.github.io/blog/2014/01/17/pboc-03">「細胞の物理生物学」読書ノート：第3章</a>
-
-<ul>
-<li>第3章の概要</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>第4章
-
-<ul>
-<li><a href="http://yagays.github.io/blog/2014/02/26/pboc-04-1/">「細胞の物理生物学」読書ノート：第4章前半</a>
-
-<ul>
-<li>第4章前半の概要</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<h3>オンラインリソース</h3>
-
-<ul>
-<li><a href="http://microsite.garlandscience.com/pboc2/">Home - Physical Biology of the Cell</a>
-
-<ul>
-<li>公式のサポートページ．図表やデータセット，コードや動画等が公開されている</li>
-</ul>
-</li>
-<li><a href="http://www.garlandscience.com/product/isbn/0815341636">Garland Science - Book: Physical Biology of the Cell + 1</a>
-
-<ul>
-<li>Garland Scienceの第1版紹介ページ．Chp.2がサンプルでダウンロードできる．</li>
-</ul>
-</li>
-<li><a href="http://www.garlandscience.com/product/isbn/9780815344506">Garland Science - Book: Physical Biology of the Cell + 2</a>
-
-<ul>
-<li>Garland Scienceの第2版紹介ページ．Chp.17がサンプルでダウンロードできる．</li>
-</ul>
-</li>
-<li><a href="http://www.taguchi.bio.titech.ac.jp/paper/column/assets/pc6_bookreview_PBoC.pdf">pc6_bookreview_PBoC.pdf</a>（田口英樹氏による書評，PDF）</li>
-<li><a href="http://web.sfc.keio.ac.jp/~t10078si/rindoku/rindoku.html">細胞の物理生物学 輪読ノート</a></li>
-<li><p><a href="http://www.anat1.med.kyushu-u.ac.jp/reading/physical_-biology_of_the_cell/">Physical Biology of the Cell 輪読会 | 九州大学大学院医学研究院　系統解剖学分野</a></p></li>
-<li><p><a href="http://bionumbers.hms.harvard.edu/">BioNumbers - The Database of Useful Biological Numbers</a></p></li>
-</ul>
-
-
-<h3>注意</h3>
-
-<p>上記リンクを含むこの読書ノートは個人的なメモであって，章末問題などの解答の正確さや厳密さを保証するものではないことをご注意下さい．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/11/">&larr; Older</a></li>
@@ -1062,6 +1053,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/09/08/kdd2014-tutorial-recommendation/">スライドメモ：The Recommender Problem Revisited</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/08/31/vowpal-wabbit/">私的Vowpal Wabbitまとめ</a>
       </li>
     
@@ -1095,10 +1090,6 @@
     
       <li class="post">
         <a href="/blog/2014/06/27/gollum-wiki/">Gollum入門した</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/06/19/review-the-anatomical-chart-of-homes/">「住まいの解剖図鑑」読了</a>
       </li>
     
   </ul>
