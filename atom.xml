@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-09-08T15:58:26+09:00</updated>
+  <updated>2014-09-08T16:12:21+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -14,20 +14,20 @@
 
   
   <entry>
-    <title type="html"><![CDATA[スライドメモ：The Recommender Problem Revisited]]></title>
+    <title type="html"><![CDATA[スライドメモ:KDD2014 Tutorial "The Recommender Problem Revisited"]]></title>
     <link href="http://yagays.github.io/blog/2014/09/08/kdd2014-tutorial-recommendation/"/>
     <updated>2014-09-08T15:21:00+09:00</updated>
     <id>http://yagays.github.io/blog/2014/09/08/kdd2014-tutorial-recommendation</id>
-    <content type="html"><![CDATA[<p>KDD2013 Tutorialの&#8221;The Recommender Problem Revisited&#8221;のスライド1を読んだので，簡単にまとめてみた．主にレコメンドのこれまでと現状をひと通り網羅したチュートリアルという感じ．</p>
+    <content type="html"><![CDATA[<p>Netflixの中の人によるKDD2014 Tutorialの&#8221;The Recommender Problem Revisited&#8221;のスライド1を読んだので，簡単にまとめてみた．レコメンドのこれまでと現状をひと通り網羅したチュートリアルという感じ．このスライドはKDD2014 Tutorial向けだけれど，今度のRecSys 2014のTutorialでも同様の発表があるようだ(<a href="http://recsys.acm.org/recsys14/tutorials/">link</a>)．</p>
 
 <ul>
-<li>レコメンドの大まかな流れを知りたい人
+<li><strong>レコメンドの大まかな流れを知りたい人</strong>
 
 <ul>
-<li>このチュートリアルもいいけど日本語で書かれた<a href="http://www.kamishima.net/archive/recsys.pdf">しましま先生の資料</a>の方がわかりやすいかも</li>
+<li>このチュートリアルもいいけど，日本語で書かれた<a href="http://www.kamishima.net/archive/recsys.pdf">しましま先生の資料</a>の方が丁寧でわかりやすいかも</li>
 </ul>
 </li>
-<li>レコメンドの具体的な手法や流行を知りたい人
+<li><strong>レコメンドの具体的な手法や流行を知りたい人</strong>
 
 <ul>
 <li>このチュートリアルで興味ある分野の箇所を見て個別にReferenceを当たる</li>
