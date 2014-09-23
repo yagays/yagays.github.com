@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Book | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/book/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-09-08T16:12:21+09:00</updated>
+  <updated>2014-09-23T15:30:50+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「暴露:スノーデンが私に託したファイル」読了]]></title>
+    <link href="http://yagays.github.io/blog/2014/09/23/review-no-place-to-hide/"/>
+    <updated>2014-09-23T15:27:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/09/23/review-no-place-to-hide</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4105066919" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<blockquote><p>「われわれ自身が自らの行動を通して人生に意味を与え，物語を紡いでいく」</p>
+
+<p><a href="http://www.amazon.co.jp/gp/product/4105066919/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4105066919&linkCode=as2&tag=yagays-22">暴露:スノーデンが私に託したファイル</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4105066919" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> P.76</p>
+
+<p>"it is we who infuse life with meaning through our actions and the stories we create with them."</p>
+
+<p><a href="http://www.nytimes.com/2014/05/13/books/no-place-to-hide-by-glenn-greenwald.html">‘No Place to Hide,’ by Glenn Greenwald - NYTimes.com</a></p></blockquote>
+
+<p>これは本書の中で語られるエドワード・スノーデンの言葉だ．彼がなぜNSAやCIA，そしてアメリカという国家が作り上げた監視システムに異を唱えて機密書類を暴露したか，その理由を本書著者であるグレン・グリーンワルドに聞かれたときの答えの一つである．</p>
+
+<p>これはエドワード・スノーデンの内部告発をめぐる一連の事件を一番近くで見ていたジャーナリストの著作である．彼がローラ・ポイトラスとともに，スノーデンの内部告発の報道をガーディアン紙に掲載した．そのスクープまでの長い道のりと，スノーデンがもたらした機密文章の内容，内部告発後の世界の反応，そしてジャーナリズムという本質を，本書「暴露」は露わにする．</p>
+
+<p>本書はまるで別の本を繋ぎあわせたと思うくらいに内容が章によって異なる．まず第1章は，著者とスノーデンの出会いから接触と情報提供までの一連の流れを時系列で記述した，なかば小説的な内容．次に2章と3章ではスノーデンが持ちだした機密文章をもとにNSAやアメリカ国家が行ってきた監視システムの解明．そして第4章では監視システムの是非について，最後に5章ではジャーナリズムの意義について，告発後に著者のグレン・グリーンウォルドが経験した賞賛とバッシングなどの反応を元に書かれている．ジャーナリズムに身を奉じる一人の記者として一貫した信念を持つ著者には，どこか自身の自由や立場を犠牲にしてでも告発に踏み切ったスノーデン氏と同じものを感じる．</p>
+
+<p>情報科学に身を置く者としても，そして多少なりとも他の人よりかはインターネットやプライバシーや暗号に関して知識はあるだろうという少しの傲慢さをもってしても，今回のスノーデンをめぐる事実については今でも信じ切れない部分がある．それはテロ対策という名目の元に監視システムを作り上げてしまったアメリカ自体よりも，それを実際に運用して何億通ものメールや電話を収集しメタデータを含めた個人情報を掌握するという異常なスケールの情報処理を行っている技術すべてに対してだ．それこそ昨今のビックデータなんて霞むほどの想像のつかないほどのデータ量になるだろう．実際は集めるだけ集めて解析なんてまともにできていないだろうという，なかば希望的な推測もあるけれども，それを差し置いても監視システムの持つポテンシャルにはただ圧倒されるしかない．それに，その体制を支える技術自体も想像がつかない．ネットワークの盗聴や暗号解読．しまいにはIBM,Yahoo,Google,Facebookなどの企業からの情報提供など，世の中の前提が崩れかねない内容だ．いっそ007などのスパイ映画さながらの奇抜な方法でやってくれていたほうが幾分マシだったと思える．それくらい今回発覚した事実には驚かざるをえない．</p>
+
+<p>世界は変わる．身体，宗教，政治思想，職業，人種，そうしたすべての立ち位置において，昨日までマジョリティだった人間が突然マイノリティになる瞬間が訪れる可能性がある．社会の自由は弱者に対する寛容さをもってして計られる．自分が安全だからという短期的な考えではなく，もっと長期的で大域的な，どんな状態になっても自分の望む自由な世界にするべく，考えて行動していかなければならない．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「バッドデータハンドブック ―データにまつわる問題への19の処方箋」読了]]></title>
@@ -115,22 +143,6 @@
 <p>中には「量をこなせば質になる」と考える人もいるだろうが，それはある意味あっていて，同時にまちがっている．質に変化させる段階で見極める力を身につけていないと，結局数撃ちゃ当たる戦法からは抜け出せない．ちなみに，この量から質に持って行こうとする方法を「<a href="http://www.amazon.co.jp/gp/product/4862760856/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4862760856&linkCode=as2&tag=yagays-22">イシューからはじめよ―知的生産の「シンプルな本質」</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4862760856" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」という本の中では「犬の道」と言い表している．言い得て妙というか，まあ人間なんだから頭使えよということだろう．</p>
 
 <p>こういうことに自覚的な人でもそうでない人も，とりあえず本書のようなことをすれば大体は自然と良い方向に行くと思う．中にはシンプルを崇拝しすぎて必要なものまで削ってしまうような人も出てくるかもしれないけれど，まあほどほどということをわきまえた上でやってみると，上手くいくかもしれない．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「All You Need Is Kill」読了]]></title>
-    <link href="http://yagays.github.io/blog/2014/06/14/review-all-you-need-is-kill/"/>
-    <updated>2014-06-14T10:33:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2014/06/14/review-all-you-need-is-kill</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4086302195" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>映画が始まる前に読んでおこうと思って読んだ作品．本作品を原作としてハリウッドで映画化され，向こうでは<a href="http://www.imdb.com/title/tt1631867/">”Edge of Tomorrow”</a>という題になっているそうだ．<a href="http://www.rottentomatoes.com/m/edge_of_tomorrow/">Rotten Tomatoes評</a>をみるかぎり，なかなか評判は良さそうなので期待が高まる．</p>
-
-<p>これを読んで一番に思い浮かべたのがダンカン・ジョーンズの「ミッション: 8ミニッツ」だった．といっても，本書が出たのが2004年，映画は2011年．個人的にアイデアのオリジナリティとかは気にしないのでそれはどうでもいいとして，両者ともに主人公の心情の変化というものが同じ軌跡をなぞるようで面白い．ループの最初はとまどい現状の認識に手一杯なのだけれども，次第に理解をしてその中で自由に動けるまでになる．そして最終的にはその時間に愛着を抱くようになり，目標の達成とともにその愛する時間は終わってしまう．逆に結末はまったく違う．一方は理想的な解を見つけて愛する人と結ばれ，もう一方は愛する人を失いながらも残酷な世界を生き抜く．時間が終わること自体がオチなのだけれど，その先に提示される世界に作り手が考える人間の生きることの捉え方が表れているようで，その点も興味深い．</p>
-
-<p>「勝ちに不思議の勝ちあり、負けに不思議の負けなし」という言葉があるが，この場合は不思議さを完全に払拭するような明確な理由がある．だがそれは周りからは認識できないし，能力や成績などの結果からしか推測することができない．たとえそれを外部が認識したとして，無限回の試行を勝ちの理由にできるんだろうか．全探索に近いような繰り返しでパターンを覚えたから？　それとも無限回の試行で訓練されたから？　それはある意味で機械学習の文脈での過学習のような気もするし，目的関数の最適解への収束にも取れる．まあループが繰り返したりネストせずにその場限りなら，どちらにせよループの末の結論が本人の納得という意味で正しいのだろうけれども，そうして生き延びた彼ら/彼女らの将来を思慮せずにはいられない．</p>
 ]]></content>
   </entry>
   

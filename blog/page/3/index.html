@@ -117,6 +117,89 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2014/06/27/gollum-wiki/">Gollum入門した</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-27T11:31:00+09:00" pubdate data-updated="true">Jun 27<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近メモがあちこちに散乱していて，<a href="http://kobito.qiita.com/ja">Kobito</a>に殴り書きしたり，<a href="http://brettterpstra.com/projects/nvalt/">nvALT</a>に適当に書いたり，<a href="http://evernote.com/intl/jp/">Evernote</a>にノート作ったりと，色々と良くない感じだったので，ある程度しっかりと書くメモはGollumで書くようにした．</p>
+
+<p>GollumはGitHub-likeなwikiエンジンだ．とにかくmarkdownで書けてgit連携，DBを立てる必要も無く，ソースコードがシンタックスハイライト付きで貼れるというのが嬉しい．</p>
+
+<h3>Gollumセットアップ</h3>
+
+<p><a href="https://github.com/gollum/gollum">gollum/gollum</a></p>
+
+<h4>Gollumのインストール</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install gollum</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Gollumセットアップ</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ mkdir wiki; cd wiki
+</span><span class='line'>$ git init
+</span><span class='line'>$ gollum</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これでhttp://localhost:4567/にアクセスするとwikiが立ち上がっている．もしgit initしていないとエラーになるので注意．</p>
+
+<h3>スクリーンショット</h3>
+
+<p>というわけで，適当にmarkdownで書いて保存すると以下のように立ち上がる．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/gollum.png" alt="" /></p>
+
+<h3>所感</h3>
+
+<p>まだ使い始めて1週間も経っていないけれども，かなり使い勝手は良いと思う．簡素な作りながらも，ディレクトリ構成やgitの方を意識しないで済むのは楽だ．一方で物足りない部分は確かにあって，ファイルやディレクトリ名を入力するときの補完とかをしてくれればいいのにとは思うけれども，まあその辺はそれほど苦にならないし運用でカバーできる．そういう部分も含めて，他のWikiエンジンやWordpress，Sphinxを使うよりかは，はるかに自分に合っていると思う．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="https://github.com/gollum/gollum/wiki">Home · gollum/gollum Wiki</a></li>
+<li><a href="http://yukke.hateblo.jp/entry/2013/05/02/224859">githubのwikiエンジン&#8221;gollum&#8221;の導入と細かい設定 - yukke::note</a></li>
+<li><a href="http://blog.hifumi.info/2014/02/02/my-wiki-powered-by-gollum/">gollumを使って個人用wikiをサーバに立てた | blog: takahiro okumura</a></li>
+<li><a href="http://pioneerboy.hatenablog.com/entry/2014/06/19/161859">ゼロからはじめるGollum Wiki - 雨に煙る</a></li>
+<li><a href="http://blog.necomimi.net/?p=1941">Github gollumでファイルアップロードする | CATch a TAIL!</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2014/06/19/review-the-anatomical-chart-of-homes/">「住まいの解剖図鑑」読了</a></h1>
     
     
@@ -329,51 +412,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/05/29/review-resilience/">「「レジリエンス」の鍛え方」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-29T14:10:00+09:00" pubdate data-updated="true">May 29<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=440845494X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>レジリエンスとは「精神的な打たれ強さであり感情をコントロールできる強い自己規律」のことを言うそうだ．世界で活躍するエリートには，そのレジリエンスというものがあるからこそ活躍でき，逆に言えばレジリエンスがない人はキャリアの途中で挫折したり成果が出なかったりするらしい．そういった精神的な部分はビジネススクールではあまり教えてくれないから重要だという．著者はP&amp;G出身者で現在はレジリエンスを専門にした社会人向けの心的ケアの会社を立ち上げている．</p>
-
-<p>内容に入る前にまずレジリエンスという聞きなれない言葉なのだけれども，本書を読む限りだと，特段新しい考え方や方法論を言い表しているわけではなさそうだ．レリジエンスという体系が出来上がっているようには見えず，単に小手先のテクニック集にしかなっていないと感じる．いちおう本書の流れとしては失敗とそこからの再生に沿って話が進むけれども……．具体的な内容としては，精神的な強さが必要でそれを実現するにはこういうことをすべきだということが手を替え品を替えて説明される．それぞれに取って付けたような心理学の研究結果みたいなものが理論付けとして述べられるが，因果と相関の違いがわかってないんじゃないかと思う部分も多い．もちろん個別の内容がすべて悪いというわけではなく，例えば失敗に対して予期できる失敗とアクシデンタルな失敗を区別して考えるべきとか，感情をコントロールするには自分で自分を分析して一歩引いた目線で考えろとか，そういったテクニックとしてはいいんだけど，それで終わりという感じ．</p>
-
-<p>多くの人は当然ながらストレスを抱え込みたくないし，失敗だってしたくないし，ポジティブに日々を過ごして仕事で成果を出したいと思うはずだ．そういう時にこそ自分を変えようと思って他人の人生であったり優秀な人の習慣を参考にするのだろうけれども，今回の場合は本で読んでも感動は薄いし，まあこういった内容は自己啓発セミナー向けかなぁ．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/4/">&larr; Older</a></li>
@@ -421,6 +459,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/09/23/review-no-place-to-hide/">「暴露:スノーデンが私に託したファイル」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/08/kdd2014-tutorial-recommendation/">スライドメモ:KDD2014 Tutorial &#8220;The Recommender Problem Revisited&#8221;</a>
       </li>
     
@@ -456,10 +498,6 @@
         <a href="/blog/2014/06/28/review-germany-japan-essay/">「ドイツ流、日本流: 30年暮らして見えてきたもの」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/06/27/gollum-wiki/">Gollum入門した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -468,7 +506,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (103)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (104)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>

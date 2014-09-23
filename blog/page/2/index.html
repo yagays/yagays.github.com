@@ -117,6 +117,182 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2014/08/15/ipython-notebook-matplotlib-inline/">iPython Notebookの&#8211;pylab Inlineは使うのをやめようという話</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-15T09:48:00+09:00" pubdate data-updated="true">Aug 15<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>TL;DR</h3>
+
+<p><code>ipython notebook --pylab inline</code>のかわりに<code>ipython notebook --matplotlib inline</code>を使おう．もしくはipythonの始めに<code>%matplotlib inline</code>を実行しておく．</p>
+
+<h3>iPython Notebookについて</h3>
+
+<p>周知の事実だとは思うが，<a href="http://ipython.org/index.html">iPython</a>は超便利なPythonのインタラクティブシェルだ．その一部として<a href="http://ipython.org/notebook.html">iPython Notebook</a>というのがあり，ブラウザでコードを実行できたり，実行結果をノートとして保存したり，matplotlibなどで描写したグラフをノートの中にそのまま表示したりできる．RでいうところのRstudio+knitrのような，解析レポートを作るときには重宝するツールとなっている．</p>
+
+<br/>
+
+
+<p><img src="https://dl.dropboxusercontent.com/u/142306/b/ipythonnotebook.png" alt="http://nbviewer.ipython.org/gist/twiecki/3962843より" /></p>
+
+<p>(<a href="http://nbviewer.ipython.org/gist/twiecki/3962843">http://nbviewer.ipython.org/gist/twiecki/3962843</a>より)</p>
+
+<p>で，iPython Notebookに関する記事を見ていると，だいたい以下のようなコマンドで実行している．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>ipython notebook --pylab inline
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ipython notebookで起動，それにくわえて&#8211;pylab inlineとすることでiPython Notebook内で描写したグラフが展開できて嬉しいわけだけど，一つ問題がある．それはpylabをインポートしている点だ．</p>
+
+<h3>無意識にpylabを使うとなにが危ないか</h3>
+
+<p>pylab自体は色々と便利なパッケージなんだけれども，そのpylabの挙動に少し問題がある．上で示したようなコマンドでpylabフラグを付けて実行すると，実は裏ではnumpyのモジュールがnpのエイリアスとともに，トップレベルでもインポートされている．実際にコマンドを叩いて確かめてみると以下のようになる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>ipython --pylab
+</span><span class='line'>
+</span><span class='line'>In <span class="o">[</span>1<span class="o">]</span>: np.arange<span class="o">(</span>0,10<span class="o">)</span>
+</span><span class='line'>Out<span class="o">[</span>1<span class="o">]</span>: array<span class="o">([</span>0, 1, 2, 3, 4, 5, 6, 7, 8, 9<span class="o">])</span>
+</span><span class='line'>
+</span><span class='line'>In <span class="o">[</span>2<span class="o">]</span>: arange<span class="o">(</span>0,10<span class="o">)</span>
+</span><span class='line'>Out<span class="o">[</span>2<span class="o">]</span>: array<span class="o">([</span>0, 1, 2, 3, 4, 5, 6, 7, 8, 9<span class="o">])</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>どっちも実行できていて何の変哲もないように見えるんだけど，よくNumpyの実行環境で見るimport numpy as npの場合だと，1行目の書き方では実行できるが，2行目の書き方では実行できない．それが，pylabをインポートしているとどちらもできてしまう，正確に言えば，Numpyの関数がモジュール名もしくはエイリアスを先頭に付けなくても実行できてしまう．</p>
+
+<p>ではこれの何が問題かというと，関数の名前がかぶるというわけだ．たとえば組み込み関数の<a href="http://docs.python.jp/2/library/functions.html#sum">sum()</a>や<a href="http://docs.python.jp/2/library/functions.html#all">all()</a>は，実はNumpyにも同様の名前の関数がある（<a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html">sum()</a>,<a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.all.html">all()</a>）．なのでpylabをインポートすると，勝手にsumやallがNumpyのモジュールのものに置き換わってしまう．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># pylabをインポートしない場合</span>
+</span><span class='line'><span class="nv">$ </span>ipython
+</span><span class='line'>
+</span><span class='line'>In <span class="o">[</span>1<span class="o">]</span>: sum,all
+</span><span class='line'>Out<span class="o">[</span>1<span class="o">]</span>: <span class="o">(</span>&lt;<span class="k">function </span>sum&gt;, &lt;<span class="k">function </span>all&gt;<span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># pylabをインポートした場合</span>
+</span><span class='line'><span class="nv">$ </span>ipython --pylab
+</span><span class='line'>
+</span><span class='line'>In <span class="o">[</span>1<span class="o">]</span>: sum,all
+</span><span class='line'>Out<span class="o">[</span>1<span class="o">]</span>: <span class="o">(</span>&lt;<span class="k">function </span>numpy.core.fromnumeric.sum&gt;, &lt;<span class="k">function </span>numpy.core.fromnumeric.all&gt;<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>意識的にpylabを使おうと思って書くコードなら良いんだけど，もしpylab関係なくいつもiPython Notebook使ってるからという感覚でpythonのコードを書いたとして，あとで普通のpythonで実行したら動かない，なんてことが起こりかねない．まあ気をつければ済む話かもしれないが，こういう地雷は踏まないに限る．</p>
+
+<h3>公式にも&#8211;pylabは使えなくなる見込み</h3>
+
+<p>あと，&#8211;pylabを使ってiPython Notebookを起動すると以下のような警告文が出る．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>ipython notebook --pylab inline
+</span><span class='line'>
+</span><span class='line'><span class="o">[</span>...<span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">[</span>NotebookApp<span class="o">]</span> WARNING | Starting all kernels in pylab mode is not recommended,
+</span><span class='line'>    and will be disabled in a future release.
+</span><span class='line'>    Please use the %matplotlib magic to <span class="nb">enable </span>matplotlib instead.
+</span><span class='line'>    pylab implies many imports, which can have confusing side effects
+</span><span class='line'>    and harm the reproducibility of your notebooks.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ということで，iPython Notebookを使うときには&#8211;pylabで読み込みをしないほうが良い．</p>
+
+<h3>pylabを使わないでinline表示させるには</h3>
+
+<p>&#8211;pylab inlineを回避する方法は2つある．</p>
+
+<ul>
+<li><code>ipython notebook --matplotlib inline</code>で起動する</li>
+<li><code>%matplotlib inline</code>をiPython Notebookの冒頭で実行しておく</li>
+</ul>
+
+
+<p>こうすることによって，pylabのインポートを回避しつつiPythonのノート内でグラフを描写することができる．1つ目のiPythonのフラグで指定するほうが簡単だとは思うのだが，ぐぐってもこのコマンドで実行している例があまり出てこないのだけれども，たぶん問題無いと思う．</p>
+
+<h3>注意</h3>
+
+<p>ここまで読んだならわかるとは思うけれども，pylabの行儀悪いNumpyインポートを避けようということをしたわけだから，当然Numpyは別でインポートしないといけないし，そのへんのウェブページに載っているiPython Notebookの実行例とかのNumpyの関数の入ったコードはそのままでは実行できない．今回の方法を使っているなら，そのあたりは適宜読み替える必要がある．あんまり見たこと無い関数があったら，それがPythonの組み込み関数なのかNumpyやpylabの関数なのか疑ってかかろう．もしNumpyの関数なら，import numpy as npがされていることを確認したうえでnp.を関数の先頭につければ実行できる．なんかコードのサンプルをコピペしたけど動かないというときは，まあ大抵この問題だ．</p>
+
+<h3>元ネタ</h3>
+
+<ul>
+<li><a href="http://carreau.github.io/posts/10-No-PyLab-Thanks.ipynb.html">No Pylab Thanks | Random Thoughts</a></li>
+</ul>
+
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://docs.python.jp/2/tutorial/modules.html">6. モジュール — Python 2.7ja1 documentation</a></li>
+<li><a href="http://hennohito.cocolog-nifty.com/blog/2014/07/pythonpylab-21a.html">今から始めるPython　その４　pylabネームスペースの解説: YATTSUKE BLOG</a></li>
+<li><a href="http://nbviewer.ipython.org/github/ipython/ipython/blob/1.x/examples/notebooks/Part%203%20-%20Plotting%20with%20Matplotlib.ipynb">http://nbviewer.ipython.org/github/ipython/ipython/blob/1.x/examples/notebooks/Part%203%20-%20Plotting%20with%20Matplotlib.ipynb</a>
+
+<ul>
+<li>%matplotlib inlineを使っている例</li>
+</ul>
+</li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2014/07/23/homebrew-science-bioinformatics/">Homebrew/scienceでバイオインフォマティクスのソフトウェアを入れる</a></h1>
     
     
@@ -448,89 +624,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/06/27/gollum-wiki/">Gollum入門した</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-27T11:31:00+09:00" pubdate data-updated="true">Jun 27<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>最近メモがあちこちに散乱していて，<a href="http://kobito.qiita.com/ja">Kobito</a>に殴り書きしたり，<a href="http://brettterpstra.com/projects/nvalt/">nvALT</a>に適当に書いたり，<a href="http://evernote.com/intl/jp/">Evernote</a>にノート作ったりと，色々と良くない感じだったので，ある程度しっかりと書くメモはGollumで書くようにした．</p>
-
-<p>GollumはGitHub-likeなwikiエンジンだ．とにかくmarkdownで書けてgit連携，DBを立てる必要も無く，ソースコードがシンタックスハイライト付きで貼れるというのが嬉しい．</p>
-
-<h3>Gollumセットアップ</h3>
-
-<p><a href="https://github.com/gollum/gollum">gollum/gollum</a></p>
-
-<h4>Gollumのインストール</h4>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install gollum</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>Gollumセットアップ</h4>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ mkdir wiki; cd wiki
-</span><span class='line'>$ git init
-</span><span class='line'>$ gollum</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これでhttp://localhost:4567/にアクセスするとwikiが立ち上がっている．もしgit initしていないとエラーになるので注意．</p>
-
-<h3>スクリーンショット</h3>
-
-<p>というわけで，適当にmarkdownで書いて保存すると以下のように立ち上がる．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/gollum.png" alt="" /></p>
-
-<h3>所感</h3>
-
-<p>まだ使い始めて1週間も経っていないけれども，かなり使い勝手は良いと思う．簡素な作りながらも，ディレクトリ構成やgitの方を意識しないで済むのは楽だ．一方で物足りない部分は確かにあって，ファイルやディレクトリ名を入力するときの補完とかをしてくれればいいのにとは思うけれども，まあその辺はそれほど苦にならないし運用でカバーできる．そういう部分も含めて，他のWikiエンジンやWordpress，Sphinxを使うよりかは，はるかに自分に合っていると思う．</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="https://github.com/gollum/gollum/wiki">Home · gollum/gollum Wiki</a></li>
-<li><a href="http://yukke.hateblo.jp/entry/2013/05/02/224859">githubのwikiエンジン&#8221;gollum&#8221;の導入と細かい設定 - yukke::note</a></li>
-<li><a href="http://blog.hifumi.info/2014/02/02/my-wiki-powered-by-gollum/">gollumを使って個人用wikiをサーバに立てた | blog: takahiro okumura</a></li>
-<li><a href="http://pioneerboy.hatenablog.com/entry/2014/06/19/161859">ゼロからはじめるGollum Wiki - 雨に煙る</a></li>
-<li><a href="http://blog.necomimi.net/?p=1941">Github gollumでファイルアップロードする | CATch a TAIL!</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/3/">&larr; Older</a></li>
@@ -578,6 +671,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/09/23/review-no-place-to-hide/">「暴露:スノーデンが私に託したファイル」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/08/kdd2014-tutorial-recommendation/">スライドメモ:KDD2014 Tutorial &#8220;The Recommender Problem Revisited&#8221;</a>
       </li>
     
@@ -613,10 +710,6 @@
         <a href="/blog/2014/06/28/review-germany-japan-essay/">「ドイツ流、日本流: 30年暮らして見えてきたもの」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/06/27/gollum-wiki/">Gollum入門した</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -625,7 +718,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (103)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (104)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
