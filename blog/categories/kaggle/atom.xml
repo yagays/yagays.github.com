@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Kaggle | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/kaggle/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-09-26T16:58:34+09:00</updated>
+  <updated>2014-09-27T00:54:24+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -70,6 +70,16 @@ $ vw click.test.vw -t -i click.model.b30.pass10.l2_1e-08.vw -p click.preds.b30.p
 <p>あと，<a href="https://docs.google.com/file/d/0BzrlDxVZWSUpNFdscnRmUUdJWk5qYVhkVVE0WjV1LUxpZlhr/edit">Criteoの資料</a>によると"Winners will release code publicly(Popular OSI-approved license)"らしいので，ぜひともコードを公開してほしいところ．</p>
 
 <p>といった感じで，まだまだCriteo Display Advertising Challengeは終わらない．</p>
+
+<h4>追記：</h4>
+
+<blockquote class="twitter-tweet" lang="en"><p><a href="https://twitter.com/yag_ays">@yag_ays</a> kaggleのコンペのほとんど（全て？）は、Prizeに入った人は手法の説明とコード(OSI承認ライセンス)をフォーラムに投稿しなければならないとルールに書いてあるので、なんらかトラブルがない限り上位陣の成果は公開されると思います。</p>&mdash; id:ultraist (@ultraistter) <a href="https://twitter.com/ultraistter/status/515428100847304704">September 26, 2014</a></blockquote>
+
+
+<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
 ]]></content>
   </entry>
   
