@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-09-23T15:30:50+09:00</updated>
+  <updated>2014-09-26T16:50:06+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,68 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Kaggle初心者がDisplay Advertising Challengeに挑んだ結果354th/718だった]]></title>
+    <link href="http://yagays.github.io/blog/2014/09/26/kaggle-criteo-display-advertising-challenge/"/>
+    <updated>2014-09-26T16:41:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/09/26/kaggle-criteo-display-advertising-challenge</id>
+    <content type="html"><![CDATA[<p>Kaggleで行われていたcriteoのDisplay Advertising Challengeが終了し，最終的にPublic LB:0.47880，Private LB:0.47831の354th/718だった．1位のチームが0.44464で，Top10あたりが0.44台のスコアを叩き出しているので，結果は惨敗だけれども，個人的には初めてにしては健闘できたほうだと思う．まあ最初の方はLogistic regressionのBenchmarkすら越せなくて厳しい状態だったけれども，そこから抜けだしてある程度成果が出始めると，あとは計算してはサブミットしてを繰り返しスコアに一喜一憂するという感じで競技性があって非常に楽しめた．次はもっと上の方に行きたいと思いつつ，現在参加しているAfrica Soil Property Prediction Challengeは一時期10位圏内まで行ったもののそこから怒涛のランク落ちで現在300位くらいまで下がってしまったので，世間は厳しい．Kaggle Masterへの道はまだまだ遠い．</p>
+
+<h3>予測方法</h3>
+
+<p>さて，こんな中途半端な順位のヤツの解法なんて見てもどうしょうもないとは思うけれども，個人的な記録のためにも書いておく．</p>
+
+<p>使用したのは<a href="https://github.com/JohnLangford/vowpal_wabbit/wiki">Vowpal Wabbit</a>(VW)．主に参考にしたのはMLWaveの<a href="http://mlwave.com/predicting-click-through-rates-with-online-machine-learning/">Predicting CTR with online machine learning</a>で，とりあえず動くコードの例があって，あとはVWのパラメータチューニングで頑張ったという流れ．実はこれ以前にscikit-learn+pandasも試していたのだけれども，あまりにデータ量多すぎてpandasのget_dummiesでダミー変数作るのが不可能だったりと早々に諦めていた．その点VWは高速で動いてメモリ消費量も少ないので，初心者にとっては使いやすいソフトウェアだった．あと<a href="https://github.com/MLWave/kaggle-criteo">MLWave/kaggle-criteo</a>でデータ形式の変換コードがあったのが非常に助かったかな．</p>
+
+<p>さて，最終的なサブミットに使用したのは以下のパラメータ．</p>
+
+<ul>
+<li>損失関数(&#8211;loss_function)：logistic</li>
+<li>Feature Hashingのbit数(-b)：30</li>
+<li>L2正則化(&#8211;l2): 1e-08</li>
+<li>データのイテレーション回数(&#8211;passes):10</li>
+</ul>
+
+
+<p>少し前の記事の<a href="http://yagays.github.io/blog/2014/08/31/vowpal-wabbit/">私的Vowpal Wabbitまとめ - Wolfeyes Bioinformatics beta</a>にも書いたけど，loss_functionはlogisticにしておくと学習が終わったときにだいたいのスコアがわかって便利．あと-bを増やすとfeature hashingでcollisionしなくなるけれども，そのかわり必要なメモリ容量が増える．L2正則化はL1とともに1e-01から1e-12くらいまで試したんだけど，スコアが劇的に変わるわけではなかった．&#8211;passesは必須だけど，ある程度のイテレーション回数でスコアに変動がなければ途中で切られるみたいなので，最初の方で必要回数を確認してからは変えていない．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>vw click.train.vw -f click.model.b30.pass10.l2_1e-08.vw --loss_function logistic -c -k -b 30 --passes 10 --l2 0.00000001
+</span><span class='line'><span class="nv">$ </span>vw click.test.vw -t -i click.model.b30.pass10.l2_1e-08.vw -p click.preds.b30.pass10.l2_1e-08.vw
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>感想戦</h3>
+
+<ul>
+<li><a href="https://www.kaggle.com/c/criteo-display-ad-challenge/forums/t/10429/congratulations-to-the-winners">Congratulations to the winners! - Display Advertising Challenge | Kaggle</a></li>
+</ul>
+
+
+<p>kaggleのフォーラムで上位ランクの人が自分の解析方法を公開してくれているので，その中からVWに関するトピックを幾つか拾ってみる．</p>
+
+<p>まずは，15thのLuca MassaronがVWを使った解析例を示してくれている(<a href="https://www.kaggle.com/c/criteo-display-ad-challenge/forums/t/10429/congratulations-to-the-winners/54591#post54591">link</a>)．VWのコマンドは非常に参考になるし，自分もNNのHidden Unitsを10とか20でやったんだけどなーと思いつつ，何よりもまずデータの前処理の必要性を非常に感じた．</p>
+
+<p>あとは19thのKonrad BanachewiczはVWのより詳細な結果を示してくれていて(<a href="https://www.kaggle.com/c/criteo-display-ad-challenge/forums/t/10429/congratulations-to-the-winners/54595#post54595">link</a>)，こっちではNNが効かないみたいな話があったり，quadratic feature頑張ってたり，こちらも非常に参考になる．</p>
+
+<p>あとはLibFMとかNNとかAutoencoderとか色々な方法で予測している人がいて，非常に参考になる．</p>
+
+<h3>今後のCriteo Display Advertising Challengeの動向</h3>
+
+<p>Kaggleでのコンペは終わってしまったが，上に書いたようなフォーラムでの議論は続くし，それにコンペ用のデータセットが学術向けに公開された．これでもしかしたら上位ランクのグループの成果が論文として出てくるかもしれない．</p>
+
+<ul>
+<li><a href="http://labs.criteo.com/2014/09/kaggle-contest-dataset-now-available-academic-use/">Kaggle contest dataset is now available for academic use! - Criteo Labs</a></li>
+</ul>
+
+
+<p>あと，<a href="https://docs.google.com/file/d/0BzrlDxVZWSUpNFdscnRmUUdJWk5qYVhkVVE0WjV1LUxpZlhr/edit">Criteoの資料</a>によると&#8221;Winners will release code publicly(Popular OSI-approved license)&#8221;らしいので，ぜひともコードを公開してほしいところ．</p>
+
+<p>といった感じで，まだまだCriteo Display Advertising Challengeは終わらない．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「暴露:スノーデンが私に託したファイル」読了]]></title>
@@ -1340,25 +1402,6 @@
 <p>内容としては，確かに最近の流れを汲んで構成されていることに違いない．将棋の電王戦の盛り上がりを背景に，人間とコンピュータの関係性について，その未来のことを真剣に考える人は多い．そういう時に，人間の本質的な部分について，その仕組みや機構を超えて，可能性を見出そうとすることはある意味自然なことだと考えられる．古典的な条件付けや記憶からのパターン認識とともに，勘や共感覚や神秘的な現象，不可思議や超常現象にも近いものが取り上げられるのは，読者の興味に沿っているといえる．</p>
 
 <p>そういう環境において，これほどまでに知的な好奇心を刺激される作品が出てくるのはSF作品の醍醐味だと言える．本書の短編が提示するテーマは，想定しうる科学の延長線を大きく逸脱しない未来において，現在私たちが持っている疑問や不安にある種の答えを出してくれるような，そんな感覚を持つ．それでいてストーリーに没入できる面白さも兼ね備えた，優れた作品であることに間違いない．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「Webを支える技術」「WEB+DB PRESS Vol.80」読了]]></title>
-    <link href="http://yagays.github.io/blog/2014/05/14/review-webdb-web-architecture/"/>
-    <updated>2014-05-14T00:18:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2014/05/14/review-webdb-web-architecture</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774163988" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774142042" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>なんでもそうなんだけど，WEB+DB PRESSの表紙に書いてある「新人さん大歓迎」みたいに，基礎をもう一度おさらい！とかまだ間に合う！とかいう売り文句にめっぽう弱い．自分自身基礎をほっぽり出してトップダウン式にアレコレやってきたからというのもあるし，何か抜けているところは無いかと心配性になったりというのもあるし，何にせよ再入門みたいなことを繰り返してしまう．実際に中身を見れば「ああこの程度か」とか「所々わからないなー」のように当たりはつくのだけれども，際限なく空いている穴を埋めきるのに必死になってしまう．</p>
-
-<p>ということでWeb+DB PRESSの「Web技術入門」を読んでもうちょっと詳しく見ときたいなと思って，本棚から「Webを支える技術」を引っ張り出してきて一通り読み返した．だいたいのことは覚えていたけれども，それでも抜け落ちていた部分であったり，数年前に読んだ時にはピンと来なかった部分を見つけられたと思う．特にHTTPやRESTのシンプルな構造ゆえのpros and consみたいな点は最近ようやく分かるようになってきた．アプリケーション状態を持たないステートレスな接続の果たす役割や，それを実現する自己記述的なメッセージ，あとはHTTPメソッドそれぞれの冪等性や安全の有無も改めて考えると面白い．</p>
-
-<p>それにしても今月のWeb+DB PRESSは本当に新人向けにまとまってて良かった．Mac開発環境の解説とかは本当に必要最低限の技術を広く浅くという感じなのだけれども，これからバリバリプログラミングしたいですって人とかに勧めるのに最適な1冊じゃないだろうか．他にもエンジニアの学び方とかCourseraのコラムも良さ気．あとはzsh入門があればバッチリだと思ったのだが，まあそこは次のステップにでも．</p>
 ]]></content>
   </entry>
   

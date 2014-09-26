@@ -117,6 +117,142 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/05/14/trinity-install/">Trinityのインストールとサンプルデータのアセンブル</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-14T21:25:00+09:00" pubdate data-updated="true">May 14<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>久しぶりに<a href="http://trinityrnaseq.sourceforge.net/">Trinity</a>を触ろうと思ってインストールしたら，実行に<a href="http://bowtie-bio.sourceforge.net/index.shtml">Bowtie</a>が必要になっていた．de novo transcriptome assemblyの後の解析で使う程度かと思いきや，どうやらChrysalis（2段階目）で必要になるらしい．そのため，Bowtieにパスを通していないとTrinity.pl実行時に以下のようなエラーが出る．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Error, cannot find path to bowtie, which is now needed as part of Chrysalis' read scaffolding step at ../../Trinity.pl line 622.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>というわけで，TrinityのインストールをしつつBowtieも用意して，試しにソースコードに含まれているテストデータの実行をしてみる．</p>
+
+<h3>1. Trinityのインストール</h3>
+
+<p>SourceForgeからソースコードをダウンロードしてインストールする．解凍したディレクトリでmakeをすればよい．</p>
+
+<p><a href="http://sourceforge.net/projects/trinityrnaseq/files/">Trinity RNA-Seq Assembly - Browse Files at SourceForge.net</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ wget http://downloads.sourceforge.net/project/trinityrnaseq/trinityrnaseq_r2013-02-25.tgz 
+</span><span class='line'>$ tar zxvf trinityrnaseq_r2013-02-25.tgz 
+</span><span class='line'>$ cd trinityrnaseq_r2013-02-25
+</span><span class='line'>$ make</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>2. Bowtieのインストール</h3>
+
+<p>こちらも同様にSourceForgeからダウンロードするが，コンパイル済みのバイナリが配布されているので，makeをせずにそのまま利用できる．OSごとに32bit版と64bit版が用意されているので，環境に合わせてダウンロードする．</p>
+
+<p><a href="http://bowtie-bio.sourceforge.net/index.shtml">Bowtie: An ultrafast, memory-efficient short read aligner</a></p>
+
+<p><a href="http://sourceforge.net/projects/bowtie-bio/files/bowtie/1.0.0/">Bowtie - Browse /bowtie/1.0.0 at SourceForge.net</a></p>
+
+<h3>3. Bowtieのバイナリがあるディレクトリにパスを通す</h3>
+
+<p>今回はとりあえずシェルの設定ファイルをいじらずに，コマンドでbowtieがあるディレクトリをパスに指定する．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ export PATH=/Users/yag_ays/Downloads/bowtie-1.0.0:$PATH</span></code></pre></td></tr></table></div></figure>
+
+
+<p>もし頻繁に使用するなら，bowtieのバイナリをパスが通っている場所に移動させたほうがいいだろう．</p>
+
+<h3>サンプルデータのアセンブル</h3>
+
+<p>ひと通り動くことを確認するために，ソースコードの中に含まれているサンプルデータの解析を動かしてみる．</p>
+
+<p>今回実行するのはsample_data/test_Trinity_Assembly．ディレクトリ内にrunMe.shがあるので，単純にそれを実行すればよい．初回は配列ファイルの解凍が実行されるため，Trinityが実行されるまでに少し時間がかかる．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd sample_data/test_Trinity_Assembly
+</span><span class='line'>$ ./runMe.sh</span></code></pre></td></tr></table></div></figure>
+
+
+<p>もしきちんとパスを通せていれば，標準出力に以下のようなテキストが表示され，解析が始まる．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ../../Trinity.pl --seqType fq --JM 2G --left reads.left.fq --right reads.right.fq --SS_lib_type RF --CPU 4 --no_cleanup --monitoring --output test
+</span><span class='line'>WARNING, --monitoring can only be used on linux. Turning it off.
+</span><span class='line'>
+</span><span class='line'>Current settings:
+</span><span class='line'>core file size          (blocks, -c) 0
+</span><span class='line'>data seg size           (kbytes, -d) unlimited
+</span><span class='line'>file size               (blocks, -f) unlimited
+</span><span class='line'>max locked memory       (kbytes, -l) unlimited
+</span><span class='line'>max memory size         (kbytes, -m) unlimited
+</span><span class='line'>open files                      (-n) 256
+</span><span class='line'>pipe size            (512 bytes, -p) 1
+</span><span class='line'>stack size              (kbytes, -s) 8192
+</span><span class='line'>cpu time               (seconds, -t) unlimited
+</span><span class='line'>max user processes              (-u) 709
+</span><span class='line'>virtual memory          (kbytes, -v) unlimited
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>Paired mode requires bowtie. Found bowtie at: /Users/yag_ays/Downloads/bowtie-1.0.0/bowtie
+</span><span class='line'>
+</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/05/12/review-murakami-english/">「村上式シンプル英語勉強法」読了</a></h1>
     
     
@@ -403,51 +539,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/04/review-zweig-chess/">「チェスの話――ツヴァイク短篇選」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-04T11:44:00+09:00" pubdate data-updated="true">May 4<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4622080915" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>以前，こんな話を聞いたことがある．羽生善治という桁外れの天才がいなければ，将棋はこれほどまでに一般の人気を得られなかっただろう，と．それは将棋の対局の面白さだけではなく，ゴシップという下世話な興味もかき立てられると同時に，天才の人格であったり普段の振る舞いであったり天才である所以が人々を魅了するからだという．</p>
-
-<p>本書「ツヴァイク短篇集」の最後に収録されている「チェスの話」は，チェスの名手2人がたまたまブエノス・アイレスへと向かう船上で出会い，対決をすることになるという物語だ．一人はチェス世界チャンピオンとして名を上げ，現在はチェスの試合で各地を行脚している男．天才と呼ぶに相応しい彼は，一方でチェス以外のことは何一つ人並みにできないような人間で，その様子は滑稽であり変人そのものだった．もう一人のチェスの名手は，たまたま世界チャンピオンが客と試合しているところに出くわした一人の紳士だった．彼は的確なアドバイスでその勝負を引き分けに持ち込むのだが，その知識と戦術に感嘆した客が世界チャンピオンとの対決を提案しても，その紳士は及び腰でその申し出を断り，どこかへ立ち去ってしまう．紳士を説得しようと追いかけた主人公は，どうしてあれほどまでに卓越したチェスの腕を磨いたか，紳士の過去についての独白を聞くことになる．</p>
-
-<p>この短編では，チェスというゲームに魅了された人間の人生と思考という果てしない深淵が，圧倒的なディティールをもって描かれる．それは，考えるという行為そのものについて一人の人間の日常的な行為を超えて，自身との対峙，知識の欲求，自分と他者の存在，そして考えることに取り憑かれた人間の本質を私たちに提示する．チェスの名手になった紳士の独白は，ある種の心理実験の報告書のようであり，特殊な環境における人間の肉体的な活動と脳内で激しく回転する思考プロセスを追いかけることで，精神の実体たる思考の一つの側面を見事に表現している．紳士の思考は，話が進むにつれ異常さを増していく．その異常さが極限を迎えるとき，ようやく思考における真理が見えてくるようで，その境地に辿り着けない私のような平凡な人間にとっては，その事実にひどく惹きつけられるのだ．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/22/">&larr; Older</a></li>
@@ -495,6 +586,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/09/26/kaggle-criteo-display-advertising-challenge/">Kaggle初心者がDisplay Advertising Challengeに挑んだ結果354th/718だった</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/23/review-no-place-to-hide/">「暴露:スノーデンが私に託したファイル」読了</a>
       </li>
     
@@ -530,10 +625,6 @@
         <a href="/blog/2014/07/09/www2014review-kickstarter/">論文紹介:Recommending Investors for Crowdfunding Projects</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/06/28/review-germany-japan-essay/">「ドイツ流、日本流: 30年暮らして見えてきたもの」読了</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -546,6 +637,7 @@
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
+<li class='category'><a href='/blog/categories/kaggle/'>Kaggle (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>Linux (3)</a></li>
 <li class='category'><a href='/blog/categories/mcmc/'>MCMC (3)</a></li>
 <li class='category'><a href='/blog/categories/machinelearning/'>MachineLearning (5)</a></li>

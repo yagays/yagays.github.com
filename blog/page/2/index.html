@@ -117,6 +117,65 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2014/08/16/review-bad-data-handbook/">「バッドデータハンドブック ―データにまつわる問題への19の処方箋」読了</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-16T16:51:00+09:00" pubdate data-updated="true">Aug 16<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873116406" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>最近流行りの華々しいデータ解析の現実をつきつけられる1冊．ビッグデータといって騒いでいるお偉いさんは「顧客の行動データを収集して解析することで業務効率化」といった言葉を軽々しく口にするけれども，実際はそんな一言で片付けられるほど容易ではない．現実のデータ解析は泥臭く，手垢にまみれていて，そしていつも試行錯誤の繰り返しだ．手に入るデータがどれも十分な量あって構造化されていて綺麗なことなんてあるわけがない．そんなバッドデータを相手にどう立ち振る舞うかについて，大学で統計学を教えている講師から，データサイエンティスト，経済学者，スタートアップの共同創業者などなど，様々な分野の人間が自身の体験や知識をもとに書いている．それぞれがコンパクトにまとまっていて関連性が無いので，雑誌をペラペラめくる感覚で好きな箇所を読むことができる．</p>
+
+<p>そのなかで個人的に面白かった章を幾つかピックアップして紹介してみる．</p>
+
+<h4>3章 機械ではなく人間が使うことを意図したデータ</h4>
+
+<p>いわゆるネ申エクセルのような人間が読むことを前提にした非構造化データを，いかにプログラムで読み取るかという話．ここではニュージーランドの学校ごとの成績の統計を取ろうとしているのだけれども，Excelのスプレッドシートにまとめられているうえに，男子校だからという理由で女生徒の情報が入力されていなかったり，男子校なのになぜか女生徒の結果が入っていたり&#8230;とデータ取得の苦労が見られる．それでも著者は，コードを書くことが解決法であり，データフォーマットを自在に変換できることこそが重要な能力であると断言する．実際には厳しい道だけれども，まさにその通りだと思う．</p>
+
+<h4>8章 血と汗と尿</h4>
+
+<p>英国安全衛生研究所に持ち込まれる大量のサンプルの化学的解析を行っていた著者の話．化学者のカルチャーを身をもって体験した話がとても面白く，実験系の人のことを知っていれば非常に共感できる内容になっている．著者の同僚の化学者はその道のプロフェッショナルで，データの測り方に必要な計器のキャリブレーション，実験で出てくるデータのピアレビューといった方法など，化学の世界で独自に発展させてきた技術や経験があるものの，いまだにExcelですべて完結させていたりと，データ解析の面では改良の余地がある．なんとかして構造化データとしてまとめた上で自動化したいんだけど，現実にはデータのタイプや欠損値の扱いなど様々なハードルがある．それでも怠惰という自動化は素晴らしいし，適切なコードを書くことで達成できるというもの．</p>
+
+<h4>14章 クラウドコンピューティングの神話</h4>
+
+<p>この章はちょっと系統が違っていて，データ解析というよりかはクラウドの現実に焦点が当てられている．著者はMongoDBを開発している10genのエバンジェリスト．内容はストーリー仕立てで，自分のサービスをクラウドで運用しはじめたスタートアップCTOの主人公が，次第に規模が大きくなっていくにつれて様々な障害に直面していくという流れになっている．地道なパフォーマンスチューニングにはじまり，クラウドが落ちてどうしようもなくなったり，小規模だからといって手動で行っていたことが仇となったり，次第にスケールしなくなっていく水平方向のサーバ増強，コストの増加など，非常にリアルな話が次々と出てくる．結局はバズワードに飛びつくのは勝手だが現状を打破して何でも解決してくれる技術なんて存在しないということなんだけれども，将来的に技術が発展してそういう未来になるといいよねという，本来私たちが望んでいる理想で締められているところが良い．</p>
+
+<h4>16章 機械学習の専門家の手なづけ方</h4>
+
+<p>Kaggleというデータ解析のコンテストに出題側として参加したスタートアップの創業者の話．サービスに合う機械学習アルゴリズムの開発をKaggleを通してアウトソースするのは，一見簡単そうに見えて実は大変で，データセットの作成から評価方法の検討，匿名化，コンテスト運営など，クリアしなければいけない関門は意外に多い．それでもコンテストの結果は満足のいくものだったし，自分たちで正解セットをタグ付けしたり特徴量を考えたりすることによって，結果的に出題者自身が問題を正しく理解できたという側面もあったという．こういったデータ解析分野としての新しいコミュニティやプラットフォームが出てきて企業の問題解決につながるというのは，データ解析に身をおく人間として望む未来だよなぁとしみじみ思う．</p>
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2014/08/15/ipython-notebook-matplotlib-inline/">iPython Notebookの&#8211;pylab Inlineは使うのをやめようという話</a></h1>
     
     
@@ -581,49 +640,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/06/28/review-germany-japan-essay/">「ドイツ流、日本流: 30年暮らして見えてきたもの」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-28T15:39:00+09:00" pubdate data-updated="true">Jun 28<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4794220456" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>本書は「<a href="http://www.amazon.co.jp/gp/product/479421796X/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=479421796X&linkCode=as2&tag=yagays-22">サービスできないドイツ人、主張できない日本人</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=479421796X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」を文庫化したものだ．ドイツ人の夫を持ち，ドイツで30年近く住んでいる日本生まれの著者のエッセイだが，旧題にあるようなサービスと主張というトピックはほんの一部で，他にも幅広い文化比較がなされている．異なる国の文化に挟まれて初めて互いの文化の良いところや悪いところが見えてくるように，読者からすると，知らないドイツを知るとともに自分たちの文化を振り返ることになる．</p>
-
-<p>個人的には，ドイツの教育システムが一番気になった．以前読んだ<a href="http://yagays.github.io/blog/2012/09/05/review-critical-reading/">「外国語で発想するための日本語レッスン」</a>ではヨーロッパの教育の良い部分についてフォーカスしていただけに，本書で語られる負の部分，ドイツの義務教育のねじれのようなものが一層際立ってみえた．ランク分けされたギムナジウムや挽回のチャンスが限られた進学システム，マイスターに求められる質の変化など，一見して不合理だとわかっていながらも文化的な背景で縛られて身動きが取れなくなっているように感じる．こういった制度を是正する動きを既得権益を持ったエリートが妨害するといった，古くからある階級社会が見え隠れするところも興味深い．そして，そこから日本の教育に目を向けた時にどう感じるかも考えなくてはいけない．当然ながら日本の教育はドイツとは違うし，それらが成立する背景も違う．例えば，ドイツの教師は徹底的にビジネスライクなのに対して，日本の教師はまったく真逆で，人によっては人生の師ともなるほどに親密な関係を築く．そういう前提があるときに，日本の教育のいいところはどこか，一方でドイツの教育のいいところはどこか，教育を良くしていくにはどこを真似れば良いのかなど，考えなくてはいけないことは山ほどある．結局どっちが良いという問題ではないだけに，なかなか難しいところではある．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/3/">&larr; Older</a></li>
@@ -671,6 +687,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/09/26/kaggle-criteo-display-advertising-challenge/">Kaggle初心者がDisplay Advertising Challengeに挑んだ結果354th/718だった</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/23/review-no-place-to-hide/">「暴露:スノーデンが私に託したファイル」読了</a>
       </li>
     
@@ -706,10 +726,6 @@
         <a href="/blog/2014/07/09/www2014review-kickstarter/">論文紹介:Recommending Investors for Crowdfunding Projects</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/06/28/review-germany-japan-essay/">「ドイツ流、日本流: 30年暮らして見えてきたもの」読了</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -722,6 +738,7 @@
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
+<li class='category'><a href='/blog/categories/kaggle/'>Kaggle (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>Linux (3)</a></li>
 <li class='category'><a href='/blog/categories/mcmc/'>MCMC (3)</a></li>
 <li class='category'><a href='/blog/categories/machinelearning/'>MachineLearning (5)</a></li>

@@ -117,6 +117,153 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/10/20/gmm-matplotlib/">Matplotlibで混合ガウス分布の確率密度関数をプロットする</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-20T11:22:00+09:00" pubdate data-updated="true">Oct 20<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>PythonとNumpy/Scipyの練習．前回は<a href="http://yagays.github.io/blog/2013/10/18/gmm-em-numpy/">Numpyを使って混合ガウス分布のEMアルゴリズムを実装</a>で混合ガウス分布について取り扱ったので，今回は混合ガウス分布についての数式をおさらいしつつ，確率密度関数をプロットしようと思う．</p>
+
+<h3>混合ガウス分布の概要</h3>
+
+<p>混合ガウス分布は，複数のガウス分布の線形結合で表すことができる．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28%5Cbold%7Bx%7D%29%3D%5Csum_%7Bk%3D1%7D%5E%7BK%7D%5Cpi_k%5Cmathcal%7BN%7D%28%5Cbold%7Bx%7D%7C%5Cbold%7B%5Cmu%7D_k%2C%5Cbold%7B%5CSigma%7D_k%29+" alt="p(\bold{x})=\sum_{k=1}^{K}\pi_k\mathcal{N}(\bold{x}|\bold{\mu}_k,\bold{\Sigma}_k) " /></p>
+
+<p>ここで，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cpi_k" alt="\pi_k" />を混合係数，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BN%7D%28%5Cbold%7Bx%7D%7C%5Cbold%7B%5Cmu%7D_k%2C%5Cbold%7B%5CSigma%7D_k%29" alt="\mathcal{N}(\bold{x}|\bold{\mu}_k,\bold{\Sigma}_k)" />を混合要素と呼ぶ．混合系数は確率の条件<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Csum_%7Bk%3D1%7D%5E%7BK%7D%5Cpi_k+%3D+1+" alt="\sum_{k=1}^{K}\pi_k = 1 " />および<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=0+%5Cle+%5Cpi_k+%3C+1+" alt="0 \le \pi_k &lt; 1 " />を満たす．</p>
+
+<p>また，混合要素<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cpi_k+%3D+p%28k%29" alt="\pi_k = p(k)" />を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=k" alt="k" />番目の混合要素が選ばれる事前確率とし，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BN%7D%28%5Cbold%7Bx%7D%7C%5Cbold%7B%5Cmu%7D_k%2C%5Cbold%7B%5CSigma%7D_k%29+" alt="\mathcal{N}(\bold{x}|\bold{\mu}_k,\bold{\Sigma}_k) " />を<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=k" alt="k" />が与えられた時の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+" alt="x " />の条件付き密度とすると，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+" alt="x " />の周辺分布は</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=p%28%5Cbold%7Bx%7D%29%3D%5Csum_%7Bk%3D1%7D%5E%7BK%7Dp%28k%29p%28%5Cbold%7Bx%7D%7Ck%29+" alt="p(\bold{x})=\sum_{k=1}^{K}p(k)p(\bold{x}|k) " /></p>
+
+<p>で表すことができる．この<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=k+" alt="k " />の選択が，EMを用いたGMMでの隠れ変数に対応している．</p>
+
+<h4>一次元の混合ガウス分布</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">matplotlib.mlab</span> <span class="kn">as</span> <span class="nn">mlab</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
+</span><span class='line'><span class="n">pi_k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.7</span><span class="p">])</span>
+</span><span class='line'><span class="n">norm1</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">normpdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="n">norm2</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">normpdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">pi_k</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">norm1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">pi_k</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">norm2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">pi_k</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">norm1</span><span class="o">+</span><span class="n">pi_k</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">norm2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/gmm_1.png" alt="gmm_1.png" /></p>
+
+<p>今回は正規分布の確率密度関数にmatplotlibのmlab.normpdfを使ったが，scipy.statsのnorm.pdfを使うこともできる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</span><span class='line'><span class="n">rom</span> <span class="n">scipy</span> <span class="kn">import</span> <span class="nn">stats</span>
+</span><span class='line'><span class="n">norm1</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">loc</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="n">norm2</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>二次元の混合ガウス分布</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">matplotlib.mlab</span> <span class="kn">as</span> <span class="nn">mlab</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">pi_k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.7</span><span class="p">])</span>
+</span><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
+</span><span class='line'><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
+</span><span class='line'><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span><span class='line'><span class="n">Z1</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">bivariate_normal</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="n">Z2</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">bivariate_normal</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="n">Z</span> <span class="o">=</span> <span class="n">pi</span><span class="o">/</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">Z1</span> <span class="o">+</span> <span class="n">pi_k</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">Z2</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">CS</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
+</span><span class='line'><span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span><span class='line'><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/gmm_2.png" alt="gmm_2.png" /></p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/y_n_c/20091122/1258904025">matplotlibで等高線やら何やらのプロット - たこ焼き食べた.net</a></li>
+<li><a href="http://w.livedoor.jp/met-python/d/matplotlib/plot">matplotlib/plot - memoring - Seesaa Wiki（ウィキ）</a></li>
+<li><a href="http://d.hatena.ne.jp/teramonagi/20120930/1348982608">レプリカ交換モンテカルロ法（パラレル・テンパリング）による混合ガウス分布に従う乱数の生成 - My Life as a Mock Quant</a></li>
+<li><a href="http://oneau.wordpress.com/2011/02/28/simple-statistics-with-scipy/">Simple statistics with SciPy | Comfort at 1 AU</a></li>
+<li><a href="http://matplotlib.org/examples/pylab_examples/contour_demo.html">pylab_examples example code: contour_demo.py — Matplotlib 1.3.1 documentation</a></li>
+<li><a href="http://matplotlib.org/api/mlab_api.html">mlab — Matplotlib 1.3.1 documentation</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/10/19/review-exploring-everyday-things/">「RとRubyによるデータ解析入門」読了</a></h1>
     
     
@@ -494,83 +641,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/03/coursera-bioinformatics/">Courseraでバイオインフォマティクスのオンライン授業がスタート</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-03T09:13:00+09:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="http://dl.dropboxusercontent.com/u/142306/b/coursera_bioinfo.png" alt="" /></p>
-
-<p>トップレベルの大学の授業が無料で受けられるウェブサービス「Coursera」で，UCSDのバイオインフォマティクスのコースが10月からスタートする．Courseraでは初の英語で行われるバイオインフォマティクス分野のコースだ．</p>
-
-<p><a href="https://www.coursera.org/course/bioinformatics">Bioinformatics Algorithms (Part 1) | Coursera</a></p>
-
-<blockquote><p>This course will cover some of the common algorithms underlying the following fundamental topics in bioinformatics: assembling genomes, comparing DNA and protein sequences, finding regulatory motifs, analyzing genome rearrangements, identifying proteins, and many other topics.</p>
-
-<p><a href="https://www.coursera.org/course/bioinformatics">https://www.coursera.org/course/bioinformatics</a></p></blockquote>
-
-<p>シラバスによると，この授業では主にバイオインフォマティクスで用いられる様々なアルゴリズムについて，実際の生物学的な問題を解きながら知識を深めていくというスタイルのようだ．具体的には，以下のようなトピックが取り上げられている．</p>
-
-<ul>
-<li>どこからDNA複製は始まるの？</li>
-<li>どうやって抗生物質をシーケンスするの？</li>
-<li>どのようなDNAのパターンが細胞時計として働くの？</li>
-<li>どうやってゲノムをアセンブルするの？</li>
-<li>ヒトゲノムでどこが脆弱な部分なの？</li>
-<li>どうやって複数の配列を比較するの？</li>
-<li>どうやって病気を引き起こす変異を探しだすの？</li>
-</ul>
-
-
-<p>一見するとバイオインフォマティクスの分野のトピックだと分かりづらいものも含まれているが，どれもアルゴリズムを使った計算機的なアプローチが可能な興味深い話題ばかりだ．より詳しい内容や授業日程は以下のpdfからみることができる．</p>
-
-<ul>
-<li><a href="https://beta.stepic.org/media/attachments/lessons/1/Coursera%20Syllabus.pdf">https://beta.stepic.org/media/attachments/lessons/1/Coursera%20Syllabus.pdf</a></li>
-</ul>
-
-
-<p>授業の形式としては，動画による講義のほかに<a href="http://beta.stepic.org/2">Bioinformatics Algorithms: An Active-Learning Approach</a>というテキストを使って実際に問題を解くという宿題が課される．毎回5から10のプログラムの課題が出題され，授業全体の目安としては週に8から10時間程度の時間が必要になる．</p>
-
-<p>当然ながら授業はすべて英語だ．授業内容もある程度専門的なので，プログラミングの知識の他に基礎的な生物学の知識（英単語！）も求められるだろう．ただ，動画のレクチャーには英語字幕を付けることができるので，リスニング能力に多少不安がある人でも問題ないだろう．テキストも非常に充実しているので，じっくり取り組めばきっと大丈夫なはず…!!</p>
-
-<p>というわけで，初めてのCourseraのオンラインコース，頑張ってみます．</p>
-
-<br/>
-
-
-<p>なお，この授業の続きBioinformatics Algorithms (Part 2) は2014年の春に開講予定とのこと．そこでは遺伝子発現解析や進化系統樹の構築，生物情報ネットワークなどについてカバーする予定らしい．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/13/">&larr; Older</a></li>
@@ -618,6 +688,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/09/26/kaggle-criteo-display-advertising-challenge/">Kaggle初心者がDisplay Advertising Challengeに挑んだ結果354th/718だった</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/23/review-no-place-to-hide/">「暴露:スノーデンが私に託したファイル」読了</a>
       </li>
     
@@ -653,10 +727,6 @@
         <a href="/blog/2014/07/09/www2014review-kickstarter/">論文紹介:Recommending Investors for Crowdfunding Projects</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/06/28/review-germany-japan-essay/">「ドイツ流、日本流: 30年暮らして見えてきたもの」読了</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -669,6 +739,7 @@
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
+<li class='category'><a href='/blog/categories/kaggle/'>Kaggle (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>Linux (3)</a></li>
 <li class='category'><a href='/blog/categories/mcmc/'>MCMC (3)</a></li>
 <li class='category'><a href='/blog/categories/machinelearning/'>MachineLearning (5)</a></li>
