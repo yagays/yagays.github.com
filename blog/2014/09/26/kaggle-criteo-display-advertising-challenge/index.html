@@ -144,7 +144,7 @@
 
 <p>さて，こんな中途半端な順位のヤツの解法なんて見てもどうしょうもないとは思うけれども，個人的な記録のためにも書いておく．</p>
 
-<p>使用したのは<a href="https://github.com/JohnLangford/vowpal_wabbit/wiki">Vowpal Wabbit</a>(VW)．主に参考にしたのはMLWaveの<a href="http://mlwave.com/predicting-click-through-rates-with-online-machine-learning/">Predicting CTR with online machine learning</a>で，とりあえず動くコードの例があって，あとはVWのパラメータチューニングで頑張ったという流れ．実はこれ以前にscikit-learn+pandasも試していたのだけれども，あまりにデータ量多すぎてpandasのget_dummiesでダミー変数作るのが不可能だったりと早々に諦めていた．その点VWは高速で動いてメモリ消費量も少ないので，初心者にとっては使いやすいソフトウェアだった．あと<a href="https://github.com/MLWave/kaggle-criteo">MLWave/kaggle-criteo</a>でデータ形式の変換コードがあったのが非常に助かったかな．</p>
+<p>使用したのは<a href="https://github.com/JohnLangford/vowpal_wabbit/wiki">Vowpal Wabbit</a>(VW)．主に参考にしたのはMLWaveの<a href="http://mlwave.com/predicting-click-through-rates-with-online-machine-learning/">Predicting CTR with online machine learning</a>で，とりあえず動くコードの例があって，あとはVWのパラメータチューニングで頑張ったという流れ．実はこれ以前にscikit-learn+pandasも試していたのだけれども，あまりにデータ量多すぎてpandasのget_dummiesでダミー変数作るのが不可能だったりと早々に諦めていた．その点VWは高速で動いてメモリ消費量も少ないので，初心者にとっては使いやすいソフトウェアだった．あと<a href="https://github.com/MLWave/kaggle-criteo">MLWave/kaggle-criteo</a>でデータ形式の変換コードがあったのが助かった．</p>
 
 <p>さて，最終的なサブミットに使用したのは以下のパラメータ．</p>
 
@@ -174,7 +174,7 @@
 
 <p>kaggleのフォーラムで上位ランクの人が自分の解析方法を公開してくれているので，その中からVWに関するトピックを幾つか拾ってみる．</p>
 
-<p>まずは，15thのLuca MassaronがVWを使った解析例を示してくれている(<a href="https://www.kaggle.com/c/criteo-display-ad-challenge/forums/t/10429/congratulations-to-the-winners/54591#post54591">link</a>)．VWのコマンドは非常に参考になるし，自分もNNのHidden Unitsを10とか20でやったんだけどなーと思いつつ，何よりもまずデータの前処理の必要性を非常に感じた．</p>
+<p>まずは，15thのLuca MassaronがVWを使った解析例を示してくれている(<a href="https://www.kaggle.com/c/criteo-display-ad-challenge/forums/t/10429/congratulations-to-the-winners/54591#post54591">link</a>)．VWのコマンドは非常に参考になるし，自分もNNのHidden Unitsを10とか20でやったんだけどなーと思いつつ，何よりもまずデータの前処理の必要性を感じた．</p>
 
 <p>あとは19thのKonrad BanachewiczはVWのより詳細な結果を示してくれていて(<a href="https://www.kaggle.com/c/criteo-display-ad-challenge/forums/t/10429/congratulations-to-the-winners/54595#post54595">link</a>)，こっちではNNが効かないみたいな話があったり，quadratic feature頑張ってたり，こちらも非常に参考になる．</p>
 
