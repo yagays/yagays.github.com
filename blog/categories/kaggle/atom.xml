@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Kaggle | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/kaggle/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-09-27T14:19:48+09:00</updated>
+  <updated>2014-09-28T12:38:34+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -79,6 +79,238 @@ $ vw click.test.vw -t -i click.model.b30.pass10.l2_1e-08.vw -p click.preds.b30.p
 <script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[私的Vowpal Wabbitまとめ]]></title>
+    <link href="http://yagays.github.io/blog/2014/08/31/vowpal-wabbit/"/>
+    <updated>2014-08-31T10:47:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/08/31/vowpal-wabbit</id>
+    <content type="html"><![CDATA[<h2>VWとは</h2>
+
+<blockquote><p>The Vowpal Wabbit (VW) project is a fast out-of-core learning system sponsored by Microsoft Research and (previously) Yahoo! Research.</p>
+
+<p><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki">Home · JohnLangford/vowpal_wabbit Wiki</a></p></blockquote>
+
+<h2>Install</h2>
+
+<p>要Boost．</p>
+
+<h4>Linux</h4>
+
+<p><a href="https://github.com/JohnLangford/vowpal_wabbit/blob/master/README.md">vowpal_wabbit/README.md</a>に書いてある通り，git cloneしてmakeする．それが駄目なら./autogen.shしてからmakeする．</p>
+
+<p>自分の場合は./autogen.shがエラーを吐いたので調べたところ，./autogen.sh内部でldconfigに失敗してBOOST_DIR_ARGが取得できていないのが原因だった．su権限でldconfigをしてLIBFILEの箇所を以下のように書き換えて対処した．当然ながらこれは環境に依存するので，自身の環境でLIBFILEに渡すコマンドを実行して置き換える．</p>
+
+<p>```sh</p>
+
+<h1>LIBFILE=<code>ldconfig -p | grep program_options | tail -n 1 | cut -d '&gt;' -f 2</code></h1>
+
+<p>  LIBFILE="/usr/lib64/libboost_program_options-mt.so"
+```</p>
+
+<h4>Mac OS X</h4>
+
+<p>Mac OS Xの場合Homebrewでバイナリをインストール可能だが，vw-varinfo等のutil系は入らない．</p>
+
+<p>```sh
+$ brew info vowpal-wabbit
+vowpal-wabbit: stable 7.7 (bottled), HEAD
+https://github.com/JohnLangford/vowpal_wabbit
+/usr/local/Cellar/vowpal-wabbit/7.7 (30 files, 4.7M) *
+  Poured from bottle
+From: https://github.com/Homebrew/homebrew/blob/master/Library/Formula/vowpal-wabbit.rb
+==> Dependencies
+Build: boost ✔, autoconf ✔, automake ✔, libtool ✔</p>
+
+<p>$ brew install vowpal-wabbit
+```</p>
+
+<h4>Windows</h4>
+
+<ul>
+<li><a href="http://qiita.com/shima_x/items/9147eaa3626fab87ada2">機械学習 - windowsマシンでvowpal wabbitを使う（個人的メモ） - Qiita</a></li>
+</ul>
+
+
+<h2>VWを始めるときに気をつけるポイント</h2>
+
+<ul>
+<li>VWの独自フォーマット
+
+<ul>
+<li>VWを使いはじめるときの最初の難関ポイント</li>
+<li>自分でcsvなどのデータをVWフォーマットに変換する必要がある</li>
+<li>カテゴリ変数やテキストはそのまま列挙しても大丈夫．VWの方でn-gramも取ることができる</li>
+</ul>
+</li>
+<li>VWのパラメータ名
+
+<ul>
+<li>資料によってパラメータの名前が違うので注意</li>
+<li>自分の環境で<code>vw --help</code>して適宜読み替える</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Tutorial</h2>
+
+<ul>
+<li><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/Tutorial">Tutorial · JohnLangford/vowpal_wabbit Wiki</a>
+
+<ul>
+<li><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/v7.0_tutorial.pdf">https://github.com/JohnLangford/vowpal_wabbit/wiki/v7.0_tutorial.pdf</a>
+
+<ul>
+<li>Binary Classification and Regression</li>
+<li>Multiclass Classification</li>
+<li>“Offline” Contextual Bandit</li>
+<li>Sequence Predictions</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://zinkov.com/posts/2013-08-13-vowpal-tutorial/">Convex Optimized - Vowpal Wabbit tutorial for the Uninitiated</a>
+
+<ul>
+<li>かなり幅広く網羅したtutorial</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>vw-varinfoについて</h2>
+
+<p>vw-varinfoを使うことによって，変数ごとに重み等の情報を出力することができる．</p>
+
+<ul>
+<li><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/using-vw-varinfo">using vw varinfo · JohnLangford/vowpal_wabbit Wiki</a></li>
+</ul>
+
+
+<h2>Other Resources</h2>
+
+<ul>
+<li><a href="http://www.slideshare.net/pauldix/terascale-learning">Terascale Learning</a></li>
+<li><a href="http://www.slideshare.net/jakehofman/technical-tricks-of-vowpal-wabbit">Technical Tricks of Vowpal Wabbit</a></li>
+<li><a href="http://fastml.com/large-scale-l1-feature-selection-with-vowpal-wabbit/">Large scale L1 feature selection with Vowpal Wabbit - FastML</a>
+
+<ul>
+<li>L1 Regularizationについて
+
+<ul>
+<li><a href="http://www.kaggle.com/c/job-salary-prediction">Job Salary Prediction | Kaggle</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://fastml.com/vowpal-wabbit-eats-big-data-from-the-criteo-competition-for-breakfast/">Vowpal Wabbit eats big data from the Criteo competition for breakfast - FastML</a>
+
+<ul>
+<li>コンペの評価方法がLogarithmic Lossだから，VWの<code>--loss_function</code>をlogisticにしてくとVWの標準出力のaverage lossの部分がだいたいKaggleのスコアになるという話
+
+<ul>
+<li><a href="http://www.kaggle.com/c/criteo-display-ad-challenge">Display Advertising Challenge | Kaggle</a></li>
+</ul>
+</li>
+<li>変数が大量にあるとfeature hashingの時にHashValが衝突(collision)するから，<code>-b</code>でhashing spaceをちょっと大きめにしておくといいという話
+
+<ul>
+<li><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/Feature-Hashing-and-Extraction">Feature Hashing and Extraction · JohnLangford/vowpal_wabbit Wiki</a></li>
+<li>-bのデフォルトが18なので，2<sup>18</sup> =262,144くらいのfeature数なら問題無い．むやみに大きくしても意味がないので，使用するデータのfeature数に合わせて調節する</li>
+<li>VWは通常メモリ使わないほうだけど，<code>-b</code>を大きくするとGBレベルでメモリ消費するようになる．最大の<code>-b 32</code>だと64GB程度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://blogs.technet.com/b/machinelearning/archive/2014/08/13/vowpal-wabbit-for-fast-learning.aspx">Vowpal Wabbit for Fast Learning - Machine Learning - Site Home - TechNet Blogs</a>
+
+<ul>
+<li>Vowpal Wabbitの名前の由来が書いてある</li>
+</ul>
+</li>
+<li><a href="http://fastml.com/go-non-linear-with-vowpal-wabbit/">Go non-linear with Vowpal Wabbit - FastML</a>
+
+<ul>
+<li>VWの様々な機能(Neural Network,Quadratic and cubic features, N-grams)について
+
+<ul>
+<li><a href="https://www.kaggle.com/c/amazon-employee-access-challenge">Amazon.com - Employee Access Challenge | Kaggle</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://mlwave.com/movie-review-sentiment-analysis-with-vowpal-wabbit/">Movie Review Sentiment Analysis with Vowpal Wabbit | MLWave</a>
+
+<ul>
+<li>映画レビューサイトのテキストを使ったsentiment analysisにVWを使った話
+
+<ul>
+<li><a href="http://www.kaggle.com/c/sentiment-analysis-on-movie-reviews">Sentiment Analysis on Movie Reviews | Kaggle</a></li>
+</ul>
+</li>
+<li>vw-varinfoを使うことによってpositive/negativeな単語のfeature relevanceを可視化している</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[kimonoでKaggleユーザのクロールをしてみた]]></title>
+    <link href="http://yagays.github.io/blog/2014/08/18/kaggle-users-japan/"/>
+    <updated>2014-08-18T20:37:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/08/18/kaggle-users-japan</id>
+    <content type="html"><![CDATA[<p>ふとKaggleに参加している日本人がどれくらいいるのかが気になったので，簡単にクローラーを作って調べてみた．</p>
+
+<h3>Kimonoを使ったクロール</h3>
+
+<p>手動でクローラーを書いてもいいのだけれども，今回は<a href="https://www.kimonolabs.com/">kimono</a>というクローラーを使ってみた．</p>
+
+<ul>
+<li>参考：<a href="http://blog.takuros.net/entry/2014/08/13/212838">プログラミング・レスで5分でサックリWebスクレイピング「kimonolabs」 - プログラマになりたい</a></li>
+</ul>
+
+
+<p>kimonoはWebから簡単にクローラーを作成してAPIやJSON形式で取得できるようにするようなアプリケーションで，Chrome Extensionを使うことでインタラクティブにクロールする内容を選択することができる．今回は，<a href="http://www.kaggle.com/users/">Kaggle Rankings</a>のランキング500ページ分をクロールして，20000人分のユーザの情報（名前，ランク，ポイント，ロケーション）を取得した．今回クロールした結果は，以下のkimonoのウェブページから誰でも利用できるはず(アカウント持ってないと見れないかな)．ただしrankとptsが一緒になってたりとちょっと汚いので注意．</p>
+
+<ul>
+<li><a href="https://www.kimonolabs.com/apis/dyo7tdm8">https://www.kimonolabs.com/apis/dyo7tdm8</a></li>
+</ul>
+
+
+<p>ちなみに，どれくらい簡単にできるかをgif動画にしてみた．最初は色々戸惑った部分もあったけれど，慣れてしまえば本当に簡単に扱える．以下の場合だと，ユーザ情報がページあたり50人分あるので，ある部分を選択したあとに他の部分も同様に取得するようにチェックを付けるのが重要．あと，paginationはいわゆる「次」にあたる部分を選択する．本当は選択した部分に対して正規表現を掛けてテキスト処理をかけることもできるのだけれども，今回は行っていない．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/kimono.gif" alt="" /></p>
+
+<h3>後処理</h3>
+
+<p>クロール自体はkimonoに任せることができたので，ここからはpythonスクリプトをちゃちゃっと書いて整形作業．クロールしたデータはJSON形式やcsv形式でダウンロードすることもできるが，今回はAPIから叩いてみる．kimonoの"Use in code"というタブに，CurlやjQuery，Node，PHP，Python，Rubyでそれぞれ書かれたスクリプトがあるので，それを使ってデータを取得する．例えば，curlとPythonだと以下のようになる</p>
+
+<p><code>
+$ curl --include --request GET "https://www.kimonolabs.com/api/dyo7tdm8?apikey=7ZTTugRoP8xgIlOdAdyiHmwP4rFLviDO"
+</code></p>
+
+<p>```python
+import json
+import urllib</p>
+
+<p>results = json.load(urllib.urlopen("https://www.kimonolabs.com/api/dyo7tdm8?apikey=7ZTTugRoP8xgIlOdAdyiHmwP4rFLviDO"))
+```</p>
+
+<p>今回は日本人のアカウント一覧が欲しいので，"Country of residence"にJapanと書かれていてかつポイントを持っているアカウント一覧を出力した．なお，ユーザプロフィールの記入は基本任意なので，<strong>プロフィールで"Country of residence"を編集していない日本人は対象外になっている</strong>．</p>
+
+<h3>リスト(2014/08/18現在)</h3>
+
+<p>ユーザページに飛べるように一応HTMLにした．気が向いたら定期的にアップデートするようにして，もっときちんと体裁整えるかも．こういった公開も含めてkimono側で簡単なインターフェイスがあると楽なんだけどなーと思った．</p>
+
+<ul>
+<li><a href="https://dl.dropboxusercontent.com/u/142306/kaggle_jpn.html">https://dl.dropboxusercontent.com/u/142306/kaggle_jpn.html</a></li>
+</ul>
 
 ]]></content>
   </entry>
