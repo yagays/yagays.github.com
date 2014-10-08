@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-09-28T15:35:09+09:00</updated>
+  <updated>2014-10-08T10:35:54+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -138,12 +138,16 @@
 
 <p>どっちにしろ素人のまとめなので，以下のメモは参考程度にお願いします．</p>
 
-<p><a href="http://www.slideshare.net/xamat/kdd-2014-tutorial-the-recommender-problem-revisited">http://www.slideshare.net/xamat/kdd-2014-tutorial-the-recommender-problem-revisited</a></p>
+<p><a href="http://www.slideshare.net/xamat/kdd-2014-tutorial-the-recommender-problem-revisited">Kdd 2014 Tutorial - the recommender problem revisited</a></p>
 
 <iframe src="http://yagays.github.io//www.slideshare.net/slideshow/embed_code/38241291" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
 
 <p> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/xamat/kdd-2014-tutorial-the-recommender-problem-revisited" title="Kdd 2014 Tutorial - the recommender problem revisited" target="_blank">Kdd 2014 Tutorial - the recommender problem revisited</a> </strong> from <strong><a href="http://www.slideshare.net/xamat" target="_blank">Xavier Amatriain</a></strong> </div></p>
+
+<h4>(追記:2014.10.8) RECSYSのスライドも公開された．</h4>
+
+<p><a href="http://www.slideshare.net/xamat/recsys-2014-tutorial-the-recommender-problem-revisited">Recsys 2014 Tutorial - The Recommender Problem Revisited</a></p>
 
 <h3>TL;DR</h3>
 
