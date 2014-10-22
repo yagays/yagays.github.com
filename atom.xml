@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-10-08T10:40:56+09:00</updated>
+  <updated>2014-10-23T07:04:00+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,78 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[私は如何にしてKaggleで9位から600位台まで順位を落とし，private leaderboardでベンチマークすら下回ったか？]]></title>
+    <link href="http://yagays.github.io/blog/2014/10/23/kaggle-africa-soil-property-prediction-challenge/"/>
+    <updated>2014-10-23T06:55:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/10/23/kaggle-africa-soil-property-prediction-challenge</id>
+    <content type="html"><![CDATA[<p>タイトルは釣りです．一時期9位まで上がったものの，そこから何もしなかったらどんどん抜かされただけです．それに加えて最終的に過学習っぽいので爆死した模様です．Kaggleコワイ！！！</p>
+
+<h3>Africa Soil Property Prediction Challenge</h3>
+
+<p>8月終わりから行われていた&#8221;Africa Soil Property Prediction Challenge&#8221;，通称AfSISが終わりました．このコンペは，衛星から取得したアフリカの各地点の吸光度などの情報を元に，その場所のSOC,pH,Ca,P,Sandの計5種類の地質的な測定値を推定するというもの．問題設定としては定番っぽくて取っ付き易いものの，実際にやってみるとこれまた難しい感じでした．</p>
+
+<h3>私は如何にして（ry</h3>
+
+<p>いや確かにpublic leaderboardは手元で算出したスコアとかなり乖離があって謎いとは常々思っていたのですが，一応scikit-learnのgrid searchでチューニングはしているので大丈夫だと&#8230;厳しい．</p>
+
+<p>といっても上位陣もかなり大荒れだった模様．以下のランクはpublic→privateの順で，これを見てもらえればわかる通り上位陣は著しくランクを落としている人が多い．逆にprivateでは100位以内くらいから上がってきた人が多く，今回は本当に結果が読めなかったようでした．</p>
+
+<h4>public上位</h4>
+
+<ul>
+<li>sorpmaL：1位→515位</li>
+<li>Dmitry &amp; Abhishek：2位→7位</li>
+<li>vsu：3位→484位</li>
+<li>Redwoods：4位→34位</li>
+<li>ahaldenby：5位→517位</li>
+</ul>
+
+
+<h4>private上位</h4>
+
+<ul>
+<li>Yasser Tabandeh 14位→1位</li>
+<li>Charly B. ：428位→2位</li>
+<li>CodiLime.com：42位→3位</li>
+<li>seewaters：61位→4位</li>
+<li>UK calling Africa：88位→5位</li>
+</ul>
+
+
+<p>詳しいことは後々明らかになっていくことでしょう．Forumを静観．</p>
+
+<p>あと，悔しいので念のために書いておきますが最終サブミッションに選択した以外のやつではきちんとベンチマーク下回っているのありました．ただ，スコアがいいやつに限って最初の方にサブミットした何のひねりも無いやつだったりして，心が折れそう．</p>
+
+<h3>自分にまだ勢いがあった頃</h3>
+
+<blockquote class="twitter-tweet" lang="en"><p>Hold my calls. Top 10 on <a href="https://twitter.com/hashtag/kaggle?src=hash">#kaggle</a> - <a href="https://t.co/EUmPGDB0oq">https://t.co/EUmPGDB0oq</a></p>&mdash; やぐ (@yag_ays) <a href="https://twitter.com/yag_ays/status/506999657243766785">September 3, 2014</a></blockquote>
+
+
+<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<h3>終盤</h3>
+
+<blockquote class="twitter-tweet" lang="en"><p><a href="http://t.co/52WOWFUHOd">pic.twitter.com/52WOWFUHOd</a> / <a href="http://t.co/eyBbSnt2ZC">http://t.co/eyBbSnt2ZC</a> <a href="https://twitter.com/hashtag/NEWGAME?src=hash">#NEWGAME</a>!</p>&mdash; やぐ (@yag_ays) <a href="https://twitter.com/yag_ays/status/525044669239922688">October 22, 2014</a></blockquote>
+
+
+<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<h3>Lessons Learned</h3>
+
+<p>社会は厳しい．</p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/repose/20120723/1343025035">過学習の恐怖，またはいかにして私は1分間でランキングを50位も落としたか(要約) - 糞ネット弁慶</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Kaggle初心者がDisplay Advertising Challengeに挑んだ結果354th/718だった]]></title>
@@ -1398,24 +1470,6 @@
 
 <iframe src="https://www.flickr.com/photos/124108383@N03/14264320815/in/set-72157644421797979/player/" width="800" height="600" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「盤上の夜」読了]]></title>
-    <link href="http://yagays.github.io/blog/2014/05/25/review-dark-beyond-the-weiqi/"/>
-    <updated>2014-05-25T15:15:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2014/05/25/review-dark-beyond-the-weiqi</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4488747019" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>宮内悠介のデビュー作．比較的短い作品が6つ収録されており，それぞれに囲碁や将棋，チェッカー，麻雀，古代チェスといったテーブルゲームが題材となっている．</p>
-
-<p>最初は人に勧められて読んだのだが，タイトルにもなっている作品「盤上の夜」を読んだ途端に，著者の非凡なる才能に感化されてしまった．文庫50ページにも満たない短編ながら，そこに存在する圧倒的なリアリティと少しの非現実なディテールに，SF作家としてのたぐいまれなる才気を感じた．</p>
-
-<p>内容としては，確かに最近の流れを汲んで構成されていることに違いない．将棋の電王戦の盛り上がりを背景に，人間とコンピュータの関係性について，その未来のことを真剣に考える人は多い．そういう時に，人間の本質的な部分について，その仕組みや機構を超えて，可能性を見出そうとすることはある意味自然なことだと考えられる．古典的な条件付けや記憶からのパターン認識とともに，勘や共感覚や神秘的な現象，不可思議や超常現象にも近いものが取り上げられるのは，読者の興味に沿っているといえる．</p>
-
-<p>そういう環境において，これほどまでに知的な好奇心を刺激される作品が出てくるのはSF作品の醍醐味だと言える．本書の短編が提示するテーマは，想定しうる科学の延長線を大きく逸脱しない未来において，現在私たちが持っている疑問や不安にある種の答えを出してくれるような，そんな感覚を持つ．それでいてストーリーに没入できる面白さも兼ね備えた，優れた作品であることに間違いない．</p>
 ]]></content>
   </entry>
   

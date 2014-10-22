@@ -117,6 +117,176 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/11/06/imcmr-5-3/">「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 確率的探索 その2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-06T11:25:00+09:00" pubdate data-updated="true">Nov 6<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>例 5.4 数値的最適化法と確率的探索を比較する</h3>
+
+<p><a href="http://yagays.github.com/blog/2012/10/30/imcmr-5-1/">例5.1</a>の続き．前回は数値的最適化法によって<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta+" alt="\theta " />の値を推定したが，今回は確率的探索による推定を行なって，両者の手法の比較を行う．問題としては，以下の対数尤度を最大化する．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clog+l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D+%5Clog+%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%5E2%7D+" alt="\log l(\theta| x_1,\ldots,x_n) = \sum_{i=1}^{n} \log \frac{1}{1+(x_i-\theta)^2} " /></p>
+
+<p>この式は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=n+%5Crightarrow+%5Cinfty+" alt="n \rightarrow \infty " />において<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta%5E%2A+%3D0+" alt="\theta^* =0 " />になる．すなわちこれから求める推定値の答えは0ということになる．</p>
+
+<h4>ソースコード</h4>
+
+<p>以下のソースコードにおける変数の対応は以下のようになっている．</p>
+
+<ul>
+<li>数値的最適化法
+
+<ul>
+<li>trul：推定値</li>
+<li>truv：対数尤度</li>
+</ul>
+</li>
+<li>確率的探索
+
+<ul>
+<li>loc：推定値</li>
+<li>maxv：対数尤度</li>
+</ul>
+</li>
+</ul>
+
+
+<p>なお，mcsmパッケージに付随するデモスクリプトでは，数値的最適化法における乱数を正規乱数としていたり対数尤度の関数が微妙に違っているが，今回は例5.1の解法と同様のコーシー乱数と対数尤度の式を用いている．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>ref <span class="o">&lt;-</span> rcauchy<span class="p">(</span><span class="m">5001</span><span class="p">)</span>
+</span><span class='line'>f <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>y<span class="p">){</span><span class="o">-</span>sum<span class="p">(</span>log<span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="p">(</span>x<span class="o">-</span>y<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))}</span>
+</span><span class='line'>
+</span><span class='line'>maxv <span class="o">&lt;-</span> <span class="kc">NULL</span>
+</span><span class='line'>loc <span class="o">&lt;-</span> <span class="kc">NULL</span>
+</span><span class='line'>truv <span class="o">&lt;-</span> <span class="kc">NULL</span>
+</span><span class='line'>trul <span class="o">&lt;-</span> <span class="kc">NULL</span>
+</span><span class='line'>
+</span><span class='line'><span class="kr">for</span> <span class="p">(</span>i in <span class="m">10</span>:length<span class="p">(</span>ref<span class="p">)){</span>
+</span><span class='line'>  <span class="c1"># 数値的最適化</span>
+</span><span class='line'>  x <span class="o">&lt;-</span> ref<span class="p">[</span><span class="m">1</span>:i<span class="p">]</span>
+</span><span class='line'>  tru <span class="o">&lt;-</span> optimize<span class="p">(</span>f<span class="p">,</span>c<span class="p">(</span><span class="m">-5</span><span class="p">,</span><span class="m">5</span><span class="p">),</span>maximum<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+</span><span class='line'>  trul <span class="o">&lt;-</span> c<span class="p">(</span>trul<span class="p">,</span> tru<span class="p">$</span>max<span class="p">)</span>
+</span><span class='line'>  truv <span class="o">&lt;-</span> c<span class="p">(</span>truv<span class="p">,</span> tru<span class="p">$</span>ob<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># 確率的探索</span>
+</span><span class='line'>  prop <span class="o">&lt;-</span> runif<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">3</span><span class="p">,</span><span class="m">-5</span><span class="p">,</span><span class="m">5</span><span class="p">)</span>
+</span><span class='line'>  vale <span class="o">&lt;-</span> apply<span class="p">(</span>as.matrix<span class="p">(</span>prop<span class="p">),</span><span class="m">1</span><span class="p">,</span>f<span class="p">)</span>
+</span><span class='line'>  loc <span class="o">&lt;-</span> c<span class="p">(</span>loc<span class="p">,</span> prop<span class="p">[</span>order<span class="p">(</span><span class="o">-</span>vale<span class="p">)[</span><span class="m">1</span><span class="p">]])</span>
+</span><span class='line'>  maxv <span class="o">&lt;-</span> c<span class="p">(</span>maxv<span class="p">,</span> max<span class="p">(</span>vale<span class="p">))</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>par<span class="p">(</span>mar<span class="o">=</span>c<span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+</span><span class='line'>plot<span class="p">(</span>trul<span class="p">,</span> loc<span class="p">,</span> cex<span class="o">=</span><span class="m">.5</span><span class="p">,</span> pch<span class="o">=</span><span class="m">19</span><span class="p">,</span> xlab<span class="o">=</span>expression<span class="p">(</span>theta<span class="o">^</span><span class="m">0</span><span class="p">),</span> ylab<span class="o">=</span>expression<span class="p">(</span>hat<span class="p">(</span>theta<span class="p">)))</span>
+</span><span class='line'>abline<span class="p">(</span>a<span class="o">=</span><span class="m">0</span><span class="p">,</span> b<span class="o">=</span><span class="m">1</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;grey&quot;</span><span class="p">)</span>
+</span><span class='line'>plot<span class="p">(</span><span class="m">10</span>:length<span class="p">(</span>ref<span class="p">),</span> <span class="p">(</span>truv<span class="o">-</span>maxv<span class="p">)</span><span class="o">/</span>abs<span class="p">(</span>truv<span class="p">),</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Sample size&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;Relative error&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0.02</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>まず，上のプロットは，数値的最適化法による推定値を横軸に，確率的探索による推定値を縦軸に取った図となっている．真の値が<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta%5E%2A+%3D0+" alt="\theta^* =0 " />なので，当然ながら両者ともに推定値は(0,0)付近に集まっている．また，推定値が外れる場合では，どちらかの値が大きくなればもう片方も大きくなるといった具合に，そのパターンはグレーの線で示した<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta%5E0+%3D+%5Chat%7B%5Ctheta%7D+" alt="\theta^0 = \hat{\theta} " />の線分の上に乗るような形となる．</p>
+
+<p>次に，下のプロットは，横軸にサンプルサイズを取り，縦軸に推定値における対数尤度の差を取った図となっている．今回は相対的誤差なので，(数値的最適化法-確率的探索)/(数値的最適化法)といった形で値を求めている．相対的誤差が大きいということは，数値的最適化法と確率的探索それぞれ求めた対数尤度に差がある，すなわち<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta+" alt="\theta " />に差があるということで，上のプロットにおけるグレーの線分から離れれば離れるほど相対的誤差も大きくなるということになる．なお，図示しているサンプルサイズは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=n%3D10+" alt="n=10 " />から<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=n%3D5001+" alt="n=5001 " />までの値となっており，これは両者の手法がどちらも一定サイズのサンプルサイズを必要とするからである（つまり1から10までは図示していない）．</p>
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-4.png" alt="" /></p>
+
+<h3>例 5.6 グローバルミニマムのまわりにローカルミニマムが配置されている関数を可視化する</h3>
+
+<p>以下の関数の最小化を検討する．</p>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=h%28x%2Cy%29%3D%28x%5Csin%2820y%29%2By%5Csin%2820x%29%29%5E2%5Ccosh%28%5Csin%2810x%29x%29%2B+%28x%5Ccos%2810y%29-y%5Csin%2810x%29%29%5E2%5Ccosh%28%5Ccos%2820y%29y%29+" alt="h(x,y)=(x\sin(20y)+y\sin(20x))^2\cosh(\sin(10x)x)+ (x\cos(10y)-y\sin(10x))^2\cosh(\cos(20y)y) " /></p>
+
+<p>今回は可視化するだけだが，この後の例5.7などで度々登場する関数となる．3Dプロットを描写すると，(0,0)に最小値があり，その周りには山あり谷ありとローカルミニマムがたくさん配置されている関数だとわかる．この図を上から見ると，P.157のプロットのようになる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>h <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">,</span>y<span class="p">){</span>
+</span><span class='line'>  <span class="p">(</span>x<span class="o">*</span>sin<span class="p">(</span><span class="m">20</span><span class="o">*</span>y<span class="p">)</span> <span class="o">+</span> y<span class="o">*</span>sin<span class="p">(</span><span class="m">20</span><span class="o">*</span>x<span class="p">))</span><span class="o">^</span><span class="m">2</span> <span class="o">*</span> cosh<span class="p">(</span>sin<span class="p">(</span><span class="m">10</span><span class="o">*</span>x<span class="p">)</span><span class="o">*</span>x<span class="p">)</span> <span class="o">+</span>
+</span><span class='line'>    <span class="p">(</span>x<span class="o">*</span>cos<span class="p">(</span><span class="m">10</span><span class="o">*</span>y<span class="p">)</span> <span class="o">-</span> y<span class="o">*</span>sin<span class="p">(</span><span class="m">10</span><span class="o">*</span>x<span class="p">))</span><span class="o">^</span><span class="m">2</span> <span class="o">*</span> cosh<span class="p">(</span>cos<span class="p">(</span><span class="m">20</span><span class="o">*</span>y<span class="p">)</span><span class="o">*</span>y<span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>x <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">-3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> le<span class="o">=</span><span class="m">435</span><span class="p">)</span>
+</span><span class='line'>y <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">-3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> le<span class="o">=</span><span class="m">435</span><span class="p">)</span>
+</span><span class='line'>z <span class="o">&lt;-</span> outer<span class="p">(</span>x<span class="p">,</span> y<span class="p">,</span> h<span class="p">)</span>
+</span><span class='line'>par<span class="p">(</span>bg<span class="o">=</span><span class="s">&quot;wheat&quot;</span><span class="p">,</span> mar<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+</span><span class='line'>persp<span class="p">(</span>x<span class="p">,</span> y<span class="p">,</span> z<span class="p">,</span> theta<span class="o">=</span><span class="m">155</span><span class="p">,</span> phi<span class="o">=</span><span class="m">30</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;green4&quot;</span><span class="p">,</span>
+</span><span class='line'>      ltheta<span class="o">=</span><span class="m">-120</span><span class="p">,</span> shade<span class="o">=</span><span class="m">0.75</span><span class="p">,</span> border<span class="o">=</span><span class="kc">NA</span><span class="p">,</span> box<span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-6.png" alt="" /></p>
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/11/05/review-mac-kung-fu/">「カンフーマック ―猛獣を飼いならす310の技」読了</a></h1>
     
     
@@ -784,295 +954,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/30/imcmr-5-1/">「Rによるモンテカルロ法入門」読書ノート：5章 モンテカルロ最適化 数値的最適化法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-30T15:54:00+09:00" pubdate data-updated="true">Oct 30<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<h3>本章の概要</h3>
-
-<p>乱数を使って最適化問題を解くには2つの方法がある．</p>
-
-<ul>
-<li>確率的探索を用いて関数の最大値を探す（本章前半）</li>
-<li>シミュレーションを使って最適化する関数を近似する（本章後半，5.4以降）</li>
-</ul>
-
-
-<h3>内容：モンテカルロ最適化で関数の最大値を求める</h3>
-
-<h4>最適化問題には2種類ある</h4>
-
-<p>最適化問題には大きくわけて2種類存在する．</p>
-
-<ul>
-<li>定義域<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cit%7B%5CTheta%7D+" alt="\it{\Theta} " />で関数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=h%28%5Ctheta%29" alt="h(\theta)" />の極値を求める</li>
-<li>定義域<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cit%7B%5CTheta%7D+" alt="\it{\Theta} " />で陰的方程式<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=g%28%5Ctheta%29+%3D+0+" alt="g(\theta) = 0 " />の解を求める</li>
-</ul>
-
-
-<p>問題設定はそれぞれ違うのだが，今回は最大化問題だけを取り上げる．つまり，以下の式のように定義域<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cit%7B%5CTheta%7D+" alt="\it{\Theta} " />で一番大きな値を求めたい．</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=max_%7B%5Ctheta+%5Cin+%5CTheta%7D%3Dh%28%5Ctheta%29" alt="max_{\theta \in \Theta}=h(\theta)" /></p>
-
-<h4>解き方にも2種類ある</h4>
-
-<ul>
-<li>数値的手法（5.2 数値的最適化法）
-
-<ul>
-<li>目標関数の特性に強く依存する</li>
-</ul>
-</li>
-<li>確率的手法（5.3 確率的探索）</li>
-</ul>
-
-
-<p>さて，ある関数のある定義域内における最大値を求めようと思った場合にじゃあどうするかというと，定義域内の値を片っ端から入れていって大きいものを探すといったアプローチと，別の分布をシミュレーションしてそこから最大値が現れるまでシミュレーションし続けるという方法の2通りがあるということになる．ここで重要になるポイントが定義域で，3章のモンテカルロ積分において積分する範囲を決めていたように，5章モンテカルロ最適化においても定義域内で最大値を探すということに繋がる．ただし，モンテカルロ積分よりもモンテカルロ最適化のほうが，全体の平均を求めるよりもピンポイントで値の大きい極値を求めるという点で，一般的に難しい．</p>
-
-<h3>例 5.1 コーシー分布から得られたサンプルの尤度を最大化する</h3>
-
-<h4>左の図</h4>
-
-<p>何かしらのコーシー分布から生成された乱数<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7Bx_1%2C+%5Cdots+%2Cx_n%7D" alt="{x_1, \dots ,x_n}" />が与えられた時に，それを生成したコーシー分布<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathcal%7BC%7D%28%5Ctheta%2C1%29+" alt="\mathcal{C}(\theta,1) " />の<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta+" alt="\theta " />を最尤法で推定しようという問題．尤度は以下の式で表される</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Cprod_%7Bi%3D1%7D%5E%7Bn%7D%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%5E2%7D+" alt="l(\theta| x_1,\ldots,x_n) = \prod_{i=1}^{n}\frac{1}{1+(x_i-\theta)^2} " /></p>
-
-<p>実際に計算するときには以下の対数尤度を使う．</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Clog+l%28%5Ctheta%7C+x_1%2C%5Cldots%2Cx_n%29+%3D+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D+%5Clog+%5Cfrac%7B1%7D%7B1%2B%28x_i-%5Ctheta%29%5E2%7D+" alt="\log l(\theta| x_1,\ldots,x_n) = \sum_{i=1}^{n} \log \frac{1}{1+(x_i-\theta)^2} " /></p>
-
-<p>今回は実験として，上の尤度と対数尤度の2パターンで計算したときに，どういう違いが現れるかを示す．数式上は違いはないが，計算機上では値の取り扱いにおいて違いが出てくる．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>xm <span class="o">&lt;-</span> rcauchy<span class="p">(</span><span class="m">500</span><span class="p">)</span>
-</span><span class='line'>loglik <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>y<span class="p">){</span><span class="o">-</span>sum<span class="p">(</span>log<span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="p">(</span>x<span class="o">-</span>y<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))}</span>
-</span><span class='line'>lik <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>y<span class="p">){</span>prod<span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="p">(</span>x<span class="o">-</span>y<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))}</span>
-</span><span class='line'>
-</span><span class='line'>mi <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">500</span><span class="p">)</span>
-</span><span class='line'>mi2 <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">500</span><span class="p">)</span>
-</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in <span class="m">1</span>:<span class="m">500</span><span class="p">){</span>
-</span><span class='line'>  x <span class="o">&lt;-</span> xm<span class="p">[</span><span class="m">1</span>:i<span class="p">]</span>
-</span><span class='line'>  mi<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> optimize<span class="p">(</span>loglik<span class="p">,</span> interval<span class="o">=</span>c<span class="p">(</span><span class="m">-10</span><span class="p">,</span><span class="m">10</span><span class="p">),</span> maximum<span class="o">=</span><span class="k-Variable">T</span><span class="p">)$</span>max
-</span><span class='line'>  mi2<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> optimize<span class="p">(</span>lik<span class="p">,</span> interval<span class="o">=</span>c<span class="p">(</span><span class="m">-10</span><span class="p">,</span><span class="m">10</span><span class="p">),</span>maximum<span class="o">=</span><span class="k-Variable">T</span><span class="p">)$</span>max
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>plot<span class="p">(</span>mi<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">-5</span><span class="p">,</span> <span class="m">10</span><span class="p">),</span> ylab<span class="o">=</span><span class="s">&quot;theta&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;sample size&quot;</span><span class="p">)</span>
-</span><span class='line'>par<span class="p">(</span>new<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span>mi2<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">-5</span><span class="p">,</span><span class="m">10</span><span class="p">),</span>col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;theta&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;sample size&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>尤度で計算した(赤)と対数尤度で計算した計算(黒)を以下のプロットの左側の図に示してある．これをみると，対数尤度で計算した場合では着実に推定値が収束していくのに対し，尤度で計算した場合ではある地点で値が発散してるのがわかる．これは，Rのoptimizeにおいて，尤度を直接観察すると値が発散することがあるからである．このように，確率を扱う場合には，値が非常に小さくなることに注意しなければならない．</p>
-
-<h4>右の図</h4>
-
-<p>次に，上記の尤度を，摂動が加えられた尤度に置き換える．これは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=-%5B%5Csin%28100y%29%5D%5E2+" alt="-[\sin(100y)]^2 " />という0から1の間の値を取るノイズを加えている．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>perturbedloglik <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>y<span class="p">){</span><span class="o">-</span>sin<span class="p">(</span>y<span class="o">*</span><span class="m">100</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">-</span> sum<span class="p">(</span>log<span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="p">(</span>x<span class="o">-</span>y<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))}</span>
-</span><span class='line'>perturbedlik <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>y<span class="p">){</span><span class="o">-</span>sin<span class="p">(</span>y<span class="o">*</span><span class="m">100</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> prod<span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="p">(</span>x<span class="o">-</span>y<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))}</span>
-</span><span class='line'>mi <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">500</span><span class="p">)</span>
-</span><span class='line'>mi2 <span class="o">&lt;-</span> numeric<span class="p">(</span><span class="m">500</span><span class="p">)</span>
-</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in <span class="m">1</span>:<span class="m">500</span><span class="p">){</span>
-</span><span class='line'>  x <span class="o">&lt;-</span> xm<span class="p">[</span><span class="m">1</span>:i<span class="p">]</span>
-</span><span class='line'>  mi<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> optimize<span class="p">(</span>perturbedloglik<span class="p">,</span> interval<span class="o">=</span>c<span class="p">(</span><span class="m">-10</span><span class="p">,</span><span class="m">10</span><span class="p">),</span> maximum<span class="o">=</span><span class="k-Variable">T</span><span class="p">)$</span>max
-</span><span class='line'>  mi2<span class="p">[</span>i<span class="p">]</span> <span class="o">&lt;-</span> optimize<span class="p">(</span>perturbedlik<span class="p">,</span> interval<span class="o">=</span>c<span class="p">(</span><span class="m">-10</span><span class="p">,</span><span class="m">10</span><span class="p">),</span>maximum<span class="o">=</span><span class="k-Variable">T</span><span class="p">)$</span>max
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>plot<span class="p">(</span>mi<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">-5</span><span class="p">,</span> <span class="m">10</span><span class="p">),</span> ylab<span class="o">=</span><span class="s">&quot;theta&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;sample size&quot;</span><span class="p">)</span>
-</span><span class='line'>par<span class="p">(</span>new<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
-</span><span class='line'>plot<span class="p">(</span>mi2<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">-5</span><span class="p">,</span><span class="m">10</span><span class="p">),</span>col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;theta&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;sample size&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これをみると，尤度に関しては左図で示したように発散してしまっている．対数尤度を見てみると，左図と比べて値がばらつきグラフがギザギザになっている．当然だが，ノイズを加えれば値がばらついてしまう．</p>
-
-<p>(個人的な感想)右図は何が言いたいのかちょっと分からない．ここの解釈は本書では出てこないと思うのだが，尤度関数に何らかの関数が加わる状況といえば，最小二乗法などにおける正則化項を加えて過学習を押さえる場合だろうか？　正則化項は摂動というよりかは，lassoやridgeのように1次/2次の関数になるので，今回の場合みたいにノイズのようにはならないと思うのだが…．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-1.png" alt="" /></p>
-
-<h3>例 5.2 Newton-Raphson法を用いて混合正規分布モデルから得られたサンプルの尤度を最大化する</h3>
-
-<p>今回の混合正規モデルでは，</p>
-
-<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B1%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_1%2C1%29%2B%5Cfrac%7B3%7D%7B4%7D%5Cmathcal%7BN%7D%28%5Cmu_2%2C1%29+" alt="\frac{1}{4}\mathcal{N}(\mu_1,1)+\frac{3}{4}\mathcal{N}(\mu_2,1) " /></p>
-
-<p>を考える．まずは分布の形を調べるために，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu_1+%3D+0+" alt="\mu_1 = 0 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu_2+%3D+2.5+" alt="\mu_2 = 2.5 " />における対数尤度の分布を示してみる．そして，初期値(1,1)からスタートして，Newton-Raphson法がどのように推定値に収束していくかを図示する．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>da <span class="o">&lt;-</span> sample<span class="p">(</span>c<span class="p">(</span>rnorm<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">2</span><span class="p">),</span> <span class="m">2.5</span><span class="o">+</span>rnorm<span class="p">(</span><span class="m">3</span><span class="o">*</span><span class="m">10</span><span class="o">^</span><span class="m">2</span><span class="p">)))</span>
-</span><span class='line'>like <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>mu<span class="p">){</span> <span class="o">-</span>sum<span class="p">(</span>log<span class="p">((</span><span class="m">0.25</span><span class="o">*</span>dnorm<span class="p">(</span>da<span class="o">-</span>mu<span class="p">[</span><span class="m">1</span><span class="p">])</span> <span class="o">+</span> <span class="m">0.75</span><span class="o">*</span>dnorm<span class="p">(</span>da<span class="o">-</span>mu<span class="p">[</span><span class="m">2</span><span class="p">]))))</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>mu1 <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">-2</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> le<span class="o">=</span><span class="m">250</span><span class="p">)</span>
-</span><span class='line'>mu2 <span class="o">&lt;-</span> seq<span class="p">(</span><span class="m">-2</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> le<span class="o">=</span><span class="m">250</span><span class="p">)</span>
-</span><span class='line'>lli<span class="o">=</span>matrix<span class="p">(</span><span class="m">0</span><span class="p">,</span>nco<span class="o">=</span><span class="m">250</span><span class="p">,</span>nro<span class="o">=</span><span class="m">250</span><span class="p">)</span>
-</span><span class='line'><span class="kr">for</span> <span class="p">(</span>i in <span class="m">1</span>:<span class="m">250</span><span class="p">){</span>
-</span><span class='line'>  <span class="kr">for</span> <span class="p">(</span>j in <span class="m">1</span>:<span class="m">250</span><span class="p">){</span>
-</span><span class='line'>    lli<span class="p">[</span>i<span class="p">,</span>j<span class="p">]</span> <span class="o">&lt;-</span> like<span class="p">(</span>c<span class="p">(</span>mu1<span class="p">[</span>i<span class="p">],</span>mu2<span class="p">[</span>j<span class="p">]))</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>image<span class="p">(</span>mu1<span class="p">,</span> mu2<span class="p">,</span> <span class="o">-</span>lli<span class="p">)</span>
-</span><span class='line'>contour<span class="p">(</span>mu1<span class="p">,</span> mu2<span class="p">,</span> <span class="o">-</span>lli<span class="p">,</span>nlevels<span class="o">=</span><span class="m">100</span><span class="p">,</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>sta <span class="o">&lt;-</span> c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
-</span><span class='line'>mmu <span class="o">&lt;-</span> sta
-</span><span class='line'><span class="kr">for</span><span class="p">(</span>i in <span class="m">1</span>:<span class="p">(</span>nlm<span class="p">(</span>like<span class="p">,</span> sta<span class="p">)$</span>it<span class="p">)){</span>
-</span><span class='line'>  mmu <span class="o">&lt;-</span> rbind<span class="p">(</span>mmu<span class="p">,</span> nlm<span class="p">(</span>like<span class="p">,</span> sta<span class="p">,</span> iterlim<span class="o">=</span>i<span class="p">)$</span>est<span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>lines<span class="p">(</span>mmu<span class="p">,</span> pch<span class="o">=</span><span class="m">19</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp5_5-2_1.png" alt="" /></p>
-
-<h4>アニメーションにしてみる</h4>
-
-<p>例が1つだけでは面白くないので，初期値をバラバラに選んで何回もシミュレーションしてみて，初期値からどのように推定値が更新されていくのかを見てみる．今回は，初期値として<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu_1+" alt="\mu_1 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu_2+" alt="\mu_2 " />ともに図に表されている-2から5の範囲内でランダムに値を取るようにして，そこからのNewton-Raphson法による推定値の変化を1ステップごとにアニメーションとして作成した．それを25パターン作成して繋げている．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='r'><span class='line'>library<span class="p">(</span>animation<span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>mixtureloglik <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>Niter<span class="p">){</span>
-</span><span class='line'>  <span class="kr">for</span><span class="p">(</span>n in <span class="m">1</span>:Niter<span class="p">){</span>
-</span><span class='line'>    sta <span class="o">&lt;-</span> c<span class="p">(</span>runif<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="o">-</span><span class="m">2</span><span class="p">,</span><span class="m">5</span><span class="p">),</span>runif<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">-2</span><span class="p">,</span><span class="m">5</span><span class="p">))</span>
-</span><span class='line'>    mmu <span class="o">&lt;-</span> sta
-</span><span class='line'>    da <span class="o">&lt;-</span> sample<span class="p">(</span>c<span class="p">(</span>rnorm<span class="p">(</span><span class="m">10</span><span class="o">^</span><span class="m">2</span><span class="p">),</span> <span class="m">2.5</span><span class="o">+</span>rnorm<span class="p">(</span><span class="m">3</span><span class="o">*</span><span class="m">10</span><span class="o">^</span><span class="m">2</span><span class="p">)))</span>
-</span><span class='line'>    <span class="kr">for</span><span class="p">(</span>i in <span class="m">1</span>:<span class="p">(</span>nlm<span class="p">(</span>like<span class="p">,</span> sta<span class="p">)$</span>it<span class="p">)){</span>
-</span><span class='line'>      mmu <span class="o">&lt;-</span> rbind<span class="p">(</span>mmu<span class="p">,</span> nlm<span class="p">(</span>like<span class="p">,</span> sta<span class="p">,</span> iterlim<span class="o">=</span>i<span class="p">)$</span>est<span class="p">)</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="kr">for</span><span class="p">(</span>j in <span class="m">1</span>:nrow<span class="p">(</span>mmu<span class="p">)){</span>
-</span><span class='line'>      image<span class="p">(</span>mu1<span class="p">,</span> mu2<span class="p">,</span> <span class="o">-</span>lli<span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;Iter:&quot;</span><span class="p">,</span>n<span class="p">))</span>
-</span><span class='line'>      contour<span class="p">(</span>mu1<span class="p">,</span> mu2<span class="p">,</span> <span class="o">-</span>lli<span class="p">,</span>nlevels<span class="o">=</span><span class="m">100</span><span class="p">,</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
-</span><span class='line'>      lines<span class="p">(</span>mmu<span class="p">[</span><span class="m">1</span>:j<span class="p">,</span><span class="m">1</span><span class="p">],</span>mmu<span class="p">[</span><span class="m">1</span>:j<span class="p">,</span><span class="m">2</span><span class="p">],</span> pch<span class="o">=</span><span class="m">19</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>saveMovie<span class="p">(</span>mixtureloglik<span class="p">(</span><span class="m">25</span><span class="p">),</span> interval<span class="o">=</span><span class="m">0.05</span><span class="p">,</span> moviename<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>
-</span><span class='line'>          movietype<span class="o">=</span><span class="s">&quot;gif&quot;</span><span class="p">,</span> outdir<span class="o">=</span>getwd<span class="p">(),</span>
-</span><span class='line'>          width<span class="o">=</span><span class="m">640</span><span class="p">,</span> height<span class="o">=</span><span class="m">480</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Rのanimationというパッケージを使用して作成している．このパッケージでは標準でmpgも出力できるらしいのだが，今回上手くいかなかったので，gifアニメとして出力したのちにImagemagickとffmpegを使用してmpgの動画として出力した．gifアニメは思いの外重いので，今回はYoutubeにアップロードした．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>convert animation.gif Rplot%d.png
-</span><span class='line'><span class="nv">$ </span>ffmpeg -f image2 -i Rplot%d.png animation.mpg
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<iframe width="420" height="315" src="http://www.youtube.com/embed/ZbppoIltz3E" frameborder="0" allowfullscreen></iframe>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/35/">&larr; Older</a></li>
@@ -1120,6 +1001,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/10/23/kaggle-africa-soil-property-prediction-challenge/">私は如何にしてKaggleで9位から600位台まで順位を落とし，private leaderboardでベンチマークすら下回ったか？</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/26/kaggle-criteo-display-advertising-challenge/">Kaggle初心者がDisplay Advertising Challengeに挑んだ結果354th/718だった</a>
       </li>
     
@@ -1155,10 +1040,6 @@
         <a href="/blog/2014/07/18/gollum-disable-ctrl-b-hotkey/">GollumでCtrl-bのキーボードショートカットを無効にする</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/07/09/www2014review-kickstarter/">論文紹介:Recommending Investors for Crowdfunding Projects</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -1171,7 +1052,7 @@
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
-<li class='category'><a href='/blog/categories/kaggle/'>Kaggle (3)</a></li>
+<li class='category'><a href='/blog/categories/kaggle/'>Kaggle (4)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>Linux (3)</a></li>
 <li class='category'><a href='/blog/categories/mcmc/'>MCMC (3)</a></li>
 <li class='category'><a href='/blog/categories/machinelearning/'>MachineLearning (5)</a></li>
