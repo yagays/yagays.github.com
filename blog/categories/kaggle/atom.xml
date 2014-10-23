@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Kaggle | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/kaggle/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-10-23T07:26:26+09:00</updated>
+  <updated>2014-10-23T11:29:09+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -18,13 +18,39 @@
     <link href="http://yagays.github.io/blog/2014/10/23/kaggle-africa-soil-property-prediction-challenge/"/>
     <updated>2014-10-23T06:55:00+09:00</updated>
     <id>http://yagays.github.io/blog/2014/10/23/kaggle-africa-soil-property-prediction-challenge</id>
-    <content type="html"><![CDATA[<p>タイトルは釣りです．一時期9位まで上がったものの，そこから何もしなかったらどんどん抜かされただけです．それに加えて最終的に過学習っぽいので爆死した模様です．Kaggleコワイ！！！</p>
+    <content type="html"><![CDATA[<p>タイトルは釣りです（元ネタ：<a href="http://d.hatena.ne.jp/repose/20120723/1343025035">過学習の恐怖，またはいかにして私は1分間でランキングを50位も落としたか(要約) - 糞ネット弁慶</a>）</p>
 
 <h3>Africa Soil Property Prediction Challenge</h3>
 
 <p>8月終わりから行われていた"Africa Soil Property Prediction Challenge"，通称AfSISが終わりました．このコンペは衛星から取得したアフリカの各地点の吸光度などの数値情報を元に，その場所のSOC,pH,Ca,P,Sandの計5種類の地質学的な測定値を推定するというもの．問題設定としては定番っぽくて取っ付き易いものの，実際にやってみるとこれまた難しい感じでした．</p>
 
+<p>私は開催当初から参加していて，一時期9位まで上がったものの，そこから何もしなかったらどんどん抜かされたというわけです．</p>
+
+<blockquote class="twitter-tweet" lang="en"><p>Hold my calls. Top 10 on <a href="https://twitter.com/hashtag/kaggle?src=hash">#kaggle</a> - <a href="https://t.co/EUmPGDB0oq">https://t.co/EUmPGDB0oq</a></p>&mdash; やぐ (@yag_ays) <a href="https://twitter.com/yag_ays/status/506999657243766785">September 3, 2014</a></blockquote>
+
+
+<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<blockquote class="twitter-tweet" lang="en"><p>忙しさが一段落したのでkaggleに戻ってきたらランクが150位くらい下がってて厳しさがある</p>&mdash; やぐ (@yag_ays) <a href="https://twitter.com/yag_ays/status/512983920262918144">September 19, 2014</a></blockquote>
+
+
+<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>それに加えて開催期間が終わってテストデータ全体での評価が出た結果，おそらく過学習でスコアが下がり，開催側が設定したBART Benchmarkよりも下回るという有り様でした．Kaggle怖いです...．</p>
+
+<blockquote class="twitter-tweet" lang="en"><p><a href="http://t.co/52WOWFUHOd">pic.twitter.com/52WOWFUHOd</a> / <a href="http://t.co/eyBbSnt2ZC">http://t.co/eyBbSnt2ZC</a> <a href="https://twitter.com/hashtag/NEWGAME?src=hash">#NEWGAME</a>!</p>&mdash; やぐ (@yag_ays) <a href="https://twitter.com/yag_ays/status/525044669239922688">October 22, 2014</a></blockquote>
+
+
+<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
 <h3>私は如何にして（ry</h3>
+
+<p>今回は時間があったので，今回は色々試した気がします．定番のSVRに始まり，Gradient Boosting Regression Treesしたり，Random Forest Regressor使ったり，あとはForumに投稿されたH2Oでのdeep learningもどきもひと通り動かしたのですが，結果的に一番良かったのがSVRだったのでその中から前処理を幾つかやったやつを最終的にサブミット．実際はAbhishekの<a href="https://www.kaggle.com/c/afsis-soil-properties/forums/t/10351/beating-the-benchmark">Beating the Benchmark ;)</a>のやり方とほとんど変わらないと思います．どこで差が付いたのか，あとAbhishekを代表とするSVR勢は過学習を回避して大勝利となったのか，気になるところです．</p>
 
 <p>いや確かにpublic leaderboardは手元で算出したスコアとかなり乖離があって謎いとは常々思っていたのですが，一応scikit-learnのgrid searchでチューニングはしているので大丈夫だと...厳しい．</p>
 
@@ -32,7 +58,7 @@
 
 <h4>public上位</h4>
 
-<p><a href="http://www.kaggle.com/c/afsis-soil-properties/leaderboard/private">Private Leaderboard - Africa Soil Property Prediction Challenge | Kaggle</a></p>
+<p><a href="http://www.kaggle.com/c/afsis-soil-properties/leaderboard/public">Public Leaderboard - Africa Soil Property Prediction Challenge | Kaggle</a></p>
 
 <ul>
 <li>sorpmaL：1位→515位</li>
@@ -60,32 +86,9 @@
 
 <p>あと，悔しいので念のために書いておきますが最終サブミッションに選択した以外のやつではきちんとベンチマーク下回っているのありました．ただ，スコアがいいやつに限って最初の方にサブミットした何のひねりも無いSVRだったりして，心が折れそう．</p>
 
-<h3>自分にまだ勢いがあった頃</h3>
-
-<blockquote class="twitter-tweet" lang="en"><p>Hold my calls. Top 10 on <a href="https://twitter.com/hashtag/kaggle?src=hash">#kaggle</a> - <a href="https://t.co/EUmPGDB0oq">https://t.co/EUmPGDB0oq</a></p>&mdash; やぐ (@yag_ays) <a href="https://twitter.com/yag_ays/status/506999657243766785">September 3, 2014</a></blockquote>
-
-
-<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-<h3>終盤</h3>
-
-<blockquote class="twitter-tweet" lang="en"><p><a href="http://t.co/52WOWFUHOd">pic.twitter.com/52WOWFUHOd</a> / <a href="http://t.co/eyBbSnt2ZC">http://t.co/eyBbSnt2ZC</a> <a href="https://twitter.com/hashtag/NEWGAME?src=hash">#NEWGAME</a>!</p>&mdash; やぐ (@yag_ays) <a href="https://twitter.com/yag_ays/status/525044669239922688">October 22, 2014</a></blockquote>
-
-
-<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
 <h3>Lessons Learned</h3>
 
 <p>社会は厳しい．</p>
-
-<h3>参考</h3>
-
-<ul>
-<li><a href="http://d.hatena.ne.jp/repose/20120723/1343025035">過学習の恐怖，またはいかにして私は1分間でランキングを50位も落としたか(要約) - 糞ネット弁慶</a></li>
-</ul>
-
 ]]></content>
   </entry>
   
