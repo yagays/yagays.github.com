@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-10-23T11:29:09+09:00</updated>
+  <updated>2014-10-23T11:31:58+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -41,12 +41,6 @@
 
 
 <p>それに加えて開催期間が終わってテストデータ全体での評価が出た結果，おそらく過学習でスコアが下がり，開催側が設定したBART Benchmarkよりも下回るという有り様でした．Kaggle怖いです&#8230;．</p>
-
-<blockquote class="twitter-tweet" lang="en"><p><a href="http://t.co/52WOWFUHOd">pic.twitter.com/52WOWFUHOd</a> / <a href="http://t.co/eyBbSnt2ZC">http://t.co/eyBbSnt2ZC</a> <a href="https://twitter.com/hashtag/NEWGAME?src=hash">#NEWGAME</a>!</p>&mdash; やぐ (@yag_ays) <a href="https://twitter.com/yag_ays/status/525044669239922688">October 22, 2014</a></blockquote>
-
-
-<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
 
 <h3>私は如何にして（ry</h3>
 
