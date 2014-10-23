@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-10-23T11:31:58+09:00</updated>
+  <updated>2014-10-23T11:40:32+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -22,7 +22,7 @@
 
 <h3>Africa Soil Property Prediction Challenge</h3>
 
-<p>8月終わりから行われていた&#8221;Africa Soil Property Prediction Challenge&#8221;，通称AfSISが終わりました．このコンペは衛星から取得したアフリカの各地点の吸光度などの数値情報を元に，その場所のSOC,pH,Ca,P,Sandの計5種類の地質学的な測定値を推定するというもの．問題設定としては定番っぽくて取っ付き易いものの，実際にやってみるとこれまた難しい感じでした．</p>
+<p>8月終わりからKaggleで行われていた<a href="https://www.kaggle.com/c/afsis-soil-properties">&#8220;Africa Soil Property Prediction Challenge&#8221;</a>，通称AfSISが終わりました．このコンペは衛星から取得したアフリカの各地点の吸光度などの数値情報を元に，その場所のSOC,pH,Ca,P,Sandの計5種類の地質学的な測定値を推定するというもの．問題設定としては定番っぽくて取っ付き易いものの，実際にやってみるとこれまた難しい感じでした．</p>
 
 <p>私は開催当初から参加していて，一時期9位まで上がったものの，そこから何もしなかったらどんどん抜かされたというわけです．</p>
 
