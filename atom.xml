@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-10-23T12:41:05+09:00</updated>
+  <updated>2014-10-24T18:40:28+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「How Google Works ―私たちの働き方とマネジメント」読了]]></title>
+    <link href="http://yagays.github.io/blog/2014/10/24/review-how-google-works/"/>
+    <updated>2014-10-24T18:40:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/10/24/review-how-google-works</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4532319552" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>Google前CEOのエリック・シュミットと前プロダクト担当シニア・バイスプレジデントのジョナサン・ローゼンバーグが出した本書「How Google Works」は，21世紀の新しい社会の働き方を決定付ける1冊になるのは間違いない．それは現在もっとも成功している会社として，そしてもっとも今の社会に則した働き方として迎え入れられることになるだろう．インターネットや様々な技術の普及によって私たちの生活が変わったように，私たちの働き方も変える必要がある．その下地はインターネットの普及によって進み，そしてGoogle自体がそれに沿うように作り上げてきたといえる．その試行錯誤の結果，失敗と成功，それらの一部始終が本書には詰まっている．</p>
+
+<p>本書は，Googleにまつわる文化，戦略，人材，意思決定，コミュニケーション，イノベーションという6つの章から成り立っているが，そのどれもに共通しているのが人材の大切さである．Googleはエンジニアの会社だ．それはセルゲイ・ブリンとラリー・ペイジが会社を興した時から変わらない．本書ではGoogleが雇いたいと思う有能な人材のことを「スマート・クリエイティブ」と呼ぶ．スマート・クリエイティブとは，知的労働において専門性と創造性を併せ持つ人材のことを指し，旧来のナレッジワーカーとは別のタイプだという．そのスマート・クリエイティブが最大限に成果を生み出せるような場所を作り上げるのが会社の目的だ．そのために人材を雇用し，会社のシステムを作り上げたといえる．例えば，おもちゃの散乱した遊び場のようなイメージで有名なGoogleも，実際に机に向かうオフィス部分では手を伸ばせば隣の人に届くようなスペースに社員を詰め込んで，お互いにコミュニケーションが生まれるようなデザインにしているという．これも文化の一つとしてよく知られていることだが，きちんとした理由が裏にはある．</p>
+
+<p>この他にも本当にたくさんのGoogleらしさが本書には詰まっている．明日から実践できそうなことや，そもそも成功しているGoogleじゃないと到底できそうにないこと，そもそもスマート・クリエイティブなんてどこにいてどうやったら採用できるんだといったことまで様々だ．少なくともこれまで数々のGoogleにまつわる本が出版されてきたが，この本ほどGoogleの本質に迫るものは無いだろう．とにかく読んでみて，Googleという巨人の巨人たる所以に触れてみてほしい．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[私は如何にしてKaggleで9位から600位台まで順位を落とし，private leaderboardでベンチマークすら下回ったか？]]></title>
@@ -1435,42 +1451,6 @@
 <p>数学を(いや、どんな学問でもそれを)理解する、という行為は、人生を総動員して行うべきものであり、そうしさえすれば、(それへの愛と欲求がある限り)理解は不可能なことでもそんなに難しいことでもない</p>
 
 <p><a href="http://d.hatena.ne.jp/hiroyukikojima/20140523/1400837261">http://d.hatena.ne.jp/hiroyukikojima/20140523/1400837261</a></p></blockquote>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[京都・貴船に行ってきた]]></title>
-    <link href="http://yagays.github.io/blog/2014/05/26/kyoto-kibune/"/>
-    <updated>2014-05-26T07:41:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2014/05/26/kyoto-kibune</id>
-    <content type="html"><![CDATA[<p>京都に住んでいる知り合いと久しぶりに遊ぶことになって，貴船に行ってきた．どこに行くかとかを含めて昼夜の店まで手配してくれて，本当にありがたかった．</p>
-
-<p>出町柳から叡山電鉄で30分ほど揺られて，そこから10分ほどバスに乗ると貴船に着く．山間の狭い川沿いに店が幾つも並んでいて，いたるところに川床(かわどこ)がある．川床とは川の上を覆うかたちで大きな台を敷いてその上で飲み食いする場所のことで，自然の景観を利用した何とも風流な設備である．しかも台は川の平たいところにしかおけないので，川床の間には滝が挟まっていたりしていて最高に眺めが良い．その日は京都市内ならすぐに汗ばむくらいの気温でも，川床にいるとちょっとひんやりする程度で，本当に気持ちがよかった．今回は<a href="http://hirobun.co.jp/">「ひろ文」</a>で流しそうめんを食べたのだけれど，目の前の滝に癒やされつつも手前に勢い良く流れてくるそうめんを掴んで食べるのは，まさにエンターテイメント性があった．川床はそこにいるだけで快適で楽しいので，今度は普通にだらだら料理を食べるのもいいかもしれない．何やら温泉もできるようなので，湯につかったあとの涼みは最高に気持ちが良いだろうなと考えつつ下山．また紅葉のときにでも訪れたい場所だ．</p>
-
-<p>その後は京都市内でスイーツを食べたり魚を食べたりした．写真は撮ってないけど，生湯葉チーズ巻なるものが非常に美味しかった．</p>
-
-<iframe src="https://www.flickr.com/photos/124108383@N03/14264345825/in/set-72157644421797979/player/" width="800" height="600" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
-
-
-
-
-<iframe src="https://www.flickr.com/photos/124108383@N03/14077788737/in/set-72157644421797979/player/" width="800" height="600" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
-
-
-
-
-<iframe src="https://www.flickr.com/photos/124108383@N03/14263921954/in/set-72157644421797979/player/" width="800" height="600" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
-
-
-
-
-<iframe src="https://www.flickr.com/photos/124108383@N03/14077720160/in/set-72157644421797979/player/" width="800" height="600" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
-
-
-
-
-<iframe src="https://www.flickr.com/photos/124108383@N03/14264320815/in/set-72157644421797979/player/" width="800" height="600" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
-
 ]]></content>
   </entry>
   

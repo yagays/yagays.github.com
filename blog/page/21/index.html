@@ -117,6 +117,85 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/05/16/cpanm/">Cpanmのセッティング</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-16T12:19:00+09:00" pubdate data-updated="true">May 16<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>PerlでCPANを使うなら，cpanmが便利．ライブラリはすべてホームディレクトリ以下に展開されるので，管理者権限が無くても気軽に使用できる．</p>
+
+<ul>
+<li><a href="http://search.cpan.org/~miyagawa/App-cpanminus-1.6914/bin/cpanm">cpanm - search.cpan.org</a></li>
+</ul>
+
+
+<h3>パスの通ったディレクトリにインストールする</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd local/bin
+</span><span class='line'>$ curl -LOk http://xrl.us/cpanm
+</span><span class='line'>$ chmod +x cpanm</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>.zshrcに設定を書き込む</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>export PERL_CPANM_OPT="--local-lib=~/.cpanm/"
+</span><span class='line'>export PERL5LIB="$HOME/.cpanm/lib/perl5:$PERL5LIB"</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>例）ライブラリを入れる</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cpanm local::lib
+</span><span class='line'>$ cpanm JSON
+</span><span class='line'>$ cpanm Cairo</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://www.omakase.org/perl/cpanm.html">perlモジュールのinstallにcpanmを使う｜perl｜@OMAKASE</a></li>
+<li><a href="http://g86.dbcls.jp/~yag/wordpress/archives/1400">Wolf Ears » cpanmでBioPerlを入れる</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/05/15/n50-ng50/">アセンブルの指標であるN50とNG50の違い</a></h1>
     
     
@@ -420,139 +499,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/06/linux-root-directory/">Linuxのルートディレクトリ構成まとめ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-06T09:27:00+09:00" pubdate data-updated="true">May 6<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li><strong>/</strong> # ルートディレクトリ</li>
-<li><strong>/vmlinuz</strong> # /bootに置かれているLinuxカーネルにシンボリックリンクが貼られている</li>
-<li><strong>/bin/</strong> # バイナリ形式の実行ファイル置き場</li>
-<li><strong>/boot/</strong> # Linuxカーネルやブート処理に必要なファイル置き場</li>
-<li><strong>/dev/</strong> # デバイスファイル置き場
-
-<ul>
-<li><strong>/tty*</strong> # 制御端末に対応している．&#8221;tty&#8221;は&#8221;Teletype&#8221;が由来</li>
-<li><strong>/null</strong> # nullデバイス．出力の破棄先に使う</li>
-<li><strong>/zero</strong> # zeroデバイス．Nullが延々返ってくる</li>
-</ul>
-</li>
-<li><strong>/etc/</strong> # 設定ファイル置き場
-
-<ul>
-<li><strong>/hosts</strong> # ホストとIPの対応付けを行う</li>
-<li><strong>/hosts.allow</strong> # 接続を許可するホスト一覧</li>
-<li><strong>/hosts.deny</strong> # 接続を拒否するホスト一覧</li>
-<li><strong>/passwd</strong> # ユーザの名前やホームディレクトリ一覧</li>
-<li><strong>/resolv.conf</strong> # 名前解決のためのDNSサーバ一覧</li>
-<li><strong>/shadow</strong> # ユーザのパスワード（暗号化されている）</li>
-<li><strong>/rc.local</strong> Linuxの起動時に実行されるシェルスクリプト</li>
-<li><strong>/rc?.d/</strong> # 起動用ファイルが置かれるディレクトリ（各ランレベルごとに番号が振られている）</li>
-</ul>
-</li>
-<li><strong>/home/</strong> # ユーザのホームディレクトリ置き場</li>
-<li><strong>/lib/</strong> # 共有ライブラリ置き場</li>
-<li><strong>/lost+found/</strong> # システム障害時の不明ファイル避難先</li>
-<li><strong>/proc/</strong> # プロセスファイスシステム（procfs）置き場．CPUやメモリの情報などが含まれている．
-
-<ul>
-<li><strong>/cpuinfo</strong> # CPU情報</li>
-<li><strong>/meminfo</strong> # メモリ情報</li>
-<li><strong>/loadavg</strong> # ロードアベレージ(uptimeやtopに表示される)</li>
-</ul>
-</li>
-<li><strong>/root/</strong> # スーパーユーザのホームディレクトリ</li>
-<li><strong>/sbin/</strong> # システム管理者が使用する実行ファイル置き場</li>
-<li><strong>/tmp/</strong> # 一時ファイル置き場．リブートすると消える</li>
-<li><strong>/usr/</strong> # 複数マシンで共有可能なファイル置き場
-
-<ul>
-<li><strong>/src/</strong> # システムコマンドのソースコード</li>
-<li><strong>/include/</strong> # システムのヘッダファイル</li>
-<li><strong>/share/</strong> # 複数マシンで共有可能なファイル（特にドキュメント系）
-
-<ul>
-<li><strong>/man/</strong> # manページ
-
-<ul>
-<li><strong>/man*/</strong> セクションごとにディレクトリが分かれている</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>/info/</strong> # infoファイル</li>
-<li><strong>/local/</strong> # システムの管理者が管理するファイル</li>
-</ul>
-</li>
-<li><strong>/var/</strong> # 頻繁に書き換えられるファイル置き場
-
-<ul>
-<li><strong>/log/</strong> # ログファイル</li>
-<li><strong>/spool/</strong> # 一時的に保存するファイル</li>
-<li><strong>/tmp/</strong> # /tmpと似ているが，リブートしても消えない</li>
-<li><strong>/run/</strong> # 起動中のプロセスのPIDが保存される．Ubuntu12.04ではルートディレクトリの/runにシンボリックリンクが貼られている</li>
-</ul>
-</li>
-</ul>
-
-
-<h4>環境</h4>
-
-<p>なるべく一般的なLinuxの情報を参考にしつつ，手元のUbuntu12.04と照らし合わせながら作成している．環境によっては違う部分があると思うので注意．</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://www.atmarkit.co.jp/ait/articles/0108/07/news002.html">Windowsユーザーに教えるLinuxの常識（2）：各ディレクトリの役割を知ろう（ルートディレクトリ編） (1/2) - ＠IT</a></li>
-<li><p><a href="http://www.usupi.org/sysad/239.html">ハードウェアの情報を収集する - いますぐ実践! Linuxシステム管理 / Vol.239</a></p></li>
-<li><p>「<a href="http://www.amazon.co.jp/gp/product/4839938717/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4839938717&linkCode=as2&tag=yagays-22">Linuxの教科書　改訂版 （マイコミムック） (MYCOMムック)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4839938717" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」では，ルートディレクトリ構成および中身のファイルに至るまで，基礎の部分について網羅的に書かれている．また，/etcと/varの概要をRed Had系とDebian系でそれぞれリストアップしている．</p></li>
-<li><p>「<a href="http://www.amazon.co.jp/gp/product/4797328355/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4797328355&linkCode=as2&tag=yagays-22">ふつうのLinuxプログラミング Linuxの仕組みから学べるgccプログラミングの王道</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4797328355" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」では，ルートディレクトリの基本的な構造とその役割について書かれている．特に/usrと/varを使い分ける基準が解説されている点は参考になった．</p></li>
-<li><p>「<a href="http://www.amazon.co.jp/gp/product/4774151432/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4774151432&linkCode=as2&tag=yagays-22">プロのための Linuxシステム・10年効く技術 (Software Design plus)</a><img src="http://www.assoc-amazon.jp/e/ir?t=yagays-22&l=as2&o=9&a=4774151432" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-」では，/dev/nullおよび/dev/zeroの使い方について参考にした．他にもプロセスまわりやメモリ管理について詳細に書かれている．</p></li>
-</ul>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4839938717" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4797328355" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4774151432" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/22/">&larr; Older</a></li>
@@ -600,6 +546,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/10/24/review-how-google-works/">「How Google Works ―私たちの働き方とマネジメント」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/10/23/kaggle-africa-soil-property-prediction-challenge/">私は如何にしてKaggleで9位から600位台まで順位を落とし，private leaderboardでベンチマークすら下回ったか？</a>
       </li>
     
@@ -635,10 +585,6 @@
         <a href="/blog/2014/07/23/homebrew-science-bioinformatics/">Homebrew/scienceでバイオインフォマティクスのソフトウェアを入れる</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/07/18/gollum-disable-ctrl-b-hotkey/">GollumでCtrl-bのキーボードショートカットを無効にする</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -647,7 +593,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (104)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (105)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>

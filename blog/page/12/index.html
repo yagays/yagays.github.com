@@ -117,6 +117,311 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/11/15/mac-mavericks-setting-2013/">Mac OS X Mavericks環境構築記録</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-15T17:16:00+09:00" pubdate data-updated="true">Nov 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>新しい環境が手に入ったので，Mac OS X Maverickでクリーンインストール状態から環境構築してみた．</p>
+
+<h2>環境</h2>
+
+<ul>
+<li>MacBook Air Mid 2011</li>
+<li>Mac OS X 10.9 Maverick</li>
+</ul>
+
+
+<h3>システム環境設定</h3>
+
+<h4>・Dock</h4>
+
+<ul>
+<li>Dockを自動的に隠す/表示：On</li>
+</ul>
+
+
+<h4>セキュリティとプライバシー</h4>
+
+<ul>
+<li>ファイアウォール：On</li>
+<li>一般:ダウンロードしたアプリケーションの実行許可:全てのアプリケーションを許可</li>
+</ul>
+
+
+<h4>・Spotlight</h4>
+
+<ul>
+<li>Spotlightメニューのキーボードショートカット：Ctrl-Shift Space</li>
+<li><a href="http://d.hatena.ne.jp/zariganitosh/20121024/dictionary_higher_in_spotlight_result">Spotlightで辞書検索の優先順位を設定する - ザリガニが見ていた&#8230;。</a></li>
+</ul>
+
+
+<h4>・省エネルギー</h4>
+
+<ul>
+<li>バッテリー・電源アダプタ
+
+<ul>
+<li>コンピュータのスリープ：しない</li>
+<li>ディスプレイのスリープ：30分</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>・キーボード</h4>
+
+<ul>
+<li>キーのリピート・リピート入力認識までの時間はKeyRemap4MacBookで個別に設定
+
+<ul>
+<li>Delay Until Repeat：300 ms</li>
+<li>Key Repeat：33 ms</li>
+</ul>
+</li>
+<li>キーボード:F1，F2などのすべてのキーを標準のファンクションキーとして使用：On</li>
+<li>ショートカット:キーボード:次のウィンドウを操作対象にする：Ctrl-Shift Z</li>
+<li>入力ソース：Google 日本語入力</li>
+</ul>
+
+
+<h4>・トラックパッド</h4>
+
+<ul>
+<li>ページ間をスワイプ
+
+<ul>
+<li>3本指でスワイプ</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>・共有</h4>
+
+<ul>
+<li>コンピュータ名を変更</li>
+</ul>
+
+
+<h4>・ユーザとグループ</h4>
+
+<ul>
+<li>Apple ID：設定</li>
+</ul>
+
+
+<h4>・日付と時刻</h4>
+
+<ul>
+<li><p>日付と時刻</p>
+
+<ul>
+<li>日付と時刻を自動的に設定：Apple アジア</li>
+</ul>
+</li>
+<li><p>時計</p>
+
+<ul>
+<li>秒を表示：On</li>
+<li>日付を表示：On</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>ファインダー</h3>
+
+<ul>
+<li>環境設定
+
+<ul>
+<li>一般:新規Finderウィンドウで次を表示：$HOME</li>
+<li>詳細:すべてのファイル名拡張子を表示：On</li>
+<li>詳細:拡張子を変更刷る前に警告を表示：Off</li>
+<li>詳細:確実にゴミ箱を空にする：On</li>
+<li>詳細:検索実行時：現在のフォルダ内を検索</li>
+</ul>
+</li>
+<li>表示オプション
+
+<ul>
+<li>表示順序:グリッドに沿う</li>
+</ul>
+</li>
+</ul>
+
+
+<p>ホームディレクトリのフォルダを英語化</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd /System/Library/CoreServices/SystemFolderLocalizations/ja.lproj
+</span><span class='line'>$ sudo mv SystemFolderLocalizations.strings SystemFolderLocalizations.strings.bak
+</span><span class='line'>$ sudo cp ../en.lproj/SystemFolderLocalizations.strings .</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>辞書</h3>
+
+<ul>
+<li>Oxford Dicionary of English：On</li>
+<li>Oxford Thesaurus of English：On</li>
+<li>LSD for Dictionary（ライフサイエンス辞書）（<a href="http://lsd.pharm.kyoto-u.ac.jp/ja/index.html">現在は公開中止</a>）</li>
+</ul>
+
+
+<h3>フォント</h3>
+
+<ul>
+<li>Ricty
+
+<ul>
+<li>Inconsolata，Migu 1Mを事前にインストールしておく</li>
+</ul>
+</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port install fontforge
+</span><span class='line'>$ git clone https://github.com/yascentur/Ricty.git 
+</span><span class='line'>$ cd Ricty
+</span><span class='line'>$ sh ricty_generator.sh auto</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>ターミナル</h3>
+
+<ul>
+<li>フォント：Ricty Regular 14 pt.</li>
+<li><p>テキストをアンチエイリアス処理</p></li>
+<li><p>シェルの終了時：シェルが正常に終了した場合は閉じる</p></li>
+</ul>
+
+
+<h3>アプリケーション</h3>
+
+<ul>
+<li>1password</li>
+<li>AppCleaner</li>
+<li>ClamXav</li>
+<li>Cytoscape</li>
+<li>DaisyDisk</li>
+<li>Dropbox
+
+<ul>
+<li>モノクロのメニューバーアイコンを使用</li>
+</ul>
+</li>
+<li>Evernote</li>
+<li>Fantastical
+
+<ul>
+<li>iCal.appで先にGoogleアカウントを登録しておく</li>
+<li>Preference:Keyboard shortcut：Ctrl-Shift D</li>
+</ul>
+</li>
+<li>Google Chrome</li>
+<li>Google 日本語入力
+
+<ul>
+<li>一般:句読点．，</li>
+<li>一般:￥キーで入力する文字：バックスラッシュ</li>
+<li>入力補助:半角・全角:アルファベット:変換前文字列：半角</li>
+</ul>
+</li>
+<li>Kobito</li>
+<li>Keynote</li>
+<li>KeyRemap4MacBook
+
+<ul>
+<li>Fn to Eject (Ctrl-Shift-Ejectでディスプレイを消すキーボードショートカットを使うため)</li>
+</ul>
+</li>
+<li>LanguageSwitcher</li>
+<li>LaTeXiT</li>
+<li>Marked</li>
+<li>nvALT</li>
+<li>Pages</li>
+<li>ReadKit</li>
+<li>RStudio</li>
+<li>ScanSnap Manager</li>
+<li>Sparrow
+
+<ul>
+<li>Format:Prefer Plain Text：On</li>
+<li>Preference:General:Play sound when receiving/sending mail:Off</li>
+<li>Preference:Advanced:Use Gmail shortcuts:On</li>
+<li>Preference:Advanced:Delete key moves to trash:On</li>
+<li>Preference:Advanced:Hide pictures:On</li>
+<li>Preference:Advanced:Hide selection bar in Inbox:Off</li>
+</ul>
+</li>
+<li>Twitter</li>
+<li>Xcode</li>
+<li><p>夜フクロウ</p></li>
+<li><p>MenuMeters</p></li>
+</ul>
+
+
+<h3>MacPorts</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port selfupdate
+</span><span class='line'>$ sudo port install clojure coreutils emacs git-core imagemagick lftp nkf python27 python34 screen sshfs tig wget zsh</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>MacTex</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo tlmgr update --self --all</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>参考：過去の環境構築メモ</h3>
+
+<ul>
+<li><a href="http://d.hatena.ne.jp/yag_ays/20091130/1259564460">MacOSX環境構築メモ(随時更新) - Mad Dryfarm Wolves</a></li>
+</ul>
+
+
+<p>よ，4年前と全然変わってねぇ&#8230;．</p>
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/10/31/neuroscience/">メモ：脳神経科学の基礎の基礎</a></h1>
     
     
@@ -663,62 +968,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/13/review-lab-management-12-technique/">「バイオ研究者が生き抜くための十二の智慧」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-13T10:04:00+09:00" pubdate data-updated="true">Oct 13<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4780908701" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>本書は，バイオ研究者のためのラボマネージメントのノウハウ集である．主に研究室を運営するPIやその下の教員クラスを対象にしており，実験室での試薬サンプルや実験データ管理，実験ノートの書き方から始まり，論文の投稿や査読，ラボ全体のミーティングやジャーナルクラブの運営，プレリリースなどの研究の情報発信など，研究者の研究以外の活動に関する「雑用」を上手く処理するテクニックが紹介される．たいていの研究者は，これらの細かい事務作業は放り出してただひたすらに自分の研究をしていたいと思うはずだ．しかし，これら「雑用」をしなければ，研究室という組織は機能しない．一見すると研究という仕事をしていないかのように取られがちなこれらの作業は，研究者として生きる上での義務となっている．他の研究者とコミュニケーションを取り，自分の成果を世界に発信することも，自分の研究と同じくらい大事なことだ．これらの「雑用」と呼ぶには相応しくない大事な仕事について，本書では様々な研究者が培ってきたテクニックを十二の智慧として紹介している．</p>
-
-<p>内容は上記の通り幅広く取り扱っているが，個々に割かれているページ数はあまり多くない．新鮮なアイデアを探すのには持ってこいな資料だが，ノウハウ集であって指南書ではないので，読んで即実行して成果が得られるわけではないだろう．自分一人でできるものは簡単だが，他人との共同作業やラボ全体に関するものはなかなか導入が難しいという実情もある．既にある研究室の文化とのすり合わせもあるだろうし，本書を読んでない相手に新しいやり方の意義を伝えて使い方を学んでもらうのはなかなか大変だ．マネージメントの特効薬ではないということをある程度覚悟して読み進めることをお薦めする．ただし，食わず嫌いは良くない．上を説得するのは面倒だから，行動力が無いからと言っては始まらない．何事もまず一度試してみると周囲から何かしら反応があるはずだから，それを元に現実的な方法に修正していくというのが理想だろう．</p>
-
-<p>それにしても，私も常々感じることだが，こういった研究室の運営や文化はなかなか外に出てこない．特に実験系のラボはその色合いが強い．それは，研究室という研究内容が違えば所属する人間も全く違うようなうユニークな環境のせいかもしれないし，人材の流動が少ないせいかもしれない．そもそも，それを知りたいという人が少ないからかもしれない．最近ではメディアでの紹介やブログなどのネット媒体によって情報を発信するトコロも増えてきたが，未だに研究室の実情は独自に醸成されてきた文化を守り抜いていくという閉鎖的な環境にあると思われる．それを良いと思うか悪いと思うかは置いておいて，自分の世界を一歩引いた視点で見ること，そして外の世界を見ることはきっと何かの役に立つ．研究なり研究以外の仕事をもっと上手くやれる方法はあるはずだし，誰か知っているし誰かやっているはずだ．そんな情報をもっと共有したりできる環境があればと思う．それは本書のような本の形でなくても良い．口コミでも学会のセッションでも何かしら広めていける方法はあるはずだ．個人的には，できればインターネットに形として残るブログなどに書いてほしいが，まあやり方はいくらでもあるだろう．</p>
-
-<br/>
-
-
-<p>ラボのマネージメントに関して，今回紹介した本書には書かれてなかった点を補足するならば，以下の2冊がお薦めだ．「<a href="http://www.amazon.co.jp/gp/product/4895924742/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4895924742&linkCode=as2&tag=yagays-22">ラボ・ダイナミクス―理系人間のためのコミュニケーションスキル</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4895924742" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」は，主にラボ内の人間関係に関する実例が豊富に載っている．セミナーで怒鳴り散らすような相手にどう対処するか，ラボの規則を守ってくれない同僚にどう接するかなど，やっかいな問題の対処法が多数紹介されている．また，学生の指導や教育という観点からは「<a href="http://www.amazon.co.jp/gp/product/4472403625/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4472403625&linkCode=as2&tag=yagays-22">ベストプロフェッサー (高等教育シリーズ)</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4472403625" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」がお薦めできる．</p>
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4895924742" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4472403625" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/13/">&larr; Older</a></li>
@@ -766,6 +1015,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/10/24/review-how-google-works/">「How Google Works ―私たちの働き方とマネジメント」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/10/23/kaggle-africa-soil-property-prediction-challenge/">私は如何にしてKaggleで9位から600位台まで順位を落とし，private leaderboardでベンチマークすら下回ったか？</a>
       </li>
     
@@ -801,10 +1054,6 @@
         <a href="/blog/2014/07/23/homebrew-science-bioinformatics/">Homebrew/scienceでバイオインフォマティクスのソフトウェアを入れる</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/07/18/gollum-disable-ctrl-b-hotkey/">GollumでCtrl-bのキーボードショートカットを無効にする</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -813,7 +1062,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (104)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (105)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
