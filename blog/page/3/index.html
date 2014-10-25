@@ -117,6 +117,100 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2014/07/23/homebrew-science-bioinformatics/">Homebrew/scienceでバイオインフォマティクスのソフトウェアを入れる</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-23T00:38:00+09:00" pubdate data-updated="true">Jul 23<span>rd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="https://github.com/Homebrew/homebrew-science">Homebrew/homebrew-science</a></p>
+
+<p>Homebrewにはtapというコマンドがあって，例えばHomebrew/dupesのようにMacOSXに標準で入っているソフトウェア/パッケージを個別に入れられたりと，公式以外のフォーミュラからbrewコマンドで入れられるシステムがある．</p>
+
+<h3>Homebrew/science</h3>
+
+<p>その中でHomebrew/scienceという科学系のリポジトリがあり，バイオインフォマティクスに関するソフトウェアも多数登録されている．例えば，</p>
+
+<ul>
+<li>blast</li>
+<li>blat</li>
+<li>hmmer</li>
+<li>clustal-w</li>
+</ul>
+
+
+<p>のような基本的なソフトウェアから，</p>
+
+<ul>
+<li>bowtie2</li>
+<li>cufflinks</li>
+<li>bwa</li>
+<li>fastqc</li>
+<li>igv</li>
+<li>samtools</li>
+<li>bedtools</li>
+<li>&#8230;</li>
+</ul>
+
+
+<p>のようなNGSまわりの解析ツールもひと通りHomebrewから入れることができる．ここに挙げている以外にも多数のバイオインフォマティクス関連のソフトウェアが登録されているので，詳しくは<a href="https://github.com/Homebrew/homebrew-science">homebrew-scienceのGitHubページ</a>を参考．</p>
+
+<p>ひとつ注意点としては，Homebrew/sicenceで入れたソフトウェアが常に最新のものかどうかは保証されない．Homebrew/scienceの中にあるフォーミュラで記述されているものがインストールされるので，フォーミュラの管理状態によっては最新ではないバージョンを指している可能性がある．もし最新バージョンを入れたい/バージョンに気をつけるといった場合には，公式ページで配布されているソフトウェアのバージョンを確認したほうが良いだろう．</p>
+
+<h3>使い方</h3>
+
+<p>Homebrewをセットアップした上で，以下のコマンドでtapを追加することができる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew tap homebrew/science
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>あとは好きなソフトウェアをbrew installすれば良い．</p>
+
+<h3>恒例のアレ</h3>
+
+<p>このxkcdのマンガには，Homebrew/scienceのページに載っているコマ以外にちゃんとした前振りがある．詳しくは<a href="http://xkcd.com/585/">http://xkcd.com/585/</a>にて．</p>
+
+<p><img src="https://camo.githubusercontent.com/3409f4a35fcb0bf160c8c9bb153bb133d8f83b4f/687474703a2f2f692e696d6775722e636f6d2f42737770312e706e67" alt="" /></p>
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="https://github.com/Homebrew/homebrew/wiki/brew-tap">brew tap · Homebrew/homebrew Wiki</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2014/07/18/gollum-disable-ctrl-b-hotkey/">GollumでCtrl-bのキーボードショートカットを無効にする</a></h1>
     
     
@@ -437,69 +531,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/06/19/review-the-anatomical-chart-of-homes/">「住まいの解剖図鑑」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-19T13:09:00+09:00" pubdate data-updated="true">Jun 19<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4767809185" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>建築について前から勉強したいと思って初心者向けの本を探していたのだけれども，本書はまさに入門書としてピッタリの本だった．最初は住宅設計に関する学生向けにかかれていたそうだが，家を建てたいという一般の人にでもわかるようにも工夫されたそうで，それほど専門的ではないながらも住宅設計のコアの考え方が詰まっている．</p>
-
-<p>本書の内容について，著者は冒頭「はじめに」で</p>
-
-<blockquote><p>本書の大半は，そうした定石が「なぜそうなっているのか」を，私なりに解読したページです</p>
-
-<p>「<a href="http://www.amazon.co.jp/gp/product/4767809185/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4767809185&linkCode=as2&tag=yagays-22">住まいの解剖図鑑</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4767809185" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」 P.7</p></blockquote>
-
-<p>と書いている．ここで言う定石とは「ごくありふれたモノやカタチ」であって，私たちが住宅でよく見かける，または何気なしに使っているもののことだ．屋根のカタチ，玄関のカタチ，ドアのカタチなどなど，たくさんの住宅を並べてパターンを見ると意外と共通点が存在する．そしてそれらの定石といえるパターンには，実は共通した理由がある．成るべくして成っているとも言えるそれらの理由を紐解いていこうというのが本書の流れだ．ページをパラパラめくると個別の間取りやカタチが並んでいるだけに見えるが，実はそれぞれにしっかりとした理由が明記されており，それらに共通する考え方が見えてくる．上の引用と同じく著者はそれを「一つのゴールを示すのではなく，たくさんのスタート地点を並べたガイドブック」だと呼んでいる．さすが大学の教員もされている著者だけのことはある．</p>
-
-<p>中身が素晴らしいのは言うまでもなく，個人的にはこのタイトルがとても良いと思う．解剖学というと，ヒトだったら個々のパーツの形や性質を観察して，そこから人間という構造や機能を理解していく学問のことだ．本書はまさにその住宅バージョンと言える．家のそれぞれの部分を取り出して，その形を観察してパターンを探したり機能を考えたりしてく．ただしそれで終わってしまっては，解剖学にならない．そういった部品を組み合わせて，最終的にはひとつの家として，そして周りの家との相互作用を含めて組み上げていく．そしてそこには人間を中心にして作られるという究極のテーマが存在する．まさに解剖図鑑と称するに相応しい一冊だ．</p>
-
-<p>「解剖図鑑」シリーズは，現在のところ</p>
-
-<ul>
-<li><a href="http://www.amazon.co.jp/gp/product/4767809185/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4767809185&linkCode=as2&tag=yagays-22">住まいの解剖図鑑</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4767809185" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
-<li><a href="http://www.amazon.co.jp/gp/product/4767816696/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4767816696&linkCode=as2&tag=yagays-22">片づけの解剖図鑑</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4767816696" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
-<li><a href="http://www.amazon.co.jp/gp/product/4767812380/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4767812380&linkCode=as2&tag=yagays-22">住宅・インテリアの解剖図鑑</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4767812380" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
-<li><a href="http://www.amazon.co.jp/gp/product/4767815703/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4767815703&linkCode=as2&tag=yagays-22">建築デザインの解剖図鑑</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4767815703" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
-</ul>
-
-
-<p>の4冊が出ているそうなので，他も読んでみたいと思う．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/4/">&larr; Older</a></li>
@@ -547,6 +578,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/10/25/review-think-simple/">「Think Simple―アップルを生みだす熱狂的哲学」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/10/24/review-how-google-works/">「How Google Works ―私たちの働き方とマネジメント」読了</a>
       </li>
     
@@ -582,10 +617,6 @@
         <a href="/blog/2014/08/15/ipython-notebook-matplotlib-inline/">iPython Notebookの&#8211;pylab inlineは使うのをやめようという話</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/07/23/homebrew-science-bioinformatics/">Homebrew/scienceでバイオインフォマティクスのソフトウェアを入れる</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -594,7 +625,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (105)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (106)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
