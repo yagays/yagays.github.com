@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-10-25T13:34:14+09:00</updated>
+  <updated>2014-11-06T18:26:15+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[L1 regularizationのLASSOはなんと発音するのか？]]></title>
+    <link href="http://yagays.github.io/blog/2014/11/06/lasso-pronunciation/"/>
+    <updated>2014-11-06T18:12:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/11/06/lasso-pronunciation</id>
+    <content type="html"><![CDATA[<blockquote class="twitter-tweet" lang="en"><p>LASSOの発音、ラスーみたいな感じなのか</p>&mdash; 便所糞虫 (@y_benjo) <a href="https://twitter.com/y_benjo/status/530274684097421312">November 6, 2014</a></blockquote>
+
+
+<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>今までLASSOはラッソだと思っていたのだけれども，どうやら違うらしい．YouTubeにある幾つかの動画で確認してみると，ラッソというよりかはラッスーに近い．無理矢理カタカナで書くと「ラッスゥー」で，スにアクセントがある感じ．</p>
+
+<p>実際の発音は以下の動画で確認できる．発音している箇所に動画再生ポイントを合わせてあるので，聞き逃しに注意．</p>
+
+<iframe width="560" height="315" src="http://yagays.github.io//www.youtube.com/embed/UvxHOkYQl8g?start=620" frameborder="0" allowfullscreen></iframe>
+
+
+<p>ちなみにこれは<a href="http://www.amazon.co.jp/gp/product/B00475AS2E/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B00475AS2E&linkCode=as2&tag=yagays-22">The Elements of Statistical Learning</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=B00475AS2E" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />でお馴染みのHastie&amp;Tibshirani先生の動画．</p>
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=432012362X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=0387848576" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<p>他にも幾つか確認してみたが，同様の発音だった．</p>
+
+<iframe width="560" height="315" src="http://yagays.github.io//www.youtube.com/embed/PKXpaLUigA8?start=1227" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<iframe width="420" height="315" src="http://yagays.github.io//www.youtube.com/embed/XDtgZFIXDds?start=1390" frameborder="0" allowfullscreen></iframe>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Think Simple―アップルを生みだす熱狂的哲学」読了]]></title>
@@ -1420,22 +1460,6 @@
 <p>つまり，コンサル会社が立てた戦略計画の紙の束が重要なんじゃなくて，立案の過程で行った調査や研究自体が有用なのだと．そしてそれは将来的な計画変更のときにも大いに役に立つということだ．</p>
 
 <p>経営戦略や最適化プロセス，リーダーシップなど他の分野でも上と同様に，コンサルティングを取り巻く問題点と解決法が一通り提示される．結論も重要ながら，その考え方自体も興味深い．それに，それぞれの分野が，どのように発展してきたのか，誰が始めに言い始めたのかといった歴史が紹介されるのも本書の特徴だ．どこぞの教授が論文に書いたのが始まりだとか，あのコンサル会社から広がったとか，そういった経緯も，業界の裏側を覗いているようで面白い．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「「レジリエンス」の鍛え方」読了]]></title>
-    <link href="http://yagays.github.io/blog/2014/05/29/review-resilience/"/>
-    <updated>2014-05-29T14:10:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2014/05/29/review-resilience</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=440845494X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>レジリエンスとは「精神的な打たれ強さであり感情をコントロールできる強い自己規律」のことを言うそうだ．世界で活躍するエリートには，そのレジリエンスというものがあるからこそ活躍でき，逆に言えばレジリエンスがない人はキャリアの途中で挫折したり成果が出なかったりするらしい．そういった精神的な部分はビジネススクールではあまり教えてくれないから重要だという．著者はP&amp;G出身者で現在はレジリエンスを専門にした社会人向けの心的ケアの会社を立ち上げている．</p>
-
-<p>内容に入る前にまずレジリエンスという聞きなれない言葉なのだけれども，本書を読む限りだと，特段新しい考え方や方法論を言い表しているわけではなさそうだ．レリジエンスという体系が出来上がっているようには見えず，単に小手先のテクニック集にしかなっていないと感じる．いちおう本書の流れとしては失敗とそこからの再生に沿って話が進むけれども……．具体的な内容としては，精神的な強さが必要でそれを実現するにはこういうことをすべきだということが手を替え品を替えて説明される．それぞれに取って付けたような心理学の研究結果みたいなものが理論付けとして述べられるが，因果と相関の違いがわかってないんじゃないかと思う部分も多い．もちろん個別の内容がすべて悪いというわけではなく，例えば失敗に対して予期できる失敗とアクシデンタルな失敗を区別して考えるべきとか，感情をコントロールするには自分で自分を分析して一歩引いた目線で考えろとか，そういったテクニックとしてはいいんだけど，それで終わりという感じ．</p>
-
-<p>多くの人は当然ながらストレスを抱え込みたくないし，失敗だってしたくないし，ポジティブに日々を過ごして仕事で成果を出したいと思うはずだ．そういう時にこそ自分を変えようと思って他人の人生であったり優秀な人の習慣を参考にするのだろうけれども，今回の場合は本で読んでも感動は薄いし，まあこういった内容は自己啓発セミナー向けかなぁ．</p>
 ]]></content>
   </entry>
   
