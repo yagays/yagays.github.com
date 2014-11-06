@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-11-06T18:26:15+09:00</updated>
+  <updated>2014-11-06T18:30:55+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[L1 regularizationのLASSOはなんと発音するのか？]]></title>
+    <title type="html"><![CDATA[L1 regularizationのLassoはなんと発音するのか？]]></title>
     <link href="http://yagays.github.io/blog/2014/11/06/lasso-pronunciation/"/>
     <updated>2014-11-06T18:12:00+09:00</updated>
     <id>http://yagays.github.io/blog/2014/11/06/lasso-pronunciation</id>
@@ -24,7 +24,7 @@
 <script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
-<p>今までLASSOはラッソだと思っていたのだけれども，どうやら違うらしい．YouTubeにある幾つかの動画で確認してみると，ラッソというよりかはラッスーに近い．無理矢理カタカナで書くと「ラッスゥー」で，スにアクセントがある感じ．</p>
+<p>今まで<a href="http://en.wikipedia.org/wiki/Least_squares#Lasso_method">Lasso</a>はラッソだと思っていたのだけれども，どうやら違うらしい．YouTubeにある幾つかの動画で確認してみると，ラッソというよりかはラッスーに近い．無理矢理カタカナで書くと「ラッスゥー」で，スにアクセントがある感じ．</p>
 
 <p>実際の発音は以下の動画で確認できる．発音している箇所に動画再生ポイントを合わせてあるので，聞き逃しに注意．</p>
 
