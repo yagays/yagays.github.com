@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-11-06T18:40:54+09:00</updated>
+  <updated>2014-11-06T18:56:51+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -23,6 +23,8 @@
 
 <script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+
+<h4>Lassoの発音</h4>
 
 <p>今まで<a href="http://en.wikipedia.org/wiki/Least_squares#Lasso_method">Lasso</a>はラッソだと思っていたのだけれども，どうやら違うらしい．YouTubeにある幾つかの動画で確認してみると，ラッソというよりかはラッスーに近い．無理矢理カタカナで書くと「ラッスゥー」で，スにアクセントがある感じ．</p>
 
@@ -49,6 +51,16 @@
 
 
 <iframe width="420" height="315" src="http://yagays.github.io//www.youtube.com/embed/XDtgZFIXDds?start=1390" frameborder="0" allowfullscreen></iframe>
+
+
+<h4>実際にはどちらの発音もある</h4>
+
+<p>ただし，オンライン辞書で調べてみると，どうやらどちらの発音もあるらしい．British Englishだと「ラッスゥー」，American Englishだと「ラッソ」，と発音しているようだ．なので厳密にはどちらでも間違いではないけれども，機械学習の文脈で発音するときには「ラッスゥー」が無難かもしれない．</p>
+
+<ul>
+<li><a href="http://dictionary.cambridge.org/pronunciation/british/lasso">lasso - pronunciation of lasso by Cambridge Dictionaries Online</a></li>
+<li><a href="http://www.oxforddictionaries.com/definition/english/lasso">lasso: definition of lasso in Oxford dictionary (British &amp; World English)</a></li>
+</ul>
 
 ]]></content>
   </entry>
