@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Kaggle | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/kaggle/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-11-06T18:56:51+09:00</updated>
+  <updated>2014-11-12T10:22:51+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -326,6 +326,30 @@ Build: boost ✔, autoconf ✔, automake ✔, libtool ✔</p>
 </ul>
 </li>
 <li>vw-varinfoを使うことによってpositive/negativeな単語のfeature relevanceを可視化している</li>
+</ul>
+</li>
+<li><a href="http://fastml.com/vowpal-wabbit-liblinear-sbm-and-streamsvm-compared/">Vowpal Wabbit, Liblinear/SBM and StreamSVM compared - FastML</a>
+
+<ul>
+<li>Vowpal Wabbit，LiblinearとStreamSVMの比較</li>
+</ul>
+</li>
+<li><a href="http://hunch.net/~nyoml/">Open Machine Learning</a>
+
+<ul>
+<li>以下の2つの講演を見ることができる</li>
+<li>" Vowpal Wabbit and Learning to Search by John Langford and Hal Daume"
+
+<ul>
+<li><a href="http://msrvideo.vo.msecnd.net/rmcvideos/227009/dl/227009.mp4">msrvideo.vo.msecnd.net/rmcvideos/227009/dl/227009.mp4</a></li>
+</ul>
+</li>
+<li>"Vowpal Wabbit future plans"
+
+<ul>
+<li><a href="http://msrvideo.vo.msecnd.net/rmcvideos/227009/dl/227009.mp4">msrvideo.vo.msecnd.net/rmcvideos/227009/dl/227009.mp4</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
