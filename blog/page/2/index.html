@@ -117,6 +117,107 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2014/09/26/kaggle-criteo-display-advertising-challenge/">Kaggle初心者がDisplay Advertising Challengeに挑んだ結果354th/718だった</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-26T16:41:00+09:00" pubdate data-updated="true">Sep 26<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kaggleで行われていたcriteoのDisplay Advertising Challengeが終了し，最終的にPublic LB:0.47880，Private LB:0.47831の354th/718だった．1位のチームが0.44464，Top10あたりが0.44台のスコアを叩き出しているので，結果としては惨敗だけれども，初めてにしては健闘できたほうだと思う．まあ最初の方はLogistic regressionのBenchmarkすら越せなくて厳しい状態だったが，そこから抜けだしてある程度成果が出始めると，あとは計算してはサブミットしてを繰り返しスコアに一喜一憂するという感じで競技性があって非常に楽しめた．次はもっと上の方に行きたいと思いつつ，現在参加しているAfrica Soil Property Prediction Challengeは一時期10位圏内まで行ったもののそこから怒涛のランク落ちで現在300位くらいまで下がってしまったので，世間は厳しい．Kaggle Masterへの道はまだまだ遠い．</p>
+
+<h3>予測方法</h3>
+
+<p>さて，こんな中途半端な順位のヤツの解法なんて見てもどうしょうもないとは思うけれども，個人的な記録のためにも書いておく．</p>
+
+<p>使用したのは<a href="https://github.com/JohnLangford/vowpal_wabbit/wiki">Vowpal Wabbit</a>(VW)．主に参考にしたのはMLWaveの<a href="http://mlwave.com/predicting-click-through-rates-with-online-machine-learning/">Predicting CTR with online machine learning</a>で，とりあえず動くコードの例があって，あとはVWのパラメータチューニングで頑張ったという流れ．実はこれ以前にscikit-learn + pandasも試していたのだけれども，あまりにデータ量が多すぎてpandasのget_dummiesでダミー変数作るのが不可能だったりと早々に諦めていた．その点VWは高速で動いてメモリ消費量も少ないので，初心者にとっては使いやすいソフトウェアだった．あと<a href="https://github.com/MLWave/kaggle-criteo">MLWave/kaggle-criteo</a>でデータ形式の変換コードがあったのが助かった．</p>
+
+<p>さて，最終的なサブミットに使用したのは以下のパラメータ．</p>
+
+<ul>
+<li>損失関数(&#8211;loss_function)：logistic</li>
+<li>Feature Hashingのbit数(-b)：30</li>
+<li>L2正則化(&#8211;l2): 1e-08</li>
+<li>データのイテレーション回数(&#8211;passes):10</li>
+</ul>
+
+
+<p>少し前の記事の<a href="http://yagays.github.io/blog/2014/08/31/vowpal-wabbit/">私的Vowpal Wabbitまとめ - Wolfeyes Bioinformatics beta</a>にも書いたけど，loss_functionはlogisticにしておくと学習が終わったときにだいたいのスコアがわかって便利．あと-bを増やすとfeature hashingでcollisionしなくなるけれども，そのかわり必要なメモリ容量が増える．L2正則化はL1とともに1e-01から1e-12くらいまで試したんだけど，スコアが劇的に変わるわけではなかった．&#8211;passesは必須だけど，ある程度のイテレーション回数でスコアに変動がなければ途中で切られるみたいなので，パラメータを変更後に必要回数を確認してからは変えていない．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>vw click.train.vw -f click.model.b30.pass10.l2_1e-08.vw --loss_function logistic -c -k -b 30 --passes 10 --l2 0.00000001
+</span><span class='line'><span class="nv">$ </span>vw click.test.vw -t -i click.model.b30.pass10.l2_1e-08.vw -p click.preds.b30.pass10.l2_1e-08.vw
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>感想戦</h3>
+
+<ul>
+<li><a href="https://www.kaggle.com/c/criteo-display-ad-challenge/forums/t/10429/congratulations-to-the-winners">Congratulations to the winners! - Display Advertising Challenge | Kaggle</a></li>
+</ul>
+
+
+<p>Kaggleのフォーラムで上位ランクの人が自分の解析方法を公開してくれているので，その中からVWに関するトピックを幾つか拾ってみる．</p>
+
+<p>まずは，15thのLuca MassaronがVWを使った解析例を示してくれている(<a href="https://www.kaggle.com/c/criteo-display-ad-challenge/forums/t/10429/congratulations-to-the-winners/54591#post54591">link</a>)．VWのコマンドは非常に参考になるし，自分もNNのHidden Unitsを10とか20でやったんだけどなーと思いつつ，何よりもまずデータの前処理の必要性を感じた．</p>
+
+<p>あとは19thのKonrad BanachewiczはVWのより詳細な結果を示してくれていて(<a href="https://www.kaggle.com/c/criteo-display-ad-challenge/forums/t/10429/congratulations-to-the-winners/54595#post54595">link</a>)，こっちではNNが効かないみたいな話があったり，quadratic feature頑張ってたり．</p>
+
+<p>あとはLibFMとかNNとかAutoencoderとか色々な方法で予測している人がいて，非常に参考になる．</p>
+
+<h3>今後のCriteo Display Advertising Challengeの動向</h3>
+
+<p>Kaggleでのコンペは終わってしまったが，上に書いたようなフォーラムでの議論は続くし，それにコンペ用のデータセットが学術向けに公開された．これでもしかしたら上位ランクのグループの成果が論文として出てくるかもしれない．</p>
+
+<ul>
+<li><a href="http://labs.criteo.com/2014/09/kaggle-contest-dataset-now-available-academic-use/">Kaggle contest dataset is now available for academic use! - Criteo Labs</a></li>
+</ul>
+
+
+<p>あと，<a href="https://docs.google.com/file/d/0BzrlDxVZWSUpNFdscnRmUUdJWk5qYVhkVVE0WjV1LUxpZlhr/edit">Criteoの資料</a>によると&#8221;Winners will release code publicly(Popular OSI-approved license)&#8221;らしいので，ぜひともコードを公開してほしいところ．</p>
+
+<p>といった感じで，まだまだCriteo Display Advertising Challengeは終わらない．</p>
+
+<h4>追記：</h4>
+
+<blockquote class="twitter-tweet" lang="en"><p><a href="https://twitter.com/yag_ays">@yag_ays</a> kaggleのコンペのほとんど（全て？）は、Prizeに入った人は手法の説明とコード(OSI承認ライセンス)をフォーラムに投稿しなければならないとルールに書いてあるので、なんらかトラブルがない限り上位陣の成果は公開されると思います。</p>&mdash; id:ultraist (@ultraistter) <a href="https://twitter.com/ultraistter/status/515428100847304704">September 26, 2014</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2014/09/23/review-no-place-to-hide/">「暴露:スノーデンが私に託したファイル」読了</a></h1>
     
     
@@ -932,65 +1033,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/08/16/review-bad-data-handbook/">「バッドデータハンドブック ―データにまつわる問題への19の処方箋」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-08-16T16:51:00+09:00" pubdate data-updated="true">Aug 16<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4873116406" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>最近流行りの華々しいデータ解析の現実をつきつけられる1冊．ビッグデータといって騒いでいるお偉いさんは「顧客の行動データを収集して解析することで業務効率化」といった言葉を軽々しく口にするけれども，実際はそんな一言で片付けられるほど容易ではない．現実のデータ解析は泥臭く，手垢にまみれていて，そしていつも試行錯誤の繰り返しだ．手に入るデータがどれも十分な量あって構造化されていて綺麗なことなんてあるわけがない．そんなバッドデータを相手にどう立ち振る舞うかについて，大学で統計学を教えている講師から，データサイエンティスト，経済学者，スタートアップの共同創業者などなど，様々な分野の人間が自身の体験や知識をもとに書いている．それぞれがコンパクトにまとまっていて関連性が無いので，雑誌をペラペラめくる感覚で好きな箇所を読むことができる．</p>
-
-<p>そのなかで個人的に面白かった章を幾つかピックアップして紹介してみる．</p>
-
-<h4>3章 機械ではなく人間が使うことを意図したデータ</h4>
-
-<p>いわゆるネ申エクセルのような人間が読むことを前提にした非構造化データを，いかにプログラムで読み取るかという話．ここではニュージーランドの学校ごとの成績の統計を取ろうとしているのだけれども，Excelのスプレッドシートにまとめられているうえに，男子校だからという理由で女生徒の情報が入力されていなかったり，男子校なのになぜか女生徒の結果が入っていたり&#8230;とデータ取得の苦労が見られる．それでも著者は，コードを書くことが解決法であり，データフォーマットを自在に変換できることこそが重要な能力であると断言する．実際には厳しい道だけれども，まさにその通りだと思う．</p>
-
-<h4>8章 血と汗と尿</h4>
-
-<p>英国安全衛生研究所に持ち込まれる大量のサンプルの化学的解析を行っていた著者の話．化学者のカルチャーを身をもって体験した話がとても面白く，実験系の人のことを知っていれば非常に共感できる内容になっている．著者の同僚の化学者はその道のプロフェッショナルで，データの測り方に必要な計器のキャリブレーション，実験で出てくるデータのピアレビューといった方法など，化学の世界で独自に発展させてきた技術や経験があるものの，いまだにExcelですべて完結させていたりと，データ解析の面では改良の余地がある．なんとかして構造化データとしてまとめた上で自動化したいんだけど，現実にはデータのタイプや欠損値の扱いなど様々なハードルがある．それでも怠惰という自動化は素晴らしいし，適切なコードを書くことで達成できるというもの．</p>
-
-<h4>14章 クラウドコンピューティングの神話</h4>
-
-<p>この章はちょっと系統が違っていて，データ解析というよりかはクラウドの現実に焦点が当てられている．著者はMongoDBを開発している10genのエバンジェリスト．内容はストーリー仕立てで，自分のサービスをクラウドで運用しはじめたスタートアップCTOの主人公が，次第に規模が大きくなっていくにつれて様々な障害に直面していくという流れになっている．地道なパフォーマンスチューニングにはじまり，クラウドが落ちてどうしようもなくなったり，小規模だからといって手動で行っていたことが仇となったり，次第にスケールしなくなっていく水平方向のサーバ増強，コストの増加など，非常にリアルな話が次々と出てくる．結局はバズワードに飛びつくのは勝手だが現状を打破して何でも解決してくれる技術なんて存在しないということなんだけれども，将来的に技術が発展してそういう未来になるといいよねという，本来私たちが望んでいる理想で締められているところが良い．</p>
-
-<h4>16章 機械学習の専門家の手なづけ方</h4>
-
-<p>Kaggleというデータ解析のコンテストに出題側として参加したスタートアップの創業者の話．サービスに合う機械学習アルゴリズムの開発をKaggleを通してアウトソースするのは，一見簡単そうに見えて実は大変で，データセットの作成から評価方法の検討，匿名化，コンテスト運営など，クリアしなければいけない関門は意外に多い．それでもコンテストの結果は満足のいくものだったし，自分たちで正解セットをタグ付けしたり特徴量を考えたりすることによって，結果的に出題者自身が問題を正しく理解できたという側面もあったという．こういったデータ解析分野としての新しいコミュニティやプラットフォームが出てきて企業の問題解決につながるというのは，データ解析に身をおく人間として望む未来だよなぁとしみじみ思う．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/3/">&larr; Older</a></li>
@@ -1038,6 +1080,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/11/15/review-probability-and-statistics-134-stories/">「世界を変えた確率と統計のからくり134話」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/11/06/lasso-pronunciation/">L1 regularizationのLassoはなんと発音するのか？</a>
       </li>
     
@@ -1073,10 +1119,6 @@
         <a href="/blog/2014/08/18/kaggle-users-japan/">kimonoでKaggleユーザのクロールをしてみた</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/08/16/review-bad-data-handbook/">「バッドデータハンドブック ―データにまつわる問題への19の処方箋」読了</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -1085,14 +1127,14 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (106)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (107)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
 <li class='category'><a href='/blog/categories/kaggle/'>Kaggle (4)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>Linux (3)</a></li>
 <li class='category'><a href='/blog/categories/mcmc/'>MCMC (3)</a></li>
-<li class='category'><a href='/blog/categories/machinelearning/'>MachineLearning (5)</a></li>
+<li class='category'><a href='/blog/categories/machinelearning/'>MachineLearning (6)</a></li>
 <li class='category'><a href='/blog/categories/misc/'>Misc (11)</a></li>
 <li class='category'><a href='/blog/categories/pboc/'>PBOC (7)</a></li>
 <li class='category'><a href='/blog/categories/prml/'>PRML (5)</a></li>

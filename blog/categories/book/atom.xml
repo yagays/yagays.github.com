@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Book | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/book/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-11-12T10:26:22+09:00</updated>
+  <updated>2014-11-15T15:45:23+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「世界を変えた確率と統計のからくり134話」読了]]></title>
+    <link href="http://yagays.github.io/blog/2014/11/15/review-probability-and-statistics-134-stories/"/>
+    <updated>2014-11-15T15:41:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/11/15/review-probability-and-statistics-134-stories</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4797376023" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>本書はむしろ確率論・統計学の科学史についてのライトな読み物だ．著者は本書のことを「確率や統計の教科書にあるようなコラムをまとめて1冊にした本」のように言い表しているが，そういった欄外の豆知識にとどまらない，科学史としての体系だった内容になっている．</p>
+
+<p>本書は基本的に確率や統計にまつわる逸話をもとにして，その背景にある数学的な理論であったり，数学の一分野として発展してきた歴史やそれを支えた数学者を紹介するという流れになっている．例えば「サイコロを4回振って6の目が1回以上出る確率と，2つのサイコロを24回振って6のゾロ目が1回以上出る確率をそれぞれ求めよ」(本書P.25より)といった具体的な問題から，当時の天才数学者のだれそれが分野の発展に一役買っただとか，数学者の名前が付けられた定理や手法は数あれど実際に初めてそれを発見した人物の名が付けられていない場合が多いといった逸話などが，本書題名にある通りいくつも盛り込まれている．</p>
+
+<p>取り扱う確率や統計の内容だって．そこいらの教科書に引けを取らない充実ぶりだ．むしろ本書は歴史的経緯や逸話と絡めて紹介されるぶん，教科書よりもはるかに分かりやすいところも多い．例えば，母関数とジッシャーマン・ダイスの例なんてのは目から鱗だった．それこそ教科書では何故そのような関数が出てくるかなんて分からなかったから，実際の使い方を見ることで私はやっと腑に落ちた．具体的な内容はぜひ本書を読んでもらいたい．そういった点で，確率や統計について既に知識がある人でも，どれだけ勉強してもいまだに苦手意識が拭えない人にとっても面白い内容だと思う．</p>
+
+<p>確率や統計の科学史に関する本だと<a href="http://www.amazon.co.jp/gp/product/4532351944/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4532351944&linkCode=as2&tag=yagays-22">統計学を拓いた異才たち―経験則から科学へ進展した一世紀</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4532351944" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />や<a href="http://www.amazon.co.jp/gp/product/4794220014/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4794220014&linkCode=as2&tag=yagays-22">異端の統計学 ベイズ</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4794220014" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />があり，本書もこれをベースにしている部分も多い．ただし，これらの本はかなり分量があり，この分野に関する前提知識もそれなりに要求される．その点本書は基本的な部分についてもその都度きちんと解説が入るし，解説を読み飛ばしたとしても問題ないようになっている点で，気構えず読み進められる1冊となっている．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「Think Simple―アップルを生みだす熱狂的哲学」読了]]></title>
@@ -102,20 +120,6 @@
 <h4>16章 機械学習の専門家の手なづけ方</h4>
 
 <p>Kaggleというデータ解析のコンテストに出題側として参加したスタートアップの創業者の話．サービスに合う機械学習アルゴリズムの開発をKaggleを通してアウトソースするのは，一見簡単そうに見えて実は大変で，データセットの作成から評価方法の検討，匿名化，コンテスト運営など，クリアしなければいけない関門は意外に多い．それでもコンテストの結果は満足のいくものだったし，自分たちで正解セットをタグ付けしたり特徴量を考えたりすることによって，結果的に出題者自身が問題を正しく理解できたという側面もあったという．こういったデータ解析分野としての新しいコミュニティやプラットフォームが出てきて企業の問題解決につながるというのは，データ解析に身をおく人間として望む未来だよなぁとしみじみ思う．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「ドイツ流、日本流: 30年暮らして見えてきたもの」読了]]></title>
-    <link href="http://yagays.github.io/blog/2014/06/28/review-germany-japan-essay/"/>
-    <updated>2014-06-28T15:39:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2014/06/28/review-germany-japan-essay</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4794220456" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>本書は「<a href="http://www.amazon.co.jp/gp/product/479421796X/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=479421796X&linkCode=as2&tag=yagays-22">サービスできないドイツ人、主張できない日本人</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=479421796X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」を文庫化したものだ．ドイツ人の夫を持ち，ドイツで30年近く住んでいる日本生まれの著者のエッセイだが，旧題にあるようなサービスと主張というトピックはほんの一部で，他にも幅広い文化比較がなされている．異なる国の文化に挟まれて初めて互いの文化の良いところや悪いところが見えてくるように，読者からすると，知らないドイツを知るとともに自分たちの文化を振り返ることになる．</p>
-
-<p>個人的には，ドイツの教育システムが一番気になった．以前読んだ<a href="http://yagays.github.io/blog/2012/09/05/review-critical-reading/">「外国語で発想するための日本語レッスン」</a>ではヨーロッパの教育の良い部分についてフォーカスしていただけに，本書で語られる負の部分，ドイツの義務教育のねじれのようなものが一層際立ってみえた．ランク分けされたギムナジウムや挽回のチャンスが限られた進学システム，マイスターに求められる質の変化など，一見して不合理だとわかっていながらも文化的な背景で縛られて身動きが取れなくなっているように感じる．こういった制度を是正する動きを既得権益を持ったエリートが妨害するといった，古くからある階級社会が見え隠れするところも興味深い．そして，そこから日本の教育に目を向けた時にどう感じるかも考えなくてはいけない．当然ながら日本の教育はドイツとは違うし，それらが成立する背景も違う．例えば，ドイツの教師は徹底的にビジネスライクなのに対して，日本の教師はまったく真逆で，人によっては人生の師ともなるほどに親密な関係を築く．そういう前提があるときに，日本の教育のいいところはどこか，一方でドイツの教育のいいところはどこか，教育を良くしていくにはどこを真似れば良いのかなど，考えなくてはいけないことは山ほどある．結局どっちが良いという問題ではないだけに，なかなか難しいところではある．</p>
 ]]></content>
   </entry>
   

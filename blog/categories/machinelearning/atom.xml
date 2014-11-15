@@ -4,7 +4,7 @@
   <title><![CDATA[Category: MachineLearning | Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/blog/categories/machinelearning/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-11-12T10:26:22+09:00</updated>
+  <updated>2014-11-15T15:45:23+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,58 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[L1 regularizationのLassoはなんと発音するのか？]]></title>
+    <link href="http://yagays.github.io/blog/2014/11/06/lasso-pronunciation/"/>
+    <updated>2014-11-06T18:12:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/11/06/lasso-pronunciation</id>
+    <content type="html"><![CDATA[<blockquote class="twitter-tweet" lang="en"><p>LASSOの発音、ラスーみたいな感じなのか</p>&mdash; 便所糞虫 (@y_benjo) <a href="https://twitter.com/y_benjo/status/530274684097421312">November 6, 2014</a></blockquote>
+
+
+<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<h4>Lassoの発音</h4>
+
+<p>今まで<a href="http://en.wikipedia.org/wiki/Least_squares#Lasso_method">Lasso</a>はラッソだと思っていたのだけれども，どうやら違うらしい．YouTubeにある幾つかの動画で確認してみると，ラッソというよりかはラッスーに近い．無理矢理カタカナで書くと「ラッスゥー」で，スにアクセントがある感じ．</p>
+
+<p>実際の発音は以下の動画で確認できる．発音している箇所に動画再生ポイントを合わせてあるので，聞き逃しに注意．</p>
+
+<iframe width="560" height="315" src="http://yagays.github.io//www.youtube.com/embed/UvxHOkYQl8g?start=620" frameborder="0" allowfullscreen></iframe>
+
+
+<p>ちなみにこれは<a href="http://www.amazon.co.jp/gp/product/B00475AS2E/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B00475AS2E&linkCode=as2&tag=yagays-22">The Elements of Statistical Learning</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=B00475AS2E" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />でお馴染みのHastie&amp;Tibshirani先生の動画．</p>
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=432012362X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=0387848576" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<p>他にも幾つか確認してみたが，同様の発音だった．</p>
+
+<iframe width="560" height="315" src="http://yagays.github.io//www.youtube.com/embed/PKXpaLUigA8?start=952" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<iframe width="420" height="315" src="http://yagays.github.io//www.youtube.com/embed/XDtgZFIXDds?start=1390" frameborder="0" allowfullscreen></iframe>
+
+
+<h4>実際にはどちらの発音もある</h4>
+
+<p>ただし，オンライン辞書で調べてみると，どうやらどちらの発音もあるらしい．British Englishだと「ラッスゥー」，American Englishだと「ラッソ」，と発音しているようだ．なので厳密にはどちらでも間違いではないけれども，機械学習の文脈で発音するときには「ラッスゥー」が無難かもしれない．</p>
+
+<ul>
+<li><a href="http://dictionary.cambridge.org/pronunciation/british/lasso">lasso - pronunciation of lasso by Cambridge Dictionaries Online</a></li>
+<li><a href="http://www.oxforddictionaries.com/definition/english/lasso">lasso: definition of lasso in Oxford dictionary (British &amp; World English)</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[MLAC2013 数式を使わずイメージで理解するEMアルゴリズム]]></title>
@@ -536,40 +588,6 @@ plt.show()
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA["The Elements of Statistical Learning"のpdfの余白を削る]]></title>
-    <link href="http://yagays.github.io/blog/2013/05/22/esl-pdf-trimming/"/>
-    <updated>2013-05-22T09:22:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2013/05/22/esl-pdf-trimming</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=0387848576" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>機械学習系の教科書としてはそこそこの知名度のある「The Elements of Statistical Learning」（通称ESLまたはHastie）は，全ページのPDFが公式で配布されている．</p>
-
-<p><a href="http://www-stat.stanford.edu/~tibs/ElemStatLearn/">Elements of Statistical Learning: data mining, inference, and prediction. 2nd Edition.</a></p>
-
-<p>これは輪講に使えそうだということで色々と準備をしているのだが，このpdfには一つ気になるところがあって，それはページの余白が大きいということだ．右上にトンボの一部と「Printer: Opaque this」という文字が書かれているように，おそらく印刷所に出す前のpdfをそのまま配布しているらしい．pdfが配布されているだけ有難いというものではあるものの，このままでは少し読みづらい．ということで，余白を良い感じに自動で削れるツールを探して，文字だけの部分を抜き出してみた．</p>
-
-<h3>brissで余白をトリミングする</h3>
-
-<p>今回は「briss」というJavaアプリケーションを使ってみる．</p>
-
-<p><a href="http://appdrill.net/61580/briss.html">[Mac] 自炊に！PDFのページを重ねて一発で余白を切り取る「briss」 « Appdrill</a></p>
-
-<p>使い方は上のリンクを参考にしていただくとして，pdfを読み込んだ画面が以下のようになる．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/briss1.png" alt="" /></p>
-
-<p>これは1ページ目だけを除いた残りのページを全て重ねあわせたたもので，右ページ中央に表示されているグチャッとした部分がpdfのテキスト部分となる．水色の透過の部分がトリミング後に残る箇所を表しており，読み込んだ際に自動で設定される．左上と右下の四角をドラッグすると範囲を手動で選択できるが，下手にやると右ページと左ページでpdfサイズがズレることがあるので，今回のESLのpdfの場合は自動で設定されたものをそのまま使った方がいいだろう．</p>
-
-<p>トリミングを実行して出力されたpdfを開くと，このような感じになる．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/briss2.png" alt="" /></p>
-
-<p>今回の場合は本当に文字ぎりぎりという感じだが，iPadで眺めたり印刷する際にはちょうどくらいだ．これでストレス無くESLを読む事ができる．</p>
 ]]></content>
   </entry>
   
