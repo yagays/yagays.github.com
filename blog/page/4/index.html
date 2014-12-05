@@ -117,6 +117,150 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2014/07/09/www2014review-kickstarter/">論文紹介:Recommending Investors for Crowdfunding Projects</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-09T16:08:00+09:00" pubdate data-updated="true">Jul 9<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>某所で発表を予定していたんだけど，台風のせいで飛びそうなので先に公開しておきます．読んだのはWWW2014のMatchingセクションに採択されたKickstarterに関する論文．</p>
+
+<script async class="speakerdeck-embed" data-id="1b6dec40e95b01313be5762c67c15dde" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
+
+
+<h4>補足</h4>
+
+<ul>
+<li>まずFrequent InvestorsとOccasional Investorsの和訳について
+
+<ul>
+<li>スライド中では「常連投資家」と「気まぐれ投資家」と訳したが，あまり適切な訳語が思い浮かばなかった</li>
+<li>無理に訳す必要もないんだけど，FIとOIとかにしてもぱっと見意味不明だし，スライドの都合上日本語にした</li>
+</ul>
+</li>
+<li>KickstarterにはAPIがないから自力でクロールしたらしい
+
+<ul>
+<li>Twitterのアカウントとの紐付けなども考えると，かなり大変そう</li>
+</ul>
+</li>
+<li>既存研究あんまり書かなかったんだけど，投資分野の予測なのでいろいろある
+
+<ul>
+<li>Kickstarterにおいて特定のフレーズプロジェクトの成功予測に役立つとか(<a href="http://dl.acm.org/citation.cfm?id=2531602.2531656">http://dl.acm.org/citation.cfm?id=2531602.2531656</a>)</li>
+<li>Kickstarter以外にもCrowdfundingはいろいろあるので，その辺のレポートも引用されてる</li>
+</ul>
+</li>
+<li>LDAのトピック数は書かれていないんだけど，これはKickstarterのカテゴリー数=13でいいんだろうか
+
+<ul>
+<li>なお，今ではCraftとJournalismというカテゴリが加わって15になっている</li>
+</ul>
+</li>
+<li>マッチングの手法について
+
+<ul>
+<li>このあたり専門じゃないからあんまり分からないけど，手法的には普通な印象</li>
+<li>RBFカーネルのSVMが最良だったのも納得
+
+<ul>
+<li>参考：<a href="http://d.hatena.ne.jp/sleepy_yoshi/20120624/p1">SVM実践ガイド (A Practical Guide to Support Vector Classification) - 睡眠不足？！</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>感想</h4>
+
+<ul>
+<li>マッチングについて
+
+<ul>
+<li>サービス提供側(ここではKickstarter)からすると，例えばこのようなマッチングを作ると考えた時にTwitterのような外部サービスを利用するとなると，ちょっと大変そう
+
+<ul>
+<li>外部サイト連携とかを付けないと，そもそも取ってこれないし正式に使えない(?)</li>
+<li>一番使いやすいのはKickstarterで表示したプロジェクトのウェブページの履歴とかかな</li>
+<li>いずれにせよ投資者の趣向をどう観測するかという感じ</li>
+</ul>
+</li>
+<li>そもそもKickstarterの投資に参加している人のなかでマッチングが上手くいったとして，投資数が増えるのだろうか？
+
+<ul>
+<li>プロジェクトの成功率/投資額をあげようと思った時に，推薦に限界がある場合には，いかに他所から興味ある人を引っ張ってくるかになる</li>
+<li>ソーシャルのちからに頼れなくなると，結局広告打ったりメディアに紹介してもらったりという従来の方法に頼らざるをえないかも</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ウェブサービスに関わる人間にとって大事なこと
+
+<ul>
+<li>アカウント新規登録時の登録項目大事
+
+<ul>
+<li>ユーザが情報を入力してくれるタイミングなんてそうそう無い</li>
+<li>たとえば本論文だとファウンダーのlocationがないとGeographic Dispersionが取れないわけだし</li>
+<li>どのような情報が自サービスのレコメンドなどに効いてくるかをしっかり考えておいて布石を打つ必要がある</li>
+</ul>
+</li>
+<li>外部サービス連携大事
+
+<ul>
+<li>TwitterとかFacebookとかの情報を一部取れるだけでも嬉しい
+
+<ul>
+<li>書き込みなどが取れれば万々歳，友達数とかだけでもFrequent/Occasionalは判別できそう</li>
+</ul>
+</li>
+<li>外部サービスにポストするという機能以外にもユーザの特徴をつかむ意味で大事かと</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://dl.acm.org/citation.cfm?id=2568005">Recommending investors for crowdfunding projects</a></li>
+<li><a href="http://www2014.kr/program/research-track-9-7/">Research Track |www2014</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2014/06/28/review-germany-japan-essay/">「ドイツ流、日本流: 30年暮らして見えてきたもの」読了</a></h1>
     
     
@@ -357,51 +501,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/06/14/review-all-you-need-is-kill/">「All You Need Is Kill」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-14T10:33:00+09:00" pubdate data-updated="true">Jun 14<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4086302195" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>映画が始まる前に読んでおこうと思って読んだ作品．本作品を原作としてハリウッドで映画化され，向こうでは<a href="http://www.imdb.com/title/tt1631867/">”Edge of Tomorrow”</a>という題になっているそうだ．<a href="http://www.rottentomatoes.com/m/edge_of_tomorrow/">Rotten Tomatoes評</a>をみるかぎり，なかなか評判は良さそうなので期待が高まる．</p>
-
-<p>これを読んで一番に思い浮かべたのがダンカン・ジョーンズの「ミッション: 8ミニッツ」だった．といっても，本書が出たのが2004年，映画は2011年．個人的にアイデアのオリジナリティとかは気にしないのでそれはどうでもいいとして，両者ともに主人公の心情の変化というものが同じ軌跡をなぞるようで面白い．ループの最初はとまどい現状の認識に手一杯なのだけれども，次第に理解をしてその中で自由に動けるまでになる．そして最終的にはその時間に愛着を抱くようになり，目標の達成とともにその愛する時間は終わってしまう．逆に結末はまったく違う．一方は理想的な解を見つけて愛する人と結ばれ，もう一方は愛する人を失いながらも残酷な世界を生き抜く．時間が終わること自体がオチなのだけれど，その先に提示される世界に作り手が考える人間の生きることの捉え方が表れているようで，その点も興味深い．</p>
-
-<p>「勝ちに不思議の勝ちあり、負けに不思議の負けなし」という言葉があるが，この場合は不思議さを完全に払拭するような明確な理由がある．だがそれは周りからは認識できないし，能力や成績などの結果からしか推測することができない．たとえそれを外部が認識したとして，無限回の試行を勝ちの理由にできるんだろうか．全探索に近いような繰り返しでパターンを覚えたから？　それとも無限回の試行で訓練されたから？　それはある意味で機械学習の文脈での過学習のような気もするし，目的関数の最適解への収束にも取れる．まあループが繰り返したりネストせずにその場限りなら，どちらにせよループの末の結論が本人の納得という意味で正しいのだろうけれども，そうして生き延びた彼ら/彼女らの将来を思慮せずにはいられない．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/5/">&larr; Older</a></li>
@@ -449,6 +548,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/12/05/review-kuromaku/">「黒幕: 巨大企業とマスコミがすがった「裏社会の案内人」」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/11/15/review-probability-and-statistics-134-stories/">「世界を変えた確率と統計のからくり134話」読了</a>
       </li>
     
@@ -484,10 +587,6 @@
         <a href="/blog/2014/08/31/vowpal-wabbit/">私的Vowpal Wabbitまとめ</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/08/18/kaggle-users-japan/">kimonoでKaggleユーザのクロールをしてみた</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -496,7 +595,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (107)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (108)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>

@@ -117,6 +117,108 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2014/10/23/kaggle-africa-soil-property-prediction-challenge/">私は如何にしてKaggleで9位から600位台まで順位を落とし，private Leaderboardでベンチマークすら下回ったか？</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-23T06:55:00+09:00" pubdate data-updated="true">Oct 23<span>rd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>タイトルは釣りです（元ネタ：<a href="http://d.hatena.ne.jp/repose/20120723/1343025035">過学習の恐怖，またはいかにして私は1分間でランキングを50位も落としたか(要約) - 糞ネット弁慶</a>）</p>
+
+<h3>Africa Soil Property Prediction Challenge</h3>
+
+<p>8月終わりからKaggleで行われていた<a href="https://www.kaggle.com/c/afsis-soil-properties">&#8220;Africa Soil Property Prediction Challenge&#8221;</a>，通称AfSISが終わりました．このコンペは衛星から取得したアフリカの各地点の吸光度などの数値情報を元に，その場所のSOC,pH,Ca,P,Sandの計5種類の地質学的な測定値を推定するという問題でした．問題設定としては定番っぽくて取っ付き易いものの，実際にやってみるとこれまた難しい感じでした．</p>
+
+<p>私は開催当初から参加していて，一時期9位まで上がったものの，そこから何もしなかったらどんどん抜かされたというわけです．</p>
+
+<blockquote class="twitter-tweet" lang="en"><p>Hold my calls. Top 10 on <a href="https://twitter.com/hashtag/kaggle?src=hash">#kaggle</a> - <a href="https://t.co/EUmPGDB0oq">https://t.co/EUmPGDB0oq</a></p>&mdash; やぐ (@yag_ays) <a href="https://twitter.com/yag_ays/status/506999657243766785">September 3, 2014</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<blockquote class="twitter-tweet" lang="en"><p>忙しさが一段落したのでkaggleに戻ってきたらランクが150位くらい下がってて厳しさがある</p>&mdash; やぐ (@yag_ays) <a href="https://twitter.com/yag_ays/status/512983920262918144">September 19, 2014</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>それに加えて開催期間が終わってテストデータ全体での評価が出た結果，おそらく過学習でスコアが下がり，開催側が設定したBART Benchmarkよりも下回るという有り様でした．Kaggle怖いです&#8230;．</p>
+
+<h3>私は如何にして（ry</h3>
+
+<p>今回は時間があったので，今回は色々試した気がします．定番のSVRに始まり，Gradient Boosting Regression Treesしたり，Random Forest Regressor使ったり，あとはForumに投稿されたH2Oでのdeep learningもどきもひと通り動かしたのですが，結果的に一番良かったのがSVRだったのでその中から前処理を幾つかやったやつを最終的にサブミット．実際はAbhishekの<a href="https://www.kaggle.com/c/afsis-soil-properties/forums/t/10351/beating-the-benchmark">Beating the Benchmark ;)</a>のやり方とほとんど変わらないと思います．どこで差が付いたのか，あとAbhishekを代表とするSVR勢は過学習を回避して大勝利となったのか，気になるところです．</p>
+
+<p>いや確かにpublic leaderboardは手元で算出したスコアとかなり乖離があって謎いとは常々思っていたのですが，一応scikit-learnのgrid searchでチューニングはしているので大丈夫だと&#8230;厳しい．</p>
+
+<p>といっても上位陣もかなり大荒れだった模様．以下のランクはpublic→privateの順で，これを見てもらえればわかる通り上位陣は著しくランクを落としている人が多い．逆にprivateでは100位以内くらいから上がってきた人が多く，今回は本当に結果が読めなかったようでした．</p>
+
+<h4>public上位</h4>
+
+<p><a href="http://www.kaggle.com/c/afsis-soil-properties/leaderboard/public">Public Leaderboard - Africa Soil Property Prediction Challenge | Kaggle</a></p>
+
+<ul>
+<li>sorpmaL：1位→515位</li>
+<li>Dmitry &amp; Abhishek：2位→7位</li>
+<li>vsu：3位→484位</li>
+<li>Redwoods：4位→34位</li>
+<li>ahaldenby：5位→517位</li>
+</ul>
+
+
+<h4>private上位</h4>
+
+<p><a href="http://www.kaggle.com/c/afsis-soil-properties/leaderboard/private">Private Leaderboard - Africa Soil Property Prediction Challenge | Kaggle</a></p>
+
+<ul>
+<li>Yasser Tabandeh 14位→1位</li>
+<li>Charly B. ：428位→2位</li>
+<li>CodiLime.com：42位→3位</li>
+<li>seewaters：61位→4位</li>
+<li>UK calling Africa：88位→5位</li>
+</ul>
+
+
+<p>詳しいことは後々明らかになっていくことでしょう．Forumを静観．</p>
+
+<p>あと，悔しいので念のために書いておきますが最終サブミッションに選択した以外のやつではきちんとベンチマーク上回っているのありました．ただ，スコアがいいやつに限って最初の方にサブミットした何のひねりも無いSVRだったりして，心が折れそう．</p>
+
+<h3>Lessons Learned</h3>
+
+<p>社会は厳しい．</p>
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2014/09/26/kaggle-criteo-display-advertising-challenge/">Kaggle初心者がDisplay Advertising Challengeに挑んだ結果354th/718だった</a></h1>
     
     
@@ -950,96 +1052,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/08/18/kaggle-users-japan/">kimonoでKaggleユーザのクロールをしてみた</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-08-18T20:37:00+09:00" pubdate data-updated="true">Aug 18<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>ふとKaggleに参加している日本人がどれくらいいるのかが気になったので，簡単にクローラーを作って調べてみた．</p>
-
-<h3>Kimonoを使ったクロール</h3>
-
-<p>手動でクローラーを書いてもいいのだけれども，今回は<a href="https://www.kimonolabs.com/">kimono</a>というクローラーを使ってみた．</p>
-
-<ul>
-<li>参考：<a href="http://blog.takuros.net/entry/2014/08/13/212838">プログラミング・レスで5分でサックリWebスクレイピング「kimonolabs」 - プログラマになりたい</a></li>
-</ul>
-
-
-<p>kimonoはWebから簡単にクローラーを作成してAPIやJSON形式で取得できるようにするようなアプリケーションで，Chrome Extensionを使うことでインタラクティブにクロールする内容を選択することができる．今回は，<a href="http://www.kaggle.com/users/">Kaggle Rankings</a>のランキング500ページ分をクロールして，20000人分のユーザの情報（名前，ランク，ポイント，ロケーション）を取得した．今回クロールした結果は，以下のkimonoのウェブページから誰でも利用できるはず(アカウント持ってないと見れないかな)．ただしrankとptsが一緒になってたりとちょっと汚いので注意．</p>
-
-<ul>
-<li><a href="https://www.kimonolabs.com/apis/dyo7tdm8">https://www.kimonolabs.com/apis/dyo7tdm8</a></li>
-</ul>
-
-
-<p>ちなみに，どれくらい簡単にできるかをgif動画にしてみた．最初は色々戸惑った部分もあったけれど，慣れてしまえば本当に簡単に扱える．以下の場合だと，ユーザ情報がページあたり50人分あるので，ある部分を選択したあとに他の部分も同様に取得するようにチェックを付けるのが重要．あと，paginationはいわゆる「次」にあたる部分を選択する．本当は選択した部分に対して正規表現を掛けてテキスト処理をかけることもできるのだけれども，今回は行っていない．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/kimono.gif" alt="" /></p>
-
-<h3>後処理</h3>
-
-<p>クロール自体はkimonoに任せることができたので，ここからはpythonスクリプトをちゃちゃっと書いて整形作業．クロールしたデータはJSON形式やcsv形式でダウンロードすることもできるが，今回はAPIから叩いてみる．kimonoの&#8221;Use in code&#8221;というタブに，CurlやjQuery，Node，PHP，Python，Rubyでそれぞれ書かれたスクリプトがあるので，それを使ってデータを取得する．例えば，curlとPythonだと以下のようになる</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ curl --include --request GET "https://www.kimonolabs.com/api/dyo7tdm8?apikey=7ZTTugRoP8xgIlOdAdyiHmwP4rFLviDO"</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">json</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">urllib</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">results</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&quot;https://www.kimonolabs.com/api/dyo7tdm8?apikey=7ZTTugRoP8xgIlOdAdyiHmwP4rFLviDO&quot;</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>今回は日本人のアカウント一覧が欲しいので，&#8221;Country of residence&#8221;にJapanと書かれていてかつポイントを持っているアカウント一覧を出力した．なお，ユーザプロフィールの記入は基本任意なので，<strong>プロフィールで&#8221;Country of residence&#8221;を編集していない日本人は対象外になっている</strong>．</p>
-
-<h3>リスト(2014/08/18現在)</h3>
-
-<p>ユーザページに飛べるように一応HTMLにした．気が向いたら定期的にアップデートするようにして，もっときちんと体裁整えるかも．こういった公開も含めてkimono側で簡単なインターフェイスがあると楽なんだけどなーと思った．</p>
-
-<ul>
-<li><a href="https://dl.dropboxusercontent.com/u/142306/kaggle_jpn.html">https://dl.dropboxusercontent.com/u/142306/kaggle_jpn.html</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/3/">&larr; Older</a></li>
@@ -1087,6 +1099,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/12/05/review-kuromaku/">「黒幕: 巨大企業とマスコミがすがった「裏社会の案内人」」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/11/15/review-probability-and-statistics-134-stories/">「世界を変えた確率と統計のからくり134話」読了</a>
       </li>
     
@@ -1122,10 +1138,6 @@
         <a href="/blog/2014/08/31/vowpal-wabbit/">私的Vowpal Wabbitまとめ</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/08/18/kaggle-users-japan/">kimonoでKaggleユーザのクロールをしてみた</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -1134,7 +1146,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (107)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (108)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
