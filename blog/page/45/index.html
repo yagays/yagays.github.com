@@ -117,6 +117,66 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/07/28/review-genestat/">「遺伝統計学の基礎」の個人的感想</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-28T17:17:00+09:00" pubdate data-updated="true">Jul 28<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4274068226" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>「遺伝統計学の基礎」をひと通り読んだのだけれども，はっきり言ってわかりにくい本だった．内容はあっちこっちに飛んで統一感が無いし，シミュレーションがある割には天下り的な理論導入で具体性に欠けるし，結局何がやりたくてどういう手法を使ってどんな結果が出たら嬉しいのかが終始読み取るのに苦労した．そりゃお前が不勉強で物知らずだからだろと言われればそれまでなんだけど，この本の売りであるRのコードとシミュレーションに関して個人的に思うところがあったので，ちょっと書き留めておこうと思う．簡単に言ってしまえば，理論を身につけてシミュレーションを理解する流れが非常にダルい．</p>
+
+<p>この本の中に出てくるシミュレーションをきちんと理解するのは，何も知らない読者にとっては恐ろしく大変だ．書いてある内容が難解すぎて大変というわけではない．本文は平易に書かれているし，数式だってそれほど苦労するほどではない．シミュレーションも「こういう原理があってこういう解析をすると知りたいことが計算できるよね？じゃあRで適当にそれっぽいデータ作ってシミュレーションしてみよう．ほら，結果はきちんと出ましたね」という感じで淡々と進んでいく．頭から読み進めると「確かにそうだ，確かにそうだ」と解った気になるのだが，ひと通り読んだあとに振り返ってみて，この章は何を書いてあったかなと考えると，頭に残っているのは説明された事実とシミュレーションの結果だけ．じゃあこれが何処でどんな風に使えるのか，そして何がしたかったのかと首を傾げることになる．</p>
+
+<p>シミュレーションを理解するのに一番重要な点は，何よりまず前提条件を理解することだ．どんな結果を期待してるか？データセットはどういう値や集合を用いるか？初期値はどう指定する？可変なパラメータは何だ？解析の肝となる数式はどれだ？といった具合に，とにかくコードの上で用意されたシミュレートの舞台の裏側を理解する必要がある．時には結果から遡って解釈する必要がある．しかし，言ってしまえば逆に細部なんて理解しなくてもシミュレーションは雰囲気さえ掴めれば細部を理解してなくてもおおよそ予測が付く．解析の流れがわかっていれば，それを一般化するだけで済むのだ．そして，それに必要なのは具体例だ．この本で一番問題だと思うのは，<strong>その前提条件の理解において，具体例となるような理論とコードを橋渡しする部分が非常に乏しいことだ</strong>．具体的に観測される値をpやqなどで表すことは数式の上で書かれていても，それがどういう値を取るかといった具体例などの数字はコードの部分まで出てこない．用いるデータセットは時に何らかの手を加えた関数からランダムに作られるが，それが結果を導くのに都合のいい事は感覚で分かるものの意図が説明されず分からないことが多い．また，長いコードや関数定義が入れ子になっているコードほど，理論のところで説明された数式がコードのどの部分に該当するかが分かりにくい．理論とコードを行ったり来たり見比べて，ようやく「理論の制約条件はここのコードに効いてくるのか」とか「コードで作ってるデータセットはこういう結果を導いたいからなのか」といったことが見えてくる．</p>
+
+<p>シミュレーションは予定調和で進んでいくだけで，その裏の意図を理解するのに非常に苦労する．このように，理論的な解釈からいきなり具体的な値と解析コードに落としこむ部分が難解なのだ．理論を理解する難しさとコードを理解する難しさが重なって，どっちつかずに曖昧なまま読み進めていかざるを得ない．まあ，そうやって理解する過程にこそ意義があるというなら，それはまあそうなんだろう．現に自分も躍起になって他の資料を当たったりコード書きなおしたりして勉強した．ただ，この本は何にしてもはっきりしなくて不親切というのが率直な感想だ．なんで小さな値で実際に解析をやってみせて，それを大きな値でシミュレートするという方向に持って行かないんだろう．なんでRのコードでシミュレートしたり作図した結果を提示して終わるんじゃなくて，ここの値がこうだからこういう意味を持つんですよ，これが見たいからこんな条件でシミュレーションを作ったんですよといった具体的な解釈をしないんだろう．</p>
+
+<p>結局のところ，現場を知ってる専門家に向けた難易度とも思えず，遺伝統計学を一から学ぶ学生にとっては具体例に乏しく，リファレンスとして使うにも纏まりに欠け，どんな読者を対象としているのかよく分からない本だった．</p>
+
+<h4>最後に…</h4>
+
+<p>余計な補足かもしれないが，この本は誤植が多い．公式の訂正以外にも有志が独自に訂正情報を出しているので，これから読む人は参考にするべきだろう．個人的に確認した範囲では，有志の訂正情報は大体正しかったと思う．</p>
+
+<ul>
+<li><a href="http://www.genome.med.kyoto-u.ac.jp/wiki_tokyo/index.php/%E8%A8%82%E6%AD%A3%E6%83%85%E5%A0%B1">http://www.genome.med.kyoto-u.ac.jp/wiki_tokyo/index.php/%E8%A8%82%E6%AD%A3%E6%83%85%E5%A0%B1</a></li>
+<li><a href="http://d.hatena.ne.jp/foo22222/20100907/1305901272">http://d.hatena.ne.jp/foo22222/20100907/1305901272</a></li>
+<li><a href="https://www.evernote.com/pub/m_narahara/ryamadabook#b=598b4c2d-2ec7-4935-b6cb-22820782657d&amp;n=0dafabf8-d694-4892-bc30-ffaa8a016865">https://www.evernote.com/pub/m_narahara/ryamadabook#b=598b4c2d-2ec7-4935-b6cb-22820782657d&amp;n=0dafabf8-d694-4892-bc30-ffaa8a016865</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/07/27/review-yamagata-hiroo/">「要するに」「新教養主義宣言」「訳者解説」読了</a></h1>
     
     
@@ -308,51 +368,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/07/03/review-numbers/">「数学で犯罪を解決する」読了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-03T18:34:00+09:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=447800420X" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>本書はタイトルでハッキリとわかるように「数学で犯罪を解決する話！」の一言で表されて身も蓋もないのだが，中で紹介されているトピックは非常に豊富で多岐にわたる．統計の基礎から始まり，ニューラルネットや画像処理，データマイニング，ベイズ統計や暗号など，数学といっても理論をこねる退屈な感じではなく，犯罪捜査でいかに数学が実用的に使われてるかが分かりやすく書かれている．犯罪捜査の花形といえば敏腕刑事や名探偵などを思い浮かべるが，本書では登場するのは地味な数式や確率などの数学理論だ．町中で犯人を追いかけたり名推理で犯人を追い詰めたりといったことはなく，数学で手がかりや問題の兆候など解決の糸口を提示するだけだ．だが，複雑な現象から技巧的な数学テクニックを使ってパターンを見つけ出したり犯人像をあぶり出す様は，刑事モノや推理小説に引けをとらない爽快感や喜びがある．</p>
-
-<p>この本は元々海外ドラマ「NUMB3RS」(ナンバーズ)の解説として書かれているが，ドラマを見ていなくても読めるような作りになっている．ドラマの解説として紹介されている事例はどれも面白いものばかりだったが，個人的に思うに，この本で見所となるのは「訳者あとがき」だろう．訳者の山形浩生がFurther Readingの趣旨の文章を25ページほど書いており，原著者の経歴や各トピックに関して深く理解するための参考書などが紹介されていたり，本文で詳しく述べられなかった部分についての補足がされている．さすが山形浩生といったところで，それぞれの分野について私見を交えつつ特徴をうまく捉えた解説がされている．本に出てくるトピックについて多少知見があれば，ここを眺めるだけでもなかなか面白い．</p>
-
-<p>早くドラマNUMB3RSの方も見なくては…．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/46/">&larr; Older</a></li>
@@ -400,6 +415,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/12/06/review-bosnian-war-and-pr/">「ドキュメント 戦争広告代理店〜情報操作とボスニア紛争」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/05/review-kuromaku/">「黒幕: 巨大企業とマスコミがすがった「裏社会の案内人」」読了</a>
       </li>
     
@@ -435,10 +454,6 @@
         <a href="/blog/2014/09/08/kdd2014-tutorial-recommendation/">スライドメモ:KDD2014 Tutorial &#8220;The Recommender Problem Revisited&#8221;</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/08/31/vowpal-wabbit/">私的Vowpal Wabbitまとめ</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -447,7 +462,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (108)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (109)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>

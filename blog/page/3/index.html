@@ -117,6 +117,254 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2014/08/31/vowpal-wabbit/">私的Vowpal Wabbitまとめ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-31T10:47:00+09:00" pubdate data-updated="true">Aug 31<span>st</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>VWとは</h2>
+
+<blockquote><p>The Vowpal Wabbit (VW) project is a fast out-of-core learning system sponsored by Microsoft Research and (previously) Yahoo! Research.</p>
+
+<p><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki">Home · JohnLangford/vowpal_wabbit Wiki</a></p></blockquote>
+
+<h2>Install</h2>
+
+<p>要Boost．</p>
+
+<h4>Linux</h4>
+
+<p><a href="https://github.com/JohnLangford/vowpal_wabbit/blob/master/README.md">vowpal_wabbit/README.md</a>に書いてある通り，git cloneしてmakeする．それが駄目なら./autogen.shしてからmakeする．</p>
+
+<p>自分の場合は./autogen.shがエラーを吐いたので調べたところ，./autogen.sh内部でldconfigに失敗してBOOST_DIR_ARGが取得できていないのが原因だった．su権限でldconfigをしてLIBFILEの箇所を以下のように書き換えて対処した．当然ながらこれは環境に依存するので，自身の環境でLIBFILEに渡すコマンドを実行して置き換える．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#  LIBFILE=`ldconfig -p | grep program_options | tail -n 1 | cut -d &#39;&gt;&#39; -f 2`</span>
+</span><span class='line'>  <span class="nv">LIBFILE</span><span class="o">=</span><span class="s2">&quot;/usr/lib64/libboost_program_options-mt.so&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Mac OS X</h4>
+
+<p>Mac OS Xの場合Homebrewでバイナリをインストール可能だが，vw-varinfo等のutil系は入らない．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew info vowpal-wabbit
+</span><span class='line'>vowpal-wabbit: stable 7.7 <span class="o">(</span>bottled<span class="o">)</span>, HEAD
+</span><span class='line'>https://github.com/JohnLangford/vowpal_wabbit
+</span><span class='line'>/usr/local/Cellar/vowpal-wabbit/7.7 <span class="o">(</span>30 files, 4.7M<span class="o">)</span> *
+</span><span class='line'>  Poured from bottle
+</span><span class='line'>From: https://github.com/Homebrew/homebrew/blob/master/Library/Formula/vowpal-wabbit.rb
+</span><span class='line'><span class="o">==</span>&gt; Dependencies
+</span><span class='line'>Build: boost ✔, autoconf ✔, automake ✔, libtool ✔
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>brew install vowpal-wabbit
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Windows</h4>
+
+<ul>
+<li><a href="http://qiita.com/shima_x/items/9147eaa3626fab87ada2">機械学習 - windowsマシンでvowpal wabbitを使う（個人的メモ） - Qiita</a></li>
+</ul>
+
+
+<h2>VWを始めるときに気をつけるポイント</h2>
+
+<ul>
+<li>VWの独自フォーマット
+
+<ul>
+<li>VWを使いはじめるときの最初の難関ポイント</li>
+<li>自分でcsvなどのデータをVWフォーマットに変換する必要がある</li>
+<li>カテゴリ変数やテキストはそのまま列挙しても大丈夫．VWの方でn-gramも取ることができる</li>
+</ul>
+</li>
+<li>VWのパラメータ名
+
+<ul>
+<li>資料によってパラメータの名前が違うので注意</li>
+<li>自分の環境で<code>vw --help</code>して適宜読み替える</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Tutorial</h2>
+
+<ul>
+<li><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/Tutorial">Tutorial · JohnLangford/vowpal_wabbit Wiki</a>
+
+<ul>
+<li><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/v7.0_tutorial.pdf">https://github.com/JohnLangford/vowpal_wabbit/wiki/v7.0_tutorial.pdf</a>
+
+<ul>
+<li>Binary Classification and Regression</li>
+<li>Multiclass Classification</li>
+<li>“Offline” Contextual Bandit</li>
+<li>Sequence Predictions</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://zinkov.com/posts/2013-08-13-vowpal-tutorial/">Convex Optimized - Vowpal Wabbit tutorial for the Uninitiated</a>
+
+<ul>
+<li>かなり幅広く網羅したtutorial</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>vw-varinfoについて</h2>
+
+<p>vw-varinfoを使うことによって，変数ごとに重み等の情報を出力することができる．</p>
+
+<ul>
+<li><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/using-vw-varinfo">using vw varinfo · JohnLangford/vowpal_wabbit Wiki</a></li>
+</ul>
+
+
+<h2>Other Resources</h2>
+
+<ul>
+<li><a href="http://www.slideshare.net/pauldix/terascale-learning">Terascale Learning</a></li>
+<li><a href="http://www.slideshare.net/jakehofman/technical-tricks-of-vowpal-wabbit">Technical Tricks of Vowpal Wabbit</a></li>
+<li><a href="http://fastml.com/large-scale-l1-feature-selection-with-vowpal-wabbit/">Large scale L1 feature selection with Vowpal Wabbit - FastML</a>
+
+<ul>
+<li>L1 Regularizationについて
+
+<ul>
+<li><a href="http://www.kaggle.com/c/job-salary-prediction">Job Salary Prediction | Kaggle</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://fastml.com/vowpal-wabbit-eats-big-data-from-the-criteo-competition-for-breakfast/">Vowpal Wabbit eats big data from the Criteo competition for breakfast - FastML</a>
+
+<ul>
+<li>コンペの評価方法がLogarithmic Lossだから，VWの<code>--loss_function</code>をlogisticにしてくとVWの標準出力のaverage lossの部分がだいたいKaggleのスコアになるという話
+
+<ul>
+<li><a href="http://www.kaggle.com/c/criteo-display-ad-challenge">Display Advertising Challenge | Kaggle</a></li>
+</ul>
+</li>
+<li>変数が大量にあるとfeature hashingの時にHashValが衝突(collision)するから，<code>-b</code>でhashing spaceをちょっと大きめにしておくといいという話
+
+<ul>
+<li><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/Feature-Hashing-and-Extraction">Feature Hashing and Extraction · JohnLangford/vowpal_wabbit Wiki</a></li>
+<li>-bのデフォルトが18なので，2<sup>18</sup> =262,144くらいのfeature数なら問題無い．むやみに大きくしても意味がないので，使用するデータのfeature数に合わせて調節する</li>
+<li>VWは通常メモリ使わないほうだけど，<code>-b</code>を大きくするとGBレベルでメモリ消費するようになる．最大の<code>-b 32</code>だと64GB程度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://blogs.technet.com/b/machinelearning/archive/2014/08/13/vowpal-wabbit-for-fast-learning.aspx">Vowpal Wabbit for Fast Learning - Machine Learning - Site Home - TechNet Blogs</a>
+
+<ul>
+<li>Vowpal Wabbitの名前の由来が書いてある</li>
+</ul>
+</li>
+<li><a href="http://fastml.com/go-non-linear-with-vowpal-wabbit/">Go non-linear with Vowpal Wabbit - FastML</a>
+
+<ul>
+<li>VWの様々な機能(Neural Network,Quadratic and cubic features, N-grams)について
+
+<ul>
+<li><a href="https://www.kaggle.com/c/amazon-employee-access-challenge">Amazon.com - Employee Access Challenge | Kaggle</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://mlwave.com/movie-review-sentiment-analysis-with-vowpal-wabbit/">Movie Review Sentiment Analysis with Vowpal Wabbit | MLWave</a>
+
+<ul>
+<li>映画レビューサイトのテキストを使ったsentiment analysisにVWを使った話
+
+<ul>
+<li><a href="http://www.kaggle.com/c/sentiment-analysis-on-movie-reviews">Sentiment Analysis on Movie Reviews | Kaggle</a></li>
+</ul>
+</li>
+<li>vw-varinfoを使うことによってpositive/negativeな単語のfeature relevanceを可視化している</li>
+</ul>
+</li>
+<li><a href="http://fastml.com/vowpal-wabbit-liblinear-sbm-and-streamsvm-compared/">Vowpal Wabbit, Liblinear/SBM and StreamSVM compared - FastML</a>
+
+<ul>
+<li>Vowpal Wabbit，LiblinearとStreamSVMの比較</li>
+</ul>
+</li>
+<li><a href="http://hunch.net/~nyoml/">Open Machine Learning</a>
+
+<ul>
+<li>以下の2つの講演を見ることができる</li>
+<li>&#8221; Vowpal Wabbit and Learning to Search by John Langford and Hal Daume&#8221;
+
+<ul>
+<li><a href="http://msrvideo.vo.msecnd.net/rmcvideos/227009/dl/227009.mp4">msrvideo.vo.msecnd.net/rmcvideos/227009/dl/227009.mp4</a></li>
+<li><a href="http://research.microsoft.com/apps/video/default.aspx?id=227011">Vowpal Wabbit - Microsoft Research</a>のほうが，講演とスライドが並列に見ることができて便利</li>
+</ul>
+</li>
+<li>&#8220;Vowpal Wabbit future plans&#8221;
+
+<ul>
+<li><a href="http://msrvideo.vo.msecnd.net/rmcvideos/227009/dl/227009.mp4">msrvideo.vo.msecnd.net/rmcvideos/227009/dl/227009.mp4</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://fastml.com/how-to-run-external-programs-from-python-and-capture-their-output/">How to run external programs from Python and capture their output - FastML</a>
+
+<ul>
+<li>Vowpal WabbitをPythonから動かして出力をスクリプト内で取得する方法</li>
+<li>記事内にも書いてあるけれども，PythonでVowpal Wabbitを扱うならvowpal_porpoiseやpyvw，wabbit_wappaなどのパッケージを使うという手もある</li>
+</ul>
+</li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2014/08/18/kaggle-users-japan/">kimonoでKaggleユーザのクロールをしてみた</a></h1>
     
     
@@ -531,61 +779,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/07/18/gollum-disable-ctrl-b-hotkey/">GollumでCtrl-bのキーボードショートカットを無効にする</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-07-18T04:12:00+09:00" pubdate data-updated="true">Jul 18<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Gollumで記事を編集していると，Ctrl-bで「****」というmarkdownのbold記法が挿入されるキーボードショートカットがあって邪魔だったので，無効にした．</p>
-
-<h3>方法</h3>
-
-<p>Gollumのgollum.editor.jsの中の該当部分をコメントアウトする．</p>
-
-<p><a href="https://github.com/gollum/gollum/blob/master/lib/gollum/public/gollum/javascript/editor/gollum.editor.js#L215">https://github.com/gollum/gollum/blob/master/lib/gollum/public/gollum/javascript/editor/gollum.editor.js#L215</a></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'>      <span class="nx">Mousetrap</span><span class="p">.</span><span class="nx">bind</span><span class="p">([</span><span class="s1">&#39;command+3&#39;</span><span class="p">,</span> <span class="s1">&#39;ctrl+3&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">e</span> <span class="p">){</span> <span class="nx">hotkey</span><span class="p">(</span> <span class="nx">e</span><span class="p">,</span> <span class="s1">&#39;function-h3&#39;</span> <span class="p">);</span> <span class="p">});</span>
-</span><span class='line'><span class="c1">//           Mousetrap.bind([&#39;command+b&#39;, &#39;ctrl+b&#39;], function( e ){ hotkey( e, &#39;function-bold&#39; ); });</span>
-</span><span class='line'>      <span class="nx">Mousetrap</span><span class="p">.</span><span class="nx">bind</span><span class="p">([</span><span class="s1">&#39;command+i&#39;</span><span class="p">,</span> <span class="s1">&#39;ctrl+i&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">e</span> <span class="p">){</span> <span class="nx">hotkey</span><span class="p">(</span> <span class="nx">e</span><span class="p">,</span> <span class="s1">&#39;function-italic&#39;</span> <span class="p">);</span> <span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>gollum.editor.jsは，rbenvで入れた自分の環境の場合$HOME/.rbenv/versions/1.9.3-p547/lib/ruby/gems/1.9.1/gems/gollum-3.0.0/lib/gollum/public/gollum/javascript/editorに入っている．</p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/4/">&larr; Older</a></li>
@@ -633,6 +826,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/12/06/review-bosnian-war-and-pr/">「ドキュメント 戦争広告代理店〜情報操作とボスニア紛争」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/05/review-kuromaku/">「黒幕: 巨大企業とマスコミがすがった「裏社会の案内人」」読了</a>
       </li>
     
@@ -668,10 +865,6 @@
         <a href="/blog/2014/09/08/kdd2014-tutorial-recommendation/">スライドメモ:KDD2014 Tutorial &#8220;The Recommender Problem Revisited&#8221;</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/08/31/vowpal-wabbit/">私的Vowpal Wabbitまとめ</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -680,7 +873,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (108)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (109)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
