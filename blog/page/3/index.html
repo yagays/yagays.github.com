@@ -117,6 +117,438 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2014/09/08/kdd2014-tutorial-recommendation/">スライドメモ:KDD2014 Tutorial &#8220;the Recommender Problem Revisited&#8221;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-08T15:21:00+09:00" pubdate data-updated="true">Sep 8<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Netflixの中の人によるKDD2014 Tutorialの&#8221;The Recommender Problem Revisited&#8221;のスライド1を読んだので，簡単にまとめてみた．レコメンドのこれまでと現状をひと通り網羅したチュートリアルという感じ．このスライドはKDD2014 Tutorial向けだけれど，今度のRecSys 2014のTutorialでも同様の発表があるようだ(<a href="http://recsys.acm.org/recsys14/tutorials/">link</a>)．</p>
+
+<ul>
+<li><strong>レコメンドの大まかな流れを知りたい人</strong>
+
+<ul>
+<li>このチュートリアルもいいけど，日本語で書かれた<a href="http://www.kamishima.net/archive/recsys.pdf">しましま先生の資料</a>の方が丁寧でわかりやすいかも</li>
+</ul>
+</li>
+<li><strong>レコメンドの具体的な手法や流行を知りたい人</strong>
+
+<ul>
+<li>このチュートリアルで興味ある分野の箇所を見て個別にReferenceを当たる</li>
+</ul>
+</li>
+</ul>
+
+
+<p>どっちにしろ素人のまとめなので，以下のメモは参考程度にお願いします．</p>
+
+<p><a href="http://www.slideshare.net/xamat/kdd-2014-tutorial-the-recommender-problem-revisited">Kdd 2014 Tutorial - the recommender problem revisited</a></p>
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/38241291" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+
+
+<p> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/xamat/kdd-2014-tutorial-the-recommender-problem-revisited" title="Kdd 2014 Tutorial - the recommender problem revisited" target="_blank">Kdd 2014 Tutorial - the recommender problem revisited</a> </strong> from <strong><a href="http://www.slideshare.net/xamat" target="_blank">Xavier Amatriain</a></strong> </div></p>
+
+<p><strong>(追記:2014.10.8) RECSYSのスライドも公開された．</strong></p>
+
+<p><a href="http://www.slideshare.net/xamat/recsys-2014-tutorial-the-recommender-problem-revisited">Recsys 2014 Tutorial - The Recommender Problem Revisited</a></p>
+
+<h3>TL;DR</h3>
+
+<p>レコメンドのこれまでと現状をひと通り網羅した資料．情報過多の時代においてレコメンドは必要不可欠な技術であり，いまでは従来のレコメンドに加えてパーソナライズやインターフェイスなどの複合要素を考慮したレコメンドが必要になってきた．それにともなって，レコメンド手法としても古典的な協調フィルタリングから，Netflix Prizeにより出現した次元削除の手法，ランキングアルゴリズムやディープラーニングを用いたコンテンツベースのレコメンドなどへと広がりをみせている．</p>
+
+<h3>1. The Recommender Problem</h3>
+
+<ul>
+<li>レコメンデーションは必須
+
+<ul>
+<li>情報量の肥大化(情報過多)</li>
+<li>個人向けの推薦（パーソナライズ）
+
+<ul>
+<li><a href="http://www.huffingtonpost.com/2013/08/21/netflix-my-list_n_3790472.html">Netflix&#8217;s New &#8216;My List&#8217; Feature Knows You Better Than You Know Yourself (Because Algorithms)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>レコメンドの定義
+
+<ul>
+<li>今までの定義：ユーザが好きなアイテムを自動的に予測する効用関数を作る</li>
+<li>これからのレコメンド：今までのレコメンド＋α
+
+<ul>
+<li>セレンディピティ（偶然の発見＆ユーザが既に知っているアイテムを推薦しない）</li>
+<li>ユーザインターフェイス，パーソナライズなど</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>レコメンドの進化
+
+<ul>
+<li>単純なレート付け→ランキング→ページ最適化→コンテキストを含めたレコメンドへ</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>2. Traditional Approaches</h3>
+
+<h4>2.1 Collaborative Filtering (CF)</h4>
+
+<p><strong>協調フィルタリングの基本</strong></p>
+
+<ul>
+<li>協調フィルタリングの構成要素
+
+<ul>
+<li>ユーザがアイテムに付けたレートが基本</li>
+<li>レートが無くても購買履歴などから補完することもできる</li>
+</ul>
+</li>
+<li>アクティブユーザの情報がメイン</li>
+<li>ユーザ間の類似度を使う
+
+<ul>
+<li>一種のパーソナライズと取れる</li>
+<li>ピアソンの相関係数/コサイン類似度</li>
+</ul>
+</li>
+<li>あるユーザに類似したユーザを探しだしてレート付けされてない作品を推測する</li>
+<li>ユーザベースの協調フィルタリング / アイテムベースの協調フィルタリング</li>
+<li>協調フィルタリングの特徴
+
+<ul>
+<li>長所：最小限の情報で計算できて，だいたいにおいて性能が良い</li>
+<li>短所：アイテム数が増えるとスパースになる＆スケールが難しい
+
+<ul>
+<li>ユーザ数xアイテム数のうち，値が入っているのはごく僅か(1%以下)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<p><strong>モデルベースの協調フィルタリング Model-based CF</strong></p>
+
+<ul>
+<li><p><a href="http://www.netflixprize.com/">Netflix Prize</a></p>
+
+<ul>
+<li>アルゴリズム的にRMSE基準でトップ2つのアルゴリズム
+
+<ul>
+<li>SVD</li>
+<li>RBM</li>
+</ul>
+</li>
+<li>今でもNetflixのレート推定の一部に使われている
+
+<ul>
+<li>SVD++とRBMの組み合わせ</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Simon Funk&#8217;s SVD</p>
+
+<ul>
+<li>Netflix Prizeで出てきた面白いアルゴリズム（Blogが初出）</li>
+<li><a href="http://www.recsyswiki.com/wiki/SVD%2B%2B">SVD++</a></li>
+</ul>
+</li>
+<li><p>Restricted Boltzmann Machines</p>
+
+<ul>
+<li>制限ボルツマンマシン</li>
+<li><a href="http://machinelearning.wustl.edu/mlpapers/paper_files/icml2007_SalakhutdinovMH07.pdf">Restricted Boltzmann Machines for Collaborative Filtering</a></li>
+</ul>
+</li>
+</ul>
+
+
+<p><strong>クラスタリング Clustering</strong></p>
+
+<p>クラスタリング：ユーザを特定の好みごとにクラスタリングして推薦する</p>
+
+<ul>
+<li>Locality-sensitive Hashing(LSH)
+
+<ul>
+<li>高次元空間で類似したアイテムをクラスタリングする手法</li>
+<li>似たアイテムが近くにくるようなハッシュ関数を探す</li>
+<li>最近傍探索(NN)によく使われる</li>
+</ul>
+</li>
+<li>他のクラスタリングアルゴリズム
+
+<ul>
+<li>k-means</li>
+<li>Affinity Propagation</li>
+<li>Spectral Clustering</li>
+<li>HDPs</li>
+</ul>
+</li>
+</ul>
+
+
+<p><strong>相関ルール Association Rule</strong></p>
+
+<ul>
+<li>アプリオリ・アルゴリズムなど</li>
+</ul>
+
+
+<p><strong>分類器 Classifiers</strong></p>
+
+<ul>
+<li>いわゆる普通の分類器
+
+<ul>
+<li>使い勝手が良くて組み合わせも可能だが，トレーニングセットが必要で正則化などが必要</li>
+<li>ロジスティック回帰，ベイジアンネット，SVM，決定木など</li>
+</ul>
+</li>
+</ul>
+
+
+<p><strong>協調フィルタリングの限界 Limitations of Collaborative Filtering</strong></p>
+
+<ul>
+<li>コールドスタート問題
+
+<ul>
+<li>他のユーザの評価が十分に無いと機能しない</li>
+<li>新しいアイテムなどで推薦が難しい</li>
+</ul>
+</li>
+<li>人気バイアス
+
+<ul>
+<li>既に人気のあるアイテムを推薦しがち</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>2.2 Content-based Recommenders</h3>
+
+<ul>
+<li>他のユーザの挙動ではなくアイテムの内容をベースにしたレコメンド
+
+<ul>
+<li>テキスト，キーワードなど</li>
+</ul>
+</li>
+<li>目標：ユーザの好みに沿ったアイテムを推薦する</li>
+<li>コンテンツベースのほうがうまくいくとは限らない
+
+<ul>
+<li><a href="http://dl.acm.org/citation.cfm?id=1639731">Recommending new movies: even a few ratings are more valuable than metadata</a>, RecSys2009</li>
+</ul>
+</li>
+</ul>
+
+
+<p><strong>コンテンツベースの特徴</strong></p>
+
+<ul>
+<li>長所
+
+<ul>
+<li>他のユーザ情報が不要なためコールドスタートやスパース性を考慮しなくて良い</li>
+<li>ユーザ独自の好みに合わせることができる</li>
+<li>新しいアイテムを推薦することができる</li>
+<li>レコメンドの理由を説明しやすい</li>
+</ul>
+</li>
+<li>短所
+
+<ul>
+<li>アイテムの内容から意味のある特徴量を抽出する必要がある</li>
+<li>セレンディピティのある推薦が難しい</li>
+<li>ユーザに最適化されすぎる</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>2.3 Hybrid Approach</h3>
+
+<ul>
+<li>Content-based recommendation with Bayesian classifier</li>
+<li>Hybridization Method
+
+<ul>
+<li>(see P.68)</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>3. Beyond traditional Approarches to Recommendation</h3>
+
+<h4>3.1 Ranking</h4>
+
+<ul>
+<li>ほとんどのレコメンドアルゴリズムは推薦するアイテムをソート済みのリストで返すから，レコメンドはランキングの問題とも捉えることができる</li>
+<li>レートでランキングの順位を付ける</li>
+<li>RMSEはランキングに使えない(?)
+
+<ul>
+<li>Linear modelで考えた時に，RMSEを最小にした結果ランキングに違いが生じる（Predicted RankingとFinal Rankingが違う）</li>
+<li>(詳しくは図を参照)</li>
+</ul>
+</li>
+<li>ランキングを測る指標
+
+<ul>
+<li>Normalized Discounted Cumulative Gain</li>
+<li>Mean Reciprocal Rank (MRR)</li>
+<li>Fraction of Concordant Pairs (FCP)</li>
+</ul>
+</li>
+<li>最近はランキング指標自体を最適化する研究も</li>
+</ul>
+
+
+<h4>3.2 Similarity</h4>
+
+<ul>
+<li>SimRank
+
+<ul>
+<li>グラフベースの類似度を考える</li>
+</ul>
+</li>
+<li>幾つかの類似度を組み合わせる
+
+<ul>
+<li>データごとに様々な類似度がある（e.g. タグ，ユーザの行動，ユーザのレート付け）</li>
+<li>組み合わせの時の重みは回帰で学習する</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>3.3 Deep Learning for Recommendation</h4>
+
+<ul>
+<li>Spotifyのプレイリスト推薦の例
+
+<ul>
+<li><a href="http://erikbern.com/?p=589">Recurrent Neural Networks for Collaborative Filtering | Erik Bernhardsson</a></li>
+<li><a href="http://benanne.github.io/2014/08/05/spotify-cnns.html">Recommending music on Spotify with deep learning – Sander Dieleman</a></li>
+</ul>
+</li>
+</ul>
+
+
+<h4>3.4 Social Recommendations</h4>
+
+<ul>
+<li>(詳細は省略)</li>
+</ul>
+
+
+<h4>3.5 Page Optimization</h4>
+
+<ul>
+<li>どうやって推薦したアイテムを表示させるかというページ構成の話
+
+<ul>
+<li>デバイスによって表示できるアイテム数などが違う</li>
+</ul>
+</li>
+<li>ユーザの注目度をモデリング，ヒートマップで可視化</li>
+<li>限られた状態で何を重視するか
+
+<ul>
+<li>正確さか多様性か，新しものか続き物か，狭く深くか広く浅くか，など</li>
+<li><a href="http://dl.acm.org/citation.cfm?id=2124337">Fair and balanced: learning to present news stories</a>,WSDM2014</li>
+</ul>
+</li>
+<li>共存させるためのモデル
+
+<ul>
+<li>Navigational/Attention Model</li>
+<li>Personalized Relevance Model</li>
+<li>Diversity Model</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>3.6 Tensor Factorization &amp; Factirization Machines</h4>
+
+<ul>
+<li>ユーザxアイテムxコンテキストのテンソルを[U,M,C]に分解する
+
+<ul>
+<li>Tensor Factorization</li>
+</ul>
+</li>
+<li>Factorization Machines</li>
+<li>(参考)
+
+<ul>
+<li><a href="http://qiita.com/ysks3n/items/c81ff24da0390a74fc6c">機械学習 - Matrix Factorizationとは - Qiita</a></li>
+<li><a href="http://d.hatena.ne.jp/harapon1012/20140906/1410013995">すべてがMFになる - Fire and Motion</a></li>
+</ul>
+</li>
+</ul>
+
+
+<h4>3.7 MAB Explore/Exploit</h4>
+
+<ul>
+<li>多腕バンディット Multi-armed Bandits</li>
+<li>パーソナライズは以下の2つのトレードオフ
+
+<ul>
+<li>Exploitation：活用</li>
+<li>Exploration：探索</li>
+</ul>
+</li>
+<li><a href="http://www.ueo-workshop.com/wp-content/uploads/2013/10/UEO-Deepak.pdf">http://www.ueo-workshop.com/wp-content/uploads/2013/10/UEO-Deepak.pdf</a>, CIKM2013</li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2014/08/31/vowpal-wabbit/">私的Vowpal Wabbitまとめ</a></h1>
     
     
@@ -685,100 +1117,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/07/23/homebrew-science-bioinformatics/">Homebrew/scienceでバイオインフォマティクスのソフトウェアを入れる</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-07-23T00:38:00+09:00" pubdate data-updated="true">Jul 23<span>rd</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="https://github.com/Homebrew/homebrew-science">Homebrew/homebrew-science</a></p>
-
-<p>Homebrewにはtapというコマンドがあって，例えばHomebrew/dupesのようにMacOSXに標準で入っているソフトウェア/パッケージを個別に入れられたりと，公式以外のフォーミュラからbrewコマンドで入れられるシステムがある．</p>
-
-<h3>Homebrew/science</h3>
-
-<p>その中でHomebrew/scienceという科学系のリポジトリがあり，バイオインフォマティクスに関するソフトウェアも多数登録されている．例えば，</p>
-
-<ul>
-<li>blast</li>
-<li>blat</li>
-<li>hmmer</li>
-<li>clustal-w</li>
-</ul>
-
-
-<p>のような基本的なソフトウェアから，</p>
-
-<ul>
-<li>bowtie2</li>
-<li>cufflinks</li>
-<li>bwa</li>
-<li>fastqc</li>
-<li>igv</li>
-<li>samtools</li>
-<li>bedtools</li>
-<li>&#8230;</li>
-</ul>
-
-
-<p>のようなNGSまわりの解析ツールもひと通りHomebrewから入れることができる．ここに挙げている以外にも多数のバイオインフォマティクス関連のソフトウェアが登録されているので，詳しくは<a href="https://github.com/Homebrew/homebrew-science">homebrew-scienceのGitHubページ</a>を参考．</p>
-
-<p>ひとつ注意点としては，Homebrew/sicenceで入れたソフトウェアが常に最新のものかどうかは保証されない．Homebrew/scienceの中にあるフォーミュラで記述されているものがインストールされるので，フォーミュラの管理状態によっては最新ではないバージョンを指している可能性がある．もし最新バージョンを入れたい/バージョンに気をつけるといった場合には，公式ページで配布されているソフトウェアのバージョンを確認したほうが良いだろう．</p>
-
-<h3>使い方</h3>
-
-<p>Homebrewをセットアップした上で，以下のコマンドでtapを追加することができる．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew tap homebrew/science
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>あとは好きなソフトウェアをbrew installすれば良い．</p>
-
-<h3>恒例のアレ</h3>
-
-<p>このxkcdのマンガには，Homebrew/scienceのページに載っているコマ以外にちゃんとした前振りがある．詳しくは<a href="http://xkcd.com/585/">http://xkcd.com/585/</a>にて．</p>
-
-<p><img src="https://camo.githubusercontent.com/3409f4a35fcb0bf160c8c9bb153bb133d8f83b4f/687474703a2f2f692e696d6775722e636f6d2f42737770312e706e67" alt="" /></p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="https://github.com/Homebrew/homebrew/wiki/brew-tap">brew tap · Homebrew/homebrew Wiki</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/4/">&larr; Older</a></li>
@@ -826,6 +1164,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/12/07/review-international-media-iw/">「国際メディア情報戦」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/06/review-bosnian-war-and-pr/">「ドキュメント 戦争広告代理店〜情報操作とボスニア紛争」読了</a>
       </li>
     
@@ -861,10 +1203,6 @@
         <a href="/blog/2014/09/23/review-no-place-to-hide/">「暴露:スノーデンが私に託したファイル」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/09/08/kdd2014-tutorial-recommendation/">スライドメモ:KDD2014 Tutorial &#8220;The Recommender Problem Revisited&#8221;</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -873,7 +1211,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (109)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (110)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>

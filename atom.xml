@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-12-06T00:00:48+09:00</updated>
+  <updated>2014-12-07T00:02:27+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「国際メディア情報戦」読了]]></title>
+    <link href="http://yagays.github.io/blog/2014/12/07/review-international-media-iw/"/>
+    <updated>2014-12-07T00:01:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/12/07/review-international-media-iw</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4062882477" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p><a href="http://yagays.github.io/blog/2014/12/06/review-bosnian-war-and-pr/">「ドキュメント 戦争広告代理店〜情報操作とボスニア紛争」</a>の高木徹氏の2014年の著作．前作は1990年台のボスニア紛争を題材にした作品だったが，今回はその後の21世紀に起こったテロリズムの台頭とメディアを取り巻く情報戦について書かれている．前作と比較して全体的に情報の厚みが薄く物足りない部分も見受けられるが，それでも著者ならではのポイントを抑えた簡潔な解説を読むことができる．</p>
+
+<p>本書冒頭は「戦争広告代理店」のおさらいといった立ち位置で，ボスニア紛争での民間PR会社の影響力を振り返るというもの．当時の取材時の印象であったり後日談的なものも少し加えられている．そしてその次に取り上げられる題材が，オサマ・ビン・ラディンとアメリカの対テロ戦争である．そもそものオサマ・ビン・ラディンがいかに情報戦に優れていたか，そのオサマ・ビン・ラディンが殺害された後の主導者不在の中でのテロリズムの変化，それらと対峙してきたアメリカ中での政党や大統領候補同士での情報戦などが語られる．この時代の情報戦では，ボスニア紛争で登場しなかったインターネットであったりSNS，動画共有サイトなどが登場し，TV放送局のグローバル展開も相まって，情報戦はより一層複雑化する．例えば，アルジャジーラというカタールの国際衛星ニュース局が，イスラム過激派による映像を頻繁に放送していたことはまだ記憶に新しいが，このメディアをうまく活用したのがオサマ・ビン・ラディンだったという．一方でアメリカも，メディアをうまく活用した情報公開の戦術によって，オサマ・ビン・ラディン殺害の正当性を主張したり，オサマ・ビン・ラディン自体の神格化を防ぐように悪いイメージを植え付けるようなことを行ったとされる．</p>
+
+<p>本書で出てくる個々の事実は日本でもニュースで放送されるものばかりだが，本書のような専門家の見る目をもってして解説されると，その本質が見えてくる．ではそういった情報に私たちはどう向き合っていけばいいのか，高木徹氏は本書あとがきでこのように述べている．</p>
+
+<blockquote><p>問題の解決は、私達一人一人情報の受け手に託されている。自分のもとに届く情報が、そこまでにどのような「情報戦」をくぐり抜けてきたかを考える。それを続けていれば、自分なりの真実と世界観を自分の中に形成できるようになる。それをまた他の情報と比較して検証してみる。</p>
+
+<p>「国際メディア情報戦」の時代を生き抜くには、そのようにして情報戦そのものを「楽しむ」ような余裕とタフさが必要なのではないかと私は考える。</p>
+
+<p><a href="http://www.amazon.co.jp/gp/product/4062882477/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4062882477&linkCode=as2&tag=yagays-22">国際メディア情報戦 (講談社現代新書)</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4062882477" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> (pp. 258-259)</p></blockquote>
+
+<p>本書も含め，真の意味で中立な立場で解説してくれる人は誰もいない．他人からもたらされる情報は常に他人の思想や立場によって切り取られ加工されたものであることを強く意識して，身の回りにあふれる情報と向き合っていかなければならないと思い知らされる．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「ドキュメント 戦争広告代理店〜情報操作とボスニア紛争」読了]]></title>
@@ -1467,40 +1491,6 @@
 <li><a href="http://blog.necomimi.net/?p=1941">Github gollumでファイルアップロードする | CATch a TAIL!</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[「住まいの解剖図鑑」読了]]></title>
-    <link href="http://yagays.github.io/blog/2014/06/19/review-the-anatomical-chart-of-homes/"/>
-    <updated>2014-06-19T13:09:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2014/06/19/review-the-anatomical-chart-of-homes</id>
-    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4767809185" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>建築について前から勉強したいと思って初心者向けの本を探していたのだけれども，本書はまさに入門書としてピッタリの本だった．最初は住宅設計に関する学生向けにかかれていたそうだが，家を建てたいという一般の人にでもわかるようにも工夫されたそうで，それほど専門的ではないながらも住宅設計のコアの考え方が詰まっている．</p>
-
-<p>本書の内容について，著者は冒頭「はじめに」で</p>
-
-<blockquote><p>本書の大半は，そうした定石が「なぜそうなっているのか」を，私なりに解読したページです</p>
-
-<p>「<a href="http://www.amazon.co.jp/gp/product/4767809185/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4767809185&linkCode=as2&tag=yagays-22">住まいの解剖図鑑</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4767809185" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」 P.7</p></blockquote>
-
-<p>と書いている．ここで言う定石とは「ごくありふれたモノやカタチ」であって，私たちが住宅でよく見かける，または何気なしに使っているもののことだ．屋根のカタチ，玄関のカタチ，ドアのカタチなどなど，たくさんの住宅を並べてパターンを見ると意外と共通点が存在する．そしてそれらの定石といえるパターンには，実は共通した理由がある．成るべくして成っているとも言えるそれらの理由を紐解いていこうというのが本書の流れだ．ページをパラパラめくると個別の間取りやカタチが並んでいるだけに見えるが，実はそれぞれにしっかりとした理由が明記されており，それらに共通する考え方が見えてくる．上の引用と同じく著者はそれを「一つのゴールを示すのではなく，たくさんのスタート地点を並べたガイドブック」だと呼んでいる．さすが大学の教員もされている著者だけのことはある．</p>
-
-<p>中身が素晴らしいのは言うまでもなく，個人的にはこのタイトルがとても良いと思う．解剖学というと，ヒトだったら個々のパーツの形や性質を観察して，そこから人間という構造や機能を理解していく学問のことだ．本書はまさにその住宅バージョンと言える．家のそれぞれの部分を取り出して，その形を観察してパターンを探したり機能を考えたりしてく．ただしそれで終わってしまっては，解剖学にならない．そういった部品を組み合わせて，最終的にはひとつの家として，そして周りの家との相互作用を含めて組み上げていく．そしてそこには人間を中心にして作られるという究極のテーマが存在する．まさに解剖図鑑と称するに相応しい一冊だ．</p>
-
-<p>「解剖図鑑」シリーズは，現在のところ</p>
-
-<ul>
-<li><a href="http://www.amazon.co.jp/gp/product/4767809185/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4767809185&linkCode=as2&tag=yagays-22">住まいの解剖図鑑</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4767809185" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
-<li><a href="http://www.amazon.co.jp/gp/product/4767816696/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4767816696&linkCode=as2&tag=yagays-22">片づけの解剖図鑑</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4767816696" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
-<li><a href="http://www.amazon.co.jp/gp/product/4767812380/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4767812380&linkCode=as2&tag=yagays-22">住宅・インテリアの解剖図鑑</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4767812380" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
-<li><a href="http://www.amazon.co.jp/gp/product/4767815703/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4767815703&linkCode=as2&tag=yagays-22">建築デザインの解剖図鑑</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=4767815703" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
-</ul>
-
-
-<p>の4冊が出ているそうなので，他も読んでみたいと思う．</p>
 ]]></content>
   </entry>
   

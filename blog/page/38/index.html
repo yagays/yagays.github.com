@@ -117,6 +117,231 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2012/10/21/imcmr-2-1/">「Rによるモンテカルロ法入門」読書ノート：2章 逆変換・一般変換法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-21T06:26:00+09:00" pubdate data-updated="true">Oct 21<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>読書ノート アーカイブ：<a href="http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">http://yagays.github.com/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/</a></li>
+</ul>
+
+
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4621065270" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<h3>内容：一様分布を元にして様々な確率分布に従う乱数を生成する</h3>
+
+<p>統計解析ソフトであるRには，様々な分布に対応した組み込み関数が用意されている．本章では，そういった組み込み関数を使わずに，一様分布から生成される乱数を逆関数で変換することで，他の確率分布の乱数を表現する．</p>
+
+<p>本書で扱う乱数とは，完全なランダム性を持つ乱数ではなく<strong>擬似乱数</strong>である．擬似乱数はset.seed()関数で設定した値を種として乱数を生成するため，どのような環境においてもset.seed()関数で同じ値を使うことで乱数を再現することができる．</p>
+
+<p>今回は，一様乱数を元にして指数乱数を生成し，指数乱数からガンマ分布やベータ分布の乱数へと変換していく．これらの確率分布は全てRの関数で用意されているものなので，一様乱数から生成した乱数とRの関数から生成した乱数を比較することによって，乱数の生成がうまくいっているかどうかを判断する．以下のコードで描写したヒストグラムはすべて，左側が一様分布から生成した乱数，右側がRの関数を用いて生成した乱数(N=10<sup>4</sup> )．赤い曲線はどちらもRの関数を用いて分布を示したもの．</p>
+
+<h3>例 2.1 一様乱数から指数乱数を作成する</h3>
+
+<p>これはテキストにある通りのコードと作図．mcsmパッケージのdemo(Chapter.2)にも同様のコードがある．</p>
+
+<p>以下のコードでは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=-%5Clog%7B%281-u%29%7D+" alt="-\log{(1-u)} " />をそのままコードに落とし込んでいる．テキストにもある通り，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=U+%5Csim+%5Cmathcal%7BU%7D_%7B%5B0%2C1%5D%7D+" alt="U \sim \mathcal{U}_{[0,1]} " />ならば0から1の間で一様に等しい確率分布なのだがら，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=U+" alt="U " />も<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1-U+" alt="1-U " />も一様分布になる．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+</span><span class='line'>Nsim <span class="o">&lt;-</span> <span class="m">10</span><span class="o">^</span><span class="m">4</span>
+</span><span class='line'>U <span class="o">&lt;-</span> runif<span class="p">(</span>Nsim<span class="p">)</span>
+</span><span class='line'>X <span class="o">&lt;-</span> <span class="o">-</span>log<span class="p">(</span><span class="m">1</span><span class="o">-</span>U<span class="p">)</span>
+</span><span class='line'>Y <span class="o">&lt;-</span> rexp<span class="p">(</span>Nsim<span class="p">)</span>
+</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+</span><span class='line'>hist<span class="p">(</span>X<span class="p">,</span> freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Exp from Uniform&quot;</span><span class="p">,</span> nclass<span class="o">=</span><span class="m">50</span><span class="p">)</span>
+</span><span class='line'>curve<span class="p">(</span>dexp<span class="p">(</span>x<span class="p">),</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>hist<span class="p">(</span>Y<span class="p">,</span> freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Exp from R&quot;</span><span class="p">,</span> nclass<span class="o">=</span><span class="m">50</span><span class="p">)</span>
+</span><span class='line'>curve<span class="p">(</span>dexp<span class="p">(</span>x<span class="p">),</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp2_1.png" alt="" /></p>
+
+<h3>練習問題 2.2 逆変換法を用いてロジスティック分布とコーシー分布の乱数を生成する</h3>
+
+<p>逆変換法を用いてロジスティック分布とコーシー分布の乱数を生成する．変換で求まる関数はいわゆる逆累積分布関数というもの．</p>
+
+<h4>a.ロジスティック分布</h4>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=u+%3D+%5Cfrac%7B1%7D%7B1%2Be%5E%7B-%5Cfrac%7Bx-%5Cmu%7D%7B%5Cbeta%7D%7D%7D+" alt="u = \frac{1}{1+e^{-\frac{x-\mu}{\beta}}} " />を変形して，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+%3D+-%5Cbeta+%5Clog%7B%5Cfrac%7B1-u%7D%7Bu%7D%7D+%2B+%5Cmu+" alt="x = -\beta \log{\frac{1-u}{u}} + \mu " /></p>
+
+<p>以下のコードは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu%3D0+" alt="\mu=0 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta%3D1+" alt="\beta=1 " />の場合．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>Nsim <span class="o">&lt;-</span> <span class="m">10</span><span class="o">^</span><span class="m">4</span>
+</span><span class='line'>U <span class="o">&lt;-</span> runif<span class="p">(</span>Nsim<span class="p">)</span>
+</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+</span><span class='line'>X <span class="o">&lt;-</span> <span class="o">-</span>log<span class="p">((</span><span class="m">1</span><span class="o">-</span>U<span class="p">)</span><span class="o">/</span>U<span class="p">)</span>
+</span><span class='line'>Y <span class="o">&lt;-</span> rlogis<span class="p">(</span>Nsim<span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+</span><span class='line'>hist<span class="p">(</span>X<span class="p">,</span>freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span>main<span class="o">=</span><span class="s">&quot;Logis from Uniform&quot;</span><span class="p">)</span>
+</span><span class='line'>curve<span class="p">(</span>dlogis<span class="p">(</span>x<span class="p">),</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>hist<span class="p">(</span>Y<span class="p">,</span> freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Logis from R&quot;</span><span class="p">)</span>
+</span><span class='line'>curve<span class="p">(</span>dlogis<span class="p">(</span>x<span class="p">),</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp2_2.png" alt="" /></p>
+
+<h4>b.コーシー分布</h4>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=u+%3D+%5Cfrac%7B1%7D%7B2%7D+%2B+%5Cfrac%7B1%7D%7B%5Cpi%7D+%5Carctan%7B%5Cfrac%7Bx-%5Cmu%7D%7B%5Csigma%7D%7D+" alt="u = \frac{1}{2} + \frac{1}{\pi} \arctan{\frac{x-\mu}{\sigma}} " />を変形して，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+%3D+%5Cmu+%2B+%5Csigma+%5Ctan%7B%5Cpi%28u-%5Cfrac%7B1%7D%7B2%7D%29%7D+" alt="x = \mu + \sigma \tan{\pi(u-\frac{1}{2})} " /></p>
+
+<p>以下のコードは<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu%3D0+" alt="\mu=0 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Csigma%3D1+" alt="\sigma=1 " />の場合．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>Nsim <span class="o">&lt;-</span> <span class="m">10</span><span class="o">^</span><span class="m">4</span>
+</span><span class='line'>U <span class="o">&lt;-</span> runif<span class="p">(</span>Nsim<span class="p">)</span>
+</span><span class='line'>x <span class="o">&lt;-</span> tan<span class="p">(</span>pi<span class="o">*</span><span class="p">(</span>U<span class="o">-</span><span class="m">0.5</span><span class="p">))</span>
+</span><span class='line'>Y <span class="o">&lt;-</span> rcauchy<span class="p">(</span>Nsim<span class="p">)</span>
+</span><span class='line'>hist<span class="p">(</span>X<span class="p">,</span> freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Cauchy from Uniform&quot;</span><span class="p">,</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">-10</span><span class="p">,</span><span class="m">10</span><span class="p">))</span>
+</span><span class='line'>curve<span class="p">(</span>dcauchy<span class="p">(</span>x<span class="p">),</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>hist<span class="p">(</span>Y<span class="p">[</span>Y<span class="o">&gt;=</span><span class="m">-10</span> <span class="o">&amp;</span> Y<span class="o">&lt;=</span><span class="m">10</span><span class="p">],</span> freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Cauchy from R&quot;</span><span class="p">,</span> xlim<span class="o">=</span>c<span class="p">(</span><span class="m">-10</span><span class="p">,</span><span class="m">10</span><span class="p">))</span>
+</span><span class='line'>curve<span class="p">(</span>dcauchy<span class="p">(</span>x<span class="p">),</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># cauchyは値が両端に飛んでヒストグラムが綺麗に書けないので[-10,10]で整えている</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp2_3.png" alt="" /></p>
+
+<h3>練習問題 2.12 指数分布からガンマ分布とベータ分布の乱数を生成する</h3>
+
+<h4>a.ガンマ乱数</h4>
+
+<p>以下の作図では，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbeta+" alt="\beta " />の値を固定して<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=a+" alt="a " />の値を1,2,5,9と変化させたときの分布の変化を見ている．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>Nsim <span class="o">&lt;-</span> <span class="m">10</span><span class="o">^</span><span class="m">4</span>
+</span><span class='line'>beta <span class="o">&lt;-</span> <span class="m">2.0</span>
+</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+</span><span class='line'><span class="kr">for</span><span class="p">(</span>a in c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">9</span><span class="p">)){</span>
+</span><span class='line'>  U <span class="o">&lt;-</span> runif<span class="p">(</span>a<span class="o">*</span>Nsim<span class="p">)</span>
+</span><span class='line'>  m <span class="o">&lt;-</span> matrix<span class="p">(</span>U<span class="p">,</span> nrow<span class="o">=</span>a<span class="p">)</span>
+</span><span class='line'>  X <span class="o">&lt;-</span> beta <span class="o">*</span> apply<span class="p">(</span><span class="o">-</span>log<span class="p">(</span>m<span class="p">),</span> <span class="m">2</span><span class="p">,</span> sum<span class="p">)</span>
+</span><span class='line'>  Y <span class="o">&lt;-</span> rgamma<span class="p">(</span>Nsim<span class="p">,</span> shape<span class="o">=</span>a<span class="p">,</span> scale<span class="o">=</span>beta<span class="p">)</span>
+</span><span class='line'>  hist<span class="p">(</span>X<span class="p">,</span> freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;Gamma from Uniform:&quot;</span><span class="p">,</span><span class="s">&quot;a=&quot;</span><span class="p">,</span>a<span class="p">,</span><span class="s">&quot; beta=&quot;</span><span class="p">,</span>beta<span class="p">),</span> nclass<span class="o">=</span><span class="m">50</span><span class="p">)</span>
+</span><span class='line'>  curve<span class="p">(</span>dgamma<span class="p">(</span>x<span class="p">,</span> shape<span class="o">=</span>a<span class="p">,</span> scale<span class="o">=</span>beta<span class="p">),</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>  hist<span class="p">(</span>Y<span class="p">,</span> freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;Gamma from Uniform:&quot;</span><span class="p">,</span><span class="s">&quot;a=&quot;</span><span class="p">,</span>a<span class="p">,</span><span class="s">&quot; beta=&quot;</span><span class="p">,</span>beta<span class="p">),</span> nclass<span class="o">=</span><span class="m">50</span><span class="p">)</span>
+</span><span class='line'>  curve<span class="p">(</span>dgamma<span class="p">(</span>x<span class="p">,</span> shape<span class="o">=</span>a<span class="p">,</span> scale<span class="o">=</span>beta<span class="p">),</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp2_4.png" alt="" /></p>
+
+<h4>a.ベータ乱数</h4>
+
+<p>この手法では<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%28a+%5Cin+%5Cmathbb%7BN%5E%2A%7D%29+" alt="(a \in \mathbb{N^*}) " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmathbb%7BN%5E%2A%7D+%3D+1%2C2%2C+%5Cdots+" alt="\mathbb{N^*} = 1,2, \dots " /> という制約があるため，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=a%3D0.1+" alt="a=0.1 " />，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=b%3D0.1+" alt="b=0.1 " />のようなベータ分布は作ることが出来ない．以下はa=1,b=1，a=2,b=3，a=8,b=4の場合．</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1"># a=1,b=1の場合</span>
+</span><span class='line'>par<span class="p">(</span>mfrow<span class="o">=</span>c<span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+</span><span class='line'>Nsim <span class="o">&lt;-</span> <span class="m">10</span><span class="o">^</span><span class="m">4</span>
+</span><span class='line'>a <span class="o">&lt;-</span> <span class="m">1</span>
+</span><span class='line'>b <span class="o">&lt;-</span> <span class="m">1</span>
+</span><span class='line'>U <span class="o">&lt;-</span> runif<span class="p">((</span>a<span class="o">+</span>b<span class="p">)</span><span class="o">*</span>Nsim<span class="p">)</span>
+</span><span class='line'>m <span class="o">&lt;-</span> matrix<span class="p">(</span>U<span class="p">,</span>nrow<span class="o">=</span><span class="p">(</span>a<span class="o">+</span>b<span class="p">))</span>
+</span><span class='line'>X <span class="o">&lt;-</span> <span class="o">-</span>log<span class="p">(</span>m<span class="p">[</span>a<span class="p">,])</span> <span class="o">/</span> apply<span class="p">(</span><span class="o">-</span>log<span class="p">(</span>m<span class="p">),</span><span class="m">2</span><span class="p">,</span>sum<span class="p">)</span> <span class="c1"># a&gt;=2の場合はapply(-log(m[1:a,]),2,sum) / apply(-log(m),2,sum)</span>
+</span><span class='line'>Y <span class="o">&lt;-</span> rbeta<span class="p">(</span>Nsim<span class="p">,</span>a<span class="p">,</span>b<span class="p">)</span>
+</span><span class='line'>hist<span class="p">(</span>X<span class="p">,</span> freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;Beta from Uniform:&quot;</span><span class="p">,</span><span class="s">&quot;a=&quot;</span><span class="p">,</span>a<span class="p">,</span><span class="s">&quot;b=&quot;</span><span class="p">,</span>b<span class="p">),</span> nclass<span class="o">=</span><span class="m">50</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+</span><span class='line'>curve<span class="p">(</span>dbeta<span class="p">(</span>x<span class="p">,</span>a<span class="p">,</span>b<span class="p">),</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span><span class='line'>hist<span class="p">(</span>Y<span class="p">,</span> freq<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> main<span class="o">=</span>paste<span class="p">(</span><span class="s">&quot;Beta from R:&quot;</span><span class="p">,</span><span class="s">&quot;a=&quot;</span><span class="p">,</span>a<span class="p">,</span><span class="s">&quot;b=&quot;</span><span class="p">,</span>b<span class="p">),</span> nclass<span class="o">=</span><span class="m">50</span><span class="p">,</span> ylim<span class="o">=</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+</span><span class='line'>curve<span class="p">(</span>dbeta<span class="p">(</span>x<span class="p">,</span>a<span class="p">,</span>b<span class="p">),</span> add<span class="o">=</span><span class="k-Variable">T</span><span class="p">,</span> col<span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://dl.dropbox.com/u/142306/b/imcmr/chp2_5.png" alt="" /></p>
+
+<h4>b. 一様分布から指数乱数を作る(逆変換)</h4>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=U+%3D+e%5E%7B-%5Clambda+x%7D+" alt="U = e^{-\lambda x} " />より <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+%3D+-+%5Cfrac%7B%5Clog%7BU%7D%7D%7B%5Clambda%7D+" alt="x = - \frac{\log{U}}{\lambda} " /></p>
+
+<h4>c. 一様分布からロジスティック乱数を作る(逆変換)</h4>
+
+<p><img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=U+%3D+%5Cfrac%7Be%5Ex%7D%7B1%2Be%5Ex%7D+" alt="U = \frac{e^x}{1+e^x} " />より<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=x+%3D+%5Clog%7B%5Cfrac%7BU%7D%7B1-U%7D%7D+" alt="x = \log{\frac{U}{1-U}} " /></p>
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2012/10/20/archive-introducing-monte-carlo-methods-with-r/">「Rによるモンテカルロ法入門」読書ノート：アーカイブ</a></h1>
     
     
@@ -631,152 +856,6 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/13/soapdenovo2-install/">SOAPdenovo2のインストール方法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-13T07:30:00+09:00" pubdate data-updated="true">Oct 13<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>前回<a href="http://yagays.github.com/blog/2012/10/11/soapdenovo2-stats/">SOAPdenovo2の話</a>を書いたが，そういえばSOAPdenovo2といえばインストールまわりが不親切だったので，ちょっと解説みたいなものを書いてみる．</p>
-
-<h3>ダウンロード</h3>
-
-<p>SOAPdenovoのパッケージがおかれているSourceForgeにアクセスする</p>
-
-<ul>
-<li><a href="http://sourceforge.net/projects/soapdenovo2/">http://sourceforge.net/projects/soapdenovo2/</a></li>
-</ul>
-
-
-<p>まずここで注意しなければいけないのは，緑のアイコンででかでかと表示されている「Download」をクリックしてはいけないということだ．よくよく見ると「GapCloser」と書いてあり，これは本体とは別のプログラムファイルである．欲しいのはSOAPdenovo2の実行ファイルなので，「Browse All File」をクリックしてアップロードされているファイルの中から欲しいものを探す．なお，上部の「File」をクリックしても同じ．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/soapdenovo2_1.jpg" alt="" /></p>
-
-<p>「bin」をクリックする．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/soapdenovo2_2.jpg" alt="" /></p>
-
-<p>これでSOAPdenovo2の一連のファイルが表示される．この中で必要なのは「SOAPdenovo2_revision210.tgz」というファイル．</p>
-
-<p><img src="http://dl.dropbox.com/u/142306/b/soapdenovo2_3.jpg" alt="" /></p>
-
-<p>そして「SOAPdenovo2_revision210.tgz」クリックすると，ページが遷移したあと自動でダウンロードが開始される．もしサーバなどにダウンロードしたい場合は，画面上部にある「Direct link」のリンクURLを使って以下のようにwgetなどでダウンロードする．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>wget http://downloads.sourceforge.net/project/soapdenovo2/bin/SOAPdenovo2_revision210.tgz
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>解凍およびインストール</h3>
-
-<p>あとは，ダウンロードしたSOAPdenovo2_revision210.tgzを解凍するだけでSOAPdenovo2のバイナリが得られる．SOAPdenovo2はまだソースコードの公開をしておらず，プログラムはすべて実行可能なバイナリ形式で配布されている．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>tar zxvf SOAPdenovo2_revision210.tgz
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>なお，上記のコマンドでは，カレントディレクトリに全てのファイルが展開されるので，もし特定のディレクトリに展開したい場合には，以下のように<strong><code>-C</code></strong>オプションを付ける．展開先のディレクトリが無いとエラーになるので，実行前に<strong><code>mkdir</code></strong>などで作っておく．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>tar zxvf SOAPdenovo2_revision210.tgz -C path/to/SOAPdenovo2_revision210
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>展開すると，以下のようになる．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>ls -l
-</span><span class='line'>total 7040
-</span><span class='line'>-rw-r--r-- 1 yag_ays users   16199 Sep 13 15:54 MANUAL
-</span><span class='line'>-rwxr-xr-x 1 yag_ays users 1958292 Sep 13 13:50 pregraph_sparse_127mer.v1.0.3*
-</span><span class='line'>-rwxr-xr-x 1 yag_ays users 1941908 Sep 13 13:50 pregraph_sparse_63mer.v1.0.3*
-</span><span class='line'>-rwxr-xr-x 1 yag_ays users 1718828 Sep 13 13:49 SOAPdenovo-127mer*
-</span><span class='line'>-rwxr-xr-x 1 yag_ays users 1562546 Sep 13 13:49 SOAPdenovo-63mer*
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>SOAPdenovo-63mer</strong>と<strong>SOAPdenovo-127mer</strong>がSOAPdenovo2の本体になる．ここで少し注意が必要なのだが，SOAPdenovo2なのに実行ファイル名がSOAPdenovoとなっていてややこしいのに加えて，SOAPdenovoは「SOAPdenovo63mer」なのに対し，今回はK-merの値の前にハイフンが入っていて余計混乱を招きそうな名前になっている．パイプラインで処理させている人は，名前の変更に注意しよう．</p>
-
-<p>また，SOAPdenovo2では新たに<strong>pregraph_sparce</strong>というモジュールが追加されている．これは，SOAPdenovo2のアセンブル第1段階で行われるpregraphというコマンドの改良版で，コンティグとしてグラフをつなげていく前段階で候補を減らしておき，後々の処理の無駄を省くというもののようだ．基本的にSOAPdenovo2を実行するだけならpregraph_sparseは必要ないが，高速化をしたいといった場合には試してみてもいいと思われる．pregraph_sparseの詳しい使い方はMANUALに書かれているので，そちらを参考していただきたい．ちなみに，MANUALでは&#8221;consumption&#8221;の綴りが間違っている．</p>
-
-<h3>実行の確認</h3>
-
-<p>ファイルを展開したディレクトリでSOAPdenovo2を実行して，以下のようにバージョンとヘルプが表示されれば，インストールは成功している．なお，いまのところLinuxにしか対応してないようで，Mac OS Xでは実行できないので注意．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>./SOAPdenovo-63mer
-</span><span class='line'>
-</span><span class='line'>Version 2.04: released on July 13th, 2012
-</span><span class='line'>Compile Sep 13 2012     12:48:54
-</span><span class='line'>
-</span><span class='line'>Usage: SOAPdenovo &lt;<span class="nb">command</span>&gt; <span class="o">[</span>option<span class="o">]</span>
-</span><span class='line'>    pregraph     construct kmer-graph
-</span><span class='line'>    contig       eliminate errors and output contigs
-</span><span class='line'>    map          map reads to contigs
-</span><span class='line'>    scaff        construct scaffolds
-</span><span class='line'>    all          <span class="k">do </span>all the above in turn
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>最後に愚痴</h3>
-
-<p>そもそも，SourceForgeは様々なプログラムが配布場所として使用しているが，そもそも色々と不便で分かりにくい．広告が多い上に画面がごちゃごちゃしていて構造を把握しづらいし，ファイルを自動ダウンロードにしてるのもいい迷惑だし，慣れていないとなかなかに辛いものがある．元のプロジェクトの概要を機械翻訳で日本語にしただけの有りもしない日本語版のページなど，Google検索などでのノイズも非常に多い．まあ結論としては，今回はこれが言いたかっただけです，はい．</p>
-
-<h3>参考</h3>
-
-<ul>
-<li><a href="http://sourceforge.net/projects/soapdenovo2/">http://sourceforge.net/projects/soapdenovo2/</a></li>
-<li><a href="http://cell-innovation.nig.ac.jp/wiki/tiki-index.php?page=SOAPdenovo%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%AD%E3%82%B0">http://cell-innovation.nig.ac.jp/wiki/tiki-index.php?page=SOAPdenovo%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%AD%E3%82%B0</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/39/">&larr; Older</a></li>
@@ -824,6 +903,10 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2014/12/07/review-international-media-iw/">「国際メディア情報戦」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/06/review-bosnian-war-and-pr/">「ドキュメント 戦争広告代理店〜情報操作とボスニア紛争」読了</a>
       </li>
     
@@ -859,10 +942,6 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
         <a href="/blog/2014/09/23/review-no-place-to-hide/">「暴露:スノーデンが私に託したファイル」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/09/08/kdd2014-tutorial-recommendation/">スライドメモ:KDD2014 Tutorial &#8220;The Recommender Problem Revisited&#8221;</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -871,7 +950,7 @@ Liquid::Template.register_tag('gctex', Jekyll::GoogleChartTexTag)
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (109)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (110)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
