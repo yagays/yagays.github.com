@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-12-07T16:15:35+09:00</updated>
+  <updated>2014-12-08T00:06:20+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[「「ニセ医学」に騙されないために」読了]]></title>
+    <link href="http://yagays.github.io/blog/2014/12/08/review-natrom-quackery/"/>
+    <updated>2014-12-08T00:05:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2014/12/08/review-natrom-quackery</id>
+    <content type="html"><![CDATA[<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=4895958647" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<p>はてな界隈ではみなさんご存知NATROM先生の著作．題名の通り「ニセ医学」と呼ばれる根拠のない病気の治療であったり健康になるための謳い文句について，個々の豊富な事例をもとにその真偽を検証し事実を明らかにしていくという本書．おそらくNATROM先生がこれまでに書きためてきたblog記事が元になっているとは思うが，恐らくほぼすべてを描き下ろしているであろう本書は，より一般読者向けの内容になっており1冊の書籍として非常に読みやすい．</p>
+
+<p>当然ながら本書は一貫して科学的なスタンスで進んでいく．ただ頭ごなしに否定するのではなく，きちんと相手の意見を踏まえて反証や矛盾を突いた意見を述べることで，一つ一つ論破していく．例えば本書の最初に出てくる「日本人は薬中毒か」という問いには国際的に集計された医療統計を出して反証し，その背景にある日本の過去の医療事情を持ち出す．</p>
+
+<p>それに加えて，良くある論調として「医者や政府は利益のための重大なことを隠している！」ということがあるが，それについても医者と保険者と患者の関係性についてきちんと解説している点が評価できる．というよりこの辺りは実際に中の人に解説してもらわないと見えてこない部分もあるので，概要ながらも内情について知ることができたのは良かった．当たり前といえばそうなんだけれども，日本であれば国民皆保険制度を元にした医療行為への支払いを考えれば明らかなんだと感じる．</p>
+
+<p>本書を読めば誰でもニセ医学を暴けるかというと，必ずしもそうはならない．「健康」という分野は広大でかつ未だに未知の領域だ．医学的な知識のみならず，栄養学といった他分野であったり統計の素養が必要になる．そういうときに，目に入る情報すべてについて元論文を当たったり検証することは不可能だ．結局は「人の甘い言葉に乗るな」ということになるのだけれども，人間というものは親族が病気にかかったり心的余裕が無いときには，つい藁をもつかむ思いで騙されてしまうものだ．それは本書著者も指摘しておりかつそれを悪いとは言っていない．そこに漬け込むニセ医者や悪徳業者が悪いのであって，それについてきちんと追求していくことは医者の社会的責任である．それとともに，日頃から自衛できるような知識を身につけること，そこまでいかなくても注意を払うことの大事さを思い直す1冊だった．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「国際メディア情報戦」読了]]></title>
@@ -1443,60 +1461,6 @@
 <p>本書は「<a href="http://www.amazon.co.jp/gp/product/479421796X/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=479421796X&linkCode=as2&tag=yagays-22">サービスできないドイツ人、主張できない日本人</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=yagays-22&l=as2&o=9&a=479421796X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」を文庫化したものだ．ドイツ人の夫を持ち，ドイツで30年近く住んでいる日本生まれの著者のエッセイだが，旧題にあるようなサービスと主張というトピックはほんの一部で，他にも幅広い文化比較がなされている．異なる国の文化に挟まれて初めて互いの文化の良いところや悪いところが見えてくるように，読者からすると，知らないドイツを知るとともに自分たちの文化を振り返ることになる．</p>
 
 <p>個人的には，ドイツの教育システムが一番気になった．以前読んだ<a href="http://yagays.github.io/blog/2012/09/05/review-critical-reading/">「外国語で発想するための日本語レッスン」</a>ではヨーロッパの教育の良い部分についてフォーカスしていただけに，本書で語られる負の部分，ドイツの義務教育のねじれのようなものが一層際立ってみえた．ランク分けされたギムナジウムや挽回のチャンスが限られた進学システム，マイスターに求められる質の変化など，一見して不合理だとわかっていながらも文化的な背景で縛られて身動きが取れなくなっているように感じる．こういった制度を是正する動きを既得権益を持ったエリートが妨害するといった，古くからある階級社会が見え隠れするところも興味深い．そして，そこから日本の教育に目を向けた時にどう感じるかも考えなくてはいけない．当然ながら日本の教育はドイツとは違うし，それらが成立する背景も違う．例えば，ドイツの教師は徹底的にビジネスライクなのに対して，日本の教師はまったく真逆で，人によっては人生の師ともなるほどに親密な関係を築く．そういう前提があるときに，日本の教育のいいところはどこか，一方でドイツの教育のいいところはどこか，教育を良くしていくにはどこを真似れば良いのかなど，考えなくてはいけないことは山ほどある．結局どっちが良いという問題ではないだけに，なかなか難しいところではある．</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Gollum入門した]]></title>
-    <link href="http://yagays.github.io/blog/2014/06/27/gollum-wiki/"/>
-    <updated>2014-06-27T11:31:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2014/06/27/gollum-wiki</id>
-    <content type="html"><![CDATA[<p>最近メモがあちこちに散乱していて，<a href="http://kobito.qiita.com/ja">Kobito</a>に殴り書きしたり，<a href="http://brettterpstra.com/projects/nvalt/">nvALT</a>に適当に書いたり，<a href="http://evernote.com/intl/jp/">Evernote</a>にノート作ったりと，色々と良くない感じだったので，ある程度しっかりと書くメモはGollumで書くようにした．</p>
-
-<p>GollumはGitHub-likeなwikiエンジンだ．とにかくmarkdownで書けてgit連携，DBを立てる必要も無く，ソースコードがシンタックスハイライト付きで貼れるというのが嬉しい．</p>
-
-<h3>Gollumセットアップ</h3>
-
-<p><a href="https://github.com/gollum/gollum">gollum/gollum</a></p>
-
-<h4>Gollumのインストール</h4>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install gollum</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>Gollumセットアップ</h4>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ mkdir wiki; cd wiki
-</span><span class='line'>$ git init
-</span><span class='line'>$ gollum</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これでhttp://localhost:4567/にアクセスするとwikiが立ち上がっている．もしgit initしていないとエラーになるので注意．</p>
-
-<h3>スクリーンショット</h3>
-
-<p>というわけで，適当にmarkdownで書いて保存すると以下のように立ち上がる．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/gollum.png" alt="" /></p>
-
-<h3>所感</h3>
-
-<p>まだ使い始めて1週間も経っていないけれども，かなり使い勝手は良いと思う．簡素な作りながらも，ディレクトリ構成やgitの方を意識しないで済むのは楽だ．一方で物足りない部分は確かにあって，ファイルやディレクトリ名を入力するときの補完とかをしてくれればいいのにとは思うけれども，まあその辺はそれほど苦にならないし運用でカバーできる．そういう部分も含めて，他のWikiエンジンやWordpress，Sphinxを使うよりかは，はるかに自分に合っていると思う．</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="https://github.com/gollum/gollum/wiki">Home · gollum/gollum Wiki</a></li>
-<li><a href="http://yukke.hateblo.jp/entry/2013/05/02/224859">githubのwikiエンジン&#8221;gollum&#8221;の導入と細かい設定 - yukke::note</a></li>
-<li><a href="http://blog.hifumi.info/2014/02/02/my-wiki-powered-by-gollum/">gollumを使って個人用wikiをサーバに立てた | blog: takahiro okumura</a></li>
-<li><a href="http://pioneerboy.hatenablog.com/entry/2014/06/19/161859">ゼロからはじめるGollum Wiki - 雨に煙る</a></li>
-<li><a href="http://blog.necomimi.net/?p=1941">Github gollumでファイルアップロードする | CATch a TAIL!</a></li>
-</ul>
-
 ]]></content>
   </entry>
   
