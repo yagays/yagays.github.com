@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-12-07T16:08:16+09:00</updated>
+  <updated>2014-12-07T16:15:35+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -975,6 +975,12 @@
 <ul>
 <li>Vowpal WabbitをPythonから動かして出力をスクリプト内で取得する方法</li>
 <li>記事内にも書いてあるけれども，PythonでVowpal Wabbitを扱うならvowpal_porpoiseやpyvw，wabbit_wappaなどのパッケージを使うという手もある</li>
+</ul>
+</li>
+<li><a href="http://hunch.net/?p=222592">Vowpal Wabbit 7.8 at NIPS « Machine Learning (Theory)</a>
+
+<ul>
+<li>Vowpal Wabbit 7.8のリリースノート</li>
 </ul>
 </li>
 </ul>
