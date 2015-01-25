@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2014-12-17T22:17:22+09:00</updated>
+  <updated>2015-01-25T20:48:34+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -1243,6 +1243,20 @@
 <li><a href="http://carreau.github.io/posts/10-No-PyLab-Thanks.ipynb.html">No Pylab Thanks | Random Thoughts</a></li>
 </ul>
 
+
+<h3>追記(2015/01/25)</h3>
+
+<p>ipython notebookのコンフィグに追記しておく方法もあるようです．</p>
+
+<blockquote class="twitter-tweet" lang="en"><p>.<a href="https://twitter.com/yag_ays">@yag_ays</a> <a href="http://t.co/BATzhJPepj">http://t.co/BATzhJPepj</a> 拝見しました．自分用のconfigファイル ~/.ipython/profile_default/ipython_notebook_config.py でc.IPKernelApp.pylab = &#39;inline&#39;</p>&mdash; しましま (@shima__shima) <a href="https://twitter.com/shima__shima/status/559296433442942976">January 25, 2015</a></blockquote>
+
+
+<script async src="http://yagays.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>参考
+- <a href="http://stackoverflow.com/questions/19902984/always-start-ipython-with-pylab-being-equal-to-inline-but-toggle-it-off-at-some">python - Always start ipython with pylab being equal to inline, but toggle it off at some time - Stack Overflow</a>
+- <a href="http://ipython.org/ipython-doc/dev/config/options/kernel.html">IPython kernel options — IPython 3.0.0-dev documentation</a></p>
 
 <h3>参考</h3>
 
