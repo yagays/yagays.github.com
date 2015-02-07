@@ -117,6 +117,55 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/07/02/blu-ray-zero-dark-thirty/">&#8220;Zero Dark Thirty&#8221;のBlu-rayを買った</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-02T00:36:00+09:00" pubdate data-updated="true">Jul 2<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B00B1E6FF8" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
+
+
+<p>映画&#8221;Zero Dark Thirty&#8221;の北米版Blu-rayを買った．映画として完成度が高いというのは言うまでもないものの，個人的な思い入れが強い作品でもある．この映画で描かれるCIAの女性捜査官には，何かを追い求める執念であったり不屈の精神に強く惹かれるところがある．それをもう一度確かめたくて，9月の日本版の発売を待たず海外版を購入してしまったというわけだ．当然ながら日本語字幕は無い．</p>
+
+<p>今回購入したBlu-ray/DVD Comboには，Blu-rayとDVDが1枚ずつ入っている．Blu-rayは日本と北米ともに同じリージョンなのでPS3などのプレイヤーで普通に観ることができる．DVDはリージョンが違うため日本のプレイヤーでは通常は見ることができないため，PCなどの環境を別途用意する必要がある．(<a href="http://www.amazon.com/gp/help/customer/display.html?ie=UTF8&amp;nodeId=3193231">参考</a>)</p>
+
+<p>さて，今回初めて北米版のDVDを買って色々知ったのだが，映画の音声に通常の英語版に加えて，Descriptive Serviceというモードが付いている．これはどうやら視覚障害を持つ方向けのサービスのようだ．</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Descriptive_Video_Service">Descriptive Video Service - Wikipedia, the free encyclopedia</a></p>
+
+<p>実際に聞いてみるとわかりやすいのだが，Descriptive Serviceはいわゆるオーディオブックのようなものだ．映画オリジナルのセリフの間に，情景の説明や誰が何をしたといったことがナレーションとして入っている．画面に表示される文字や暗転したといったことも含めて，セリフでカバーできない画面の内容が英語音声で説明されるので，画面を観ることができない人でも映画を楽しめるようになっている．本来はそのような用途で使用されるものなのだが，このナレーションは聞き取りやすい声で口調もそれほど速くないため，最近はこれを流しながら英語を聞く耳を鍛えている．Descriptive Serviceは当然ながら字幕に出すことができないので，英語学習に向いているとは言えないものの，好きな映画を見ながらセリフ以外のところで英語の学習ができるので，個人的に気に入っている．</p>
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/07/01/review-kitagawa-be-yourself-and-carry-on/">「世界基準で夢をかなえる私の勉強法」読了</a></h1>
     
     
@@ -326,266 +375,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/06/23/tophat-too-many-open-files/">Tophatにおいて使用するスレッド数を上げすぎるとファイルディスクリプタの上限でエラーになる</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-23T10:33:00+09:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>久しぶりにTophatをいじったら一発目でエラーで落ちてしまい，出鼻をくじかれてしまった…．原因を調べてみると，どうやらTophatのコマンド実行時に指定する-pオプションの数字を調子に乗って上げすぎたのが良くなかったらしい．といっても計算機のリソースに問題があったわけではなく，ユーザが使えるシステムリソースの制限を超えてしまったために，Tophatが停止してしまったようだ．この問題はTophatの公式サイトのFAQでも取り上げられているが，このBlogでもエラーメッセージとともに原因と対策を書いておこうと思う．</p>
-
-<h3>Tophatの標準エラー出力のメッセージ</h3>
-
-<p>今回の場合は，Tophatのログの最後で以下のようなエラーメッセージが表示される．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[...]
-</span><span class='line'>[2013-06-23 00:22:33] Mapping right_kept_reads_seg3 to genome chlamydomonas_236 with Bowtie2 (3/4)
-</span><span class='line'>[2013-06-23 00:33:09] Mapping right_kept_reads_seg4 to genome chlamydomonas_236 with Bowtie2 (4/4)
-</span><span class='line'>[2013-06-23 00:44:57] Searching for junctions via segment mapping
-</span><span class='line'>        [FAILED]
-</span><span class='line'>Error: segment-based junction search failed with err =1
-</span><span class='line'>Error opening SAM file output/tmp/right_kept_reads_seg1.bam</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これだけでは何のことだかよくわからないが，Tophatが出力するログのlogs/segment_juncs.logを見ると，このエラーに関してもう少し詳細な記述が出力されている．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>    Loading scaffold_53...done
-</span><span class='line'>    Loading scaffold_54...done
-</span><span class='line'>    Loading ...done
-</span><span class='line'>&gt;&gt; Performing segment-search:
-</span><span class='line'>Loading left segment hits...
-</span><span class='line'>done.
-</span><span class='line'>Loading right segment hits...
-</span><span class='line'>open: Too many open files
-</span><span class='line'>Error opening SAM file output/tmp/right_kept_reads_seg2.bam</span></code></pre></td></tr></table></div></figure>
-
-
-<p>これを見ると，どうやらsegment_juncsの実行中に「open: Too many open files」が原因で実行が落ちたようだ．</p>
-
-<h3>原因と対策</h3>
-
-<p>このエラーに関しては，実はTophatの公式サイトのFAQに「What should I do if I see a message like &#8220;Too many open files&#8221;?」という，まさに先ほどのエラーメッセージの内容そのままの項がある．</p>
-
-<blockquote><p>This usually happens when using &#8220;-p&#8221; option with a large value (many threads). TopHat may produce many intermediate files, the number of which is proportional to this value; sometimes the number of the files may go over the maximum number of files a process is allowed to open. The solution is to raise the limit to a higher number (e.g. 10000). For Mac, you can change this using a command, &#8220;sudo sysctl -w kern.maxfiles=10240&#8221;.</p>
-
-<p><a href="http://tophat.cbcb.umd.edu/faq.shtml#many_file">TopHat :: Center for Bioinformatics and Computational Biology</a></p></blockquote>
-
-<p>ざっと要約すると「Tophatは中間ファイルを大量に作るから時々許容数超えちゃうんだよね．扱えるファイル数の上限上げるか，Macなら次のコマンドで対処してね」ということになる．さすがにこれだけではよく分からないと思うので，SEQanswersの以下のスレッドも参考にしつつ，もう少し詳しく見ていこうと思う．</p>
-
-<p><a href="http://seqanswers.com/forums/showthread.php?t=21316">Tophat segment junction error 1, invalid BAM binary header - SEQanswers</a></p>
-
-<h3>limitとファイルディスクリプタ数の制限</h3>
-
-<p>さて，公式サイトのFAQにおいてファイル数の上限といった言葉が出てきたように，LinuxやMacではユーザごとに使用することのできる各種システムリソースに制限が設けられている．具体的にはユーザが使用できるCPU数やメモリの容量，プロセスの数などがそれに該当するのだが，その中に<strong>「ファイルディスクリプタ数」</strong>という項目があり，1プロセスが同時に開くことのできるファイル数の上限を定めている．これは主にひとつの計算機を複数人が使用するマルチユーザシステムにおいて，一人がリソースを独占するのを防いだりアプリケーションの暴走を止めたりするのに役立つのだが，今回のような大規模な計算を実行する際にはこれが邪魔になってしまう．</p>
-
-<p>システムリソースの制限を確認したい場合には，「ulimit -a」または「limit」というコマンドを使う．例えば，私の環境では以下のようになる．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># ソフトリミット
-</span><span class='line'>$ ulimit -a
-</span><span class='line'>-t: cpu time (seconds)              unlimited
-</span><span class='line'>-f: file size (blocks)              unlimited
-</span><span class='line'>-d: data seg size (kbytes)          unlimited
-</span><span class='line'>-s: stack size (kbytes)             8192
-</span><span class='line'>-c: core file size (blocks)         0
-</span><span class='line'>-m: resident set size (kbytes)      unlimited
-</span><span class='line'>-u: processes                       1024
-</span><span class='line'>-n: file descriptors                1024
-</span><span class='line'>-l: locked-in-memory size (kbytes)  64
-</span><span class='line'>-v: address space (kbytes)          unlimited
-</span><span class='line'>-x: file locks                      unlimited
-</span><span class='line'>-i: pending signals                 127413
-</span><span class='line'>-q: bytes in POSIX msg queues       819200
-</span><span class='line'>-e: max nice                        0
-</span><span class='line'>-r: max rt priority                 0</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ここで表示されるのは厳密にはソフトリミットと呼ばれ，ユーザごとに設定されている制限である．一方でハードリミットと呼ばれる制限もあり，これは管理者(root)が定める制限となっている．ソフトリミットは，このハードリミットの範囲内でしか自由に制限値を変更することはできない．ハードリミットを確認したい場合には，-Hオプションを付ける．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># ハードリミット
-</span><span class='line'>$ ulimit -aH
-</span><span class='line'>-t: cpu time (seconds)              unlimited
-</span><span class='line'>-f: file size (blocks)              unlimited
-</span><span class='line'>-d: data seg size (kbytes)          unlimited
-</span><span class='line'>-s: stack size (kbytes)             unlimited
-</span><span class='line'>-c: core file size (blocks)         unlimited
-</span><span class='line'>-m: resident set size (kbytes)      unlimited
-</span><span class='line'>-u: processes                       127413
-</span><span class='line'>-n: file descriptors                4096
-</span><span class='line'>-l: locked-in-memory size (kbytes)  64
-</span><span class='line'>-v: address space (kbytes)          unlimited
-</span><span class='line'>-x: file locks                      unlimited
-</span><span class='line'>-i: pending signals                 127413
-</span><span class='line'>-q: bytes in POSIX msg queues       819200
-</span><span class='line'>-e: max nice                        0
-</span><span class='line'>-r: max rt priority                 0</span></code></pre></td></tr></table></div></figure>
-
-
-<p>さて，今回問題になっているファイルディスクリプタ数は「-n: file descriptors」で表示されている．上の例の場合，ソフトリミットでは1024，ハードリミットでは4096となっている．つまり，Tophatは1024個以上のファイルを1スレッドで開こうとしたために，このソフトリミットに引っかかってしまったようだ．</p>
-
-<h3>フィアルディスクリプタ数の制限への対策</h3>
-
-<p>この問題を回避するには主に2つの方法がある．</p>
-
-<p>1．Tophatの-pオプションの値を小さくする</p>
-
-<p>2．ソフトリミットのファイルディスクリプタの値を大きくする</p>
-
-<p>まず1.では，Tophatが使用するスレッド数を少なくすることで，ファイルディスクリプタ数の上限に引っかからなくするというもの．一度-pオプションを無くして実行してみれば，おそらく今回のエラーには引っかからなくなるだろう．一度に開くファイル数が少なくなりほぼ確実に実行できるようにはなるが，並列処理数が減ってしまうのでTophatの実行時間は長くなってしまう．</p>
-
-<p>そこで2.のようにの制限を無くして，-pオプションはそのままにファイルディスクリプタの上限を回避するという方法もある．実行コマンドや実行時間はそのままにエラーを回避することができる一方で，上限を上げたからといってもTophatがそれ以上の同時ファイルオープンをしてしまえば同様のエラーに引っかかってしまうほか，制限を上げたことにより計算機に負荷がかかる恐れもある．つまり，時と場合によっては成功するが確証は無いという感じだろうか．</p>
-
-<p>ちなみに，私の場合はファイルディスクリプタ数を上げても以下のような別のエラーが出て実行できなかった．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Error: ReadStream::getRead() called with out-of-order id#!</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ということで，結論としてはTophatの実行時間との兼ね合いを考えて，どちらかを選択したほうが良いだろう．素直に-pオプションの値を下げるほうが無難な気がする．</p>
-
-<p>ちなみに，制限値を引き上げるには，ulimitで以下のように値を変更する．</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ ulimit -n 2000
-</span><span class='line'>$ limit
-</span><span class='line'>-t: cpu time (seconds)              unlimited
-</span><span class='line'>-f: file size (blocks)              unlimited
-</span><span class='line'>-d: data seg size (kbytes)          unlimited
-</span><span class='line'>-s: stack size (kbytes)             8192
-</span><span class='line'>-c: core file size (blocks)         0
-</span><span class='line'>-m: resident set size (kbytes)      unlimited
-</span><span class='line'>-u: processes                       1024
-</span><span class='line'>-n: file descriptors                2000
-</span><span class='line'>-l: locked-in-memory size (kbytes)  unlimited
-</span><span class='line'>-v: address space (kbytes)          unlimited
-</span><span class='line'>-x: file locks                      unlimited
-</span><span class='line'>-i: pending signals                 16545839
-</span><span class='line'>-q: bytes in POSIX msg queues       819200
-</span><span class='line'>-e: max nice                        0
-</span><span class='line'>-r: max rt priority                 0</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ulimitの後ろに該当するパラメータの値を指定することによって，上限を引き上げることができる．ただし，先ほど述べたようにハードリミットより上は指定することができないので注意が必要になる．</p>
-
-<h3>まとめ</h3>
-
-<p>Tophatのエラー「open: Too many open files」は，スレッドが一度に開くことのできるファイルディスクリプタ数がソフトリミットの上限に引っかかってしまったために起こる．-pオプションの値を下げて実行するか，ソフトリミットのファイルディスクリプタの上限を引き上げることによって回避することができる．まずは，-pオプションを指定せずに実行してみよう．</p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://tophat.cbcb.umd.edu/faq.shtml">TopHat :: Center for Bioinformatics and Computational Biology</a></li>
-<li><a href="http://seqanswers.com/forums/showthread.php?t=21316">Tophat segment junction error 1, invalid BAM binary header - SEQanswers</a></li>
-<li><a href="http://x68000.q-e-d.net/~68user/unix/pickup?limit">UNIXの部屋 コマンド検索:limit (*BSD/Linux)</a></li>
-<li><a href="http://yumewaza.yumemi.co.jp/2010/07/limitsconf.html">ファイルディスクリプタ数の上限変更とlimits.confの罠 (ゆめ技：ゆめみスタッフブログ)</a></li>
-</ul>
-
-
-<h4>実行環境</h4>
-
-<ul>
-<li>OS：RHEL 6.3</li>
-<li>Tophat：v2.0.8b</li>
-<li>Bowtie：version 2.1.0</li>
-<li>Samtools：0.1.19.0</li>
-</ul>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/21/">&larr; Older</a></li>
@@ -633,6 +422,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2015/02/07/review-chutoislam/">「イスラーム国の衝撃」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/17/review-kaishahou/">「わかる！会社法」読了</a>
       </li>
     
@@ -668,10 +461,6 @@
         <a href="/blog/2014/10/24/review-how-google-works/">「How Google Works ―私たちの働き方とマネジメント」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/10/23/kaggle-africa-soil-property-prediction-challenge/">私は如何にしてKaggleで9位から600位台まで順位を落とし，private leaderboardでベンチマークすら下回ったか？</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -680,7 +469,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (112)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (113)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>

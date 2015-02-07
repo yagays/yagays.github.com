@@ -117,6 +117,96 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2014/08/18/kaggle-users-japan/">kimonoでKaggleユーザのクロールをしてみた</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-18T20:37:00+09:00" pubdate data-updated="true">Aug 18<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>ふとKaggleに参加している日本人がどれくらいいるのかが気になったので，簡単にクローラーを作って調べてみた．</p>
+
+<h3>Kimonoを使ったクロール</h3>
+
+<p>手動でクローラーを書いてもいいのだけれども，今回は<a href="https://www.kimonolabs.com/">kimono</a>というクローラーを使ってみた．</p>
+
+<ul>
+<li>参考：<a href="http://blog.takuros.net/entry/2014/08/13/212838">プログラミング・レスで5分でサックリWebスクレイピング「kimonolabs」 - プログラマになりたい</a></li>
+</ul>
+
+
+<p>kimonoはWebから簡単にクローラーを作成してAPIやJSON形式で取得できるようにするようなアプリケーションで，Chrome Extensionを使うことでインタラクティブにクロールする内容を選択することができる．今回は，<a href="http://www.kaggle.com/users/">Kaggle Rankings</a>のランキング500ページ分をクロールして，20000人分のユーザの情報（名前，ランク，ポイント，ロケーション）を取得した．今回クロールした結果は，以下のkimonoのウェブページから誰でも利用できるはず(アカウント持ってないと見れないかな)．ただしrankとptsが一緒になってたりとちょっと汚いので注意．</p>
+
+<ul>
+<li><a href="https://www.kimonolabs.com/apis/dyo7tdm8">https://www.kimonolabs.com/apis/dyo7tdm8</a></li>
+</ul>
+
+
+<p>ちなみに，どれくらい簡単にできるかをgif動画にしてみた．最初は色々戸惑った部分もあったけれど，慣れてしまえば本当に簡単に扱える．以下の場合だと，ユーザ情報がページあたり50人分あるので，ある部分を選択したあとに他の部分も同様に取得するようにチェックを付けるのが重要．あと，paginationはいわゆる「次」にあたる部分を選択する．本当は選択した部分に対して正規表現を掛けてテキスト処理をかけることもできるのだけれども，今回は行っていない．</p>
+
+<p><img src="http://dl.dropboxusercontent.com/u/142306/b/kimono.gif" alt="" /></p>
+
+<h3>後処理</h3>
+
+<p>クロール自体はkimonoに任せることができたので，ここからはpythonスクリプトをちゃちゃっと書いて整形作業．クロールしたデータはJSON形式やcsv形式でダウンロードすることもできるが，今回はAPIから叩いてみる．kimonoの&#8221;Use in code&#8221;というタブに，CurlやjQuery，Node，PHP，Python，Rubyでそれぞれ書かれたスクリプトがあるので，それを使ってデータを取得する．例えば，curlとPythonだと以下のようになる</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ curl --include --request GET "https://www.kimonolabs.com/api/dyo7tdm8?apikey=7ZTTugRoP8xgIlOdAdyiHmwP4rFLviDO"</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">json</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">urllib</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">results</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&quot;https://www.kimonolabs.com/api/dyo7tdm8?apikey=7ZTTugRoP8xgIlOdAdyiHmwP4rFLviDO&quot;</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>今回は日本人のアカウント一覧が欲しいので，&#8221;Country of residence&#8221;にJapanと書かれていてかつポイントを持っているアカウント一覧を出力した．なお，ユーザプロフィールの記入は基本任意なので，<strong>プロフィールで&#8221;Country of residence&#8221;を編集していない日本人は対象外になっている</strong>．</p>
+
+<h3>リスト(2014/08/18現在)</h3>
+
+<p>ユーザページに飛べるように一応HTMLにした．気が向いたら定期的にアップデートするようにして，もっときちんと体裁整えるかも．こういった公開も含めてkimono側で簡単なインターフェイスがあると楽なんだけどなーと思った．</p>
+
+<ul>
+<li><a href="https://dl.dropboxusercontent.com/u/142306/kaggle_jpn.html">https://dl.dropboxusercontent.com/u/142306/kaggle_jpn.html</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2014/08/16/review-bad-data-handbook/">「バッドデータハンドブック ―データにまつわる問題への19の処方箋」読了</a></h1>
     
     
@@ -514,150 +604,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2014/07/09/www2014review-kickstarter/">論文紹介:Recommending Investors for Crowdfunding Projects</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-07-09T16:08:00+09:00" pubdate data-updated="true">Jul 9<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>某所で発表を予定していたんだけど，台風のせいで飛びそうなので先に公開しておきます．読んだのはWWW2014のMatchingセクションに採択されたKickstarterに関する論文．</p>
-
-<script async class="speakerdeck-embed" data-id="1b6dec40e95b01313be5762c67c15dde" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
-
-
-<h4>補足</h4>
-
-<ul>
-<li>まずFrequent InvestorsとOccasional Investorsの和訳について
-
-<ul>
-<li>スライド中では「常連投資家」と「気まぐれ投資家」と訳したが，あまり適切な訳語が思い浮かばなかった</li>
-<li>無理に訳す必要もないんだけど，FIとOIとかにしてもぱっと見意味不明だし，スライドの都合上日本語にした</li>
-</ul>
-</li>
-<li>KickstarterにはAPIがないから自力でクロールしたらしい
-
-<ul>
-<li>Twitterのアカウントとの紐付けなども考えると，かなり大変そう</li>
-</ul>
-</li>
-<li>既存研究あんまり書かなかったんだけど，投資分野の予測なのでいろいろある
-
-<ul>
-<li>Kickstarterにおいて特定のフレーズプロジェクトの成功予測に役立つとか(<a href="http://dl.acm.org/citation.cfm?id=2531602.2531656">http://dl.acm.org/citation.cfm?id=2531602.2531656</a>)</li>
-<li>Kickstarter以外にもCrowdfundingはいろいろあるので，その辺のレポートも引用されてる</li>
-</ul>
-</li>
-<li>LDAのトピック数は書かれていないんだけど，これはKickstarterのカテゴリー数=13でいいんだろうか
-
-<ul>
-<li>なお，今ではCraftとJournalismというカテゴリが加わって15になっている</li>
-</ul>
-</li>
-<li>マッチングの手法について
-
-<ul>
-<li>このあたり専門じゃないからあんまり分からないけど，手法的には普通な印象</li>
-<li>RBFカーネルのSVMが最良だったのも納得
-
-<ul>
-<li>参考：<a href="http://d.hatena.ne.jp/sleepy_yoshi/20120624/p1">SVM実践ガイド (A Practical Guide to Support Vector Classification) - 睡眠不足？！</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<h4>感想</h4>
-
-<ul>
-<li>マッチングについて
-
-<ul>
-<li>サービス提供側(ここではKickstarter)からすると，例えばこのようなマッチングを作ると考えた時にTwitterのような外部サービスを利用するとなると，ちょっと大変そう
-
-<ul>
-<li>外部サイト連携とかを付けないと，そもそも取ってこれないし正式に使えない(?)</li>
-<li>一番使いやすいのはKickstarterで表示したプロジェクトのウェブページの履歴とかかな</li>
-<li>いずれにせよ投資者の趣向をどう観測するかという感じ</li>
-</ul>
-</li>
-<li>そもそもKickstarterの投資に参加している人のなかでマッチングが上手くいったとして，投資数が増えるのだろうか？
-
-<ul>
-<li>プロジェクトの成功率/投資額をあげようと思った時に，推薦に限界がある場合には，いかに他所から興味ある人を引っ張ってくるかになる</li>
-<li>ソーシャルのちからに頼れなくなると，結局広告打ったりメディアに紹介してもらったりという従来の方法に頼らざるをえないかも</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>ウェブサービスに関わる人間にとって大事なこと
-
-<ul>
-<li>アカウント新規登録時の登録項目大事
-
-<ul>
-<li>ユーザが情報を入力してくれるタイミングなんてそうそう無い</li>
-<li>たとえば本論文だとファウンダーのlocationがないとGeographic Dispersionが取れないわけだし</li>
-<li>どのような情報が自サービスのレコメンドなどに効いてくるかをしっかり考えておいて布石を打つ必要がある</li>
-</ul>
-</li>
-<li>外部サービス連携大事
-
-<ul>
-<li>TwitterとかFacebookとかの情報を一部取れるだけでも嬉しい
-
-<ul>
-<li>書き込みなどが取れれば万々歳，友達数とかだけでもFrequent/Occasionalは判別できそう</li>
-</ul>
-</li>
-<li>外部サービスにポストするという機能以外にもユーザの特徴をつかむ意味で大事かと</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="http://dl.acm.org/citation.cfm?id=2568005">Recommending investors for crowdfunding projects</a></li>
-<li><a href="http://www2014.kr/program/research-track-9-7/">Research Track |www2014</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/5/">&larr; Older</a></li>
@@ -705,6 +651,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2015/02/07/review-chutoislam/">「イスラーム国の衝撃」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/17/review-kaishahou/">「わかる！会社法」読了</a>
       </li>
     
@@ -740,10 +690,6 @@
         <a href="/blog/2014/10/24/review-how-google-works/">「How Google Works ―私たちの働き方とマネジメント」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/10/23/kaggle-africa-soil-property-prediction-challenge/">私は如何にしてKaggleで9位から600位台まで順位を落とし，private leaderboardでベンチマークすら下回ったか？</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -752,7 +698,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (112)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (113)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
