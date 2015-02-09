@@ -117,6 +117,76 @@
       
   <header class="page-header">
     
+      <h1 class="entry-title"><a href="/blog/2013/07/13/directory-permission/">ディレクトリの書き込み権限が無いとファイルの消去ができない</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-13T15:40:00+09:00" pubdate data-updated="true">Jul 13<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>久しぶりに初歩的なところでハマったのでメモ．多人数が使用するサーバ上で，何故かrmすることのできないファイルがあった．パーミッションも所有者もグループも特に変なところは見当たらず，ファイルが壊れているわけでもGUIで他のプログラムが使用中というわけでもない．なのに，rmしようとすると以下のようなエラーが出てしまう（例示しているコマンドラインは手元で再現した状況）．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rm hehehe
+</span><span class='line'>remove hehehe? y
+</span><span class='line'>rm: hehehe: Permission denied</span></code></pre></td></tr></table></div></figure>
+
+
+<p>sudo権限を持っていないのでなんともしがたいなーと思いつつ，適当にディレクトリ名を&#8221;fuga_broken&#8221;に変更して放置していたのだけれども，たまたま機会があって人に相談したら「ディレクトリの書き込み権限が無いんじゃない？」と言われて，そこでようやく気がついた．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ls -l
+</span><span class='line'>合計 0
+</span><span class='line'>dr-xr-xr-x 3 yag_ays staff 102  7 13 15:27 fuga/</span></code></pre></td></tr></table></div></figure>
+
+
+<p>というわけで，ディレクトリの書き込み権限がなかったせいで，そのディレクトリ内のファイルの消去ができなかっただけだったというオチ．なぜ書き込み権限が無くなっていたのかはいまだに不明だ．対象となるディレクトリをchmodで書き込み権限を付加したら，あっさりファイルを削除することができた．</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ chmod +w fuga
+</span><span class='line'>$ rm fuga/hehehe
+</span><span class='line'>remove fuga/hehehe? y
+</span><span class='line'>$ </span></code></pre></td></tr></table></div></figure>
+
+
+<p>なんともまあ呆気なく解決してしまった．普段からディレクトリのパーミッションはまったく変えないので，問題解決の際にディレクトリにまで考えが及ばなく，久々に自分の経験の浅さを実感した．</p>
+</div>
+  
+  
+
+
+<br/><br/>
+
+    </article>
+  
+  
+    <article>
+      
+  <header class="page-header">
+    
       <h1 class="entry-title"><a href="/blog/2013/07/12/stat115-cole-trapnell/">Tophat/Cufflinksなどの開発者であるCole TrapnellによるRNA-Seqの遺伝子発現解析に関する講義動画</a></h1>
     
     
@@ -628,58 +698,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header class="page-header">
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/03/zenith-stapler/">Zenithのホッチキスを買った</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-03T19:52:00+09:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=yagays-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B007RIHVOG" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" align="right"></iframe>
-
-
-<p>Zenithのホッチキスを買った．前々から一目惚れしていたものの値段のせいあって買うのをためらっていたのだが，いつも使っているホッチキスで上手く綴ることができなくなってきたので買い替えとばかりに思い切って購入．最近ご無沙汰だった文房具熱が再発しそうで少し怖い．</p>
-
-<ul>
-<li><a href="http://freedesign.jp/stationery/ktzsp001.php">BALMA ZENITH STAPLER 591 - バルマ ゼニス ステープラー</a></li>
-</ul>
-
-
-<p>第一印象としては，とにかく使い心地が良い．見た目からはデカくてゴツくて荒っぽい印象なのだけれども，やはり通常のホッチキスと比べてそもそも構造が違うのが，使用感に大きく影響してくる．とにかく力を入れなくても簡単に紙を綴ることができるので，だからといって楽とは少し違うのだけれども，普通に使う分には全く問題がない．正確には計っていないが10枚くらいなら余裕で綴ることができるし，頑張れば20枚程度はいけそうな感じがする．あと個人的に気に入っているのが綴るときの音で，鉄の擦れる音やバネの軋む音が心地良い．</p>
-
-<p>まだあまり使っていないので，これからが楽しみだ．Zenithのホッチキスで綴た論文を，頑張って読もう…．</p>
-
-<p><img src="http://dl.dropboxusercontent.com/u/142306/b/zenith.jpg" alt="" /></p>
-</div>
-  
-  
-
-
-<br/><br/>
-
-    </article>
-  
   <ul class="pager">
     
     <li class="previous"><a href="/blog/page/20/">&larr; Older</a></li>
@@ -727,6 +745,10 @@
     <li class="nav-header">Recent Posts</li>
     
       <li class="post">
+        <a href="/blog/2015/02/09/review-the-glass-cage/">「オートメーション・バカ -先端技術がわたしたちにしていること-」読了</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/07/review-chutoislam/">「イスラーム国の衝撃」読了</a>
       </li>
     
@@ -762,10 +784,6 @@
         <a href="/blog/2014/10/25/review-think-simple/">「Think Simple―アップルを生みだす熱狂的哲学」読了</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/10/24/review-how-google-works/">「How Google Works ―私たちの働き方とマネジメント」読了</a>
-      </li>
-    
   </ul>
 </section>
 <section class="well">
@@ -774,7 +792,7 @@
     <li class='category'><a href='/blog/categories/allpaths-lg/'>ALLPATHS-LG (3)</a></li>
 <li class='category'><a href='/blog/categories/assembly/'>Assembly (7)</a></li>
 <li class='category'><a href='/blog/categories/biopython/'>Biopython (2)</a></li>
-<li class='category'><a href='/blog/categories/book/'>Book (113)</a></li>
+<li class='category'><a href='/blog/categories/book/'>Book (114)</a></li>
 <li class='category'><a href='/blog/categories/clojure/'>Clojure (1)</a></li>
 <li class='category'><a href='/blog/categories/genesinconflicts/'>GenesInConflicts (4)</a></li>
 <li class='category'><a href='/blog/categories/jekyll-octopress/'>Jekyll/Octopress (4)</a></li>
