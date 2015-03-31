@@ -4,7 +4,7 @@
   <title><![CDATA[Wolfeyes Bioinformatics beta]]></title>
   <link href="http://yagays.github.io/atom.xml" rel="self"/>
   <link href="http://yagays.github.io/"/>
-  <updated>2015-02-19T10:46:06+09:00</updated>
+  <updated>2015-03-31T14:45:48+09:00</updated>
   <id>http://yagays.github.io/</id>
   <author>
     <name><![CDATA[yag_ays]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[近況]]></title>
+    <link href="http://yagays.github.io/blog/2015/03/31/last-post/"/>
+    <updated>2015-03-31T14:35:00+09:00</updated>
+    <id>http://yagays.github.io/blog/2015/03/31/last-post</id>
+    <content type="html"><![CDATA[<p>お久しぶりです．長らく更新が滞っていましたが，個人的な近況を少し．この3月に奈良先端科学技術大学院大学の情報科学研究科で修士を取得して卒業しました．4月からはリクルートホールディングスという会社で新卒としてデータ解析などをやる予定です．</p>
+
+<p>バイオインフォマティクスからは離れるということで，このブログでの更新は一旦終了し，新しいブログに移行します．これからどんな形で書いていけるかは分からないですが，ブログという形式で文章を書くこと，そして情報発信をすることは，社会人になっても続けていきたいと思いますので，ぜひともよろしくお願いします．</p>
+
+<p><a href="http://yag.xyz/blog/">Wolftail Bounds</a></p>
+
+<p>今までありがとうございました．ではでは．</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[「オートメーション・バカ -先端技術がわたしたちにしていること-」読了]]></title>
@@ -1317,71 +1332,6 @@
 <li>%matplotlib inlineを使っている例</li>
 </ul>
 </li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Homebrew/scienceでバイオインフォマティクスのソフトウェアを入れる]]></title>
-    <link href="http://yagays.github.io/blog/2014/07/23/homebrew-science-bioinformatics/"/>
-    <updated>2014-07-23T00:38:00+09:00</updated>
-    <id>http://yagays.github.io/blog/2014/07/23/homebrew-science-bioinformatics</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/Homebrew/homebrew-science">Homebrew/homebrew-science</a></p>
-
-<p>Homebrewにはtapというコマンドがあって，例えばHomebrew/dupesのようにMacOSXに標準で入っているソフトウェア/パッケージを個別に入れられたりと，公式以外のフォーミュラからbrewコマンドで入れられるシステムがある．</p>
-
-<h3>Homebrew/science</h3>
-
-<p>その中でHomebrew/scienceという科学系のリポジトリがあり，バイオインフォマティクスに関するソフトウェアも多数登録されている．例えば，</p>
-
-<ul>
-<li>blast</li>
-<li>blat</li>
-<li>hmmer</li>
-<li>clustal-w</li>
-</ul>
-
-
-<p>のような基本的なソフトウェアから，</p>
-
-<ul>
-<li>bowtie2</li>
-<li>cufflinks</li>
-<li>bwa</li>
-<li>fastqc</li>
-<li>igv</li>
-<li>samtools</li>
-<li>bedtools</li>
-<li>&#8230;</li>
-</ul>
-
-
-<p>のようなNGSまわりの解析ツールもひと通りHomebrewから入れることができる．ここに挙げている以外にも多数のバイオインフォマティクス関連のソフトウェアが登録されているので，詳しくは<a href="https://github.com/Homebrew/homebrew-science">homebrew-scienceのGitHubページ</a>を参考．</p>
-
-<p>ひとつ注意点としては，Homebrew/sicenceで入れたソフトウェアが常に最新のものかどうかは保証されない．Homebrew/scienceの中にあるフォーミュラで記述されているものがインストールされるので，フォーミュラの管理状態によっては最新ではないバージョンを指している可能性がある．もし最新バージョンを入れたい/バージョンに気をつけるといった場合には，公式ページで配布されているソフトウェアのバージョンを確認したほうが良いだろう．</p>
-
-<h3>使い方</h3>
-
-<p>Homebrewをセットアップした上で，以下のコマンドでtapを追加することができる．</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew tap homebrew/science
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>あとは好きなソフトウェアをbrew installすれば良い．</p>
-
-<h3>恒例のアレ</h3>
-
-<p>このxkcdのマンガには，Homebrew/scienceのページに載っているコマ以外にちゃんとした前振りがある．詳しくは<a href="http://xkcd.com/585/">http://xkcd.com/585/</a>にて．</p>
-
-<p><img src="https://camo.githubusercontent.com/3409f4a35fcb0bf160c8c9bb153bb133d8f83b4f/687474703a2f2f692e696d6775722e636f6d2f42737770312e706e67" alt="" /></p>
-
-<h4>参考</h4>
-
-<ul>
-<li><a href="https://github.com/Homebrew/homebrew/wiki/brew-tap">brew tap · Homebrew/homebrew Wiki</a></li>
 </ul>
 
 ]]></content>
